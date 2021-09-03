@@ -19,18 +19,6 @@
       "name": "connection_status",
       "flags": 0,
       "packf": "u16"
-    },
-    {
-      "code": 387,
-      "name": "statistics",
-      "flags": 2,
-      "packf": "u32 u32 u32 u32",
-      "fields": [
-        "reading",
-        "event",
-        "twin_reported",
-        "twin_desired"
-      ]
     }
   ]
 }

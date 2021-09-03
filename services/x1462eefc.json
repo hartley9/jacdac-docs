@@ -16,10 +16,10 @@
       "name": "ConnectionStatus",
       "storage": 2,
       "members": {
-        "Connected": 0,
-        "Disconnected": 1,
-        "Connecting": 2,
-        "Disconnecting": 3
+        "Connected": 1,
+        "Disconnected": 2,
+        "Connecting": 3,
+        "Disconnecting": 4
       }
     }
   },
@@ -131,40 +131,6 @@
         }
       ],
       "packFormat": "u16"
-    },
-    {
-      "kind": "ro",
-      "name": "statistics",
-      "identifier": 387,
-      "description": "Reads internal statistics about messages sent to the hub.",
-      "fields": [
-        {
-          "name": "reading",
-          "type": "u32",
-          "storage": 4,
-          "isSimpleType": true
-        },
-        {
-          "name": "event",
-          "type": "u32",
-          "storage": 4,
-          "isSimpleType": true
-        },
-        {
-          "name": "twin_reported",
-          "type": "u32",
-          "storage": 4,
-          "isSimpleType": true
-        },
-        {
-          "name": "twin_desired",
-          "type": "u32",
-          "storage": 4,
-          "isSimpleType": true
-        }
-      ],
-      "volatile": true,
-      "packFormat": "u32 u32 u32 u32"
     },
     {
       "kind": "command",

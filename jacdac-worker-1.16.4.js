@@ -467,10 +467,10 @@ var ArcadeSoundReg;
 })(ArcadeSoundReg || (ArcadeSoundReg = {}));
 var AzureIotHubHealthConnectionStatus;
 (function (AzureIotHubHealthConnectionStatus) {
-    AzureIotHubHealthConnectionStatus[AzureIotHubHealthConnectionStatus["Connected"] = 0] = "Connected";
-    AzureIotHubHealthConnectionStatus[AzureIotHubHealthConnectionStatus["Disconnected"] = 1] = "Disconnected";
-    AzureIotHubHealthConnectionStatus[AzureIotHubHealthConnectionStatus["Connecting"] = 2] = "Connecting";
-    AzureIotHubHealthConnectionStatus[AzureIotHubHealthConnectionStatus["Disconnecting"] = 3] = "Disconnecting";
+    AzureIotHubHealthConnectionStatus[AzureIotHubHealthConnectionStatus["Connected"] = 1] = "Connected";
+    AzureIotHubHealthConnectionStatus[AzureIotHubHealthConnectionStatus["Disconnected"] = 2] = "Disconnected";
+    AzureIotHubHealthConnectionStatus[AzureIotHubHealthConnectionStatus["Connecting"] = 3] = "Connecting";
+    AzureIotHubHealthConnectionStatus[AzureIotHubHealthConnectionStatus["Disconnecting"] = 4] = "Disconnecting";
 })(AzureIotHubHealthConnectionStatus || (AzureIotHubHealthConnectionStatus = {}));
 var AzureIotHubHealthReg;
 (function (AzureIotHubHealthReg) {
@@ -498,14 +498,6 @@ var AzureIotHubHealthReg;
      * ```
      */
     AzureIotHubHealthReg[AzureIotHubHealthReg["ConnectionStatus"] = 386] = "ConnectionStatus";
-    /**
-     * Reads internal statistics about messages sent to the hub.
-     *
-     * ```
-     * const [reading, event, twinReported, twinDesired] = jdunpack<[number, number, number, number]>(buf, "u32 u32 u32 u32")
-     * ```
-     */
-    AzureIotHubHealthReg[AzureIotHubHealthReg["Statistics"] = 387] = "Statistics";
 })(AzureIotHubHealthReg || (AzureIotHubHealthReg = {}));
 var AzureIotHubHealthCmd;
 (function (AzureIotHubHealthCmd) {
