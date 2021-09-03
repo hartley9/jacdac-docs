@@ -1387,7 +1387,7 @@ function Dashboard(props) {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _DashboardDevice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(54886);
 /* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(54774);
-/* harmony import */ var _DashboardServiceWidget__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(73205);
+/* harmony import */ var _DashboardServiceWidget__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23069);
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(84377);
 
 var _excluded = ["device", "expanded", "toggleExpanded", "variant"];
@@ -2353,4 +2353,4 @@ function Commissioner() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-27e7718729b60ea2265a.js.map
+//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-39c6b7fa3914eebc7677.js.map

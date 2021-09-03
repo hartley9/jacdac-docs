@@ -612,7 +612,7 @@ function ReadingFieldGrid(props) {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _DashboardDevice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(54886);
 /* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(54774);
-/* harmony import */ var _DashboardServiceWidget__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(73205);
+/* harmony import */ var _DashboardServiceWidget__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23069);
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(84377);
 
 var _excluded = ["device", "expanded", "toggleExpanded", "variant"];
@@ -1863,4 +1863,4 @@ function Collector() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-collector-tsx-e725fd48ff5777b99fb2.js.map
+//# sourceMappingURL=component---src-pages-tools-collector-tsx-91b536542e0facacb011.js.map

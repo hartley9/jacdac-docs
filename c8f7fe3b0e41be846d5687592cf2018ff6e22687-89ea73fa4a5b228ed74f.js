@@ -1027,6 +1027,34 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 53717:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(8580);
+
+var _interopRequireWildcard = __webpack_require__(1022);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+}), 'Warning');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 66869:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -92779,20 +92807,17 @@ var TreeItem = /*#__PURE__*/react.forwardRef(function TreeItem(props, ref) {
 })(TreeItem));
 // EXTERNAL MODULE: ./src/components/KindIcon.tsx
 var KindIcon = __webpack_require__(50048);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Warning.js
+var Warning = __webpack_require__(53717);
 // EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
 var react_use_id_hook_esm = __webpack_require__(19640);
 ;// CONCATENATED MODULE: ./src/components/ui/StyledTreeView.tsx
 
-var _excluded = ["labelText", "kind", "icon", "labelInfo", "color", "bgColor", "actions", "nodeId", "alert"];
- // tslint:disable-next-line: no-submodule-imports
+var _excluded = ["labelText", "kind", "icon", "labelInfo", "color", "bgColor", "actions", "nodeId", "warning", "alert"];
 
- // tslint:disable-next-line: no-submodule-imports
-// tslint:disable-next-line: no-submodule-imports
 
- // tslint:disable-next-line: no-submodule-imports
 
- // tslint:disable-next-line: no-submodule-imports match-default-export-name
-// tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
 
 
@@ -92857,6 +92882,7 @@ function StyledTreeItem(props) {
     bgColor,
     actions,
     nodeId,
+    warning,
     alert
   } = props,
       other = (0,objectWithoutProperties/* default */.Z)(props, _excluded);
@@ -92871,7 +92897,10 @@ function StyledTreeItem(props) {
     }, kind && /*#__PURE__*/react.createElement(KindIcon/* default */.ZP, {
       kind: kind,
       className: classes.labelIcon
-    }), icon, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+    }), icon, warning && /*#__PURE__*/react.createElement(Warning/* default */.Z, {
+      color: "error",
+      className: classes.labelIcon
+    }), /*#__PURE__*/react.createElement(Typography/* default */.Z, {
       variant: "body2",
       className: classes.labelText
     }, labelText), alert && "!", /*#__PURE__*/react.createElement(Typography/* default */.Z, {
@@ -92949,15 +92978,19 @@ function DeviceTreeItem(props) {
     mobile
   } = (0,useMediaQueries/* default */.Z)();
   var showActions = !mobile;
-  var dropped = (0,useChange/* default */.Z)(device.stats, _ => _.dropped);
-  var restarts = (0,useChange/* default */.Z)(device.stats, _ => _.dropped);
+  var {
+    dropped,
+    restarts
+  } = (0,useChange/* default */.Z)(device.stats, _ => _.current);
   var serviceNames = (0,utils/* ellipseJoin */.VA)(services.filter(service => service.serviceClass !== constants/* SRV_CONTROL */.gm9 && service.serviceClass !== constants/* SRV_LOGGER */.w9j && service.serviceClass !== constants/* SRV_ROLE_MANAGER */.igi && service.serviceClass !== constants/* SRV_SETTINGS */.B9b).map(service => service.name), 18);
-  var alert = lost ? "lost device..." : restarts > 0.25 ? "restarting..." : dropped > 2 ? dropped + " pkt lost" : undefined;
-  var labelInfo = [dropped > 1 && dropped + " lost", serviceNames].filter(r => !!r).join(", ");
+  var alert = lost ? "lost device..." : restarts > 1 ? "malfunction..." : dropped > 2 ? dropped + " pkt lost" : undefined;
+  var warning = restarts > 1 || dropped > 2;
+  var labelInfo = [dropped > 2 && (dropped | 0) + " lost", serviceNames].filter(r => !!r).join(", ");
   return /*#__PURE__*/react.createElement(StyledTreeItem, {
     nodeId: id,
     labelText: name,
     labelInfo: labelInfo,
+    warning: warning,
     alert: alert,
     kind: kind,
     actions: showActions && /*#__PURE__*/react.createElement(DeviceActions/* default */.Z, {
@@ -92978,9 +93011,10 @@ function AnnounceFlagsTreeItem(props) {
   var {
     announceFlags,
     id,
-    deviceId
+    deviceId,
+    restartCounter
   } = device;
-  var text = [deviceId, announceFlags & constants/* ControlAnnounceFlags.IsClient */.P99.IsClient && "client", announceFlags & constants/* ControlAnnounceFlags.SupportsACK */.P99.SupportsACK && "acks", announceFlags & constants/* ControlAnnounceFlags.SupportsBroadcast */.P99.SupportsBroadcast && "broadcast", announceFlags & constants/* ControlAnnounceFlags.SupportsFrames */.P99.SupportsFrames && "frames", (announceFlags & constants/* ControlAnnounceFlags.StatusLightRgbFade */.P99.StatusLightRgbFade) === constants/* ControlAnnounceFlags.StatusLightMono */.P99.StatusLightMono && "mono status LED", (announceFlags & constants/* ControlAnnounceFlags.StatusLightRgbFade */.P99.StatusLightRgbFade) === constants/* ControlAnnounceFlags.StatusLightRgbNoFade */.P99.StatusLightRgbNoFade && "rgb no fade status LED", (announceFlags & constants/* ControlAnnounceFlags.StatusLightRgbFade */.P99.StatusLightRgbFade) === constants/* ControlAnnounceFlags.StatusLightRgbFade */.P99.StatusLightRgbFade && "rgb fade status LED"].filter(f => !!f).join(", ");
+  var text = [deviceId, announceFlags & constants/* ControlAnnounceFlags.IsClient */.P99.IsClient && "client", announceFlags & constants/* ControlAnnounceFlags.SupportsACK */.P99.SupportsACK && "acks", announceFlags & constants/* ControlAnnounceFlags.SupportsBroadcast */.P99.SupportsBroadcast && "broadcast", announceFlags & constants/* ControlAnnounceFlags.SupportsFrames */.P99.SupportsFrames && "frames", (announceFlags & constants/* ControlAnnounceFlags.StatusLightRgbFade */.P99.StatusLightRgbFade) === constants/* ControlAnnounceFlags.StatusLightMono */.P99.StatusLightMono && "mono status LED", (announceFlags & constants/* ControlAnnounceFlags.StatusLightRgbFade */.P99.StatusLightRgbFade) === constants/* ControlAnnounceFlags.StatusLightRgbNoFade */.P99.StatusLightRgbNoFade && "rgb no fade status LED", (announceFlags & constants/* ControlAnnounceFlags.StatusLightRgbFade */.P99.StatusLightRgbFade) === constants/* ControlAnnounceFlags.StatusLightRgbFade */.P99.StatusLightRgbFade && "rgb fade status LED", restartCounter < 0xf ? "restart#" + restartCounter : undefined].filter(f => !!f).join(", ");
   return /*#__PURE__*/react.createElement(StyledTreeItem, {
     nodeId: id + ":flags",
     labelText: text,
@@ -99064,4 +99098,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-eac521ed240fa7915fdf.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-89ea73fa4a5b228ed74f.js.map

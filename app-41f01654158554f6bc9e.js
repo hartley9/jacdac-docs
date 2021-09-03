@@ -50824,8 +50824,8 @@ var useDeviceSpecification = __webpack_require__(77423);
 var DeviceAvatar = __webpack_require__(4726);
 // EXTERNAL MODULE: ./node_modules/gatsby/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(47895);
-// EXTERNAL MODULE: ./src/components/dashboard/DashboardServiceWidget.tsx + 4 modules
-var DashboardServiceWidget = __webpack_require__(73205);
+// EXTERNAL MODULE: ./src/components/dashboard/DashboardServiceWidget.tsx + 5 modules
+var DashboardServiceWidget = __webpack_require__(23069);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Button/Button.js
 var Button = __webpack_require__(83332);
 // EXTERNAL MODULE: ./src/components/AppContext.tsx
@@ -51137,7 +51137,7 @@ function DashboardDevice(props) {
 
 /***/ }),
 
-/***/ 73205:
+/***/ 23069:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51183,8 +51183,16 @@ var svgutils = __webpack_require__(92526);
 var useAnimationFrame = __webpack_require__(17368);
 // EXTERNAL MODULE: ./src/components/hooks/useRegister.ts
 var useRegister = __webpack_require__(82677);
-// EXTERNAL MODULE: ./src/components/hooks/useEvent.ts
-var useEvent = __webpack_require__(59626);
+;// CONCATENATED MODULE: ./src/components/hooks/useEvent.ts
+
+function useEvent(service, identifier) {
+  var {
+    0: event,
+    1: setEvent
+  } = (0,react.useState)(service === null || service === void 0 ? void 0 : service.event(identifier));
+  (0,react.useEffect)(() => setEvent(service === null || service === void 0 ? void 0 : service.event(identifier)), [service, identifier]);
+  return event;
+}
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
 var utils = __webpack_require__(81794);
 ;// CONCATENATED MODULE: ./src/components/dashboard/DashboardButton.tsx
@@ -51212,8 +51220,8 @@ function DashboardButton(props) {
   var analogRegister = (0,useRegister/* default */.Z)(service, constants/* ButtonReg.Analog */.CP7.Analog);
   var analog = (0,useRegisterValue/* useRegisterBoolValue */.I8)(analogRegister); // don't track reading, use events only
 
-  var downEvent = (0,useEvent/* default */.Z)(service, constants/* ButtonEvent.Down */.XKP.Down);
-  var upEvent = (0,useEvent/* default */.Z)(service, constants/* ButtonEvent.Up */.XKP.Up);
+  var downEvent = useEvent(service, constants/* ButtonEvent.Down */.XKP.Down);
+  var upEvent = useEvent(service, constants/* ButtonEvent.Up */.XKP.Up);
   (0,react.useEffect)(() => downEvent.subscribe(constants/* EVENT */.Ks0, () => setPressed(true)), [downEvent]);
   (0,react.useEffect)(() => upEvent.subscribe(constants/* EVENT */.Ks0, () => setPressed(false)), [upEvent]);
   if (!analog) return /*#__PURE__*/react.createElement(BinaryButton, Object.assign({}, props, {
@@ -51638,8 +51646,8 @@ var DashboardGyroscope = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import
 var DashboardSolenoid = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 3356).then(__webpack_require__.bind(__webpack_require__, 73356)));
 var DashboardBitRadio = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 8743).then(__webpack_require__.bind(__webpack_require__, 58743)));
 var DashboardHIDKeyboard = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(532), __webpack_require__.e(7919), __webpack_require__.e(5969)]).then(__webpack_require__.bind(__webpack_require__, 25969)));
-var DashboardHIDMouse = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 5233).then(__webpack_require__.bind(__webpack_require__, 45233)));
-var DashboardAzureIoTHub = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 2164).then(__webpack_require__.bind(__webpack_require__, 72164)));
+var DashboardHIDMouse = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 5233).then(__webpack_require__.bind(__webpack_require__, 45233))); //const DashboardAzureIoTHub = lazy(() => import("./DashboardAzureIoTHub"))
+
 var DashboardAzureIoTHubHealth = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(8887), __webpack_require__.e(6003), __webpack_require__.e(1931)]).then(__webpack_require__.bind(__webpack_require__, 31931)));
 var serviceViews = {
   [constants/* SRV_ROLE_MANAGER */.igi]: {
@@ -51767,10 +51775,13 @@ var serviceViews = {
     component: DashboardHIDMouse,
     weight: () => 2
   },
-  [constants.SRV_AZURE_IOT_HUB]: {
-    component: DashboardAzureIoTHub,
-    weight: () => 3
+
+  /*
+  [SRV_AZURE_IOT_HUB]: {
+      component: DashboardAzureIoTHub,
+      weight: () => 3,
   },
+  */
   [constants/* SRV_AZURE_IOT_HUB_HEALTH */.tOR]: {
     component: DashboardAzureIoTHubHealth,
     weight: () => 3
@@ -52280,12 +52291,7 @@ function DeviceAvatar(props) {
   var classes = useStyles();
   var sizeClassName = size === "small" ? classes.small : size === "large" ? classes.large : undefined;
   var server = (0,useServiceProvider/* default */.Z)(device);
-  var source = device.source; //const {
-  //  className: statusLEDClassName,
-  //  helmetStyle: statusLEDHelmetStyle } = useDeviceStatusLightStyle(device)
-  //{statusLEDHelmetStyle && <Helmet><style>{statusLEDHelmetStyle}</style></Helmet>}
-  //className={statusLEDClassName}
-
+  var source = device.source;
   var ctrl = server === null || server === void 0 ? void 0 : server.controlService;
   var color = (0,useChange/* default */.Z)(ctrl, _ => _ === null || _ === void 0 ? void 0 : _.statusLightColor);
   var style = color ? {
@@ -54562,26 +54568,6 @@ function useDevices(options, deps) {
 
 /***/ }),
 
-/***/ 59626:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ useEvent; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-
-function useEvent(service, identifier) {
-  var {
-    0: event,
-    1: setEvent
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(service === null || service === void 0 ? void 0 : service.event(identifier));
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => setEvent(service === null || service === void 0 ? void 0 : service.event(identifier)), [service, identifier]);
-  return event;
-}
-
-/***/ }),
-
 /***/ 8966:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -55275,7 +55261,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "198307770f1cd319219310c86a44ab4c65e302fd";
+  var sha = "805778f379841e201ed6b749e91c184ce12c95d3";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -60321,8 +60307,8 @@ var LEDController = /*#__PURE__*/function (_JDEventSource) {
  * Collects packet statistics about the device
  * @category JDOM
  */
-var DeviceStats = /*#__PURE__*/function (_JDEventSource) {
-  (0,inheritsLoose/* default */.Z)(DeviceStats, _JDEventSource);
+var DeviceStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
+  (0,inheritsLoose/* default */.Z)(DeviceStatsMonitor, _JDEventSource);
 
   // counter
   // horizon
@@ -60330,13 +60316,13 @@ var DeviceStats = /*#__PURE__*/function (_JDEventSource) {
   /**
    * @internal
    */
-  function DeviceStats() {
+  function DeviceStatsMonitor() {
     var _this;
 
     _this = _JDEventSource.call(this) || this;
     _this._receivedPackets = 0;
     _this._restarts = 0;
-    _this._data = Array(10).fill(0).map(() => ({
+    _this._data = Array(0xf << 2).fill(0).map(() => ({
       received: 0,
       total: 0,
       restarts: 0
@@ -60350,7 +60336,7 @@ var DeviceStats = /*#__PURE__*/function (_JDEventSource) {
    */
 
 
-  var _proto = DeviceStats.prototype;
+  var _proto = DeviceStatsMonitor.prototype;
 
   /**
    * @internal
@@ -60387,9 +60373,10 @@ var DeviceStats = /*#__PURE__*/function (_JDEventSource) {
 
   _proto.processRestart = function processRestart() {
     this._restarts++;
+    this.emit(constants/* CHANGE */.Ver);
   };
 
-  (0,createClass/* default */.Z)(DeviceStats, [{
+  (0,createClass/* default */.Z)(DeviceStatsMonitor, [{
     key: "dropped",
     get: function get() {
       var r = this._data.filter(e => !!e.total) // ignore total 0
@@ -60397,18 +60384,35 @@ var DeviceStats = /*#__PURE__*/function (_JDEventSource) {
       return r;
     }
     /**
-     * Average restart detected per announce packet
+     * Number of restarts within the last 64 announce packets
      */
 
   }, {
     key: "restarts",
     get: function get() {
-      var r = this._data.reduce((s, e) => s + e.restarts, 0) / this._data.length || 0;
+      var r = this._data.reduce((s, e) => s + e.restarts, 0);
+
       return r;
+    }
+    /**
+     * Gets the current stats
+     */
+
+  }, {
+    key: "current",
+    get: function get() {
+      var {
+        dropped,
+        restarts
+      } = this;
+      return {
+        dropped,
+        restarts
+      };
     }
   }]);
 
-  return DeviceStats;
+  return DeviceStatsMonitor;
 }(eventsource/* default */.ZP);
 /**
  * A Jacdac device hosting services.
@@ -60441,7 +60445,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
 
     _this2 = _JDNode.call(this) || this;
     _this2._flashing = false;
-    _this2.stats = new DeviceStats();
+    _this2.stats = new DeviceStatsMonitor();
     _this2.bus = bus;
     _this2.deviceId = deviceId;
     _this2.connected = true;
@@ -60628,6 +60632,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     this._servicesData = pkt.data; // check for restart
 
     if (w1 && (w1 & constants/* JD_ADVERTISEMENT_0_COUNTER_MASK */.GJf) < (w0 & constants/* JD_ADVERTISEMENT_0_COUNTER_MASK */.GJf)) {
+      console.debug("device " + this.shortId + " restarted");
       this.stats.processRestart();
       this.initServices(true);
       this.bus.emit(constants/* DEVICE_RESTART */.eLF, this);
@@ -72420,4 +72425,4 @@ module.exports = invariant;
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-4fe03e8d18d07e01e931.js.map
+//# sourceMappingURL=app-41f01654158554f6bc9e.js.map
