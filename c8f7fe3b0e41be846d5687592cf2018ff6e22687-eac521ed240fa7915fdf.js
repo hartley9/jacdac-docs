@@ -92937,10 +92937,10 @@ function DeviceTreeItem(props) {
 
   var {
     id,
-    physical
+    isPhysical
   } = (0,react.useMemo)(() => device, [device]);
   var name = (0,useDeviceName/* default */.Z)(device, true);
-  var kind = physical ? "device" : "virtualdevice";
+  var kind = isPhysical ? "device" : "virtualdevice";
   var lost = (0,useEventRaised/* default */.Z)([constants/* LOST */.XWw, constants/* FOUND */.a6y], device, dev => !!(dev !== null && dev !== void 0 && dev.lost));
   var services = (0,useChange/* default */.Z)(device, () => device.services({
     mixins: false
@@ -92949,9 +92949,10 @@ function DeviceTreeItem(props) {
     mobile
   } = (0,useMediaQueries/* default */.Z)();
   var showActions = !mobile;
-  var dropped = (0,useChange/* default */.Z)(device.packetStats, _ => _.dropped);
+  var dropped = (0,useChange/* default */.Z)(device.stats, _ => _.dropped);
+  var restarts = (0,useChange/* default */.Z)(device.stats, _ => _.dropped);
   var serviceNames = (0,utils/* ellipseJoin */.VA)(services.filter(service => service.serviceClass !== constants/* SRV_CONTROL */.gm9 && service.serviceClass !== constants/* SRV_LOGGER */.w9j && service.serviceClass !== constants/* SRV_ROLE_MANAGER */.igi && service.serviceClass !== constants/* SRV_SETTINGS */.B9b).map(service => service.name), 18);
-  var alert = lost ? "lost device..." : dropped > 2 ? dropped + " pkt lost" : undefined;
+  var alert = lost ? "lost device..." : restarts > 0.25 ? "restarting..." : dropped > 2 ? dropped + " pkt lost" : undefined;
   var labelInfo = [dropped > 1 && dropped + " lost", serviceNames].filter(r => !!r).join(", ");
   return /*#__PURE__*/react.createElement(StyledTreeItem, {
     nodeId: id,
@@ -99063,4 +99064,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-b547d67aad665f544f2c.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-eac521ed240fa7915fdf.js.map

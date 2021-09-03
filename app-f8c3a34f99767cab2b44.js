@@ -55275,7 +55275,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "76b911d9931f59c837e87681b298a5d4e019ab50";
+  var sha = "bf00366966eaa2d499ed0b76191294e4f4eaf325";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -56271,7 +56271,7 @@ function PacketStats() {
     bus
   } = (0,react.useContext)(Context/* default */.Z);
   var {
-    packetStats
+    stats: packetStats
   } = bus;
   var {
     mobile
@@ -60324,6 +60324,9 @@ var LEDController = /*#__PURE__*/function (_JDEventSource) {
 var DeviceStats = /*#__PURE__*/function (_JDEventSource) {
   (0,inheritsLoose/* default */.Z)(DeviceStats, _JDEventSource);
 
+  // counter
+  // horizon
+
   /**
    * @internal
    */
@@ -60332,9 +60335,11 @@ var DeviceStats = /*#__PURE__*/function (_JDEventSource) {
 
     _this = _JDEventSource.call(this) || this;
     _this._receivedPackets = 0;
+    _this._restarts = 0;
     _this._data = Array(10).fill(0).map(() => ({
       received: 0,
-      total: 0
+      total: 0,
+      restarts: 0
     }));
     _this._dataIndex = 0;
     return _this;
@@ -60354,22 +60359,34 @@ var DeviceStats = /*#__PURE__*/function (_JDEventSource) {
     // collect metrics
     var received = this._receivedPackets;
     var total = pkt.data[2];
+    var restarts = this._restarts;
     this._data[this._dataIndex] = {
       received,
-      total
+      total,
+      restarts
     };
     this._dataIndex = (this._dataIndex + 1) % this._data.length; // reset counter
 
     this._receivedPackets = 0;
+    this._restarts = 0;
     this.emit(constants/* CHANGE */.Ver);
+  }
+  /**
+   * @internal
+   */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ;
+
+  _proto.processPacket = function processPacket(pkt) {
+    this._receivedPackets++;
   }
   /**
    * @internal
    */
   ;
 
-  _proto.processPacket = function processPacket(pkt) {
-    this._receivedPackets++;
+  _proto.processRestart = function processRestart() {
+    this._restarts++;
   };
 
   (0,createClass/* default */.Z)(DeviceStats, [{
@@ -60377,6 +60394,16 @@ var DeviceStats = /*#__PURE__*/function (_JDEventSource) {
     get: function get() {
       var r = this._data.filter(e => !!e.total) // ignore total 0
       .reduce((s, e) => s + (e.total - e.received), 0) / this._data.length || 0;
+      return r;
+    }
+    /**
+     * Average restart detected per announce packet
+     */
+
+  }, {
+    key: "restarts",
+    get: function get() {
+      var r = this._data.reduce((s, e) => s + e.restarts, 0) / this._data.length || 0;
       return r;
     }
   }]);
@@ -60414,7 +60441,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
 
     _this2 = _JDNode.call(this) || this;
     _this2._flashing = false;
-    _this2.packetStats = new DeviceStats();
+    _this2.stats = new DeviceStats();
     _this2.bus = bus;
     _this2.deviceId = deviceId;
     _this2.connected = true;
@@ -60592,7 +60619,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   ;
 
   _proto2.processAnnouncement = function processAnnouncement(pkt) {
-    this.packetStats.processAnnouncement(pkt);
+    this.stats.processAnnouncement(pkt);
     var changed = false;
     var w0 = this._servicesData ? (0,buffer/* getNumber */.Dx)(this._servicesData, buffer/* NumberFormat.UInt32LE */.y4.UInt32LE, 0) : 0;
     var w1 = (0,buffer/* getNumber */.Dx)(pkt.data, buffer/* NumberFormat.UInt32LE */.y4.UInt32LE, 0); // compare service data
@@ -60601,10 +60628,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     this._servicesData = pkt.data; // check for restart
 
     if (w1 && (w1 & constants/* JD_ADVERTISEMENT_0_COUNTER_MASK */.GJf) < (w0 & constants/* JD_ADVERTISEMENT_0_COUNTER_MASK */.GJf)) {
-      //console.debug(`${this} restart detected`, {
-      //    new: w1 & JD_ADVERTISEMENT_0_COUNTER_MASK,
-      //    old: w0 & JD_ADVERTISEMENT_0_COUNTER_MASK,
-      //})
+      this.stats.processRestart();
       this.initServices(true);
       this.bus.emit(constants/* DEVICE_RESTART */.eLF, this);
       this.emit(constants/* RESTART */.d0K);
@@ -60634,7 +60658,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   ;
 
   _proto2.processPacket = function processPacket(pkt) {
-    this.packetStats.processPacket(pkt);
+    this.stats.processPacket(pkt);
     this.lost = false;
     this.emit(constants/* PACKET_RECEIVE */.u_S, pkt);
     if (pkt.isReport) this.emit(constants/* PACKET_REPORT */.deN, pkt);else if (pkt.isEvent) this.emit(constants/* PACKET_EVENT */.F5$, pkt);
@@ -61695,7 +61719,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     _this.selfDeviceId = (options === null || options === void 0 ? void 0 : options.deviceId) || (0,random/* randomDeviceId */.b_)();
     _this.scheduler = (options === null || options === void 0 ? void 0 : options.scheduler) || new WallClockScheduler();
     _this.parentOrigin = (options === null || options === void 0 ? void 0 : options.parentOrigin) || "*";
-    _this.packetStats = new BusStatsMonitor((0,assertThisInitialized/* default */.Z)(_this)); // some transport may be undefined
+    _this.stats = new BusStatsMonitor((0,assertThisInitialized/* default */.Z)(_this)); // some transport may be undefined
 
     transports === null || transports === void 0 ? void 0 : transports.filter(tr => !!tr).map(tr => _this.addTransport(tr)); // tell loggers to send data, every now and then
     // send resetin packets
@@ -65244,7 +65268,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.1"};
+var package_namespaceObject = {"i8":"1.16.2"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 
@@ -72396,4 +72420,4 @@ module.exports = invariant;
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-d5311090f80c5fbd08fb.js.map
+//# sourceMappingURL=app-f8c3a34f99767cab2b44.js.map
