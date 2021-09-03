@@ -55261,7 +55261,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "6bf6e404b4d867b96cc170d4c862b830b0b4fab7";
+  var sha = "05aaae2ec339ef3d4d5add64b69a6409c2713c91";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -57129,11 +57129,8 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
     get: function get() {
       var _this$_runOptions3;
 
-      if (!this._runOptions) {
-        console.log("no run options");
+      if (!this.packetProcessed && !this._runOptions) // bridge is not active
         return [];
-      }
-
       var devices = this.bus.devices({
         announced: true,
         ignoreSelf: true
@@ -72425,4 +72422,4 @@ module.exports = invariant;
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-e7f5653c120313e6ca51.js.map
+//# sourceMappingURL=app-8ccdfc45d23a8fa3c076.js.map
