@@ -841,7 +841,11 @@ function useFirmwareBlobs() {
     console.log("firmware: load");
     var names = yield firmwares === null || firmwares === void 0 ? void 0 : firmwares.list();
     if (!names) return;
-    var missingSlugs = (0,utils/* unique */.Tw)((0,spec/* deviceSpecifications */.qx)().filter(spec => !!(spec !== null && spec !== void 0 && spec.firmwares.length)) // needs some firmwares
+    var missingSlugs = (0,utils/* unique */.Tw)((0,spec/* deviceSpecifications */.qx)().filter(spec => {
+      var _spec$productIdentifi;
+
+      return !!(spec !== null && spec !== void 0 && (_spec$productIdentifi = spec.productIdentifiers) !== null && _spec$productIdentifi !== void 0 && _spec$productIdentifi.length);
+    }) // needs some product identifiers
     .map(spec => spec.repo).filter(repo => /^https:\/\/github.com\//.test(repo)).map(repo => repo.substr("https://github.com/".length)).filter(slug => names.indexOf(slug) < 0));
 
     for (var slug of missingSlugs) {
@@ -1424,4 +1428,4 @@ function useGridBreakpoints(itemCount) {
 /***/ })
 
 }]);
-//# sourceMappingURL=913832d59ba65bf5a995efa1c4e48fc9101c7c83-9552aaf6e661661fc512.js.map
+//# sourceMappingURL=913832d59ba65bf5a995efa1c4e48fc9101c7c83-5c1b2d9e4aecd19a84a0.js.map

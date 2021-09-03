@@ -368,7 +368,11 @@ function useFirmwareBlobs() {
     console.log("firmware: load");
     var names = yield firmwares === null || firmwares === void 0 ? void 0 : firmwares.list();
     if (!names) return;
-    var missingSlugs = (0,utils/* unique */.Tw)((0,spec/* deviceSpecifications */.qx)().filter(spec => !!(spec !== null && spec !== void 0 && spec.firmwares.length)) // needs some firmwares
+    var missingSlugs = (0,utils/* unique */.Tw)((0,spec/* deviceSpecifications */.qx)().filter(spec => {
+      var _spec$productIdentifi;
+
+      return !!(spec !== null && spec !== void 0 && (_spec$productIdentifi = spec.productIdentifiers) !== null && _spec$productIdentifi !== void 0 && _spec$productIdentifi.length);
+    }) // needs some product identifiers
     .map(spec => spec.repo).filter(repo => /^https:\/\/github.com\//.test(repo)).map(repo => repo.substr("https://github.com/".length)).filter(slug => names.indexOf(slug) < 0));
 
     for (var slug of missingSlugs) {
@@ -1640,4 +1644,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-66eef5a9d2abae8affd3.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-d1793cc168973ad600c1.js.map
