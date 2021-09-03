@@ -172,7 +172,7 @@ function BlocklyViewDataDialog(props) {
     chartProps: chartProps,
     reactStyle: classes,
     dataset: dataset,
-    predictedLabels: null,
+    predictedLabels: undefined,
     timestamp: undefined
   }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Empty"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, {
     variant: "contained",
@@ -183,4 +183,4 @@ function BlocklyViewDataDialog(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=206-66cbd6123a0271c35184.js.map
+//# sourceMappingURL=206-c67c501253d046da62da.js.map

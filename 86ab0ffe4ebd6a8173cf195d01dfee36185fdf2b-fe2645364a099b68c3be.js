@@ -582,14 +582,13 @@ function prepareDataSet(set) {
 
   var _loop = function _loop(label) {
     set.getRecordingsWithLabel(label).forEach(table => {
-      if (sampleLength < table.length) {
-        sampleLength = table.length;
-        sampleChannels = table.width;
-      } else if (table.width != sampleChannels) {
+      sampleChannels = table.width;
+
+      if (table.width != sampleChannels) {
         alert("All input data must have the same shape: " + table.name + "\n Has " + table.width + " inputs instead of " + sampleChannels);
       }
       /* else if (table.length != sampleLength) {
-        // decide what to do about different sized data
+        // TODO decide what to do about data with different weight
       } */
       // For x data, just add each sample as a new row into x_data
 
@@ -606,8 +605,8 @@ function prepareDataSet(set) {
 
   set.xs = xData;
   set.ys = yData;
-  set.length = sampleLength;
-  set.width = sampleChannels;
+  set.length = xData[0].length;
+  set.width = xData[0][0].length;
 }
 function prepareModel(mod, set, callback) {
   // get model set up with dataset features
@@ -765,8 +764,11 @@ function TrainModel(props) {
         var predResult = yield (0,_blockly_dsl_workers_tf_proxy__WEBPACK_IMPORTED_MODULE_4__/* .predictRequest */ .iE)(predictMsg);
 
         if (predResult) {
-          // Save probability for each class in model object
-          setTrainingPredictionResult(predResult.data.predictTop);
+          // convert prediction result to string
+          var predictions = predResult.data.predictTop.map(prediction => {
+            return model.labels[prediction];
+          });
+          setTrainingPredictionResult(predictions);
           setTrainTimestamp(Date.now());
         } // Update model status
 
@@ -864,7 +866,7 @@ function TrainModel(props) {
     key: "vega-training-set-charts"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(ConfusionMatrixHeatMap, {
     chartProps: chartProps,
-    yActual: dataset.ys,
+    yActual: dataset.ys.map(val => dataset.labels[val]),
     yPredicted: trainingPredictionResult,
     labels: model.labels,
     timestamp: trainTimestamp
@@ -894,4 +896,4 @@ function TrainModel(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=86ab0ffe4ebd6a8173cf195d01dfee36185fdf2b-5cbfddd1c179c4b5f416.js.map
+//# sourceMappingURL=86ab0ffe4ebd6a8173cf195d01dfee36185fdf2b-fe2645364a099b68c3be.js.map

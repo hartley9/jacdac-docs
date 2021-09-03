@@ -568,7 +568,7 @@ function CollectData(props) {
     chartProps: chartProps,
     reactStyle: classes,
     dataset: dataset,
-    predictedLabels: null,
+    predictedLabels: undefined,
     timestamp: dataTimestamp
   }))) : /*#__PURE__*/react.createElement("p", null, "Empty"))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
@@ -919,4 +919,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-model-editor-tsx-ab98b5424d438a2f1fb6.js.map
+//# sourceMappingURL=component---src-pages-tools-model-editor-tsx-0b8885da31c1b7e14b29.js.map

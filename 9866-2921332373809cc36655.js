@@ -61,30 +61,22 @@ function DataSetPlot(props) {
     var setPoints = [];
 
     if (dataset && dataset.totalRecordings) {
-      (function () {
-        var labels = dataset.labels;
+      var labels = dataset.labels;
 
-        var _loop2 = function _loop2(label) {
-          dataset.getRecordingsWithLabel(label).forEach(recording => {
-            // add info about whether point was correctly labelled
-            var predictedLabel = "";
+      var _loop2 = function _loop2(label) {
+        dataset.getRecordingsWithLabel(label).forEach(recording => {
+          var predictedLabel = ""; // if it exists, grab the predicted label associated with this data point
 
-            if (predictedLabels && predictedLabels.length) {
-              // grab the predicted label associated with this data point
-              var prediction = predictedLabels[setPoints.length];
-              predictedLabel = labels[prediction];
-            } // add data point to chart
+          if (predictedLabels && predictedLabels.length) predictedLabel = predictedLabels[setPoints.length]; // add data point to chart
 
+          var recordingFeatures = calculateRecordingFeatures(recording, label, predictedLabel);
+          setPoints.push(recordingFeatures);
+        });
+      };
 
-            var recordingFeatures = calculateRecordingFeatures(recording, label, predictedLabel);
-            setPoints.push(recordingFeatures);
-          });
-        };
-
-        for (var label of labels) {
-          _loop2(label);
-        }
-      })();
+      for (var label of labels) {
+        _loop2(label);
+      }
     }
 
     return setPoints;
@@ -229,4 +221,4 @@ function DataSetPlot(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=9866-96d77b03e7903138f490.js.map
+//# sourceMappingURL=9866-2921332373809cc36655.js.map

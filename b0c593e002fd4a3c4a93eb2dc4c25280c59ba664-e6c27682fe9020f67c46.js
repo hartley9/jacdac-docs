@@ -18490,6 +18490,8 @@ function TrainedModelDisplayWidget() {
 
     if (!(0,_model_editor_MBDataSet__WEBPACK_IMPORTED_MODULE_8__/* .arraysEqual */ .cO)(updatedDataSet.inputTypes, updatedModel.inputTypes) || updatedDataSet.length != updatedModel.inputShape[0] || updatedDataSet.width != updatedModel.inputShape[1]) {
       setErrorMsg("The selected dataset does not have the same input/output type as the trained model");
+      setDataSet(updatedDataSet);
+      setModel(updatedModel);
       return;
     }
 
@@ -18507,9 +18509,13 @@ function TrainedModelDisplayWidget() {
         }
       };
       (0,_dsl_workers_tf_proxy__WEBPACK_IMPORTED_MODULE_5__/* .predictRequest */ .iE)(predictMsg).then(result => {
-        if (result) {
-          // Save probability for each class in model object
-          setTrainingPredictionResult(result.data.predictTop);
+        if (result && result.data) {
+          // convert prediction result to string
+          var predictions = [];
+          result.data.predictTop.forEach(prediction => {
+            predictions.push(updatedModel.labels[prediction]);
+          });
+          setTrainingPredictionResult(predictions);
           setTrainTimestamp(Date.now());
         }
       });
@@ -18540,9 +18546,11 @@ function TrainedModelDisplayWidget() {
     item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, {
     color: "text.secondary"
-  }, "Error: ", errorMsg, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null)), !!model && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, {
+  }, "Error: ", errorMsg, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), !!model && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, {
     color: "text.secondary"
-  }, "Input Types: ", model.inputTypes.join(", "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), "Input Shape: [", model.inputShape.join(", "), "]", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), "Classes: ", model.labels.join(", "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, {
+  }, "Model input types: ", model.inputTypes.join(", "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), "Input shape: [", model.inputShape.join(", "), "]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), !!dataSet && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, {
+    color: "text.secondary"
+  }, "Data set input types:", " ", dataSet.inputTypes.join(", "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), "Input shape: [", dataSet.length, ", ", dataSet.width, "]")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, {
     item: true,
     style: {
       display: "inline-flex"
@@ -18569,7 +18577,7 @@ function TrainedModelDisplayWidget() {
     item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_4__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(ConfusionMatrixHeatMap, {
     chartProps: chartProps,
-    yActual: dataSet.ys,
+    yActual: dataSet.ys.map(val => dataSet.labels[val]),
     yPredicted: trainingPredictionResult,
     labels: model.labels,
     timestamp: trainTimestamp
@@ -19989,4 +19997,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-96014d2e75c7f21e08f0.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-e6c27682fe9020f67c46.js.map

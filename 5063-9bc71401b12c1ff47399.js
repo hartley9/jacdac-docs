@@ -24,10 +24,11 @@ function ConfusionMatrixHeatMap(props) {
   } = props;
   var chartProps = props.chartProps;
 
-  var compileConfusionMatrixData = (actual, predicted, labels) => {
+  var compileConfusionMatrixData = (actualLabel, predictedLabel, labels) => {
     if (!yActual || !yPredicted) return [];
     if (yActual.length !== yPredicted.length) return [];
-    var data = [];
+    var data = []; // create list of all actual -> predicted label combos
+
     labels.forEach((actualVal, actualIdx) => {
       labels.forEach((predVal, predIdx) => {
         var dataPoint = {};
@@ -38,13 +39,16 @@ function ConfusionMatrixHeatMap(props) {
         dataPoint["Count"] = 0;
         data.push(dataPoint);
       });
-    }); // iterate through all of the combinations of actual and predicted labels
+    }); // convert label names to indices
+
+    var actual = actualLabel.map(label => labels.indexOf(label));
+    var predicted = predictedLabel.map(label => labels.indexOf(label)); // iterate through all of the combinations of actual and predicted labels
 
     actual.forEach((actualVal, idx) => {
       var predIdx = predicted[idx];
       var actualIdx = actual[idx];
       var dataIdx = actualIdx * labels.length + predIdx;
-      data[dataIdx]["Count"] = data[dataIdx]["Count"] + 1;
+      data[dataIdx]["Count"] += 1;
     });
     return data;
   };
@@ -113,4 +117,4 @@ function ConfusionMatrixHeatMap(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5063-38880fb5ba0039e625d3.js.map
+//# sourceMappingURL=5063-9bc71401b12c1ff47399.js.map
