@@ -391,7 +391,7 @@ function validModelJSON(blockJSON) {
     if (!minimumModel) minimumModel = true; // 6. make sure that only dense layers come after flatten
 
     if (foundFlatten) {
-      if (childBlock.type != "model_block_dense_layer") warnings[childBlock.id] = "Only dense layers can go after the flatten layer";
+      if (childBlock.type != "model_block_dense_layer" && childBlock.type != "model_block_dropout_layer") warnings[childBlock.id] = "Only dense and dropout layers can go after the flatten layer";
     }
 
     if (!foundFlatten) foundFlatten = childBlock.type == "model_block_flatten_layer"; // 7. make sure 1d/2d model types are consistent
@@ -896,4 +896,4 @@ function TrainModel(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=86ab0ffe4ebd6a8173cf195d01dfee36185fdf2b-fe2645364a099b68c3be.js.map
+//# sourceMappingURL=86ab0ffe4ebd6a8173cf195d01dfee36185fdf2b-2375e41341edfca16d3f.js.map

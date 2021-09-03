@@ -3409,7 +3409,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
       var servers = this._env.servers();
 
       if (servers.length) {
-        this._provider = new serverserviceprovider/* default */.Z(servers.map(s => s.server) // if we create a deviceId, then trouble ensues
+        this._provider = new serverserviceprovider/* default */.Z("vm", servers.map(s => s.server) // if we create a deviceId, then trouble ensues
         // as a second device gets spun up later
         //{
         //    deviceId: "VMServiceProvider",
@@ -6880,4 +6880,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-vm-tsx-196b4c5c956b1f9c7cbe.js.map
+//# sourceMappingURL=component---src-pages-editors-vm-tsx-836fff182797225c1538.js.map

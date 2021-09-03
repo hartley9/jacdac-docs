@@ -39781,10 +39781,10 @@ var serviceprovider = __webpack_require__(92952);
 var JDServerServiceProvider = /*#__PURE__*/function (_JDServiceProvider) {
   (0,inheritsLoose/* default */.Z)(JDServerServiceProvider, _JDServiceProvider);
 
-  function JDServerServiceProvider(services, options) {
+  function JDServerServiceProvider(template, services, options) {
     var _this;
 
-    _this = _JDServiceProvider.call(this, options === null || options === void 0 ? void 0 : options.deviceId) || this;
+    _this = _JDServiceProvider.call(this, template, options === null || options === void 0 ? void 0 : options.deviceId) || this;
     _this._restartCounter = 0;
     _this._packetCount = 0;
     _this._eventCounter = undefined;
@@ -40052,10 +40052,11 @@ var JDServerServiceProvider = /*#__PURE__*/function (_JDServiceProvider) {
 var JDServiceProvider = /*#__PURE__*/function (_JDEventSource) {
   (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(JDServiceProvider, _JDEventSource);
 
-  function JDServiceProvider(deviceId) {
+  function JDServiceProvider(template, deviceId) {
     var _this;
 
     _this = _JDEventSource.call(this) || this;
+    _this.template = template;
     _this.deviceId = deviceId;
 
     if (!_this.deviceId) {
@@ -46411,7 +46412,7 @@ var _providerDefinitions = [{
   serviceClasses: [constants/* SRV_POWER */.mQG, constants/* SRV_HUMIDITY */.JbI],
   services: () => [new PowerServer(), new HumidityServer()],
   factory: services => {
-    var dev = new serverserviceprovider/* default */.Z([services[0]]);
+    var dev = new serverserviceprovider/* default */.Z("power+humidity", [services[0]]);
     var pwr = dev.service(1);
     pwr.enabled.on(constants/* CHANGE */.Ver, () => {
       var enabled = !!pwr.enabled.values()[0];
@@ -46451,19 +46452,30 @@ var _providerDefinitions = [{
 function serviceProviderDefinitions() {
   return _providerDefinitions.slice(0);
 }
+
+function stableSimulatorDeviceId(bus, template) {
+  var others = bus.serviceProviders().filter(sp => sp.template === template);
+  var word0 = (0,utils/* hash */.vp)((0,utils/* stringToUint8Array */.sy)(template + others.length), 32);
+  var word1 = (0,utils/* hash */.vp)((0,utils/* stringToUint8Array */.sy)(template + others.length + 1), 32);
+  var id = (0,utils/* toFullHex */.$3)([word0, word1]);
+  return id.slice(2);
+}
 /**
  * Instantiates a new service provider instance and adds it to the bus
  * @category Servers
  */
 
+
 function addServiceProvider(bus, definition) {
   var _definition$factory;
 
   var services = definition.services();
+  var deviceId = stableSimulatorDeviceId(bus, definition.name);
   var options = {
-    resetIn: definition.resetIn
+    resetIn: definition.resetIn,
+    deviceId
   };
-  var d = ((_definition$factory = definition.factory) === null || _definition$factory === void 0 ? void 0 : _definition$factory.call(definition, services)) || new serverserviceprovider/* default */.Z(services, options);
+  var d = ((_definition$factory = definition.factory) === null || _definition$factory === void 0 ? void 0 : _definition$factory.call(definition, services)) || new serverserviceprovider/* default */.Z(definition.name, services, options);
   bus.addServiceProvider(d);
   return d;
 }
@@ -55261,7 +55273,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "05aaae2ec339ef3d4d5add64b69a6409c2713c91";
+  var sha = "f7f470c05c0c5fca915d5be9673d15877cdab025";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -65244,7 +65256,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
           variant: constants/* JoystickVariant.Gamepad */.BUi.Gamepad,
           buttonsAvailable: joystickserver/* JOYSTICK_ARCADE_BUTTONS */.f8
         });
-        var deviceHost = new serverserviceprovider/* default */.Z([service]);
+        var deviceHost = new serverserviceprovider/* default */.Z("gamepad", [service]);
         this.bus.addServiceProvider(deviceHost);
         this.providers[i] = host = {
           service,
@@ -65270,7 +65282,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.2"};
+var package_namespaceObject = {"i8":"1.16.3"};
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 
@@ -72422,4 +72434,4 @@ module.exports = invariant;
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-8ccdfc45d23a8fa3c076.js.map
+//# sourceMappingURL=app-2810c159ad7715f032be.js.map

@@ -19732,9 +19732,6 @@ var ModelBlockDomainSpecificLanguage = /*#__PURE__*/function () {
         text: "Create new classifier variable...",
         callbackKey: "createNewClassifierButton"
       }, {
-        kind: "block",
-        blockxml: "<block type=\"model_block_nn\"><field name=\"CLASSIFIER_NAME\" variabletype=\"ModelBlockClassifier\">classifier1</field><field name=\"NN_TRAINING\" variabletype=\"ModelBlockDataSet\">dataset1</field><field name=\"EXPAND_BUTTON\">{\"parametersVisible\":false,\"totalParams\":0,\"totalLayers\":0,\"totalSize\":0,\"runTimeInMs\":0,\"inputShape\":[0,0],\"optimizer\":\"adam\",\"numEpochs\":200,\"lossFn\":\"categoricalCrossentropy\",\"metrics\":\"acc\"}</field><field name=\"NN_BUTTONS\">{}</field></block>"
-      }, {
         kind: "label",
         text: "Layers"
       }, {
@@ -19743,19 +19740,23 @@ var ModelBlockDomainSpecificLanguage = /*#__PURE__*/function () {
       }, {
         kind: "block",
         blockxml: "<block type=\"model_block_maxpool1d_layer\"><field name=\"EXPAND_BUTTON\">{\"parametersVisible\":false,\"percentSize\":0,\"percentParams\":0,\"runTimeInMs\":0,\"outputShape\":[0,0],\"poolSize\":2,\"strideSize\":1}</field></block>"
-      }, {
-        kind: "block",
-        blockxml: "<block type=\"model_block_avgpool1d_layer\"><field name=\"EXPAND_BUTTON\">{\"parametersVisible\":false,\"percentSize\":0,\"percentParams\":0,\"runTimeInMs\":0,\"outputShape\":[0,0],\"poolSize\":2,\"strideSize\":1}</field></block>"
-      }, {
+      },
+      /*{
+          kind: "block",
+          blockxml: `<block type="model_block_avgpool1d_layer"><field name="EXPAND_BUTTON">{"parametersVisible":false,"percentSize":0,"percentParams":0,"runTimeInMs":0,"outputShape":[0,0],"poolSize":2,"strideSize":1}</field></block>`,
+      },*/
+      {
         kind: "block",
         blockxml: "<block type=\"model_block_conv2d_layer\"><field name=\"EXPAND_BUTTON\">{\"parametersVisible\":false,\"percentSize\":0,\"percentParams\":0,\"runTimeInMs\":0,\"outputShape\":[0,0,0],\"numFilters\":16,\"kernelSize\":2,\"strideSize\":1,\"activation\":\"relu\"}</field></block>"
       }, {
         kind: "block",
         blockxml: "<block type=\"model_block_maxpool2d_layer\"><field name=\"EXPAND_BUTTON\">{\"parametersVisible\":false,\"percentSize\":0,\"percentParams\":0,\"runTimeInMs\":0,\"outputShape\":[0,0,0],\"poolSize\":2,\"strideSize\":1}</field></block>"
-      }, {
-        kind: "block",
-        blockxml: "<block type=\"model_block_avgpool2d_layer\"><field name=\"EXPAND_BUTTON\">{\"parametersVisible\":false,\"percentSize\":0,\"percentParams\":0,\"runTimeInMs\":0,\"outputShape\":[0,0,0],\"poolSize\":2,\"strideSize\":1}</field></block>"
-      }, {
+      },
+      /*{
+          kind: "block",
+          blockxml: `<block type="model_block_avgpool2d_layer"><field name="EXPAND_BUTTON">{"parametersVisible":false,"percentSize":0,"percentParams":0,"runTimeInMs":0,"outputShape":[0,0,0],"poolSize":2,"strideSize":1}</field></block>`,
+      },*/
+      {
         kind: "block",
         blockxml: "<block type=\"model_block_dropout_layer\"><field name=\"EXPAND_BUTTON\">{\"parametersVisible\":false,\"percentSize\":0,\"percentParams\":0,\"runTimeInMs\":0,\"outputShape\":[0,0],\"rate\":0.1}</field></block>"
       }, {
@@ -19764,12 +19765,6 @@ var ModelBlockDomainSpecificLanguage = /*#__PURE__*/function () {
       }, {
         kind: "block",
         blockxml: "<block type=\"model_block_dense_layer\"><field name=\"EXPAND_BUTTON\">{\"parametersVisible\":false,\"percentSize\":0,\"percentParams\":0,\"runTimeInMs\":0,\"outputShape\":[0],\"numUnits\":4,\"activation\":\"relu\"}</field></block>"
-      }, {
-        kind: "label",
-        text: "Visualizations"
-      }, {
-        kind: "block",
-        type: MODEL_BLOCKS + "trained_nn"
       }]
     }];
   };
@@ -19997,4 +19992,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-e6c27682fe9020f67c46.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-d627ec218ea761973866.js.map
