@@ -638,7 +638,9 @@ function FlashDeviceButton(props) {
   }(); // tslint:disable-next-line: react-this-binding-issue
 
 
-  return missing ? null : flashing ? /*#__PURE__*/react.createElement(CircularProgressWithLabel/* default */.Z, {
+  return missing ? /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
+    severity: "info"
+  }, "No firmware information available") : flashing ? /*#__PURE__*/react.createElement(CircularProgressWithLabel/* default */.Z, {
     value: progress
   }) : firmwareInfo || update ? /*#__PURE__*/react.createElement(react.Fragment, null, firmwareInfo && /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "success"
@@ -1060,4 +1062,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-c296b1ff1ae16209d84d.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-e2da4d5e7d1c6fed9772.js.map
