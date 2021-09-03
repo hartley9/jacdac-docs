@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-1d5eedaa83040822e63a.js"
+    "url": "webpack-runtime-be1b3d68d1354d6b1107.js"
   },
   {
     "url": "styles.7dc8d12221a2f5576d26.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "707ef8eca82118f51e70255651b3c690"
+    "revision": "b3b294eaff216c2751523718eb9b83cc"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,11 +60,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "cae1926af054fac178f0fb3a4352a33a"
+    "revision": "c35f0f5095f66150d7afedf0f4b1e9a8"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "da2c8cb0aff7e8c5eafdb9da3f71375e"
+    "revision": "88b858ce003ba2b9a0eac56855f0975a"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -72,7 +72,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "89714c1c7b2ce0df8ca301c9f68b6c71"
+    "revision": "4cffb9d8ba2a1b0843666df9ecf2ef1b"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "b546058f3524f05cee4a5ca43c6d9153"
+    "revision": "dc396a8fdba22114235a5860e338377a"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -101,7 +101,10 @@ self.__precacheManifest = [
     "revision": "edc25f539470dfa6002b06f931287339"
   },
   {
-    "url": "component---src-pages-dashboard-tsx-3dbffaf22ede84969d81.js"
+    "url": "830485e4a01eef9412f4754ecfe08bd6e6417633-416e7a4868c61ad204a9.js"
+  },
+  {
+    "url": "component---src-pages-dashboard-tsx-02f84014ad2525168dcb.js"
   },
   {
     "url": "page-data/dashboard/page-data.json",
@@ -1003,10 +1006,7 @@ self.__precacheManifest = [
     "revision": "775e718cd95f01c3eee2155c1e8bb276"
   },
   {
-    "url": "4345cd43a9669cbe728debadba6874d54d45298f-d789b1d3b3995dd84980.js"
-  },
-  {
-    "url": "component---src-pages-tools-accelerometer-theremin-tsx-60782232b120315599f3.js"
+    "url": "component---src-pages-tools-accelerometer-theremin-tsx-bb020cff5d6a3de67f60.js"
   },
   {
     "url": "page-data/tools/accelerometer-theremin/page-data.json",
@@ -1020,7 +1020,7 @@ self.__precacheManifest = [
     "revision": "29757ecc69f54839e1ccb0233564b524"
   },
   {
-    "url": "component---src-pages-tools-commissioner-tsx-39c6b7fa3914eebc7677.js"
+    "url": "component---src-pages-tools-commissioner-tsx-0ed6db823f6b4ccd934b.js"
   },
   {
     "url": "page-data/tools/commissioner/page-data.json",
@@ -1071,7 +1071,7 @@ self.__precacheManifest = [
     "revision": "034149f3bdc19933710486be4b8bdb78"
   },
   {
-    "url": "component---src-pages-tools-lightsensor-accessible-tsx-f19921ffd0bf80b536bf.js"
+    "url": "component---src-pages-tools-lightsensor-accessible-tsx-f89973a1c4ec1a47ee16.js"
   },
   {
     "url": "page-data/tools/lightsensor-accessible/page-data.json",
@@ -1085,7 +1085,7 @@ self.__precacheManifest = [
     "revision": "4e22f2045f31b01f92270577261d81f6"
   },
   {
-    "url": "component---src-pages-tools-makecode-sim-tsx-d0bbb6ee142c406e75c1.js"
+    "url": "component---src-pages-tools-makecode-sim-tsx-0054d241c3c55b35ce77.js"
   },
   {
     "url": "page-data/tools/makecode-sim/page-data.json",
@@ -1268,7 +1268,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-8dd2ed990362cae86c0d.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-e7f5653c120313e6ca51.js`))) {
     return await fetch(event.request)
   }
 

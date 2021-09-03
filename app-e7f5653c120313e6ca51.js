@@ -55261,7 +55261,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "246b86f9bf2a3eefe6b3ddab6f890a6a98c56645";
+  var sha = "6bf6e404b4d867b96cc170d4c862b830b0b4fab7";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -67575,7 +67575,7 @@ exports.components = {
   "component---src-pages-clients-node-red-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-node-red-mdx */ 95).then(__webpack_require__.bind(__webpack_require__, 96440)),
   "component---src-pages-clients-web-iframe-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-web-iframe-mdx */ 6585).then(__webpack_require__.bind(__webpack_require__, 25645)),
   "component---src-pages-clients-web-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-web-mdx */ 7598).then(__webpack_require__.bind(__webpack_require__, 27889)),
-  "component---src-pages-dashboard-tsx": () => __webpack_require__.e(/* import() | component---src-pages-dashboard-tsx */ 7378).then(__webpack_require__.bind(__webpack_require__, 54542)),
+  "component---src-pages-dashboard-tsx": () => Promise.all(/* import() | component---src-pages-dashboard-tsx */[__webpack_require__.e(8517), __webpack_require__.e(7378)]).then(__webpack_require__.bind(__webpack_require__, 54542)),
   "component---src-pages-devices-tsx": () => __webpack_require__.e(/* import() | component---src-pages-devices-tsx */ 8524).then(__webpack_require__.bind(__webpack_require__, 17673)),
   "component---src-pages-editors-data-about-mdx": () => __webpack_require__.e(/* import() | component---src-pages-editors-data-about-mdx */ 1495).then(__webpack_require__.bind(__webpack_require__, 31586)),
   "component---src-pages-editors-data-tsx": () => Promise.all(/* import() | component---src-pages-editors-data-tsx */[__webpack_require__.e(9978), __webpack_require__.e(6478), __webpack_require__.e(4243), __webpack_require__.e(8044), __webpack_require__.e(5901), __webpack_require__.e(4128), __webpack_require__.e(1621)]).then(__webpack_require__.bind(__webpack_require__, 55575)),
@@ -67595,17 +67595,17 @@ exports.components = {
   "component---src-pages-protocol-mdx": () => __webpack_require__.e(/* import() | component---src-pages-protocol-mdx */ 1115).then(__webpack_require__.bind(__webpack_require__, 99708)),
   "component---src-pages-services-tsx": () => __webpack_require__.e(/* import() | component---src-pages-services-tsx */ 7858).then(__webpack_require__.bind(__webpack_require__, 43668)),
   "component---src-pages-software-mdx": () => __webpack_require__.e(/* import() | component---src-pages-software-mdx */ 8307).then(__webpack_require__.bind(__webpack_require__, 46690)),
-  "component---src-pages-tools-accelerometer-theremin-tsx": () => Promise.all(/* import() | component---src-pages-tools-accelerometer-theremin-tsx */[__webpack_require__.e(6004), __webpack_require__.e(1326), __webpack_require__.e(5023)]).then(__webpack_require__.bind(__webpack_require__, 67396)),
+  "component---src-pages-tools-accelerometer-theremin-tsx": () => Promise.all(/* import() | component---src-pages-tools-accelerometer-theremin-tsx */[__webpack_require__.e(6004), __webpack_require__.e(8517), __webpack_require__.e(5023)]).then(__webpack_require__.bind(__webpack_require__, 67396)),
   "component---src-pages-tools-collector-tsx": () => Promise.all(/* import() | component---src-pages-tools-collector-tsx */[__webpack_require__.e(6004), __webpack_require__.e(8814)]).then(__webpack_require__.bind(__webpack_require__, 21586)),
-  "component---src-pages-tools-commissioner-tsx": () => __webpack_require__.e(/* import() | component---src-pages-tools-commissioner-tsx */ 1322).then(__webpack_require__.bind(__webpack_require__, 7877)),
+  "component---src-pages-tools-commissioner-tsx": () => Promise.all(/* import() | component---src-pages-tools-commissioner-tsx */[__webpack_require__.e(8517), __webpack_require__.e(1322)]).then(__webpack_require__.bind(__webpack_require__, 7877)),
   "component---src-pages-tools-device-registration-tsx": () => Promise.all(/* import() | component---src-pages-tools-device-registration-tsx */[__webpack_require__.e(6004), __webpack_require__.e(8270), __webpack_require__.e(9231)]).then(__webpack_require__.bind(__webpack_require__, 50151)),
   "component---src-pages-tools-edge-impulse-tsx": () => Promise.all(/* import() | component---src-pages-tools-edge-impulse-tsx */[__webpack_require__.e(6004), __webpack_require__.e(5637), __webpack_require__.e(3382)]).then(__webpack_require__.bind(__webpack_require__, 2649)),
   "component---src-pages-tools-flood-test-tsx": () => Promise.all(/* import() | component---src-pages-tools-flood-test-tsx */[__webpack_require__.e(6004), __webpack_require__.e(5356)]).then(__webpack_require__.bind(__webpack_require__, 79410)),
   "component---src-pages-tools-hid-events-tsx": () => Promise.all(/* import() | component---src-pages-tools-hid-events-tsx */[__webpack_require__.e(532), __webpack_require__.e(7919), __webpack_require__.e(6004), __webpack_require__.e(5444)]).then(__webpack_require__.bind(__webpack_require__, 24180)),
   "component---src-pages-tools-jupyterlab-mdx": () => __webpack_require__.e(/* import() | component---src-pages-tools-jupyterlab-mdx */ 6394).then(__webpack_require__.bind(__webpack_require__, 95844)),
-  "component---src-pages-tools-lightsensor-accessible-tsx": () => Promise.all(/* import() | component---src-pages-tools-lightsensor-accessible-tsx */[__webpack_require__.e(6004), __webpack_require__.e(1326), __webpack_require__.e(3801)]).then(__webpack_require__.bind(__webpack_require__, 55389)),
+  "component---src-pages-tools-lightsensor-accessible-tsx": () => Promise.all(/* import() | component---src-pages-tools-lightsensor-accessible-tsx */[__webpack_require__.e(6004), __webpack_require__.e(8517), __webpack_require__.e(3801)]).then(__webpack_require__.bind(__webpack_require__, 55389)),
   "component---src-pages-tools-makecode-editor-extension-tsx": () => __webpack_require__.e(/* import() | component---src-pages-tools-makecode-editor-extension-tsx */ 6456).then(__webpack_require__.bind(__webpack_require__, 25900)),
-  "component---src-pages-tools-makecode-sim-tsx": () => __webpack_require__.e(/* import() | component---src-pages-tools-makecode-sim-tsx */ 6450).then(__webpack_require__.bind(__webpack_require__, 98874)),
+  "component---src-pages-tools-makecode-sim-tsx": () => Promise.all(/* import() | component---src-pages-tools-makecode-sim-tsx */[__webpack_require__.e(8517), __webpack_require__.e(6450)]).then(__webpack_require__.bind(__webpack_require__, 98874)),
   "component---src-pages-tools-mdx": () => __webpack_require__.e(/* import() | component---src-pages-tools-mdx */ 5818).then(__webpack_require__.bind(__webpack_require__, 6673)),
   "component---src-pages-tools-model-editor-tsx": () => Promise.all(/* import() | component---src-pages-tools-model-editor-tsx */[__webpack_require__.e(6478), __webpack_require__.e(8044), __webpack_require__.e(8270), __webpack_require__.e(6602), __webpack_require__.e(7476), __webpack_require__.e(372)]).then(__webpack_require__.bind(__webpack_require__, 82258)),
   "component---src-pages-tools-model-uploader-tsx": () => Promise.all(/* import() | component---src-pages-tools-model-uploader-tsx */[__webpack_require__.e(6004), __webpack_require__.e(5637)]).then(__webpack_require__.bind(__webpack_require__, 83625)),
@@ -72425,4 +72425,4 @@ module.exports = invariant;
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-8dd2ed990362cae86c0d.js.map
+//# sourceMappingURL=app-e7f5653c120313e6ca51.js.map
