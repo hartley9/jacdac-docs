@@ -281,6 +281,13 @@ function SimulateDeviceHint() {
     "aria-label": "button emoji",
     role: "img"
   }, "\uD83D\uDD18")), ",", /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    onClick: handleStartSimulator(constants/* SRV_HUMIDITY */.JbI),
+    title: "humidity",
+    "aria-label": "start traffic humidity sensor"
+  }, /*#__PURE__*/react.createElement("span", {
+    "aria-label": "traffic light umbrella",
+    role: "img"
+  }, "\u2602\uFE0F")), ",", /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     onClick: handleStartSimulator(constants/* SRV_BUZZER */.J1$),
     title: "buzzer",
     "aria-label": "start buzzer simulator"
@@ -632,4 +639,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-416e7a4868c61ad204a9.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-2c3e4bae28297c367327.js.map
