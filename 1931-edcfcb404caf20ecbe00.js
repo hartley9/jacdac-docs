@@ -265,7 +265,7 @@ function ConnectionStringDialog(props) {
 
   var handleOk = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
-      yield client.setConnectionString(value);
+      yield client.setConnectionString(value || "");
       setValue("");
       setOpen(false);
     });
@@ -277,7 +277,8 @@ function ConnectionStringDialog(props) {
 
   return /*#__PURE__*/react.createElement(Dialog/* default */.Z, {
     open: open,
-    fullWidth: true
+    fullWidth: true,
+    maxWidth: "lg"
   }, /*#__PURE__*/react.createElement(DialogContent/* default */.Z, null, /*#__PURE__*/react.createElement(DialogContentText/* default */.Z, null, "Enter device connection string", /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     component: "p",
     variant: "caption"
@@ -293,7 +294,7 @@ function ConnectionStringDialog(props) {
   }, "Cancel"), /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
     variant: "contained",
     color: "primary",
-    disabled: !client || !value,
+    disabled: !client,
     onClick: handleOk
   }, "Save")));
 }
@@ -370,4 +371,4 @@ function DashboardAzureIoTHubHealth(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1931-e08f2030013f6bf1033a.js.map
+//# sourceMappingURL=1931-edcfcb404caf20ecbe00.js.map
