@@ -287,6 +287,8 @@ function ConnectionStringDialog(props) {
     value: value,
     label: "Value",
     fullWidth: true,
+    type: "password",
+    placeholder: "Connection string",
     onChange: handleValueChange
   })), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(lib.Button, {
     variant: "contained",
@@ -371,4 +373,4 @@ function DashboardAzureIoTHubHealth(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1931-edcfcb404caf20ecbe00.js.map
+//# sourceMappingURL=1931-d8bdabe7dcb8d8c4d36f.js.map
