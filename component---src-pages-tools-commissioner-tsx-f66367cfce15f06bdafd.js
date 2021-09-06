@@ -1484,7 +1484,7 @@ function _LEDTest() {
       for (var color of colors) {
         for (var i = 0; i < numPixels.intValue; i++) {
           var encoded = (0,_jacdac_ts_src_jdom_light__WEBPACK_IMPORTED_MODULE_10__/* .lightEncode */ ._)("setone % #\n                        show 20", [i, color]);
-          if (service.device.connected) yield service === null || service === void 0 ? void 0 : service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_3__/* .LedPixelCmd.Run */ .yB$.Run, encoded);
+          if (service.device.connected) yield service === null || service === void 0 ? void 0 : service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_3__/* .LedPixelCmd.Run */ .yB$.Run, encoded);else break;
           yield (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_8__/* .delay */ .gw)(50);
         }
       }
@@ -1795,4 +1795,4 @@ function Commissioner() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-9b393eb722080dff2134.js.map
+//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-f66367cfce15f06bdafd.js.map
