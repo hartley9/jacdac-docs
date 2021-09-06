@@ -1468,8 +1468,6 @@ function DataSetTable(props) {
   }))));
 }
 
-var INITIAL_COLOR = 0x0000ff;
-
 function LEDTest(_x) {
   return _LEDTest.apply(this, arguments);
 }
@@ -1524,7 +1522,7 @@ function _StatusLEDTest() {
   _StatusLEDTest = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_30__/* .default */ .Z)(function* (device) {
     var l = device.statusLight;
 
-    while (device.connected) {
+    while (device.connected && l !== undefined) {
       l.blink(0xff0000, 0x000000, 250, 3);
       yield (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_8__/* .delay */ .gw)(1000);
       l.blink(0x00ff00, 0x000000, 250, 3);
@@ -1795,4 +1793,4 @@ function Commissioner() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-f66367cfce15f06bdafd.js.map
+//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-30604507b242ee65d707.js.map
