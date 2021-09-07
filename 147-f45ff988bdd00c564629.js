@@ -580,7 +580,7 @@ var JDBridge = /*#__PURE__*/function (_JDClient) {
     var _this;
 
     _this = _JDClient.call(this) || this;
-    _this.bridgeId = (0,random/* randomDeviceId */.b_)();
+    _this.bridgeId = "bridge-" + (0,random/* randomDeviceId */.b_)();
     _this.packetSent = 0;
     _this.packetProcessed = 0;
     _this.handleSendPacket = _this.handleSendPacket.bind((0,assertThisInitialized/* default */.Z)(_this));
@@ -1029,4 +1029,4 @@ module.exports = webpackEmptyContext;
 /***/ })
 
 }]);
-//# sourceMappingURL=147-71a0d87ca1fca3109293.js.map
+//# sourceMappingURL=147-f45ff988bdd00c564629.js.map

@@ -63656,7 +63656,7 @@ function splitProperties(props) {
 
   for (var key of keys) {
     var value = props[key];
-    if (typeof value === "number") measurements[key] = value;else if (typeof value !== "undefined") properties[key] = value;
+    if (typeof value === "number") measurements[key] = value;else if (typeof value === "boolean") properties[key] = value ? 1 : 0;else if (typeof value !== "undefined") properties[key] = value;
   }
 
   return {
@@ -64514,7 +64514,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "afdcf566cda8a32e79d21c946c0a9a53ccfca83d";
+  var sha = "9b5733a99f5d26b196e5d0b31332a76942dee2c8";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74595,6 +74595,7 @@ var useAnalytics = __webpack_require__(58057);
 
 
 
+
 function sniffQueryArguments() {
   var _window$location$hash;
 
@@ -74660,12 +74661,25 @@ function createBus() {
 
     b.on(constants/* DEVICE_ANNOUNCE */.Hob, /*#__PURE__*/function () {
       var _ref = (0,asyncToGenerator/* default */.Z)(function* (d) {
+        var _d$source, _d$source$split$;
+
         var productId = d.isPhysical ? yield d.resolveProductIdentifier() : undefined;
+        var services = {};
+
+        for (var srv of d.services().filter(srv => !(0,jdom_spec/* isInfrastructure */.lz)(srv.specification))) {
+          var {
+            name
+          } = srv;
+          services[name] = (services[name] || 0) + 1;
+        }
+
         trackEvent("jd.announce", {
           deviceId: d.anonymizedDeviceId,
-          physical: d.isPhysical ? 1 : 0,
-          productId,
-          services: JSON.stringify(d.serviceClasses.slice(0))
+          source: (_d$source = d.source) === null || _d$source === void 0 ? void 0 : (_d$source$split$ = _d$source.split("-", 1)[0]) === null || _d$source$split$ === void 0 ? void 0 : _d$source$split$.toLowerCase(),
+          physical: d.isPhysical,
+          productId: productId === null || productId === void 0 ? void 0 : productId.toString(16),
+          services: JSON.stringify(services),
+          serviceClasses: JSON.stringify(d.serviceClasses.slice(1))
         });
       });
 
@@ -81818,4 +81832,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-bfda2aad17a33ec758d8.js.map
+//# sourceMappingURL=app-8a94bd267a6e6eceee04.js.map
