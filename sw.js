@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-146fd6b31713edd4af6d.js"
+    "url": "webpack-runtime-eb4aa2cfc4855b801d04.js"
   },
   {
     "url": "styles.ba0dbf5843e7fbacbe82.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "1dbe8056c0954ae2f1ee88c72b634e34"
+    "revision": "6e73e9d92f525e29a62b024a5efc1653"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,11 +60,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "f2fa5898ec49edb75110ffb4d5f4e838"
+    "revision": "1a8b9d0a8bbe336dc7f52d877b79f60a"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "622a1595d827687448901668be5f7cdc"
+    "revision": "adf8f8296638d7a80f52f8c0201756c0"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -72,7 +72,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "218fd45125b64d942b3bfd2d5aa80503"
+    "revision": "9df71b074e857f43b1c4ed3b5847e30e"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "5f2f9432810d993522bd7d0427e7371b"
+    "revision": "f94c2b32b1c3dd4aa44cd829c8ce9103"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -227,7 +227,7 @@ self.__precacheManifest = [
     "url": "149f11818c122b40ce2932f15d148eda4aaa5f90-2a1b82c898f86d787f79.js"
   },
   {
-    "url": "component---src-templates-service-tsx-8f50b866804956ceaaea.js"
+    "url": "component---src-templates-service-tsx-47f9b72d9c3e5d844d63.js"
   },
   {
     "url": "page-data/services/_base/page-data.json",
@@ -891,7 +891,7 @@ self.__precacheManifest = [
     "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-01aaf355a5d08d70d3b3.js"
   },
   {
-    "url": "component---src-templates-device-tsx-2f02ff932eaef62d8ba1.js"
+    "url": "component---src-templates-device-tsx-6a4b2edd672d548b7efa.js"
   },
   {
     "url": "page-data/devices/microsoft/research/jmaccelerometer30v02/page-data.json",
@@ -1268,7 +1268,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-e7b7a1bb2f8668e7a8fb.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-43223886a1f595525286.js`))) {
     return await fetch(event.request)
   }
 

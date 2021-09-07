@@ -1406,10 +1406,6 @@ var Grid = __webpack_require__(80838);
 var Tabs = __webpack_require__(44942);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Tab/Tab.js
 var Tab = __webpack_require__(342);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/makeStyles.js
-var makeStyles = __webpack_require__(10920);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createStyles.js
-var createStyles = __webpack_require__(70274);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Paper/Paper.js
 var Paper = __webpack_require__(58063);
 // EXTERNAL MODULE: ./src/components/ui/TabPanel.tsx
@@ -1478,26 +1474,12 @@ var gatsby_browser_entry = __webpack_require__(35313);
 
 
 
-var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default */.Z)({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    marginBottom: theme.spacing(1)
-  },
-  pre: {
-    margin: "0",
-    padding: "0",
-    backgroundColor: "transparent",
-    whiteSpec: "pre-wrap"
-  }
-}));
 function ServiceSpecificationSource(props) {
   var {
     classIdentifier,
     serviceSpecification,
     showSpecification
   } = props;
-  var classes = useStyles();
   var {
     0: tab,
     1: setTab
@@ -1511,15 +1493,13 @@ function ServiceSpecificationSource(props) {
   };
 
   var index = 0;
-  return /*#__PURE__*/react.createElement("div", {
-    className: classes.root
-  }, /*#__PURE__*/react.createElement(Paper/* default */.Z, {
+  return /*#__PURE__*/react.createElement(Paper/* default */.Z, {
     square: true
   }, /*#__PURE__*/react.createElement(Tabs/* default */.Z, {
     value: tab,
     onChange: handleTabChange,
     "aria-label": "View specification formats"
-  }, [showSpecification && "Specification", "MakeCode", "TypeScript", "C", "JSON", showDeviceTwin && "Twin"].filter(n => !!n).map((n, i) => /*#__PURE__*/react.createElement(Tab/* default */.Z, {
+  }, [showSpecification && "Specification", "MakeCode", "TypeScript", "C", "JSON", showDeviceTwin && "Twin"].filter(n => !!n).map(n => /*#__PURE__*/react.createElement(Tab/* default */.Z, {
     key: n,
     label: n
   }))), showSpecification && /*#__PURE__*/react.createElement(TabPanel/* default */.Z, {
@@ -1543,7 +1523,7 @@ function ServiceSpecificationSource(props) {
     mode: "json",
     url: (0,gatsby_browser_entry.withPrefix)("/services/twin/x" + spec.classIdentifier.toString(16) + ".json"),
     value: JSON.stringify(serviceSpecificationToServiceTwinSpecification(spec), null, 2)
-  }))));
+  })));
 }
 ;// CONCATENATED MODULE: ./src/components/ServiceMarkdown.tsx
 
@@ -1600,4 +1580,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-service-tsx-8f50b866804956ceaaea.js.map
+//# sourceMappingURL=component---src-templates-service-tsx-47f9b72d9c3e5d844d63.js.map

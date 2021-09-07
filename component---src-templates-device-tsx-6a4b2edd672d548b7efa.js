@@ -1411,10 +1411,6 @@ var Markdown = __webpack_require__(98784);
 var Tabs = __webpack_require__(44942);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Tab/Tab.js
 var Tab = __webpack_require__(342);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/makeStyles.js
-var makeStyles = __webpack_require__(10920);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createStyles.js
-var createStyles = __webpack_require__(70274);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Paper/Paper.js
 var Paper = __webpack_require__(58063);
 // EXTERNAL MODULE: ./src/components/ui/TabPanel.tsx
@@ -1431,26 +1427,12 @@ var Snippet = __webpack_require__(34276);
 
 
 
-var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default */.Z)({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    marginBottom: theme.spacing(1)
-  },
-  pre: {
-    margin: "0",
-    padding: "0",
-    backgroundColor: "transparent",
-    whiteSpec: "pre-wrap"
-  }
-}));
 function DeviceSpecificationSource(props) {
   var {
     deviceSpecification,
     showSpecification,
     showJSON
   } = props;
-  var classes = useStyles();
   var {
     0: tab,
     1: setTab
@@ -1462,9 +1444,7 @@ function DeviceSpecificationSource(props) {
   };
 
   var index = 0;
-  return /*#__PURE__*/react.createElement("div", {
-    className: classes.root
-  }, /*#__PURE__*/react.createElement(Paper/* default */.Z, {
+  return /*#__PURE__*/react.createElement(Paper/* default */.Z, {
     square: true
   }, /*#__PURE__*/react.createElement(Tabs/* default */.Z, {
     value: tab,
@@ -1486,7 +1466,7 @@ function DeviceSpecificationSource(props) {
   }, /*#__PURE__*/react.createElement(Snippet/* default */.Z, {
     value: JSON.stringify(spec, null, 2),
     mode: "json"
-  }))));
+  })));
 }
 // EXTERNAL MODULE: ./src/components/firmware/FirmwareCard.tsx
 var FirmwareCard = __webpack_require__(54272);
@@ -1564,4 +1544,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-2f02ff932eaef62d8ba1.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-6a4b2edd672d548b7efa.js.map
