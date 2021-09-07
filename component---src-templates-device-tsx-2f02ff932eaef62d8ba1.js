@@ -1157,7 +1157,7 @@ function IDChip(props) {
 
 /***/ }),
 
-/***/ 31921:
+/***/ 21623:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -1174,7 +1174,7 @@ function IDChip(props) {
 /* harmony import */ var _IDChip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(92681);
 /* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(36176);
 /* harmony import */ var _ui_Markdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(98784);
-/* harmony import */ var _ServiceSpecificationStatusAlert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(49102);
+/* harmony import */ var _ServiceSpecificationStatusAlert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(49856);
 /* harmony import */ var _jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(29667);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(20392);
 /* harmony import */ var _KindIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(50048);
@@ -1246,7 +1246,7 @@ function ServiceSpecificationCard(props) {
 
 /***/ }),
 
-/***/ 49102:
+/***/ 49856:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* unused harmony export StatusAlert */
@@ -1276,6 +1276,31 @@ function StatusAlert(props) {
 }
 var ServiceSpecificationStatusAlert = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.memo(StatusAlert);
 /* harmony default export */ __webpack_exports__["Z"] = (ServiceSpecificationStatusAlert);
+
+/***/ }),
+
+/***/ 98784:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ Markdown; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45987);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _Suspense__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(69672);
+
+var _excluded = ["source"];
+
+
+var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 7724).then(__webpack_require__.bind(__webpack_require__, 7724)));
+function Markdown(props) {
+  var {
+    source
+  } = props,
+      others = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(props, _excluded);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Suspense__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ReactMarkdown, others, source));
+}
 
 /***/ }),
 
@@ -1353,7 +1378,7 @@ function Snippet(props) {
 
 /***/ }),
 
-/***/ 34175:
+/***/ 77110:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -1372,8 +1397,8 @@ var spec = __webpack_require__(45656);
 var IDChip = __webpack_require__(92681);
 // EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
 var gatsby_theme_material_ui = __webpack_require__(36176);
-// EXTERNAL MODULE: ./src/components/ServiceSpecificationCard.tsx
-var ServiceSpecificationCard = __webpack_require__(31921);
+// EXTERNAL MODULE: ./src/components/specification/ServiceSpecificationCard.tsx
+var ServiceSpecificationCard = __webpack_require__(21623);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(80453);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
@@ -1396,7 +1421,7 @@ var Paper = __webpack_require__(58063);
 var TabPanel = __webpack_require__(3263);
 // EXTERNAL MODULE: ./src/components/ui/Snippet.tsx
 var Snippet = __webpack_require__(34276);
-;// CONCATENATED MODULE: ./src/components/DeviceSpecificationSource.tsx
+;// CONCATENATED MODULE: ./src/components/specification/DeviceSpecificationSource.tsx
  // tslint:disable-next-line: no-submodule-imports
 
  // tslint:disable-next-line: no-submodule-imports
@@ -1469,7 +1494,7 @@ var FirmwareCard = __webpack_require__(54272);
 var jdspec = __webpack_require__(13996);
 // EXTERNAL MODULE: ./src/components/devices/useDeviceImage.ts
 var useDeviceImage = __webpack_require__(81546);
-;// CONCATENATED MODULE: ./src/components/DeviceSpecification.tsx
+;// CONCATENATED MODULE: ./src/components/specification/DeviceSpecification.tsx
 
 
 
@@ -1539,4 +1564,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-a641d4c4d5d5ae9ed080.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-2f02ff932eaef62d8ba1.js.map

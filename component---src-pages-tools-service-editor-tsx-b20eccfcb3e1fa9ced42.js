@@ -199,7 +199,83 @@ function RandomGenerator(props) {
 
 /***/ }),
 
-/***/ 81857:
+/***/ 24301:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ DashboardDeviceItem; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(45987);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(80838);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _DashboardDevice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(54886);
+/* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(54774);
+/* harmony import */ var _DashboardServiceWidget__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23069);
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(84377);
+
+var _excluded = ["device", "expanded", "toggleExpanded", "variant"];
+
+
+
+
+
+
+function DashboardDeviceItem(props) {
+  var {
+    device,
+    expanded,
+    toggleExpanded,
+    variant
+  } = props,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(props, _excluded);
+
+  var {
+    drawerType
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .ZP);
+  var breakpoints = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(device, () => {
+    var breakpointWeight = device.services().map(srv => {
+      return (0,_DashboardServiceWidget__WEBPACK_IMPORTED_MODULE_3__/* .dashboardServiceWeight */ .o2)(srv) || (srv.readingRegister || srv.valueRegister || srv.intensityRegister ? 1 : 0);
+    }).reduce((c, v) => c + v, 0);
+    if (breakpointWeight > 3 || drawerType !== _AppContext__WEBPACK_IMPORTED_MODULE_4__/* .DrawerType.None */ .jw.None) return {
+      xs: 12,
+      sm: 12,
+      md: 12,
+      lg: 6,
+      xl: 6
+    };else if (breakpointWeight == 3) return {
+      xs: 12,
+      sm: 12,
+      md: 4,
+      lg: 4,
+      xl: 4
+    };else if (breakpointWeight == 2) return {
+      xs: 12,
+      sm: 6,
+      md: 4,
+      lg: 3,
+      xl: 4
+    };else return {
+      xs: expanded ? 12 : 6,
+      sm: 4,
+      md: 3,
+      lg: 2,
+      xl: "auto"
+    };
+  }, [expanded, drawerType]); // based on size, expanded or reduce widget size
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, Object.assign({
+    item: true
+  }, breakpoints), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardDevice__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, Object.assign({
+    device: device,
+    expanded: expanded,
+    toggleExpanded: toggleExpanded,
+    variant: variant
+  }, other)));
+}
+
+/***/ }),
+
+/***/ 27794:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 
@@ -214,8 +290,8 @@ var react = __webpack_require__(67294);
 var gatsby_theme_material_ui = __webpack_require__(36176);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
 var jdom_spec = __webpack_require__(45656);
-// EXTERNAL MODULE: ./src/components/PacketSpecification.tsx + 10 modules
-var PacketSpecification = __webpack_require__(40602);
+// EXTERNAL MODULE: ./src/components/specification/PacketSpecification.tsx + 10 modules
+var PacketSpecification = __webpack_require__(79490);
 // EXTERNAL MODULE: ./src/components/IDChip.tsx
 var IDChip = __webpack_require__(92681);
 // EXTERNAL MODULE: ./src/components/ui/Markdown.tsx
@@ -246,8 +322,8 @@ function EnumSpecification(props) {
 var Grid = __webpack_require__(80838);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Box/Box.js + 13 modules
 var Box = __webpack_require__(33287);
-// EXTERNAL MODULE: ./src/components/ServiceSpecificationStatusAlert.tsx
-var ServiceSpecificationStatusAlert = __webpack_require__(49102);
+// EXTERNAL MODULE: ./src/components/specification/ServiceSpecificationStatusAlert.tsx
+var ServiceSpecificationStatusAlert = __webpack_require__(49856);
 // EXTERNAL MODULE: ./src/components/hooks/useServiceProviderFromServiceClass.ts
 var useServiceProviderFromServiceClass = __webpack_require__(36134);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
@@ -256,7 +332,7 @@ var Context = __webpack_require__(20392);
 var useChange = __webpack_require__(54774);
 // EXTERNAL MODULE: ./src/components/dashboard/DashboardDeviceItem.tsx
 var DashboardDeviceItem = __webpack_require__(24301);
-;// CONCATENATED MODULE: ./src/components/ServiceSpecification.tsx
+;// CONCATENATED MODULE: ./src/components/specification/ServiceSpecification.tsx
 
 
 
@@ -367,90 +443,14 @@ function ServiceSpecification(props) {
   }, /*#__PURE__*/react.createElement("h2", null, group.name), group.note && /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
     key: "node" + group.name,
     source: group.note
-  }), group.packets.sort((l, r) => (l.derived ? 1 : -1) - (r.derived ? 1 : -1)).map((pkt, i) => /*#__PURE__*/react.createElement(PacketSpecification/* default */.Z, {
-    key: "pkt" + pkt.name,
+  }), group.packets.sort((l, r) => (l.derived ? 1 : -1) - (r.derived ? 1 : -1)).map(pkt => /*#__PURE__*/react.createElement(PacketSpecification/* default */.Z, {
+    key: "pkt" + pkt.identifier,
     serviceClass: node.classIdentifier,
     packetInfo: pkt,
     reportInfo: reportOf(pkt),
     pipeReportInfo: pipeReportOf(pkt),
     showDevices: true
   })))));
-}
-
-/***/ }),
-
-/***/ 24301:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ DashboardDeviceItem; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(45987);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(80838);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _DashboardDevice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(54886);
-/* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(54774);
-/* harmony import */ var _DashboardServiceWidget__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23069);
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(84377);
-
-var _excluded = ["device", "expanded", "toggleExpanded", "variant"];
-
-
-
-
-
-
-function DashboardDeviceItem(props) {
-  var {
-    device,
-    expanded,
-    toggleExpanded,
-    variant
-  } = props,
-      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(props, _excluded);
-
-  var {
-    drawerType
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .ZP);
-  var breakpoints = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(device, () => {
-    var breakpointWeight = device.services().map(srv => {
-      return (0,_DashboardServiceWidget__WEBPACK_IMPORTED_MODULE_3__/* .dashboardServiceWeight */ .o2)(srv) || (srv.readingRegister || srv.valueRegister || srv.intensityRegister ? 1 : 0);
-    }).reduce((c, v) => c + v, 0);
-    if (breakpointWeight > 3 || drawerType !== _AppContext__WEBPACK_IMPORTED_MODULE_4__/* .DrawerType.None */ .jw.None) return {
-      xs: 12,
-      sm: 12,
-      md: 12,
-      lg: 6,
-      xl: 6
-    };else if (breakpointWeight == 3) return {
-      xs: 12,
-      sm: 12,
-      md: 4,
-      lg: 4,
-      xl: 4
-    };else if (breakpointWeight == 2) return {
-      xs: 12,
-      sm: 6,
-      md: 4,
-      lg: 3,
-      xl: 4
-    };else return {
-      xs: expanded ? 12 : 6,
-      sm: 4,
-      md: 3,
-      lg: 2,
-      xl: "auto"
-    };
-  }, [expanded, drawerType]); // based on size, expanded or reduce widget size
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, Object.assign({
-    item: true
-  }, breakpoints), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardDevice__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, Object.assign({
-    device: device,
-    expanded: expanded,
-    toggleExpanded: toggleExpanded,
-    variant: variant
-  }, other)));
 }
 
 /***/ }),
@@ -944,8 +944,8 @@ function HighlightTextField(props) {
     }
   }))));
 }
-// EXTERNAL MODULE: ./src/components/ServiceSpecification.tsx + 1 modules
-var ServiceSpecification = __webpack_require__(81857);
+// EXTERNAL MODULE: ./src/components/specification/ServiceSpecification.tsx + 1 modules
+var ServiceSpecification = __webpack_require__(27794);
 ;// CONCATENATED MODULE: ./src/components/tools/ServiceSpecificationEditor.tsx
 
 
@@ -995,4 +995,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-service-editor-tsx-8437c32fc6b53b570493.js.map
+//# sourceMappingURL=component---src-pages-tools-service-editor-tsx-b20eccfcb3e1fa9ced42.js.map

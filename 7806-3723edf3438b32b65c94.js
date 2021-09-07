@@ -848,6 +848,34 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 12531:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+}), 'Info');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 53717:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -4997,4 +5025,4 @@ try {
 /***/ })
 
 }]);
-//# sourceMappingURL=7806-625ca8dc5d241e6ecb08.js.map
+//# sourceMappingURL=7806-3723edf3438b32b65c94.js.map

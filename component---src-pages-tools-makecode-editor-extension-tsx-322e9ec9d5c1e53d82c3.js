@@ -152,7 +152,7 @@ function AddServiceIconButton(props) {
 
 /***/ }),
 
-/***/ 14247:
+/***/ 65831:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -183,7 +183,7 @@ function ServiceSpecificationSelect(props) {
   } = props;
   var {
     0: labelId
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('select-' + Math.random());
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("select-" + Math.random());
   var classes = useStyles();
   var specs = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .serviceSpecifications */ .Le)().filter(spec => !/^_/.test(spec.shortId));
 
@@ -286,8 +286,8 @@ var Delete = __webpack_require__(94500);
 var spec = __webpack_require__(45656);
 // EXTERNAL MODULE: ./src/components/AddServiceIconButton.tsx
 var AddServiceIconButton = __webpack_require__(27498);
-// EXTERNAL MODULE: ./src/components/ServiceSpecificationSelect.tsx
-var ServiceSpecificationSelect = __webpack_require__(14247);
+// EXTERNAL MODULE: ./src/components/specification/ServiceSpecificationSelect.tsx
+var ServiceSpecificationSelect = __webpack_require__(65831);
 // EXTERNAL MODULE: ./src/components/ui/IconButtonWithTooltip.tsx + 1 modules
 var IconButtonWithTooltip = __webpack_require__(79885);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
@@ -701,6 +701,11 @@ function toJSON(config) {
   return config && JSON.stringify(config, null, 4);
 }
 
+function escapeName(name) {
+  // TODO: makecode component escape name
+  return name;
+}
+
 function ClientRoleRow(props) {
   var {
     component,
@@ -917,4 +922,4 @@ function MakeCodeEditorExtensionPage() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-makecode-editor-extension-tsx-97815987530cb2df2d93.js.map
+//# sourceMappingURL=component---src-pages-tools-makecode-editor-extension-tsx-322e9ec9d5c1e53d82c3.js.map

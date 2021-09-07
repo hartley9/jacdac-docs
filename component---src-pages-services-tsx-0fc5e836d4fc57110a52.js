@@ -1183,7 +1183,32 @@ function GridHeader(props) {
 
 /***/ }),
 
-/***/ 43668:
+/***/ 98784:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ Markdown; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45987);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _Suspense__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(69672);
+
+var _excluded = ["source"];
+
+
+var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 7724).then(__webpack_require__.bind(__webpack_require__, 7724)));
+function Markdown(props) {
+  var {
+    source
+  } = props,
+      others = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(props, _excluded);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Suspense__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ReactMarkdown, others, source));
+}
+
+/***/ }),
+
+/***/ 19430:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -1267,7 +1292,7 @@ var Markdown = __webpack_require__(98784);
 var makecode_services = __webpack_require__(31028);
 // EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/spectool/jdutils.ts
 var jdutils = __webpack_require__(30055);
-;// CONCATENATED MODULE: ./src/components/ServiceSpecificationList.tsx
+;// CONCATENATED MODULE: ./src/components/specification/ServiceSpecificationList.tsx
 
 
 
@@ -1624,4 +1649,4 @@ function ServiceCatalog() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-services-tsx-c94000a0d01eef3e3ea2.js.map
+//# sourceMappingURL=component---src-pages-services-tsx-0fc5e836d4fc57110a52.js.map

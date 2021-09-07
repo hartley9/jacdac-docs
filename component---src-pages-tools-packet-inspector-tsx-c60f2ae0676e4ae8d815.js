@@ -1294,7 +1294,7 @@ function PacketListItem(props) {
 
 /***/ }),
 
-/***/ 31921:
+/***/ 21623:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -1311,7 +1311,7 @@ function PacketListItem(props) {
 /* harmony import */ var _IDChip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(92681);
 /* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(36176);
 /* harmony import */ var _ui_Markdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(98784);
-/* harmony import */ var _ServiceSpecificationStatusAlert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(49102);
+/* harmony import */ var _ServiceSpecificationStatusAlert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(49856);
 /* harmony import */ var _jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(29667);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(20392);
 /* harmony import */ var _KindIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(50048);
@@ -1444,8 +1444,8 @@ var History = __webpack_require__(9080);
 var KindChip = __webpack_require__(37958);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(80453);
-// EXTERNAL MODULE: ./src/components/PacketSpecification.tsx + 10 modules
-var PacketSpecification = __webpack_require__(40602);
+// EXTERNAL MODULE: ./src/components/specification/PacketSpecification.tsx + 10 modules
+var PacketSpecification = __webpack_require__(79490);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/pretty.ts
 var pretty = __webpack_require__(10913);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/useTheme.js
@@ -1717,8 +1717,8 @@ function PacketList(props) {
     packet: pkt
   })));
 }
-// EXTERNAL MODULE: ./src/components/ServiceSpecificationCard.tsx
-var ServiceSpecificationCard = __webpack_require__(31921);
+// EXTERNAL MODULE: ./src/components/specification/ServiceSpecificationCard.tsx
+var ServiceSpecificationCard = __webpack_require__(21623);
 ;// CONCATENATED MODULE: ./src/components/tools/PacketInspector.tsx
 
 
@@ -1796,4 +1796,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-17dc2d2237b433844da5.js.map
+//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-c60f2ae0676e4ae8d815.js.map

@@ -296,7 +296,7 @@ function KindChip(props) {
 
 /***/ }),
 
-/***/ 40602:
+/***/ 79490:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 
@@ -642,8 +642,8 @@ function DecodedPacketItem(props) {
     values: values
   });
 }
-// EXTERNAL MODULE: ./src/components/ServiceSpecificationStatusAlert.tsx
-var ServiceSpecificationStatusAlert = __webpack_require__(49102);
+// EXTERNAL MODULE: ./src/components/specification/ServiceSpecificationStatusAlert.tsx
+var ServiceSpecificationStatusAlert = __webpack_require__(49856);
 ;// CONCATENATED MODULE: ./src/components/ServiceCard.tsx
 
 // tslint:disable-next-line: no-submodule-imports
@@ -866,7 +866,7 @@ function PacketMembersChip(props) {
 }
 // EXTERNAL MODULE: ./src/components/ui/Markdown.tsx
 var Markdown = __webpack_require__(98784);
-;// CONCATENATED MODULE: ./src/components/PacketSpecification.tsx
+;// CONCATENATED MODULE: ./src/components/specification/PacketSpecification.tsx
  // tslint:disable-next-line: no-submodule-imports
 
 
@@ -931,10 +931,6 @@ function PacketSpecification(props) {
     pipeReportInfo,
     showDevices
   } = props;
-  var {
-    0: args,
-    1: setArgs
-  } = (0,react.useState)([]);
   var classes = PacketSpecification_useStyles();
   if (!packetInfo) return /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "error"
@@ -991,7 +987,7 @@ function PacketSpecification(props) {
 
 /***/ }),
 
-/***/ 49102:
+/***/ 49856:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* unused harmony export StatusAlert */
@@ -1021,6 +1017,31 @@ function StatusAlert(props) {
 }
 var ServiceSpecificationStatusAlert = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.memo(StatusAlert);
 /* harmony default export */ __webpack_exports__["Z"] = (ServiceSpecificationStatusAlert);
+
+/***/ }),
+
+/***/ 98784:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ Markdown; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45987);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _Suspense__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(69672);
+
+var _excluded = ["source"];
+
+
+var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 7724).then(__webpack_require__.bind(__webpack_require__, 7724)));
+function Markdown(props) {
+  var {
+    source
+  } = props,
+      others = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(props, _excluded);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Suspense__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ReactMarkdown, others, source));
+}
 
 /***/ }),
 
@@ -1103,4 +1124,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-bfcc1c48dc125ce9f6f2.js.map
+//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-2a1b82c898f86d787f79.js.map
