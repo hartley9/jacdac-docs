@@ -64526,7 +64526,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "39056676b5a3f7fdaa44c79ffe1f011fe89fe4e7";
+  var sha = "d7e7418329bd0aaa3246e15bf76f3297746dfe81";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70521,6 +70521,7 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
 
     this._temp.packets++;
     this._temp.bytes += (((_pkt$header = pkt.header) === null || _pkt$header === void 0 ? void 0 : _pkt$header.length) || 0) + (((_pkt$data = pkt.data) === null || _pkt$data === void 0 ? void 0 : _pkt$data.length) || 0);
+    if (pkt.isAnnounce) this._temp.announce++;
     if (pkt.isCRCAck) this._temp.acks++;
   };
 
@@ -74646,14 +74647,16 @@ function createBus() {
   } = useAnalytics/* analytics */.co;
 
   if (trackEvent) {
-    // track connections
+    var cleanCount = 0; // track connections
+
     b.on(constants/* CONNECTION_STATE */.pzj, transport => transport.connectionState === transport_transport/* ConnectionState.Connected */.em.Connected || transport.connectionState === transport_transport/* ConnectionState.Disconnected */.em.Disconnected && trackEvent("jd.transport." + transport.connectionState, {
       type: transport.type,
       connectionState: transport.connectionState
     }));
     b.on(constants/* DEVICE_CLEAN */.vl4, () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      trackEvent("jd.stats", b.stats.current);
+      // log roughly every minute
+      if (!(cleanCount++ % 10)) // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        trackEvent("jd.stats", b.stats.current);
     });
   }
 
@@ -81794,4 +81797,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-e2fdfc39fd87872d33f4.js.map
+//# sourceMappingURL=app-67db2085dc2040ae2104.js.map
