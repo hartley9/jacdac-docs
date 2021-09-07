@@ -39975,15 +39975,13 @@ var JDServerServiceProvider = /*#__PURE__*/function (_JDServiceProvider) {
 
 "use strict";
 /* unused harmony export JDServiceProvider */
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(43144);
-/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(97326);
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(94578);
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(43144);
+/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(97326);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(94578);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71815);
 /* harmony import */ var _eventsource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45484);
 /* harmony import */ var _pretty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10913);
 /* harmony import */ var _random__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(80303);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(81794);
-
 
 
 
@@ -39997,7 +39995,7 @@ var JDServerServiceProvider = /*#__PURE__*/function (_JDServiceProvider) {
  */
 
 var JDServiceProvider = /*#__PURE__*/function (_JDEventSource) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(JDServiceProvider, _JDEventSource);
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(JDServiceProvider, _JDEventSource);
 
   function JDServiceProvider(template, deviceId) {
     var _this;
@@ -40005,20 +40003,10 @@ var JDServiceProvider = /*#__PURE__*/function (_JDEventSource) {
     _this = _JDEventSource.call(this) || this;
     _this.template = template;
     _this.deviceId = deviceId;
-
-    if (!_this.deviceId) {
-      var devId = (0,_random__WEBPACK_IMPORTED_MODULE_3__/* .anyRandomUint32 */ .RO)(8);
-
-      for (var i = 0; i < 8; ++i) {
-        devId[i] &= 0xff;
-      }
-
-      _this.deviceId = (0,_utils__WEBPACK_IMPORTED_MODULE_4__/* .toHex */ .NC)(devId);
-    }
-
+    if (!_this.deviceId) _this.deviceId = (0,_random__WEBPACK_IMPORTED_MODULE_3__/* .randomDeviceId */ .b_)();
     _this.shortId = (0,_pretty__WEBPACK_IMPORTED_MODULE_2__/* .shortDeviceId */ .xV)(_this.deviceId);
-    _this.handleSelfAnnounce = _this.handleSelfAnnounce.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(_this));
-    _this.handlePacket = _this.handlePacket.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(_this));
+    _this.handleSelfAnnounce = _this.handleSelfAnnounce.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(_this));
+    _this.handlePacket = _this.handlePacket.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(_this));
     return _this;
   }
 
@@ -40044,7 +40032,7 @@ var JDServiceProvider = /*#__PURE__*/function (_JDEventSource) {
 
   _proto.handleSelfAnnounce = function handleSelfAnnounce() {};
 
-  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(JDServiceProvider, [{
+  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(JDServiceProvider, [{
     key: "bus",
     get: function get() {
       return this._bus;
@@ -40604,7 +40592,7 @@ function isInstanceOf(classIdentifier, requiredClassIdentifier) {
  */
 
 function isInfrastructure(spec) {
-  return spec && ([constants/* SRV_CONTROL */.gm9, constants/* SRV_ROLE_MANAGER */.igi, constants/* SRV_LOGGER */.w9j, constants/* SRV_POWER */.mQG, constants/* SRV_SETTINGS */.B9b, constants/* SRV_BOOTLOADER */.PWm, constants/* SRV_PROTO_TEST */.$Bn].indexOf(spec.classIdentifier) > -1 || spec.shortId[0] === "_");
+  return spec && ([constants/* SRV_CONTROL */.gm9, constants/* SRV_ROLE_MANAGER */.igi, constants/* SRV_LOGGER */.w9j, constants/* SRV_SETTINGS */.B9b, constants/* SRV_BOOTLOADER */.PWm, constants/* SRV_PROTO_TEST */.$Bn].indexOf(spec.classIdentifier) > -1 || spec.shortId[0] === "_");
 }
 /**
  * Looks up a service specification by name
@@ -63668,7 +63656,7 @@ function splitProperties(props) {
 
   for (var key of keys) {
     var value = props[key];
-    if (typeof value === "number") measurements[key] = value;else properties[key] = value;
+    if (typeof value === "number") measurements[key] = value;else if (typeof value !== "undefined") properties[key] = value;
   }
 
   return {
@@ -64526,7 +64514,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "d7e7418329bd0aaa3246e15bf76f3297746dfe81";
+  var sha = "afdcf566cda8a32e79d21c946c0a9a53ccfca83d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -68104,6 +68092,8 @@ __webpack_require__.d(__webpack_exports__, {
   "Z": function() { return /* binding */ providerbus; }
 });
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(15861);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
 var setPrototypeOf = __webpack_require__(89611);
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js
@@ -68122,8 +68112,6 @@ function _inherits(subClass, superClass) {
   });
   if (superClass) (0,setPrototypeOf/* default */.Z)(subClass, superClass);
 }
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(15861);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
 var createClass = __webpack_require__(43144);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
@@ -69569,6 +69557,8 @@ var LEDController = /*#__PURE__*/function (_JDEventSource) {
   return LEDController;
 }(eventsource/* default */.ZP);
 /* harmony default export */ var ledcontroller = (LEDController);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/random.ts
+var random = __webpack_require__(80303);
 ;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/device.ts
 
 
@@ -69583,6 +69573,11 @@ var LEDController = /*#__PURE__*/function (_JDEventSource) {
 
 
 
+
+/**
+ * Pipe information
+ * @category Runtime
+ */
 
 /**
  * Collects packet statistics about the device
@@ -69702,21 +69697,6 @@ var DeviceStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
 
 var JDDevice = /*#__PURE__*/function (_JDNode) {
   (0,inheritsLoose/* default */.Z)(JDDevice, _JDNode);
-
-  /**
-   * Indicates if the device is connected to a bus
-   * @category Lifecycle
-   */
-
-  /**
-   * Timestamp of the last packet received from the device
-   * @category Lifecycle
-   */
-
-  /**
-   * Timestamp of the last service update packet received from the device
-   * @category Lifecycle
-   */
 
   /**
    * @internal
@@ -70152,6 +70132,31 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   }();
 
   (0,createClass/* default */.Z)(JDDevice, [{
+    key: "anonymizedDeviceId",
+    get:
+    /**
+     * Indicates if the device is connected to a bus
+     * @category Lifecycle
+     */
+
+    /**
+     * Timestamp of the last packet received from the device
+     * @category Lifecycle
+     */
+
+    /**
+     * Timestamp of the last service update packet received from the device
+     * @category Lifecycle
+     */
+
+    /**
+     * Gets a random device id for the lifetime of this object.
+     */
+    function get() {
+      if (!this._anonymizedId) this._anonymizedId = (0,random/* randomDeviceId */.b_)();
+      return this._anonymizedId;
+    }
+  }, {
     key: "id",
     get: function get() {
       return this.nodeKind + ":" + this.deviceId;
@@ -70843,8 +70848,6 @@ var RoleManagerClient = /*#__PURE__*/function (_JDServiceClient) {
 }(serviceclient/* JDServiceClient */.P);
 RoleManagerClient.unroledSrvs = [constants/* SRV_CONTROL */.gm9, constants/* SRV_ROLE_MANAGER */.igi, constants/* SRV_LOGGER */.w9j];
 /* harmony default export */ var rolemanagerclient = (RoleManagerClient);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/random.ts
-var random = __webpack_require__(80303);
 ;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/scheduler.ts
 
 
@@ -74572,10 +74575,11 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.5"};
+var package_namespaceObject = {"i8":"1.16.6"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
+
 
 
 
@@ -74652,7 +74656,24 @@ function createBus() {
     b.on(constants/* CONNECTION_STATE */.pzj, transport => transport.connectionState === transport_transport/* ConnectionState.Connected */.em.Connected || transport.connectionState === transport_transport/* ConnectionState.Disconnected */.em.Disconnected && trackEvent("jd.transport." + transport.connectionState, {
       type: transport.type,
       connectionState: transport.connectionState
-    }));
+    })); // track services
+
+    b.on(constants/* DEVICE_ANNOUNCE */.Hob, /*#__PURE__*/function () {
+      var _ref = (0,asyncToGenerator/* default */.Z)(function* (d) {
+        var productId = d.isPhysical ? yield d.resolveProductIdentifier() : undefined;
+        trackEvent("jd.announce", {
+          deviceId: d.anonymizedDeviceId,
+          physical: d.isPhysical ? 1 : 0,
+          productId,
+          services: JSON.stringify(d.serviceClasses.slice(0))
+        });
+      });
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }()); // general stats
+
     b.on(constants/* DEVICE_CLEAN */.vl4, () => {
       // log roughly every minute
       if (!(cleanCount++ % 10)) // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -81797,4 +81818,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-67db2085dc2040ae2104.js.map
+//# sourceMappingURL=app-bfda2aad17a33ec758d8.js.map

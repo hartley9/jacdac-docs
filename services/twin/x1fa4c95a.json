@@ -1,0 +1,54 @@
+{
+  "serviceClass": 530893146,
+  "name": "power",
+  "registers": [
+    {
+      "code": 1,
+      "name": "allowed",
+      "flags": 0,
+      "packf": "u8"
+    },
+    {
+      "code": 385,
+      "name": "power_status",
+      "flags": 2,
+      "packf": "u8"
+    },
+    {
+      "code": 257,
+      "name": "current_draw",
+      "flags": 2,
+      "packf": "u16"
+    },
+    {
+      "code": 384,
+      "name": "battery_voltage",
+      "flags": 2,
+      "packf": "u16"
+    },
+    {
+      "code": 386,
+      "name": "battery_charge",
+      "flags": 2,
+      "packf": "u0.16"
+    },
+    {
+      "code": 387,
+      "name": "battery_capacity",
+      "flags": 1,
+      "packf": "u32"
+    },
+    {
+      "code": 128,
+      "name": "keep_on_pulse_duration",
+      "flags": 0,
+      "packf": "u16"
+    },
+    {
+      "code": 129,
+      "name": "keep_on_pulse_period",
+      "flags": 0,
+      "packf": "u16"
+    }
+  ]
+}
