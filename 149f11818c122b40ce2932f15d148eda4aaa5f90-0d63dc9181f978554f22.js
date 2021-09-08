@@ -906,10 +906,7 @@ function PacketSpecificationSource(props) {
   }; // TODO: render commands
 
 
-  if (!(packetInfo !== null && packetInfo !== void 0 && (_packetInfo$fields = packetInfo.fields) !== null && _packetInfo$fields !== void 0 && _packetInfo$fields.length) || !(0,jdom_spec/* isRegister */.x5)(packetInfo)) return null;
-  var {
-    kind
-  } = packetInfo;
+  if (!(packetInfo !== null && packetInfo !== void 0 && (_packetInfo$fields = packetInfo.fields) !== null && _packetInfo$fields !== void 0 && _packetInfo$fields.length) || !((0,jdom_spec/* isRegister */.x5)(packetInfo) || (0,jdom_spec/* isCommand */.ao)(packetInfo))) return null;
   var index = 0;
   return /*#__PURE__*/react.createElement(PaperBox/* default */.Z, null, /*#__PURE__*/react.createElement(Tabs/* default */.Z, {
     value: tab,
@@ -922,16 +919,11 @@ function PacketSpecificationSource(props) {
     value: tab,
     index: index++
   }, /*#__PURE__*/react.createElement(Snippet/* default */.Z, {
-    value: () => ["// get (register to REPORT_UPDATE event to enable background refresh)", (0,jdspec/* packInfo */.p6)(info, packetInfo, {
+    value: () => (0,jdspec/* packInfo */.p6)(info, packetInfo, {
       isStatic: false,
       useBooleans: false,
       useJDOM: true
-    }).buffers, kind == "rw" && "// set", kind == "rw" && (0,jdspec/* packInfo */.p6)(info, packetInfo, {
-      isStatic: false,
-      useBooleans: false,
-      useJDOM: true,
-      useSet: true
-    }).buffers].filter(l => !!l).join("\n"),
+    }).buffers,
     mode: "typescript"
   })));
 }
@@ -1234,4 +1226,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-bc6962eb4997d53d8015.js.map
+//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-0d63dc9181f978554f22.js.map

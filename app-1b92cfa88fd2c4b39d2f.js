@@ -35152,9 +35152,11 @@ function packInfo(info, pkt, options) {
   var {
     isStatic = false,
     useBooleans = false,
-    useJDOM = false,
-    useSet = false
+    useJDOM = false
   } = options || {};
+  var {
+    kind
+  } = pkt;
   var vars = [];
   var vartp = [];
   var fmt = "";
@@ -35204,12 +35206,21 @@ function packInfo(info, pkt, options) {
   var buffers = "";
 
   if (useJDOM) {
-    buffers += "const " + pktName + "Reg = service.register(" + capitalize(info.camelName) + "Reg." + capitalize(pktName) + ")\n";
+    if (kind === "command") {
+      for (var _i = 0; _i < vars.length; ++_i) {
+        buffers += "const " + vars[_i] + ": " + vartp[_i] + " = ...\n";
+      }
 
-    if (useSet) {
-      buffers += "await " + pktName + "Reg.sendSetPackedAsync([" + vars.join(", ") + "])\n";
-    } else {
+      buffers += "await service.sendCmdPackedAsync(" + capitalize(info.camelName) + "Reg." + capitalize(pktName) + ", [" + vars.join(", ") + "])\n";
+    } else if (isRegister(kind)) {
+      buffers += "// get (register to REPORT_UPDATE event to enable background refresh)\n";
+      buffers += "const " + pktName + "Reg = service.register(" + capitalize(info.camelName) + "Reg." + capitalize(pktName) + ")\n";
       buffers += "const [" + vars.join(", ") + "] : [" + vartp.join(", ") + "] = " + pktName + "Reg.unpackedValue\n";
+
+      if (kind === "rw") {
+        buffers += "// set\n";
+        buffers += "await " + pktName + "Reg.sendSetPackedAsync([" + vars.join(", ") + "])\n";
+      }
     }
   } else {
     buffers += "const [" + vars.join(", ") + "] = jdunpack<[" + vartp.join(", ") + "]>(buf, \"" + fmt + "\")\n";
@@ -64072,7 +64083,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3af5fee0a491b9b0c9b30d19de396adb0ce7d8bb";
+  var sha = "2127ff966122a1304f0ed01aedd95d9f63e77136";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -68696,6 +68707,22 @@ var JDService = /*#__PURE__*/function (_JDNode) {
   _proto.sendCmdAsync = function sendCmdAsync(cmd, data, ack) {
     var pkt = data ? packet/* default.from */.Z.from(cmd, data) : packet/* default.onlyHeader */.Z.onlyHeader(cmd);
     return this.sendPacketAsync(pkt, ack);
+  }
+  /**
+   * Packs values and sends command to the service server
+   * @param cmd packet to send
+   * @param values unpacked values, layed as specified
+   * @param ack acknolegment required
+   * @category Packets
+   */
+  ;
+
+  _proto.sendCmdPackedAsync = function sendCmdPackedAsync(cmd, values, ack) {
+    var spec = this.specification.packets.find(pkt => pkt.kind === "command" && pkt.identifier === cmd);
+    var packFormat = spec === null || spec === void 0 ? void 0 : spec.packFormat;
+    if (!packFormat) throw new Error("Unknown packing format");
+    var data = values ? (0,pack/* jdpack */.AV)(packFormat, values) : undefined;
+    return this.sendCmdAsync(cmd, data, ack);
   }
   /**
    * Send a command and await response to the service server
@@ -74110,7 +74137,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.6"};
+var package_namespaceObject = {"i8":"1.16.7"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -81369,4 +81396,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-ceb19f33dd891320f828.js.map
+//# sourceMappingURL=app-1b92cfa88fd2c4b39d2f.js.map
