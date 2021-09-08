@@ -64046,7 +64046,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "37171937d1c73dd18c19cdfa18913fc3a33fcc25";
+  var sha = "877337b2ec316753bc28a76323271c54e39c4ecb";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74186,7 +74186,9 @@ function createBus() {
           productId: productId === null || productId === void 0 ? void 0 : productId.toString(16),
           services: JSON.stringify(services),
           serviceClasses: JSON.stringify(d.serviceClasses.slice(1))
-        });
+        }); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+        trackEvent("jd.stats", b.stats.current);
       });
 
       return function (_x) {
@@ -74196,7 +74198,7 @@ function createBus() {
 
     b.on(constants/* DEVICE_CLEAN */.vl4, () => {
       // log roughly every minute
-      if (!(cleanCount++ % 10)) // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      if (!(cleanCount++ % 30)) // eslint-disable-next-line @typescript-eslint/no-explicit-any
         trackEvent("jd.stats", b.stats.current);
     });
   }
@@ -81338,4 +81340,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-43223886a1f595525286.js.map
+//# sourceMappingURL=app-e1a373a40f358c01ce60.js.map
