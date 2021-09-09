@@ -64091,7 +64091,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2c9430a08435ff86a80de19be8ba7777137f28c0";
+  var sha = "84ee56e2adf0ad3471948d46ce41219c7182ae5d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74406,6 +74406,8 @@ function useEventRaised(eventName, node, query) {
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(71815);
+/* harmony import */ var _components_hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(58057);
+
 
 
 function useRegisterHumanValue(register, options) {
@@ -74417,12 +74419,28 @@ function useRegisterHumanValue(register, options) {
     visible
   } = options || {
     visible: true
-  }; // update value
+  };
+  var {
+    trackError
+  } = (0,_components_hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .ZP)(); // update value
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setValue(register === null || register === void 0 ? void 0 : register.humanValue);
     return visible && (register === null || register === void 0 ? void 0 : register.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .REPORT_UPDATE */ .rGZ, () => {
-      setValue(register === null || register === void 0 ? void 0 : register.humanValue);
+      try {
+        var _value = register === null || register === void 0 ? void 0 : register.humanValue;
+
+        setValue(_value);
+      } catch (e) {
+        var _register$service, _register$service$dev, _register$service2;
+
+        trackError(e, {
+          dev: register === null || register === void 0 ? void 0 : (_register$service = register.service) === null || _register$service === void 0 ? void 0 : (_register$service$dev = _register$service.device) === null || _register$service$dev === void 0 ? void 0 : _register$service$dev.anonymizedDeviceId,
+          srv: register === null || register === void 0 ? void 0 : (_register$service2 = register.service) === null || _register$service2 === void 0 ? void 0 : _register$service2.name,
+          reg: register === null || register === void 0 ? void 0 : register.name
+        });
+        setValue("???");
+      }
     }));
   }, [register, visible]);
   return value;
@@ -81404,4 +81422,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-81855bd4caf0e30ec386.js.map
+//# sourceMappingURL=app-2c7bbd7620abfdf5799b.js.map
