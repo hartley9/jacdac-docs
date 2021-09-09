@@ -38903,7 +38903,7 @@ function decodeMember(service, pktInfo, member, pkt, offset) {
     numValue,
     scaledValue,
     humanValue,
-    description: member.name + ":" + (humanValue.indexOf("\n") >= 0 ? "\n" + humanValue.replace(/^/gm, "      ") : " " + humanValue),
+    description: member.name + ":" + (!humanValue ? "?" : humanValue.indexOf("\n") >= 0 ? "\n" + humanValue.replace(/^/gm, "      ") : " " + humanValue),
     info: member,
     size
   };
@@ -64091,7 +64091,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "d3f49d628f214b3c737fd511959ce847d3adbfc7";
+  var sha = "05f742da4643b81149a90fb89cb3570331d5f041";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -81431,4 +81431,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-13640b9992fa01bb1586.js.map
+//# sourceMappingURL=app-37b79c800ffefd875f68.js.map
