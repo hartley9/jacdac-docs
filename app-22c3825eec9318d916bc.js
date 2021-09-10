@@ -63248,7 +63248,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "60bd9f0ed7bb06e1d4881103e4ff86a60ee9ce75";
+var sha = "0e21ae48a796d6ec7759d1c21f8f22d9293d0c0d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64128,7 +64128,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "60bd9f0ed7bb06e1d4881103e4ff86a60ee9ce75";
+  var sha = "0e21ae48a796d6ec7759d1c21f8f22d9293d0c0d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -65961,7 +65961,7 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
   };
 
   _proto.serviceFilter = function serviceFilter(srv) {
-    return ignoredServices.indexOf(srv.serviceClass) < 1;
+    return ignoredServices.indexOf(srv.serviceClass) < 0;
   };
 
   _proto.postAddExtensions = function postAddExtensions() {
@@ -81477,4 +81477,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-e8e992f53dc55467cb20.js.map
+//# sourceMappingURL=app-22c3825eec9318d916bc.js.map
