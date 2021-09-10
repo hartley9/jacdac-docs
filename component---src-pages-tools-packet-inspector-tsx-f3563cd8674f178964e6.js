@@ -1320,7 +1320,7 @@ function PacketInspector() {
 
   var handleCopy = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
-      return (0,utils/* roundWithPrecision */.JI)(packet.timestamp, 3) + ": " + (0,utils/* toHex */.NC)(packet.toBuffer()) + "\t" + (0,pretty/* printPacket */.$_)(packet).replace(/\r?\n/g, " ");
+      return (0,utils/* toHex */.NC)(packet.toBuffer()) + " " + (0,pretty/* printPacket */.$_)(packet).replace(/\r?\n/g, " ");
     });
 
     return function handleCopy() {
@@ -1375,4 +1375,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-a2784330602364d6033c.js.map
+//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-f3563cd8674f178964e6.js.map
