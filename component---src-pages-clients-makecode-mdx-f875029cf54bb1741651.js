@@ -65,11 +65,7 @@ function MDXContent(_ref) {
     "href": "https://github.com/microsoft/pxt-jacdac",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "pxt-jacdac"), " contains MakeCode support many Jacdac services.\nThe following editors are currently supported: micro:bit witn V2 hardware, Arcade and Maker."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
-    parentName: "li"
-  }, "Jacdac requires a micro:bit V2!"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "pxt-jacdac"), " extension contains MakeCode support many Jacdac services."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "usage",
     "style": {
       "position": "relative"
@@ -98,7 +94,12 @@ function MDXContent(_ref) {
     "href": "https://makecode.microbit.org/beta",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "MakeCode for micro:bit"), " or ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "MakeCode for micro:bit"), ", ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
+    "href": "https://arcade.makecode.com/beta",
+    "target": "_blank",
+    "rel": "nofollow noopener noreferrer"
+  }, "Arcade"), " or ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
     "href": "https://maker.makecode.com/",
     "target": "_blank",
@@ -107,12 +108,9 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, "Open or create a new project."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, "Import the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "https://github.com/microsoft/pxt-jacdac",
-    "target": "_blank",
-    "rel": "nofollow noopener noreferrer"
-  }, "https://github.com/microsoft/pxt-jacdac"), " package in your project."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Add the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+    parentName: "li"
+  }, "Jacdac"), " extension."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, "You should see a ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "li"
@@ -226,4 +224,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-mdx-184f7717d3acfa961682.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-mdx-f875029cf54bb1741651.js.map
