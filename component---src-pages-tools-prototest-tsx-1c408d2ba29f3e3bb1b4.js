@@ -286,19 +286,22 @@ var packet = __webpack_require__(57683);
 var AlertTitle = __webpack_require__(99330);
 // EXTERNAL MODULE: ./src/components/ui/Alert.tsx
 var Alert = __webpack_require__(95453);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/serviceprovider.ts
-var serviceprovider = __webpack_require__(92952);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/protocoltestserver.ts
 var protocoltestserver = __webpack_require__(8695);
 // EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
 var gatsby_theme_material_ui = __webpack_require__(36176);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/random.ts
 var random = __webpack_require__(80303);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/serverserviceprovider.ts + 2 modules
+var serverserviceprovider = __webpack_require__(55739);
+// EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
+var react_use_id_hook_esm = __webpack_require__(19640);
 ;// CONCATENATED MODULE: ./src/pages/tools/prototest.tsx
 
 
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
 
 
@@ -593,6 +596,8 @@ function ProtocolTest() {
   var {
     bus
   } = (0,react.useContext)(Context/* default */.Z);
+  var labelId = (0,react_use_id_hook_esm/* useId */.Me)();
+  var switchId = (0,react_use_id_hook_esm/* useId */.Me)();
   var {
     0: host,
     1: setHost
@@ -606,7 +611,7 @@ function ProtocolTest() {
 
   (0,react.useEffect)(() => {
     if (!host) return () => {};
-    var d = new serviceprovider/* default */.Z([new protocoltestserver/* default */.Z()]);
+    var d = new serverserviceprovider/* default */.Z("test", [new protocoltestserver/* default */.Z()]);
     bus.addServiceProvider(d);
     return () => bus.removeServiceProvider(d);
   }, [host]);
@@ -634,12 +639,16 @@ function ProtocolTest() {
   }, /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "info"
   }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Developer zone"), /*#__PURE__*/react.createElement(Switch/* default */.Z, {
+    id: switchId,
     checked: host,
     onChange: toggleHost
-  }), /*#__PURE__*/react.createElement("label", null, "Add simulator")))));
+  }), /*#__PURE__*/react.createElement("label", {
+    id: labelId,
+    htmlFor: switchId
+  }, "Add simulator")))));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-prototest-tsx-32b4fc3c344e26df4721.js.map
+//# sourceMappingURL=component---src-pages-tools-prototest-tsx-1c408d2ba29f3e3bb1b4.js.map

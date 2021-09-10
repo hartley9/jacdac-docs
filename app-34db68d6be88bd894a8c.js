@@ -39602,7 +39602,7 @@ var JDRegisterServer = /*#__PURE__*/function (_JDEventSource) {
 
 /***/ }),
 
-/***/ 36211:
+/***/ 55739:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39739,8 +39739,80 @@ var ControlServer = /*#__PURE__*/function (_JDServiceServer) {
   return ControlServer;
 }(serviceserver/* default */.Z);
 /* harmony default export */ var controlserver = (ControlServer);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/serviceprovider.ts
-var serviceprovider = __webpack_require__(92952);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/eventsource.ts
+var eventsource = __webpack_require__(45484);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/pretty.ts
+var pretty = __webpack_require__(10913);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/random.ts
+var random = __webpack_require__(80303);
+;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/servers/serviceprovider.ts
+
+
+
+
+
+
+
+/**
+ * Implements a device with service servers.
+ * @category Servers
+ */
+
+var JDServiceProvider = /*#__PURE__*/function (_JDEventSource) {
+  (0,inheritsLoose/* default */.Z)(JDServiceProvider, _JDEventSource);
+
+  function JDServiceProvider(template, deviceId) {
+    var _this;
+
+    _this = _JDEventSource.call(this) || this;
+    _this.template = template;
+    _this.deviceId = deviceId;
+    if (!_this.deviceId) _this.deviceId = (0,random/* randomDeviceId */.b_)();
+    _this.shortId = (0,pretty/* shortDeviceId */.xV)(_this.deviceId);
+    _this.handleSelfAnnounce = _this.handleSelfAnnounce.bind((0,assertThisInitialized/* default */.Z)(_this));
+    _this.handlePacket = _this.handlePacket.bind((0,assertThisInitialized/* default */.Z)(_this));
+    return _this;
+  }
+
+  var _proto = JDServiceProvider.prototype;
+
+  _proto.start = function start() {
+    if (this._bus) {
+      this._bus.on(constants/* SELF_ANNOUNCE */.Pbc, this.handleSelfAnnounce);
+
+      this._bus.on([constants/* PACKET_PROCESS */.wY8, constants/* PACKET_SEND */.RaS], this.handlePacket);
+    }
+  };
+
+  _proto.stop = function stop() {
+    if (this._bus) {
+      this._bus.off(constants/* SELF_ANNOUNCE */.Pbc, this.handleSelfAnnounce);
+
+      this._bus.off([constants/* PACKET_PROCESS */.wY8, constants/* PACKET_SEND */.RaS], this.handlePacket);
+
+      this._bus = undefined;
+    }
+  };
+
+  _proto.handleSelfAnnounce = function handleSelfAnnounce() {};
+
+  (0,createClass/* default */.Z)(JDServiceProvider, [{
+    key: "bus",
+    get: function get() {
+      return this._bus;
+    },
+    set: function set(value) {
+      if (value !== this._bus) {
+        this.stop();
+        this._bus = value;
+        if (this._bus) this.start();
+      }
+    }
+  }]);
+
+  return JDServiceProvider;
+}(eventsource/* default */.ZP);
+/* harmony default export */ var serviceprovider = (JDServiceProvider);
 ;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/servers/serverserviceprovider.ts
 
 
@@ -39997,90 +40069,8 @@ var JDServerServiceProvider = /*#__PURE__*/function (_JDServiceProvider) {
   }]);
 
   return JDServerServiceProvider;
-}(serviceprovider/* default */.Z);
+}(serviceprovider);
 /* harmony default export */ var serverserviceprovider = (JDServerServiceProvider);
-
-/***/ }),
-
-/***/ 92952:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export JDServiceProvider */
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(43144);
-/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(97326);
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(94578);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71815);
-/* harmony import */ var _eventsource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45484);
-/* harmony import */ var _pretty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10913);
-/* harmony import */ var _random__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(80303);
-
-
-
-
-
-
-
-/**
- * Implements a device with service servers.
- * @category Servers
- */
-
-var JDServiceProvider = /*#__PURE__*/function (_JDEventSource) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(JDServiceProvider, _JDEventSource);
-
-  function JDServiceProvider(template, deviceId) {
-    var _this;
-
-    _this = _JDEventSource.call(this) || this;
-    _this.template = template;
-    _this.deviceId = deviceId;
-    if (!_this.deviceId) _this.deviceId = (0,_random__WEBPACK_IMPORTED_MODULE_3__/* .randomDeviceId */ .b_)();
-    _this.shortId = (0,_pretty__WEBPACK_IMPORTED_MODULE_2__/* .shortDeviceId */ .xV)(_this.deviceId);
-    _this.handleSelfAnnounce = _this.handleSelfAnnounce.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(_this));
-    _this.handlePacket = _this.handlePacket.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(_this));
-    return _this;
-  }
-
-  var _proto = JDServiceProvider.prototype;
-
-  _proto.start = function start() {
-    if (this._bus) {
-      this._bus.on(_constants__WEBPACK_IMPORTED_MODULE_0__/* .SELF_ANNOUNCE */ .Pbc, this.handleSelfAnnounce);
-
-      this._bus.on([_constants__WEBPACK_IMPORTED_MODULE_0__/* .PACKET_PROCESS */ .wY8, _constants__WEBPACK_IMPORTED_MODULE_0__/* .PACKET_SEND */ .RaS], this.handlePacket);
-    }
-  };
-
-  _proto.stop = function stop() {
-    if (this._bus) {
-      this._bus.off(_constants__WEBPACK_IMPORTED_MODULE_0__/* .SELF_ANNOUNCE */ .Pbc, this.handleSelfAnnounce);
-
-      this._bus.off([_constants__WEBPACK_IMPORTED_MODULE_0__/* .PACKET_PROCESS */ .wY8, _constants__WEBPACK_IMPORTED_MODULE_0__/* .PACKET_SEND */ .RaS], this.handlePacket);
-
-      this._bus = undefined;
-    }
-  };
-
-  _proto.handleSelfAnnounce = function handleSelfAnnounce() {};
-
-  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(JDServiceProvider, [{
-    key: "bus",
-    get: function get() {
-      return this._bus;
-    },
-    set: function set(value) {
-      if (value !== this._bus) {
-        this.stop();
-        this._bus = value;
-        if (this._bus) this.start();
-      }
-    }
-  }]);
-
-  return JDServiceProvider;
-}(_eventsource__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .ZP);
-/* harmony default export */ __webpack_exports__["Z"] = (JDServiceProvider);
 
 /***/ }),
 
@@ -43733,8 +43723,8 @@ __webpack_require__.d(__webpack_exports__, {
 var defineProperty = __webpack_require__(4942);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
 var constants = __webpack_require__(71815);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/serverserviceprovider.ts + 1 modules
-var serverserviceprovider = __webpack_require__(36211);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/serverserviceprovider.ts + 2 modules
+var serverserviceprovider = __webpack_require__(55739);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/protocoltestserver.ts
 var protocoltestserver = __webpack_require__(8695);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/serviceserver.ts
@@ -64120,7 +64110,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "fe544e9b8de4388813879c41e3ea46bd0d95c4b2";
+  var sha = "9093905ca0f05c359d0aeecbf274b0be91f0a38e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74055,8 +74045,8 @@ function createAnyUSBBus() {
 var iframebridgeclient = __webpack_require__(43380);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/client.ts
 var client = __webpack_require__(47235);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/serverserviceprovider.ts + 1 modules
-var serverserviceprovider = __webpack_require__(36211);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/serverserviceprovider.ts + 2 modules
+var serverserviceprovider = __webpack_require__(55739);
 // EXTERNAL MODULE: ./jacdac-ts/src/servers/joystickserver.ts
 var joystickserver = __webpack_require__(26708);
 ;// CONCATENATED MODULE: ./jacdac-ts/src/servers/gamepadservermanager.ts
@@ -81469,4 +81459,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-c5ea7baea49105994f3b.js.map
+//# sourceMappingURL=app-34db68d6be88bd894a8c.js.map

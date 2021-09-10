@@ -2018,8 +2018,8 @@ var Mutex = /*#__PURE__*/function () {
 }();
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/client.ts
 var client = __webpack_require__(47235);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/serverserviceprovider.ts + 1 modules
-var serverserviceprovider = __webpack_require__(36211);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/servers/serverserviceprovider.ts + 2 modules
+var serverserviceprovider = __webpack_require__(55739);
 ;// CONCATENATED MODULE: ./jacdac-ts/src/vm/runner.ts
 
 
@@ -6878,4 +6878,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-vm-tsx-b1004a3db3389c39b24b.js.map
+//# sourceMappingURL=component---src-pages-editors-vm-tsx-b00d85f570f7174020ac.js.map
