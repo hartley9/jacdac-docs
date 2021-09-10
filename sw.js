@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-0871055a3e2384048e3e.js"
+    "url": "webpack-runtime-b9fda73ba7c57866b194.js"
   },
   {
     "url": "styles.ba0dbf5843e7fbacbe82.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "edbf9b3ff901a70f5c3f9582e6d58fa9"
+    "revision": "9d5a2a1434163e8aa7a0ae205b85de70"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,11 +60,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "ab29d8cd090cad7ff6f7ed3460ff6367"
+    "revision": "a42e3977d38b74a810b58dccda59fdc8"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "34ed18adeacf65caa91f2ed625d79083"
+    "revision": "6b9442d24863e66ab3c1ce98144d7bb5"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -72,7 +72,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "bd8e1d6dcb00773d4ebb29ed3d7178e2"
+    "revision": "7615437427ce3b1d321680cce7703167"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "6b19caf67060bda8baaebd72f2336a1d"
+    "revision": "82ed00d6ed4498642a430b455efc92cc"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -224,7 +224,7 @@ self.__precacheManifest = [
     "url": "7135060e554842f570a07250da4cced35e9b785f-736f5610c4bb0710ac17.js"
   },
   {
-    "url": "149f11818c122b40ce2932f15d148eda4aaa5f90-0d63dc9181f978554f22.js"
+    "url": "149f11818c122b40ce2932f15d148eda4aaa5f90-46e032479ca16636f5d3.js"
   },
   {
     "url": "component---src-templates-service-tsx-ee62705939c949a75abd.js"
@@ -1112,7 +1112,7 @@ self.__precacheManifest = [
     "revision": "b185746f9008a4dc8fd628b5c6a56049"
   },
   {
-    "url": "component---src-pages-tools-packet-inspector-tsx-f3563cd8674f178964e6.js"
+    "url": "component---src-pages-tools-packet-inspector-tsx-5f81b2e72352e759667f.js"
   },
   {
     "url": "page-data/tools/packet-inspector/page-data.json",
@@ -1268,7 +1268,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-0750828c0d2cf0a41361.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-1f68e8880ff2e115caae.js`))) {
     return await fetch(event.request)
   }
 

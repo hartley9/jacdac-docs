@@ -891,9 +891,7 @@ function PacketSpecificationSource(props) {
 
   var {
     serviceClass,
-    packetInfo,
-    reportInfo,
-    pipeReportInfo
+    packetInfo
   } = props;
   var {
     0: tab,
@@ -906,7 +904,7 @@ function PacketSpecificationSource(props) {
   }; // TODO: render commands
 
 
-  if (!(packetInfo !== null && packetInfo !== void 0 && (_packetInfo$fields = packetInfo.fields) !== null && _packetInfo$fields !== void 0 && _packetInfo$fields.length) || !((0,jdom_spec/* isRegister */.x5)(packetInfo) || (0,jdom_spec/* isCommand */.ao)(packetInfo))) return null;
+  if (!info || !(packetInfo !== null && packetInfo !== void 0 && (_packetInfo$fields = packetInfo.fields) !== null && _packetInfo$fields !== void 0 && _packetInfo$fields.length) || !((0,jdom_spec/* isRegister */.x5)(packetInfo) || (0,jdom_spec/* isCommand */.ao)(packetInfo))) return null;
   var index = 0;
   return /*#__PURE__*/react.createElement(PaperBox/* default */.Z, null, /*#__PURE__*/react.createElement(Tabs/* default */.Z, {
     value: tab,
@@ -1226,4 +1224,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-0d63dc9181f978554f22.js.map
+//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-46e032479ca16636f5d3.js.map

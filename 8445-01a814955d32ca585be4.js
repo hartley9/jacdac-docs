@@ -771,6 +771,7 @@ var Tooltip = __webpack_require__(60102);
 
 
 
+
 function PacketBadge(props) {
   var {
     packet,
@@ -779,6 +780,9 @@ function PacketBadge(props) {
   var {
     decoded
   } = packet;
+  var {
+    error
+  } = decoded || {};
   var requiredAck = !!packet.requiresAck;
   var failedAck = !!packet.meta[constants/* META_ACK_FAILED */.GiR];
   var receivedAck = !failedAck && !!packet.meta[constants/* META_ACK */.K3O];
@@ -787,7 +791,11 @@ function PacketBadge(props) {
   var logMessage = packet.serviceClass === specconstants/* SRV_LOGGER */.w9j && packet.isReport && !packet.isRegisterGet;
   return /*#__PURE__*/react.createElement(Badge/* default */.Z, {
     badgeContent: count
-  }, getPacket && !failedAck && !receivedAck && /*#__PURE__*/react.createElement(Tooltip/* default */.Z, {
+  }, error && /*#__PURE__*/react.createElement(Tooltip/* default */.Z, {
+    title: error
+  }, /*#__PURE__*/react.createElement("span", null, /*#__PURE__*/react.createElement(Error/* default */.Z, {
+    color: "error"
+  }))), getPacket && !failedAck && !receivedAck && /*#__PURE__*/react.createElement(Tooltip/* default */.Z, {
     title: "to/from " + packet.friendlyDeviceName
   }, /*#__PURE__*/react.createElement("span", null, /*#__PURE__*/react.createElement(Code/* default */.Z, null))), direction === "to" && !getPacket && !failedAck && !receivedAck && /*#__PURE__*/react.createElement(Tooltip/* default */.Z, {
     title: "to " + packet.friendlyDeviceName
@@ -848,8 +856,6 @@ var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* ["default"]
   }
 }));
 function PacketListItem(props) {
-  var _decoded$info;
-
   var {
     packet,
     count,
@@ -869,6 +875,9 @@ function PacketListItem(props) {
   var {
     decoded
   } = packet;
+  var {
+    info
+  } = decoded || {};
 
   var handleClick = () => {
     if (mobile) setDrawerType(_AppContext__WEBPACK_IMPORTED_MODULE_3__/* .DrawerType.None */ .jw.None);
@@ -879,7 +888,7 @@ function PacketListItem(props) {
   var selected = packet === selectedPacket;
   var logMessage = packet.serviceClass === _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .SRV_LOGGER */ .w9j && packet.isReport && packet.isEvent;
   var pipePackets = packet.meta[_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .META_PIPE */ .YHR];
-  var name = (decoded === null || decoded === void 0 ? void 0 : (_decoded$info = decoded.info) === null || _decoded$info === void 0 ? void 0 : _decoded$info.name) || packet.friendlyCommandName;
+  var name = (info === null || info === void 0 ? void 0 : info.name) || packet.friendlyCommandName;
   var primary = packet.isCRCAck && "crc ack " + name || packet.isAnnounce && "announce from " + name || packet.isRegisterGet && "get " + name || pipePackets && "pipe port:" + packet.pipePort + " " + pipePackets.length + " packets" || logMessage && (0,_jacdac_ts_src_jdom_pack__WEBPACK_IMPORTED_MODULE_7__/* .jdunpack */ .TE)(packet.data, "s")[0] || "" + (packet.isRegisterSet ? "set " : "") + name + " " + (decoded ? (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_6__/* .ellipseJoin */ .VA)(decoded.decoded.map(f => f.humanValue), 18) : "");
   var secondary = "" + (showTime ? (0,_jacdac_ts_src_jdom_pretty__WEBPACK_IMPORTED_MODULE_5__/* .prettyDuration */ .Xh)(packet.timestamp) + ": " : "") + (packet.isCommand ? "to" : "from") + " " + packet.friendlyDeviceName + "/" + packet.friendlyServiceName;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
@@ -3856,4 +3865,4 @@ function PacketView(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=8445-35219ce6f6d2619fe5ec.js.map
+//# sourceMappingURL=8445-01a814955d32ca585be4.js.map

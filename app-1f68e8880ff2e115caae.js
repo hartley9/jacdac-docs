@@ -38716,13 +38716,15 @@ var InPipeReader = /*#__PURE__*/function (_InPipe) {
 /* harmony import */ var _spec__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45656);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(71815);
 /* harmony import */ var _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(73512);
+/* harmony import */ var _pack__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(91635);
+
+
 
 
 
 
 
 /** @internal */
-
 var RegisterType;
 /**
  * @internal
@@ -38977,9 +38979,23 @@ function decodeRegister(service, pkt) {
   var isSet = pkt.isRegisterSet;
   var isGet = pkt.isRegisterGet;
   if (isSet == isGet) return null;
+  var error = "";
   var addr = pkt.serviceCommand & _constants__WEBPACK_IMPORTED_MODULE_3__/* .CMD_REG_MASK */ .Pbb;
   var regInfo = (service === null || service === void 0 ? void 0 : service.packets.find(p => (0,_spec__WEBPACK_IMPORTED_MODULE_2__/* .isRegister */ .x5)(p) && p.identifier == addr)) || syntheticPktInfo("rw", addr);
   var decoded = decodeMembers(service, regInfo, pkt);
+
+  if (regInfo.packFormat && pkt.data.length) {
+    try {
+      var recoded = (0,_utils__WEBPACK_IMPORTED_MODULE_1__/* .toHex */ .NC)((0,_pack__WEBPACK_IMPORTED_MODULE_5__/* .jdpack */ .AV)(regInfo.packFormat, (0,_pack__WEBPACK_IMPORTED_MODULE_5__/* .jdunpack */ .TE)(pkt.data, regInfo.packFormat)));
+
+      if (recoded !== undefined && recoded !== (0,_utils__WEBPACK_IMPORTED_MODULE_1__/* .toHex */ .NC)(pkt.data)) {
+        error = "invalid data packing, " + (0,_utils__WEBPACK_IMPORTED_MODULE_1__/* .toHex */ .NC)(pkt.data) + " recoded to " + recoded;
+      }
+    } catch (e) {
+      error = "invalid data packing, " + e.message;
+    }
+  }
+
   var description = "";
   if (decoded.length == 0) description = regInfo.name;else if (decoded.length == 1) description = regInfo.name + ": " + decoded[0].humanValue;else description = wrapDecodedMembers(decoded);
   if (isGet) description = "GET " + description;else description = "SET " + description;
@@ -38987,7 +39003,8 @@ function decodeRegister(service, pkt) {
     service,
     info: regInfo,
     decoded,
-    description
+    description,
+    error
   };
 }
 
@@ -48508,6 +48525,7 @@ function parsePacketFilter(bus, text) {
   var collapseAck = true;
   var collapsePipes = true;
   var collapseGets = true;
+  var errors = undefined;
   var selfDevice = undefined;
   text.split(/\s+/g).forEach(part => {
     var [, prefix,, value] = /([a-z\-_]+)([:=]([^\s]+))?/.exec(part) || [];
@@ -48547,6 +48565,10 @@ function parsePacketFilter(bus, text) {
       case "ri":
       case "resetin":
         resetIn = parseBoolean(value);
+        break;
+
+      case "errors":
+        errors = parseBoolean(value);
         break;
 
       case "min-priority":
@@ -48681,7 +48703,8 @@ function parsePacketFilter(bus, text) {
     pipes,
     collapsePipes,
     collapseGets,
-    port
+    port,
+    errors
   };
   var filter = compileFilter(props);
   return {
@@ -48719,14 +48742,15 @@ function compileFilter(props) {
     before,
     after,
     pipes,
-    port
+    port,
+    errors
   } = props;
   var filters = [];
   if (before !== undefined) filters.push(pkt => pkt.timestamp <= before);
   if (after !== undefined) filters.push(pkt => pkt.timestamp >= after);
   if (announce !== undefined) filters.push(pkt => pkt.isAnnounce === announce);
-  if (repeatedAnnounce !== undefined) filters.push(pkt => !pkt.isAnnounce || pkt.isRepeatedAnnounce === repeatedAnnounce);
-  if (resetIn === false) filters.push(pkt => !(pkt.isRegisterSet && pkt.serviceClass === specconstants/* SRV_CONTROL */.gm9 && pkt.registerIdentifier === specconstants/* ControlReg.ResetIn */.toU.ResetIn));
+  if (repeatedAnnounce !== undefined) filters.push(pkt => (!pkt.isAnnounce || pkt.isRepeatedAnnounce) === repeatedAnnounce);
+  if (resetIn !== undefined) filters.push(pkt => !!(pkt.isRegisterSet && pkt.serviceClass === specconstants/* SRV_CONTROL */.gm9 && pkt.registerIdentifier === specconstants/* ControlReg.ResetIn */.toU.ResetIn) === resetIn);
   if (minPriority !== undefined) filters.push(pkt => (pkt.isRegisterSet && pkt.serviceClass == specconstants/* SRV_LOGGER */.w9j && pkt.registerIdentifier === specconstants/* LoggerReg.MinPriority */.hXV.MinPriority) === minPriority);
   if (requiresAck !== undefined) filters.push(pkt => pkt.requiresAck === requiresAck);
   if (flags) filters.push(pkt => hasAnyFlag(pkt));
@@ -48769,15 +48793,20 @@ function compileFilter(props) {
     var fwid = (_pkt$device = pkt.device) === null || _pkt$device === void 0 ? void 0 : _pkt$device.productIdentifier;
     return fwid === undefined || productIdentifiers.indexOf(fwid) > -1;
   });
+  if (errors !== undefined) filters.push(pkt => {
+    var _pkt$decoded3;
+
+    return !!((_pkt$decoded3 = pkt.decoded) !== null && _pkt$decoded3 !== void 0 && _pkt$decoded3.error) === errors;
+  });
 
   var filter = pkt => filters.every(filter => filter(pkt));
 
   return filter;
 
   function hasAnyFlag(pkt) {
-    var _pkt$decoded3;
+    var _pkt$decoded4;
 
-    var k = (_pkt$decoded3 = pkt.decoded) === null || _pkt$decoded3 === void 0 ? void 0 : _pkt$decoded3.info.kind;
+    var k = (_pkt$decoded4 = pkt.decoded) === null || _pkt$decoded4 === void 0 ? void 0 : _pkt$decoded4.info.kind;
     return !!k && flags.indexOf(k) > -1;
   }
 }
@@ -64091,7 +64120,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "c7e0f3b6d7eefe7bcadff5cf39d595fc10cefd21";
+  var sha = "80d74842333668e0720a6d27c2da1622a4a6b578";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -66172,6 +66201,7 @@ var _excluded = ["closeable", "title", "children"];
 
 var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)({
   root: {
+    marginTop: theme.spacing(1),
     marginBottom: theme.spacing(2)
   },
   icon: {
@@ -81432,4 +81462,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-0750828c0d2cf0a41361.js.map
+//# sourceMappingURL=app-1f68e8880ff2e115caae.js.map
