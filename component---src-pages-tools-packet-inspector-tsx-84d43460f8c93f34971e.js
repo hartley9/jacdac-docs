@@ -1009,18 +1009,18 @@ var Alert = __webpack_require__(95453);
 var PacketsContext = __webpack_require__(43226);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/History.js
 var History = __webpack_require__(9080);
-// EXTERNAL MODULE: ./src/components/KindChip.tsx
-var KindChip = __webpack_require__(37958);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
-var Typography = __webpack_require__(80453);
-// EXTERNAL MODULE: ./src/components/specification/PacketSpecification.tsx + 11 modules
-var PacketSpecification = __webpack_require__(59296);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/pretty.ts
-var pretty = __webpack_require__(10913);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/useTheme.js
 var useTheme = __webpack_require__(59355);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
+var Typography = __webpack_require__(80453);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Box/Box.js + 13 modules
 var Box = __webpack_require__(33287);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Tooltip/Tooltip.js
+var Tooltip = __webpack_require__(14685);
+// EXTERNAL MODULE: ./src/components/specification/PacketSpecification.tsx + 12 modules
+var PacketSpecification = __webpack_require__(38294);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/pretty.ts
+var pretty = __webpack_require__(10913);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TableContainer/TableContainer.js
 var TableContainer = __webpack_require__(78475);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Table/Table.js
@@ -1044,7 +1044,7 @@ var utils = __webpack_require__(81794);
 // EXTERNAL MODULE: ./src/components/ui/PaperBox.tsx
 var PaperBox = __webpack_require__(79739);
 // EXTERNAL MODULE: ./src/components/ui/Tooltip.tsx
-var Tooltip = __webpack_require__(60102);
+var ui_Tooltip = __webpack_require__(60102);
 ;// CONCATENATED MODULE: ./src/components/PacketHeaderLayout.tsx
 
 
@@ -1063,7 +1063,7 @@ function HeaderMap(props) {
     name
   } = props;
   var bytes = header.slice(offset, offset + size);
-  return /*#__PURE__*/react.createElement(Tooltip/* default */.Z, {
+  return /*#__PURE__*/react.createElement(ui_Tooltip/* default */.Z, {
     title: name
   }, /*#__PURE__*/react.createElement("span", null, (0,utils/* toHex */.NC)(bytes)));
 }
@@ -1239,7 +1239,9 @@ function PacketDataLayout(props) {
     data,
     decoded
   } = packet;
-  var info = decoded === null || decoded === void 0 ? void 0 : decoded.info;
+  var {
+    info
+  } = decoded || {};
   var unpacked;
   var error;
 
@@ -1253,7 +1255,7 @@ function PacketDataLayout(props) {
     severity: "error"
   }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Invalid data payload"), error), showHex && !!data.length && /*#__PURE__*/react.createElement(PaperBox/* default */.Z, {
     padding: 0
-  }, /*#__PURE__*/react.createElement(Tooltip/* default */.Z, {
+  }, /*#__PURE__*/react.createElement(ui_Tooltip/* default */.Z, {
     title: (decoded === null || decoded === void 0 ? void 0 : (_decoded$info = decoded.info) === null || _decoded$info === void 0 ? void 0 : _decoded$info.packFormat) || "unknown data layout"
   }, /*#__PURE__*/react.createElement("pre", null, (0,utils/* toHex */.NC)(data)))), showDecoded && !!(decoded !== null && decoded !== void 0 && decoded.decoded.length) && /*#__PURE__*/react.createElement(PaperBox/* default */.Z, null, /*#__PURE__*/react.createElement(TableContainer/* default */.Z, null, /*#__PURE__*/react.createElement(Table/* default */.Z, {
     size: "small"
@@ -1317,6 +1319,7 @@ function PacketInspector() {
     replayTrace,
     trace
   } = (0,react.useContext)(PacketsContext/* default */.Z);
+  var theme = (0,useTheme/* default */.Z)();
   if (!packet) return /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "info"
   }, "Click on a packet in the ", /*#__PURE__*/react.createElement(History/* default */.Z, null), " packet list.");
@@ -1329,7 +1332,10 @@ function PacketInspector() {
   } = decoded || {};
   var name = (info === null || info === void 0 ? void 0 : info.name) || packet.friendlyCommandName;
   var ack = packet.meta[constants/* META_ACK */.K3O];
-  var data = packet.data;
+  var {
+    header,
+    data
+  } = packet;
   var pipePackets = packet.meta[constants/* META_PIPE */.YHR];
   var get = packet.meta[constants/* META_GET */.cWR];
   var sentTrace = packet.meta[constants/* META_TRACE */.EEP];
@@ -1350,13 +1356,23 @@ function PacketInspector() {
   }), name + " " + (packet.isCommand ? "to" : "from") + " " + packet.friendlyDeviceName + "/" + packet.friendlyServiceName, /*#__PURE__*/react.createElement(CopyButton/* default */.Z, {
     title: "copy packet",
     onCopy: handleCopy
-  })), /*#__PURE__*/react.createElement("div", null, (0,pretty/* prettyDuration */.Xh)(packet.timestamp), ",", " ", /*#__PURE__*/react.createElement(KindChip/* default */.Z, {
-    kind: info === null || info === void 0 ? void 0 : info.kind
-  }), ", size ", packet.size), packet.sender && /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+  })), packet.sender && /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     variant: "body2"
   }, "sender: ", packet.sender), error && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "error"
-  }, error), /*#__PURE__*/react.createElement("h3", null, "Header"), /*#__PURE__*/react.createElement(PacketHeaderLayout, {
+  }, error), /*#__PURE__*/react.createElement(PaperBox/* default */.Z, {
+    padding: 0
+  }, /*#__PURE__*/react.createElement("pre", null, /*#__PURE__*/react.createElement("code", null, /*#__PURE__*/react.createElement(Box/* default */.Z, {
+    component: "span",
+    mr: theme.spacing(0.1)
+  }, /*#__PURE__*/react.createElement(Tooltip/* default */.ZP, {
+    title: "header"
+  }, /*#__PURE__*/react.createElement("span", null, (0,utils/* toHex */.NC)(header))))), /*#__PURE__*/react.createElement("code", null, /*#__PURE__*/react.createElement(Box/* default */.Z, {
+    component: "span",
+    mr: theme.spacing(0.1)
+  }, /*#__PURE__*/react.createElement(Tooltip/* default */.ZP, {
+    title: "data"
+  }, /*#__PURE__*/react.createElement("span", null, (0,utils/* toHex */.NC)(data))))))), /*#__PURE__*/react.createElement("h3", null, "Header"), /*#__PURE__*/react.createElement(PacketHeaderLayout, {
     packet: packet,
     showSlots: true,
     showFlags: true,
@@ -1392,4 +1408,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-1b3cd692086d6aa49349.js.map
+//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-84d43460f8c93f34971e.js.map

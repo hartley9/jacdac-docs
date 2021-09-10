@@ -92,8 +92,8 @@ var react = __webpack_require__(67294);
 var gatsby_theme_material_ui = __webpack_require__(36176);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
 var jdom_spec = __webpack_require__(45656);
-// EXTERNAL MODULE: ./src/components/specification/PacketSpecification.tsx + 11 modules
-var PacketSpecification = __webpack_require__(59296);
+// EXTERNAL MODULE: ./src/components/specification/PacketSpecification.tsx + 12 modules
+var PacketSpecification = __webpack_require__(38294);
 // EXTERNAL MODULE: ./src/components/IDChip.tsx
 var IDChip = __webpack_require__(92681);
 // EXTERNAL MODULE: ./src/components/ui/Markdown.tsx
@@ -280,4 +280,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-service-playground-tsx-73037c398dc190acb76e.js.map
+//# sourceMappingURL=component---src-templates-service-playground-tsx-9ffb5ac1eda83e3c7bcf.js.map

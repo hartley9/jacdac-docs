@@ -290,8 +290,8 @@ var react = __webpack_require__(67294);
 var gatsby_theme_material_ui = __webpack_require__(36176);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
 var jdom_spec = __webpack_require__(45656);
-// EXTERNAL MODULE: ./src/components/specification/PacketSpecification.tsx + 11 modules
-var PacketSpecification = __webpack_require__(59296);
+// EXTERNAL MODULE: ./src/components/specification/PacketSpecification.tsx + 12 modules
+var PacketSpecification = __webpack_require__(38294);
 // EXTERNAL MODULE: ./src/components/IDChip.tsx
 var IDChip = __webpack_require__(92681);
 // EXTERNAL MODULE: ./src/components/ui/Markdown.tsx
@@ -995,4 +995,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-service-editor-tsx-2c201e9ae398e9db5891.js.map
+//# sourceMappingURL=component---src-pages-tools-service-editor-tsx-56827f9dbe57fcd41853.js.map

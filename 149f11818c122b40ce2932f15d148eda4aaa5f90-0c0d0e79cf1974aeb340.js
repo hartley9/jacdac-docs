@@ -240,63 +240,7 @@ function IDChip(props) {
 
 /***/ }),
 
-/***/ 37958:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ KindChip; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(4998);
-/* harmony import */ var _KindIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(50048);
-/* harmony import */ var _PacketsContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(43226);
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(84377);
-/* harmony import */ var _ui_Tooltip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(60102);
-
-
-
-
-
-
-function KindChip(props) {
-  var {
-    kind,
-    className
-  } = props;
-  var {
-    filter,
-    setFilter
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_PacketsContext__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z);
-  var {
-    setDrawerType
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .ZP);
-  var icon = (0,_KindIcon__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .ZP)({
-    kind
-  });
-  var chipFilter = "kind:" + kind;
-  var filtered = filter && filter.indexOf(chipFilter) > -1;
-
-  var handleClick = () => {
-    var _filter$replace;
-
-    if (filtered) setFilter(filter === null || filter === void 0 ? void 0 : (_filter$replace = filter.replace(chipFilter, '')) === null || _filter$replace === void 0 ? void 0 : _filter$replace.trim());else setFilter((filter === null || filter === void 0 ? void 0 : filter.trim()) + ' ' + chipFilter);
-    setDrawerType(_AppContext__WEBPACK_IMPORTED_MODULE_3__/* .DrawerType.Packets */ .jw.Packets);
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Tooltip__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
-    title: filtered ? "remove filter " + chipFilter : "add filter " + chipFilter
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-    onClick: handleClick,
-    className: className,
-    size: "small",
-    label: (0,_KindIcon__WEBPACK_IMPORTED_MODULE_1__/* .kindName */ .QD)(kind),
-    icon: icon
-  })));
-}
-
-/***/ }),
-
-/***/ 59296:
+/***/ 38294:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 
@@ -827,12 +771,56 @@ function DeviceList(props) {
 }
 // EXTERNAL MODULE: ./src/components/IDChip.tsx
 var IDChip = __webpack_require__(92681);
-// EXTERNAL MODULE: ./src/components/KindChip.tsx
-var KindChip = __webpack_require__(37958);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Category.js
-var Category = __webpack_require__(89135);
+// EXTERNAL MODULE: ./src/components/PacketsContext.tsx + 3 modules
+var PacketsContext = __webpack_require__(43226);
+// EXTERNAL MODULE: ./src/components/AppContext.tsx
+var AppContext = __webpack_require__(84377);
 // EXTERNAL MODULE: ./src/components/ui/Tooltip.tsx
 var Tooltip = __webpack_require__(60102);
+;// CONCATENATED MODULE: ./src/components/KindChip.tsx
+
+
+
+
+
+
+function KindChip(props) {
+  var {
+    kind,
+    className
+  } = props;
+  var {
+    filter,
+    setFilter
+  } = (0,react.useContext)(PacketsContext/* default */.Z);
+  var {
+    setDrawerType
+  } = (0,react.useContext)(AppContext/* default */.ZP);
+  var icon = (0,KindIcon/* default */.ZP)({
+    kind
+  });
+  var chipFilter = "kind:" + kind;
+  var filtered = filter && filter.indexOf(chipFilter) > -1;
+
+  var handleClick = () => {
+    var _filter$replace;
+
+    if (filtered) setFilter(filter === null || filter === void 0 ? void 0 : (_filter$replace = filter.replace(chipFilter, '')) === null || _filter$replace === void 0 ? void 0 : _filter$replace.trim());else setFilter((filter === null || filter === void 0 ? void 0 : filter.trim()) + ' ' + chipFilter);
+    setDrawerType(AppContext/* DrawerType.Packets */.jw.Packets);
+  };
+
+  return /*#__PURE__*/react.createElement(Tooltip/* default */.Z, {
+    title: filtered ? "remove filter " + chipFilter : "add filter " + chipFilter
+  }, /*#__PURE__*/react.createElement("span", null, /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+    onClick: handleClick,
+    className: className,
+    size: "small",
+    label: (0,KindIcon/* kindName */.QD)(kind),
+    icon: icon
+  })));
+}
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Category.js
+var Category = __webpack_require__(89135);
 ;// CONCATENATED MODULE: ./src/components/PacketMembersChip.tsx
  // tslint:disable-next-line: no-submodule-imports
 
@@ -1011,7 +999,7 @@ function PacketSpecification(props) {
     className: classes.chip,
     id: packetInfo.identifier,
     filter: "pkt:0x" + packetInfo.identifier.toString(16)
-  }), /*#__PURE__*/react.createElement(KindChip/* default */.Z, {
+  }), /*#__PURE__*/react.createElement(KindChip, {
     className: classes.chip,
     kind: packetInfo.kind
   }), packetInfo.optional && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
@@ -1224,4 +1212,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-46e032479ca16636f5d3.js.map
+//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-0c0d0e79cf1974aeb340.js.map
