@@ -1313,6 +1313,10 @@ function PacketInspector() {
   var {
     selectedPacket: packet
   } = (0,react.useContext)(PacketsContext/* default */.Z);
+  var {
+    replayTrace,
+    trace
+  } = (0,react.useContext)(PacketsContext/* default */.Z);
   if (!packet) return /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "info"
   }, "Click on a packet in the ", /*#__PURE__*/react.createElement(History/* default */.Z, null), " packet list.");
@@ -1329,10 +1333,11 @@ function PacketInspector() {
   var pipePackets = packet.meta[constants/* META_PIPE */.YHR];
   var get = packet.meta[constants/* META_GET */.cWR];
   var sentTrace = packet.meta[constants/* META_TRACE */.EEP];
+  var savedTrace = replayTrace || trace;
 
   var handleCopy = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
-      return (0,utils/* toHex */.NC)(packet.toBuffer()) + " " + (0,pretty/* printPacket */.$_)(packet).replace(/\r?\n/g, " ");
+      return (0,utils/* toHex */.NC)(packet.header) + " " + (0,utils/* toHex */.NC)(packet.data) + " " + (0,pretty/* printPacket */.$_)(packet).replace(/\r?\n/g, " ") + "\n\n" + savedTrace.serializeToText(-100) + "\n";
     });
 
     return function handleCopy() {
@@ -1347,9 +1352,7 @@ function PacketInspector() {
     onCopy: handleCopy
   })), /*#__PURE__*/react.createElement("div", null, (0,pretty/* prettyDuration */.Xh)(packet.timestamp), ",", " ", /*#__PURE__*/react.createElement(KindChip/* default */.Z, {
     kind: info === null || info === void 0 ? void 0 : info.kind
-  }), ", size ", packet.size), /*#__PURE__*/react.createElement(Typography/* default */.Z, {
-    variant: "body2"
-  }, (0,pretty/* printPacket */.$_)(packet)), packet.sender && /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+  }), ", size ", packet.size), packet.sender && /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     variant: "body2"
   }, "sender: ", packet.sender), error && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "error"
@@ -1389,4 +1392,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-5f81b2e72352e759667f.js.map
+//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-1b3cd692086d6aa49349.js.map
