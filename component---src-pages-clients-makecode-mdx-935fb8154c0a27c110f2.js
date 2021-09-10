@@ -109,7 +109,7 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, "You should see a ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "li"
-  }, "Jacdac"), " section in the toolbox, under ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+  }, "Modules"), " section in the toolbox, under ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "li"
   }, "Advanced"), ".")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "servers",
@@ -219,4 +219,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-mdx-de1a7b5c710ba51a0423.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-mdx-935fb8154c0a27c110f2.js.map
