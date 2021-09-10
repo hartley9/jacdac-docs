@@ -64120,7 +64120,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "80d74842333668e0720a6d27c2da1622a4a6b578";
+  var sha = "fe544e9b8de4388813879c41e3ea46bd0d95c4b2";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70097,6 +70097,7 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
     _this = _JDEventSource.call(this) || this;
     _this._prev = Array(4).fill(0).map(() => ({
       packets: 0,
+      invalid: 0,
       announce: 0,
       acks: 0,
       bytes: 0
@@ -70104,6 +70105,7 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
     _this._previ = 0;
     _this._temp = {
       packets: 0,
+      invalid: 0,
       announce: 0,
       acks: 0,
       bytes: 0
@@ -70122,12 +70124,13 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
   var _proto = BusStatsMonitor.prototype;
 
   _proto.accumulate = function accumulate(pkt) {
-    var _pkt$header, _pkt$data;
+    var _pkt$header, _pkt$data, _pkt$decoded;
 
     this._temp.packets++;
     this._temp.bytes += (((_pkt$header = pkt.header) === null || _pkt$header === void 0 ? void 0 : _pkt$header.length) || 0) + (((_pkt$data = pkt.data) === null || _pkt$data === void 0 ? void 0 : _pkt$data.length) || 0);
     if (pkt.isAnnounce) this._temp.announce++;
     if (pkt.isCRCAck) this._temp.acks++;
+    if ((_pkt$decoded = pkt.decoded) !== null && _pkt$decoded !== void 0 && _pkt$decoded.error) this._temp.invalid++;
   };
 
   _proto.handleSelfAnnounce = function handleSelfAnnounce() {
@@ -70136,6 +70139,7 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
     this._previ = (this._previ + 1) % this._prev.length;
     this._temp = {
       packets: 0,
+      invalid: 0,
       announce: 0,
       acks: 0,
       bytes: 0
@@ -70158,6 +70162,7 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
 
       var r = {
         packets: 0,
+        invalid: 0,
         announce: 0,
         acks: 0,
         bytes: 0
@@ -70167,6 +70172,7 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
       for (var i = 0; i < this._prev.length; ++i) {
         var p = this._prev[i];
         r.packets += p.packets;
+        r.invalid += p.invalid;
         r.announce += p.announce;
         r.acks += p.acks;
         r.bytes += p.bytes;
@@ -70175,6 +70181,7 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
 
       var n2 = n / 2;
       r.packets /= n2;
+      r.invalid /= n2;
       r.announce /= n2;
       r.acks /= n2;
       r.bytes /= n2;
@@ -74176,7 +74183,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.8"};
+var package_namespaceObject = {"i8":"1.16.9"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -81462,4 +81469,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-1f68e8880ff2e115caae.js.map
+//# sourceMappingURL=app-c5ea7baea49105994f3b.js.map
