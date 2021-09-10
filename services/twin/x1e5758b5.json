@@ -1,6 +1,6 @@
 {
   "serviceClass": 509040821,
-  "name": "hIDAdapter",
+  "name": "hidAdapter",
   "registers": [
     {
       "code": 128,
