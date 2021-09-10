@@ -91,12 +91,12 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, "Open ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
-    "href": "https://makecode.microbit.org/beta",
+    "href": "https://makecode.microbit.org/",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
   }, "MakeCode for micro:bit"), ", ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
-    "href": "https://arcade.makecode.com/beta",
+    "href": "https://arcade.makecode.com/",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
   }, "Arcade"), " or ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
@@ -224,4 +224,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-mdx-f875029cf54bb1741651.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-mdx-6ce67a6ab7d7f59b3b1e.js.map

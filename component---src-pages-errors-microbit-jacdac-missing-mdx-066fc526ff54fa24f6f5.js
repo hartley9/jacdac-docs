@@ -110,10 +110,10 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, "go to ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
-    "href": "https://makecode.microbit.org/beta",
+    "href": "https://makecode.microbit.org/",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "https://makecode.microbit.org/beta")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "https://makecode.microbit.org/")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, "open an existing or new project"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
@@ -156,4 +156,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-errors-microbit-jacdac-missing-mdx-4272b2bca19980d12362.js.map
+//# sourceMappingURL=component---src-pages-errors-microbit-jacdac-missing-mdx-066fc526ff54fa24f6f5.js.map

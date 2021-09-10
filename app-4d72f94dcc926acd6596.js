@@ -63253,7 +63253,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "d0120c268f0b60a2fd864e53fccd566db70cde41";
+var sha = "931a28ab4791038963a4d66b2af72c673263eedc";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64133,7 +64133,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "d0120c268f0b60a2fd864e53fccd566db70cde41";
+  var sha = "931a28ab4791038963a4d66b2af72c673263eedc";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -65746,8 +65746,8 @@ function LayoutWithContext(props) {
 
 
 var editors = {
-  arcade: "https://arcade.makecode.com/beta/",
-  microbit: "https://makecode.microbit.org/beta/",
+  arcade: "https://arcade.makecode.com/",
+  microbit: "https://makecode.microbit.org/",
   maker: "https://maker.makecode.com/"
 };
 var MakeCodeSnippetContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
@@ -74199,7 +74199,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.13"};
+var package_namespaceObject = {"i8":"1.16.14"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -81485,4 +81485,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-e22cb282966a9dd48892.js.map
+//# sourceMappingURL=app-4d72f94dcc926acd6596.js.map
