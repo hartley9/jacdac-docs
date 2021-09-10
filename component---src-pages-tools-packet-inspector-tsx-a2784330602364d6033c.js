@@ -420,6 +420,60 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 73097:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
+}), 'Done');
+
+exports.Z = _default;
+
+/***/ }),
+
+/***/ 97332:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4l6 6v10c0 1.1-.9 2-2 2H7.99C6.89 23 6 22.1 6 21l.01-14c0-1.1.89-2 1.99-2h7zm-1 7h5.5L14 6.5V12z"
+}), 'FileCopy');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 23443:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -469,6 +523,33 @@ var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M22 10l-6-6H4c-1.1 0-2 .9-2 2v12.01c0 1.1.9 1.99 2 1.99l16-.01c1.1 0 2-.89 2-1.99v-8zm-7-4.5l5.5 5.5H15V5.5z"
 }), 'Note');
+
+exports.Z = _default;
+
+/***/ }),
+
+/***/ 78359:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+}), 'ReportProblem');
 
 exports.Z = _default;
 
@@ -804,6 +885,100 @@ function ServiceSpecificationCard(props) {
 
 /***/ }),
 
+/***/ 18568:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ CopyButton; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(15861);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(45987);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _material_ui_icons_FileCopy__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(97332);
+/* harmony import */ var _material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(73097);
+/* harmony import */ var _material_ui_icons_ReportProblem__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(78359);
+/* harmony import */ var _IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(79885);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(83332);
+/* harmony import */ var _hooks_useMounted__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(72179);
+/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81794);
+
+
+var _excluded = ["label", "title", "onCopy"];
+
+
+
+
+
+
+
+
+function CopyButton(props) {
+  var {
+    label,
+    title = "copy data to clipboard",
+    onCopy
+  } = props,
+      rest = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(props, _excluded);
+
+  var {
+    0: copied,
+    1: setCopied
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined);
+  var mounted = (0,_hooks_useMounted__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)();
+
+  var handleClick = /*#__PURE__*/function () {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(function* (ev) {
+      ev.stopPropagation();
+      ev.preventDefault();
+
+      try {
+        setCopied(null);
+
+        var _copied = yield onCopy();
+
+        if (typeof _copied === "string") {
+          var _text = _copied;
+          yield navigator.clipboard.writeText(_text);
+        } else {
+          var canvas = _copied;
+          var blob = yield new Promise(resolve => canvas.toBlob(blob => resolve(blob)));
+          var item = new ClipboardItem({
+            "image/png": blob
+          });
+          navigator.clipboard.write([item]);
+        }
+
+        if (mounted()) setCopied(true);
+      } catch (e) {
+        console.debug(e);
+        if (mounted()) setCopied(false);
+      } finally {
+        yield (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_3__/* .delay */ .gw)(1000);
+        if (mounted()) setCopied(undefined);
+      }
+    });
+
+    return function handleClick(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var disabled = copied !== undefined;
+  var text = copied === true ? "Copied!" : copied === false ? "Copy failed" : label || "copy to clipboard";
+  return label ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, Object.assign({
+    title: title
+  }, rest, {
+    onClick: disabled ? undefined : handleClick
+  }), text) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, Object.assign({
+    trackName: "ui.copy",
+    title: text
+  }, rest, {
+    onClick: disabled ? undefined : handleClick
+  }), copied === true ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null) : copied === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_ReportProblem__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_FileCopy__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null));
+}
+
+/***/ }),
+
 /***/ 55662:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -817,6 +992,8 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(15861);
 // EXTERNAL MODULE: ./src/components/ui/Alert.tsx
 var Alert = __webpack_require__(95453);
 // EXTERNAL MODULE: ./src/components/PacketsContext.tsx + 3 modules
@@ -1102,10 +1279,15 @@ function PacketList(props) {
 }
 // EXTERNAL MODULE: ./src/components/specification/ServiceSpecificationCard.tsx
 var ServiceSpecificationCard = __webpack_require__(21623);
+// EXTERNAL MODULE: ./src/components/ui/CopyButton.tsx
+var CopyButton = __webpack_require__(18568);
 ;// CONCATENATED MODULE: ./src/components/tools/PacketInspector.tsx
 
 
+
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
+
 
 
 
@@ -1135,9 +1317,23 @@ function PacketInspector() {
   var pipePackets = packet.meta[constants/* META_PIPE */.YHR];
   var get = packet.meta[constants/* META_GET */.cWR];
   var sentTrace = packet.meta[constants/* META_TRACE */.EEP];
+
+  var handleCopy = /*#__PURE__*/function () {
+    var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
+      return (0,utils/* roundWithPrecision */.JI)(packet.timestamp, 3) + ": " + (0,utils/* toHex */.NC)(packet.toBuffer()) + "\t" + (0,pretty/* printPacket */.$_)(packet).replace(/\r?\n/g, " ");
+    });
+
+    return function handleCopy() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h2", null, /*#__PURE__*/react.createElement(PacketBadge/* default */.Z, {
     packet: packet
-  }), name + " " + (packet.isCommand ? "to" : "from") + " " + packet.friendlyDeviceName + "/" + packet.friendlyServiceName), /*#__PURE__*/react.createElement("div", null, (0,pretty/* prettyDuration */.Xh)(packet.timestamp), ",", " ", /*#__PURE__*/react.createElement(KindChip/* default */.Z, {
+  }), name + " " + (packet.isCommand ? "to" : "from") + " " + packet.friendlyDeviceName + "/" + packet.friendlyServiceName, /*#__PURE__*/react.createElement(CopyButton/* default */.Z, {
+    title: "copy packet",
+    onCopy: handleCopy
+  })), /*#__PURE__*/react.createElement("div", null, (0,pretty/* prettyDuration */.Xh)(packet.timestamp), ",", " ", /*#__PURE__*/react.createElement(KindChip/* default */.Z, {
     kind: info === null || info === void 0 ? void 0 : info.kind
   }), ", size ", packet.size), /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     variant: "body2"
@@ -1148,13 +1344,13 @@ function PacketInspector() {
     showSlots: true,
     showFlags: true,
     showCommands: true
-  }), data && /*#__PURE__*/react.createElement(PacketDataLayout, {
+  }), data && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Data"), /*#__PURE__*/react.createElement(PacketDataLayout, {
     packet: packet,
     showHex: true,
     showDecoded: true,
     showJSON: true,
     showUnpacked: true
-  }), ack && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Ack received"), /*#__PURE__*/react.createElement(PacketList, {
+  })), ack && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Ack received"), /*#__PURE__*/react.createElement(PacketList, {
     packets: [ack]
   })), get && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "GET request"), /*#__PURE__*/react.createElement(PacketList, {
     packets: [get]
@@ -1179,4 +1375,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-5490719db10703bce350.js.map
+//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-a2784330602364d6033c.js.map

@@ -63,7 +63,7 @@ function DashboardRoleManager(props) {
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
     dense: true
-  }, roles.map(role => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_services_RoleListItem__WEBPACK_IMPORTED_MODULE_7__/* .RoleListItem */ .t, {
+  }, roles.map(role => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_services_RoleListItem__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
     key: role.name,
     role: role
   })))), expanded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
@@ -82,4 +82,4 @@ function DashboardRoleManager(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=571-cc11839d1a1d800805eb.js.map
+//# sourceMappingURL=571-ebc1e0cf33976f5439c6.js.map

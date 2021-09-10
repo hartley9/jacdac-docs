@@ -64091,7 +64091,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "05f742da4643b81149a90fb89cb3570331d5f041";
+  var sha = "58eb84ef9aac16b8f81505685ecd4b8d8fe3ebd4";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70271,12 +70271,13 @@ var RoleManagerClient = /*#__PURE__*/function (_JDServiceClient) {
         for (var buf of yield inp.readData(1000)) {
           var [devidbuf, serviceClass, serviceIndex, name] = (0,pack/* jdunpack */.TE)(buf, "b[8] u32 u8 s");
           var deviceId = (0,utils/* toHex */.NC)(devidbuf);
-          roles.push({
+          var role = {
             deviceId,
             serviceClass,
             serviceIndex,
             name
-          });
+          };
+          roles.push(role);
         } // store result if changed
 
 
@@ -81431,4 +81432,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-37b79c800ffefd875f68.js.map
+//# sourceMappingURL=app-d7648b7016544df8f8c8.js.map

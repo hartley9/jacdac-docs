@@ -91894,7 +91894,7 @@ function useSecret(id) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "t": function() { return /* binding */ RoleListItem; }
+/* harmony export */   "Z": function() { return /* binding */ RoleListItem; }
 /* harmony export */ });
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4381);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(38030);
@@ -91925,7 +91925,7 @@ function RoleListItem(props) {
     selected: selected,
     onClick: onClick
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
-    primary: roleName,
+    primary: roleName || "???",
     secondary: bound ? "assigned to " + bound.friendlyName + "[" + serviceIndex + "]" : "not assigned"
   }));
 }
@@ -98704,4 +98704,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-3ba41fdd949f334bf3a0.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-b9c4185cf336c3e68d5f.js.map
