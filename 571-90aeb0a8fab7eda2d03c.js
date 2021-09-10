@@ -72,14 +72,14 @@ function DashboardRoleManager(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
     id: switchId,
     checked: autoBind,
-    onChange: handleChecked,
-    "aria-labelledby": labelId
+    onChange: handleChecked
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-    id: labelId
+    id: labelId,
+    htmlFor: switchId
   }, "auto assign roles")));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=571-ebc1e0cf33976f5439c6.js.map
+//# sourceMappingURL=571-90aeb0a8fab7eda2d03c.js.map
