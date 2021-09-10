@@ -511,7 +511,7 @@ function Carousel() {
   var deviceFilter = iframeBridge.deviceFilter.bind(iframeBridge);
   var serviceFilter = iframeBridge.serviceFilter.bind(iframeBridge);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-    showHeader: false,
+    showHeader: true,
     deviceSort: deviceSort,
     deviceFilter: deviceFilter,
     serviceFilter: serviceFilter,
@@ -548,4 +548,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-makecode-sim-tsx-ca2199980a53f3fdbc87.js.map
+//# sourceMappingURL=component---src-pages-tools-makecode-sim-tsx-916403be67542374a872.js.map

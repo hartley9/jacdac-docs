@@ -65,7 +65,11 @@ function MDXContent(_ref) {
     "href": "https://github.com/microsoft/pxt-jacdac",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "pxt-jacdac"), " contains MakeCode support many Jacdac services.\nThe following editors are currently supported: micro:bit witn V2 hardware, Arcade and Maker."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "pxt-jacdac"), " contains MakeCode support many Jacdac services.\nThe following editors are currently supported: micro:bit witn V2 hardware, Arcade and Maker."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+    parentName: "li"
+  }, "Jacdac requires a micro:bit V2!"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "usage",
     "style": {
       "position": "relative"
@@ -91,12 +95,15 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, "Open ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
-    "href": "https://microsoft.github.io/jacdac-docs/editors/makecode",
+    "href": "https://makecode.microbit.org/beta",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "/editors/makecode")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, "Select the desired MakeCode editor in the dropdown at the top of the MakeCode editor"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "MakeCode for micro:bit"), " or ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
+    "href": "https://maker.makecode.com/",
+    "target": "_blank",
+    "rel": "nofollow noopener noreferrer"
+  }, "Maker")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, "Open or create a new project."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
@@ -219,4 +226,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-mdx-935fb8154c0a27c110f2.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-mdx-184f7717d3acfa961682.js.map
