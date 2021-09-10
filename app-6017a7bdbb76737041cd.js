@@ -50577,7 +50577,8 @@ function DashboardDevice(props) {
     toggleExpanded,
     variant,
     showAvatar,
-    showHeader
+    showHeader,
+    hideNotifications
   } = props;
   var {
     enqueueSnackbar
@@ -50595,7 +50596,7 @@ function DashboardDevice(props) {
   var intersection = useIntersectionObserver(serviceGridRef);
   var visible = !!(intersection !== null && intersection !== void 0 && intersection.isIntersecting); // track restart events
 
-  (0,react.useEffect)(() => device === null || device === void 0 ? void 0 : device.subscribe(constants/* RESTART */.d0K, () => enqueueSnackbar(device.shortId + " restarted...", "info")), [device]);
+  (0,react.useEffect)(() => !hideNotifications && (device === null || device === void 0 ? void 0 : device.subscribe(constants/* RESTART */.d0K, () => enqueueSnackbar(device.shortId + " restarted...", "info"))), [device]);
   var ServiceWidgets = (0,react.useCallback)(() => {
     var _services$filter, _services$filter$filt;
 
@@ -63248,7 +63249,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "0041118f091f47e5b0c9f5970e7f0bb612b0df68";
+var sha = "e38114d2ab9d9786f51fd74f31b167decf7235f1";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64128,7 +64129,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0041118f091f47e5b0c9f5970e7f0bb612b0df68";
+  var sha = "e38114d2ab9d9786f51fd74f31b167decf7235f1";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -81477,4 +81478,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-05c445ab18628c6ccbc8.js.map
+//# sourceMappingURL=app-6017a7bdbb76737041cd.js.map
