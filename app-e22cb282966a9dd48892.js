@@ -35931,6 +35931,8 @@ var JDClient = /*#__PURE__*/function (_JDEventSource) {
 /* harmony export */   "BKx": function() { return /* binding */ REGISTER_POLL_FIRST_REPORT_INTERVAL; },
 /* harmony export */   "T5P": function() { return /* binding */ REGISTER_POLL_REPORT_INTERVAL; },
 /* harmony export */   "nm3": function() { return /* binding */ REGISTER_POLL_REPORT_MAX_INTERVAL; },
+/* harmony export */   "oCD": function() { return /* binding */ REGISTER_POLL_REPORT_VOLATILE_INTERVAL; },
+/* harmony export */   "MCW": function() { return /* binding */ REGISTER_POLL_REPORT_VOLATILE_MAX_INTERVAL; },
 /* harmony export */   "Go2": function() { return /* binding */ REGISTER_OPTIONAL_POLL_COUNT; },
 /* harmony export */   "cXd": function() { return /* binding */ STREAMING_DEFAULT_INTERVAL; },
 /* harmony export */   "Cot": function() { return /* binding */ PING_LOGGERS_POLL; },
@@ -36269,6 +36271,8 @@ var REGISTER_POLL_STREAMING_INTERVAL = 5000;
 var REGISTER_POLL_FIRST_REPORT_INTERVAL = 400;
 var REGISTER_POLL_REPORT_INTERVAL = 5001;
 var REGISTER_POLL_REPORT_MAX_INTERVAL = 60000;
+var REGISTER_POLL_REPORT_VOLATILE_INTERVAL = 1000;
+var REGISTER_POLL_REPORT_VOLATILE_MAX_INTERVAL = 5000;
 var REGISTER_OPTIONAL_POLL_COUNT = 3;
 var STREAMING_DEFAULT_INTERVAL = 50;
 var PING_LOGGERS_POLL = 2400;
@@ -63249,7 +63253,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "545cefc9c4639110da2ed14a5d31892647b84bed";
+var sha = "d0120c268f0b60a2fd864e53fccd566db70cde41";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64129,7 +64133,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "545cefc9c4639110da2ed14a5d31892647b84bed";
+  var sha = "d0120c268f0b60a2fd864e53fccd566db70cde41";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -68838,6 +68842,8 @@ var JDService = /*#__PURE__*/function (_JDNode) {
       var _reg = this.register(_id);
 
       if (_reg) _reg.processPacket(pkt);
+    } else if (pkt.isCommand) {
+      this.invalidateRegisterValues(pkt);
     }
   } // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ;
@@ -71478,7 +71484,8 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
         if (noDataYet && age > 1000) register.sendGetAsync();
       } // regular register, ping if data is old
       else {
-        var expiration = Math.min(constants/* REGISTER_POLL_REPORT_MAX_INTERVAL */.nm3, (noDataYet ? constants/* REGISTER_POLL_FIRST_REPORT_INTERVAL */.BKx : constants/* REGISTER_POLL_REPORT_INTERVAL */.T5P) * (1 << backoff));
+        var volatile = !!(specification !== null && specification !== void 0 && specification.volatile);
+        var expiration = volatile ? Math.min(constants/* REGISTER_POLL_REPORT_VOLATILE_MAX_INTERVAL */.MCW, constants/* REGISTER_POLL_REPORT_VOLATILE_INTERVAL */.oCD * (1 << backoff)) : Math.min(constants/* REGISTER_POLL_REPORT_MAX_INTERVAL */.nm3, (noDataYet ? constants/* REGISTER_POLL_FIRST_REPORT_INTERVAL */.BKx : constants/* REGISTER_POLL_REPORT_INTERVAL */.T5P) * (1 << backoff));
 
         if (age > expiration) {
           //console.log(`bus: poll ${register.id}`, register, age, backoff, expiration)
@@ -74192,7 +74199,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.12"};
+var package_namespaceObject = {"i8":"1.16.13"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -81478,4 +81485,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-368599141f3da395f82c.js.map
+//# sourceMappingURL=app-e22cb282966a9dd48892.js.map
