@@ -365,7 +365,7 @@ function ToolsDrawer() {
   }, {// separator
   }, {
     text: "MakeCode",
-    href: "/clients/makecode/",
+    to: "/clients/makecode/",
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_icons_MakeCodeIcon__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null)
   },
   /*
@@ -436,4 +436,4 @@ function ToolsDrawer() {
 /***/ })
 
 }]);
-//# sourceMappingURL=4986-e2ca54a6fde70b835730.js.map
+//# sourceMappingURL=4986-856f0f94c251b2d300fd.js.map
