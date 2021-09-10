@@ -27,10 +27,10 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-ea114df2e01ea3f08c60.js"
+    "url": "webpack-runtime-7d7d50808dd121613501.js"
   },
   {
-    "url": "styles.ba0dbf5843e7fbacbe82.css"
+    "url": "styles.fe907b4a11a16fa05fb9.css"
   },
   {
     "url": "framework-3e5fdc5ba728e15d7465.js"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "8f80897a85a2fa38db35e40ee34262d5"
+    "revision": "c35ca2315c2e43c882ae1c703fb290b8"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,11 +60,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "0b5d7e67f03af06488581c8899e7850f"
+    "revision": "19561a9e507523542df520f88fd310f9"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "e62a1f0adb44f29046a854ae986ddc2a"
+    "revision": "48b200b0989b1d4d3e9c994e6f9e44b2"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -72,7 +72,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "b7823d10bfcf72634dbbc08314cd38f8"
+    "revision": "0e88c6e634d17eaf34fc5eff372ed908"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "926b8400d68e81e147e7cbba1e3b6285"
+    "revision": "e9950b2985fa14a576d6a4d3a49e5cfd"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1268,7 +1268,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-74e46a73dc7f2bb42831.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-54663ba41e1a8b389209.js`))) {
     return await fetch(event.request)
   }
 

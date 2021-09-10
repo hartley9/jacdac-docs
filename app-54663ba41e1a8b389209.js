@@ -63248,7 +63248,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "2c272e4cc7d53b189ec3cf16bb95f87794043b45";
+var sha = "4ad39368bcb6f773489a54b73250657e5f9333a1";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -63799,7 +63799,7 @@ function useThrottledValue(value, maxRate, maxCycles) {
 
 
 /* harmony default export */ __webpack_exports__["Z"] = (props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, props, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
-  d: "M13.922 2.495V19.3a2.35 2.35 0 11-3.845 0V2.495c0-.826.67-1.495 1.495-1.495h.855c.825 0 1.495.67 1.495 1.495zm-1.923 16.723a1.431 1.431 0 100 2.863 1.431 1.431 0 000-2.863zm5.426.001a1.431 1.431 0 100 2.863 1.431 1.431 0 000-2.863zm1.922-14.587V19.3a2.35 2.35 0 11-3.844 0V4.632c0-.826.67-1.495 1.495-1.495h.854c.826 0 1.495.67 1.495 1.495zM7.002 1.002c.826 0 1.495.669 1.495 1.494V19.3a2.35 2.35 0 11-3.848.006l.004-.006V2.496C4.653 1.67 5.323 1 6.148 1zM6.575 19.22a1.431 1.431 0 100 2.862 1.431 1.431 0 000-2.862z"
+  d: "M21.268 14.536c.841 0 1.524-.83 1.524-1.85v-1.152c0-1.022-.683-1.85-1.524-1.85H2.73c-.84 0-1.524.828-1.524 1.85v1.152c0 1.02.683 1.85 1.524 1.85h18.54zM19.1 20.649c.841 0 1.524-.83 1.524-1.85v-1.152c0-1.021-.683-1.85-1.524-1.85H2.73c-.84 0-1.524.828-1.524 1.85v1.152c0 1.02.683 1.85 1.524 1.85H19.1zm2.17-12.443c.842 0 1.525-.83 1.525-1.85V5.202c0-1.02-.683-1.85-1.524-1.85H2.73c-.841 0-1.524.83-1.524 1.85v1.152c0 1.022.683 1.85 1.524 1.85h18.54zM5.043 5.78a1.502 1.502 0 1 1-3.004-.003 1.502 1.502 0 0 1 3.003.002zm0 6.33a1.502 1.502 0 1 1-3.004-.001 1.502 1.502 0 0 1 3.003 0zm0 6.113a1.502 1.502 0 1 1-3.004-.002 1.502 1.502 0 0 1 3.003.002z"
 })));
 
 /***/ }),
@@ -64128,7 +64128,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2c272e4cc7d53b189ec3cf16bb95f87794043b45";
+  var sha = "4ad39368bcb6f773489a54b73250657e5f9333a1";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74191,7 +74191,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.11"};
+var package_namespaceObject = {"i8":"1.16.12"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -81477,4 +81477,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-74e46a73dc7f2bb42831.js.map
+//# sourceMappingURL=app-54663ba41e1a8b389209.js.map
