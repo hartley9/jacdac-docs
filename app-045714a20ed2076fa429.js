@@ -63469,7 +63469,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "6acb75065aca6fab835b38d07dce981e46e60ae0";
+var sha = "5dcce50a33d3146970e0c6c55d5e5f3c0890660c";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64349,7 +64349,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "6acb75065aca6fab835b38d07dce981e46e60ae0";
+  var sha = "5dcce50a33d3146970e0c6c55d5e5f3c0890660c";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -69412,6 +69412,7 @@ var random = __webpack_require__(80303);
 
 
 
+
 /**
  * Pipe information
  * @category Runtime
@@ -69905,17 +69906,17 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
             aa.pkt = null;
             aa.errCb();
             numdrop++;
-            console.debug("ack: " + this.shortId + " drop " + aa.pkt + " (" + drops + " drops, " + resends + " resends)");
+            if (flags/* default.diagnostics */.Z.diagnostics) console.debug("ack: " + this.shortId + " drop " + aa.pkt + " (" + drops + " drops, " + resends + " resends)");
           } else {
             resends++;
             aa.pkt.sendCmdAsync(this);
-            console.debug("ack: " + this.shortId + " resend " + aa.pkt + " (" + drops + " drops, " + resends + " resends)");
+            if (flags/* default.diagnostics */.Z.diagnostics) console.debug("ack: " + this.shortId + " resend " + aa.pkt + " (" + drops + " drops, " + resends + " resends)");
           }
         }
       }
 
       if (numdrop) this._ackAwaiting = this._ackAwaiting.filter(aa => !!aa.pkt);
-      console.debug("ack: " + this.shortId + " awaits " + this._ackAwaiting.length);
+      if (flags/* default.diagnostics */.Z.diagnostics) console.debug("ack: " + this.shortId + " awaits " + this._ackAwaiting.length);
 
       if (this._ackAwaiting.length > 0) {
         this.bus.scheduler.setTimeout(resend, Math.random() * (constants/* ACK_MAX_DELAY */.Iwd - constants/* ACK_MIN_DELAY */.V7w) + constants/* ACK_MIN_DELAY */.V7w);
@@ -71686,34 +71687,31 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
       if ((0,jdom_spec/* isReading */.vz)(specification) && (0,jdom_spec/* isSensor */.rq)(service.specification)) {
         // compute refresh interval
         var intervalRegister = service.register(constants/* SensorReg.StreamingInterval */.q9t.StreamingInterval);
-        var interval = intervalRegister === null || intervalRegister === void 0 ? void 0 : intervalRegister.intValue; // no interval data
+        var interval = intervalRegister === null || intervalRegister === void 0 ? void 0 : intervalRegister.uintValue; // no interval data
 
         if (interval === undefined) {
           // use preferred interval data or default to 50
-          var preferredInterval = service.register(constants/* SensorReg.StreamingPreferredInterval */.q9t.StreamingPreferredInterval);
-          interval = preferredInterval === null || preferredInterval === void 0 ? void 0 : preferredInterval.intValue; // if no interval, poll interval value
+          var preferredIntervalRegister = service.register(constants/* SensorReg.StreamingPreferredInterval */.q9t.StreamingPreferredInterval);
+          var preferredInterval = preferredIntervalRegister === null || preferredIntervalRegister === void 0 ? void 0 : preferredIntervalRegister.uintValue;
+          interval = preferredInterval; // if no interval, poll interval value
 
-          if (interval === undefined && intervalRegister && intervalRegister.lastGetTimestamp - this.timestamp > constants/* REGISTER_POLL_STREAMING_INTERVAL */.Ymh) {
+          if (interval === undefined) {
             // all async
-            if (!intervalRegister.data) intervalRegister.sendGetAsync();
-            if (!preferredInterval.data) preferredInterval.sendGetAsync();
+            if (intervalRegister && !intervalRegister.data && this.timestamp - intervalRegister.lastGetTimestamp > constants/* REGISTER_POLL_STREAMING_INTERVAL */.Ymh) intervalRegister.sendGetAsync();
+            if (preferredIntervalRegister && !preferredIntervalRegister.data && this.timestamp - preferredIntervalRegister.lastGetTimestamp > constants/* REGISTER_POLL_STREAMING_INTERVAL */.Ymh) preferredIntervalRegister.sendGetAsync();
           }
         } // still no interval data use from spec or default
 
 
         if (interval === undefined) interval = specification.preferredInterval || constants/* STREAMING_DEFAULT_INTERVAL */.cXd;
-        var samplesRegister = service.register(constants/* SensorReg.StreamingSamples */.q9t.StreamingSamples);
-        var samplesLastSetTimesamp = samplesRegister === null || samplesRegister === void 0 ? void 0 : samplesRegister.lastSetTimestamp;
+        var streamingSamplesRegister = service.register(constants/* SensorReg.StreamingSamples */.q9t.StreamingSamples);
+        var streamingSamplesAge = this.timestamp - streamingSamplesRegister.lastSetTimestamp; // need to figure out when we asked for streaming
 
-        if (samplesLastSetTimesamp !== undefined) {
-          var samplesAge = this.timestamp - samplesRegister.lastSetTimestamp; // need to figure out when we asked for streaming
+        var midSamplesAge = interval * 0xff >> 1; // compute if half aged
 
-          var midSamplesAge = interval * 0xff / 2; // compute if half aged
-
-          if (samplesAge > midSamplesAge) {
-            //console.debug({ samplesAge, midSamplesAge, interval })
-            samplesRegister.sendSetPackedAsync([0xff]);
-          }
+        if (streamingSamplesAge > midSamplesAge) {
+          //console.debug({ samplesAge, midSamplesAge, interval })
+          streamingSamplesRegister.sendSetPackedAsync([0xff]);
         } // first query, get data asap once per second
 
 
@@ -74435,7 +74433,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.17"};
+var package_namespaceObject = {"i8":"1.16.18"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -81721,4 +81719,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-6f801ea1e718d97f641f.js.map
+//# sourceMappingURL=app-045714a20ed2076fa429.js.map
