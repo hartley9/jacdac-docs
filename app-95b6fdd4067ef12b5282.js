@@ -63456,7 +63456,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "8591acfddefb8064ec513fd26bcd6a9b1d0e0c4b";
+var sha = "1f07857e972ac64efe8dcb07eaf097481b0e1d30";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64336,7 +64336,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "8591acfddefb8064ec513fd26bcd6a9b1d0e0c4b";
+  var sha = "1f07857e972ac64efe8dcb07eaf097481b0e1d30";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -65992,7 +65992,7 @@ function MakeCodeSnippetProvider(props) {
 
 "use strict";
 /* unused harmony export IFrameBridgeClient */
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(43144);
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(43144);
 /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(97326);
 /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(94578);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71815);
@@ -66000,6 +66000,8 @@ function MakeCodeSnippetProvider(props) {
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(31028);
 /* harmony import */ var _jacdac_ts_src_jdom_packet__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(57683);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(81794);
+/* harmony import */ var _jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(9809);
+
 
 
 
@@ -66051,14 +66053,16 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
     this.mount(this.bus.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .PACKET_SEND */ .RaS, this.postPacket));
     this.mount(this.bus.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .DEVICE_ANNOUNCE */ .Hob, this.handleResize)); // force compute add blocks button
 
-    this.mount(this.bus.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .DEVICE_ANNOUNCE */ .Hob, () => this.emit(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .CHANGE */ .Ver))); // don't use bus.schedulere here
-
-    var id = setInterval(this.handleResize, 1000);
-    this.mount(() => clearInterval(id));
+    this.mount(this.bus.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .DEVICE_ANNOUNCE */ .Hob, () => this.emit(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .CHANGE */ .Ver)));
     window.addEventListener("message", this.handleMessage, false);
     this.mount(() => window.removeEventListener("message", this.handleMessage, false));
 
-    if (window.parent && window.parent !== window) {
+    if ((0,_jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_7__/* .inIFrame */ .H)()) {
+      // periodically resize iframe to account for dashboard size changes
+      // don't use bus.schedulere here
+      var id = setInterval(this.handleResize, 1000);
+      this.mount(() => clearInterval(id)); // handle received frame id
+
       var frameid = window.location.hash.slice(1);
       console.debug({
         frameid
@@ -66191,7 +66195,7 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
     }, "*");
   };
 
-  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(IFrameBridgeClient, [{
+  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z)(IFrameBridgeClient, [{
     key: "origin",
     get: function get() {
       return this.bus.parentOrigin;
@@ -69856,8 +69860,10 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
 
   _proto2.initAcks = function initAcks() {
     if (this._ackAwaiting) return;
+    var drops = 0;
+    var resends = 0;
     this._ackAwaiting = [];
-    this.on(constants/* PACKET_REPORT */.deN, rep => {
+    var cleanUp = this.subscribe(constants/* PACKET_REPORT */.deN, rep => {
       if (rep.serviceIndex != constants/* JD_SERVICE_INDEX_CRC_ACK */.$rs) return;
       var numdone = 0;
 
@@ -69879,22 +69885,33 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
       for (var aa of this._ackAwaiting) {
         if (aa.pkt) {
           if (--aa.retriesLeft < 0) {
+            drops++;
             aa.pkt.meta[constants/* META_ACK_FAILED */.GiR] = true;
             aa.pkt = null;
             aa.errCb();
             numdrop++;
+            console.debug("ack: " + this.shortId + " drop " + aa.pkt + " (" + drops + " drops, " + resends + " resends)");
           } else {
+            resends++;
             aa.pkt.sendCmdAsync(this);
+            console.debug("ack: " + this.shortId + " resend " + aa.pkt + " (" + drops + " drops, " + resends + " resends)");
           }
         }
       }
 
       if (numdrop) this._ackAwaiting = this._ackAwaiting.filter(aa => !!aa.pkt);
-      setTimeout(resend, Math.random() * (constants/* ACK_MAX_DELAY */.Iwd - constants/* ACK_MIN_DELAY */.V7w) + constants/* ACK_MIN_DELAY */.V7w);
+      console.debug("ack: " + this.shortId + " awaits " + this._ackAwaiting.length);
+
+      if (this._ackAwaiting.length > 0) {
+        this.bus.scheduler.setTimeout(resend, Math.random() * (constants/* ACK_MAX_DELAY */.Iwd - constants/* ACK_MIN_DELAY */.V7w) + constants/* ACK_MIN_DELAY */.V7w);
+      } else {
+        this._ackAwaiting = undefined;
+        cleanUp();
+      }
     }; // start loop
 
 
-    setTimeout(resend, 40);
+    this.bus.scheduler.setTimeout(resend, 40);
   }
   /**
    * @internal
@@ -74403,7 +74420,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.14"};
+var package_namespaceObject = {"i8":"1.16.16"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -81689,4 +81706,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-3b96b13213d96a295e8b.js.map
+//# sourceMappingURL=app-95b6fdd4067ef12b5282.js.map
