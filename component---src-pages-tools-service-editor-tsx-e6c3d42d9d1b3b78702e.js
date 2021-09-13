@@ -213,7 +213,7 @@ function RandomGenerator(props) {
 /* harmony import */ var _DashboardServiceWidget__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23069);
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(84377);
 
-var _excluded = ["device", "expanded", "toggleExpanded", "variant"];
+var _excluded = ["device", "variant"];
 
 
 
@@ -223,12 +223,14 @@ var _excluded = ["device", "expanded", "toggleExpanded", "variant"];
 function DashboardDeviceItem(props) {
   var {
     device,
-    expanded,
-    toggleExpanded,
     variant
   } = props,
       other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(props, _excluded);
 
+  var {
+    0: expanded,
+    1: setExpanded
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   var {
     drawerType
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .ZP);
@@ -261,14 +263,17 @@ function DashboardDeviceItem(props) {
       lg: 2,
       xl: "auto"
     };
-  }, [expanded, drawerType]); // based on size, expanded or reduce widget size
+  }, [expanded, drawerType]);
+
+  var handleExpanded = () => setExpanded(!expanded); // based on size, expanded or reduce widget size
+
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, Object.assign({
     item: true
   }, breakpoints), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardDevice__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, Object.assign({
     device: device,
     expanded: expanded,
-    toggleExpanded: toggleExpanded,
+    toggleExpanded: handleExpanded,
     variant: variant
   }, other)));
 }
@@ -995,4 +1000,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-service-editor-tsx-56827f9dbe57fcd41853.js.map
+//# sourceMappingURL=component---src-pages-tools-service-editor-tsx-e6c3d42d9d1b3b78702e.js.map

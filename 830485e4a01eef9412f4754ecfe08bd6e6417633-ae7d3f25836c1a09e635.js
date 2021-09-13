@@ -126,7 +126,7 @@ function ConnectAlert(props) {
 
 /***/ }),
 
-/***/ 27885:
+/***/ 7576:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 
@@ -141,43 +141,6 @@ var objectWithoutProperties = __webpack_require__(45987);
 var Grid = __webpack_require__(80838);
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(67294);
-;// CONCATENATED MODULE: ./src/jacdac/useSelectedNodes.ts
-
-function useSelectedNodes(singleSelection) {
-  var nodes = (0,react.useRef)(new Set());
-  var {
-    0: change,
-    1: setChange
-  } = (0,react.useState)(0);
-
-  var selected = node => nodes.current.has(node === null || node === void 0 ? void 0 : node.id);
-
-  var setSelected = (node, value) => {
-    if (!node) return;
-    var s = selected(node);
-
-    if (!!value !== s) {
-      if (!value) nodes.current.delete(node.id);else {
-        if (singleSelection) nodes.current.clear();
-        nodes.current.add(node.id);
-      }
-      setChange(change + 1);
-    }
-  };
-
-  return {
-    hasSelection: nodes.current.size > 0,
-    selected,
-    setSelected,
-    toggleSelected: node => {
-      setSelected(node, !selected(node));
-    },
-    clear: () => {
-      nodes.current.clear();
-      setChange(0);
-    }
-  };
-}
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
 var spec = __webpack_require__(45656);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
@@ -198,7 +161,7 @@ var GridHeader = __webpack_require__(95393);
 var DashboardDeviceItem = __webpack_require__(24301);
 ;// CONCATENATED MODULE: ./src/components/dashboard/DashboardDeviceGroup.tsx
 
-var _excluded = ["title", "action", "devices", "expanded", "toggleExpanded", "children"];
+var _excluded = ["title", "action", "devices", "children"];
 
 
 
@@ -209,13 +172,9 @@ function DeviceGroup(props) {
     title,
     action,
     devices,
-    expanded,
-    toggleExpanded,
     children
   } = props,
       other = (0,objectWithoutProperties/* default */.Z)(props, _excluded);
-
-  var handleExpand = device => () => toggleExpanded(device);
 
   var sectionId = (0,react_use_id_hook_esm/* useId */.Me)();
   if (!action && !(devices !== null && devices !== void 0 && devices.length)) return null;
@@ -229,9 +188,7 @@ function DeviceGroup(props) {
     action: action
   }), devices === null || devices === void 0 ? void 0 : devices.map(device => /*#__PURE__*/react.createElement(DashboardDeviceItem/* default */.Z, Object.assign({
     key: device.id,
-    device: device,
-    expanded: expanded(device),
-    toggleExpanded: handleExpand(device)
+    device: device
   }, other))), children));
 }
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Add.js
@@ -246,8 +203,6 @@ var ConnectAlert = __webpack_require__(94431);
 var ConnectButtons = __webpack_require__(45608);
 // EXTERNAL MODULE: ./src/components/services/useRoleManagerClient.ts
 var useRoleManagerClient = __webpack_require__(39922);
-// EXTERNAL MODULE: ./src/components/hooks/useMediaQueries.tsx
-var useMediaQueries = __webpack_require__(20509);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
 var constants = __webpack_require__(71815);
 // EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 26 modules
@@ -383,11 +338,9 @@ var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators"
 
 
 
-
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
-
 
 
 
@@ -432,13 +385,6 @@ function Dashboard(props) {
     announced: true,
     ignoreSelf: true
   }).filter(deviceFilter).sort(deviceSort);
-  var {
-    mobile
-  } = (0,useMediaQueries/* default */.Z)();
-  var {
-    selected,
-    toggleSelected
-  } = useSelectedNodes(mobile);
   var [simulators, physicals] = (0,utils/* splitFilter */.ap)(devices, d => !!bus.findServiceProvider(d.deviceId));
   var roleManager = (0,useRoleManagerClient/* default */.Z)();
 
@@ -463,9 +409,7 @@ function Dashboard(props) {
       title: "clear simulators",
       onClick: handleClearSimulators
     }, /*#__PURE__*/react.createElement(Clear/* default */.Z, null)), " "),
-    devices: simulators,
-    expanded: selected,
-    toggleExpanded: toggleSelected
+    devices: simulators
   }, other), showStartSimulators && !(simulators !== null && simulators !== void 0 && simulators.length) && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
@@ -475,9 +419,7 @@ function Dashboard(props) {
       full: false,
       transparent: true
     }),
-    devices: physicals,
-    expanded: selected,
-    toggleExpanded: toggleSelected
+    devices: physicals
   }, other), showConnect && !physicals.length && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
@@ -502,7 +444,7 @@ function Dashboard(props) {
 /* harmony import */ var _DashboardServiceWidget__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23069);
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(84377);
 
-var _excluded = ["device", "expanded", "toggleExpanded", "variant"];
+var _excluded = ["device", "variant"];
 
 
 
@@ -512,12 +454,14 @@ var _excluded = ["device", "expanded", "toggleExpanded", "variant"];
 function DashboardDeviceItem(props) {
   var {
     device,
-    expanded,
-    toggleExpanded,
     variant
   } = props,
       other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(props, _excluded);
 
+  var {
+    0: expanded,
+    1: setExpanded
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   var {
     drawerType
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .ZP);
@@ -550,14 +494,17 @@ function DashboardDeviceItem(props) {
       lg: 2,
       xl: "auto"
     };
-  }, [expanded, drawerType]); // based on size, expanded or reduce widget size
+  }, [expanded, drawerType]);
+
+  var handleExpanded = () => setExpanded(!expanded); // based on size, expanded or reduce widget size
+
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, Object.assign({
     item: true
   }, breakpoints), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardDevice__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, Object.assign({
     device: device,
     expanded: expanded,
-    toggleExpanded: toggleExpanded,
+    toggleExpanded: handleExpanded,
     variant: variant
   }, other)));
 }
@@ -649,4 +596,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-a5a34a19e18587807dfc.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-ae7d3f25836c1a09e635.js.map

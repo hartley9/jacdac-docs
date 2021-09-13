@@ -471,7 +471,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": function() { return /* binding */ Page; }
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27885);
+/* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7576);
 
 
 function Page() {
@@ -486,4 +486,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-dashboard-tsx-7c148b67b59bb037bafe.js.map
+//# sourceMappingURL=component---src-pages-dashboard-tsx-043587b3945198a56011.js.map

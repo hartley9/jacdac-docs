@@ -1294,7 +1294,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(99395);
 /* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(58063);
 /* harmony import */ var _components_ui_GridHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(95393);
-/* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(27885);
+/* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7576);
 /* harmony import */ var _components_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(99808);
 /* harmony import */ var _components_useEffectAsync__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(7751);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(81794);
@@ -1793,4 +1793,4 @@ function Commissioner() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-2e1c2c1fe767f20939f0.js.map
+//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-3af325455fcca5a1d0c4.js.map

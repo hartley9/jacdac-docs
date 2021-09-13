@@ -544,7 +544,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_alert_ConnectAlert__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(94431);
 /* harmony import */ var _components_DeviceCardHeader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(31477);
 /* harmony import */ var _components_hooks_useBuzzerPlayTone__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(65611);
-/* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(27885);
+/* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7576);
 /* harmony import */ var react_use_id_hook__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(19640);
 /* harmony import */ var react_aria_live__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(49647);
 
@@ -753,4 +753,4 @@ function AccelerometerTheremin() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-accelerometer-theremin-tsx-ea961b38b14d2f49689a.js.map
+//# sourceMappingURL=component---src-pages-tools-accelerometer-theremin-tsx-9f41b7bf032269849893.js.map
