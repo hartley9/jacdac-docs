@@ -54131,7 +54131,7 @@ function objCreateFn(obj) {
 }
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/HelperFuncs.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
  // RESTRICT and AVOID circular dependencies you should not import other contained modules or export the contents of this file directly
@@ -54435,12 +54435,15 @@ function toISOString(date) {
 function arrForEach(arr, callbackfn, thisArg) {
   var len = arr.length;
 
-  for (var idx = 0; idx < len; idx++) {
-    if (idx in arr) {
-      if (callbackfn.call(thisArg || arr, arr[idx], idx, arr) === -1) {
-        break;
+  try {
+    for (var idx = 0; idx < len; idx++) {
+      if (idx in arr) {
+        if (callbackfn.call(thisArg || arr, arr[idx], idx, arr) === -1) {
+          break;
+        }
       }
     }
+  } catch (e) {// This can happen with some native browser objects, but should not happen for the type we are checking for
   }
 }
 /**
@@ -54456,10 +54459,13 @@ function arrIndexOf(arr, searchElement, fromIndex) {
   var len = arr.length;
   var from = fromIndex || 0;
 
-  for (var lp = Math.max(from >= 0 ? from : len - Math.abs(from), 0); lp < len; lp++) {
-    if (lp in arr && arr[lp] === searchElement) {
-      return lp;
+  try {
+    for (var lp = Math.max(from >= 0 ? from : len - Math.abs(from), 0); lp < len; lp++) {
+      if (lp in arr && arr[lp] === searchElement) {
+        return lp;
+      }
     }
+  } catch (e) {// This can happen with some native browser objects, but should not happen for the type we are checking for
   }
 
   return -1;
@@ -54480,10 +54486,13 @@ function arrMap(arr, callbackfn, thisArg) {
 
   var results = new Array(len);
 
-  for (var lp = 0; lp < len; lp++) {
-    if (lp in arr) {
-      results[lp] = callbackfn.call(_this, arr[lp], arr);
+  try {
+    for (var lp = 0; lp < len; lp++) {
+      if (lp in arr) {
+        results[lp] = callbackfn.call(_this, arr[lp], arr);
+      }
     }
+  } catch (e) {// This can happen with some native browser objects, but should not happen for the type we are checking for
   }
 
   return results;
@@ -54779,11 +54788,11 @@ function proxyAssign(target, source, chkSet) {
 function createClassFromInterface(defaults) {
   return function () {
     function class_1() {
-      var _this = this;
+      var _this_1 = this;
 
       if (defaults) {
         objForEachKey(defaults, function (field, value) {
-          _this[field] = value;
+          _this_1[field] = value;
         });
       }
     }
@@ -55666,7 +55675,7 @@ dynamicProto[DynProtoDefaultOptions] = perfDefaults;
 /* harmony default export */ var dynamicproto_js = (dynamicProto);
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK.Enums/LoggingEnums.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 var LoggingSeverity;
@@ -55769,11 +55778,12 @@ var _InternalMessageId = {
   InvalidInstrumentationKey: 100,
   CannotParseAiBlobValue: 101,
   InvalidContentBlob: 102,
-  TrackPageActionEventFailed: 103
+  TrackPageActionEventFailed: 103,
+  FailedAddingCustomDefinedRequestContext: 104
 };
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/EnvUtils.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -55783,7 +55793,7 @@ var _InternalMessageId = {
 /**
  * This file exists to hold environment utilities that are required to check and
  * validate the current operating environment. Unless otherwise required, please
- * only defined methods (functions) in this class so that users of these
+ * only use defined methods (functions) in this class so that users of these
  * functions/properties only need to include those that are used within their own modules.
  */
 
@@ -55803,10 +55813,42 @@ var strTrident = "trident/";
 var _isTrident = null;
 var _navUserAgentCheck = null;
 var _enableMocks = false;
+var _useXDomainRequest = null;
+var _beaconsSupported = null;
+
+function _hasProperty(theClass, property) {
+  var supported = false;
+
+  if (theClass) {
+    try {
+      supported = property in theClass;
+
+      if (!supported) {
+        var proto = theClass[strShimPrototype];
+
+        if (proto) {
+          supported = property in proto;
+        }
+      }
+    } catch (e) {// Do Nothing
+    }
+
+    if (!supported) {
+      try {
+        var tmp = new theClass();
+        supported = !isUndefined(tmp[property]);
+      } catch (e) {// Do Nothing
+      }
+    }
+  }
+
+  return supported;
+}
 /**
  * Enable the lookup of test mock objects if requested
  * @param enabled
  */
+
 
 function setEnableEnvMocks(enabled) {
   _enableMocks = enabled;
@@ -56096,9 +56138,70 @@ function isSafari(userAgentStr) {
   var ua = (userAgentStr || "").toLowerCase();
   return ua.indexOf('safari') >= 0;
 }
+/**
+ * Checks if HTML5 Beacons are supported in the current environment.
+ * @returns True if supported, false otherwise.
+ */
+
+function isBeaconsSupported() {
+  if (_beaconsSupported === null) {
+    _beaconsSupported = hasNavigator() && Boolean(getNavigator().sendBeacon);
+  }
+
+  return _beaconsSupported;
+}
+/**
+ * Checks if the Fetch API is supported in the current environment.
+ * @param withKeepAlive - [Optional] If True, check if fetch is available and it supports the keepalive feature, otherwise only check if fetch is supported
+ * @returns True if supported, otherwise false
+ */
+
+function isFetchSupported(withKeepAlive) {
+  var isSupported = false;
+
+  try {
+    var fetchApi = getGlobalInst("fetch");
+    isSupported = !!fetchApi;
+    var request = getGlobalInst("Request");
+
+    if (isSupported && withKeepAlive && request) {
+      isSupported = _hasProperty(request, "keepalive");
+    }
+  } catch (e) {// Just Swallow any failure during availability checks
+  }
+
+  return isSupported;
+}
+function useXDomainRequest() {
+  if (_useXDomainRequest === null) {
+    _useXDomainRequest = typeof XDomainRequest !== undefined;
+
+    if (_useXDomainRequest && isXhrSupported()) {
+      _useXDomainRequest = _useXDomainRequest && !_hasProperty(getGlobalInst("XMLHttpRequest"), "withCredentials");
+    }
+  }
+
+  return _useXDomainRequest;
+}
+/**
+ * Checks if XMLHttpRequest is supported
+ * @returns True if supported, otherwise false
+ */
+
+function isXhrSupported() {
+  var isSupported = false;
+
+  try {
+    var xmlHttpRequest = getGlobalInst("XMLHttpRequest");
+    isSupported = !!xmlHttpRequest;
+  } catch (e) {// Just Swallow any failure during availability checks
+  }
+
+  return isSupported;
+}
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/DiagnosticLogger.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -56340,12 +56443,13 @@ var DiagnosticLogger = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/PerfManager.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
 
 var strExecutionContextKey = "ctx";
+var _defaultPerfManager = null;
 
 var PerfEvent = function () {
   function PerfEvent(name, payloadDetails, isAsync) {
@@ -56461,7 +56565,7 @@ var PerfManager = function () {
         if (perfEvent) {
           perfEvent.complete();
 
-          if (manager) {
+          if (manager && isFunction(manager.perfEvent)) {
             manager.perfEvent(perfEvent);
           }
         }
@@ -56552,11 +56656,28 @@ function doPerf(mgrSource, getSource, func, details, isAsync) {
 
   return func();
 }
+/**
+ * Set the global performance manager to use when there is no core instance or it has not been initialized yet.
+ * @param perfManager - The IPerfManager instance to use when no performance manager is supplied.
+ */
+
+function setGblPerfMgr(perfManager) {
+  _defaultPerfManager = perfManager;
+}
+/**
+ * Get the current global performance manager that will be used with no performance manager is supplied.
+ * @returns - The current default manager
+ */
+
+function getGblPerfMgr() {
+  return _defaultPerfManager;
+}
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/TelemetryPluginChain.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
+
 
 
 
@@ -56620,7 +56741,7 @@ var TelemetryPluginChain = function () {
             if (!_nextProxy || !hasRun) {
               // Either we have no next plugin or the current one did not attempt to call the next plugin
               // Which means the current one is the root of the failure so log/report this failure
-              itemCtx.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.PluginException, "Plugin [" + plugin.identifier + "] failed during processTelemetry - " + error);
+              itemCtx.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.PluginException, "Plugin [" + plugin.identifier + "] failed during processTelemetry - " + dumpObj(error));
             }
 
             if (_nextProxy && !hasRun) {
@@ -56649,7 +56770,7 @@ var TelemetryPluginChain = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/ProcessTelemetryContext.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -56851,14 +56972,14 @@ var ProcessTelemetryContext = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/Constants.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 var strIKey = "iKey";
 var strExtensionConfig = "extensionConfig";
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/BaseTelemetryPlugin.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -56971,7 +57092,7 @@ var BaseTelemetryPlugin = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/TelemetryHelpers.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -57035,7 +57156,7 @@ function sortPlugins(plugins) {
 }
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/ChannelController.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -57168,7 +57289,7 @@ var ChannelController = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/CookieMgr.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -57308,6 +57429,8 @@ function createCookieMgr(rootConfig, logger) {
       _enabled = value !== false;
     },
     set: function set(name, value, maxAgeSec, domain, path) {
+      var result = false;
+
       if (_isMgrEnabled(cookieMgr)) {
         var values = {};
         var theValue = strTrim(value || strEmpty);
@@ -57359,7 +57482,10 @@ function createCookieMgr(rootConfig, logger) {
         setValue(values, "path", path || _path, null, isUndefined);
         var setCookieFn = cookieMgrConfig.setCookie || _setCookieValue;
         setCookieFn(name, _formatCookieValue(theValue, values));
+        result = true;
       }
+
+      return result;
     },
     get: function get(name) {
       var value = strEmpty;
@@ -57371,12 +57497,20 @@ function createCookieMgr(rootConfig, logger) {
       return value;
     },
     del: function del(name, path) {
+      var result = false;
+
       if (_isMgrEnabled(cookieMgr)) {
         // Only remove the cookie if the manager and cookie support has not been disabled
-        cookieMgr.purge(name, path);
+        result = cookieMgr.purge(name, path);
       }
+
+      return result;
     },
     purge: function purge(name, path) {
+      var _a;
+
+      var result = false;
+
       if (areCookiesSupported(logger)) {
         // Setting the expiration date in the past immediately removes the cookie
         var values = (_a = {}, _a["path"] = path ? path : "/", _a[strExpires] = "Thu, 01 Jan 1970 00:00:01 GMT", _a);
@@ -57388,9 +57522,10 @@ function createCookieMgr(rootConfig, logger) {
 
         var delCookie = cookieMgrConfig.delCookie || _setCookieValue;
         delCookie(name, _formatCookieValue(strEmpty, values));
+        result = true;
       }
 
-      var _a;
+      return result;
     }
   }; // Associated this cookie manager with the config
 
@@ -57540,7 +57675,7 @@ function uaDisallowsSameSiteNone(userAgent) {
 }
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/BaseCore.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -57554,8 +57689,18 @@ function uaDisallowsSameSiteNone(userAgent) {
 
 
 
+
 var validationError = "Extensions must provide callback to initialize";
 var strNotificationManager = "_notificationManager";
+/**
+ * Helper to create the default performance manager
+ * @param core
+ * @param notificationMgr
+ */
+
+function _createPerfManager(core, notificationMgr) {
+  return new PerfManager(notificationMgr);
+}
 
 var BaseCore = function () {
   function BaseCore() {
@@ -57603,6 +57748,12 @@ var BaseCore = function () {
 
         _self[strNotificationManager] = notificationManager;
         _self.config = config || {};
+
+        if (_self.config.enablePerfMgr) {
+          // Set the performance manager creation function if not defined
+          setValue(_self.config, "createPerfMgr", _createPerfManager);
+        }
+
         config.extensions = isNullOrUndefined(config.extensions) ? [] : config.extensions; // add notification to the extensions in the config so other plugins can access it
 
         var extConfig = getSetValue(config, strExtensionConfig);
@@ -57614,7 +57765,7 @@ var BaseCore = function () {
 
 
         var allExtensions = [];
-        allExtensions.push.apply(allExtensions, extensions.concat(config.extensions));
+        allExtensions.push.apply(allExtensions, __spreadArrayFn(__spreadArrayFn([], extensions, false), config.extensions, false));
         allExtensions = sortPlugins(allExtensions);
         var coreExtensions = [];
         var channelExtensions = []; // Check if any two extensions have the same priority, then warn to console
@@ -57735,12 +57886,12 @@ var BaseCore = function () {
 
       _self.getPerfMgr = function () {
         if (!_perfManager) {
-          if (_self.config && _self.config.enablePerfMgr) {
-            _perfManager = new PerfManager(_self.getNotifyMgr());
+          if (_self.config && _self.config.enablePerfMgr && isFunction(_self.config.createPerfMgr)) {
+            _perfManager = _self.config.createPerfMgr(_self, _self.getNotifyMgr());
           }
         }
 
-        return _perfManager;
+        return _perfManager || getGblPerfMgr();
       };
 
       _self.setPerfMgr = function (perfMgr) {
@@ -57779,7 +57930,7 @@ var BaseCore = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK.Enums/EventsDiscardedReason.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -57819,7 +57970,7 @@ var EventsDiscardedReason = {
 };
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/NotificationManager.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -57942,7 +58093,7 @@ var NotificationManager = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/AppInsightsCore.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -58076,7 +58227,7 @@ var AppInsightsCore = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Enums.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -58111,7 +58262,7 @@ var DistributedTracingModes;
 })(DistributedTracingModes || (DistributedTracingModes = {}));
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/StorageHelperFuncs.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -58303,20 +58454,28 @@ function utlRemoveSessionStorage(logger, name) {
 }
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/SendBuffer.js
 /*
- * Application Insights JavaScript SDK - Channel, 2.6.5
+ * Application Insights JavaScript SDK - Channel, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
 
 
-/*
- * An array based send buffer.
- */
 
-var ArraySendBuffer = function () {
-  function ArraySendBuffer(config) {
+
+var BaseSendBuffer = function () {
+  function BaseSendBuffer(config) {
     var _buffer = [];
-    dynamicproto_js(ArraySendBuffer, this, function (_self) {
+
+    this._get = function () {
+      return _buffer;
+    };
+
+    this._set = function (buffer) {
+      _buffer = buffer;
+      return _buffer;
+    };
+
+    dynamicproto_js(BaseSendBuffer, this, function (_self) {
       _self.enqueue = function (payload) {
         _buffer.push(payload);
       };
@@ -58325,8 +58484,22 @@ var ArraySendBuffer = function () {
         return _buffer.length;
       };
 
+      _self.size = function () {
+        var size = _buffer.length;
+
+        for (var lp = 0; lp < _buffer.length; lp++) {
+          size += _buffer[lp].length;
+        }
+
+        if (!config.emitLineDelimitedJson()) {
+          size += 2;
+        }
+
+        return size;
+      };
+
       _self.clear = function () {
-        _buffer.length = 0;
+        _buffer = [];
       };
 
       _self.getItems = function () {
@@ -58341,100 +58514,100 @@ var ArraySendBuffer = function () {
 
         return null;
       };
+    });
+  } // Removed Stub for BaseSendBuffer.prototype.enqueue.
+  // Removed Stub for BaseSendBuffer.prototype.count.
+  // Removed Stub for BaseSendBuffer.prototype.size.
+  // Removed Stub for BaseSendBuffer.prototype.clear.
+  // Removed Stub for BaseSendBuffer.prototype.getItems.
+  // Removed Stub for BaseSendBuffer.prototype.batchPayloads.
 
+
+  return BaseSendBuffer;
+}();
+/*
+ * An array based send buffer.
+ */
+
+
+var ArraySendBuffer = function (_super) {
+  __extendsFn(ArraySendBuffer, _super);
+
+  function ArraySendBuffer(config) {
+    var _this = _super.call(this, config) || this;
+
+    dynamicproto_js(ArraySendBuffer, _this, function (_self, _base) {
       _self.markAsSent = function (payload) {
-        _self.clear();
+        _base.clear();
       };
 
       _self.clearSent = function (payload) {// not supported
       };
     });
-  } // Removed Stub for ArraySendBuffer.prototype.enqueue.
-  // Removed Stub for ArraySendBuffer.prototype.count.
-  // Removed Stub for ArraySendBuffer.prototype.clear.
-  // Removed Stub for ArraySendBuffer.prototype.getItems.
-  // Removed Stub for ArraySendBuffer.prototype.batchPayloads.
-  // Removed Stub for ArraySendBuffer.prototype.markAsSent.
+    return _this;
+  } // Removed Stub for ArraySendBuffer.prototype.markAsSent.
   // Removed Stub for ArraySendBuffer.prototype.clearSent.
 
 
   return ArraySendBuffer;
-}();
+}(BaseSendBuffer);
 
 
 /*
  * Session storage buffer holds a copy of all unsent items in the browser session storage.
  */
 
-var SessionStorageSendBuffer = function () {
+var SessionStorageSendBuffer = function (_super) {
+  __extendsFn(SessionStorageSendBuffer, _super);
+
   function SessionStorageSendBuffer(logger, config) {
-    var _bufferFullMessageSent = false; // An in-memory copy of the buffer. A copy is saved to the session storage on enqueue() and clear().
-    // The buffer is restored in a constructor and contains unsent events from a previous page.
+    var _this = _super.call(this, config) || this;
 
-    var _buffer;
-
-    dynamicproto_js(SessionStorageSendBuffer, this, function (_self) {
+    var _bufferFullMessageSent = false;
+    dynamicproto_js(SessionStorageSendBuffer, _this, function (_self, _base) {
       var bufferItems = _getBuffer(SessionStorageSendBuffer.BUFFER_KEY);
 
       var notDeliveredItems = _getBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY);
 
-      _buffer = bufferItems.concat(notDeliveredItems); // If the buffer has too many items, drop items from the end.
+      var buffer = _self._set(bufferItems.concat(notDeliveredItems)); // If the buffer has too many items, drop items from the end.
 
-      if (_buffer.length > SessionStorageSendBuffer.MAX_BUFFER_SIZE) {
-        _buffer.length = SessionStorageSendBuffer.MAX_BUFFER_SIZE;
+
+      if (buffer.length > SessionStorageSendBuffer.MAX_BUFFER_SIZE) {
+        buffer.length = SessionStorageSendBuffer.MAX_BUFFER_SIZE;
       }
 
       _setBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY, []);
 
-      _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _buffer);
+      _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, buffer);
 
       _self.enqueue = function (payload) {
-        if (_buffer.length >= SessionStorageSendBuffer.MAX_BUFFER_SIZE) {
+        if (_self.count() >= SessionStorageSendBuffer.MAX_BUFFER_SIZE) {
           // sent internal log only once per page view
           if (!_bufferFullMessageSent) {
-            logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.SessionStorageBufferFull, "Maximum buffer size reached: " + _buffer.length, true);
+            logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.SessionStorageBufferFull, "Maximum buffer size reached: " + _self.count(), true);
             _bufferFullMessageSent = true;
           }
 
           return;
         }
 
-        _buffer.push(payload);
+        _base.enqueue(payload);
 
-        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _buffer);
-      };
-
-      _self.count = function () {
-        return _buffer.length;
+        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _self._get());
       };
 
       _self.clear = function () {
-        _buffer = [];
+        _base.clear();
 
-        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, []);
+        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _self._get());
 
         _setBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY, []);
 
         _bufferFullMessageSent = false;
       };
 
-      _self.getItems = function () {
-        return _buffer.slice(0);
-      };
-
-      _self.batchPayloads = function (payload) {
-        if (payload && payload.length > 0) {
-          var batch = config.emitLineDelimitedJson() ? payload.join("\n") : "[" + payload.join(",") + "]";
-          return batch;
-        }
-
-        return null;
-      };
-
       _self.markAsSent = function (payload) {
-        _buffer = _removePayloadsFromBuffer(payload, _buffer);
-
-        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _buffer);
+        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _self._set(_removePayloadsFromBuffer(payload, _self._get())));
 
         var sentElements = _getBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY);
 
@@ -58478,15 +58651,15 @@ var SessionStorageSendBuffer = function () {
           var bufferJson = utlGetSessionStorage(logger, prefixedKey);
 
           if (bufferJson) {
-            var buffer = getJSON().parse(bufferJson);
+            var buffer_1 = getJSON().parse(bufferJson);
 
-            if (HelperFuncs_isString(buffer)) {
+            if (HelperFuncs_isString(buffer_1)) {
               // When using some version prototype.js the stringify / parse cycle does not decode array's correctly
-              buffer = getJSON().parse(buffer);
+              buffer_1 = getJSON().parse(buffer_1);
             }
 
-            if (buffer && isArray(buffer)) {
-              return buffer;
+            if (buffer_1 && isArray(buffer_1)) {
+              return buffer_1;
             }
           }
         } catch (e) {
@@ -58515,11 +58688,9 @@ var SessionStorageSendBuffer = function () {
         }
       }
     });
+    return _this;
   } // Removed Stub for SessionStorageSendBuffer.prototype.enqueue.
-  // Removed Stub for SessionStorageSendBuffer.prototype.count.
   // Removed Stub for SessionStorageSendBuffer.prototype.clear.
-  // Removed Stub for SessionStorageSendBuffer.prototype.getItems.
-  // Removed Stub for SessionStorageSendBuffer.prototype.batchPayloads.
   // Removed Stub for SessionStorageSendBuffer.prototype.markAsSent.
   // Removed Stub for SessionStorageSendBuffer.prototype.clearSent.
 
@@ -58529,12 +58700,129 @@ var SessionStorageSendBuffer = function () {
 
   SessionStorageSendBuffer.MAX_BUFFER_SIZE = 2000;
   return SessionStorageSendBuffer;
-}();
+}(BaseSendBuffer);
 
 
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/ContextTagKeys.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+function _aiNameFunc(baseName) {
+  var aiName = "ai." + baseName + ".";
+  return function (name) {
+    return aiName + name;
+  };
+}
+
+var _aiApplication = _aiNameFunc("application");
+
+var _aiDevice = _aiNameFunc("device");
+
+var _aiLocation = _aiNameFunc("location");
+
+var _aiOperation = _aiNameFunc("operation");
+
+var _aiSession = _aiNameFunc("session");
+
+var _aiUser = _aiNameFunc("user");
+
+var _aiCloud = _aiNameFunc("cloud");
+
+var _aiInternal = _aiNameFunc("internal");
+
+var ContextTagKeys = function (_super) {
+  __extendsFn(ContextTagKeys, _super);
+
+  function ContextTagKeys() {
+    return _super.call(this) || this;
+  }
+
+  return ContextTagKeys;
+}(createClassFromInterface({
+  applicationVersion: _aiApplication("ver"),
+  applicationBuild: _aiApplication("build"),
+  applicationTypeId: _aiApplication("typeId"),
+  applicationId: _aiApplication("applicationId"),
+  applicationLayer: _aiApplication("layer"),
+  deviceId: _aiDevice("id"),
+  deviceIp: _aiDevice("ip"),
+  deviceLanguage: _aiDevice("language"),
+  deviceLocale: _aiDevice("locale"),
+  deviceModel: _aiDevice("model"),
+  deviceFriendlyName: _aiDevice("friendlyName"),
+  deviceNetwork: _aiDevice("network"),
+  deviceNetworkName: _aiDevice("networkName"),
+  deviceOEMName: _aiDevice("oemName"),
+  deviceOS: _aiDevice("os"),
+  deviceOSVersion: _aiDevice("osVersion"),
+  deviceRoleInstance: _aiDevice("roleInstance"),
+  deviceRoleName: _aiDevice("roleName"),
+  deviceScreenResolution: _aiDevice("screenResolution"),
+  deviceType: _aiDevice("type"),
+  deviceMachineName: _aiDevice("machineName"),
+  deviceVMName: _aiDevice("vmName"),
+  deviceBrowser: _aiDevice("browser"),
+  deviceBrowserVersion: _aiDevice("browserVersion"),
+  locationIp: _aiLocation("ip"),
+  locationCountry: _aiLocation("country"),
+  locationProvince: _aiLocation("province"),
+  locationCity: _aiLocation("city"),
+  operationId: _aiOperation("id"),
+  operationName: _aiOperation("name"),
+  operationParentId: _aiOperation("parentId"),
+  operationRootId: _aiOperation("rootId"),
+  operationSyntheticSource: _aiOperation("syntheticSource"),
+  operationCorrelationVector: _aiOperation("correlationVector"),
+  sessionId: _aiSession("id"),
+  sessionIsFirst: _aiSession("isFirst"),
+  sessionIsNew: _aiSession("isNew"),
+  userAccountAcquisitionDate: _aiUser("accountAcquisitionDate"),
+  userAccountId: _aiUser("accountId"),
+  userAgent: _aiUser("userAgent"),
+  userId: _aiUser("id"),
+  userStoreRegion: _aiUser("storeRegion"),
+  userAuthUserId: _aiUser("authUserId"),
+  userAnonymousUserAcquisitionDate: _aiUser("anonUserAcquisitionDate"),
+  userAuthenticatedUserAcquisitionDate: _aiUser("authUserAcquisitionDate"),
+  cloudName: _aiCloud("name"),
+  cloudRole: _aiCloud("role"),
+  cloudRoleVer: _aiCloud("roleVer"),
+  cloudRoleInstance: _aiCloud("roleInstance"),
+  cloudEnvironment: _aiCloud("environment"),
+  cloudLocation: _aiCloud("location"),
+  cloudDeploymentUnit: _aiCloud("deploymentUnit"),
+  internalNodeName: _aiInternal("nodeName"),
+  internalSdkVersion: _aiInternal("sdkVersion"),
+  internalAgentVersion: _aiInternal("agentVersion"),
+  internalSnippet: _aiInternal("snippet"),
+  internalSdkSrc: _aiInternal("sdkSrc")
+}));
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/PartAExtensions.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+var Extensions = {
+  UserExt: "user",
+  DeviceExt: "device",
+  TraceExt: "trace",
+  WebExt: "web",
+  AppExt: "app",
+  OSExt: "os",
+  SessionExt: "ses",
+  SDKExt: "sdk"
+};
+var CtxTagKeys = new ContextTagKeys();
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/Envelope.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -58565,7 +58853,7 @@ var Envelope = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/DataSanitizer.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -58792,7 +59080,7 @@ var DataSanitizer = {
 };
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Constants.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -58809,9 +59097,10 @@ var ProcessLegacy = "ProcessLegacy";
 var HttpMethod = "http.method";
 var DEFAULT_BREEZE_ENDPOINT = "https://dc.services.visualstudio.com";
 var strNotSpecified = "not_specified";
+var strIkey = "iKey";
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/Envelope.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -58864,126 +59153,9 @@ var Envelope_Envelope = function (_super) {
 }(Envelope);
 
 
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/ContextTagKeys.js
-/*
- * Application Insights JavaScript SDK - Common, 2.6.5
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-
-
-function _aiNameFunc(baseName) {
-  var aiName = "ai." + baseName + ".";
-  return function (name) {
-    return aiName + name;
-  };
-}
-
-var _aiApplication = _aiNameFunc("application");
-
-var _aiDevice = _aiNameFunc("device");
-
-var _aiLocation = _aiNameFunc("location");
-
-var _aiOperation = _aiNameFunc("operation");
-
-var _aiSession = _aiNameFunc("session");
-
-var _aiUser = _aiNameFunc("user");
-
-var _aiCloud = _aiNameFunc("cloud");
-
-var _aiInternal = _aiNameFunc("internal");
-
-var ContextTagKeys = function (_super) {
-  __extendsFn(ContextTagKeys, _super);
-
-  function ContextTagKeys() {
-    return _super.call(this) || this;
-  }
-
-  return ContextTagKeys;
-}(createClassFromInterface({
-  applicationVersion: _aiApplication("ver"),
-  applicationBuild: _aiApplication("build"),
-  applicationTypeId: _aiApplication("typeId"),
-  applicationId: _aiApplication("applicationId"),
-  applicationLayer: _aiApplication("layer"),
-  deviceId: _aiDevice("id"),
-  deviceIp: _aiDevice("ip"),
-  deviceLanguage: _aiDevice("language"),
-  deviceLocale: _aiDevice("locale"),
-  deviceModel: _aiDevice("model"),
-  deviceFriendlyName: _aiDevice("friendlyName"),
-  deviceNetwork: _aiDevice("network"),
-  deviceNetworkName: _aiDevice("networkName"),
-  deviceOEMName: _aiDevice("oemName"),
-  deviceOS: _aiDevice("os"),
-  deviceOSVersion: _aiDevice("osVersion"),
-  deviceRoleInstance: _aiDevice("roleInstance"),
-  deviceRoleName: _aiDevice("roleName"),
-  deviceScreenResolution: _aiDevice("screenResolution"),
-  deviceType: _aiDevice("type"),
-  deviceMachineName: _aiDevice("machineName"),
-  deviceVMName: _aiDevice("vmName"),
-  deviceBrowser: _aiDevice("browser"),
-  deviceBrowserVersion: _aiDevice("browserVersion"),
-  locationIp: _aiLocation("ip"),
-  locationCountry: _aiLocation("country"),
-  locationProvince: _aiLocation("province"),
-  locationCity: _aiLocation("city"),
-  operationId: _aiOperation("id"),
-  operationName: _aiOperation("name"),
-  operationParentId: _aiOperation("parentId"),
-  operationRootId: _aiOperation("rootId"),
-  operationSyntheticSource: _aiOperation("syntheticSource"),
-  operationCorrelationVector: _aiOperation("correlationVector"),
-  sessionId: _aiSession("id"),
-  sessionIsFirst: _aiSession("isFirst"),
-  sessionIsNew: _aiSession("isNew"),
-  userAccountAcquisitionDate: _aiUser("accountAcquisitionDate"),
-  userAccountId: _aiUser("accountId"),
-  userAgent: _aiUser("userAgent"),
-  userId: _aiUser("id"),
-  userStoreRegion: _aiUser("storeRegion"),
-  userAuthUserId: _aiUser("authUserId"),
-  userAnonymousUserAcquisitionDate: _aiUser("anonUserAcquisitionDate"),
-  userAuthenticatedUserAcquisitionDate: _aiUser("authUserAcquisitionDate"),
-  cloudName: _aiCloud("name"),
-  cloudRole: _aiCloud("role"),
-  cloudRoleVer: _aiCloud("roleVer"),
-  cloudRoleInstance: _aiCloud("roleInstance"),
-  cloudEnvironment: _aiCloud("environment"),
-  cloudLocation: _aiCloud("location"),
-  cloudDeploymentUnit: _aiCloud("deploymentUnit"),
-  internalNodeName: _aiInternal("nodeName"),
-  internalSdkVersion: _aiInternal("sdkVersion"),
-  internalAgentVersion: _aiInternal("agentVersion"),
-  internalSnippet: _aiInternal("snippet"),
-  internalSdkSrc: _aiInternal("sdkSrc")
-}));
-
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/PartAExtensions.js
-/*
- * Application Insights JavaScript SDK - Common, 2.6.5
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-var Extensions = {
-  UserExt: "user",
-  DeviceExt: "device",
-  TraceExt: "trace",
-  WebExt: "web",
-  AppExt: "app",
-  OSExt: "os",
-  SessionExt: "ses",
-  SDKExt: "sdk"
-};
-var CtxTagKeys = new ContextTagKeys();
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/RandomHelper.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -59097,7 +59269,7 @@ function mwcRandom32(signed) {
 }
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/CoreUtils.js
 /*
- * Application Insights JavaScript SDK - Core, 2.6.5
+ * Application Insights JavaScript SDK - Core, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -59133,7 +59305,7 @@ function addEventHandler(eventName, callback) {
   var doc = getDocument();
 
   if (doc) {
-    result = EventHelper.Attach(doc, eventName, callback) || result;
+    result = attachEvent(doc, eventName, callback) || result;
   }
 
   return result;
@@ -59369,7 +59541,7 @@ function deleteCookie(logger, name) {
 }
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/RequestResponseHeaders.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 var RequestHeaders = {
@@ -59385,7 +59557,7 @@ var RequestHeaders = {
 };
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/DomHelperFuncs.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -59393,8 +59565,10 @@ function createDomEvent(eventName) {
   var event = null;
 
   if (isFunction(Event)) {
+    // Use Event constructor when available
     event = new Event(eventName);
   } else {
+    // Event has no constructor in IE
     var doc = getDocument();
 
     if (doc && doc.createEvent) {
@@ -59407,7 +59581,7 @@ function createDomEvent(eventName) {
 }
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/HelperFuncs.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -59443,10 +59617,6 @@ function msToTimeSpan(totalms) {
   hour = hour.length < 2 ? "0" + hour : hour;
   return (days > 0 ? days + "." : "") + hour + ":" + min + ":" + sec + "." + ms;
 }
-function isBeaconApiSupported() {
-  var nav = getNavigator();
-  return 'sendBeacon' in nav && nav.sendBeacon;
-}
 function getExtensionByName(extensions, identifier) {
   var extension = null;
   arrForEach(extensions, function (value) {
@@ -59462,7 +59632,7 @@ function isCrossOriginError(message, url, lineNumber, columnNumber, error) {
 }
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/UrlHelperFuncs.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -59568,7 +59738,7 @@ function urlParseFullHost(url, inclPort) {
 }
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Util.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -59621,7 +59791,7 @@ var Util = {
   dump: dumpObj,
   getExceptionName: getExceptionName,
   addEventHandler: attachEvent,
-  IsBeaconApiSupported: isBeaconApiSupported,
+  IsBeaconApiSupported: isBeaconsSupported,
   getExtension: getExtensionByName
 };
 ;
@@ -59798,7 +59968,7 @@ var DateTimeUtils = {
 };
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/RemoteDependencyData.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -59834,7 +60004,7 @@ var RemoteDependencyData = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/RemoteDependencyData.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -59950,7 +60120,7 @@ var RemoteDependencyData_RemoteDependencyData = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/Base.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 // THIS FILE WAS AUTOGENERATED
@@ -59967,7 +60137,7 @@ var Base = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/Data.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
  // THIS FILE WAS AUTOGENERATED
@@ -59990,7 +60160,7 @@ var Data = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/Data.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -60029,7 +60199,7 @@ var Data_Data = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/EventData.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -60060,7 +60230,7 @@ var EventData = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Event.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -60106,7 +60276,7 @@ var Event_Event = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/StackFrame.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 // THIS FILE WAS AUTOGENERATED
@@ -60123,7 +60293,7 @@ var StackFrame = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/ExceptionData.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -60159,7 +60329,7 @@ var ExceptionData = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/ExceptionDetails.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -60185,7 +60355,7 @@ var ExceptionDetails = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Exception.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -60254,16 +60424,22 @@ function _formatMessage(theEvent, errorType) {
 }
 
 function _isExceptionDetailsInternal(value) {
-  if (isObject(value)) {
-    return "hasFullStack" in value && "typeName" in value;
+  try {
+    if (isObject(value)) {
+      return "hasFullStack" in value && "typeName" in value;
+    }
+  } catch (e) {// This can happen with some native browser objects, but should not happen for the type we are checking for
   }
 
   return false;
 }
 
 function _isExceptionInternal(value) {
-  if (isObject(value)) {
-    return "ver" in value && "exceptions" in value && "properties" in value;
+  try {
+    if (isObject(value)) {
+      return "ver" in value && "exceptions" in value && "properties" in value;
+    }
+  } catch (e) {// This can happen with some native browser objects, but should not happen for the type we are checking for
   }
 
   return false;
@@ -60582,7 +60758,7 @@ var Exception = function (_super) {
     var exceptions = exception.exceptions && arrMap(exception.exceptions, function (ex) {
       return _ExceptionDetails.CreateFromInterface(logger, ex);
     });
-    var exceptionData = new Exception(logger, __assignFn({}, exception, {
+    var exceptionData = new Exception(logger, __assignFn(__assignFn({}, exception), {
       exceptions: exceptions
     }), properties, measurements);
     return exceptionData;
@@ -60718,7 +60894,7 @@ var _ExceptionDetails = function (_super) {
     var parsedStack = exception.parsedStack instanceof Array && arrMap(exception.parsedStack, function (frame) {
       return _StackFrame.CreateFromInterface(frame);
     }) || exception.parsedStack;
-    var exceptionDetails = new _ExceptionDetails(logger, __assignFn({}, exception, {
+    var exceptionDetails = new _ExceptionDetails(logger, __assignFn(__assignFn({}, exception), {
       parsedStack: parsedStack
     }));
     return exceptionDetails;
@@ -60815,7 +60991,7 @@ var _StackFrame = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/MetricData.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -60851,7 +61027,7 @@ var MetricData = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/DataPointType.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 // THIS FILE WAS AUTOGENERATED
@@ -60867,7 +61043,7 @@ var DataPointType;
 })(DataPointType || (DataPointType = {}));
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/DataPoint.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -60889,7 +61065,7 @@ var DataPoint = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/DataPoint.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -60937,7 +61113,7 @@ var DataPoint_DataPoint = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Metric.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -60987,7 +61163,7 @@ var Metric = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/PageViewData.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
  // THIS FILE WAS AUTOGENERATED
@@ -61027,7 +61203,7 @@ var PageViewData = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/PageView.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -61090,7 +61266,7 @@ var PageView = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/PageViewPerfData.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
  // THIS FILE WAS AUTOGENERATED
@@ -61130,7 +61306,7 @@ var PageViewPerfData = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/PageViewPerformance.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -61208,7 +61384,7 @@ var PageViewPerformance = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/MessageData.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -61239,7 +61415,7 @@ var MessageData = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Trace.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -61291,7 +61467,7 @@ var Trace = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/EnvelopeCreator.js
 /*
- * Application Insights JavaScript SDK - Channel, 2.6.5
+ * Application Insights JavaScript SDK - Channel, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -61306,423 +61482,364 @@ var strTrue = 'true';
 function _setValueIf(target, field, value) {
   return setValue(target, field, value, isTruthy);
 }
-
-var EnvelopeCreator = function () {
-  function EnvelopeCreator() {}
-
-  EnvelopeCreator.extractPropsAndMeasurements = function (data, properties, measurements) {
-    if (!isNullOrUndefined(data)) {
-      objForEachKey(data, function (key, value) {
-        if (isNumber(value)) {
-          measurements[key] = value;
-        } else if (HelperFuncs_isString(value)) {
-          properties[key] = value;
-        } else if (hasJSON()) {
-          properties[key] = getJSON().stringify(value);
-        }
-      });
-    }
-  }; // TODO: Do we want this to take logger as arg or use this._logger as nonstatic?
+/*
+ * Maps Part A data from CS 4.0
+ */
 
 
-  EnvelopeCreator.createEnvelope = function (logger, envelopeType, telemetryItem, data) {
-    var envelope = new Envelope_Envelope(logger, data, envelopeType);
+function _extractPartAExtensions(item, env) {
+  // todo: switch to keys from common in this method
+  var envTags = env.tags = env.tags || {};
+  var itmExt = item.ext = item.ext || {};
+  var itmTags = item.tags = item.tags || [];
+  var extUser = itmExt.user;
 
-    _setValueIf(envelope, 'sampleRate', telemetryItem[SampleRate]);
+  if (extUser) {
+    _setValueIf(envTags, CtxTagKeys.userAuthUserId, extUser.authId);
 
-    if ((telemetryItem[strBaseData] || {}).startTime) {
-      envelope.time = toISOString(telemetryItem[strBaseData].startTime);
-    }
+    _setValueIf(envTags, CtxTagKeys.userId, extUser.id || extUser.localId);
+  }
 
-    envelope.iKey = telemetryItem.iKey;
-    var iKeyNoDashes = telemetryItem.iKey.replace(/-/g, "");
-    envelope.name = envelope.name.replace("{0}", iKeyNoDashes); // extract all extensions from ctx
+  var extApp = itmExt.app;
 
-    EnvelopeCreator.extractPartAExtensions(telemetryItem, envelope); // loop through the envelope tags (extension of Part A) and pick out the ones that should go in outgoing envelope tags
+  if (extApp) {
+    _setValueIf(envTags, CtxTagKeys.sessionId, extApp.sesId);
+  }
 
-    telemetryItem.tags = telemetryItem.tags || [];
-    return optimizeObject(envelope);
-  };
-  /*
-   * Maps Part A data from CS 4.0
-   */
+  var extDevice = itmExt.device;
 
+  if (extDevice) {
+    _setValueIf(envTags, CtxTagKeys.deviceId, extDevice.id || extDevice.localId);
 
-  EnvelopeCreator.extractPartAExtensions = function (item, env) {
-    // todo: switch to keys from common in this method
-    var envTags = env.tags = env.tags || {};
-    var itmExt = item.ext = item.ext || {};
-    var itmTags = item.tags = item.tags || [];
-    var extUser = itmExt.user;
+    _setValueIf(envTags, CtxTagKeys.deviceType, extDevice.deviceClass);
 
-    if (extUser) {
-      _setValueIf(envTags, CtxTagKeys.userAuthUserId, extUser.authId);
+    _setValueIf(envTags, CtxTagKeys.deviceIp, extDevice.ip);
 
-      _setValueIf(envTags, CtxTagKeys.userId, extUser.id || extUser.localId);
-    }
+    _setValueIf(envTags, CtxTagKeys.deviceModel, extDevice.model);
 
-    var extApp = itmExt.app;
+    _setValueIf(envTags, CtxTagKeys.deviceType, extDevice.deviceType);
+  }
 
-    if (extApp) {
-      _setValueIf(envTags, CtxTagKeys.sessionId, extApp.sesId);
-    }
+  var web = item.ext.web;
 
-    var extDevice = itmExt.device;
+  if (web) {
+    _setValueIf(envTags, CtxTagKeys.deviceLanguage, web.browserLang);
 
-    if (extDevice) {
-      _setValueIf(envTags, CtxTagKeys.deviceId, extDevice.id || extDevice.localId);
+    _setValueIf(envTags, CtxTagKeys.deviceBrowserVersion, web.browserVer);
 
-      _setValueIf(envTags, CtxTagKeys.deviceType, extDevice.deviceClass);
+    _setValueIf(envTags, CtxTagKeys.deviceBrowser, web.browser);
 
-      _setValueIf(envTags, CtxTagKeys.deviceIp, extDevice.ip);
+    var envData = env.data = env.data || {};
+    var envBaseData = envData[strBaseData] = envData[strBaseData] || {};
+    var envProps = envBaseData[strProperties] = envBaseData[strProperties] || {};
 
-      _setValueIf(envTags, CtxTagKeys.deviceModel, extDevice.model);
+    _setValueIf(envProps, 'domain', web.domain);
 
-      _setValueIf(envTags, CtxTagKeys.deviceType, extDevice.deviceType);
-    }
+    _setValueIf(envProps, 'isManual', web.isManual ? strTrue : null);
 
-    var web = item.ext.web;
+    _setValueIf(envProps, 'screenRes', web.screenRes);
 
-    if (web) {
-      _setValueIf(envTags, CtxTagKeys.deviceLanguage, web.browserLang);
+    _setValueIf(envProps, 'userConsent', web.userConsent ? strTrue : null);
+  }
 
-      _setValueIf(envTags, CtxTagKeys.deviceBrowserVersion, web.browserVer);
+  var extOs = itmExt.os;
 
-      _setValueIf(envTags, CtxTagKeys.deviceBrowser, web.browser);
-
-      var envData = env.data = env.data || {};
-      var envBaseData = envData[strBaseData] = envData[strBaseData] || {};
-      var envProps = envBaseData[strProperties] = envBaseData[strProperties] || {};
-
-      _setValueIf(envProps, 'domain', web.domain);
-
-      _setValueIf(envProps, 'isManual', web.isManual ? strTrue : null);
-
-      _setValueIf(envProps, 'screenRes', web.screenRes);
-
-      _setValueIf(envProps, 'userConsent', web.userConsent ? strTrue : null);
-    }
-
-    var extOs = itmExt.os;
-
-    if (extOs) {
-      _setValueIf(envTags, CtxTagKeys.deviceOS, extOs.name);
-    } // No support for mapping Trace.traceState to 2.0 as it is currently empty
+  if (extOs) {
+    _setValueIf(envTags, CtxTagKeys.deviceOS, extOs.name);
+  } // No support for mapping Trace.traceState to 2.0 as it is currently empty
 
 
-    var extTrace = itmExt.trace;
+  var extTrace = itmExt.trace;
 
-    if (extTrace) {
-      _setValueIf(envTags, CtxTagKeys.operationParentId, extTrace.parentID);
+  if (extTrace) {
+    _setValueIf(envTags, CtxTagKeys.operationParentId, extTrace.parentID);
 
-      _setValueIf(envTags, CtxTagKeys.operationName, extTrace.name);
+    _setValueIf(envTags, CtxTagKeys.operationName, extTrace.name);
 
-      _setValueIf(envTags, CtxTagKeys.operationId, extTrace.traceID);
-    } // Sample 4.0 schema
-    //  {
-    //     "time" : "2018-09-05T22:51:22.4936Z",
-    //     "name" : "MetricWithNamespace",
-    //     "iKey" : "ABC-5a4cbd20-e601-4ef5-a3c6-5d6577e4398e",
-    //     "ext": {  "cloud": {
-    //          "role": "WATSON3",
-    //          "roleInstance": "CO4AEAP00000260"
-    //      },
-    //      "device": {}, "correlation": {} },
-    //      "tags": [
-    //        { "amazon.region" : "east2" },
-    //        { "os.expid" : "wp:02df239" }
-    //     ]
-    //   }
-
-
-    var tgs = {}; // deals with tags.push({object})
-
-    for (var i = itmTags.length - 1; i >= 0; i--) {
-      var tg = itmTags[i];
-      objForEachKey(tg, function (key, value) {
-        tgs[key] = value;
-      });
-      itmTags.splice(i, 1);
-    } // deals with tags[key]=value (and handles hasOwnProperty)
+    _setValueIf(envTags, CtxTagKeys.operationId, extTrace.traceID);
+  } // Sample 4.0 schema
+  //  {
+  //     "time" : "2018-09-05T22:51:22.4936Z",
+  //     "name" : "MetricWithNamespace",
+  //     "iKey" : "ABC-5a4cbd20-e601-4ef5-a3c6-5d6577e4398e",
+  //     "ext": {  "cloud": {
+  //          "role": "WATSON3",
+  //          "roleInstance": "CO4AEAP00000260"
+  //      },
+  //      "device": {}, "correlation": {} },
+  //      "tags": [
+  //        { "amazon.region" : "east2" },
+  //        { "os.expid" : "wp:02df239" }
+  //     ]
+  //   }
 
 
-    objForEachKey(itmTags, function (tg, value) {
-      tgs[tg] = value;
+  var tgs = {}; // deals with tags.push({object})
+
+  for (var i = itmTags.length - 1; i >= 0; i--) {
+    var tg = itmTags[i];
+    objForEachKey(tg, function (key, value) {
+      tgs[key] = value;
     });
-
-    var theTags = __assignFn({}, envTags, tgs);
-
-    if (!theTags[CtxTagKeys.internalSdkVersion]) {
-      // Append a version in case it is not already set
-      theTags[CtxTagKeys.internalSdkVersion] = "javascript:" + EnvelopeCreator.Version;
-    }
-
-    env.tags = optimizeObject(theTags);
-  };
-
-  EnvelopeCreator.prototype.Init = function (logger, telemetryItem) {
-    this._logger = logger;
-
-    if (isNullOrUndefined(telemetryItem[strBaseData])) {
-      this._logger.throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.TelemetryEnvelopeInvalid, "telemetryItem.baseData cannot be null.");
-    }
-  };
-
-  EnvelopeCreator.Version = "2.6.5";
-  return EnvelopeCreator;
-}();
+    itmTags.splice(i, 1);
+  } // deals with tags[key]=value (and handles hasOwnProperty)
 
 
+  objForEachKey(itmTags, function (tg, value) {
+    tgs[tg] = value;
+  });
 
-var DependencyEnvelopeCreator = function (_super) {
-  __extendsFn(DependencyEnvelopeCreator, _super);
+  var theTags = __assignFn(__assignFn({}, envTags), tgs);
 
-  function DependencyEnvelopeCreator() {
-    return _super !== null && _super.apply(this, arguments) || this;
+  if (!theTags[CtxTagKeys.internalSdkVersion]) {
+    // Append a version in case it is not already set
+    theTags[CtxTagKeys.internalSdkVersion] = "javascript:" + EnvelopeCreator.Version;
   }
 
-  DependencyEnvelopeCreator.prototype.Create = function (logger, telemetryItem) {
-    _super.prototype.Init.call(this, logger, telemetryItem);
+  env.tags = optimizeObject(theTags);
+}
 
-    var customMeasurements = telemetryItem[strBaseData].measurements || {};
-    var customProperties = telemetryItem[strBaseData][strProperties] || {};
-    EnvelopeCreator.extractPropsAndMeasurements(telemetryItem.data, customProperties, customMeasurements);
-    var bd = telemetryItem[strBaseData];
-
-    if (isNullOrUndefined(bd)) {
-      logger.warnToConsole("Invalid input for dependency data");
-      return null;
-    }
-
-    var method = bd[strProperties] && bd[strProperties][HttpMethod] ? bd[strProperties][HttpMethod] : "GET";
-    var remoteDepData = new RemoteDependencyData_RemoteDependencyData(logger, bd.id, bd.target, bd.name, bd.duration, bd.success, bd.responseCode, method, bd.type, bd.correlationContext, customProperties, customMeasurements);
-    var data = new Data_Data(RemoteDependencyData_RemoteDependencyData.dataType, remoteDepData);
-    return EnvelopeCreator.createEnvelope(logger, RemoteDependencyData_RemoteDependencyData.envelopeType, telemetryItem, data);
-  };
-
-  DependencyEnvelopeCreator.DependencyEnvelopeCreator = new DependencyEnvelopeCreator();
-  return DependencyEnvelopeCreator;
-}(EnvelopeCreator);
-
-
-
-var EventEnvelopeCreator = function (_super) {
-  __extendsFn(EventEnvelopeCreator, _super);
-
-  function EventEnvelopeCreator() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  EventEnvelopeCreator.prototype.Create = function (logger, telemetryItem) {
-    _super.prototype.Init.call(this, logger, telemetryItem);
-
-    var customProperties = {};
-    var customMeasurements = {};
-
-    if (telemetryItem[strBaseType] !== Event_Event.dataType) {
-      customProperties['baseTypeSource'] = telemetryItem[strBaseType]; // save the passed in base type as a property
-    }
-
-    if (telemetryItem[strBaseType] === Event_Event.dataType) {
-      customProperties = telemetryItem[strBaseData][strProperties] || {};
-      customMeasurements = telemetryItem[strBaseData].measurements || {};
-    } else {
-      if (telemetryItem[strBaseData]) {
-        EnvelopeCreator.extractPropsAndMeasurements(telemetryItem[strBaseData], customProperties, customMeasurements);
-      }
-    } // Extract root level properties from part C telemetryItem.data
-
-
-    EnvelopeCreator.extractPropsAndMeasurements(telemetryItem.data, customProperties, customMeasurements);
-    var eventName = telemetryItem[strBaseData].name;
-    var eventData = new Event_Event(logger, eventName, customProperties, customMeasurements);
-    var data = new Data_Data(Event_Event.dataType, eventData);
-    return EnvelopeCreator.createEnvelope(logger, Event_Event.envelopeType, telemetryItem, data);
-  };
-
-  EventEnvelopeCreator.EventEnvelopeCreator = new EventEnvelopeCreator();
-  return EventEnvelopeCreator;
-}(EnvelopeCreator);
-
-
-
-var ExceptionEnvelopeCreator = function (_super) {
-  __extendsFn(ExceptionEnvelopeCreator, _super);
-
-  function ExceptionEnvelopeCreator() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  ExceptionEnvelopeCreator.prototype.Create = function (logger, telemetryItem) {
-    _super.prototype.Init.call(this, logger, telemetryItem); // Extract root level properties from part C telemetryItem.data
-
-
-    var customMeasurements = telemetryItem[strBaseData].measurements || {};
-    var customProperties = telemetryItem[strBaseData][strProperties] || {};
-    EnvelopeCreator.extractPropsAndMeasurements(telemetryItem.data, customProperties, customMeasurements);
-    var bd = telemetryItem[strBaseData];
-    var exData = Exception.CreateFromInterface(logger, bd, customProperties, customMeasurements);
-    var data = new Data_Data(Exception.dataType, exData);
-    return EnvelopeCreator.createEnvelope(logger, Exception.envelopeType, telemetryItem, data);
-  };
-
-  ExceptionEnvelopeCreator.ExceptionEnvelopeCreator = new ExceptionEnvelopeCreator();
-  return ExceptionEnvelopeCreator;
-}(EnvelopeCreator);
-
-
-
-var MetricEnvelopeCreator = function (_super) {
-  __extendsFn(MetricEnvelopeCreator, _super);
-
-  function MetricEnvelopeCreator() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  MetricEnvelopeCreator.prototype.Create = function (logger, telemetryItem) {
-    _super.prototype.Init.call(this, logger, telemetryItem);
-
-    var baseData = telemetryItem[strBaseData];
-    var props = baseData[strProperties] || {};
-    var measurements = baseData.measurements || {};
-    EnvelopeCreator.extractPropsAndMeasurements(telemetryItem.data, props, measurements);
-    var baseMetricData = new Metric(logger, baseData.name, baseData.average, baseData.sampleCount, baseData.min, baseData.max, props, measurements);
-    var data = new Data_Data(Metric.dataType, baseMetricData);
-    return EnvelopeCreator.createEnvelope(logger, Metric.envelopeType, telemetryItem, data);
-  };
-
-  MetricEnvelopeCreator.MetricEnvelopeCreator = new MetricEnvelopeCreator();
-  return MetricEnvelopeCreator;
-}(EnvelopeCreator);
-
-
-
-var PageViewEnvelopeCreator = function (_super) {
-  __extendsFn(PageViewEnvelopeCreator, _super);
-
-  function PageViewEnvelopeCreator() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  PageViewEnvelopeCreator.prototype.Create = function (logger, telemetryItem) {
-    _super.prototype.Init.call(this, logger, telemetryItem); // Since duration is not part of the domain properties in Common Schema, extract it from part C
-
-
-    var strDuration = "duration";
-    var duration;
-    var baseData = telemetryItem[strBaseData];
-
-    if (!isNullOrUndefined(baseData) && !isNullOrUndefined(baseData[strProperties]) && !isNullOrUndefined(baseData[strProperties][strDuration])) {
-      duration = baseData[strProperties][strDuration];
-      delete baseData[strProperties][strDuration];
-    } else if (!isNullOrUndefined(telemetryItem.data) && !isNullOrUndefined(telemetryItem.data[strDuration])) {
-      duration = telemetryItem.data[strDuration];
-      delete telemetryItem.data[strDuration];
-    }
-
-    var bd = telemetryItem[strBaseData]; // special case: pageview.id is grabbed from current operation id. Analytics plugin is decoupled from properties plugin, so this is done here instead. This can be made a default telemetry intializer instead if needed to be decoupled from channel
-
-    var currentContextId;
-
-    if (((telemetryItem.ext || {}).trace || {}).traceID) {
-      currentContextId = telemetryItem.ext.trace.traceID;
-    }
-
-    var id = bd.id || currentContextId;
-    var name = bd.name;
-    var url = bd.uri;
-    var properties = bd[strProperties] || {};
-    var measurements = bd.measurements || {}; // refUri is a field that Breeze still does not recognize as part of Part B. For now, put it in Part C until it supports it as a domain property
-
-    if (!isNullOrUndefined(bd.refUri)) {
-      properties["refUri"] = bd.refUri;
-    } // pageType is a field that Breeze still does not recognize as part of Part B. For now, put it in Part C until it supports it as a domain property
-
-
-    if (!isNullOrUndefined(bd.pageType)) {
-      properties["pageType"] = bd.pageType;
-    } // isLoggedIn is a field that Breeze still does not recognize as part of Part B. For now, put it in Part C until it supports it as a domain property
-
-
-    if (!isNullOrUndefined(bd.isLoggedIn)) {
-      properties["isLoggedIn"] = bd.isLoggedIn.toString();
-    } // pageTags is a field that Breeze still does not recognize as part of Part B. For now, put it in Part C until it supports it as a domain property
-
-
-    if (!isNullOrUndefined(bd[strProperties])) {
-      var pageTags = bd[strProperties];
-      objForEachKey(pageTags, function (key, value) {
+function _extractPropsAndMeasurements(data, properties, measurements) {
+  if (!isNullOrUndefined(data)) {
+    objForEachKey(data, function (key, value) {
+      if (isNumber(value)) {
+        measurements[key] = value;
+      } else if (HelperFuncs_isString(value)) {
         properties[key] = value;
-      });
+      } else if (hasJSON()) {
+        properties[key] = getJSON().stringify(value);
+      }
+    });
+  }
+}
+
+function _convertPropsUndefinedToCustomDefinedValue(properties, customUndefinedValue) {
+  if (!isNullOrUndefined(properties)) {
+    objForEachKey(properties, function (key, value) {
+      properties[key] = value || customUndefinedValue;
+    });
+  }
+} // TODO: Do we want this to take logger as arg or use this._logger as nonstatic?
+
+
+function _createEnvelope(logger, envelopeType, telemetryItem, data) {
+  var envelope = new Envelope_Envelope(logger, data, envelopeType);
+
+  _setValueIf(envelope, 'sampleRate', telemetryItem[SampleRate]);
+
+  if ((telemetryItem[strBaseData] || {}).startTime) {
+    envelope.time = toISOString(telemetryItem[strBaseData].startTime);
+  }
+
+  envelope.iKey = telemetryItem.iKey;
+  var iKeyNoDashes = telemetryItem.iKey.replace(/-/g, "");
+  envelope.name = envelope.name.replace("{0}", iKeyNoDashes); // extract all extensions from ctx
+
+  _extractPartAExtensions(telemetryItem, envelope); // loop through the envelope tags (extension of Part A) and pick out the ones that should go in outgoing envelope tags
+
+
+  telemetryItem.tags = telemetryItem.tags || [];
+  return optimizeObject(envelope);
+}
+
+function EnvelopeCreatorInit(logger, telemetryItem) {
+  if (isNullOrUndefined(telemetryItem[strBaseData])) {
+    logger.throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.TelemetryEnvelopeInvalid, "telemetryItem.baseData cannot be null.");
+  }
+}
+
+var EnvelopeCreator = {
+  Version: "2.7.0"
+};
+function DependencyEnvelopeCreator(logger, telemetryItem, customUndefinedValue) {
+  EnvelopeCreatorInit(logger, telemetryItem);
+  var customMeasurements = telemetryItem[strBaseData].measurements || {};
+  var customProperties = telemetryItem[strBaseData][strProperties] || {};
+
+  _extractPropsAndMeasurements(telemetryItem.data, customProperties, customMeasurements);
+
+  if (!isNullOrUndefined(customUndefinedValue)) {
+    _convertPropsUndefinedToCustomDefinedValue(customProperties, customUndefinedValue);
+  }
+
+  var bd = telemetryItem[strBaseData];
+
+  if (isNullOrUndefined(bd)) {
+    logger.warnToConsole("Invalid input for dependency data");
+    return null;
+  }
+
+  var method = bd[strProperties] && bd[strProperties][HttpMethod] ? bd[strProperties][HttpMethod] : "GET";
+  var remoteDepData = new RemoteDependencyData_RemoteDependencyData(logger, bd.id, bd.target, bd.name, bd.duration, bd.success, bd.responseCode, method, bd.type, bd.correlationContext, customProperties, customMeasurements);
+  var data = new Data_Data(RemoteDependencyData_RemoteDependencyData.dataType, remoteDepData);
+  return _createEnvelope(logger, RemoteDependencyData_RemoteDependencyData.envelopeType, telemetryItem, data);
+}
+function EventEnvelopeCreator(logger, telemetryItem, customUndefinedValue) {
+  EnvelopeCreatorInit(logger, telemetryItem);
+  var customProperties = {};
+  var customMeasurements = {};
+
+  if (telemetryItem[strBaseType] !== Event_Event.dataType) {
+    customProperties['baseTypeSource'] = telemetryItem[strBaseType]; // save the passed in base type as a property
+  }
+
+  if (telemetryItem[strBaseType] === Event_Event.dataType) {
+    // take collection
+    customProperties = telemetryItem[strBaseData][strProperties] || {};
+    customMeasurements = telemetryItem[strBaseData].measurements || {};
+  } else {
+    // if its not a known type, convert to custom event
+    if (telemetryItem[strBaseData]) {
+      _extractPropsAndMeasurements(telemetryItem[strBaseData], customProperties, customMeasurements);
     }
-
-    EnvelopeCreator.extractPropsAndMeasurements(telemetryItem.data, properties, measurements);
-    var pageViewData = new PageView(logger, name, url, duration, properties, measurements, id);
-    var data = new Data_Data(PageView.dataType, pageViewData);
-    return EnvelopeCreator.createEnvelope(logger, PageView.envelopeType, telemetryItem, data);
-  };
-
-  PageViewEnvelopeCreator.PageViewEnvelopeCreator = new PageViewEnvelopeCreator();
-  return PageViewEnvelopeCreator;
-}(EnvelopeCreator);
+  } // Extract root level properties from part C telemetryItem.data
 
 
+  _extractPropsAndMeasurements(telemetryItem.data, customProperties, customMeasurements);
 
-var PageViewPerformanceEnvelopeCreator = function (_super) {
-  __extendsFn(PageViewPerformanceEnvelopeCreator, _super);
-
-  function PageViewPerformanceEnvelopeCreator() {
-    return _super !== null && _super.apply(this, arguments) || this;
+  if (!isNullOrUndefined(customUndefinedValue)) {
+    _convertPropsUndefinedToCustomDefinedValue(customProperties, customUndefinedValue);
   }
 
-  PageViewPerformanceEnvelopeCreator.prototype.Create = function (logger, telemetryItem) {
-    _super.prototype.Init.call(this, logger, telemetryItem);
+  var eventName = telemetryItem[strBaseData].name;
+  var eventData = new Event_Event(logger, eventName, customProperties, customMeasurements);
+  var data = new Data_Data(Event_Event.dataType, eventData);
+  return _createEnvelope(logger, Event_Event.envelopeType, telemetryItem, data);
+}
+function ExceptionEnvelopeCreator(logger, telemetryItem, customUndefinedValue) {
+  EnvelopeCreatorInit(logger, telemetryItem); // Extract root level properties from part C telemetryItem.data
 
-    var bd = telemetryItem[strBaseData];
-    var name = bd.name;
-    var url = bd.uri || bd.url;
-    var properties = bd[strProperties] || {};
-    var measurements = bd.measurements || {};
-    EnvelopeCreator.extractPropsAndMeasurements(telemetryItem.data, properties, measurements);
-    var baseData = new PageViewPerformance(logger, name, url, undefined, properties, measurements, bd);
-    var data = new Data_Data(PageViewPerformance.dataType, baseData);
-    return EnvelopeCreator.createEnvelope(logger, PageViewPerformance.envelopeType, telemetryItem, data);
-  };
+  var customMeasurements = telemetryItem[strBaseData].measurements || {};
+  var customProperties = telemetryItem[strBaseData][strProperties] || {};
 
-  PageViewPerformanceEnvelopeCreator.PageViewPerformanceEnvelopeCreator = new PageViewPerformanceEnvelopeCreator();
-  return PageViewPerformanceEnvelopeCreator;
-}(EnvelopeCreator);
+  _extractPropsAndMeasurements(telemetryItem.data, customProperties, customMeasurements);
 
-
-
-var TraceEnvelopeCreator = function (_super) {
-  __extendsFn(TraceEnvelopeCreator, _super);
-
-  function TraceEnvelopeCreator() {
-    return _super !== null && _super.apply(this, arguments) || this;
+  if (!isNullOrUndefined(customUndefinedValue)) {
+    _convertPropsUndefinedToCustomDefinedValue(customProperties, customUndefinedValue);
   }
 
-  TraceEnvelopeCreator.prototype.Create = function (logger, telemetryItem) {
-    _super.prototype.Init.call(this, logger, telemetryItem);
+  var bd = telemetryItem[strBaseData];
+  var exData = Exception.CreateFromInterface(logger, bd, customProperties, customMeasurements);
+  var data = new Data_Data(Exception.dataType, exData);
+  return _createEnvelope(logger, Exception.envelopeType, telemetryItem, data);
+}
+function MetricEnvelopeCreator(logger, telemetryItem, customUndefinedValue) {
+  EnvelopeCreatorInit(logger, telemetryItem);
+  var baseData = telemetryItem[strBaseData];
+  var props = baseData[strProperties] || {};
+  var measurements = baseData.measurements || {};
 
-    var message = telemetryItem[strBaseData].message;
-    var severityLevel = telemetryItem[strBaseData].severityLevel;
-    var props = telemetryItem[strBaseData][strProperties] || {};
-    var measurements = telemetryItem[strBaseData].measurements || {};
-    EnvelopeCreator.extractPropsAndMeasurements(telemetryItem.data, props, measurements);
-    var baseData = new Trace(logger, message, severityLevel, props, measurements);
-    var data = new Data_Data(Trace.dataType, baseData);
-    return EnvelopeCreator.createEnvelope(logger, Trace.envelopeType, telemetryItem, data);
-  };
+  _extractPropsAndMeasurements(telemetryItem.data, props, measurements);
 
-  TraceEnvelopeCreator.TraceEnvelopeCreator = new TraceEnvelopeCreator();
-  return TraceEnvelopeCreator;
-}(EnvelopeCreator);
+  if (!isNullOrUndefined(customUndefinedValue)) {
+    _convertPropsUndefinedToCustomDefinedValue(props, customUndefinedValue);
+  }
+
+  var baseMetricData = new Metric(logger, baseData.name, baseData.average, baseData.sampleCount, baseData.min, baseData.max, props, measurements);
+  var data = new Data_Data(Metric.dataType, baseMetricData);
+  return _createEnvelope(logger, Metric.envelopeType, telemetryItem, data);
+}
+function PageViewEnvelopeCreator(logger, telemetryItem, customUndefinedValue) {
+  EnvelopeCreatorInit(logger, telemetryItem); // Since duration is not part of the domain properties in Common Schema, extract it from part C
+
+  var strDuration = "duration";
+  var duration;
+  var baseData = telemetryItem[strBaseData];
+
+  if (!isNullOrUndefined(baseData) && !isNullOrUndefined(baseData[strProperties]) && !isNullOrUndefined(baseData[strProperties][strDuration])) {
+    // from part B properties
+    duration = baseData[strProperties][strDuration];
+    delete baseData[strProperties][strDuration];
+  } else if (!isNullOrUndefined(telemetryItem.data) && !isNullOrUndefined(telemetryItem.data[strDuration])) {
+    // from custom properties
+    duration = telemetryItem.data[strDuration];
+    delete telemetryItem.data[strDuration];
+  }
+
+  var bd = telemetryItem[strBaseData]; // special case: pageview.id is grabbed from current operation id. Analytics plugin is decoupled from properties plugin, so this is done here instead. This can be made a default telemetry intializer instead if needed to be decoupled from channel
+
+  var currentContextId;
+
+  if (((telemetryItem.ext || {}).trace || {}).traceID) {
+    currentContextId = telemetryItem.ext.trace.traceID;
+  }
+
+  var id = bd.id || currentContextId;
+  var name = bd.name;
+  var url = bd.uri;
+  var properties = bd[strProperties] || {};
+  var measurements = bd.measurements || {}; // refUri is a field that Breeze still does not recognize as part of Part B. For now, put it in Part C until it supports it as a domain property
+
+  if (!isNullOrUndefined(bd.refUri)) {
+    properties["refUri"] = bd.refUri;
+  } // pageType is a field that Breeze still does not recognize as part of Part B. For now, put it in Part C until it supports it as a domain property
 
 
+  if (!isNullOrUndefined(bd.pageType)) {
+    properties["pageType"] = bd.pageType;
+  } // isLoggedIn is a field that Breeze still does not recognize as part of Part B. For now, put it in Part C until it supports it as a domain property
+
+
+  if (!isNullOrUndefined(bd.isLoggedIn)) {
+    properties["isLoggedIn"] = bd.isLoggedIn.toString();
+  } // pageTags is a field that Breeze still does not recognize as part of Part B. For now, put it in Part C until it supports it as a domain property
+
+
+  if (!isNullOrUndefined(bd[strProperties])) {
+    var pageTags = bd[strProperties];
+    objForEachKey(pageTags, function (key, value) {
+      properties[key] = value;
+    });
+  }
+
+  _extractPropsAndMeasurements(telemetryItem.data, properties, measurements);
+
+  if (!isNullOrUndefined(customUndefinedValue)) {
+    _convertPropsUndefinedToCustomDefinedValue(properties, customUndefinedValue);
+  }
+
+  var pageViewData = new PageView(logger, name, url, duration, properties, measurements, id);
+  var data = new Data_Data(PageView.dataType, pageViewData);
+  return _createEnvelope(logger, PageView.envelopeType, telemetryItem, data);
+}
+function PageViewPerformanceEnvelopeCreator(logger, telemetryItem, customUndefinedValue) {
+  EnvelopeCreatorInit(logger, telemetryItem);
+  var bd = telemetryItem[strBaseData];
+  var name = bd.name;
+  var url = bd.uri || bd.url;
+  var properties = bd[strProperties] || {};
+  var measurements = bd.measurements || {};
+
+  _extractPropsAndMeasurements(telemetryItem.data, properties, measurements);
+
+  if (!isNullOrUndefined(customUndefinedValue)) {
+    _convertPropsUndefinedToCustomDefinedValue(properties, customUndefinedValue);
+  }
+
+  var baseData = new PageViewPerformance(logger, name, url, undefined, properties, measurements, bd);
+  var data = new Data_Data(PageViewPerformance.dataType, baseData);
+  return _createEnvelope(logger, PageViewPerformance.envelopeType, telemetryItem, data);
+}
+function TraceEnvelopeCreator(logger, telemetryItem, customUndefinedValue) {
+  EnvelopeCreatorInit(logger, telemetryItem);
+  var message = telemetryItem[strBaseData].message;
+  var severityLevel = telemetryItem[strBaseData].severityLevel;
+  var props = telemetryItem[strBaseData][strProperties] || {};
+  var measurements = telemetryItem[strBaseData].measurements || {};
+
+  _extractPropsAndMeasurements(telemetryItem.data, props, measurements);
+
+  if (!isNullOrUndefined(customUndefinedValue)) {
+    _convertPropsUndefinedToCustomDefinedValue(props, customUndefinedValue);
+  }
+
+  var baseData = new Trace(logger, message, severityLevel, props, measurements);
+  var data = new Data_Data(Trace.dataType, baseData);
+  return _createEnvelope(logger, Trace.envelopeType, telemetryItem, data);
+}
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/Serializer.js
 /*
- * Application Insights JavaScript SDK - Channel, 2.6.5
+ * Application Insights JavaScript SDK - Channel, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -61815,6 +61932,7 @@ var Serializer = function () {
               name: name
             }); // If not in debug mode, continue and hope the error is permissible
           } else if (!isHidden) {
+            // Don't serialize hidden fields
             var value = void 0;
 
             if (isObj) {
@@ -61913,9 +62031,11 @@ var Serializer = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/applicationinsights-common.js
 /*
- * Application Insights JavaScript SDK - Common, 2.6.5
+ * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
+// Licensed under the
+
 
 
 
@@ -61948,7 +62068,7 @@ var BreezeChannelIdentifier = "AppInsightsChannelPlugin";
 var AnalyticsPluginIdentifier = "ApplicationInsightsAnalytics";
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/Offline.js
 /*
- * Application Insights JavaScript SDK - Channel, 2.6.5
+ * Application Insights JavaScript SDK - Channel, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -61970,8 +62090,8 @@ var OfflineListener = function () {
     dynamicproto_js(OfflineListener, this, function (_self) {
       try {
         if (_window) {
-          if (EventHelper.Attach(_window, 'online', _setOnline)) {
-            EventHelper.Attach(_window, 'offline', _setOffline);
+          if (attachEvent(_window, 'online', _setOnline)) {
+            attachEvent(_window, 'offline', _setOffline);
             isListening = true;
           }
         }
@@ -61993,6 +62113,7 @@ var OfflineListener = function () {
 
 
           if (_navigator && !isNullOrUndefined(_navigator.onLine)) {
+            // navigator.onLine is undefined in react-native
             _onlineStatus = _navigator.onLine;
           }
         }
@@ -62011,6 +62132,7 @@ var OfflineListener = function () {
         if (isListening) {
           result = _onlineStatus;
         } else if (_navigator && !isNullOrUndefined(_navigator.onLine)) {
+          // navigator.onLine is undefined in react-native
           result = _navigator.onLine;
         }
 
@@ -62041,9 +62163,12 @@ var OfflineListener = function () {
 var Offline = OfflineListener.Offline;
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/TelemetryProcessors/SamplingScoreGenerators/HashCodeScoreGenerator.js
 /*
- * Application Insights JavaScript SDK - Channel, 2.6.5
+ * Application Insights JavaScript SDK - Channel, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
+// (Magic number) DJB algorithm can't work on shorter strings (results in poor distribution
+var MIN_INPUT_LENGTH = 8;
+
 var HashCodeScoreGenerator = function () {
   function HashCodeScoreGenerator() {}
 
@@ -62057,7 +62182,7 @@ var HashCodeScoreGenerator = function () {
       return 0;
     }
 
-    while (input.length < HashCodeScoreGenerator.MIN_INPUT_LENGTH) {
+    while (input.length < MIN_INPUT_LENGTH) {
       input = input.concat(input);
     } // 5381 is a magic number: http://stackoverflow.com/questions/10696223/reason-for-5381-number-in-djb-hash-function
 
@@ -62075,16 +62200,14 @@ var HashCodeScoreGenerator = function () {
   }; // We're using 32 bit math, hence max value is (2^31 - 1)
 
 
-  HashCodeScoreGenerator.INT_MAX_VALUE = 2147483647; // (Magic number) DJB algorithm can't work on shorter strings (results in poor distribution
-
-  HashCodeScoreGenerator.MIN_INPUT_LENGTH = 8;
+  HashCodeScoreGenerator.INT_MAX_VALUE = 2147483647;
   return HashCodeScoreGenerator;
 }();
 
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/TelemetryProcessors/SamplingScoreGenerators/SamplingScoreGenerator.js
 /*
- * Application Insights JavaScript SDK - Channel, 2.6.5
+ * Application Insights JavaScript SDK - Channel, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -62092,28 +62215,32 @@ var HashCodeScoreGenerator = function () {
 
 var SamplingScoreGenerator = function () {
   function SamplingScoreGenerator() {
-    this.hashCodeGeneragor = new HashCodeScoreGenerator();
-    this.keys = new ContextTagKeys();
+    var _self = this;
+
+    var hashCodeGenerator = new HashCodeScoreGenerator();
+    var keys = new ContextTagKeys();
+
+    _self.getSamplingScore = function (item) {
+      var score = 0;
+
+      if (item.tags && item.tags[keys.userId]) {
+        // search in tags first, then ext
+        score = hashCodeGenerator.getHashCodeScore(item.tags[keys.userId]);
+      } else if (item.ext && item.ext.user && item.ext.user.id) {
+        score = hashCodeGenerator.getHashCodeScore(item.ext.user.id);
+      } else if (item.tags && item.tags[keys.operationId]) {
+        // search in tags first, then ext
+        score = hashCodeGenerator.getHashCodeScore(item.tags[keys.operationId]);
+      } else if (item.ext && item.ext.telemetryTrace && item.ext.telemetryTrace.traceID) {
+        score = hashCodeGenerator.getHashCodeScore(item.ext.telemetryTrace.traceID);
+      } else {
+        // tslint:disable-next-line:insecure-random
+        score = Math.random() * 100;
+      }
+
+      return score;
+    };
   }
-
-  SamplingScoreGenerator.prototype.getSamplingScore = function (item) {
-    var score = 0;
-
-    if (item.tags && item.tags[this.keys.userId]) {
-      score = this.hashCodeGeneragor.getHashCodeScore(item.tags[this.keys.userId]);
-    } else if (item.ext && item.ext.user && item.ext.user.id) {
-      score = this.hashCodeGeneragor.getHashCodeScore(item.ext.user.id);
-    } else if (item.tags && item.tags[this.keys.operationId]) {
-      score = this.hashCodeGeneragor.getHashCodeScore(item.tags[this.keys.operationId]);
-    } else if (item.ext && item.ext.telemetryTrace && item.ext.telemetryTrace.traceID) {
-      score = this.hashCodeGeneragor.getHashCodeScore(item.ext.telemetryTrace.traceID);
-    } else {
-      // tslint:disable-next-line:insecure-random
-      score = Math.random() * 100;
-    }
-
-    return score;
-  };
 
   return SamplingScoreGenerator;
 }();
@@ -62121,7 +62248,7 @@ var SamplingScoreGenerator = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/TelemetryProcessors/Sample.js
 /*
- * Application Insights JavaScript SDK - Channel, 2.6.5
+ * Application Insights JavaScript SDK - Channel, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -62132,10 +62259,11 @@ var Sample = function () {
   function Sample(sampleRate, logger) {
     // We're using 32 bit math, hence max value is (2^31 - 1)
     this.INT_MAX_VALUE = 2147483647;
-    this._logger = logger || safeGetLogger(null);
+
+    var _logger = logger || safeGetLogger(null);
 
     if (sampleRate > 100 || sampleRate < 0) {
-      this._logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.SampleRateOutOfRange, "Sampling rate is out of range (0..100). Sampling will be disabled, you may be sending too much data which may affect your AI service level.", {
+      _logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.SampleRateOutOfRange, "Sampling rate is out of range (0..100). Sampling will be disabled, you may be sending too much data which may affect your AI service level.", {
         samplingRate: sampleRate
       }, true);
 
@@ -62172,9 +62300,11 @@ var Sample = function () {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/Sender.js
 /*
- * Application Insights JavaScript SDK - Channel, 2.6.5
+ * Application Insights JavaScript SDK - Channel, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
+var _a;
+
 
 
 
@@ -62185,6 +62315,7 @@ var Sample = function () {
 
 
 
+var FetchSyncRequestSizeLimitBytes = 65000; // approx 64kb (the current Edge, Firefox and Chrome max limit)
 
 function _getResponseText(xhr) {
   try {
@@ -62195,6 +62326,62 @@ function _getResponseText(xhr) {
   return null;
 }
 
+function _getDefaultAppInsightsChannelConfig() {
+  // set default values
+  return {
+    endpointUrl: function endpointUrl() {
+      return "https://dc.services.visualstudio.com/v2/track";
+    },
+    emitLineDelimitedJson: function emitLineDelimitedJson() {
+      return false;
+    },
+    maxBatchInterval: function maxBatchInterval() {
+      return 15000;
+    },
+    maxBatchSizeInBytes: function maxBatchSizeInBytes() {
+      return 102400;
+    },
+    disableTelemetry: function disableTelemetry() {
+      return false;
+    },
+    enableSessionStorageBuffer: function enableSessionStorageBuffer() {
+      return true;
+    },
+    isRetryDisabled: function isRetryDisabled() {
+      return false;
+    },
+    isBeaconApiDisabled: function isBeaconApiDisabled() {
+      return true;
+    },
+    disableXhr: function disableXhr() {
+      return false;
+    },
+    onunloadDisableFetch: function onunloadDisableFetch() {
+      return false;
+    },
+    onunloadDisableBeacon: function onunloadDisableBeacon() {
+      return false;
+    },
+    instrumentationKey: function instrumentationKey() {
+      return undefined;
+    },
+    namePrefix: function namePrefix() {
+      return undefined;
+    },
+    samplingPercentage: function samplingPercentage() {
+      return 100;
+    },
+    customHeaders: function customHeaders() {
+      return undefined;
+    },
+    convertUndefined: function convertUndefined() {
+      return undefined;
+    }
+  };
+}
+
+var EnvelopeTypeCreator = (_a = {}, _a[Event_Event.dataType] = EventEnvelopeCreator, _a[Trace.dataType] = TraceEnvelopeCreator, _a[PageView.dataType] = PageViewEnvelopeCreator, _a[PageViewPerformance.dataType] = PageViewPerformanceEnvelopeCreator, _a[Exception.dataType] = ExceptionEnvelopeCreator, _a[Metric.dataType] = MetricEnvelopeCreator, _a[RemoteDependencyData_RemoteDependencyData.dataType] = DependencyEnvelopeCreator, _a);
+
 var Sender = function (_super) {
   __extendsFn(Sender, _super);
 
@@ -62203,11 +62390,6 @@ var Sender = function (_super) {
 
     _this.priority = 1001;
     _this.identifier = BreezeChannelIdentifier;
-    /**
-     * Whether XMLHttpRequest object is supported. Older version of IE (8,9) do not support it.
-     */
-
-    _this._XMLHttpRequestSupported = false;
     /**
      * How many times in a row a retryable error condition has occurred.
      */
@@ -62236,7 +62418,22 @@ var Sender = function (_super) {
 
     var _stamp_specific_redirects;
 
-    var _headers = {};
+    var _headers = {}; // Keep track of the outstanding sync fetch payload total (as sync fetch has limits)
+
+    var _syncFetchPayload = 0;
+    /**
+     * The sender to use if the payload size is too large
+     */
+
+    var _fallbackSender;
+    /**
+     * The identified sender to use for the synchronous unload stage
+     */
+
+
+    var _syncUnloadSender;
+
+    _this._senderConfig = _getDefaultAppInsightsChannelConfig();
     dynamicproto_js(Sender, _this, function (_self, _base) {
       function _notImplemented() {
         throwError("Method not implemented.");
@@ -62258,9 +62455,9 @@ var Sender = function (_super) {
       };
 
       _self.onunloadFlush = function () {
-        if ((_self._senderConfig.onunloadDisableBeacon() === false || _self._senderConfig.isBeaconApiDisabled() === false) && isBeaconApiSupported()) {
+        if ((_self._senderConfig.onunloadDisableBeacon() === false || _self._senderConfig.isBeaconApiDisabled() === false) && isBeaconsSupported()) {
           try {
-            _self.triggerSend(true, _beaconSender, 2
+            _self.triggerSend(true, _doUnloadSend, 2
             /* Unload */
             );
           } catch (e) {
@@ -62292,9 +62489,8 @@ var Sender = function (_super) {
         _self._sender = null;
         _stamp_specific_redirects = 0;
 
-        var defaultConfig = Sender._getDefaultAppInsightsChannelConfig();
+        var defaultConfig = _getDefaultAppInsightsChannelConfig();
 
-        _self._senderConfig = Sender._getEmptyAppInsightsChannelConfig();
         objForEachKey(defaultConfig, function (field, value) {
           _self._senderConfig[field] = function () {
             return ctx.getConfig(identifier, field, value());
@@ -62313,27 +62509,41 @@ var Sender = function (_super) {
           });
         }
 
-        if (!_self._senderConfig.isBeaconApiDisabled() && isBeaconApiSupported()) {
-          _self._sender = _beaconSender;
+        var senderConfig = _self._senderConfig;
+        var sendPostFunc = null;
+
+        if (!senderConfig.disableXhr() && useXDomainRequest()) {
+          sendPostFunc = _xdrSender; // IE 8 and 9
+        } else if (!senderConfig.disableXhr() && isXhrSupported()) {
+          sendPostFunc = _xhrSender;
+        }
+
+        if (!sendPostFunc && isFetchSupported()) {
+          sendPostFunc = _fetchSender;
+        } // always fallback to XHR
+
+
+        _fallbackSender = sendPostFunc || _xhrSender;
+
+        if (!senderConfig.isBeaconApiDisabled() && isBeaconsSupported()) {
+          // Config is set to always used beacon sending
+          sendPostFunc = _beaconSender;
+        }
+
+        _self._sender = sendPostFunc || _xhrSender;
+
+        if (!senderConfig.onunloadDisableFetch() && isFetchSupported(true)) {
+          // Try and use the fetch with keepalive
+          _syncUnloadSender = _fetchKeepAliveSender;
+        } else if (isBeaconsSupported()) {
+          // Try and use sendBeacon
+          _syncUnloadSender = _beaconSender;
+        } else if (!senderConfig.disableXhr() && useXDomainRequest()) {
+          _syncUnloadSender = _xdrSender; // IE 8 and 9
+        } else if (!senderConfig.disableXhr() && isXhrSupported()) {
+          _syncUnloadSender = _xhrSender;
         } else {
-          var xhr = getGlobalInst("XMLHttpRequest");
-
-          if (xhr) {
-            var testXhr = new xhr();
-
-            if ("withCredentials" in testXhr) {
-              _self._sender = _xhrSender;
-              _self._XMLHttpRequestSupported = true;
-            } else if (typeof XDomainRequest !== Constants_strShimUndefined) {
-              _self._sender = _xdrSender; // IE 8 and 9
-            }
-          } else {
-            var fetch_1 = getGlobalInst("fetch");
-
-            if (fetch_1) {
-              _self._sender = _fetchSender;
-            }
-          }
+          _syncUnloadSender = _fallbackSender;
         }
       };
 
@@ -62379,10 +62589,14 @@ var Sender = function (_super) {
             return;
           } else {
             telemetryItem[SampleRate] = _self._sample.sampleRate;
-          } // construct an envelope that Application Insights endpoint can understand
+          }
 
+          var convertUndefined = _self._senderConfig.convertUndefined() || undefined; // construct an envelope that Application Insights endpoint can understand
+          // if ikey of telemetry is provided and not empty, envelope will use this iKey instead of senderConfig iKey
 
-          var aiEnvelope_1 = Sender.constructEnvelope(telemetryItem, _self._senderConfig.instrumentationKey(), itemCtx.diagLog());
+          var defaultEnvelopeIkey = telemetryItem.iKey || _self._senderConfig.instrumentationKey();
+
+          var aiEnvelope_1 = Sender.constructEnvelope(telemetryItem, defaultEnvelopeIkey, itemCtx.diagLog(), convertUndefined);
 
           if (!aiEnvelope_1) {
             itemCtx.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.CreateEnvelopeError, "Unable to create an AppInsights envelope");
@@ -62417,19 +62631,17 @@ var Sender = function (_super) {
           var payload = _serializer.serialize(aiEnvelope_1); // flush if we would exceed the max-size limit by adding this item
 
 
-          var bufferPayload = _self._buffer.getItems();
+          var buffer = _self._buffer;
+          var bufferSize = buffer.size();
 
-          var batch = _self._buffer.batchPayloads(bufferPayload);
-
-          if (batch && batch.length + payload.length > _self._senderConfig.maxBatchSizeInBytes()) {
+          if (bufferSize + payload.length > _self._senderConfig.maxBatchSizeInBytes()) {
             _self.triggerSend(true, null, 10
             /* MaxBatchSize */
             );
           } // enqueue the payload
 
 
-          _self._buffer.enqueue(payload); // ensure an invocation timeout is set
-
+          buffer.enqueue(payload); // ensure an invocation timeout is set
 
           _setupTimer();
         } catch (e) {
@@ -62464,10 +62676,11 @@ var Sender = function (_super) {
         }
 
         try {
-          // Send data only if disableTelemetry is false
+          var buffer = _self._buffer; // Send data only if disableTelemetry is false
+
           if (!_self._senderConfig.disableTelemetry()) {
-            if (_self._buffer.count() > 0) {
-              var payload = _self._buffer.getItems();
+            if (buffer.count() > 0) {
+              var payload = buffer.getItems();
 
               _notifySendRequest(sendReason || 0
               /* Undefined */
@@ -62484,7 +62697,7 @@ var Sender = function (_super) {
 
             _lastSend = +new Date();
           } else {
-            _self._buffer.clear();
+            buffer.clear();
           }
 
           clearTimeout(_timeoutHandle);
@@ -62615,6 +62828,7 @@ var Sender = function (_super) {
             _self._onError(payload, errorMessage);
           }
         } else if (Offline.isOffline()) {
+          // offline
           // Note: Don't check for status == 0, since adblock gives this code
           if (!_self._senderConfig.isRetryDisabled()) {
             var offlineBackOffMultiplier = 10; // arbritrary number
@@ -62667,16 +62881,21 @@ var Sender = function (_super) {
 
         return false;
       }
-      /**
-       * Send Beacon API request
-       * @param payload {string} - The data payload to be sent.
-       * @param isAsync {boolean} - not used
-       * Note: Beacon API does not support custom headers and we are not able to get
-       * appId from the backend for the correct correlation.
-       */
 
+      function _doUnloadSend(payload, isAsync) {
+        if (_syncUnloadSender) {
+          // We are unloading so always call the sender with sync set to false
+          _syncUnloadSender(payload, false);
+        } else {
+          // Fallback to the previous beacon Sender (which causes a CORB warning on chrome now)
+          _beaconSender(payload, isAsync);
+        }
+      }
 
-      function _beaconSender(payload, isAsync) {
+      function _doBeaconSend(payload) {
+        var nav = getNavigator();
+        var buffer = _self._buffer;
+
         var url = _self._senderConfig.endpointUrl();
 
         var batch = _self._buffer.batchPayloads(payload); // Chrome only allows CORS-safelisted values for the sendBeacon data argument
@@ -62687,17 +62906,47 @@ var Sender = function (_super) {
           type: 'text/plain;charset=UTF-8'
         }); // The sendBeacon method returns true if the user agent is able to successfully queue the data for transfer. Otherwise it returns false.
 
-        var queued = getNavigator().sendBeacon(url, plainTextBatch);
+        var queued = nav.sendBeacon(url, plainTextBatch);
 
         if (queued) {
-          _self._buffer.markAsSent(payload); // no response from beaconSender, clear buffer
-
+          buffer.markAsSent(payload); // no response from beaconSender, clear buffer
 
           _self._onSuccess(payload, payload.length);
-        } else {
-          _xhrSender(payload, true);
+        }
 
-          _self.diagLog().throwInternal(LoggingSeverity.WARNING, _InternalMessageId.TransmissionFailed, ". " + "Failed to send telemetry with Beacon API, retried with xhrSender.");
+        return queued;
+      }
+      /**
+       * Send Beacon API request
+       * @param payload {string} - The data payload to be sent.
+       * @param isAsync {boolean} - not used
+       * Note: Beacon API does not support custom headers and we are not able to get
+       * appId from the backend for the correct correlation.
+       */
+
+
+      function _beaconSender(payload, isAsync) {
+        if (isArray(payload) && payload.length > 0) {
+          // The sendBeacon method returns true if the user agent is able to successfully queue the data for transfer. Otherwise it returns false.
+          if (!_doBeaconSend(payload)) {
+            // Failed to send entire payload so try and split data and try to send as much events as possible
+            var droppedPayload = [];
+
+            for (var lp = 0; lp < payload.length; lp++) {
+              var thePayload = payload[lp];
+
+              if (!_doBeaconSend([thePayload])) {
+                // Can't send anymore, so split the batch and drop the rest
+                droppedPayload.push(thePayload);
+              }
+            }
+
+            if (droppedPayload.length > 0) {
+              _fallbackSender(droppedPayload, true);
+
+              _self.diagLog().throwInternal(LoggingSeverity.WARNING, _InternalMessageId.TransmissionFailed, ". " + "Failed to send telemetry with Beacon API, retried with normal sender.");
+            }
+          }
         }
       }
       /**
@@ -62744,6 +62993,28 @@ var Sender = function (_super) {
 
         _self._buffer.markAsSent(payload);
       }
+
+      function _fetchKeepAliveSender(payload, isAsync) {
+        if (isArray(payload)) {
+          var payloadSize = payload.length;
+
+          for (var lp = 0; lp < payload.length; lp++) {
+            payloadSize += payload[lp].length;
+          }
+
+          if (_syncFetchPayload + payloadSize <= FetchSyncRequestSizeLimitBytes) {
+            _doFetchSender(payload, false);
+          } else if (isBeaconsSupported()) {
+            // Fallback to beacon sender as we at least get told which events can't be scheduled
+            _beaconSender(payload, isAsync);
+          } else {
+            // Payload is going to be too big so just try and send via XHR
+            _fallbackSender && _fallbackSender(payload, true);
+
+            _self.diagLog().throwInternal(LoggingSeverity.WARNING, _InternalMessageId.TransmissionFailed, ". " + "Failed to send telemetry with Beacon API, retried with xhrSender.");
+          }
+        }
+      }
       /**
        * Send fetch API request
        * @param payload {string} - The data payload to be sent.
@@ -62752,14 +63023,27 @@ var Sender = function (_super) {
 
 
       function _fetchSender(payload, isAsync) {
+        _doFetchSender(payload, true);
+      }
+      /**
+       * Send fetch API request
+       * @param payload {string} - The data payload to be sent.
+       * @param isAsync {boolean} - not used
+       */
+
+
+      function _doFetchSender(payload, isAsync) {
+        var _a;
+
         var endPointUrl = _self._senderConfig.endpointUrl();
 
         var batch = _self._buffer.batchPayloads(payload);
 
         var plainTextBatch = new Blob([batch], {
-          type: 'text/plain;charset=UTF-8'
+          type: 'application/json'
         });
-        var requestHeaders = new Headers(); // append Sdk-Context request header only in case of breeze endpoint
+        var requestHeaders = new Headers();
+        var batchLength = batch.length; // append Sdk-Context request header only in case of breeze endpoint
 
         if (isInternalApplicationInsightsEndpoint(endPointUrl)) {
           requestHeaders.append(RequestHeaders.sdkContextHeader, RequestHeaders.sdkContextHeaderAppIdRequest);
@@ -62768,30 +63052,56 @@ var Sender = function (_super) {
         arrForEach(objKeys(_headers), function (headerName) {
           requestHeaders.append(headerName, _headers[headerName]);
         });
-        var init = {
+        var init = (_a = {
           method: "POST",
           headers: requestHeaders,
           body: plainTextBatch
-        };
+        }, _a[DisabledPropertyName] = true // Mark so we don't attempt to track this request
+        , _a);
+
+        if (!isAsync) {
+          init.keepalive = true;
+          _syncFetchPayload += batchLength;
+        }
+
         var request = new Request(endPointUrl, init);
+
+        try {
+          // Also try and tag the request (just in case the value in init is not copied over)
+          request[DisabledPropertyName] = true;
+        } catch (e) {// If the environment has locked down the XMLHttpRequest (preventExtensions and/or freeze), this would
+          // cause the request to fail and we no telemetry would be sent
+        }
+
         fetch(request).then(function (response) {
+          if (!isAsync) {
+            _syncFetchPayload -= batchLength;
+            batchLength = 0;
+          }
           /**
            * The Promise returned from fetch() won’t reject on HTTP error status even if the response is an HTTP 404 or 500.
            * Instead, it will resolve normally (with ok status set to false), and it will only reject on network failure
            * or if anything prevented the request from completing.
            */
+
+
           if (!response.ok) {
-            throw Error(response.statusText);
+            _self._onError(payload, response.statusText);
           } else {
             response.text().then(function (text) {
               _checkResponsStatus(response.status, payload, response.url, payload.length, response.statusText, text);
             });
-
-            _self._buffer.markAsSent(payload);
           }
         })["catch"](function (error) {
+          if (!isAsync) {
+            _syncFetchPayload -= batchLength;
+            batchLength = 0;
+          }
+
           _self._onError(payload, error.message);
         });
+
+        _self._buffer.markAsSent(payload);
       }
       /**
        * Parses the response from the backend.
@@ -62831,14 +63141,13 @@ var Sender = function (_super) {
           return;
         }
 
-        _self._buffer.clearSent(payload);
-
+        var buffer = _self._buffer;
+        buffer.clearSent(payload);
         _consecutiveErrors++;
 
         for (var _i = 0, payload_1 = payload; _i < payload_1.length; _i++) {
           var item = payload_1[_i];
-
-          _self._buffer.enqueue(item);
+          buffer.enqueue(item);
         } // setup timer
 
 
@@ -62920,6 +63229,8 @@ var Sender = function (_super) {
 
 
       function _xdrSender(payload, isAsync) {
+        var buffer = _self._buffer;
+
         var _window = getWindow();
 
         var xdr = new XDomainRequest();
@@ -62939,8 +63250,7 @@ var Sender = function (_super) {
         if (_self._senderConfig.endpointUrl().lastIndexOf(hostingProtocol, 0) !== 0) {
           _self.diagLog().throwInternal(LoggingSeverity.WARNING, _InternalMessageId.TransmissionFailed, ". " + "Cannot send XDomain request. The endpoint URL protocol doesn't match the hosting page protocol.");
 
-          _self._buffer.clear();
-
+          buffer.clear();
           return;
         }
 
@@ -62948,11 +63258,9 @@ var Sender = function (_super) {
 
         xdr.open('POST', endpointUrl); // compose an array of payloads
 
-        var batch = _self._buffer.batchPayloads(payload);
-
+        var batch = buffer.batchPayloads(payload);
         xdr.send(batch);
-
-        _self._buffer.markAsSent(payload);
+        buffer.markAsSent(payload);
       }
 
       function _formatErrorMessageXdr(xdr, message) {
@@ -63009,105 +63317,19 @@ var Sender = function (_super) {
     return _this;
   }
 
-  Sender.constructEnvelope = function (orig, iKey, logger) {
+  Sender.constructEnvelope = function (orig, iKey, logger, convertUndefined) {
     var envelope;
 
     if (iKey !== orig.iKey && !isNullOrUndefined(iKey)) {
-      envelope = __assignFn({}, orig, {
+      envelope = __assignFn(__assignFn({}, orig), {
         iKey: iKey
       });
     } else {
       envelope = orig;
     }
 
-    switch (envelope.baseType) {
-      case Event_Event.dataType:
-        return EventEnvelopeCreator.EventEnvelopeCreator.Create(logger, envelope);
-
-      case Trace.dataType:
-        return TraceEnvelopeCreator.TraceEnvelopeCreator.Create(logger, envelope);
-
-      case PageView.dataType:
-        return PageViewEnvelopeCreator.PageViewEnvelopeCreator.Create(logger, envelope);
-
-      case PageViewPerformance.dataType:
-        return PageViewPerformanceEnvelopeCreator.PageViewPerformanceEnvelopeCreator.Create(logger, envelope);
-
-      case Exception.dataType:
-        return ExceptionEnvelopeCreator.ExceptionEnvelopeCreator.Create(logger, envelope);
-
-      case Metric.dataType:
-        return MetricEnvelopeCreator.MetricEnvelopeCreator.Create(logger, envelope);
-
-      case RemoteDependencyData_RemoteDependencyData.dataType:
-        return DependencyEnvelopeCreator.DependencyEnvelopeCreator.Create(logger, envelope);
-
-      default:
-        return EventEnvelopeCreator.EventEnvelopeCreator.Create(logger, envelope);
-    }
-  };
-
-  Sender._getDefaultAppInsightsChannelConfig = function () {
-    // set default values
-    return {
-      endpointUrl: function endpointUrl() {
-        return "https://dc.services.visualstudio.com/v2/track";
-      },
-      emitLineDelimitedJson: function emitLineDelimitedJson() {
-        return false;
-      },
-      maxBatchInterval: function maxBatchInterval() {
-        return 15000;
-      },
-      maxBatchSizeInBytes: function maxBatchSizeInBytes() {
-        return 102400;
-      },
-      disableTelemetry: function disableTelemetry() {
-        return false;
-      },
-      enableSessionStorageBuffer: function enableSessionStorageBuffer() {
-        return true;
-      },
-      isRetryDisabled: function isRetryDisabled() {
-        return false;
-      },
-      isBeaconApiDisabled: function isBeaconApiDisabled() {
-        return true;
-      },
-      onunloadDisableBeacon: function onunloadDisableBeacon() {
-        return false;
-      },
-      instrumentationKey: function instrumentationKey() {
-        return undefined;
-      },
-      namePrefix: function namePrefix() {
-        return undefined;
-      },
-      samplingPercentage: function samplingPercentage() {
-        return 100;
-      },
-      customHeaders: function customHeaders() {
-        return undefined;
-      }
-    };
-  };
-
-  Sender._getEmptyAppInsightsChannelConfig = function () {
-    return {
-      endpointUrl: undefined,
-      emitLineDelimitedJson: undefined,
-      maxBatchInterval: undefined,
-      maxBatchSizeInBytes: undefined,
-      disableTelemetry: undefined,
-      enableSessionStorageBuffer: undefined,
-      isRetryDisabled: undefined,
-      isBeaconApiDisabled: undefined,
-      onunloadDisableBeacon: undefined,
-      instrumentationKey: undefined,
-      namePrefix: undefined,
-      samplingPercentage: undefined,
-      customHeaders: undefined
-    };
+    var creator = EnvelopeTypeCreator[envelope.baseType] || EventEnvelopeCreator;
+    return creator(logger, envelope, convertUndefined);
   }; // Removed Stub for Sender.prototype.pause.
   // Removed Stub for Sender.prototype.resume.
   // Removed Stub for Sender.prototype.flush.
@@ -63130,7 +63352,7 @@ var Sender = function (_super) {
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-web-basic/dist-esm/index.js
 /*
- * Application Insights JavaScript Web SDK - Basic, 2.6.5
+ * Application Insights JavaScript Web SDK - Basic, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
@@ -63234,7 +63456,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "ed71034021a6621a334e50548c6ff97d41df0a81";
+var sha = "1ca5702a91bb64f86842ff9d07c26d678342ea7c";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64114,7 +64336,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "ed71034021a6621a334e50548c6ff97d41df0a81";
+  var sha = "1ca5702a91bb64f86842ff9d07c26d678342ea7c";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -81467,4 +81689,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-4c99400f7d2d4ff6019c.js.map
+//# sourceMappingURL=app-2bc9a7cc7000fa449ebd.js.map

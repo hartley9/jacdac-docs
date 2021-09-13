@@ -5,7 +5,7 @@
 
 /*!
  * 
- *   react-simple-keyboard v3.2.72
+ *   react-simple-keyboard v3.2.78
  *   https://github.com/hodgef/react-simple-keyboard
  *
  *   Copyright (c) Francisco Hodge (https://github.com/hodgef) and project contributors.
@@ -155,7 +155,7 @@
       86: function _(t) {
         /*!
          * 
-         *   simple-keyboard v3.2.50
+         *   simple-keyboard v3.2.53
          *   https://github.com/hodgef/simple-keyboard
          *
          *   Copyright (c) Francisco Hodge (https://github.com/hodgef) and project contributors.
@@ -666,7 +666,7 @@
                     T = !v && M || C(d),
                     j = "Array" == e && A.entries || M;
 
-                if (j && (E = i(j.call(new t())), h !== Object.prototype && E.next && (f || i(E) === h || (a ? a(E, h) : "function" != typeof E[g] && u(E, g, x)), s(E, I, !0, !0), f && (p[I] = x))), d == m && M && M.name !== m && (P = !0, T = function T() {
+                if (j && (E = i(j.call(new t()))) !== Object.prototype && E.next && (f || i(E) === h || (a ? a(E, h) : "function" != typeof E[g] && u(E, g, x)), s(E, I, !0, !0), f && (p[I] = x)), d == m && M && M.name !== m && (P = !0, T = function T() {
                   return M.call(this);
                 }), f && !O || A[g] === T || u(A, g, T), p[e] = T, d) if (S = {
                   values: C(m),
@@ -749,6 +749,11 @@
                 TextTrackList: 0,
                 TouchList: 0
               };
+            },
+            8509: function _(t, e, n) {
+              var o = n(317)("span").classList,
+                  r = o && o.constructor && o.constructor.prototype;
+              t.exports = r === Object.prototype ? void 0 : r;
             },
             8886: function _(t, e, n) {
               var o = n(8113).match(/firefox\/(\d+)/i);
@@ -1198,19 +1203,17 @@
                   r,
                   i,
                   a = n(7293),
-                  s = n(9518),
-                  u = n(8880),
-                  c = n(6656),
+                  s = n(30),
+                  u = n(9518),
+                  c = n(8880),
                   l = n(5112),
                   f = n(1913),
                   p = l("iterator"),
                   d = !1;
-              [].keys && ("next" in (i = [].keys()) ? (r = s(s(i))) !== Object.prototype && (o = r) : d = !0);
-              var h = null == o || a(function () {
+              [].keys && ("next" in (i = [].keys()) ? (r = u(u(i))) !== Object.prototype && (o = r) : d = !0), null == o || a(function () {
                 var t = {};
                 return o[p].call(t) !== t;
-              });
-              h && (o = {}), f && !h || c(o, p) || u(o, p, function () {
+              }) ? o = {} : f && (o = s(o)), "function" != typeof o[p] && c(o, p, function () {
                 return this;
               }), t.exports = {
                 IteratorPrototype: o,
@@ -1717,7 +1720,7 @@
               (t.exports = function (t, e) {
                 return r[t] || (r[t] = void 0 !== e ? e : {});
               })("versions", []).push({
-                version: "3.17.2",
+                version: "3.17.3",
                 mode: o ? "pure" : "global",
                 copyright: "© 2021 Denis Pushkarev (zloirock.ru)"
               });
@@ -3194,48 +3197,55 @@
             4747: function _(t, e, n) {
               var o = n(7854),
                   r = n(8324),
-                  i = n(8533),
-                  a = n(8880);
-
-              for (var s in r) {
-                var u = o[s],
-                    c = u && u.prototype;
-                if (c && c.forEach !== i) try {
-                  a(c, "forEach", i);
-                } catch (t) {
-                  c.forEach = i;
+                  i = n(8509),
+                  a = n(8533),
+                  s = n(8880),
+                  u = function u(t) {
+                if (t && t.forEach !== a) try {
+                  s(t, "forEach", a);
+                } catch (e) {
+                  t.forEach = a;
                 }
+              };
+
+              for (var c in r) {
+                u(o[c] && o[c].prototype);
               }
+
+              u(i);
             },
             3948: function _(t, e, n) {
               var o = n(7854),
                   r = n(8324),
-                  i = n(6992),
-                  a = n(8880),
-                  s = n(5112),
-                  u = s("iterator"),
-                  c = s("toStringTag"),
-                  l = i.values;
-
-              for (var f in r) {
-                var p = o[f],
-                    d = p && p.prototype;
-
-                if (d) {
-                  if (d[u] !== l) try {
-                    a(d, u, l);
-                  } catch (t) {
-                    d[u] = l;
+                  i = n(8509),
+                  a = n(6992),
+                  s = n(8880),
+                  u = n(5112),
+                  c = u("iterator"),
+                  l = u("toStringTag"),
+                  f = a.values,
+                  p = function p(t, e) {
+                if (t) {
+                  if (t[c] !== f) try {
+                    s(t, c, f);
+                  } catch (e) {
+                    t[c] = f;
                   }
-                  if (d[c] || a(d, c, f), r[f]) for (var h in i) {
-                    if (d[h] !== i[h]) try {
-                      a(d, h, i[h]);
-                    } catch (t) {
-                      d[h] = i[h];
+                  if (t[l] || s(t, l, e), r[e]) for (var n in a) {
+                    if (t[n] !== a[n]) try {
+                      s(t, n, a[n]);
+                    } catch (e) {
+                      t[n] = a[n];
                     }
                   }
                 }
+              };
+
+              for (var d in r) {
+                p(o[d] && o[d].prototype, d);
               }
+
+              p(i, "DOMTokenList");
             }
           },
               e = {};
@@ -4790,4 +4800,4 @@
 /***/ })
 
 }]);
-//# sourceMappingURL=ae29c6db-6b4537ddf99831e65805.js.map
+//# sourceMappingURL=ae29c6db-26ed7ec3f3f546ee56eb.js.map
