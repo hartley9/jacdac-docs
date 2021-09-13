@@ -63469,7 +63469,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "3f4cbf13e846efc203e1da69a361582948b281de";
+var sha = "c50f1d01d1977879fd59e4935d4a5c8c47f27bca";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64349,7 +64349,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3f4cbf13e846efc203e1da69a361582948b281de";
+  var sha = "c50f1d01d1977879fd59e4935d4a5c8c47f27bca";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -64357,7 +64357,7 @@ function Footer() {
     href: "https://github.com/microsoft/jacdac/discussions",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, "Contact Us"), /*#__PURE__*/react.createElement("a", {
+  }, "Contact Us"), "|", /*#__PURE__*/react.createElement("a", {
     href: "https://go.microsoft.com/fwlink/?LinkId=521839",
     target: "_blank",
     rel: "noopener noreferrer"
@@ -81723,4 +81723,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-49fb19d86bcf5874407f.js.map
+//# sourceMappingURL=app-df38283f97df6ae8924d.js.map
