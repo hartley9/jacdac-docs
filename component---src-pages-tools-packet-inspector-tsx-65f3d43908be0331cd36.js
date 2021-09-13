@@ -1311,13 +1311,36 @@ var CopyButton = __webpack_require__(18568);
 
 
 
-function PacketInspector() {
+
+function TraceCopyButton(props) {
   var {
-    selectedPacket: packet
-  } = (0,react.useContext)(PacketsContext/* default */.Z);
+    packet
+  } = props;
   var {
     replayTrace,
     trace
+  } = (0,react.useContext)(PacketsContext/* default */.Z);
+  var savedTrace = replayTrace || trace;
+
+  var handleCopy = /*#__PURE__*/function () {
+    var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
+      return (0,utils/* toHex */.NC)(packet.header) + " " + (0,utils/* toHex */.NC)(packet.data) + " " + (0,pretty/* printPacket */.$_)(packet).replace(/\r?\n/g, " ") + "\n\n" + savedTrace.serializeToText(-100) + "\n";
+    });
+
+    return function handleCopy() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/react.createElement(CopyButton/* default */.Z, {
+    title: "copy packet",
+    onCopy: handleCopy
+  });
+}
+
+function PacketInspector() {
+  var {
+    selectedPacket: packet
   } = (0,react.useContext)(PacketsContext/* default */.Z);
   var theme = (0,useTheme/* default */.Z)();
   if (!packet) return /*#__PURE__*/react.createElement(Alert/* default */.Z, {
@@ -1339,23 +1362,10 @@ function PacketInspector() {
   var pipePackets = packet.meta[constants/* META_PIPE */.YHR];
   var get = packet.meta[constants/* META_GET */.cWR];
   var sentTrace = packet.meta[constants/* META_TRACE */.EEP];
-  var savedTrace = replayTrace || trace;
-
-  var handleCopy = /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
-      return (0,utils/* toHex */.NC)(packet.header) + " " + (0,utils/* toHex */.NC)(packet.data) + " " + (0,pretty/* printPacket */.$_)(packet).replace(/\r?\n/g, " ") + "\n\n" + savedTrace.serializeToText(-100) + "\n";
-    });
-
-    return function handleCopy() {
-      return _ref.apply(this, arguments);
-    };
-  }();
-
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h2", null, /*#__PURE__*/react.createElement(PacketBadge/* default */.Z, {
     packet: packet
-  }), name + " " + (packet.isCommand ? "to" : "from") + " " + packet.friendlyDeviceName + "/" + packet.friendlyServiceName, /*#__PURE__*/react.createElement(CopyButton/* default */.Z, {
-    title: "copy packet",
-    onCopy: handleCopy
+  }), name + " " + (packet.isCommand ? "to" : "from") + " " + packet.friendlyDeviceName + "/" + packet.friendlyServiceName, /*#__PURE__*/react.createElement(TraceCopyButton, {
+    packet: packet
   })), packet.sender && /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     variant: "body2"
   }, "sender: ", packet.sender), error && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
@@ -1408,4 +1418,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-84d43460f8c93f34971e.js.map
+//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-65f3d43908be0331cd36.js.map
