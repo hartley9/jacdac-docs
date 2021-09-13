@@ -41010,13 +41010,14 @@ var Trace = /*#__PURE__*/function () {
    * @param packets list of packets
    * @param description description of the trace
    */
-  function Trace(packets, description) {
+  function Trace(packets, options) {
     if (packets === void 0) {
       packets = [];
     }
 
     this.packets = packets;
-    this.description = description;
+    this.description = options === null || options === void 0 ? void 0 : options.description;
+    this.maxLength = options === null || options === void 0 ? void 0 : options.maxLength;
   }
   /**
    * Number of packets in trace
@@ -41030,16 +41031,12 @@ var Trace = /*#__PURE__*/function () {
    * @param packet packet to add
    * @param maxLength If positive, prunes older packets when the length reaches maxLength
    */
-  _proto.addPacket = function addPacket(packet, maxLength) {
-    if (maxLength === void 0) {
-      maxLength = -1;
-    }
-
+  _proto.addPacket = function addPacket(packet) {
     this.packets.push(packet);
 
-    if (maxLength > 0 && this.packets.length > maxLength * TRACE_OVERSHOOT) {
+    if (this.maxLength > 0 && this.packets.length > this.maxLength * TRACE_OVERSHOOT) {
       // 10% overshoot of max
-      this.packets = this.packets.slice(-maxLength);
+      this.packets = this.packets.slice(-this.maxLength);
     }
   }
   /**
@@ -46482,7 +46479,9 @@ function startServiceProviderFromServiceClass(bus, serviceClass) {
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(81794);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(20392);
 /* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(58057);
-/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(69672);
+/* harmony import */ var _PacketsContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(43226);
+/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(69672);
+
 
 
 
@@ -46527,6 +46526,9 @@ var AppProvider = _ref => {
   var {
     bus
   } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z);
+  var {
+    setPaused
+  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_PacketsContext__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z);
   var {
     0: type,
     1: setType
@@ -46585,6 +46587,7 @@ var AppProvider = _ref => {
   var setDrawerType = type => {
     if (type !== DrawerType.None) _setToolsMenu(false);
     setType(type);
+    if (type !== DrawerType.Packets) setPaused(true);
   };
 
   var setToolsMenu = open => {
@@ -46624,10 +46627,10 @@ var AppProvider = _ref => {
       selectedPacket,
       setSelectedPacket
     }
-  }, children, showDeviceHostsDialog && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(StartSimulatorDialog, {
+  }, children, showDeviceHostsDialog && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(StartSimulatorDialog, {
     open: showDeviceHostsDialog,
     onClose: toggleShowDeviceHostsDialog
-  })), showSelectRoleDialogService && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(SelectRoleDialog, {
+  })), showSelectRoleDialogService && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(SelectRoleDialog, {
     service: showSelectRoleDialogService,
     onClose: handleCloseRoleDialog
   })));
@@ -48439,7 +48442,9 @@ var TraceRecorder = /*#__PURE__*/function (_JDClient) {
   _proto.start = function start() {
     if (this.recording) return;
     this._subscription = this.bus.subscribe([constants/* PACKET_PROCESS */.wY8, constants/* PACKET_SEND */.RaS], this.handlePacket);
-    this._trace = new trace/* default */.ZP();
+    this._trace = new trace/* default */.ZP([], {
+      maxLength: this.maxRecordingLength
+    });
     this.emit(constants/* START */.tj6);
     this.emit(constants/* CHANGE */.Ver);
   };
@@ -48459,7 +48464,7 @@ var TraceRecorder = /*#__PURE__*/function (_JDClient) {
 
   _proto.handlePacket = function handlePacket(pkt) {
     // record packets in traces
-    this._trace.addPacket(pkt, this.maxRecordingLength); // notify that this packet has been processed
+    this._trace.addPacket(pkt); // notify that this packet has been processed
 
 
     this.emit(constants/* PACKET_PROCESS */.wY8, pkt);
@@ -48827,6 +48832,7 @@ var utils = __webpack_require__(81794);
 
 
 
+var TRACE_MAX_ITEMS = 1000;
 var FILTERED_TRACE_MAX_ITEMS = 100;
 var DUPLICATE_PACKET_MERGE_HORIZON_MAX_DISTANCE = 10;
 var DUPLICATE_PACKET_MERGE_HORIZON_MAX_TIME = 5000;
@@ -48852,11 +48858,13 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
     _this = _JDClient.call(this) || this;
     _this.id = "v" + Math.random();
     _this._maxFilteredLength = FILTERED_TRACE_MAX_ITEMS;
-    _this._paused = false;
+    _this._paused = true;
     _this._packetFilter = undefined;
     _this._filteredPackets = [];
     _this.bus = bus;
-    _this._trace = new trace/* default */.ZP();
+    _this._trace = new trace/* default */.ZP([], {
+      maxLength: TRACE_MAX_ITEMS
+    });
     _this.handlePacket = _this.handlePacket.bind((0,assertThisInitialized/* default */.Z)(_this));
     _this.handleFilterUpdate = _this.handleFilterUpdate.bind((0,assertThisInitialized/* default */.Z)(_this));
     _this.notifyPacketsChanged = (0,utils/* throttle */.P2)(() => {
@@ -48884,7 +48892,9 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
   };
 
   _proto.clear = function clear() {
-    this.trace = new trace/* default */.ZP();
+    this.trace = new trace/* default */.ZP([], {
+      maxLength: TRACE_MAX_ITEMS
+    });
     this._filteredPackets = [];
     this.setFilteredPackets();
     this.emit(constants/* CHANGE */.Ver);
@@ -48917,10 +48927,11 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
   _proto.handlePacket = function handlePacket(pkt) {
     var _this$_packetFilter2;
 
-    // remember package
+    if (this._paused) return; // remember packet
+
     this.trace.addPacket(pkt); // add packet to live list
 
-    if (!this.paused && (_this$_packetFilter2 = this._packetFilter) !== null && _this$_packetFilter2 !== void 0 && _this$_packetFilter2.filter(pkt)) {
+    if ((_this$_packetFilter2 = this._packetFilter) !== null && _this$_packetFilter2 !== void 0 && _this$_packetFilter2.filter(pkt)) {
       this.addFilteredPacket(pkt); // debounced notification of changes
 
       this.notifyPacketsChanged();
@@ -49161,7 +49172,7 @@ var PacketsProvider = _ref => {
   var {
     0: paused,
     1: _setPaused
-  } = (0,react.useState)(false);
+  } = (0,react.useState)(true);
 
   var clearPackets = () => {
     setProgress(undefined);
@@ -49230,9 +49241,11 @@ var PacketsProvider = _ref => {
   };
 
   var setPaused = p => {
-    _setPaused(p);
+    if (p !== paused) {
+      _setPaused(p);
 
-    if (view.current) view.current.paused = p;
+      view.current.paused = p;
+    }
   }; // views
 
 
@@ -63456,7 +63469,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "1f07857e972ac64efe8dcb07eaf097481b0e1d30";
+var sha = "6acb75065aca6fab835b38d07dce981e46e60ae0";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64336,7 +64349,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "1f07857e972ac64efe8dcb07eaf097481b0e1d30";
+  var sha = "6acb75065aca6fab835b38d07dce981e46e60ae0";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -65993,14 +66006,14 @@ function MakeCodeSnippetProvider(props) {
 "use strict";
 /* unused harmony export IFrameBridgeClient */
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(43144);
-/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(97326);
+/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(97326);
 /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(94578);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71815);
 /* harmony import */ var _jacdac_ts_src_jdom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(47235);
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(31028);
 /* harmony import */ var _jacdac_ts_src_jdom_packet__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(57683);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(81794);
-/* harmony import */ var _jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(9809);
+/* harmony import */ var _jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9809);
 
 
 
@@ -66026,18 +66039,19 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
 
     _this = _JDClient.call(this) || this;
     _this.bridgeId = "bridge" + Math.random();
+    _this.hosted = (0,_jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_6__/* .inIFrame */ .H)();
     _this.packetSent = 0;
     _this.packetProcessed = 0;
     _this._lastAspectRatio = 0;
     _this.bus = bus;
     _this.frameId = frameId;
-    _this.postPacket = _this.postPacket.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(_this));
-    _this.handleMessage = _this.handleMessage.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(_this));
-    _this.handleResize = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_4__/* .debounce */ .Ds)(_this.handleResize.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(_this)), 200);
+    _this.postPacket = _this.postPacket.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(_this));
+    _this.handleMessage = _this.handleMessage.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(_this));
+    _this.handleResize = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_4__/* .debounce */ .Ds)(_this.handleResize.bind((0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(_this)), 200);
 
     _this.registerEvents();
 
-    _this.bus.nodeData[IFrameBridgeClient.DATA_ID] = (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(_this);
+    _this.bus.nodeData[IFrameBridgeClient.DATA_ID] = (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(_this);
     return _this;
   }
 
@@ -66057,7 +66071,7 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
     window.addEventListener("message", this.handleMessage, false);
     this.mount(() => window.removeEventListener("message", this.handleMessage, false));
 
-    if ((0,_jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_7__/* .inIFrame */ .H)()) {
+    if (this.hosted) {
       // periodically resize iframe to account for dashboard size changes
       // don't use bus.schedulere here
       var id = setInterval(this.handleResize, 1000);
@@ -66156,7 +66170,7 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
 
   _proto.postPacket = function postPacket(pkt) {
     // check if this packet was already sent from another spot
-    if (!!pkt.sender || !window.parent || window.parent === window) return;
+    if (!!pkt.sender || !this.hosted) return;
     this.packetSent++;
     pkt.sender = this.bridgeId;
     var msg = {
@@ -66180,6 +66194,7 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
   _proto.postAddExtensions = function postAddExtensions() {
     var _this$_runOptions;
 
+    if (!this.hosted) return;
     var extensions = this.candidateExtensions;
     console.log("addextensions", {
       extensions,
@@ -74420,7 +74435,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.16"};
+var package_namespaceObject = {"i8":"1.16.17"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -81706,4 +81721,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-95b6fdd4067ef12b5282.js.map
+//# sourceMappingURL=app-6f801ea1e718d97f641f.js.map

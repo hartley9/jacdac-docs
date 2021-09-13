@@ -191,7 +191,9 @@ function parseTrace(contents) {
 
     packets.push(_packet__WEBPACK_IMPORTED_MODULE_1__/* ["default"].fromBinary */ .Z.fromBinary(data, timestamp));
   });
-  if (packets.length) return new _trace_trace__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .ZP(packets, description.join("\n").trim());else return undefined;
+  if (packets.length) return new _trace_trace__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .ZP(packets, {
+    description: description.join("\n").trim()
+  });else return undefined;
 }
 /**
  * Parses a logic analyzer log into a trace
@@ -772,4 +774,4 @@ function AppDrawer(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=973-4807c1cce90a63de82bd.js.map
+//# sourceMappingURL=973-11b723fa742d49fc03a8.js.map
