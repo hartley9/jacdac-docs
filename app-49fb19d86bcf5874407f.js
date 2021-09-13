@@ -45886,15 +45886,15 @@ var _providerDefinitions = [{
     buttonsAvailable: joystickserver/* JOYSTICK_DPAD_AB_BUTTONS */.YJ
   })]
 }, {
-  name: "Red LED (RGB through hole)",
+  name: "RGB LED (RGB through hole)",
   serviceClasses: [constants/* SRV_LED */.i04],
   services: () => [new LEDServer({
     variant: constants/* LedVariant.ThroughHole */.FRS.ThroughHole,
-    ledCount: 2,
+    ledCount: 1,
     color: [255, 0, 0]
   })]
 }, {
-  name: "LED (blue through hole)",
+  name: "LED (5x blue through hole)",
   serviceClasses: [constants/* SRV_LED */.i04],
   services: () => [new LEDServer({
     variant: constants/* LedVariant.ThroughHole */.FRS.ThroughHole,
@@ -63469,7 +63469,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "78e016b36cace3890c110ea857349389f2d6fffd";
+var sha = "3f4cbf13e846efc203e1da69a361582948b281de";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64349,23 +64349,27 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "78e016b36cace3890c110ea857349389f2d6fffd";
+  var sha = "3f4cbf13e846efc203e1da69a361582948b281de";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
   }, /*#__PURE__*/react.createElement("a", {
+    href: "https://github.com/microsoft/jacdac/discussions",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, "Contact Us"), /*#__PURE__*/react.createElement("a", {
     href: "https://go.microsoft.com/fwlink/?LinkId=521839",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, "Privacy & Cookies"), /*#__PURE__*/react.createElement("a", {
+  }, "Privacy & Cookies"), "|", /*#__PURE__*/react.createElement("a", {
     href: "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, "Terms Of Use"), /*#__PURE__*/react.createElement("a", {
+  }, "Terms Of Use"), "|", /*#__PURE__*/react.createElement("a", {
     href: "https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, "Trademarks"), repo && sha && /*#__PURE__*/react.createElement("a", {
+  }, "Trademarks"), "|", repo && sha && /*#__PURE__*/react.createElement("a", {
     href: "https://github.com/" + repo + "/commit/" + sha,
     target: "_blank",
     rel: "noopener noreferrer"
@@ -81719,4 +81723,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-75285731f7068497a1f8.js.map
+//# sourceMappingURL=app-49fb19d86bcf5874407f.js.map
