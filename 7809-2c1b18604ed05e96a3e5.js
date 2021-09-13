@@ -235,18 +235,15 @@ function ArcadeButton(props) {
   var checked = (pressure || 0) > 0;
   var title = _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__/* .JoystickButtons */ .xC[button];
   var label = buttonLabels[button] || title[0];
-
-  var handleDown = () => {
-    server === null || server === void 0 ? void 0 : server.down(button); //, 0.7)
+  var handleDown = server ? () => {
+    server.down(button); //, 0.7)
 
     onRefresh();
-  };
-
-  var handleUp = () => {
-    server === null || server === void 0 ? void 0 : server.up(button);
+  } : undefined;
+  var handleUp = server ? () => {
+    server.up(button);
     onRefresh();
-  };
-
+  } : undefined;
   var buttonProps = (0,_hooks_useSvgButtonProps__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z)(title, handleDown, handleUp);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("g", {
     transform: "translate(" + cx + "," + cy + ")",
@@ -419,4 +416,4 @@ function DashboardJoystick(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7809-581816bd45695c24cbec.js.map
+//# sourceMappingURL=7809-2c1b18604ed05e96a3e5.js.map
