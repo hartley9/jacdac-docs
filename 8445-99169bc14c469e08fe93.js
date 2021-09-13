@@ -3802,7 +3802,7 @@ var PacketView_useStyles = (0,makeStyles/* default */.Z)(() => (0,createStyles/*
   }
 }));
 
-var VirtualPacketItem = props => {
+function VirtualPacketItem(props) {
   var {
     style,
     index,
@@ -3813,10 +3813,7 @@ var VirtualPacketItem = props => {
     showTime
   } = data;
   var packet = packets[index];
-  if (!packet) return /*#__PURE__*/react.createElement("div", {
-    key: "",
-    style: style
-  });
+  if (!packet) return null;
   return /*#__PURE__*/react.createElement("div", {
     key: packet.key,
     style: style
@@ -3825,7 +3822,7 @@ var VirtualPacketItem = props => {
     count: packet.count,
     showTime: showTime
   }));
-};
+}
 
 function VirtualPacketList(props) {
   var {
@@ -3873,4 +3870,4 @@ function PacketView(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=8445-5b8276ca10e031e8ebf9.js.map
+//# sourceMappingURL=8445-99169bc14c469e08fe93.js.map

@@ -48927,22 +48927,19 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
     }
   };
 
-  _proto.addFilteredPacket = function addFilteredPacket(pkt) {
+  _proto.addFilteredPacket = function addFilteredPacket(packet) {
     var _this$_packetFilter3, _this$_packetFilter6;
 
-    if (pkt.meta[this.id]) return;
-    pkt.meta[this.id] = true; // resolve packet device for pretty name
+    if (packet.meta[this.id]) return;
+    packet.meta[this.id] = true; // resolve packet device for pretty name
 
-    if (!pkt.isMultiCommand && !pkt.device) pkt.device = this.bus.device(pkt.deviceIdentifier, false, pkt); // keep in filtered view
+    if (!packet.isMultiCommand && !packet.device) packet.device = this.bus.device(packet.deviceIdentifier, false, packet); // keep in filtered view
 
-    var filtered = true; // detect duplicate at the tail of the packets
-
-    var key = "";
+    var filtered = true;
+    var hash = (0,utils/* toHex */.NC)(packet.toBuffer());
 
     if ((_this$_packetFilter3 = this._packetFilter) !== null && _this$_packetFilter3 !== void 0 && _this$_packetFilter3.props.grouping) {
-      key = pkt.toString();
-
-      var old = this._filteredPackets.slice(0, DUPLICATE_PACKET_MERGE_HORIZON_MAX_DISTANCE).find(p => pkt.timestamp - p.packet.timestamp < DUPLICATE_PACKET_MERGE_HORIZON_MAX_TIME && p.key === key);
+      var old = this._filteredPackets.slice(0, DUPLICATE_PACKET_MERGE_HORIZON_MAX_DISTANCE).find(p => packet.timestamp - p.packet.timestamp < DUPLICATE_PACKET_MERGE_HORIZON_MAX_TIME && p.hash === hash);
 
       if (old) {
         old.count++;
@@ -48951,10 +48948,10 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
     } // collapse acks
 
 
-    if (pkt.isCRCAck) {
+    if (packet.isCRCAck) {
       var pkts = this.trace.packets;
-      var crc = pkt.serviceCommand;
-      var did = pkt.deviceIdentifier;
+      var crc = packet.serviceCommand;
+      var did = packet.deviceIdentifier;
       var m = Math.max(0, pkts.length - constants/* TRACE_FILTER_HORIZON */.DnH); // max scan 100 packets back
 
       for (var i = pkts.length - 1; i >= m; i--) {
@@ -48963,7 +48960,7 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
         if (_old.requiresAck && _old.deviceIdentifier === did && _old.crc === crc) {
           var _this$_packetFilter4;
 
-          _old.meta[constants/* META_ACK */.K3O] = pkt;
+          _old.meta[constants/* META_ACK */.K3O] = packet;
           if ((_this$_packetFilter4 = this._packetFilter) !== null && _this$_packetFilter4 !== void 0 && _this$_packetFilter4.props.collapseAck) filtered = false;
           break;
         }
@@ -48971,11 +48968,11 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
     } // report coming back
 
 
-    if (pkt.isRegisterGet && pkt.isReport && !pkt.meta[constants/* META_GET */.cWR]) {
+    if (packet.isRegisterGet && packet.isReport && !packet.meta[constants/* META_GET */.cWR]) {
       var _pkts = this.trace.packets;
-      var _did = pkt.deviceIdentifier;
-      var si = pkt.serviceIndex;
-      var rid = pkt.registerIdentifier;
+      var _did = packet.deviceIdentifier;
+      var si = packet.serviceIndex;
+      var rid = packet.registerIdentifier;
 
       var _m = Math.max(0, _pkts.length - constants/* TRACE_FILTER_HORIZON */.DnH); // max scan 100 packets back
 
@@ -48987,7 +48984,7 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
           var _this$_packetFilter5;
 
           // response from a get command
-          pkt.meta[constants/* META_GET */.cWR] = _old2;
+          packet.meta[constants/* META_GET */.cWR] = _old2;
 
           if ((_this$_packetFilter5 = this._packetFilter) !== null && _this$_packetFilter5 !== void 0 && _this$_packetFilter5.props.collapseGets) {
             // remove old
@@ -49001,14 +48998,14 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
     } // collapse pipes
 
 
-    if ((_this$_packetFilter6 = this._packetFilter) !== null && _this$_packetFilter6 !== void 0 && _this$_packetFilter6.props.collapsePipes && pkt.isPipe && pkt.isCommand) {
+    if ((_this$_packetFilter6 = this._packetFilter) !== null && _this$_packetFilter6 !== void 0 && _this$_packetFilter6.props.collapsePipes && packet.isPipe && packet.isCommand) {
       var _pkts2 = this._filteredPackets;
 
       var _m2 = Math.min(_pkts2.length, constants/* TRACE_FILTER_HORIZON */.DnH); // max scan 100 packets back
 
 
-      var port = pkt.pipePort;
-      var _did2 = pkt.deviceIdentifier;
+      var port = packet.pipePort;
+      var _did2 = packet.deviceIdentifier;
 
       for (var _i2 = 0; _i2 < _m2; ++_i2) {
         var _old3 = _pkts2[_i2].packet;
@@ -49016,7 +49013,7 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
         if (_old3.deviceIdentifier === _did2 && _old3.pipePort === port) {
           var pipePackets = _old3.meta[constants/* META_PIPE */.YHR];
           if (!pipePackets) pipePackets = _old3.meta[constants/* META_PIPE */.YHR] = [];
-          pipePackets[pkt.pipeCount] = pkt;
+          pipePackets[packet.pipeCount] = packet;
           filtered = false;
           break;
         }
@@ -49024,9 +49021,12 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
     }
 
     if (filtered) {
+      var key = packet.timestamp + hash;
+
       this._filteredPackets.unshift({
         key,
-        packet: pkt,
+        hash,
+        packet,
         count: 1
       });
     }
@@ -63456,7 +63456,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "1ca5702a91bb64f86842ff9d07c26d678342ea7c";
+var sha = "8591acfddefb8064ec513fd26bcd6a9b1d0e0c4b";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64336,7 +64336,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "1ca5702a91bb64f86842ff9d07c26d678342ea7c";
+  var sha = "8591acfddefb8064ec513fd26bcd6a9b1d0e0c4b";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -81689,4 +81689,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-2bc9a7cc7000fa449ebd.js.map
+//# sourceMappingURL=app-3b96b13213d96a295e8b.js.map
