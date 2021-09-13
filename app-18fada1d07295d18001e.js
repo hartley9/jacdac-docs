@@ -46513,7 +46513,9 @@ var AppContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_2__.createContex
   setError: () => {},
   enqueueSnackbar: () => {},
   toggleShowDeviceHostsDialog: () => {},
-  showSelectRoleDialog: () => {}
+  showSelectRoleDialog: () => {},
+  selectedPacket: undefined,
+  setSelectedPacket: () => {}
 });
 AppContext.displayName = "app";
 /* harmony default export */ __webpack_exports__["ZP"] = (AppContext); // eslint-disable-next-line react/prop-types
@@ -46548,6 +46550,10 @@ var AppProvider = _ref => {
   var {
     trackError
   } = (0,_hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .ZP)();
+  var {
+    0: selectedPacket,
+    1: setSelectedPacket
+  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(undefined);
   var {
     enqueueSnackbar: _enqueueSnackbar
   } = (0,notistack__WEBPACK_IMPORTED_MODULE_1__/* .useSnackbar */ .Ds)(); // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -46614,7 +46620,9 @@ var AppProvider = _ref => {
       setError,
       enqueueSnackbar,
       toggleShowDeviceHostsDialog,
-      showSelectRoleDialog
+      showSelectRoleDialog,
+      selectedPacket,
+      setSelectedPacket
     }
   }, children, showDeviceHostsDialog && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(StartSimulatorDialog, {
     open: showDeviceHostsDialog,
@@ -49099,8 +49107,6 @@ var useLocalStorage = __webpack_require__(34093);
 var PacketsContext = /*#__PURE__*/(0,react.createContext)({
   trace: undefined,
   packets: [],
-  selectedPacket: undefined,
-  setSelectedPacket: () => {},
   clearPackets: () => {},
   clearBus: () => {},
   filter: "",
@@ -49138,10 +49144,6 @@ var PacketsProvider = _ref => {
     1: setPackets
   } = (0,react.useState)([]);
   var {
-    0: selectedPacket,
-    1: setSelectedPacket
-  } = (0,react.useState)(undefined);
-  var {
     0: progress,
     1: setProgress
   } = (0,react.useState)(0);
@@ -49171,7 +49173,6 @@ var PacketsProvider = _ref => {
   } = (0,react.useState)(false);
 
   var clearPackets = () => {
-    setSelectedPacket(undefined);
     setProgress(undefined);
     setTimeRange(undefined);
     player.current.stop();
@@ -49286,8 +49287,6 @@ var PacketsProvider = _ref => {
       packets,
       clearPackets,
       clearBus,
-      selectedPacket,
-      setSelectedPacket,
       filter,
       setFilter,
       replayTrace,
@@ -63253,7 +63252,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "c6c526d1aa95e6133ca19c1c917c7cef283a73bb";
+var sha = "ff5b4d2276eecc515d6ba7804ac8959f9a89aafe";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64133,7 +64132,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "c6c526d1aa95e6133ca19c1c917c7cef283a73bb";
+  var sha = "ff5b4d2276eecc515d6ba7804ac8959f9a89aafe";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -81485,4 +81484,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-d6df7f7dbd2e9697f138.js.map
+//# sourceMappingURL=app-18fada1d07295d18001e.js.map
