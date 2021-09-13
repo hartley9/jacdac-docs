@@ -3464,9 +3464,10 @@ var pretty = __webpack_require__(10913);
 
 
 
+
 function TraceTimeFilterRangeSlider() {
   var {
-    trace,
+    view,
     timeRange,
     setTimeRange
   } = (0,react.useContext)(PacketsContext/* default */.Z);
@@ -3480,6 +3481,11 @@ function TraceTimeFilterRangeSlider() {
   } = (0,react.useState)(timeRange);
   var theme = (0,useTheme/* default */.Z)();
   var [debouncedValue] = (0,useDebounce/* default */.Z)(value, 1000);
+  var {
+    0: trace,
+    1: setTrace
+  } = (0,react.useState)(view.trace);
+  (0,useChange/* default */.Z)(view, _ => setTrace(_.trace));
 
   var handleChange = (event, newValue) => {
     setValue(newValue);
@@ -3716,7 +3722,6 @@ function FilterMenu(props) {
 
 function PacketFilter() {
   var {
-    trace,
     timeRange,
     toggleTimeRange,
     filter,
@@ -3760,7 +3765,6 @@ function PacketFilter() {
   }), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     trackName: "drawer.timer." + (timeRange ? "clear" : "set") + "}",
     className: classes.iconButton,
-    disabled: !timeRange && !(trace !== null && trace !== void 0 && trace.length),
     title: timeRange ? "clear time range" : "use time range",
     onClick: toggleTimeRange
   }, /*#__PURE__*/react.createElement(QueryBuilder/* default */.Z, null)), /*#__PURE__*/react.createElement(InputBase/* default */.Z, {
@@ -3787,6 +3791,7 @@ function PacketFilter() {
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
 
 
@@ -3828,8 +3833,13 @@ function VirtualPacketList(props) {
   } = props;
   var classes = PacketView_useStyles();
   var {
-    packets
+    view
   } = (0,react.useContext)(PacketsContext/* default */.Z);
+  var {
+    0: packets,
+    1: setPackets
+  } = (0,react.useState)(view.filteredPackets);
+  (0,useChange/* default */.Z)(view, _ => setPackets(_.filteredPackets));
   var itemData = {
     showTime,
     packets
@@ -3863,4 +3873,4 @@ function PacketView(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=8445-408b293d12ff9b470ab7.js.map
+//# sourceMappingURL=8445-5b8276ca10e031e8ebf9.js.map

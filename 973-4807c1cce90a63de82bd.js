@@ -515,23 +515,23 @@ var IconButtonWithTooltip = __webpack_require__(79885);
 function TraceSaveButton() {
   var {
     replayTrace,
-    trace,
+    view,
     recording,
     tracing
   } = (0,react.useContext)(PacketsContext/* default */.Z);
   var {
     fileStorage
   } = (0,react.useContext)(ServiceManagerContext/* default */.ZP);
-  var savedTrace = replayTrace || trace;
 
   var saveTrace = () => {
+    var savedTrace = replayTrace || view.trace;
     var text = savedTrace.serializeToText();
     fileStorage.saveText("trace.jd.txt", text);
   };
 
   return /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     title: "save trace",
-    disabled: recording || tracing || !(savedTrace !== null && savedTrace !== void 0 && savedTrace.packets.length),
+    disabled: recording || tracing,
     size: "small",
     key: "save",
     onClick: saveTrace
@@ -772,4 +772,4 @@ function AppDrawer(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=973-065abe059298e15ad726.js.map
+//# sourceMappingURL=973-4807c1cce90a63de82bd.js.map

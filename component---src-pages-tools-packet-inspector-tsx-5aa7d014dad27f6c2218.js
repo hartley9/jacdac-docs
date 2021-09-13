@@ -1319,12 +1319,12 @@ function TraceCopyButton(props) {
   } = props;
   var {
     replayTrace,
-    trace
+    view
   } = (0,react.useContext)(PacketsContext/* default */.Z);
-  var savedTrace = replayTrace || trace;
 
   var handleCopy = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
+      var savedTrace = replayTrace || view.trace;
       return (0,utils/* toHex */.NC)(packet.header) + " " + (0,utils/* toHex */.NC)(packet.data) + " " + (0,pretty/* printPacket */.$_)(packet).replace(/\r?\n/g, " ") + "\n\n" + savedTrace.serializeToText(-100) + "\n";
     });
 
@@ -1419,4 +1419,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-7c5a58e987f1fba18648.js.map
+//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-5aa7d014dad27f6c2218.js.map

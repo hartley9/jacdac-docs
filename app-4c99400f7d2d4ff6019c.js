@@ -49105,8 +49105,7 @@ var useLocalStorage = __webpack_require__(34093);
 
 
 var PacketsContext = /*#__PURE__*/(0,react.createContext)({
-  trace: undefined,
-  packets: [],
+  view: undefined,
   clearPackets: () => {},
   clearBus: () => {},
   filter: "",
@@ -49136,13 +49135,9 @@ var PacketsProvider = _ref => {
     bus
   } = (0,react.useContext)(Context/* default */.Z);
   var [filter, _setFilter] = (0,useLocalStorage/* default */.Z)("packetfilter", DEFAULT_PACKET_FILTER);
-  var recorder = (0,react.useRef)(undefined);
-  var view = (0,react.useRef)(undefined);
-  var player = (0,react.useRef)(undefined);
-  var {
-    0: packets,
-    1: setPackets
-  } = (0,react.useState)([]);
+  var recorder = (0,react.useRef)(new tracerecorder(bus));
+  var view = (0,react.useRef)(new traceview(bus, filter));
+  var player = (0,react.useRef)(new traceplayer/* default */.Z(bus));
   var {
     0: progress,
     1: setProgress
@@ -49155,10 +49150,6 @@ var PacketsProvider = _ref => {
     0: recording,
     1: setRecording
   } = (0,react.useState)(false);
-  var {
-    0: trace,
-    1: setTrace
-  } = (0,react.useState)(undefined);
   var {
     0: replayTrace,
     1: _setReplayTrace
@@ -49246,14 +49237,6 @@ var PacketsProvider = _ref => {
 
 
   (0,react.useEffect)(() => {
-    recorder.current = new tracerecorder(bus);
-    view.current = new traceview(bus, filter);
-    player.current = new traceplayer/* default */.Z(bus);
-    setTrace(view.current.trace);
-    view.current.mount(view.current.subscribe(constants/* CHANGE */.Ver, () => {
-      setPackets(view.current.filteredPackets);
-      setTrace(view.current.trace);
-    }));
     recorder.current.mount(recorder.current.subscribe(constants/* CHANGE */.Ver, () => {
       setRecording(recorder.current.recording);
     }));
@@ -49283,8 +49266,7 @@ var PacketsProvider = _ref => {
   }, [filter, timeRange]);
   return /*#__PURE__*/react.createElement(PacketsContext.Provider, {
     value: {
-      trace,
-      packets,
+      view: view.current,
       clearPackets,
       clearBus,
       filter,
@@ -63252,7 +63234,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "0f9a3cf649229d9a340755bd82334d4c7b623e1a";
+var sha = "ed71034021a6621a334e50548c6ff97d41df0a81";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64132,7 +64114,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0f9a3cf649229d9a340755bd82334d4c7b623e1a";
+  var sha = "ed71034021a6621a334e50548c6ff97d41df0a81";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -65316,6 +65298,7 @@ function BridgeButtons(props) {
 
 
 
+
 var MainAppBar_useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default */.Z)({
   grow: {
     flexGrow: 1
@@ -65410,7 +65393,7 @@ function MainAppBar() {
     to: "/"
   }, "Jacdac"))), /*#__PURE__*/react.createElement("div", {
     className: classes.grow
-  }), /*#__PURE__*/react.createElement(PacketStats, null), /*#__PURE__*/react.createElement(BridgeButtons, {
+  }), flags/* default.diagnostics */.Z.diagnostics && /*#__PURE__*/react.createElement(PacketStats, null), /*#__PURE__*/react.createElement(BridgeButtons, {
     className: (0,clsx_m/* default */.Z)(classes.menuButton)
   }), /*#__PURE__*/react.createElement(OpenDashboardButton, {
     className: (0,clsx_m/* default */.Z)(classes.menuButton)
@@ -81484,4 +81467,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-abb6eb13c9169faa8a53.js.map
+//# sourceMappingURL=app-4c99400f7d2d4ff6019c.js.map
