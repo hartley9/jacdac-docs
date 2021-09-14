@@ -3526,11 +3526,11 @@ function parseMakeCodeSnippet(source) {
     dependencies: []
   };
 
-  if (/^---\n/.test(source)) {
+  if (/^-----\n/.test(source)) {
     var _front;
 
     var front;
-    var parts = source.replace(/^---\n/, '').split(/---\n/gm);
+    var parts = source.replace(/^-----\n/, "").split(/-----\n/gm);
 
     switch (parts.length) {
       case 1:
@@ -3539,10 +3539,12 @@ function parseMakeCodeSnippet(source) {
         break;
 
       case 2:
+        ;
         [front, code] = parts;
         break;
 
       default:
+        ;
         [front, ghost, code] = parts;
         break;
     } // parse front matter
@@ -3558,6 +3560,10 @@ function parseMakeCodeSnippet(source) {
           meta.snippet = !!value;
           break;
 
+        case "editor":
+          meta.editor = value;
+          break;
+
         default:
           meta[name] = value;
       }
@@ -3569,15 +3575,20 @@ function parseMakeCodeSnippet(source) {
   } // sniff services
 
 
+  var src = (ghost || "") + "\n" + (code || "");
   var mkcds = (0,services/* makeCodeServices */.qs)();
   mkcds.filter(info => {
-    var src = (ghost || "") + "\n" + (code || "");
     return src.indexOf(info.client.qName) > -1 || info.client.default && src.indexOf(info.client.default) > -1;
-  }).map(info => info.client.name.replace(/^pxt-/, '') + "=github:" + info.client.repo).forEach(dep => meta.dependencies.push(dep)); // add jacdac by default
+  }).map(info => info.client.name.replace(/^pxt-/, "") + "=github:" + info.client.repo).forEach(dep => meta.dependencies.push(dep)); // add jacdac by default
 
   if (!meta.dependencies.length) meta.dependencies.push("jacdac=github:microsoft/pxt-jacdac"); // ensure unique deps
 
-  meta.dependencies = (0,utils/* unique */.Tw)(meta.dependencies);
+  meta.dependencies = (0,utils/* unique */.Tw)(meta.dependencies); // sniff target
+
+  if (!meta.editor) {
+    if (/basic\.show/.test(src)) meta.editor = "microbit";
+  }
+
   return {
     code,
     ghost,
@@ -3618,7 +3629,7 @@ function useMakeCodeRenderer() {
       f.style.bottom = "0";
       f.style.width = "1px";
       f.style.height = "1px";
-      f.src = rendererUrl + "?render=1" + (lang ? "&lang=" + lang : '');
+      f.src = rendererUrl + "?render=1" + (lang ? "&lang=" + lang : "");
       document.body.appendChild(f);
     }
 
@@ -4030,4 +4041,4 @@ function PaperBox(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-d482cc0ab8c71d72ec77.js.map
+//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-4147fc267c9d39d21efe.js.map

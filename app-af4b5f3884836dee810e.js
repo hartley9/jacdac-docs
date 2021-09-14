@@ -63469,7 +63469,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "23dd16765fdc23b0bf19272c1bd7e691a52cd8a2";
+var sha = "2640150321cb3079fc98d6035d3e0d90158a2a32";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64349,7 +64349,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "23dd16765fdc23b0bf19272c1bd7e691a52cd8a2";
+  var sha = "2640150321cb3079fc98d6035d3e0d90158a2a32";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -76919,7 +76919,7 @@ module.exports = [{
       "extensions": [".mdx", ".md"],
       "default": "/home/runner/work/jacdac-docs/jacdac-docs/src/components/Page.tsx"
     },
-    "gatsbyRemarkPlugins": ["gatsby-remark-autolink-headers", "gatsby-remark-external-links", {
+    "gatsbyRemarkPlugins": ["gatsby-remark-makecode", "gatsby-remark-autolink-headers", "gatsby-remark-external-links", {
       "resolve": "gatsby-remark-images",
       "options": {
         "maxWidth": 800,
@@ -81724,4 +81724,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-022aefdd74762bf95ee4.js.map
+//# sourceMappingURL=app-af4b5f3884836dee810e.js.map
