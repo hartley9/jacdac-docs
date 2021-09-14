@@ -3988,7 +3988,7 @@ function CodeBlock(props) {
       {
         var [_source, p5js] = children.split(/\n-{5,}\n/gi);
         return /*#__PURE__*/react.createElement(HighlightedCode, Object.assign({}, rest, {
-          className: "javascript",
+          className: /<html>/.test(_source) ? "html" : "javascript",
           codeSandbox: {
             p5js
           }
@@ -4041,4 +4041,4 @@ function PaperBox(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-4147fc267c9d39d21efe.js.map
+//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-1d2865a844c46456aab9.js.map

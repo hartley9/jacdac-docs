@@ -139,8 +139,8 @@ function MDXContent(_ref) {
     "className": "language-html"
   }, "<script src=\"./p5.jacdac.js\"></script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
-    "className": "language-html"
-  }, "<html>\n  <head>\n    <script src=\"https://unpkg.com/p5@1.4.0/lib/p5.js\"></script>\n    <script src=\"https://unpkg.com/jacdac-ts/dist/p5.jacdac.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </head>\n  <body>\n    <main>\n    </main>\n  </body>\n</html>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "That's it! ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    "className": "language-p5js"
+  }, "<html>\n  <head>\n    <script src=\"https://unpkg.com/p5@1.4.0/lib/p5.js\"></script>\n    <script src=\"https://unpkg.com/jacdac-ts/dist/p5.jacdac.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </head>\n  <body>\n    <main>\n    </main>\n  </body>\n</html>\n-----\nfunction setup() {\n    createCanvas(400, 400)\n}\nfunction draw() {\n    // grabs sensor data\n    const { sensors } = jacdac\n    // add your code here!\n    \n}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "That's it! ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
   }, "p5.jacdac"), " will automatically show a button to connect to your\ndevice and hide it when connected."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "sensors",
@@ -284,4 +284,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-a77472cf966e07c8e558.js.map
+//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-8066ae3af8fafccdbd6f.js.map
