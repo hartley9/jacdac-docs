@@ -63469,7 +63469,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "2c291e296b2c7e3734c8a0739f5a0a1abbcde306";
+var sha = "a739b0e6fa24c3e979df0f0240d0ec4ea91d3eb9";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64349,7 +64349,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2c291e296b2c7e3734c8a0739f5a0a1abbcde306";
+  var sha = "a739b0e6fa24c3e979df0f0240d0ec4ea91d3eb9";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -81724,4 +81724,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-a0b2ddc1a395c5498aeb.js.map
+//# sourceMappingURL=app-6d4c27af45ebdea24dd1.js.map
