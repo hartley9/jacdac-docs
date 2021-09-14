@@ -63469,7 +63469,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "fa6a02e6e8a257a89e3006866098e4c928bbe770";
+var sha = "85b8a7ed087ec0655886aa05c99b9c525fa9402d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64349,7 +64349,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "fa6a02e6e8a257a89e3006866098e4c928bbe770";
+  var sha = "85b8a7ed087ec0655886aa05c99b9c525fa9402d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74437,7 +74437,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.21"};
+var package_namespaceObject = {"i8":"1.16.24"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -76817,6 +76817,7 @@ exports.components = {
   "component---src-pages-clients-makecode-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-mdx */ 5348).then(__webpack_require__.bind(__webpack_require__, 82733)),
   "component---src-pages-clients-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-mdx */ 2858).then(__webpack_require__.bind(__webpack_require__, 63895)),
   "component---src-pages-clients-node-red-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-node-red-mdx */ 95).then(__webpack_require__.bind(__webpack_require__, 96440)),
+  "component---src-pages-clients-p-5-js-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-p-5-js-mdx */ 4939).then(__webpack_require__.bind(__webpack_require__, 65081)),
   "component---src-pages-clients-web-iframe-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-web-iframe-mdx */ 6585).then(__webpack_require__.bind(__webpack_require__, 25645)),
   "component---src-pages-clients-web-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-web-mdx */ 7598).then(__webpack_require__.bind(__webpack_require__, 27889)),
   "component---src-pages-dashboard-tsx": () => Promise.all(/* import() | component---src-pages-dashboard-tsx */[__webpack_require__.e(8517), __webpack_require__.e(7378)]).then(__webpack_require__.bind(__webpack_require__, 54542)),
@@ -81723,4 +81724,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-a2f8f9ff5facb532f74d.js.map
+//# sourceMappingURL=app-3672b3321a734879337d.js.map

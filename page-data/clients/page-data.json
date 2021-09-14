@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-clients-mdx",
     "path": "/clients/",
-    "result": {"pageContext":{"frontmatter":{"title":"Clients"}}},
+    "result": {"pageContext":{"frontmatter":{"title":"Client SDKs"}}},
     "staticQueryHashes": ["249313281","2744294623","2898794040","413816803","63159454"]}

@@ -254,7 +254,7 @@ function Toc(props) {
       path: "/devices/",
       order: 0.95
     }, {
-      name: "Clients",
+      name: "Client SDKs",
       path: "/clients/",
       order: 5
     }];
@@ -349,4 +349,4 @@ function Toc(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1018-b93ebd8fcc2c19b59511.js.map
+//# sourceMappingURL=1018-1b00651424283754675e.js.map
