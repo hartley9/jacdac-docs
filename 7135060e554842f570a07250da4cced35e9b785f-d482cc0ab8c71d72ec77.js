@@ -3859,7 +3859,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var TraceSnippet = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 5599).then(__webpack_require__.bind(__webpack_require__, 15599)));
-var CodeSandboxButton = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 8574).then(__webpack_require__.bind(__webpack_require__, 18574)));
+var VanillaCodeButton = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(6055)]).then(__webpack_require__.bind(__webpack_require__, 86055)));
+var P5JSCodeButton = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(2670)]).then(__webpack_require__.bind(__webpack_require__, 82670)));
 
 function HighlightedCode(props) {
   var {
@@ -3907,12 +3908,18 @@ function HighlightedCode(props) {
       download: downloadName || "download"
     }, /*#__PURE__*/react.createElement(Tooltip/* default */.Z, {
       title: "Download"
-    }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.IconButton, null, /*#__PURE__*/react.createElement(GetApp/* default */.Z, null)))), codeSandbox && /*#__PURE__*/react.createElement("div", {
+    }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.IconButton, null, /*#__PURE__*/react.createElement(GetApp/* default */.Z, null)))), (codeSandbox === null || codeSandbox === void 0 ? void 0 : codeSandbox.js) && /*#__PURE__*/react.createElement("div", {
       style: {
         float: "right"
       }
-    }, /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(CodeSandboxButton, {
+    }, /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(VanillaCodeButton, {
       source: codeSandbox
+    }))), (codeSandbox === null || codeSandbox === void 0 ? void 0 : codeSandbox.p5js) && /*#__PURE__*/react.createElement("div", {
+      style: {
+        float: "right"
+      }
+    }, /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(P5JSCodeButton, {
+      sketch: codeSandbox === null || codeSandbox === void 0 ? void 0 : codeSandbox.p5js
     }))), actions && /*#__PURE__*/react.createElement("div", {
       style: {
         float: "right"
@@ -3966,6 +3973,17 @@ function CodeBlock(props) {
         }), source);
       }
 
+    case "p5js":
+      {
+        var [_source, p5js] = children.split(/\n-{5,}\n/gi);
+        return /*#__PURE__*/react.createElement(HighlightedCode, Object.assign({}, rest, {
+          className: "javascript",
+          codeSandbox: {
+            p5js
+          }
+        }), _source);
+      }
+
     default:
       return /*#__PURE__*/react.createElement(HighlightedCode, props);
   }
@@ -4012,4 +4030,4 @@ function PaperBox(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-736f5610c4bb0710ac17.js.map
+//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-d482cc0ab8c71d72ec77.js.map

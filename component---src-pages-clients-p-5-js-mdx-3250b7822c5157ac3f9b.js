@@ -175,8 +175,8 @@ function MDXContent(_ref) {
     "className": "language-javascript"
   }, "// destructure readings into r,g,b variables\n// if sensors are missing, default to 0\nconst [r = 0, g = 0, b = 0] = potentiometer\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Use those values any way you want!"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
-    "className": "language-javascript"
-  }, "// rescale 0..1 to 0..255 and repaint background\nbackground(r * 255, g * 255, b * 255)\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "className": "language-p5js"
+  }, "// rescale 0..1 to 0..255 and repaint background\nbackground(r * 255, g * 255, b * 255)\n-----\nfunction setup() {\n    createCanvas(400, 400)\n}\nfunction draw() {\n    // grabs an array with all potentiometer readings (number[]) connected to jacdac\n    const { potentiometer } = jacdac.sensors\n    // destructure readings into r,g,b variables\n    // if sensors are missing, default to 0\n    const [r = 0, g = 0, b = 0] = potentiometer\n    // rescale 0..1 to 0..255 to repaint background\n    background(r * 255, g * 255, b * 255)\n}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "composite-value-sensors",
     "style": {
       "position": "relative"
@@ -227,8 +227,8 @@ function MDXContent(_ref) {
     parentName: "p"
   }, "for"), " loop\nto iterate the list of readings."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
-    "className": "language-javascript"
-  }, "for (const acceleration of accelerometer) {\n    const { x: ax = 0, y: ay = 0, z: az = 0 } = acceleration\n    ...\n}\n")));
+    "className": "language-p5js"
+  }, "for (const acceleration of accelerometer) {\n    const { x: ax = 0, y: ay = 0, z: az = 0 } = acceleration\n    ...\n}\n-----\nfunction setup() {\n    createCanvas(400, 400)\n}\nfunction draw() {\n    const { accelerometer } = jacdac.sensors\n    // the acceleration is stored as a ``{ x: .., y: ..., z: ... }`` object\n    for(const acceleration of accelerometer) {\n        const { x: ax = 0, y: ay = 0, z: az = 0 } = acceleration\n        // map g (gravities) to 100..300 on canvas\n        const x = map(ax, -1, 1, 100, 300)\n        const y = map(ay, -1, 1, 100, 300)\n        const d = map(az, -1, 1, 5, 50)\n        // draw point\n        stroke('white')\n        circle(x, y, d)\n    }\n}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -254,4 +254,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-95ffbd9618470dd0c144.js.map
+//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-3250b7822c5157ac3f9b.js.map
