@@ -92793,6 +92793,7 @@ function CodeSandboxButton(props) {
   var handleClick = /*#__PURE__*/function () {
     var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)(function* () {
       var f = files();
+      var file = Object.keys(f).filter(fn => /\.js$/.test(fn))[0] || "index.js";
 
       try {
         setImporting(true);
@@ -92808,7 +92809,7 @@ function CodeSandboxButton(props) {
         });
         var data = yield x.json();
         console.log(data);
-        var url = "https://codesandbox.io/s/" + data.sandbox_id + "?file=/index.js";
+        var url = "https://codesandbox.io/s/" + data.sandbox_id + "?file=/" + file;
         window.location.href = url;
       } catch (error) {
         setError(error);
@@ -98802,4 +98803,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-d629e33fa8a5318bfee4.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-e0667a9ae5f99e87a52d.js.map
