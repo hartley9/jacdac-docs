@@ -1211,8 +1211,8 @@ var AlertTitle = __webpack_require__(99330);
 var pack = __webpack_require__(91635);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/packobject.ts
 var packobject = __webpack_require__(53616);
-// EXTERNAL MODULE: ./src/components/CodeBlock.tsx + 3 modules
-var CodeBlock = __webpack_require__(33607);
+// EXTERNAL MODULE: ./src/components/CodeBlock.tsx + 4 modules
+var CodeBlock = __webpack_require__(50274);
 ;// CONCATENATED MODULE: ./src/components/PacketDataLayout.tsx
 
 
@@ -1419,4 +1419,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-1effe2af2233cd3b42d0.js.map
+//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-5aa7d014dad27f6c2218.js.map

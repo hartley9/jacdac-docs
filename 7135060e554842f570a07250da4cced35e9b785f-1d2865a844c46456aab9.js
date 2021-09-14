@@ -3448,7 +3448,7 @@ var theme = {
 
 /***/ }),
 
-/***/ 33607:
+/***/ 50274:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -3490,94 +3490,33 @@ var Tab = __webpack_require__(342);
 // EXTERNAL MODULE: ./src/components/ui/TabPanel.tsx
 var TabPanel = __webpack_require__(3263);
 // EXTERNAL MODULE: ./src/components/makecode/MakeCodeSnippetContext.tsx
-var MakeCodeSnippetContext = __webpack_require__(54888);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/makeStyles.js
-var makeStyles = __webpack_require__(10920);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createStyles.js
-var createStyles = __webpack_require__(70274);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
-var constants = __webpack_require__(71815);
-// EXTERNAL MODULE: ./src/jacdac/Context.tsx
-var Context = __webpack_require__(20392);
-;// CONCATENATED MODULE: ./src/components/makecode/MakeCodeSimulator.tsx
-
-
-
-
-
-
-var useStyles = (0,makeStyles/* default */.Z)(() => (0,createStyles/* default */.Z)({
-  root: {
-    width: "100%"
-  },
-  root2: {
-    position: "relative",
-    paddingTop: "86.75%"
-  },
-  iframe: {
-    position: "absolute",
-    left: 0,
-    top: 0,
-    border: "none",
-    width: "100%",
-    height: "100%"
-  }
-}));
-function MakeCodeSimulator(props) {
-  var {
-    simUrl
-  } = (0,react.useContext)(MakeCodeSnippetContext/* default */.Z);
-  var {
-    snippet
-  } = props;
-  var {
-    code,
-    ghost,
-    meta
-  } = snippet;
-  var {
-    dependencies
-  } = meta;
-  var {
-    bus
-  } = (0,react.useContext)(Context/* default */.Z);
-  var frameRef = (0,react.useRef)();
-  var classes = useStyles();
-  var src = (ghost || "") + "\n" + (code || "");
-  var url = simUrl + "#single=1&fullscren=1&nofooter=1&deps=" + encodeURIComponent(dependencies.join(",")) + "&code=" + encodeURIComponent(src);
-  var origin = new URL(url).origin;
-  (0,react.useEffect)(() => bus.subscribe([constants/* PACKET_SEND */.RaS, constants/* PACKET_PROCESS */.wY8], pkt => {
-    var _frameRef$current, _frameRef$current$con;
-
-    this.packetSent++;
-    var msg = {
-      type: "messagepacket",
-      channel: "jacdac",
-      broadcast: true,
-      data: pkt.toBuffer(),
-      sender: pkt.sender
-    };
-    (_frameRef$current = frameRef.current) === null || _frameRef$current === void 0 ? void 0 : (_frameRef$current$con = _frameRef$current.contentWindow) === null || _frameRef$current$con === void 0 ? void 0 : _frameRef$current$con.postMessage(msg, origin);
-  }));
-  return /*#__PURE__*/react.createElement(PaperBox/* default */.Z, null, /*#__PURE__*/react.createElement("div", {
-    className: classes.root
-  }, /*#__PURE__*/react.createElement("div", {
-    className: classes.root2
-  }, /*#__PURE__*/react.createElement("iframe", {
-    ref: frameRef,
-    className: classes.iframe,
-    src: url,
-    title: "MakeCode rendering iframe to generate blocks images."
-  }))));
-}
-// EXTERNAL MODULE: ./.cache/gatsby-browser-entry.js
-var gatsby_browser_entry = __webpack_require__(35313);
+var makecode_MakeCodeSnippetContext = __webpack_require__(54888);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
 var utils = __webpack_require__(81794);
 // EXTERNAL MODULE: ./src/components/makecode/services.ts + 1 modules
 var services = __webpack_require__(31028);
-;// CONCATENATED MODULE: ./src/components/makecode/makecodesnippetparser.ts
-/* eslint-disable @typescript-eslint/no-extra-semi */
+;// CONCATENATED MODULE: ./src/components/hooks/useWindowEvent.ts
+
+function useWindowEvent_useWindowEvent(type, listener, passive, deps) {
+  if (passive === void 0) {
+    passive = false;
+  }
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined; // SSR
+    // initiate the event handler
+
+    window.addEventListener(type, listener, passive); // this will clean up the event every time the component is re-rendered
+
+    return () => {
+      window.removeEventListener(type, listener);
+    };
+  }, [type, listener, passive].concat(deps || []));
+}
+;// CONCATENATED MODULE: ./src/components/makecode/useMakeCodeRenderer.ts
+
+
+
 
 
 function parseMakeCodeSnippet(source) {
@@ -3656,6 +3595,183 @@ function parseMakeCodeSnippet(source) {
     meta
   };
 }
+function useMakeCodeRenderer() {
+  var {
+    target,
+    rendererUrl
+  } = useContext(MakeCodeSnippetContext);
+  var lang = "";
+  var iframeId = "makecoderenderer" + target;
+  var pendingRequests = useMemo(() => ({}), [target, lang]);
+
+  var sendRequest = req => {
+    var iframe = typeof document !== "undefined" && document.getElementById(iframeId);
+    if (iframe !== null && iframe !== void 0 && iframe.dataset.ready) iframe === null || iframe === void 0 ? void 0 : iframe.contentWindow.postMessage(req, rendererUrl);
+  };
+
+  var render = source => {
+    var {
+      code,
+      ghost,
+      meta
+    } = source;
+    var {
+      dependencies,
+      snippet
+    } = meta; // spin up iframe on demans
+
+    if (typeof document !== "undefined" && !document.getElementById(iframeId)) {
+      console.log("mkcd: loading iframe");
+      var f = document.createElement("iframe");
+      f.id = iframeId;
+      f.style.position = "absolute";
+      f.style.left = "0";
+      f.style.bottom = "0";
+      f.style.width = "1px";
+      f.style.height = "1px";
+      f.src = rendererUrl + "?render=1" + (lang ? "&lang=" + lang : "");
+      document.body.appendChild(f);
+    }
+
+    var req = {
+      type: "renderblocks",
+      id: "r" + Math.random(),
+      code,
+      ghost,
+      options: {
+        dependencies,
+        snippetMode: snippet
+      }
+    };
+    return new Promise((resolve, reject) => {
+      pendingRequests[req.id] = {
+        req,
+        resolve,
+        reject
+      };
+      sendRequest(req);
+    });
+  }; // listen for messages
+
+
+  var handleMessage = ev => {
+    var msg = ev.data;
+    if (msg.source != "makecode") return;
+
+    switch (msg.type) {
+      case "renderready":
+        {
+          console.log("mkcd: renderer ready, " + Object.keys(pendingRequests).length + " pending");
+          var iframe = typeof document !== "undefined" && document.getElementById(iframeId);
+
+          if (iframe) {
+            console.log("flushing messages");
+            iframe.dataset.ready = "1";
+            Object.keys(pendingRequests).forEach(k => sendRequest(pendingRequests[k].req));
+          }
+
+          break;
+        }
+
+      case "renderblocks":
+        {
+          var id = msg.id; // this is the id you sent
+
+          var r = pendingRequests[id];
+          if (!r) return;
+          delete pendingRequests[id];
+          r.resolve(msg);
+          break;
+        }
+    }
+  };
+
+  useWindowEvent("message", handleMessage, false, []);
+  return {
+    render
+  };
+}
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/makeStyles.js
+var makeStyles = __webpack_require__(10920);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createStyles.js
+var createStyles = __webpack_require__(70274);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
+var constants = __webpack_require__(71815);
+// EXTERNAL MODULE: ./src/jacdac/Context.tsx
+var Context = __webpack_require__(20392);
+;// CONCATENATED MODULE: ./src/components/makecode/MakeCodeSimulator.tsx
+
+
+
+
+
+
+var useStyles = (0,makeStyles/* default */.Z)(() => (0,createStyles/* default */.Z)({
+  root: {
+    width: "100%"
+  },
+  root2: {
+    position: "relative",
+    paddingTop: "86.75%"
+  },
+  iframe: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    border: "none",
+    width: "100%",
+    height: "100%"
+  }
+}));
+function MakeCodeSimulator(props) {
+  var {
+    simUrl
+  } = (0,react.useContext)(makecode_MakeCodeSnippetContext/* default */.Z);
+  var {
+    snippet
+  } = props;
+  var {
+    code,
+    ghost,
+    meta
+  } = snippet;
+  var {
+    dependencies
+  } = meta;
+  var {
+    bus
+  } = (0,react.useContext)(Context/* default */.Z);
+  var frameRef = (0,react.useRef)();
+  var classes = useStyles();
+  var src = (ghost || "") + "\n" + (code || "");
+  var url = simUrl + "#single=1&fullscren=1&nofooter=1&deps=" + encodeURIComponent(dependencies.join(",")) + "&code=" + encodeURIComponent(src);
+  var origin = new URL(url).origin;
+  (0,react.useEffect)(() => bus.subscribe([constants/* PACKET_SEND */.RaS, constants/* PACKET_PROCESS */.wY8], pkt => {
+    var _frameRef$current, _frameRef$current$con;
+
+    this.packetSent++;
+    var msg = {
+      type: "messagepacket",
+      channel: "jacdac",
+      broadcast: true,
+      data: pkt.toBuffer(),
+      sender: pkt.sender
+    };
+    (_frameRef$current = frameRef.current) === null || _frameRef$current === void 0 ? void 0 : (_frameRef$current$con = _frameRef$current.contentWindow) === null || _frameRef$current$con === void 0 ? void 0 : _frameRef$current$con.postMessage(msg, origin);
+  }));
+  return /*#__PURE__*/react.createElement(PaperBox/* default */.Z, null, /*#__PURE__*/react.createElement("div", {
+    className: classes.root
+  }, /*#__PURE__*/react.createElement("div", {
+    className: classes.root2
+  }, /*#__PURE__*/react.createElement("iframe", {
+    ref: frameRef,
+    className: classes.iframe,
+    src: url,
+    title: "MakeCode rendering iframe to generate blocks images."
+  }))));
+}
+// EXTERNAL MODULE: ./.cache/gatsby-browser-entry.js
+var gatsby_browser_entry = __webpack_require__(35313);
 ;// CONCATENATED MODULE: ./src/components/makecode/MakeCodeSnippet.tsx
 
 
@@ -3683,7 +3799,7 @@ function MakeCodeSnippet(props) {
   var {
     editor,
     setEditor
-  } = (0,react.useContext)(MakeCodeSnippetContext/* default */.Z);
+  } = (0,react.useContext)(makecode_MakeCodeSnippetContext/* default */.Z);
   var {
     0: tab,
     1: setTab
@@ -3925,4 +4041,4 @@ function PaperBox(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-5d4ca954a38f8d67ab4e.js.map
+//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-1d2865a844c46456aab9.js.map
