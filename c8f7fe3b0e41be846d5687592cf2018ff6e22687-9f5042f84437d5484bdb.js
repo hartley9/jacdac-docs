@@ -92824,6 +92824,7 @@ function CodeSandboxButton(props) {
   }();
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    color: "primary",
     onClick: handleClick,
     disabled: importing,
     title: "Try in CodeSandbox"
@@ -98803,4 +98804,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-e0667a9ae5f99e87a52d.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-9f5042f84437d5484bdb.js.map

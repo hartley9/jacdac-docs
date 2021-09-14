@@ -18,7 +18,7 @@ function P5JSCodeButton(props) {
   } = props;
   var files = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => ({
     "index.html": {
-      content: "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js\"></script>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js\"></script>\n        <script src=\"https://unpkg.com/jacdac-ts/dist/p5.jacdac.js\"></script>\n        <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n        <meta charset=\"utf-8\" />\n    </head>\n    <body>\n    <script src=\"sketch.js\"></script>\n    </body>\n</html>\n"
+      content: "\n<html>\n<head>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <script src=\"https://unpkg.com/p5@1.4.0/lib/p5.js\"></script>\n    <script src=\"https://unpkg.com/jacdac-ts/dist/p5.jacdac.js\"></script>\n    <script src=\"sketch.js\"></script>\n</head>\n<body>\n    <main>\n    </main>\n</body>\n</html>                \n"
     },
     "sketch.js": {
       content: "/* eslint-disable no-undef, no-unused-vars */\n\n" + sketch + "\n"
@@ -35,4 +35,4 @@ function P5JSCodeButton(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=2670-93785459e276af9de770.js.map
+//# sourceMappingURL=2670-1357b7ef05d42551ab52.js.map
