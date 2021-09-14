@@ -63469,7 +63469,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "56673ed5ce6c22518c3a7fda678b1f016c756ec2";
+var sha = "c2e297ab8106d399052cf4a26f3b9f29e7cd756f";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64349,7 +64349,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "56673ed5ce6c22518c3a7fda678b1f016c756ec2";
+  var sha = "c2e297ab8106d399052cf4a26f3b9f29e7cd756f";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -64407,7 +64407,7 @@ var TableRow = __webpack_require__(99395);
 
 
 
-var CodeBlock = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(9569), __webpack_require__.e(6275)]).then(__webpack_require__.bind(__webpack_require__, 50274)));
+var CodeBlock = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(9569), __webpack_require__.e(6275)]).then(__webpack_require__.bind(__webpack_require__, 33607)));
 
 var _RandomGenerator = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 2833).then(__webpack_require__.bind(__webpack_require__, 72833)));
 
@@ -65972,28 +65972,23 @@ var editors = {
   maker: "https://maker.makecode.com/"
 };
 var MakeCodeSnippetContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
-  target: undefined,
-  setTarget: t => {},
   editor: undefined,
-  setEditor: t => {},
+  setEditor: () => {},
   rendererUrl: undefined,
   simUrl: undefined
 });
 MakeCodeSnippetContext.displayName = "MakeCode";
 /* harmony default export */ __webpack_exports__["Z"] = (MakeCodeSnippetContext);
 function MakeCodeSnippetProvider(props) {
-  var [target, setTarget] = (0,_hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)("mkcd:editor", "microbit");
   var [editor, setEditor] = (0,_hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)("mdcd:editor", "blocks");
   var {
     children
   } = props;
   var useLocalhost = typeof window !== "undefined" && /localhostmakecode=1/.test(window.location.search);
-  var rendererUrl = useLocalhost ? "http://localhost:3232/--docs" : (editors[target] || editors["microbit"]) + "---docs";
-  var simUrl = useLocalhost ? "http://localhost:3232/--run" : (editors[target] || editors["microbit"]) + "---run";
+  var rendererUrl = useLocalhost ? "http://localhost:3232/--docs" : editors["microbit"] + "---docs";
+  var simUrl = useLocalhost ? "http://localhost:3232/--run" : editors["microbit"] + "---run";
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(MakeCodeSnippetContext.Provider, {
     value: {
-      target,
-      setTarget,
       editor,
       setEditor,
       rendererUrl,
@@ -81724,4 +81719,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-22215405043e271a02b6.js.map
+//# sourceMappingURL=app-50179947892b5a025efb.js.map
