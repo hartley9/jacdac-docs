@@ -91971,7 +91971,7 @@ __webpack_require__.d(__webpack_exports__, {
   "RL": function() { return /* binding */ ServiceTreeItem; }
 });
 
-// UNUSED EXPORTS: AnnounceFlagsTreeItem, EventTreeItem, RegisterTreeItem, ServiceMembersTreeItems
+// UNUSED EXPORTS: EventTreeItem, RegisterTreeItem, ServiceMembersTreeItems
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(45987);
@@ -92449,9 +92449,12 @@ var KindIcon = __webpack_require__(50048);
 var Warning = __webpack_require__(53717);
 // EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
 var react_use_id_hook_esm = __webpack_require__(19640);
+// EXTERNAL MODULE: ./node_modules/gatsby-material-ui-components/lib/index.js
+var lib = __webpack_require__(71481);
 ;// CONCATENATED MODULE: ./src/components/ui/StyledTreeView.tsx
 
-var _excluded = ["labelText", "kind", "icon", "labelInfo", "color", "bgColor", "actions", "nodeId", "warning", "alert"];
+var _excluded = ["labelText", "labelTo", "kind", "icon", "labelInfo", "color", "bgColor", "actions", "nodeId", "warning", "alert"];
+
 
 
 
@@ -92513,6 +92516,7 @@ function StyledTreeItem(props) {
 
   var {
     labelText,
+    labelTo,
     kind,
     icon,
     labelInfo,
@@ -92541,7 +92545,10 @@ function StyledTreeItem(props) {
     }), /*#__PURE__*/react.createElement(Typography/* default */.Z, {
       variant: "body2",
       className: classes.labelText
-    }, labelText), alert && "!", /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+    }, labelTo ? /*#__PURE__*/react.createElement(lib.Link, {
+      color: "textPrimary",
+      to: labelTo
+    }, labelText) : labelText), alert && "!", /*#__PURE__*/react.createElement(Typography/* default */.Z, {
       variant: "caption",
       color: "inherit"
     }, alert && /*#__PURE__*/react.createElement(Typography/* default */.Z, {
@@ -92570,6 +92577,8 @@ var useInstanceName = __webpack_require__(20563);
 var useBestRegister = __webpack_require__(39687);
 // EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/spectool/jdspec.ts
 var jdspec = __webpack_require__(13996);
+// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts
+var useDeviceSpecification = __webpack_require__(77423);
 ;// CONCATENATED MODULE: ./src/components/tools/JDomTreeViewItems.tsx
 
 var JDomTreeViewItems_excluded = ["device", "serviceFilter"],
@@ -92590,6 +92599,7 @@ var JDomTreeViewItems_excluded = ["device", "serviceFilter"],
 
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
 
 
@@ -92635,13 +92645,34 @@ function DeviceTreeItem(props) {
       device: device,
       showReset: true
     })
-  }, /*#__PURE__*/react.createElement(AnnounceFlagsTreeItem, {
+  }, /*#__PURE__*/react.createElement(DeviceProductInformationTreeItem, {
+    device: device
+  }), /*#__PURE__*/react.createElement(AnnounceFlagsTreeItem, {
     device: device
   }), services === null || services === void 0 ? void 0 : services.map(service => /*#__PURE__*/react.createElement(ServiceTreeItem, Object.assign({
     key: service.id,
     service: service
   }, other))));
 }
+
+function DeviceProductInformationTreeItem(props) {
+  var {
+    device
+  } = props;
+  var {
+    id
+  } = device;
+  var specification = (0,useDeviceSpecification/* default */.Z)(device);
+  if (!specification) return null;
+  var to = "/devices/" + (0,spec/* identifierToUrlPath */.uM)(specification.id);
+  return /*#__PURE__*/react.createElement(StyledTreeItem, {
+    nodeId: id + ":catalog",
+    labelTo: to,
+    labelText: specification.name,
+    labelInfo: specification.company
+  });
+}
+
 function AnnounceFlagsTreeItem(props) {
   var {
     device
@@ -92659,6 +92690,7 @@ function AnnounceFlagsTreeItem(props) {
     labelInfo: "0x" + announceFlags.toString(16)
   });
 }
+
 function ServiceMembersTreeItems(props) {
   var {
     service,
@@ -92715,7 +92747,7 @@ function RegisterTreeItem(props) {
     specification,
     id,
     lastGetAttempts
-  } = (0,react.useMemo)(() => register, [register]);
+  } = register;
   var {
     0: attempts,
     1: setAttempts
@@ -98804,4 +98836,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-9f5042f84437d5484bdb.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-f8045e66ed7059054654.js.map
