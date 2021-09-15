@@ -53737,9 +53737,9 @@ function Software() {
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     right: false,
-    subtitle: "Web USB",
-    subtitle3: "and Web Bluetooth",
-    description: "No driver installation needed to access the Jacdac devices from your web applications thanks to Web USB or Web Bluetooth.",
+    subtitle: "No drivers needed",
+    subtitle3: "WebUSB, WebSerial, WebBluetooth",
+    description: "Access physical devices with builtin browser features, no installation needed.",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
       src: "./bustopology.png",
       alt: "Bus topology",
@@ -53772,8 +53772,8 @@ function Software() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     right: true,
     subtitle: "p5*js",
-    description: "Physical Creative Coding without drivers.",
-    buttonText: "start creating",
+    description: "Physical Creative Coding.",
+    buttonText: "p5.jacdac library",
     buttonVariant: "link",
     buttonUrl: "/clients/p5js",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
@@ -63481,7 +63481,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "f737fa3c8cc4cdf3d99392a2a8bca896537868dc";
+var sha = "53569a23ff8c949d03cdf4b9c510d6c016c5bdc4";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64361,7 +64361,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "f737fa3c8cc4cdf3d99392a2a8bca896537868dc";
+  var sha = "53569a23ff8c949d03cdf4b9c510d6c016c5bdc4";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -81739,4 +81739,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-32e620e98e05da190d34.js.map
+//# sourceMappingURL=app-3e91bc7a0b674f665e58.js.map

@@ -39,14 +39,14 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
-    "id": "p5jacdac-a-p5js-library-for-jacdac",
+    "id": "p5jacdac",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h1",
-    "href": "#p5jacdac-a-p5js-library-for-jacdac",
-    "aria-label": "p5jacdac a p5js library for jacdac permalink",
+    "href": "#p5jacdac",
+    "aria-label": "p5jacdac permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -60,14 +60,14 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "p5.jacdac, a p5.js library for Jacdac"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+  }))), "p5.jacdac"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "p"
   }, "p5.jacdac"), " integrates Jacdac with ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://p5js.org",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "p5.js"), " to create creative coding with physical devices\nwith installing any drivers!"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "p5*js"), " to create creative coding with physical devices\nwith installing any drivers!"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, "no driver or installation needed"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
@@ -108,7 +108,7 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, "in CodeSandbox, only WebUSB is supported"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, "running p5.js locally? everything is possible!")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "running p5.js locally... everything is possible!")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "usage",
     "style": {
       "position": "relative"
@@ -313,4 +313,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-2045527653cbd29a944a.js.map
+//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-5df496816dcdaef758a9.js.map
