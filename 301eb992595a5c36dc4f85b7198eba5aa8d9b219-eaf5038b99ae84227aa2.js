@@ -674,8 +674,8 @@ function DeviceCardMedia(props) {
 }
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
 var spec = __webpack_require__(45656);
-// EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 3 modules
-var DeviceAvatar = __webpack_require__(4726);
+// EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 1 modules
+var DeviceAvatar = __webpack_require__(93679);
 // EXTERNAL MODULE: ./src/jacdac/useChange.ts
 var useChange = __webpack_require__(54774);
 ;// CONCATENATED MODULE: ./src/components/DeviceCardHeader.tsx
@@ -769,4 +769,4 @@ function DeviceCardHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=301eb992595a5c36dc4f85b7198eba5aa8d9b219-3cdf27b9f759676460a7.js.map
+//# sourceMappingURL=301eb992595a5c36dc4f85b7198eba5aa8d9b219-eaf5038b99ae84227aa2.js.map

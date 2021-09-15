@@ -92536,7 +92536,7 @@ function StyledTreeItem(props) {
     nodeId: nodeId,
     label: /*#__PURE__*/react.createElement("div", {
       className: classes.labelRoot
-    }, kind && /*#__PURE__*/react.createElement(KindIcon/* default */.ZP, {
+    }, kind && !icon && /*#__PURE__*/react.createElement(KindIcon/* default */.ZP, {
       kind: kind,
       className: classes.labelIcon
     }), icon, warning && /*#__PURE__*/react.createElement(Warning/* default */.Z, {
@@ -92579,6 +92579,8 @@ var useBestRegister = __webpack_require__(39687);
 var jdspec = __webpack_require__(13996);
 // EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts
 var useDeviceSpecification = __webpack_require__(77423);
+// EXTERNAL MODULE: ./src/components/devices/DeviceIcon.tsx + 2 modules
+var DeviceIcon = __webpack_require__(72618);
 ;// CONCATENATED MODULE: ./src/components/tools/JDomTreeViewItems.tsx
 
 var JDomTreeViewItems_excluded = ["device", "serviceFilter"],
@@ -92599,6 +92601,7 @@ var JDomTreeViewItems_excluded = ["device", "serviceFilter"],
 
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
 
 
@@ -92641,6 +92644,10 @@ function DeviceTreeItem(props) {
     warning: warning,
     alert: alert,
     kind: kind,
+    icon: /*#__PURE__*/react.createElement(DeviceIcon/* default */.Z, {
+      device: device,
+      size: "small"
+    }),
     actions: showActions && /*#__PURE__*/react.createElement(DeviceActions/* default */.Z, {
       device: device,
       showReset: true
@@ -98836,4 +98843,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-f8045e66ed7059054654.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-2e2eb7bed1a5a5585a99.js.map
