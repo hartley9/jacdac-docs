@@ -3448,7 +3448,7 @@ var theme = {
 
 /***/ }),
 
-/***/ 33607:
+/***/ 9433:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -3491,85 +3491,6 @@ var Tab = __webpack_require__(342);
 var TabPanel = __webpack_require__(3263);
 // EXTERNAL MODULE: ./src/components/makecode/MakeCodeSnippetContext.tsx
 var MakeCodeSnippetContext = __webpack_require__(54888);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/makeStyles.js
-var makeStyles = __webpack_require__(10920);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createStyles.js
-var createStyles = __webpack_require__(70274);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
-var constants = __webpack_require__(71815);
-// EXTERNAL MODULE: ./src/jacdac/Context.tsx
-var Context = __webpack_require__(20392);
-;// CONCATENATED MODULE: ./src/components/makecode/MakeCodeSimulator.tsx
-
-
-
-
-
-
-var useStyles = (0,makeStyles/* default */.Z)(() => (0,createStyles/* default */.Z)({
-  root: {
-    width: "100%"
-  },
-  root2: {
-    position: "relative",
-    paddingTop: "86.75%"
-  },
-  iframe: {
-    position: "absolute",
-    left: 0,
-    top: 0,
-    border: "none",
-    width: "100%",
-    height: "100%"
-  }
-}));
-function MakeCodeSimulator(props) {
-  var {
-    simUrl
-  } = (0,react.useContext)(MakeCodeSnippetContext/* default */.Z);
-  var {
-    snippet
-  } = props;
-  var {
-    code,
-    ghost,
-    meta
-  } = snippet;
-  var {
-    dependencies
-  } = meta;
-  var {
-    bus
-  } = (0,react.useContext)(Context/* default */.Z);
-  var frameRef = (0,react.useRef)();
-  var classes = useStyles();
-  var src = (ghost || "") + "\n" + (code || "");
-  var url = simUrl + "#single=1&fullscren=1&nofooter=1&deps=" + encodeURIComponent(dependencies.join(",")) + "&code=" + encodeURIComponent(src);
-  var origin = new URL(url).origin;
-  (0,react.useEffect)(() => bus.subscribe([constants/* PACKET_SEND */.RaS, constants/* PACKET_PROCESS */.wY8], pkt => {
-    var _frameRef$current, _frameRef$current$con;
-
-    this.packetSent++;
-    var msg = {
-      type: "messagepacket",
-      channel: "jacdac",
-      broadcast: true,
-      data: pkt.toBuffer(),
-      sender: pkt.sender
-    };
-    (_frameRef$current = frameRef.current) === null || _frameRef$current === void 0 ? void 0 : (_frameRef$current$con = _frameRef$current.contentWindow) === null || _frameRef$current$con === void 0 ? void 0 : _frameRef$current$con.postMessage(msg, origin);
-  }));
-  return /*#__PURE__*/react.createElement(PaperBox/* default */.Z, null, /*#__PURE__*/react.createElement("div", {
-    className: classes.root
-  }, /*#__PURE__*/react.createElement("div", {
-    className: classes.root2
-  }, /*#__PURE__*/react.createElement("iframe", {
-    ref: frameRef,
-    className: classes.iframe,
-    src: url,
-    title: "MakeCode rendering iframe to generate blocks images."
-  }))));
-}
 // EXTERNAL MODULE: ./.cache/gatsby-browser-entry.js
 var gatsby_browser_entry = __webpack_require__(35313);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
@@ -3665,7 +3586,6 @@ function parseMakeCodeSnippet(source) {
 
 
 
-
 function MakeCodeSnippet(props) {
   var {
     renderedSource
@@ -3706,8 +3626,6 @@ function MakeCodeSnippet(props) {
     label: "Blocks"
   }), /*#__PURE__*/react.createElement(Tab/* default */.Z, {
     label: "JavaScript"
-  }), /*#__PURE__*/react.createElement(Tab/* default */.Z, {
-    label: "Simulator"
   })), /*#__PURE__*/react.createElement(TabPanel/* default */.Z, {
     value: tab,
     index: 0
@@ -3720,12 +3638,7 @@ function MakeCodeSnippet(props) {
     index: 1
   }, /*#__PURE__*/react.createElement(CodeBlock, {
     className: "typescript"
-  }, code)), /*#__PURE__*/react.createElement(TabPanel/* default */.Z, {
-    value: tab,
-    index: 2
-  }, /*#__PURE__*/react.createElement(MakeCodeSimulator, {
-    snippet: snippet
-  })));
+  }, code)));
 }
 // EXTERNAL MODULE: ./src/components/ui/Suspense.tsx
 var Suspense = __webpack_require__(69672);
@@ -3925,4 +3838,4 @@ function PaperBox(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-5d4ca954a38f8d67ab4e.js.map
+//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-01112ff36604a793d11f.js.map

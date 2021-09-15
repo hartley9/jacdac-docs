@@ -3538,8 +3538,8 @@ function useVMRunner(roleManager, program, autoRun) {
 }
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(80453);
-// EXTERNAL MODULE: ./src/components/CodeBlock.tsx + 3 modules
-var CodeBlock = __webpack_require__(33607);
+// EXTERNAL MODULE: ./src/components/CodeBlock.tsx + 2 modules
+var CodeBlock = __webpack_require__(9433);
 ;// CONCATENATED MODULE: ./src/components/vm/VMDiagnostics.tsx
 
 
@@ -6878,4 +6878,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-vm-tsx-0e90f2ab47d80c659faa.js.map
+//# sourceMappingURL=component---src-pages-editors-vm-tsx-8d6b0d60f9a79824e1ef.js.map

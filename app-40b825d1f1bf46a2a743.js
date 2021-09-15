@@ -63469,7 +63469,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "daac353167edf516ec70528d7b6b4a0a810c9cef";
+var sha = "e2baa1538acd985642f7ea6b09fc050cb2592c1c";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64349,7 +64349,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "daac353167edf516ec70528d7b6b4a0a810c9cef";
+  var sha = "e2baa1538acd985642f7ea6b09fc050cb2592c1c";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -64407,7 +64407,7 @@ var TableRow = __webpack_require__(99395);
 
 
 
-var CodeBlock = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(9569), __webpack_require__.e(6275)]).then(__webpack_require__.bind(__webpack_require__, 33607)));
+var CodeBlock = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(9569), __webpack_require__.e(6275)]).then(__webpack_require__.bind(__webpack_require__, 9433)));
 
 var _RandomGenerator = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 2833).then(__webpack_require__.bind(__webpack_require__, 72833)));
 
@@ -81719,4 +81719,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-f101f46f1c64d001b845.js.map
+//# sourceMappingURL=app-40b825d1f1bf46a2a743.js.map
