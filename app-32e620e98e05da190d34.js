@@ -53769,6 +53769,18 @@ function Software() {
       alt: "Jacdac nodes for Node-RED",
       __imageData: __webpack_require__(24347)
     })
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    right: true,
+    subtitle: "p5*js",
+    description: "Physical Creative Coding without drivers.",
+    buttonText: "start creating",
+    buttonVariant: "link",
+    buttonUrl: "/clients/p5js",
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
+      src: "./p5js.jpg",
+      alt: "A p5js program that controls color with potentiometers",
+      __imageData: __webpack_require__(74971)
+    })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
     subtitle2: "Developer tools.",
     description: "Investigate and diagnose issues through our debugging tools.",
@@ -63469,7 +63481,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "c877594c8fd6b7a442904d7482938749e1d7feb3";
+var sha = "f737fa3c8cc4cdf3d99392a2a8bca896537868dc";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64349,7 +64361,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "c877594c8fd6b7a442904d7482938749e1d7feb3";
+  var sha = "f737fa3c8cc4cdf3d99392a2a8bca896537868dc";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -81464,6 +81476,14 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 
 /***/ }),
 
+/***/ 74971:
+/***/ (function(module) {
+
+"use strict";
+module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#181818","images":{"fallback":{"src":"/jacdac-docs/static/8a82289c0cfdc1984eb3d192c6c9f1b1/c300d/p5js.jpg","srcSet":"/jacdac-docs/static/8a82289c0cfdc1984eb3d192c6c9f1b1/3b945/p5js.jpg 200w,\\n/jacdac-docs/static/8a82289c0cfdc1984eb3d192c6c9f1b1/5f708/p5js.jpg 400w,\\n/jacdac-docs/static/8a82289c0cfdc1984eb3d192c6c9f1b1/c300d/p5js.jpg 800w","sizes":"(min-width: 800px) 800px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/8a82289c0cfdc1984eb3d192c6c9f1b1/92a75/p5js.webp 200w,\\n/jacdac-docs/static/8a82289c0cfdc1984eb3d192c6c9f1b1/d8228/p5js.webp 400w,\\n/jacdac-docs/static/8a82289c0cfdc1984eb3d192c6c9f1b1/72b7d/p5js.webp 800w","type":"image/webp","sizes":"(min-width: 800px) 800px, 100vw"}]},"width":800,"height":396}');
+
+/***/ }),
+
 /***/ 92859:
 /***/ (function(module) {
 
@@ -81719,4 +81739,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-daf6d3301dd3ec72bdeb.js.map
+//# sourceMappingURL=app-32e620e98e05da190d34.js.map
