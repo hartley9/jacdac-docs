@@ -35,8 +35,8 @@ export default function DashboardBitRadio(props: DashboardServiceProps) {
         () =>
             service.subscribe(REPORT_RECEIVE, (pkt: Packet) => {
                 let values: PackedValues
-                const { data, serviceCommand } = pkt
-                switch (serviceCommand) {
+                const { data, serviceOpcode } = pkt
+                switch (serviceOpcode) {
                     case BitRadioCmd.NumberReceived:
                         values = jdunpack(data, "u32 u32 i8 x[3] f64 s")
                         break

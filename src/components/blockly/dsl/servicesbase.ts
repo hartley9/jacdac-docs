@@ -935,7 +935,7 @@ export class ServicesBaseDSL {
             case "raiseNo":
             case "raiseArgs":
             case "command": {
-                const { command: serviceCommand } =
+                const { command: serviceOpcode } =
                     definition as CommandBlockDefinition
                 const { value: role } = inputs[0].fields.role
                 const eventName =
@@ -954,7 +954,7 @@ export class ServicesBaseDSL {
                         arguments: exprsErrors.map(p => p.expr),
                         callee: toMemberExpression(
                             role as string,
-                            eventName ? eventName : serviceCommand.name
+                            eventName ? eventName : serviceOpcode.name
                         ),
                     }),
                     errors: exprsErrors.flatMap(p => p.errors),

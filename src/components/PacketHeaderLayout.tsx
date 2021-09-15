@@ -57,7 +57,7 @@ export default function PacketHeaderLayout(props: {
     const pkt = packet || Packet.fromBinary(fromHex(data))
     const { header } = pkt
     const frameFlags = header[3]
-    const serviceCommand = pkt.serviceCommand
+    const serviceOpcode = pkt.serviceOpcode
 
     const slots: SlotProps[] = [
         {
@@ -146,19 +146,19 @@ export default function PacketHeaderLayout(props: {
     const commandFlags = [
         {
             flag: CMD_GET_REG,
-            active: (serviceCommand & CMD_GET_REG) === CMD_GET_REG,
+            active: (serviceOpcode & CMD_GET_REG) === CMD_GET_REG,
             name: "CMD_GET_REG",
             description: "Get register value",
         },
         {
             flag: CMD_SET_REG,
-            active: (serviceCommand & CMD_SET_REG) === CMD_SET_REG,
+            active: (serviceOpcode & CMD_SET_REG) === CMD_SET_REG,
             name: "CMD_SET_REG",
             description: "Set register value",
         },
         {
             flag: CMD_EVENT_MASK,
-            active: (serviceCommand & CMD_EVENT_MASK) !== 0,
+            active: (serviceOpcode & CMD_EVENT_MASK) !== 0,
             name: "CMD_EVENT_MASK",
             description: "Command is an event",
         },
