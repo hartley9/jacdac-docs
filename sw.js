@@ -27,10 +27,10 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-c8bea2845a9c40fa9145.js"
+    "url": "webpack-runtime-3b4acc9261ebf132bf50.js"
   },
   {
-    "url": "styles.e49b987076b777d4c0cf.css"
+    "url": "styles.0b0615d50d9ff7cb9f1d.css"
   },
   {
     "url": "framework-3e5fdc5ba728e15d7465.js"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "0f5e367e773387d970b3e9b2226dc495"
+    "revision": "bcb75b1ad97800bfb9f135bc310460d8"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,11 +60,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "93a582d789c3f74e1dbeb6e46949bbe4"
+    "revision": "7f88572bf722bfbe79b0884774dd4459"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "1cffd4b79d25d28149da95684bc15e0f"
+    "revision": "0fbd4fc79c727b91ec497c52eea36516"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -72,7 +72,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "84011e33d065f31e9622df62a7611634"
+    "revision": "c1a109df1e4693cf445291d67df8c6c2"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "c88de003940957f78443440e3e0c62b0"
+    "revision": "1190a9c9a96df70f18b7c9d7202c9ce0"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -111,7 +111,7 @@ self.__precacheManifest = [
     "revision": "789c66f494454070964fc54b8659be79"
   },
   {
-    "url": "component---src-pages-devices-tsx-c2d021af6c1f4563193c.js"
+    "url": "component---src-pages-devices-tsx-3997807f7243a4870215.js"
   },
   {
     "url": "page-data/devices/page-data.json",
@@ -167,7 +167,7 @@ self.__precacheManifest = [
     "revision": "796bd946cd9dd8c33d58a0962ee69de3"
   },
   {
-    "url": "component---src-pages-services-tsx-0fc5e836d4fc57110a52.js"
+    "url": "component---src-pages-services-tsx-19073b99443ebd1ca08f.js"
   },
   {
     "url": "page-data/services/page-data.json",
@@ -224,7 +224,7 @@ self.__precacheManifest = [
     "url": "7135060e554842f570a07250da4cced35e9b785f-5d4ca954a38f8d67ab4e.js"
   },
   {
-    "url": "149f11818c122b40ce2932f15d148eda4aaa5f90-4b969467db1992f99f5c.js"
+    "url": "149f11818c122b40ce2932f15d148eda4aaa5f90-aebbef131899041ec0c0.js"
   },
   {
     "url": "component---src-templates-service-tsx-6c991da8d837048741bb.js"
@@ -881,7 +881,7 @@ self.__precacheManifest = [
     "revision": "4ec747a457a6993f3c0c98e4e93e93f3"
   },
   {
-    "url": "component---src-templates-device-company-tsx-0d9dfae6f11499abcbb2.js"
+    "url": "component---src-templates-device-company-tsx-59c21eee5a7dc0c79c54.js"
   },
   {
     "url": "page-data/devices/microsoft/research/page-data.json",
@@ -891,7 +891,7 @@ self.__precacheManifest = [
     "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-01aaf355a5d08d70d3b3.js"
   },
   {
-    "url": "component---src-templates-device-tsx-d753cb4a25a9f720477e.js"
+    "url": "component---src-templates-device-tsx-2a2e614cbb1eee792d81.js"
   },
   {
     "url": "page-data/devices/microsoft/research/jmaccelerometer30v02/page-data.json",
@@ -1054,7 +1054,7 @@ self.__precacheManifest = [
     "revision": "8fe6ff1800a66991519db64b1776e223"
   },
   {
-    "url": "ae29c6db-26ed7ec3f3f546ee56eb.js"
+    "url": "ae29c6db-035f2779dd0731feee1c.js"
   },
   {
     "url": "component---src-pages-tools-hid-events-tsx-20c8b6701e21a2f277ac.js"
@@ -1268,7 +1268,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-50179947892b5a025efb.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-f101f46f1c64d001b845.js`))) {
     return await fetch(event.request)
   }
 

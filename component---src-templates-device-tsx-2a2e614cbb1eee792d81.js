@@ -713,7 +713,7 @@ var ServiceSpecificationStatusAlert = /*#__PURE__*/react__WEBPACK_IMPORTED_MODUL
 var _excluded = ["source"];
 
 
-var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 7724).then(__webpack_require__.bind(__webpack_require__, 7724)));
+var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 1616).then(__webpack_require__.bind(__webpack_require__, 91616)));
 function Markdown(props) {
   var {
     source
@@ -927,4 +927,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-d753cb4a25a9f720477e.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-2a2e614cbb1eee792d81.js.map

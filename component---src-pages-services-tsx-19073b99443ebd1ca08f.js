@@ -1196,7 +1196,7 @@ function GridHeader(props) {
 var _excluded = ["source"];
 
 
-var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 7724).then(__webpack_require__.bind(__webpack_require__, 7724)));
+var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 1616).then(__webpack_require__.bind(__webpack_require__, 91616)));
 function Markdown(props) {
   var {
     source
@@ -1649,4 +1649,4 @@ function ServiceCatalog() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-services-tsx-0fc5e836d4fc57110a52.js.map
+//# sourceMappingURL=component---src-pages-services-tsx-19073b99443ebd1ca08f.js.map

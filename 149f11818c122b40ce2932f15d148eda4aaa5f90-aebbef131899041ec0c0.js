@@ -1085,7 +1085,7 @@ var ServiceSpecificationStatusAlert = /*#__PURE__*/react__WEBPACK_IMPORTED_MODUL
 var _excluded = ["source"];
 
 
-var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 7724).then(__webpack_require__.bind(__webpack_require__, 7724)));
+var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 1616).then(__webpack_require__.bind(__webpack_require__, 91616)));
 function Markdown(props) {
   var {
     source
@@ -1212,4 +1212,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-4b969467db1992f99f5c.js.map
+//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-aebbef131899041ec0c0.js.map

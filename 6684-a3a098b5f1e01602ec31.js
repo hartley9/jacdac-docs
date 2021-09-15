@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[20,6684],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6684],{
 
 /***/ 12531:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
@@ -481,7 +481,7 @@ function DeviceSpecificationList(props) {
 var _excluded = ["source"];
 
 
-var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 7724).then(__webpack_require__.bind(__webpack_require__, 7724)));
+var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 1616).then(__webpack_require__.bind(__webpack_require__, 91616)));
 function Markdown(props) {
   var {
     source
@@ -491,30 +491,7 @@ function Markdown(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Suspense__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ReactMarkdown, others, source));
 }
 
-/***/ }),
-
-/***/ 96557:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ Page; }
-/* harmony export */ });
-/* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36176);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
-/* harmony import */ var _components_specification_DeviceSpecificationList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(46684);
-
-
-
-function Page(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, props.pageContext.company), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_specification_DeviceSpecificationList__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    company: props.pageContext.company
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h2", null, "See Also"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_0__.Link, {
-    to: "/reference/device-registration/"
-  }, "device registration"))));
-}
-
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-company-tsx-0d9dfae6f11499abcbb2.js.map
+//# sourceMappingURL=6684-a3a098b5f1e01602ec31.js.map

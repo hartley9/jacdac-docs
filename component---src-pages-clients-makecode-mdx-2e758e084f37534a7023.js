@@ -119,7 +119,7 @@ function MDXContent(_ref) {
   }, "Advanced"), ".")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.button1.onUp(function () {\\n    basic.showIcon(IconNames.SmallHeart)\\n})\\nmodules.button1.onDown(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"rendered\":{\"url\":\"/images/makecode/2c165ae5e3da58ab901d1e3714064707.png\",\"width\":468,\"height\":336}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"modules.button1.onUp(function () {\\n    basic.showIcon(IconNames.SmallHeart)\\n})\\nmodules.button1.onDown(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"rendered\":{\"url\":\"/images/makecode/e62e3c021b040b4599cdd7b5d8ca3f28.png\",\"width\":546,\"height\":142}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "servers",
     "style": {
       "position": "relative"
@@ -227,4 +227,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-mdx-e9d47838697e38b9b244.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-mdx-2e758e084f37534a7023.js.map

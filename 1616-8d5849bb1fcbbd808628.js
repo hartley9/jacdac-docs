@@ -1,4 +1,4 @@
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[7724],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[1616],{
 
 /***/ 33962:
 /***/ (function(module) {
@@ -520,7 +520,7 @@ module.exports = encode;
 
 /***/ }),
 
-/***/ 7724:
+/***/ 91616:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -533,7 +533,7 @@ __webpack_require__.d(__webpack_exports__, {
   "uriTransformer": function() { return /* reexport */ uriTransformer; }
 });
 
-// NAMESPACE OBJECT: ./node_modules/react-markdown/node_modules/micromark/lib/constructs.js
+// NAMESPACE OBJECT: ./node_modules/mdast-util-from-markdown/node_modules/micromark/lib/constructs.js
 var constructs_namespaceObject = {};
 __webpack_require__.r(constructs_namespaceObject);
 __webpack_require__.d(constructs_namespaceObject, {
@@ -3661,7 +3661,7 @@ function looksLikeAVFile(value) {
 function looksLikeAVFileValue(value) {
   return typeof value === 'string' || is_buffer_default()(value);
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/mdast-util-to-string/index.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/mdast-util-to-string/index.js
 /**
  * @typedef Options
  * @property {boolean} [includeImageAlt=true]
@@ -4150,7 +4150,7 @@ function factorySpace(effects, ok, type, max) {
     return ok(code);
   }
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/micromark/lib/initialize/content.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/micromark/lib/initialize/content.js
 /**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').Initializer} Initializer
@@ -4230,7 +4230,7 @@ function initializeContent(effects) {
     return data;
   }
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/micromark/lib/initialize/document.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/micromark/lib/initialize/document.js
 /**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').Initializer} Initializer
@@ -4967,7 +4967,7 @@ function tokenizeContinuation(effects, ok, nok) {
     return effects.interrupt(self.parser.constructs.flow, nok, ok)(code);
   }
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/micromark/lib/initialize/flow.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/micromark/lib/initialize/flow.js
 /**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').Initializer} Initializer
@@ -5019,7 +5019,7 @@ function initializeFlow(effects) {
     return initial;
   }
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/micromark/lib/initialize/text.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/micromark/lib/initialize/text.js
 /**
  * @typedef {import('micromark-util-types').Resolver} Resolver
  * @typedef {import('micromark-util-types').Initializer} Initializer
@@ -5258,7 +5258,7 @@ function resolveAll(constructs, events, context) {
 
   return events;
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/micromark/lib/create-tokenizer.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/micromark/lib/create-tokenizer.js
 /**
  * @typedef {import('micromark-util-types').Code} Code
  * @typedef {import('micromark-util-types').Chunk} Chunk
@@ -9512,7 +9512,7 @@ function tokenizeCodeText(effects, ok, nok) {
     return data(code);
   }
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/micromark/lib/constructs.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/micromark/lib/constructs.js
 /**
  * @typedef {import('micromark-util-types').Extension} Extension
  */
@@ -9597,7 +9597,7 @@ var attentionMarkers = {
 var disable = {
   null: []
 };
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/micromark/lib/parse.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/micromark/lib/parse.js
 /**
  * @typedef {import('micromark-util-types').InitialConstruct} InitialConstruct
  * @typedef {import('micromark-util-types').FullNormalizedExtension} FullNormalizedExtension
@@ -9650,7 +9650,7 @@ function parse() {
     }
   }
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/micromark/lib/preprocess.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/micromark/lib/preprocess.js
 /**
  * @typedef {import('micromark-util-types').Encoding} Encoding
  * @typedef {import('micromark-util-types').Value} Value
@@ -9785,7 +9785,7 @@ function preprocess() {
     return chunks;
   }
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/micromark/lib/postprocess.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/micromark/lib/postprocess.js
 /**
  * @typedef {import('micromark-util-types').Event} Event
  */
@@ -9823,7 +9823,7 @@ function decodeNumericCharacterReference(value, base) {
 
   return String.fromCharCode(code);
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/parse-entities/decode-entity.browser.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/parse-entities/decode-entity.browser.js
 /* eslint-env browser */
 var decode_entity_browser_semicolon = 59; // `;`
 
@@ -9856,7 +9856,76 @@ function decode_entity_browser_decodeEntity(characters) {
 
   return char === entity ? false : char;
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/mdast-util-from-markdown/lib/index.js
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/node_modules/unist-util-stringify-position/index.js
+var node_modules_unist_util_stringify_position_own = {}.hasOwnProperty;
+/**
+ * @typedef {import('unist').Node} Node
+ * @typedef {import('unist').Position} Position
+ * @typedef {import('unist').Point} Point
+ */
+
+/**
+ * Stringify one point, a position (start and end points), or a node’s
+ * positional information.
+ *
+ * @param {Node|Position|Point} [value]
+ * @returns {string}
+ */
+
+function node_modules_unist_util_stringify_position_stringifyPosition(value) {
+  // Nothing.
+  if (!value || typeof value !== 'object') {
+    return '';
+  } // Node.
+
+
+  if (node_modules_unist_util_stringify_position_own.call(value, 'position') || node_modules_unist_util_stringify_position_own.call(value, 'type')) {
+    // @ts-ignore looks like a node.
+    return node_modules_unist_util_stringify_position_position(value.position);
+  } // Position.
+
+
+  if (node_modules_unist_util_stringify_position_own.call(value, 'start') || node_modules_unist_util_stringify_position_own.call(value, 'end')) {
+    // @ts-ignore looks like a position.
+    return node_modules_unist_util_stringify_position_position(value);
+  } // Point.
+
+
+  if (node_modules_unist_util_stringify_position_own.call(value, 'line') || node_modules_unist_util_stringify_position_own.call(value, 'column')) {
+    // @ts-ignore looks like a point.
+    return node_modules_unist_util_stringify_position_point(value);
+  } // ?
+
+
+  return '';
+}
+/**
+ * @param {Point} point
+ * @returns {string}
+ */
+
+function node_modules_unist_util_stringify_position_point(point) {
+  return node_modules_unist_util_stringify_position_index(point && point.line) + ':' + node_modules_unist_util_stringify_position_index(point && point.column);
+}
+/**
+ * @param {Position} pos
+ * @returns {string}
+ */
+
+
+function node_modules_unist_util_stringify_position_position(pos) {
+  return node_modules_unist_util_stringify_position_point(pos && pos.start) + '-' + node_modules_unist_util_stringify_position_point(pos && pos.end);
+}
+/**
+ * @param {number} value
+ * @returns {number}
+ */
+
+
+function node_modules_unist_util_stringify_position_index(value) {
+  return value && typeof value === 'number' ? value : 1;
+}
+;// CONCATENATED MODULE: ./node_modules/mdast-util-from-markdown/lib/index.js
 /**
  * @typedef {import('micromark-util-types').Encoding} Encoding
  * @typedef {import('micromark-util-types').Event} Event
@@ -10140,7 +10209,7 @@ function compiler() {
     }
 
     if (tokenStack.length > 0) {
-      throw new Error('Cannot close document, a token (`' + tokenStack[tokenStack.length - 1].type + '`, ' + stringifyPosition({
+      throw new Error('Cannot close document, a token (`' + tokenStack[tokenStack.length - 1].type + '`, ' + node_modules_unist_util_stringify_position_stringifyPosition({
         start: tokenStack[tokenStack.length - 1].start,
         end: tokenStack[tokenStack.length - 1].end
       }) + ') is still open');
@@ -10387,15 +10456,15 @@ function compiler() {
     var open = this.tokenStack.pop();
 
     if (!open) {
-      throw new Error('Cannot close `' + token.type + '` (' + stringifyPosition({
+      throw new Error('Cannot close `' + token.type + '` (' + node_modules_unist_util_stringify_position_stringifyPosition({
         start: token.start,
         end: token.end
       }) + '): it’s not open');
     } else if (open.type !== token.type) {
-      throw new Error('Cannot close `' + token.type + '` (' + stringifyPosition({
+      throw new Error('Cannot close `' + token.type + '` (' + node_modules_unist_util_stringify_position_stringifyPosition({
         start: token.start,
         end: token.end
-      }) + '): a different token (`' + open.type + '`, ' + stringifyPosition({
+      }) + '): a different token (`' + open.type + '`, ' + node_modules_unist_util_stringify_position_stringifyPosition({
         start: open.start,
         end: open.end
       }) + ') is open');
@@ -10965,7 +11034,7 @@ function extension(combined, extension) {
     }
   }
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/remark-parse/lib/index.js
+;// CONCATENATED MODULE: ./node_modules/remark-parse/lib/index.js
 /**
  * @typedef {import('mdast').Root} Root
  * @typedef {import('mdast-util-from-markdown').Options} Options
@@ -10991,7 +11060,7 @@ function remarkParse(options) {
     Parser: parser
   });
 }
-;// CONCATENATED MODULE: ./node_modules/react-markdown/node_modules/remark-parse/index.js
+;// CONCATENATED MODULE: ./node_modules/remark-parse/index.js
 
 /* harmony default export */ var remark_parse = (remarkParse);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
@@ -15438,4 +15507,4 @@ module.exports = StyleToObject;
 /***/ })
 
 }]);
-//# sourceMappingURL=7724-b7e6ad13c823a6254100.js.map
+//# sourceMappingURL=1616-8d5849bb1fcbbd808628.js.map
