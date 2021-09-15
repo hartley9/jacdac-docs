@@ -3595,11 +3595,9 @@ function MakeCodeSnippet(props) {
     rendered
   } = JSON.parse(renderedSource);
   var {
-    height,
-    width,
     url
   } = rendered || {};
-  var tabs = ["blocks", "typescript", "sim"];
+  var tabs = ["blocks", "typescript"];
   var {
     editor,
     setEditor
@@ -3838,4 +3836,4 @@ function PaperBox(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-01112ff36604a793d11f.js.map
+//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-947cf9b26ad7b78bb581.js.map
