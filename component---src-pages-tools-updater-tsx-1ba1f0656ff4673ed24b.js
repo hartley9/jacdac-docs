@@ -770,11 +770,7 @@ function UpdateDeviceList() {
     announced: true,
     ignoreSelf: true,
     ignoreSimulators: true
-  }, [safeBoot]).filter(dev => safeBoot || !dev.hasService(constants/* SRV_BOOTLOADER */.PWm)).sort((l, r) => {
-    var _l$firmwareInfo, _r$firmwareInfo;
-
-    return -(((_l$firmwareInfo = l.firmwareInfo) === null || _l$firmwareInfo === void 0 ? void 0 : _l$firmwareInfo.productIdentifier) || 0) + (((_r$firmwareInfo = r.firmwareInfo) === null || _r$firmwareInfo === void 0 ? void 0 : _r$firmwareInfo.productIdentifier) || 0);
-  });
+  }, [safeBoot]).filter(dev => safeBoot || !dev.hasService(constants/* SRV_BOOTLOADER */.PWm)).sort((l, r) => -(l.productIdentifier || 0) + (r.productIdentifier || 0));
   var isFlashing = (0,useChange/* default */.Z)(bus, () => devices.some(dev => dev.flashing));
   var blobs = (0,useFirmwareBlobs/* default */.Z)();
 
@@ -1165,4 +1161,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-daf70711390b8a13c660.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-1ba1f0656ff4673ed24b.js.map
