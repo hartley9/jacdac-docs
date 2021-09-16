@@ -647,7 +647,10 @@ var CircularProgressWithLabel = __webpack_require__(29177);
 var AppContext = __webpack_require__(84377);
 // EXTERNAL MODULE: ./src/components/hooks/useMounted.ts
 var useMounted = __webpack_require__(72179);
+// EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
+var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/components/firmware/FlashDeviceButton.tsx
+
 
 
 
@@ -671,6 +674,9 @@ function FlashDeviceButton(props) {
     setError
   } = (0,react.useContext)(AppContext/* default */.ZP);
   var {
+    trackEvent
+  } = (0,useAnalytics/* default */.ZP)();
+  var {
     0: progress,
     1: setProgress
   } = (0,react.useState)(0);
@@ -685,6 +691,10 @@ function FlashDeviceButton(props) {
   var handleFlashing = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
       if (device.flashing) return;
+      trackEvent("flash.start", {
+        firmware: firmwareInfo.productIdentifier,
+        version: firmwareInfo.version
+      });
 
       try {
         setProgress(0);
@@ -697,9 +707,17 @@ function FlashDeviceButton(props) {
 
         device.firmwareInfo = undefined;
       } catch (e) {
+        trackEvent("flash.error", {
+          firmware: firmwareInfo.productIdentifier,
+          version: firmwareInfo.version
+        });
         if (mounted()) setError(e);
       } finally {
         device.flashing = false;
+        trackEvent("flash.success", {
+          firmware: firmwareInfo.productIdentifier,
+          version: firmwareInfo.version
+        });
       }
     });
 
@@ -1161,4 +1179,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-1ba1f0656ff4673ed24b.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-768043798a64a4d52895.js.map
