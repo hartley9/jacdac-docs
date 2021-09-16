@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-a39a785fe8b1d3fe565d.js"
+    "url": "webpack-runtime-b35565bc4962bdf5a185.js"
   },
   {
     "url": "styles.0b0615d50d9ff7cb9f1d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "1d9736f31b0b858bea24935cd190b522"
+    "revision": "36d10ac8dff07b50c7c5191eb4834c56"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,11 +60,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "8b5aa0fefd9a4baef52b5e029bedb795"
+    "revision": "cb5ac48c48e74abc8d2597aa6b1b7071"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "8ff5d8c9bdb4aa6172b7c250048f5e87"
+    "revision": "f6899dd236aad99b4728bf1ce1676a8a"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -72,7 +72,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "97d45aa60cfc15390da23dc5159870ac"
+    "revision": "f666747e577dced7310a9326e2a7cfe1"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "1d9dbc7315e8b09170803e0375980370"
+    "revision": "a1502cd64d1fdeb55e8e34bea08e9f91"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -101,7 +101,7 @@ self.__precacheManifest = [
     "revision": "45d979f1240328e3369da87802cb39b8"
   },
   {
-    "url": "830485e4a01eef9412f4754ecfe08bd6e6417633-7620f0179eb5cfd4cecd.js"
+    "url": "830485e4a01eef9412f4754ecfe08bd6e6417633-55b5d8dab94e012493aa.js"
   },
   {
     "url": "component---src-pages-dashboard-tsx-043587b3945198a56011.js"
@@ -167,7 +167,7 @@ self.__precacheManifest = [
     "revision": "796bd946cd9dd8c33d58a0962ee69de3"
   },
   {
-    "url": "component---src-pages-services-tsx-5473cc83f714c50bb0d7.js"
+    "url": "component---src-pages-services-tsx-64cc48b903b57a5d716f.js"
   },
   {
     "url": "page-data/services/page-data.json",
@@ -401,6 +401,14 @@ self.__precacheManifest = [
     "revision": "ce72a336a3a179cbcba416bcb7da3c08"
   },
   {
+    "url": "page-data/services/dotmatrix/page-data.json",
+    "revision": "555a6ce9e2dafb42e94084a37b19f8ce"
+  },
+  {
+    "url": "page-data/services/dotmatrix/playground/page-data.json",
+    "revision": "b1fe0f83b4878aee7dc9ce450e8cb59e"
+  },
+  {
     "url": "page-data/services/eco2/page-data.json",
     "revision": "db3f07935fa25c09ddd6f1dcc1054dc4"
   },
@@ -487,14 +495,6 @@ self.__precacheManifest = [
   {
     "url": "page-data/services/led/playground/page-data.json",
     "revision": "128db60c6a7723ff0d072bcfb3a94833"
-  },
-  {
-    "url": "page-data/services/ledmatrix/page-data.json",
-    "revision": "b5db54906beea44ea23791fbe3c61404"
-  },
-  {
-    "url": "page-data/services/ledmatrix/playground/page-data.json",
-    "revision": "82fcf4a4410921d69b361232bc128fb7"
   },
   {
     "url": "page-data/services/ledpixel/page-data.json",
@@ -891,7 +891,7 @@ self.__precacheManifest = [
     "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-01aaf355a5d08d70d3b3.js"
   },
   {
-    "url": "component---src-templates-device-tsx-792e2370295b1bf5fcac.js"
+    "url": "component---src-templates-device-tsx-277121b100b6b108369b.js"
   },
   {
     "url": "page-data/devices/microbit/foundation/microbitv2/page-data.json",
@@ -1014,7 +1014,7 @@ self.__precacheManifest = [
     "revision": "775e718cd95f01c3eee2155c1e8bb276"
   },
   {
-    "url": "component---src-pages-tools-accelerometer-theremin-tsx-9f41b7bf032269849893.js"
+    "url": "component---src-pages-tools-accelerometer-theremin-tsx-4e1d502e2cc58fba28cb.js"
   },
   {
     "url": "page-data/tools/accelerometer-theremin/page-data.json",
@@ -1079,7 +1079,7 @@ self.__precacheManifest = [
     "revision": "034149f3bdc19933710486be4b8bdb78"
   },
   {
-    "url": "component---src-pages-tools-lightsensor-accessible-tsx-bc9d0010a92d5d97d286.js"
+    "url": "component---src-pages-tools-lightsensor-accessible-tsx-2e0d580cb0e890d9c771.js"
   },
   {
     "url": "page-data/tools/lightsensor-accessible/page-data.json",
@@ -1120,7 +1120,7 @@ self.__precacheManifest = [
     "revision": "b185746f9008a4dc8fd628b5c6a56049"
   },
   {
-    "url": "component---src-pages-tools-packet-inspector-tsx-81dd39dcc787348aecc5.js"
+    "url": "component---src-pages-tools-packet-inspector-tsx-9f67938ece826ae105ae.js"
   },
   {
     "url": "page-data/tools/packet-inspector/page-data.json",
@@ -1155,7 +1155,7 @@ self.__precacheManifest = [
     "revision": "cdd74e11018b89612a32e48e98cbba87"
   },
   {
-    "url": "component---src-pages-tools-release-assets-tsx-8d4b88ebda0579eab9d9.js"
+    "url": "component---src-pages-tools-release-assets-tsx-92eb4707794743a69d81.js"
   },
   {
     "url": "page-data/tools/release-assets/page-data.json",
@@ -1276,7 +1276,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-20a3b3ad9679738aa6ba.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-4604be68383e35a45dcf.js`))) {
     return await fetch(event.request)
   }
 

@@ -1,10 +1,10 @@
 {
   "serviceClass": 286070091,
-  "name": "ledMatrix",
+  "name": "dotMatrix",
   "registers": [
     {
       "code": 2,
-      "name": "leds",
+      "name": "dots",
       "flags": 0,
       "packf": "b"
     },
@@ -25,6 +25,12 @@
       "name": "columns",
       "flags": 1,
       "packf": "u16"
+    },
+    {
+      "code": 263,
+      "name": "variant",
+      "flags": 1,
+      "packf": "u8"
     }
   ]
 }
