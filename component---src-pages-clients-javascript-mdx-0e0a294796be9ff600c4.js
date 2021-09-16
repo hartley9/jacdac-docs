@@ -154,8 +154,8 @@ function MDXContent(_ref) {
     parentName: "pre"
   }, "yarn add jacdac-ts\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "then import components as needed using ES6 import syntax"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
-    "className": "language-javascript"
-  }, "import { createWebBus } from \"jacdac-ts\"\nconst jd = createWebBus()\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "className": "language-vanilla"
+  }, "import { createWebBus } from \"jacdac-ts\"\nconst jd = createWebBus()\n-----\n\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "cdn--umd",
     "style": {
       "position": "relative"
@@ -182,9 +182,7 @@ function MDXContent(_ref) {
   }, "jacdac"), " into your html page directly.\nThis will load the ES6 build of the library."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, "<script src=\"https://unpkg.com/jacdac-ts@VERSION/dist/jacdac.js\"></script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "where ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
-    parentName: "p"
-  }, "@VERSION"), " is the desired version."));
+  }, "<script src=\"https://unpkg.com/jacdac-ts/dist/jacdac.js\"></script>\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -210,4 +208,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-javascript-mdx-518cc037b08dfede8223.js.map
+//# sourceMappingURL=component---src-pages-clients-javascript-mdx-0e0a294796be9ff600c4.js.map
