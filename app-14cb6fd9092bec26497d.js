@@ -51890,11 +51890,13 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
   },
   small: {
     width: theme.spacing(3),
-    height: theme.spacing(3)
+    height: theme.spacing(3),
+    marginRight: theme.spacing(0.5)
   },
   large: {
     width: theme.spacing(7),
-    height: theme.spacing(7)
+    height: theme.spacing(7),
+    marginRight: theme.spacing(1)
   }
 }));
 function DeviceIcon(props) {
@@ -63621,7 +63623,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "d0dede56d9544a26278e077a27cdce39b37c0d53";
+var sha = "7211c71980d31d9fb5eb734875f0457687406cc6";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64509,7 +64511,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "d0dede56d9544a26278e077a27cdce39b37c0d53";
+  var sha = "7211c71980d31d9fb5eb734875f0457687406cc6";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74590,7 +74592,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.32"};
+var package_namespaceObject = {"i8":"1.16.33"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -81915,4 +81917,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-409ae08ae19d7c987c28.js.map
+//# sourceMappingURL=app-14cb6fd9092bec26497d.js.map
