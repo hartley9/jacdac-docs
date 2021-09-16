@@ -36698,13 +36698,15 @@ Flags.storage = false;
 /* harmony export */   "is": function() { return /* binding */ sendStayInBootloaderCommand; }
 /* harmony export */ });
 /* unused harmony export parseUF2Firmware */
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(15861);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(15861);
 /* harmony import */ var _buffer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3482);
 /* harmony import */ var _packet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(57683);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(71815);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81794);
 /* harmony import */ var _pack__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(91635);
 /* harmony import */ var _pretty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(10913);
+/* harmony import */ var _spec__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(45656);
+
 
 
 
@@ -36765,7 +36767,7 @@ var FlashClient = /*#__PURE__*/function () {
   };
 
   _proto.sendCommandAsync = /*#__PURE__*/function () {
-    var _sendCommandAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (p) {
+    var _sendCommandAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (p) {
       p.serviceIndex = 1;
       yield p.sendCmdAsync(this.device);
     });
@@ -36778,7 +36780,7 @@ var FlashClient = /*#__PURE__*/function () {
   }();
 
   _proto.startFlashAsync = /*#__PURE__*/function () {
-    var _startFlashAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* () {
+    var _startFlashAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* () {
       this.sessionId = Math.random() * 0x10000000 | 0;
 
       for (var d of this.classClients) {
@@ -36819,7 +36821,7 @@ var FlashClient = /*#__PURE__*/function () {
   }();
 
   _proto.endFlashAsync = /*#__PURE__*/function () {
-    var _endFlashAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* () {
+    var _endFlashAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* () {
       for (var f of this.classClients) {
         yield this.bus.delay(10);
         yield f.device.sendCtrlCommand(_constants__WEBPACK_IMPORTED_MODULE_2__/* .ControlCmd.Reset */ .VSW.Reset);
@@ -36851,7 +36853,7 @@ var FlashClient = /*#__PURE__*/function () {
   };
 
   _proto.waitForStatusAsync = /*#__PURE__*/function () {
-    var _waitForStatusAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* () {
+    var _waitForStatusAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* () {
       for (var i = 0; i < 100; ++i) {
         if (this.classClients.every(c => c.lastStatus != null)) break;
         yield this.bus.delay(5);
@@ -36866,7 +36868,7 @@ var FlashClient = /*#__PURE__*/function () {
   }();
 
   _proto.flashPage = /*#__PURE__*/function () {
-    var _flashPage = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (page) {
+    var _flashPage = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (page) {
       var pageAddr = page.targetAddress;
       var pageSize = this.pageSize;
       var numSubpage = (pageSize + BL_SUBPAGE_SIZE - 1) / BL_SUBPAGE_SIZE | 0;
@@ -36942,7 +36944,7 @@ var FlashClient = /*#__PURE__*/function () {
   }();
 
   _proto.flashFirmwareBlob = /*#__PURE__*/function () {
-    var _flashFirmwareBlob = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (fw, progress) {
+    var _flashFirmwareBlob = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (fw, progress) {
       var waitCycles = 15;
       var total = fw.pages.length + waitCycles + 3;
       var idx = 0;
@@ -37092,7 +37094,7 @@ function parseFirmwareFile(_x5, _x6) {
 }
 
 function _parseFirmwareFile() {
-  _parseFirmwareFile = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (blob, store) {
+  _parseFirmwareFile = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (blob, store) {
     var data = yield (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .readBlobToUint8Array */ .Lg)(blob);
     var buf = new Uint8Array(data);
     var uf2Blobs = parseUF2Firmware(buf, store);
@@ -37114,7 +37116,7 @@ function scanCore(_x7, _x8, _x9, _x10) {
 
 
 function _scanCore() {
-  _scanCore = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (bus, numTries, makeFlashers, recovery) {
+  _scanCore = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (bus, numTries, makeFlashers, recovery) {
     if (recovery === void 0) {
       recovery = false;
     }
@@ -37149,8 +37151,9 @@ function _scanCore() {
 
     var devs = Object.values(devices).filter(d => {
       if (!d.bootloaderProductIdentifier) d.bootloaderProductIdentifier = d.productIdentifier;
-      if (!d.productIdentifier) d.productIdentifier = d.bootloaderProductIdentifier;
-      if (!d.productIdentifier) return false;
+      if (!d.productIdentifier) d.productIdentifier = d.bootloaderProductIdentifier; // ensure in catalog
+
+      if (!(0,_spec__WEBPACK_IMPORTED_MODULE_6__/* .deviceSpecificationFromProductIdentifier */ .Ht)(d.productIdentifier)) return false;
       return true;
     }); // store info in objects
 
@@ -37211,7 +37214,7 @@ function scanFirmwares(_x11, _x12) {
  */
 
 function _scanFirmwares() {
-  _scanFirmwares = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (bus, timeout) {
+  _scanFirmwares = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (bus, timeout) {
     if (timeout === void 0) {
       timeout = 300;
     }
@@ -37247,7 +37250,7 @@ function flashFirmwareBlob(_x13, _x14, _x15, _x16, _x17) {
  */
 
 function _flashFirmwareBlob2() {
-  _flashFirmwareBlob2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (bus, blob, updateCandidates, ignoreFirmwareCheck, progress) {
+  _flashFirmwareBlob2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (bus, blob, updateCandidates, ignoreFirmwareCheck, progress) {
     if (!(updateCandidates !== null && updateCandidates !== void 0 && updateCandidates.length)) return;
     _startTime = Date.now();
     log("resetting " + updateCandidates.length + " device(s)");
@@ -37283,7 +37286,7 @@ function sendStayInBootloaderCommand(_x18) {
 }
 
 function _sendStayInBootloaderCommand() {
-  _sendStayInBootloaderCommand = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (bus) {
+  _sendStayInBootloaderCommand = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (bus) {
     var bl_announce = _packet__WEBPACK_IMPORTED_MODULE_1__/* ["default"].onlyHeader */ .Z.onlyHeader(_constants__WEBPACK_IMPORTED_MODULE_2__/* .BootloaderCmd.Info */ .e96.Info);
     yield bl_announce.sendAsMultiCommandAsync(bus, _constants__WEBPACK_IMPORTED_MODULE_2__/* .SRV_BOOTLOADER */ .PWm);
   });
@@ -63525,7 +63528,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "2428e01209db302e8af8042b8d9d58c254d60ffa";
+var sha = "bd925baff14c2a67a2076e2fb50980ab86a15142";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64405,7 +64408,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2428e01209db302e8af8042b8d9d58c254d60ffa";
+  var sha = "bd925baff14c2a67a2076e2fb50980ab86a15142";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -69712,7 +69715,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
 
       var ctrl = (_this$_services = this._services) === null || _this$_services === void 0 ? void 0 : _this$_services[0];
       var codes = [constants/* ControlReg.ProductIdentifier */.toU.ProductIdentifier];
-      codes.forEach(code => ctrl.register(code).once(constants/* REPORT_UPDATE */.rGZ, () => this.emit(constants/* CHANGE */.Ver)));
+      codes.forEach(code => ctrl.register(code).once(constants/* REPORT_UPDATE */.rGZ, () => this.emitPropagated(constants/* CHANGE */.Ver)));
     }
   }
   /**
@@ -81786,4 +81789,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-8e8e9d15b5f5ad9b0909.js.map
+//# sourceMappingURL=app-cb4e24b30ee22a50d521.js.map

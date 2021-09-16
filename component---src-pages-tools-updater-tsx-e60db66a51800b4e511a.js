@@ -606,6 +606,7 @@ function FlashDeviceButton(props) {
   } = (0,react.useState)(0);
   var firmwareInfo = (0,useChange/* default */.Z)(device, d => d === null || d === void 0 ? void 0 : d.firmwareInfo);
   var update = ignoreFirmwareCheck || (blob === null || blob === void 0 ? void 0 : blob.version) && (firmwareInfo === null || firmwareInfo === void 0 ? void 0 : firmwareInfo.version) && (0,jdom_flashing/* updateApplicable */.Kl)(firmwareInfo, blob);
+  var upToDate = (blob === null || blob === void 0 ? void 0 : blob.version) && blob.version === firmwareInfo.version;
   var flashing = (0,useChange/* default */.Z)(device, d => !!(d !== null && d !== void 0 && d.flashing));
   var missing = !device || !blob;
   var disabled = flashing;
@@ -642,10 +643,10 @@ function FlashDeviceButton(props) {
     severity: "info"
   }, "No firmware information available") : flashing ? /*#__PURE__*/react.createElement(CircularProgressWithLabel/* default */.Z, {
     value: progress
-  }) : firmwareInfo || update ? /*#__PURE__*/react.createElement(react.Fragment, null, firmwareInfo && /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
+  }) : firmwareInfo || update ? /*#__PURE__*/react.createElement(react.Fragment, null, upToDate && /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "success"
   }, "Up to date!"), /*#__PURE__*/react.createElement(Button/* default */.Z, {
-    "aria-label": "flash firmware to device",
+    "aria-label": "flash " + firmwareInfo.version + " to device",
     disabled: disabled,
     variant: "contained",
     color: "primary",
@@ -696,12 +697,11 @@ function UpdateDeviceList() {
   var devices = (0,useDevices/* default */.Z)({
     announced: true,
     ignoreSelf: true,
-    ignoreSimulators: true,
-    productIdentifier: true
+    ignoreSimulators: true
   }, [safeBoot]).filter(dev => safeBoot || !dev.hasService(constants/* SRV_BOOTLOADER */.PWm)).sort((l, r) => {
     var _l$firmwareInfo, _r$firmwareInfo;
 
-    return (((_l$firmwareInfo = l.firmwareInfo) === null || _l$firmwareInfo === void 0 ? void 0 : _l$firmwareInfo.productIdentifier) || 0) - (((_r$firmwareInfo = r.firmwareInfo) === null || _r$firmwareInfo === void 0 ? void 0 : _r$firmwareInfo.productIdentifier) || 0);
+    return -(((_l$firmwareInfo = l.firmwareInfo) === null || _l$firmwareInfo === void 0 ? void 0 : _l$firmwareInfo.productIdentifier) || 0) + (((_r$firmwareInfo = r.firmwareInfo) === null || _r$firmwareInfo === void 0 ? void 0 : _r$firmwareInfo.productIdentifier) || 0);
   });
   var isFlashing = (0,useChange/* default */.Z)(bus, () => devices.some(dev => dev.flashing));
   var blobs = (0,useFirmwareBlobs/* default */.Z)();
@@ -1062,4 +1062,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-f408cf4fe06c327e39b4.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-e60db66a51800b4e511a.js.map
