@@ -91954,7 +91954,7 @@ function RoleListItem(props) {
     onClick: onClick
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     primary: roleName || "???",
-    secondary: bound ? "assigned to " + bound.friendlyName + "[" + serviceIndex + "]" : "not assigned"
+    secondary: bound ? bound.friendlyName + "[" + serviceIndex + "]" : "..."
   }));
 }
 
@@ -98873,4 +98873,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-9de39f0772b6b52951c3.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-2de9a9039646cb5ff461.js.map

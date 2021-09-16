@@ -3092,7 +3092,7 @@ var RoleManagerCmd;
 var RoleManagerEvent;
 (function (RoleManagerEvent) {
     /**
-     * Emit notifying that the internal state of the service changed.
+     * Notifies that role bindings have changed.
      */
     RoleManagerEvent[RoleManagerEvent["Change"] = 3] = "Change";
 })(RoleManagerEvent || (RoleManagerEvent = {}));
