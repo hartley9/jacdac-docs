@@ -82,7 +82,7 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "JDOM"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The JDOM module is a dependency-free JavaScript object model\nthat reflects the state of the Jacdac elements and allows sending commands as well. JDOM also handles connection through WebUSB, WebBLE and other transports."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }))), "JDOM"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The JDOM module is a dependency-free JavaScript object model\nthat reflects the state of the Jacdac elements and allows sending commands as well.\nJDOM also handles connection through WebUSB, WebSerial, WebBLE and other transports."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
@@ -94,7 +94,34 @@ function MDXContent(_ref) {
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
     "href": "/jacdac-docs/clients/javascript/jdom"
-  }, "JDOM introduction"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "JDOM introduction"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", {
+    parentName: "li"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
+    "href": "/jacdac-docs/clients/javascript/jdom/bus/"
+  }, "Bus")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
+    "href": "/jacdac-docs/clients/javascript/jdom/device/"
+  }, "Device")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
+    "href": "/jacdac-docs/clients/javascript/jdom/service/"
+  }, "Service")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
+    "href": "/jacdac-docs/clients/javascript/jdom/register/"
+  }, "Register")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
+    "href": "/jacdac-docs/clients/javascript/jdom/event/"
+  }, "Event"))))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "npm",
     "style": {
       "position": "relative"
@@ -157,7 +184,7 @@ function MDXContent(_ref) {
     "className": "language-html"
   }, "<script src=\"https://unpkg.com/jacdac-ts@VERSION/dist/jacdac.js\"></script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "where ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "@VERSION"), " is the desired version. "));
+  }, "@VERSION"), " is the desired version."));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -183,4 +210,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-javascript-mdx-cee6e26b9963f53bd7cb.js.map
+//# sourceMappingURL=component---src-pages-clients-javascript-mdx-518cc037b08dfede8223.js.map
