@@ -52842,8 +52842,8 @@ function Clients() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     right: false,
     subtitle: "MakeCode.",
-    description: "Add Jacdac to your micro:bit V2, Arcade or Maker board.",
-    buttonText: "MakeCode library",
+    description: "Code Jacdac into your micro:bit V2, Arcade or Maker board.",
+    buttonText: "MakeCode extension",
     buttonVariant: "link",
     buttonUrl: "/clients/makecode",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__.S, {
@@ -63623,7 +63623,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "2cee21854c670111485913244deefcae88d8781a";
+var sha = "79fd4c35d966e77454f44a26cac3f89f4cacea59";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64511,7 +64511,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2cee21854c670111485913244deefcae88d8781a";
+  var sha = "79fd4c35d966e77454f44a26cac3f89f4cacea59";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -76983,7 +76983,9 @@ exports.components = {
   "component---src-pages-clients-javascript-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-mdx */ 3290).then(__webpack_require__.bind(__webpack_require__, 79835)),
   "component---src-pages-clients-javascript-react-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-react-mdx */ 9640).then(__webpack_require__.bind(__webpack_require__, 69823)),
   "component---src-pages-clients-makecode-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-mdx */ 5348).then(__webpack_require__.bind(__webpack_require__, 82733)),
+  "component---src-pages-clients-makecode-projects-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-mdx */ 2235).then(__webpack_require__.bind(__webpack_require__, 39091)),
   "component---src-pages-clients-makecode-servers-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-servers-mdx */ 2913).then(__webpack_require__.bind(__webpack_require__, 1979)),
+  "component---src-pages-clients-makecode-user-guide-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-user-guide-mdx */ 1198).then(__webpack_require__.bind(__webpack_require__, 61198)),
   "component---src-pages-clients-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-mdx */ 2858).then(__webpack_require__.bind(__webpack_require__, 63895)),
   "component---src-pages-clients-node-red-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-node-red-mdx */ 95).then(__webpack_require__.bind(__webpack_require__, 96440)),
   "component---src-pages-clients-p-5-js-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-p-5-js-mdx */ 4939).then(__webpack_require__.bind(__webpack_require__, 65081)),
@@ -81917,4 +81919,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-25b21e70822481d69913.js.map
+//# sourceMappingURL=app-20a3b3ad9679738aa6ba.js.map
