@@ -97486,10 +97486,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _widgets_SvgWidget__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(48059);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(80838);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(80838);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(80453);
 /* harmony import */ var _widgets_useWidgetTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(60650);
 /* harmony import */ var _ui_SliderWithLabel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23461);
 /* harmony import */ var _ColorButtons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(99531);
+/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(81794);
+
 
 
 
@@ -97566,7 +97569,9 @@ function LEDWidget(props) {
     ledColor,
     onLedColorChange,
     speed = 32,
-    onSpeedChange
+    onSpeedChange,
+    brightness = 16,
+    onBrightnessChange
   } = props;
   var r = ledColor >> 16 & 0xff;
   var g = ledColor >> 8 & 0xff;
@@ -97575,11 +97580,14 @@ function LEDWidget(props) {
     active
   } = (0,_widgets_useWidgetTheme__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(color); // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-  var handleSpeedChange = (event, newSpeed) => onSpeedChange(newSpeed);
+  var handleSpeedChange = (event, newSpeed) => onSpeedChange(newSpeed); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+  var handleBrightnessChange = (event, newValue) => onBrightnessChange(newValue);
 
   var buttonColors = waveLength ? [nmToRGB(waveLength), 0x000000] : [0xff0000, 0xff00ff, 0x0000ff, 0x00ff00, 0xffff00, 0x000000];
 
-  var speedValueLabelFormat = newValue => newValue == 0 ? "100%" : (newValue / 0xff * 100 | 0) + "%";
+  var percentValueFormat = newValue => newValue == 0 ? "100%" : (newValue / 0xff * 100 | 0) + "%";
 
   var opacity = !r && !b && !g ? 0 : 1;
   var fill = "rgb(" + r + ", " + g + ", " + b + ")";
@@ -97588,14 +97596,20 @@ function LEDWidget(props) {
   var m = 1;
   var w = (lw + m) * ln;
   var h = 42;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
     container: true,
     spacing: 1,
     alignItems: "center",
     alignContent: "center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
     item: true,
     xs: 12
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+    container: true,
+    spacing: 1,
+    direction: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+    item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_SvgWidget__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
     width: w,
     height: h,
@@ -97652,14 +97666,18 @@ function LEDWidget(props) {
     opacity: ".61",
     fill: "#fff",
     d: "M2.6 3.2C1.5 4.3.9 5.8.9 7.4v10.3l1.9 1.5V8.8c-.9-2.8-.3-4.2.7-5.2-.3-.1-.6-.2-.9-.4zm7.3-1.6l-.3.9c1.5.7 2.6 2.1 2.8 3.7h1c-.3-2-1.6-3.7-3.5-4.6z"
-  }))))), onLedColorChange && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+    item: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+    variant: "caption"
+  }, (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_5__/* .rgbToHtmlColor */ .b)(ledColor))))), onLedColorChange && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ColorButtons__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     colors: buttonColors,
     color: ledColor,
     onColorChange: onLedColorChange
-  })), onSpeedChange && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+  })), onSpeedChange && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_SliderWithLabel__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
@@ -97669,8 +97687,20 @@ function LEDWidget(props) {
     max: 255,
     value: speed,
     valueLabelDisplay: "auto",
-    valueLabelFormat: speedValueLabelFormat,
+    valueLabelFormat: percentValueFormat,
     onChange: handleSpeedChange
+  })), onBrightnessChange && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+    item: true,
+    xs: 12
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_SliderWithLabel__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    label: "brightness",
+    min: 0,
+    step: 5,
+    max: 255,
+    value: brightness,
+    valueLabelDisplay: "auto",
+    valueLabelFormat: percentValueFormat,
+    onChange: handleBrightnessChange
   })));
 }
 
@@ -98843,4 +98873,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-6a8d0786250e4d327b53.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-9de39f0772b6b52951c3.js.map
