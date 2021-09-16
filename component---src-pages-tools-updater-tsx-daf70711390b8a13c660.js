@@ -676,7 +676,7 @@ function FlashDeviceButton(props) {
   } = (0,react.useState)(0);
   var firmwareInfo = (0,useChange/* default */.Z)(device, d => d === null || d === void 0 ? void 0 : d.firmwareInfo);
   var update = ignoreFirmwareCheck || (blob === null || blob === void 0 ? void 0 : blob.version) && (firmwareInfo === null || firmwareInfo === void 0 ? void 0 : firmwareInfo.version) && (0,jdom_flashing/* updateApplicable */.Kl)(firmwareInfo, blob);
-  var upToDate = (blob === null || blob === void 0 ? void 0 : blob.version) && blob.version === firmwareInfo.version;
+  var upToDate = (blob === null || blob === void 0 ? void 0 : blob.version) && (firmwareInfo === null || firmwareInfo === void 0 ? void 0 : firmwareInfo.version) && blob.version === firmwareInfo.version;
   var flashing = (0,useChange/* default */.Z)(device, d => !!(d !== null && d !== void 0 && d.flashing));
   var missing = !device || !blob;
   var disabled = flashing;
@@ -713,10 +713,12 @@ function FlashDeviceButton(props) {
     severity: "info"
   }, "No firmware available") : flashing ? /*#__PURE__*/react.createElement(CircularProgressWithLabel/* default */.Z, {
     value: progress
-  }) : firmwareInfo || update ? /*#__PURE__*/react.createElement(react.Fragment, null, upToDate && /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
+  }) : firmwareInfo || update ? /*#__PURE__*/react.createElement(react.Fragment, null, upToDate ? /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "success"
-  }, "Up to date!"), /*#__PURE__*/react.createElement(Button/* default */.Z, {
-    title: "Flash " + firmwareInfo.version,
+  }, "Up to date!") : /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
+    severity: "warning"
+  }, blob.version, " available"), /*#__PURE__*/react.createElement(Button/* default */.Z, {
+    title: "Flash " + blob.version,
     disabled: disabled,
     variant: "contained",
     color: "primary",
@@ -1163,4 +1165,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-fb40928192a130c37a88.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-daf70711390b8a13c660.js.map
