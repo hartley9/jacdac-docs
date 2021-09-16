@@ -67,7 +67,7 @@ function MDXContent(_ref) {
     "href": "https://p5js.org",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "p5*js"), " to create creative coding with physical devices\nwith installing any drivers!"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "p5", "*", "js"), " to create creative coding with physical devices\nwith installing any drivers!"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, "no driver or installation needed"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
@@ -313,4 +313,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-5df496816dcdaef758a9.js.map
+//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-e0dce75cd29a8f8ad602.js.map

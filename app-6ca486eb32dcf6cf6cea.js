@@ -49910,7 +49910,7 @@ var ServiceManagerProvider = _ref => {
   }, children);
 
   function createProps() {
-    var isHosted = (0,iframeclient/* inIFrame */.H)() && /hosted=1/.test(window.location.href);
+    var isHosted = (0,iframeclient/* inIFrame */.H)() && /(hosted|embed)=1/.test(window.location.href);
     var fileStorage = new BrowserFileStorage();
     var modelStore = undefined;
 
@@ -52791,6 +52791,99 @@ function CenterGrid(props) {
 
 /***/ }),
 
+/***/ 83357:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ Clients; }
+/* harmony export */ });
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(80838);
+/* harmony import */ var gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2359);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _CenterGrid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(83580);
+/* harmony import */ var _SplitGrid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(72587);
+
+
+
+
+
+function Clients() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    container: true,
+    spacing: 10,
+    direction: "column",
+    alignContent: "center",
+    alignItems: "center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    title: "Client SDKs",
+    subtitle3: "Integrate Jacdac into your web, Node.JS or embedded apps.",
+    imageColumns: 6,
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__.S, {
+      src: "./dashboard.png",
+      alt: "Dashboard",
+      __imageData: __webpack_require__(42951)
+    })
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    right: true,
+    subtitle: "JavaScript and TypeScript.",
+    description: "From the browser or Node.JS, use our JavaScript/TypeScript library to interact with physical Jacdac devices. If you can build a web page, you can program Jacdac.",
+    buttonText: "JavaScript/TypeScript library",
+    buttonVariant: "link",
+    buttonUrl: "/clients/javascript",
+    imageColumns: 4,
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__.S, {
+      src: "./html5.png",
+      alt: "A Jacdac humidity module plugging into a Jacdac cable",
+      __imageData: __webpack_require__(86285)
+    })
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    right: false,
+    subtitle: "MakeCode.",
+    description: "Add Jacdac to your micro:bit V2, Arcade or Maker board.",
+    buttonText: "MakeCode library",
+    buttonVariant: "link",
+    buttonUrl: "/clients/makecode",
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__.S, {
+      src: "./makecode.png",
+      alt: "Block code to swipe a servo",
+      __imageData: __webpack_require__(77042)
+    })
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    right: true,
+    subtitle: "Node-RED.",
+    description: "Add Jacdac to your Node-RED flows.",
+    buttonText: "Jacdac node",
+    buttonVariant: "link",
+    buttonUrl: "https://flows.nodered.org/node/node-red-contrib-jacdac",
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__.S, {
+      src: "./nodered.png",
+      alt: "Jacdac nodes for Node-RED",
+      __imageData: __webpack_require__(24347)
+    })
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    right: false,
+    subtitle: "p5*js",
+    description: "Physical Creative Coding.",
+    buttonText: "p5.jacdac library",
+    buttonVariant: "link",
+    buttonUrl: "/clients/p5js",
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__.S, {
+      src: "./p5js.jpg",
+      alt: "A p5js program that controls color with potentiometers",
+      __imageData: __webpack_require__(74971)
+    })
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
+    subtitle2: "Can I embed Jacdac in my web pages?",
+    description: "Absolutely! With a few lines of HTML, you can bring Jacdac to your web pages.",
+    buttonText: "Copy HTML code to add Jacdac to your web site.",
+    buttonVariant: "link",
+    buttonUrl: "/clients/embed/"
+  }));
+}
+
+/***/ }),
+
 /***/ 89088:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -53874,7 +53967,7 @@ function Software() {
     description: "Absolutely! You can embed our dashboard or add our JavaScript package.",
     buttonText: "Integrate Jacdac into your web app",
     buttonVariant: "link",
-    buttonUrl: "/clients/web"
+    buttonUrl: "/clients/embed/"
   }));
 }
 /*
@@ -54089,7 +54182,7 @@ function Tools() {
     description: "Absolutely! You can our JavaScript package to build your own Jacdac tooling.",
     buttonText: "Integrate Jacdac into your web app",
     buttonVariant: "link",
-    buttonUrl: "/clients/web"
+    buttonUrl: "/clients/javascript/"
   }));
 }
 
@@ -63524,7 +63617,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "1bfc1395e47d873c8a2a8f5ce308c907eec8fa08";
+var sha = "3c5040cf75471df9c8ec68de8d180a77d7d877f1";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64404,7 +64497,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "1bfc1395e47d873c8a2a8f5ce308c907eec8fa08";
+  var sha = "3c5040cf75471df9c8ec68de8d180a77d7d877f1";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -73459,12 +73552,12 @@ function defaultOptions() {
   };
 }
 
-function usb_createUSBTransport(options) {
+function createUSBTransport(options) {
   if (!options) options = defaultOptions();
   return options && new WebUSBTransport(options);
 }
 function createUSBBus(options) {
-  return new JDBus([usb_createUSBTransport(options)]);
+  return new JDBus([createUSBTransport(options)]);
 }
 ;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/transport/eventtargetobservable.ts
 /**
@@ -74258,7 +74351,6 @@ var WebSerialIO = /*#__PURE__*/function () {
 
 
 
-
 function isWebSerialEnabled() {
   return !!Flags.webSerial;
 }
@@ -74344,7 +74436,7 @@ function createWebSerialTransport(mkTransport) {
     mkTransport = () => new WebSerialIO();
   }
 
-  return new WebSerialTransport(mkTransport);
+  return isWebSerialSupported() && new WebSerialTransport(mkTransport);
 }
 /**
  * Creates a bus with a Web Serial connection
@@ -74353,9 +74445,6 @@ function createWebSerialTransport(mkTransport) {
 
 function createWebSerialBus() {
   return new JDBus([createWebSerialTransport()]);
-}
-function createAnyUSBBus() {
-  return new JDBus([createUSBTransport(), createWebSerialTransport()]);
 }
 // EXTERNAL MODULE: ./src/components/makecode/iframebridgeclient.ts
 var iframebridgeclient = __webpack_require__(43380);
@@ -74489,7 +74578,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.31"};
+var package_namespaceObject = {"i8":"1.16.32"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -76868,6 +76957,7 @@ exports.components = {
   "component---cache-caches-gatsby-plugin-offline-app-shell-js": () => __webpack_require__.e(/* import() | component---cache-caches-gatsby-plugin-offline-app-shell-js */ 4306).then(__webpack_require__.bind(__webpack_require__, 45569)),
   "component---src-components-spec-tsx": () => __webpack_require__.e(/* import() | component---src-components-spec-tsx */ 7655).then(__webpack_require__.bind(__webpack_require__, 52217)),
   "component---src-pages-404-tsx": () => __webpack_require__.e(/* import() | component---src-pages-404-tsx */ 9218).then(__webpack_require__.bind(__webpack_require__, 63205)),
+  "component---src-pages-clients-embed-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-embed-mdx */ 8706).then(__webpack_require__.bind(__webpack_require__, 66256)),
   "component---src-pages-clients-javascript-jdom-bus-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-jdom-bus-mdx */ 2611).then(__webpack_require__.bind(__webpack_require__, 19712)),
   "component---src-pages-clients-javascript-jdom-device-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-jdom-device-mdx */ 2588).then(__webpack_require__.bind(__webpack_require__, 8131)),
   "component---src-pages-clients-javascript-jdom-event-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-jdom-event-mdx */ 8160).then(__webpack_require__.bind(__webpack_require__, 54201)),
@@ -76883,8 +76973,6 @@ exports.components = {
   "component---src-pages-clients-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-mdx */ 2858).then(__webpack_require__.bind(__webpack_require__, 63895)),
   "component---src-pages-clients-node-red-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-node-red-mdx */ 95).then(__webpack_require__.bind(__webpack_require__, 96440)),
   "component---src-pages-clients-p-5-js-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-p-5-js-mdx */ 4939).then(__webpack_require__.bind(__webpack_require__, 65081)),
-  "component---src-pages-clients-web-iframe-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-web-iframe-mdx */ 6585).then(__webpack_require__.bind(__webpack_require__, 25645)),
-  "component---src-pages-clients-web-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-web-mdx */ 7598).then(__webpack_require__.bind(__webpack_require__, 27889)),
   "component---src-pages-dashboard-tsx": () => Promise.all(/* import() | component---src-pages-dashboard-tsx */[__webpack_require__.e(8517), __webpack_require__.e(7378)]).then(__webpack_require__.bind(__webpack_require__, 54542)),
   "component---src-pages-devices-tsx": () => __webpack_require__.e(/* import() | component---src-pages-devices-tsx */ 8524).then(__webpack_require__.bind(__webpack_require__, 29903)),
   "component---src-pages-editors-data-about-mdx": () => __webpack_require__.e(/* import() | component---src-pages-editors-data-about-mdx */ 1495).then(__webpack_require__.bind(__webpack_require__, 31586)),
@@ -79467,6 +79555,22 @@ var react__WEBPACK_IMPORTED_MODULE_1___namespace_cache;
 
 /***/ }),
 
+/***/ 34239:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var react__WEBPACK_IMPORTED_MODULE_1___namespace_cache;
+/* harmony import */ var _src_components_home_Clients__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(83357);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+
+
+/* harmony default export */ __webpack_exports__["Z"] = ({
+  Clients: _src_components_home_Clients__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z,
+  React: /*#__PURE__*/ (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache || (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache = __webpack_require__.t(react__WEBPACK_IMPORTED_MODULE_1__, 2)))
+});
+
+/***/ }),
+
 /***/ 15643:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -79545,9 +79649,11 @@ var scope_5 = __webpack_require__(52551)/* ["default"] */ .Z;
 
 var scope_6 = __webpack_require__(53184)/* ["default"] */ .Z;
 
-var scope_7 = __webpack_require__(15643)/* ["default"] */ .Z;
+var scope_7 = __webpack_require__(34239)/* ["default"] */ .Z;
 
-/* harmony default export */ var mdx_scopes = (Object.assign({}, scope_0, scope_1, scope_2, scope_3, scope_4, scope_5, scope_6, scope_7));
+var scope_8 = __webpack_require__(15643)/* ["default"] */ .Z;
+
+/* harmony default export */ var mdx_scopes = (Object.assign({}, scope_0, scope_1, scope_2, scope_3, scope_4, scope_5, scope_6, scope_7, scope_8));
 ;// CONCATENATED MODULE: ./node_modules/gatsby-plugin-mdx/wrap-root-element.js
 
 
@@ -81797,4 +81903,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-8b4c32d7d943436f6f9a.js.map
+//# sourceMappingURL=app-6ca486eb32dcf6cf6cea.js.map

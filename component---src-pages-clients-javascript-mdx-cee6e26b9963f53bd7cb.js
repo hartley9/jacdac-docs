@@ -128,7 +128,7 @@ function MDXContent(_ref) {
   }, "yarn add jacdac-ts\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "then import components as needed using ES6 import syntax"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-javascript"
-  }, "import { createUSBBus } from \"jacdac-ts\"\nconst jd = createUSBBus()\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "import { createWebBus } from \"jacdac-ts\"\nconst jd = createWebBus()\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "cdn--umd",
     "style": {
       "position": "relative"
@@ -183,4 +183,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-javascript-mdx-655bf6fc2b53b9b26cc6.js.map
+//# sourceMappingURL=component---src-pages-clients-javascript-mdx-cee6e26b9963f53bd7cb.js.map

@@ -70,7 +70,48 @@ function MDXContent(_ref) {
     "href": "https://flows.nodered.org/node/node-red-contrib-jacdac",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "https://flows.nodered.org/node/node-red-contrib-jacdac"), " ."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The nodes connect to a Jacdac bus via a USB and allow to listen for events or sensor readings."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "https://flows.nodered.org/node/node-red-contrib-jacdac"), " ."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The nodes connect to a Jacdac bus via a USB and allow to listen for events or sensor readings."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+    parentName: "p",
+    "className": "gatsby-resp-image-wrapper",
+    "style": {
+      "position": "relative",
+      "display": "block",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "maxWidth": "491px"
+    }
+  }, "\n      ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+    parentName: "span",
+    "className": "gatsby-resp-image-background-image",
+    "style": {
+      "paddingBottom": "64%",
+      "position": "relative",
+      "bottom": "0",
+      "left": "0",
+      "backgroundImage": "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAA7CAAAOwgEVKEqAAAAB40lEQVQoz31SYU/aQBju71wyyf7A9kWXLNPtg8mWZX5dluyDopg4YQKuSZ1Ip2ZpENE7QMqxMBWKwECk0AJt7653SwvJliXlyZPLk9z7vs97976CGwzG2PTk/4AxZtGZEPwwGkTGmTUyxKNP67E3m1/ebUTfhuPvP4gbRTVDXS7wefA89V5XySVFOSwdR6TTyKGyA6D4S0OMccEe60bv56AN9DbU28AXoN+Cegv228DowP5DBxOvUYaZO8RYt8f3ptXpMs6Fhya8ya7l4o9yiVAuEYJi6CK5cBZfuEiGMnuPSwdPWrW8PjCNkXGLbguHBWVfORez15cVzrlACbYtkzgTgsdTUjyheEI8johjMpfO3uC6xCEUE+Jg4vciDLqVRnFTlV+o31dUeRmdrFzJy+XjV6X0cw1J5hibpvny9erH7eT+KdxLZxNyLnZ0folqnDNhpGvdm1QtH64VtuqFSOMqUstvacVIPb9+r2V1fejY1vZO9NtJ5qxYVQDK5Cs/AKpqvz1nFvzXto/ASfydMyX/kVEyHJr9FmyjXa0UvStHmyjWUGNN9XO9mio3675zADhzMeV36KuaegqkxWJqqZReggeLQHp2nV3rNYGXPH89gxr2L9m85FkBP9QX3GUzMV37P81GwDB8h2tQAAAAAElFTkSuQmCC')",
+      "backgroundSize": "cover",
+      "display": "block"
+    }
+  }), "\n  ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+    parentName: "span",
+    "className": "gatsby-resp-image-image",
+    "alt": "Node-RED nodes for Jacdac",
+    "title": "Node-RED nodes for Jacdac",
+    "src": "/jacdac-docs/static/38b7cc2cd0001bbbc31c842db89bc146/13566/hero.png",
+    "srcSet": ["/jacdac-docs/static/38b7cc2cd0001bbbc31c842db89bc146/772e8/hero.png 200w", "/jacdac-docs/static/38b7cc2cd0001bbbc31c842db89bc146/e17e5/hero.png 400w", "/jacdac-docs/static/38b7cc2cd0001bbbc31c842db89bc146/13566/hero.png 491w"],
+    "sizes": "(max-width: 491px) 100vw, 491px",
+    "style": {
+      "width": "100%",
+      "height": "100%",
+      "margin": "0",
+      "verticalAlign": "middle",
+      "position": "absolute",
+      "top": "0",
+      "left": "0"
+    },
+    "loading": "lazy",
+    "decoding": "async"
+  }), "\n    ")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "requirements",
     "style": {
       "position": "relative"
@@ -231,4 +272,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-node-red-mdx-4ea4beb2584d5815ec64.js.map
+//# sourceMappingURL=component---src-pages-clients-node-red-mdx-082ce07a65c0710038f4.js.map

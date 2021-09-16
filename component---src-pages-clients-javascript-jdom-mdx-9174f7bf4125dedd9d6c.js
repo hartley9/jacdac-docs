@@ -142,7 +142,7 @@ function MDXContent(_ref) {
   }))), "JavaScript/TypeScript ES6"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "If you are using JavaScript/TypeScript ES6, import all APIs and spin off a WebUSB bus to get started.\nThe example below displays device that get announced on the bus."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-vanilla"
-  }, "import { createUSBBus, DEVICE_ANNOUNCE } from \"jacdac-ts\"\n\nconst bus = createUSBBus();\nbus.on(DEVICE_ANNOUNCE, device => log(device))\n// call connect from a user interaction\nbus.connect();\n-----\nimport { DEVICE_ANNOUNCE } from \"jacdac-ts\"\n\n// listen for new device\nbus.on(DEVICE_ANNOUNCE, device => log(device))\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "import { createWebBus, DEVICE_ANNOUNCE } from \"jacdac-ts\"\n\nconst bus = createWebBus();\nbus.on(DEVICE_ANNOUNCE, device => log(device))\n// call connect from a user interaction\nbus.connect();\n-----\nimport { DEVICE_ANNOUNCE } from \"jacdac-ts\"\n\n// listen for new device\nbus.on(DEVICE_ANNOUNCE, device => log(device))\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "nodejs-commonjses6",
     "style": {
       "position": "relative"
@@ -260,4 +260,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-javascript-jdom-mdx-6dd616d05362fc421c44.js.map
+//# sourceMappingURL=component---src-pages-clients-javascript-jdom-mdx-9174f7bf4125dedd9d6c.js.map

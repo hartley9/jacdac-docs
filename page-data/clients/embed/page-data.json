@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-pages-clients-web-iframe-mdx",
-    "path": "/clients/web/iframe/",
+    "componentChunkName": "component---src-pages-clients-embed-mdx",
+    "path": "/clients/embed/",
     "result": {"pageContext":{"frontmatter":{"hideToc":true}}},
     "staticQueryHashes": ["249313281","2744294623","2898794040","413816803","63159454"]}
