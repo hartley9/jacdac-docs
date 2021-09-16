@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "dca31e54e6b9e1924c5d9862d090eb46"
+    "revision": "f66cb5bf042640747729748349c6bbd4"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,11 +60,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "2111829bd827b791d9a6c895ff32a7af"
+    "revision": "813ab30fa62fd81717d7c0b2b1c618de"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "b675b9f996b66ef8d4dc083213da8159"
+    "revision": "4c85c5c1a558437f8954435d245805d6"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -72,7 +72,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "11cf8482a3dc988f54de1bd15c6f4d01"
+    "revision": "c69b5dce2cc117d8f962a860c71b000b"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "930b169c1bc72faae1b3b1b1c45d9519"
+    "revision": "a120c8eaa998f6589b9e110dcf399ca0"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -402,7 +402,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/dotmatrix/page-data.json",
-    "revision": "555a6ce9e2dafb42e94084a37b19f8ce"
+    "revision": "34645d72b5f6d4d83252d4b5b8bce8a5"
   },
   {
     "url": "page-data/services/dotmatrix/playground/page-data.json",
@@ -1276,7 +1276,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-8663a98e98bd747bb5d7.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-480468101324fcaac438.js`))) {
     return await fetch(event.request)
   }
 
