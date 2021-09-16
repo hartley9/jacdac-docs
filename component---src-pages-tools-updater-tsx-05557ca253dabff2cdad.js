@@ -274,6 +274,76 @@ function CircularProgressWithLabel(props) {
 
 /***/ }),
 
+/***/ 95393:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ GridHeader; }
+/* harmony export */ });
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10920);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(70274);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(80838);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(33287);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(80453);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(4998);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(85505);
+
+
+
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)({
+  hr: {
+    background: theme.palette.text.disabled,
+    marginBottom: "unset"
+  },
+  start: {
+    width: theme.spacing(2)
+  }
+}));
+function GridHeader(props) {
+  var {
+    title,
+    count,
+    variant,
+    action
+  } = props;
+  var classes = useStyles();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    item: true,
+    xs: 12
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    container: true,
+    direction: "row",
+    spacing: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    item: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(classes.hr, classes.start)
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    item: true
+  }, action && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+    component: "span",
+    mr: 1
+  }, action), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+    component: "span",
+    variant: variant || "subtitle1"
+  }, title), count !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+    component: "span",
+    ml: 0.5
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+    label: count
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    item: true,
+    xs: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+    className: classes.hr
+  }))));
+}
+
+/***/ }),
+
 /***/ 64973:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -315,6 +385,14 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
+var Grid = __webpack_require__(80838);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Card/Card.js
+var Card = __webpack_require__(85420);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardHeader/CardHeader.js
+var CardHeader = __webpack_require__(95823);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardContent/CardContent.js
+var CardContent = __webpack_require__(29114);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Box/Box.js + 13 modules
 var Box = __webpack_require__(33287);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Tabs/Tabs.js + 7 modules
@@ -325,8 +403,6 @@ var Tab = __webpack_require__(342);
 var TabPanel = __webpack_require__(3263);
 // EXTERNAL MODULE: ./src/components/alert/ConnectAlert.tsx
 var ConnectAlert = __webpack_require__(94431);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
-var Grid = __webpack_require__(80838);
 // EXTERNAL MODULE: ./src/components/useGridBreakpoints.ts
 var useGridBreakpoints = __webpack_require__(7746);
 // EXTERNAL MODULE: ./src/components/firmware/FirmwareCard.tsx
@@ -423,12 +499,6 @@ function useFirmwareRepos(showAllRepos) {
   }(), [devices.map(dev => dev.id).join(), registers.map(reg => reg.id).join(), showAllRepos]);
   return repos;
 }
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Card/Card.js
-var Card = __webpack_require__(85420);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardHeader/CardHeader.js
-var CardHeader = __webpack_require__(95823);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardContent/CardContent.js
-var CardContent = __webpack_require__(29114);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(80453);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/List/List.js
@@ -577,7 +647,10 @@ var CircularProgressWithLabel = __webpack_require__(29177);
 var AppContext = __webpack_require__(84377);
 // EXTERNAL MODULE: ./src/components/hooks/useMounted.ts
 var useMounted = __webpack_require__(72179);
+// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts
+var useDeviceSpecification = __webpack_require__(77423);
 ;// CONCATENATED MODULE: ./src/components/firmware/FlashDeviceButton.tsx
+
 
 
 
@@ -597,6 +670,7 @@ function FlashDeviceButton(props) {
   var {
     bus
   } = (0,react.useContext)(Context/* default */.Z);
+  var specification = (0,useDeviceSpecification/* default */.Z)(device);
   var {
     setError
   } = (0,react.useContext)(AppContext/* default */.ZP);
@@ -608,6 +682,7 @@ function FlashDeviceButton(props) {
   var update = ignoreFirmwareCheck || (blob === null || blob === void 0 ? void 0 : blob.version) && (firmwareInfo === null || firmwareInfo === void 0 ? void 0 : firmwareInfo.version) && (0,jdom_flashing/* updateApplicable */.Kl)(firmwareInfo, blob);
   var upToDate = (blob === null || blob === void 0 ? void 0 : blob.version) && blob.version === firmwareInfo.version;
   var flashing = (0,useChange/* default */.Z)(device, d => !!(d !== null && d !== void 0 && d.flashing));
+  var noFirmware = !(specification !== null && specification !== void 0 && specification.repo);
   var missing = !device || !blob;
   var disabled = flashing;
   var mounted = (0,useMounted/* default */.Z)();
@@ -639,9 +714,11 @@ function FlashDeviceButton(props) {
   }(); // tslint:disable-next-line: react-this-binding-issue
 
 
-  return missing ? /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
+  return noFirmware ? /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "info"
-  }, "No firmware information available") : flashing ? /*#__PURE__*/react.createElement(CircularProgressWithLabel/* default */.Z, {
+  }, "Firmware update not supported") : missing ? /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
+    severity: "info"
+  }, "No firmware available") : flashing ? /*#__PURE__*/react.createElement(CircularProgressWithLabel/* default */.Z, {
     value: progress
   }) : firmwareInfo || update ? /*#__PURE__*/react.createElement(react.Fragment, null, upToDate && /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "success"
@@ -1014,6 +1091,10 @@ function ManualFirmwareAlert() {
     severity: "warning"
   }, /*#__PURE__*/react.createElement(ManualFirmware, null)));
 }
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
+var flags = __webpack_require__(21258);
+// EXTERNAL MODULE: ./src/components/ui/GridHeader.tsx
+var GridHeader = __webpack_require__(95393);
 ;// CONCATENATED MODULE: ./src/components/tools/Flash.tsx
 
 
@@ -1023,6 +1104,31 @@ function ManualFirmwareAlert() {
 
 
 
+
+
+
+
+
+
+function FlashDiagnostics() {
+  var blobs = (0,useFirmwareBlobs/* default */.Z)();
+  var stores = (0,utils/* groupBy */.vM)(blobs, blob => blob.store);
+  return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    container: true,
+    spacing: 2
+  }, Object.entries(stores).map(_ref => {
+    var [store, blobs] = _ref;
+    return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(GridHeader/* default */.Z, {
+      title: store
+    }), blobs === null || blobs === void 0 ? void 0 : blobs.map(blob => /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+      item: true,
+      key: blob.store + blob.productIdentifier
+    }, /*#__PURE__*/react.createElement(Card/* default */.Z, null, /*#__PURE__*/react.createElement(CardHeader/* default */.Z, {
+      title: blob.name,
+      subheader: blob.version
+    }), /*#__PURE__*/react.createElement(CardContent/* default */.Z, null, "pid: 0x", blob.productIdentifier.toString(16), ", ", blob.pages.length, " pages")))));
+  }));
+}
 
 function Flash() {
   var {
@@ -1050,7 +1156,7 @@ function Flash() {
   }, /*#__PURE__*/react.createElement(UpdateDeviceList, null)), /*#__PURE__*/react.createElement(TabPanel/* default */.Z, {
     value: tab,
     index: 1
-  }, /*#__PURE__*/react.createElement(FirmwareCardGrid, null)), /*#__PURE__*/react.createElement(SafeBootAlert, null), /*#__PURE__*/react.createElement(ManualFirmwareAlert, null));
+  }, /*#__PURE__*/react.createElement(FirmwareCardGrid, null)), /*#__PURE__*/react.createElement(SafeBootAlert, null), /*#__PURE__*/react.createElement(ManualFirmwareAlert, null), flags/* default.diagnostics */.Z.diagnostics && /*#__PURE__*/react.createElement(FlashDiagnostics, null));
 }
 ;// CONCATENATED MODULE: ./src/pages/tools/updater.tsx
 
@@ -1062,4 +1168,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-e60db66a51800b4e511a.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-05557ca253dabff2cdad.js.map

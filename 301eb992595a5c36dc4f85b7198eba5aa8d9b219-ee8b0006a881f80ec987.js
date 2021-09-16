@@ -678,6 +678,8 @@ var spec = __webpack_require__(45656);
 var DeviceAvatar = __webpack_require__(93679);
 // EXTERNAL MODULE: ./src/jacdac/useChange.ts
 var useChange = __webpack_require__(54774);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
+var flags = __webpack_require__(21258);
 ;// CONCATENATED MODULE: ./src/components/DeviceCardHeader.tsx
 
  // tslint:disable-next-line: no-submodule-imports
@@ -693,20 +695,39 @@ var useChange = __webpack_require__(54774);
 
 
 
+
+function DeviceProductIdentifierChip(props) {
+  var {
+    device
+  } = props;
+  var register = (0,useChange/* default */.Z)(device, _ => {
+    var _$service;
+
+    return _ === null || _ === void 0 ? void 0 : (_$service = _.service(0)) === null || _$service === void 0 ? void 0 : _$service.register(constants/* ControlReg.ProductIdentifier */.toU.ProductIdentifier);
+  });
+  var [productIdentifier] = (0,useRegisterValue/* useRegisterUnpackedValue */.Pf)(register);
+  if (isNaN(productIdentifier)) return null;
+  return /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+    size: "small",
+    label: "pid: 0x" + productIdentifier.toString(16)
+  });
+}
+
 function DeviceFirmwareVersionChip(props) {
   var {
     device
   } = props;
   var firmwareVersionRegister = (0,useChange/* default */.Z)(device, _ => {
-    var _$service;
+    var _$service2;
 
-    return _ === null || _ === void 0 ? void 0 : (_$service = _.service(0)) === null || _$service === void 0 ? void 0 : _$service.register(constants/* ControlReg.FirmwareVersion */.toU.FirmwareVersion);
+    return _ === null || _ === void 0 ? void 0 : (_$service2 = _.service(0)) === null || _$service2 === void 0 ? void 0 : _$service2.register(constants/* ControlReg.FirmwareVersion */.toU.FirmwareVersion);
   });
   var [firmwareVersion] = (0,useRegisterValue/* useRegisterUnpackedValue */.Pf)(firmwareVersionRegister);
-  return firmwareVersion && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+  if (!firmwareVersion) return null;
+  return /*#__PURE__*/react.createElement(Chip/* default */.Z, {
     size: "small",
     label: firmwareVersion
-  }) || /*#__PURE__*/react.createElement(react.Fragment, null);
+  });
 }
 
 function DeviceTemperatureChip(props) {
@@ -714,15 +735,16 @@ function DeviceTemperatureChip(props) {
     device
   } = props;
   var tempRegister = (0,useChange/* default */.Z)(device, _ => {
-    var _$service2;
+    var _$service3;
 
-    return _ === null || _ === void 0 ? void 0 : (_$service2 = _.service(0)) === null || _$service2 === void 0 ? void 0 : _$service2.register(constants/* ControlReg.McuTemperature */.toU.McuTemperature);
+    return _ === null || _ === void 0 ? void 0 : (_$service3 = _.service(0)) === null || _$service3 === void 0 ? void 0 : _$service3.register(constants/* ControlReg.McuTemperature */.toU.McuTemperature);
   });
   var [temperature] = (0,useRegisterValue/* useRegisterUnpackedValue */.Pf)(tempRegister);
-  return temperature !== undefined && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+  if (isNaN(temperature)) return null;
+  return /*#__PURE__*/react.createElement(Chip/* default */.Z, {
     size: "small",
     label: temperature + "\xB0"
-  }) || /*#__PURE__*/react.createElement(react.Fragment, null);
+  });
 }
 
 function DeviceCardHeader(props) {
@@ -758,7 +780,9 @@ function DeviceCardHeader(props) {
     subheader: /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
       variant: "caption",
       gutterBottom: true
-    }, [specification === null || specification === void 0 ? void 0 : specification.name, showDeviceId && device.deviceId].filter(s => !!s).join(", ")), showFirmware && /*#__PURE__*/react.createElement(DeviceFirmwareVersionChip, {
+    }, [specification === null || specification === void 0 ? void 0 : specification.name, showDeviceId && device.deviceId].filter(s => !!s).join(", ")), showFirmware && flags/* default.diagnostics */.Z.diagnostics && /*#__PURE__*/react.createElement(DeviceProductIdentifierChip, {
+      device: device
+    }), showFirmware && /*#__PURE__*/react.createElement(DeviceFirmwareVersionChip, {
       device: device
     }), showTemperature && /*#__PURE__*/react.createElement(DeviceTemperatureChip, {
       device: device
@@ -769,4 +793,4 @@ function DeviceCardHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=301eb992595a5c36dc4f85b7198eba5aa8d9b219-eaf5038b99ae84227aa2.js.map
+//# sourceMappingURL=301eb992595a5c36dc4f85b7198eba5aa8d9b219-ee8b0006a881f80ec987.js.map
