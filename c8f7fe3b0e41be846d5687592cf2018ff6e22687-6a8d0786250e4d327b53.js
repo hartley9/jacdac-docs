@@ -92577,8 +92577,8 @@ var useInstanceName = __webpack_require__(20563);
 var useBestRegister = __webpack_require__(39687);
 // EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/spectool/jdspec.ts
 var jdspec = __webpack_require__(13996);
-// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts
-var useDeviceSpecification = __webpack_require__(77423);
+// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts + 1 modules
+var useDeviceSpecification = __webpack_require__(34246);
 // EXTERNAL MODULE: ./src/components/devices/DeviceIcon.tsx + 2 modules
 var DeviceIcon = __webpack_require__(72618);
 ;// CONCATENATED MODULE: ./src/components/tools/JDomTreeViewItems.tsx
@@ -98843,4 +98843,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-2e2eb7bed1a5a5585a99.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-6a8d0786250e4d327b53.js.map

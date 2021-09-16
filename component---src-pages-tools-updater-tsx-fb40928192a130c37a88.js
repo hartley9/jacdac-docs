@@ -647,10 +647,7 @@ var CircularProgressWithLabel = __webpack_require__(29177);
 var AppContext = __webpack_require__(84377);
 // EXTERNAL MODULE: ./src/components/hooks/useMounted.ts
 var useMounted = __webpack_require__(72179);
-// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts
-var useDeviceSpecification = __webpack_require__(77423);
 ;// CONCATENATED MODULE: ./src/components/firmware/FlashDeviceButton.tsx
-
 
 
 
@@ -670,7 +667,6 @@ function FlashDeviceButton(props) {
   var {
     bus
   } = (0,react.useContext)(Context/* default */.Z);
-  var specification = (0,useDeviceSpecification/* default */.Z)(device);
   var {
     setError
   } = (0,react.useContext)(AppContext/* default */.ZP);
@@ -682,7 +678,6 @@ function FlashDeviceButton(props) {
   var update = ignoreFirmwareCheck || (blob === null || blob === void 0 ? void 0 : blob.version) && (firmwareInfo === null || firmwareInfo === void 0 ? void 0 : firmwareInfo.version) && (0,jdom_flashing/* updateApplicable */.Kl)(firmwareInfo, blob);
   var upToDate = (blob === null || blob === void 0 ? void 0 : blob.version) && blob.version === firmwareInfo.version;
   var flashing = (0,useChange/* default */.Z)(device, d => !!(d !== null && d !== void 0 && d.flashing));
-  var noFirmware = !(specification !== null && specification !== void 0 && specification.repo);
   var missing = !device || !blob;
   var disabled = flashing;
   var mounted = (0,useMounted/* default */.Z)();
@@ -714,16 +709,14 @@ function FlashDeviceButton(props) {
   }(); // tslint:disable-next-line: react-this-binding-issue
 
 
-  return noFirmware ? /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
-    severity: "info"
-  }, "Firmware update not supported") : missing ? /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
+  return missing ? /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "info"
   }, "No firmware available") : flashing ? /*#__PURE__*/react.createElement(CircularProgressWithLabel/* default */.Z, {
     value: progress
   }) : firmwareInfo || update ? /*#__PURE__*/react.createElement(react.Fragment, null, upToDate && /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "success"
   }, "Up to date!"), /*#__PURE__*/react.createElement(Button/* default */.Z, {
-    "aria-label": "flash " + firmwareInfo.version + " to device",
+    title: "Flash " + firmwareInfo.version,
     disabled: disabled,
     variant: "contained",
     color: "primary",
@@ -1118,7 +1111,9 @@ function FlashDiagnostics() {
     spacing: 2
   }, Object.entries(stores).map(_ref => {
     var [store, blobs] = _ref;
-    return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(GridHeader/* default */.Z, {
+    return /*#__PURE__*/react.createElement(react.Fragment, {
+      key: store
+    }, /*#__PURE__*/react.createElement(GridHeader/* default */.Z, {
       title: store
     }), blobs === null || blobs === void 0 ? void 0 : blobs.map(blob => /*#__PURE__*/react.createElement(Grid/* default */.Z, {
       item: true,
@@ -1145,7 +1140,7 @@ function Flash() {
   }, /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, null), /*#__PURE__*/react.createElement(Tabs/* default */.Z, {
     value: tab,
     onChange: handleTabChange,
-    "aria-label": "View specification formats"
+    "aria-label": "Update firmware of modules"
   }, /*#__PURE__*/react.createElement(Tab/* default */.Z, {
     label: "Updates"
   }), /*#__PURE__*/react.createElement(Tab/* default */.Z, {
@@ -1168,4 +1163,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-05557ca253dabff2cdad.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-fb40928192a130c37a88.js.map

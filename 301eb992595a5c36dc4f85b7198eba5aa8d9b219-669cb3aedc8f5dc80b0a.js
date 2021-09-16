@@ -603,8 +603,8 @@ var useRegisterValue = __webpack_require__(89196);
 var DeviceActions = __webpack_require__(87993);
 // EXTERNAL MODULE: ./src/components/devices/DeviceName.tsx
 var DeviceName = __webpack_require__(26390);
-// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts
-var useDeviceSpecification = __webpack_require__(77423);
+// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts + 1 modules
+var useDeviceSpecification = __webpack_require__(34246);
 // EXTERNAL MODULE: ./src/components/devices/useDeviceImage.ts
 var useDeviceImage = __webpack_require__(81546);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
@@ -793,4 +793,4 @@ function DeviceCardHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=301eb992595a5c36dc4f85b7198eba5aa8d9b219-ee8b0006a881f80ec987.js.map
+//# sourceMappingURL=301eb992595a5c36dc4f85b7198eba5aa8d9b219-669cb3aedc8f5dc80b0a.js.map

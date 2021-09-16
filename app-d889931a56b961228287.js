@@ -36698,15 +36698,13 @@ Flags.storage = false;
 /* harmony export */   "is": function() { return /* binding */ sendStayInBootloaderCommand; }
 /* harmony export */ });
 /* unused harmony export parseUF2Firmware */
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(15861);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(15861);
 /* harmony import */ var _buffer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3482);
 /* harmony import */ var _packet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(57683);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(71815);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81794);
 /* harmony import */ var _pack__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(91635);
 /* harmony import */ var _pretty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(10913);
-/* harmony import */ var _spec__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(45656);
-
 
 
 
@@ -36767,7 +36765,7 @@ var FlashClient = /*#__PURE__*/function () {
   };
 
   _proto.sendCommandAsync = /*#__PURE__*/function () {
-    var _sendCommandAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (p) {
+    var _sendCommandAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (p) {
       p.serviceIndex = 1;
       yield p.sendCmdAsync(this.device);
     });
@@ -36780,7 +36778,7 @@ var FlashClient = /*#__PURE__*/function () {
   }();
 
   _proto.startFlashAsync = /*#__PURE__*/function () {
-    var _startFlashAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* () {
+    var _startFlashAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* () {
       this.sessionId = Math.random() * 0x10000000 | 0;
 
       for (var d of this.classClients) {
@@ -36821,7 +36819,7 @@ var FlashClient = /*#__PURE__*/function () {
   }();
 
   _proto.endFlashAsync = /*#__PURE__*/function () {
-    var _endFlashAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* () {
+    var _endFlashAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* () {
       for (var f of this.classClients) {
         yield this.bus.delay(10);
         yield f.device.sendCtrlCommand(_constants__WEBPACK_IMPORTED_MODULE_2__/* .ControlCmd.Reset */ .VSW.Reset);
@@ -36853,7 +36851,7 @@ var FlashClient = /*#__PURE__*/function () {
   };
 
   _proto.waitForStatusAsync = /*#__PURE__*/function () {
-    var _waitForStatusAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* () {
+    var _waitForStatusAsync = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* () {
       for (var i = 0; i < 100; ++i) {
         if (this.classClients.every(c => c.lastStatus != null)) break;
         yield this.bus.delay(5);
@@ -36868,7 +36866,7 @@ var FlashClient = /*#__PURE__*/function () {
   }();
 
   _proto.flashPage = /*#__PURE__*/function () {
-    var _flashPage = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (page) {
+    var _flashPage = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (page) {
       var pageAddr = page.targetAddress;
       var pageSize = this.pageSize;
       var numSubpage = (pageSize + BL_SUBPAGE_SIZE - 1) / BL_SUBPAGE_SIZE | 0;
@@ -36944,7 +36942,7 @@ var FlashClient = /*#__PURE__*/function () {
   }();
 
   _proto.flashFirmwareBlob = /*#__PURE__*/function () {
-    var _flashFirmwareBlob = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (fw, progress) {
+    var _flashFirmwareBlob = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (fw, progress) {
       var waitCycles = 15;
       var total = fw.pages.length + waitCycles + 3;
       var idx = 0;
@@ -37094,7 +37092,7 @@ function parseFirmwareFile(_x5, _x6) {
 }
 
 function _parseFirmwareFile() {
-  _parseFirmwareFile = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (blob, store) {
+  _parseFirmwareFile = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (blob, store) {
     var data = yield (0,_utils__WEBPACK_IMPORTED_MODULE_3__/* .readBlobToUint8Array */ .Lg)(blob);
     var buf = new Uint8Array(data);
     var uf2Blobs = parseUF2Firmware(buf, store);
@@ -37116,7 +37114,7 @@ function scanCore(_x7, _x8, _x9, _x10) {
 
 
 function _scanCore() {
-  _scanCore = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (bus, numTries, makeFlashers, recovery) {
+  _scanCore = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (bus, numTries, makeFlashers, recovery) {
     if (recovery === void 0) {
       recovery = false;
     }
@@ -37151,10 +37149,8 @@ function _scanCore() {
 
     var devs = Object.values(devices).filter(d => {
       if (!d.bootloaderProductIdentifier) d.bootloaderProductIdentifier = d.productIdentifier;
-      if (!d.productIdentifier) d.productIdentifier = d.bootloaderProductIdentifier; // ensure in catalog
-
-      if (!(0,_spec__WEBPACK_IMPORTED_MODULE_6__/* .deviceSpecificationFromProductIdentifier */ .Ht)(d.productIdentifier)) return false;
-      return true;
+      if (!d.productIdentifier) d.productIdentifier = d.bootloaderProductIdentifier;
+      return !!d.productIdentifier;
     }); // store info in objects
 
     devs.forEach(info => {
@@ -37214,7 +37210,7 @@ function scanFirmwares(_x11, _x12) {
  */
 
 function _scanFirmwares() {
-  _scanFirmwares = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (bus, timeout) {
+  _scanFirmwares = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (bus, timeout) {
     if (timeout === void 0) {
       timeout = 300;
     }
@@ -37250,7 +37246,7 @@ function flashFirmwareBlob(_x13, _x14, _x15, _x16, _x17) {
  */
 
 function _flashFirmwareBlob2() {
-  _flashFirmwareBlob2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (bus, blob, updateCandidates, ignoreFirmwareCheck, progress) {
+  _flashFirmwareBlob2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (bus, blob, updateCandidates, ignoreFirmwareCheck, progress) {
     if (!(updateCandidates !== null && updateCandidates !== void 0 && updateCandidates.length)) return;
     _startTime = Date.now();
     log("resetting " + updateCandidates.length + " device(s)");
@@ -37286,7 +37282,7 @@ function sendStayInBootloaderCommand(_x18) {
 }
 
 function _sendStayInBootloaderCommand() {
-  _sendStayInBootloaderCommand = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* (bus) {
+  _sendStayInBootloaderCommand = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* (bus) {
     var bl_announce = _packet__WEBPACK_IMPORTED_MODULE_1__/* ["default"].onlyHeader */ .Z.onlyHeader(_constants__WEBPACK_IMPORTED_MODULE_2__/* .BootloaderCmd.Info */ .e96.Info);
     yield bl_announce.sendAsMultiCommandAsync(bus, _constants__WEBPACK_IMPORTED_MODULE_2__/* .SRV_BOOTLOADER */ .PWm);
   });
@@ -50355,8 +50351,8 @@ var IconButtonWithTooltip = __webpack_require__(79885);
 var ExpandMore = __webpack_require__(47739);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/ExpandLess.js
 var ExpandLess = __webpack_require__(16993);
-// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts
-var useDeviceSpecification = __webpack_require__(77423);
+// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts + 1 modules
+var useDeviceSpecification = __webpack_require__(34246);
 // EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 1 modules
 var DeviceAvatar = __webpack_require__(93679);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
@@ -51480,8 +51476,8 @@ __webpack_require__.d(__webpack_exports__, {
 var asyncToGenerator = __webpack_require__(15861);
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts
-var useDeviceSpecification = __webpack_require__(77423);
+// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts + 1 modules
+var useDeviceSpecification = __webpack_require__(34246);
 // EXTERNAL MODULE: ./src/components/CmdButton.tsx
 var CmdButton = __webpack_require__(50092);
 // EXTERNAL MODULE: ./src/components/hooks/useServiceProvider.ts
@@ -51869,8 +51865,8 @@ var makeStyles = __webpack_require__(10920);
 var createStyles = __webpack_require__(70274);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
 var constants = __webpack_require__(71815);
-// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts
-var useDeviceSpecification = __webpack_require__(77423);
+// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts + 1 modules
+var useDeviceSpecification = __webpack_require__(34246);
 // EXTERNAL MODULE: ./src/components/hooks/useServiceProvider.ts
 var useServiceProvider = __webpack_require__(63793);
 // EXTERNAL MODULE: ./src/components/KindIcon.tsx
@@ -63528,7 +63524,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "2f733783fb4c40ccdc31f358bc02832559f1859f";
+var sha = "feb5622a2f6af150bb8e58624e7778f08150236c";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64408,7 +64404,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2f733783fb4c40ccdc31f358bc02832559f1859f";
+  var sha = "feb5622a2f6af150bb8e58624e7778f08150236c";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74493,7 +74489,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.16.30"};
+var package_namespaceObject = {"i8":"1.16.31"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -74701,20 +74697,32 @@ function useChangeAsync(node, query, deps) {
 
 /***/ }),
 
-/***/ 77423:
+/***/ 34246:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ useDeviceSpecification; }
-/* harmony export */ });
-/* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(45656);
-/* harmony import */ var _useChange__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(54774);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": function() { return /* binding */ useDeviceSpecification; }
+});
+
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
+var spec = __webpack_require__(45656);
+// EXTERNAL MODULE: ./src/jacdac/useChange.ts
+var useChange = __webpack_require__(54774);
+;// CONCATENATED MODULE: ./src/jacdac/useDeviceProductIdentifier.ts
+
+function useDeviceProductIdentifier(device) {
+  var id = (0,useChange/* default */.Z)(device, _ => _ === null || _ === void 0 ? void 0 : _.productIdentifier);
+  return id;
+}
+;// CONCATENATED MODULE: ./src/jacdac/useDeviceSpecification.ts
 
 
 function useDeviceSpecification(device) {
-  var id = (0,_useChange__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(device, _ => _ === null || _ === void 0 ? void 0 : _.productIdentifier);
-  var specification = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_0__/* .deviceSpecificationFromProductIdentifier */ .Ht)(id);
+  var id = useDeviceProductIdentifier(device);
+  var specification = (0,spec/* deviceSpecificationFromProductIdentifier */.Ht)(id);
   return specification;
 }
 
@@ -81789,4 +81797,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-010c828207b01aee05e5.js.map
+//# sourceMappingURL=app-d889931a56b961228287.js.map
