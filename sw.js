@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "d2afa113dbd1cb92912135d53543f740"
+    "revision": "ca0c905148c80dde87f5c186ff6fd91c"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,11 +60,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "63304f5a6b79421e15f0cb1d81b5a1e7"
+    "revision": "bcb9231f732f948eabe9e5ad219f5d75"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "2e65ca3cb77cd422fa20ac8a8dcc4528"
+    "revision": "2235e201e3df25209901316f1f862a05"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -72,7 +72,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "c1b8b1003b498ed600fec09faaf225ba"
+    "revision": "38fe2a10da8d1e7cc56f830d3c3497f3"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "84d10f771c72eca3ea134f0f3e0b4b27"
+    "revision": "ab8606ee3dde904f76b147f308d161fa"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -884,14 +884,22 @@ self.__precacheManifest = [
     "url": "component---src-templates-device-company-tsx-59c21eee5a7dc0c79c54.js"
   },
   {
-    "url": "page-data/devices/microsoft/research/page-data.json",
-    "revision": "2a9dc234a447922f04d412578113c2fd"
+    "url": "page-data/devices/microbit/foundation/page-data.json",
+    "revision": "cf76ee50622f7077fbfcedf3dd34b120"
   },
   {
     "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-01aaf355a5d08d70d3b3.js"
   },
   {
     "url": "component---src-templates-device-tsx-792e2370295b1bf5fcac.js"
+  },
+  {
+    "url": "page-data/devices/microbit/foundation/microbitv2/page-data.json",
+    "revision": "34b1685f7972355f7117f6ba553c8f83"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/page-data.json",
+    "revision": "2a9dc234a447922f04d412578113c2fd"
   },
   {
     "url": "page-data/devices/microsoft/research/jmaccelerometer30v02/page-data.json",
@@ -1268,7 +1276,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-7ca265b014bae32247ff.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-409ae08ae19d7c987c28.js`))) {
     return await fetch(event.request)
   }
 
