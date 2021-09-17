@@ -3662,7 +3662,6 @@ function MakeCodeButton(props) {
           })
         });
         var data = yield x.json();
-        console.log(data);
         var url = editor + "#pub:" + data.shortid;
         window.location.href = url;
       } catch (error) {
@@ -3693,9 +3692,6 @@ function MakeCodeSnippet(props) {
     source,
     rendered
   } = JSON.parse(renderedSource);
-  console.log({
-    rendered
-  });
   var {
     url,
     req
@@ -3961,4 +3957,4 @@ function PaperBox(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-73d476ddf8907aff42d4.js.map
+//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-3797e24e32859fe1d2ca.js.map
