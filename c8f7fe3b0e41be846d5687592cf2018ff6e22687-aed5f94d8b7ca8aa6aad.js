@@ -92854,7 +92854,6 @@ function CodeSandboxButton(props) {
           })
         });
         var data = yield x.json();
-        console.log(data);
         var url = "https://codesandbox.io/s/" + data.sandbox_id + "?file=/" + file;
         window.location.href = url;
       } catch (error) {
@@ -93524,7 +93523,7 @@ var is = {
 };
 
 function makeId(event) {
-  return (event.eventObject || event.object).uuid + '/' + event.index;
+  return (event.eventObject || event.object).uuid + '/' + event.index + event.instanceId;
 }
 
 function removeInteractivity(store, object) {
@@ -93767,7 +93766,7 @@ function createEvents(store) {
     Array.from(internal.hovered.values()).forEach(hoveredObj => {
       // When no objects were hit or the the hovered object wasn't found underneath the cursor
       // we call onPointerOut and delete the object from the hovered-elements map
-      if (!hits.length || !hits.find(hit => hit.object === hoveredObj.object && hit.index === hoveredObj.index)) {
+      if (!hits.length || !hits.find(hit => hit.object === hoveredObj.object && hit.index === hoveredObj.index && hit.instanceId === hoveredObj.instanceId)) {
         var eventObject = hoveredObj.eventObject;
         var handlers = eventObject.__r3f.handlers;
         internal.hovered.delete(makeId(hoveredObj));
@@ -94312,7 +94311,7 @@ function createRenderer(roots) {
       // Never dispose of primitives because their state may be kept outside of React!
       // In order for an object to be able to dispose it has to have
       //   - a dispose method,
-      //   - it cannot be an <instance object={...} />
+      //   - it cannot be a <primitive object={...} />
       //   - it cannot be a THREE.Scene, because three has broken it's own api
       //
       // Since disposal is recursive, we can check the optional dispose arg, which will be undefined
@@ -94341,7 +94340,13 @@ function createRenderer(roots) {
 
 
       if (shouldDispose && child.dispose && child.type !== 'Scene') {
-        (0,scheduler.unstable_runWithPriority)(scheduler.unstable_IdlePriority, () => child.dispose());
+        (0,scheduler.unstable_runWithPriority)(scheduler.unstable_IdlePriority, () => {
+          try {
+            child.dispose();
+          } catch (e) {
+            /* ... */
+          }
+        });
       }
 
       invalidateInstance(parentInstance);
@@ -94737,8 +94742,8 @@ var createStore = (applyProps, _invalidate, _advance, props) => {
               internal: _objectSpread(_objectSpread({}, internal), {}, {
                 // If this subscription was given a priority, it takes rendering into its own hands
                 // For that reason we switch off automatic rendering and increase the manual flag
-                // As long as this flag is positive (there could be multiple render subscription)
-                // ..there can be no internal rendering at all
+                // As long as this flag is positive there can be no internal rendering at all
+                // because there could be multiple render subscriptions
                 priority: internal.priority + (priority > 0 ? 1 : 0),
                 // Register subscriber and sort layers from lowest to highest, meaning,
                 // highest priority renders last (on top of the other frames)
@@ -95075,27 +95080,26 @@ var Canvas = /*#__PURE__*/react.forwardRef(function Canvas(_ref12, forwardedRef)
   }, fallback));
 });
 
+function useStore() {
+  var store = react.useContext(context);
+  if (!store) throw "R3F hooks can only be used within the Canvas component!";
+  return store;
+}
+
 function useThree() {
   var selector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : state => state;
   var equalityFn = arguments.length > 1 ? arguments[1] : undefined;
-  var useStore = react.useContext(context);
-  if (!useStore) throw "R3F hooks can only be used within the Canvas component!";
-  return useStore(selector, equalityFn);
+  return useStore()(selector, equalityFn);
 }
 
 function useFrame(callback) {
   var renderPriority = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  var {
-    subscribe
-  } = react.useContext(context).getState().internal; // Update ref
+  var subscribe = useStore().getState().internal.subscribe; // Update ref
 
   var ref = react.useRef(callback);
-  react.useLayoutEffect(() => void (ref.current = callback), [callback]); // Subscribe/unsub
+  react.useLayoutEffect(() => void (ref.current = callback), [callback]); // Subscribe on mount, unsubscribe on unmount
 
-  react.useLayoutEffect(() => {
-    var unsubscribe = subscribe(ref, renderPriority);
-    return () => unsubscribe();
-  }, [renderPriority, subscribe]);
+  react.useLayoutEffect(() => subscribe(ref, renderPriority), [renderPriority]);
   return null;
 }
 
@@ -98881,4 +98885,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-b3c50fd182de6a68b3db.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-aed5f94d8b7ca8aa6aad.js.map

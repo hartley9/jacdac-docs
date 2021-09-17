@@ -95,7 +95,7 @@ function MDXContent(_ref) {
   })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.button1.onUp(function () {\\n    basic.showIcon(IconNames.SmallHeart)\\n})\\nmodules.button1.onDown(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"rendered\":{\"url\":\"/images/makecode/e62e3c021b040b4599cdd7b5d8ca3f28.png\",\"width\":546,\"height\":142}}\n")));
+  }, "{\"source\":\"modules.button1.onUp(function () {\\n    basic.showIcon(IconNames.SmallHeart)\\n})\\nmodules.button1.onDown(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.button1.onUp(function () {\\n    basic.showIcon(IconNames.SmallHeart)\\n})\\nmodules.button1.onDown(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac-button=github:microsoft/pxt-jacdac/button,jacdac=github:microsoft/pxt-jacdac\"},\"type\":\"renderblocks\",\"id\":\"e62e3c021b040b4599cdd7b5d8ca3f28\"},\"url\":\"/images/makecode/e62e3c021b040b4599cdd7b5d8ca3f28.png\",\"width\":546,\"height\":142}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -121,4 +121,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-projects-mdx-2a9fbc37e475112ffa8b.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-projects-mdx-f74f9a58f52c5aad9b5b.js.map
