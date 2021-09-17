@@ -157,7 +157,32 @@ function MDXContent(_ref) {
   }, "for"), " loop\nto iterate the list of readings."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-p5js"
-  }, "for (const acceleration of accelerometer) {\n    const { x: ax = 0, y: ay = 0, z: az = 0 } = acceleration\n    ...\n}\n-----\nfunction setup() {\n    createCanvas(400, 400)\n}\nfunction draw() {\n    const { accelerometer } = jacdac.sensors\n    // the acceleration is stored as a ``{ x: .., y: ..., z: ... }`` object\n    for(const acceleration of accelerometer) {\n        const { x: ax = 0, y: ay = 0, z: az = 0 } = acceleration\n        // map g (gravities) to 100..300 on canvas\n        const x = map(ax, -1, 1, 100, 300)\n        const y = map(ay, -1, 1, 100, 300)\n        const d = map(az, -1, 1, 5, 50)\n        // draw point\n        stroke('white')\n        circle(x, y, d)\n    }\n}\n")));
+  }, "for (const acceleration of accelerometer) {\n    const { x: ax = 0, y: ay = 0, z: az = 0 } = acceleration\n    ...\n}\n-----\nfunction setup() {\n    createCanvas(400, 400)\n}\nfunction draw() {\n    const { accelerometer } = jacdac.sensors\n    // the acceleration is stored as a ``{ x: .., y: ..., z: ... }`` object\n    for(const acceleration of accelerometer) {\n        const { x: ax = 0, y: ay = 0, z: az = 0 } = acceleration\n        // map g (gravities) to 100..300 on canvas\n        const x = map(ax, -1, 1, 100, 300)\n        const y = map(ay, -1, 1, 100, 300)\n        const d = map(az, -1, 1, 5, 50)\n        // draw point\n        stroke('white')\n        circle(x, y, d)\n    }\n}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "pro-tip-add-a-document-camera-to-your-sketch",
+    "style": {
+      "position": "relative"
+    }
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "h2",
+    "href": "#pro-tip-add-a-document-camera-to-your-sketch",
+    "aria-label": "pro tip add a document camera to your sketch permalink",
+    "className": "anchor before"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
+    parentName: "a",
+    "aria-hidden": "true",
+    "focusable": "false",
+    "height": "16",
+    "version": "1.1",
+    "viewBox": "0 0 16 16",
+    "width": "16"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("path", {
+    parentName: "svg",
+    "fillRule": "evenodd",
+    "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+  }))), "Pro tip: add a document camera to your sketch!"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "It can be very helpful to display a live stream of your document camera in the sketch: you can record the hardware interaction and the screen. This can be done with a couple lines of p5js code."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-p5js"
+  }, "capture = createCapture(VIDEO);\ncapture.size(480, 320);\n-----\nfunction setup() {\n    createCanvas(400, 400)\n    // start a webcam to capture video\n    const capture = createCapture(VIDEO);\n    capture.size(400, 320);\n}\nfunction draw() {\n    const { potentiometer } = jacdac.sensors\n    const [r = 0, g = 0, b = 0] = potentiometer\n    background(r * 255, g * 255, b * 255)\n}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -183,4 +208,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-p-5-js-sensors-mdx-7868e00f4277faa6d33c.js.map
+//# sourceMappingURL=component---src-pages-clients-p-5-js-sensors-mdx-3acb9c78cc96f5245cb1.js.map

@@ -63674,7 +63674,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "0cd04beb83fe117632e9b6009783bbdad114a015";
+var sha = "ddf2d42463321446678ec776bbd3e817996428ea";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64562,7 +64562,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0cd04beb83fe117632e9b6009783bbdad114a015";
+  var sha = "ddf2d42463321446678ec776bbd3e817996428ea";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -77043,7 +77043,6 @@ exports.components = {
   "component---src-pages-clients-makecode-user-guide-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-user-guide-mdx */ 1198).then(__webpack_require__.bind(__webpack_require__, 61198)),
   "component---src-pages-clients-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-mdx */ 2858).then(__webpack_require__.bind(__webpack_require__, 63895)),
   "component---src-pages-clients-node-red-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-node-red-mdx */ 95).then(__webpack_require__.bind(__webpack_require__, 96440)),
-  "component---src-pages-clients-p-5-js-document-cam-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-p-5-js-document-cam-mdx */ 7400).then(__webpack_require__.bind(__webpack_require__, 91851)),
   "component---src-pages-clients-p-5-js-events-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-p-5-js-events-mdx */ 9).then(__webpack_require__.bind(__webpack_require__, 44847)),
   "component---src-pages-clients-p-5-js-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-p-5-js-mdx */ 4939).then(__webpack_require__.bind(__webpack_require__, 65081)),
   "component---src-pages-clients-p-5-js-sensors-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-p-5-js-sensors-mdx */ 4256).then(__webpack_require__.bind(__webpack_require__, 99861)),
@@ -81977,4 +81976,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-24f1e04c2cd700643b51.js.map
+//# sourceMappingURL=app-070ca5ce3c626001313a.js.map

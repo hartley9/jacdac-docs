@@ -178,12 +178,7 @@ function MDXContent(_ref) {
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
     "href": "/jacdac-docs/clients/p5js/events"
-  }, "events"), ", register handlers for events"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "/jacdac-docs/clients/p5js/document-cam"
-  }, "document camera"), ", how to add a web cam video stream to your sketches")));
+  }, "events"), ", register handlers for events")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -209,4 +204,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-e4225d758b3af1a8cf40.js.map
+//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-e987e639384ac7f7adfe.js.map

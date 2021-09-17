@@ -166,7 +166,7 @@ function MDXContent(_ref) {
     parentName: "p"
   }, "~/.node-red")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre"
-  }, "npm install node-red-contrib-jacdac\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "npm install --save node-red-contrib-jacdac\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "nodes",
     "style": {
       "position": "relative"
@@ -272,4 +272,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-node-red-mdx-082ce07a65c0710038f4.js.map
+//# sourceMappingURL=component---src-pages-clients-node-red-mdx-c9de7c3b1ad46bc406fd.js.map
