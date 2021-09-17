@@ -100,7 +100,7 @@ function MDXContent(_ref) {
   }, "setup"), " function."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-p5js"
-  }, "function setup() {\n    ...\n    jacdac.events.button.down(() => ...)\n}\n-----\nlet counter = 0\nfunction setup() {\n    createCanvas(400, 400)\n    textAlign(CENTER, CENTER)\n    textSize(64)\n    fill(0)\n    jacdac.events.button.down(() => counter++)\n}\nfunction draw() {\n    background(0)\n    text(counter, 200, 200)\n}\n")));
+  }, "function setup() {\n    ...\n    jacdac.events.button.down(() => ...)\n}\n-----\nlet counter = 0;\nfunction setup() {\n  createCanvas(400, 400);\n  textAlign(CENTER, CENTER);\n  textSize(200);\n  fill(255);\n  jacdac.events.button.down(() => counter++);\n}\nfunction draw() {\n  background(0);\n  text(counter, 200, 200);\n}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -126,4 +126,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-p-5-js-events-mdx-b72db040c28f67a4f35c.js.map
+//# sourceMappingURL=component---src-pages-clients-p-5-js-events-mdx-8465b2d5747289c707f0.js.map
