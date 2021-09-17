@@ -92735,7 +92735,10 @@ function ServiceTreeItem(props) {
   } = (0,react.useMemo)(() => service, [service]);
   var instanceName = (0,useInstanceName/* default */.Z)(service);
   var readingRegister = (0,useBestRegister/* default */.Z)(service);
-  var reading = (0,useRegisterValue/* useRegisterHumanValue */.e_)(readingRegister);
+  var reading = (0,useRegisterValue/* useRegisterHumanValue */.e_)(readingRegister, {
+    visible: true,
+    maxLength: 18
+  });
   var labelText = name + (instanceName ? " " + instanceName : "");
   return /*#__PURE__*/react.createElement(StyledTreeItem, {
     nodeId: id,
@@ -92763,7 +92766,11 @@ function RegisterTreeItem(props) {
   var failedGet = attempts > 2;
   var labelText = (0,jdspec/* humanify */.lW)("" + ((specification === null || specification === void 0 ? void 0 : specification.name) || id) + (optional ? "?" : ""));
   var humanValue = (0,useRegisterValue/* useRegisterHumanValue */.e_)(register, {
-    visible: true
+    visible: true,
+    maxLength: 18
+  });
+  console.log({
+    humanValue
   });
   var handleClick = (0,react.useCallback)(() => register.sendGetAsync(), [register]);
   (0,react.useEffect)(() => register === null || register === void 0 ? void 0 : register.subscribe(constants/* GET_ATTEMPT */.tDM, () => {
@@ -98874,4 +98881,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-221b7f05730012266f18.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-b3c50fd182de6a68b3db.js.map

@@ -43988,9 +43988,8 @@ var DotMatrixServer = /*#__PURE__*/function (_JDServiceServer) {
     if (brightness !== undefined) _this.brightness = _this.addRegister(constants/* DotMatrixReg.Brightness */.v$D.Brightness, [128]);
     if (variant !== undefined) _this.variant = _this.addRegister(constants/* DotMatrixReg.Variant */.v$D.Variant, [variant]);
     _this.rows.skipBoundaryCheck = true;
-    _this.rows.skipErrorInjection = true; // 20fps
-
-    _this.addRegister(constants/* SensorReg.StreamingPreferredInterval */.q9t.StreamingPreferredInterval, [50]);
+    _this.rows.skipErrorInjection = true;
+    if (variant === constants/* DotMatrixVariant.LED */.ozp.LED) _this.addRegister(constants/* SensorReg.StreamingPreferredInterval */.q9t.StreamingPreferredInterval, [50]);
 
     _this.rows.on(constants/* CHANGE */.Ver, _this.updateDotsBuffer.bind((0,assertThisInitialized/* default */.Z)(_this)));
 
@@ -44015,10 +44014,7 @@ var DotMatrixServer = /*#__PURE__*/function (_JDServiceServer) {
     var n = rows * columnspadded;
 
     if (((_this$dots$data = this.dots.data) === null || _this$dots$data === void 0 ? void 0 : _this$dots$data.length) !== n) {
-      // skip serialization
-      this.dots.data = new Uint8Array(n); // testing
-
-      this.dots.data.fill(0x01 | 0x04 | 0x10 | 0x40);
+      this.dots.data = new Uint8Array(n);
       this.dots.emit(constants/* CHANGE */.Ver);
     }
   };
@@ -54105,7 +54101,7 @@ function Tools() {
   (0,_hooks_useServiceProviderFromServiceClass__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_5__/* .SRV_SERVO */ .$X_);
   (0,_hooks_useServiceProviderFromServiceClass__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_5__/* .SRV_POTENTIOMETER */ .GQv);
   (0,_hooks_useServiceProviderFromServiceClass__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_5__/* .SRV_LED_PIXEL */ .zEX);
-  (0,_hooks_useServiceProviderFromServiceClass__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_5__.SRV_LED_MATRIX);
+  (0,_hooks_useServiceProviderFromServiceClass__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_5__/* .SRV_DOT_MATRIX */ .GDq);
   var {
     setDrawerType
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .ZP);
@@ -54114,7 +54110,7 @@ function Tools() {
 
   var handleShowPacketConsole = () => setDrawerType(_AppContext__WEBPACK_IMPORTED_MODULE_3__/* .DrawerType.Packets */ .jw.Packets);
 
-  var simulatorClass = _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_5__.SRV_LED_MATRIX;
+  var simulatorClass = _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_5__/* .SRV_DOT_MATRIX */ .GDq;
   var dashboards = (0,_hooks_useDevices__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)({
     ignoreSelf: true,
     announced: true
@@ -63651,7 +63647,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "0cccf7a2b94c20a48d73b90fee038aff6e16214e";
+var sha = "3e596f108a1e19e844eb677ea9f66d1b0f682ba3";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64539,7 +64535,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0cccf7a2b94c20a48d73b90fee038aff6e16214e";
+  var sha = "3e596f108a1e19e844eb677ea9f66d1b0f682ba3";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74920,7 +74916,8 @@ function useRegisterHumanValue(register, options) {
     1: setValue
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(register === null || register === void 0 ? void 0 : register.humanValue);
   var {
-    visible
+    visible,
+    maxLength
   } = options || {
     visible: true
   };
@@ -74929,11 +74926,17 @@ function useRegisterHumanValue(register, options) {
   } = (0,_components_hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .ZP)(); // update value
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    var readValue = () => readRegisterValue(register, _ => _ === null || _ === void 0 ? void 0 : _.humanValue, "???", trackError);
+    var readValue = () => readRegisterValue(register, _ => {
+      var _v;
+
+      var v = _ === null || _ === void 0 ? void 0 : _.humanValue;
+      if (((_v = v) === null || _v === void 0 ? void 0 : _v.length) > maxLength) v = v.slice(0, maxLength) + "...";
+      return v;
+    }, "???", trackError);
 
     setValue(readValue);
     return visible && (register === null || register === void 0 ? void 0 : register.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .REPORT_UPDATE */ .rGZ, () => setValue(readValue)));
-  }, [register, visible]);
+  }, [register, visible, maxLength]);
   return value;
 }
 function useRegisterUnpackedValue(register, options) {
@@ -81947,4 +81950,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-8266067c87951a5d6cdd.js.map
+//# sourceMappingURL=app-43c79251bc758623e785.js.map

@@ -5242,19 +5242,19 @@ var ServicesBlockDomainSpecificLanguage = /*#__PURE__*/function (_ServicesBaseDS
       helpUrl: serviceHelp(service),
       service,
       template: "custom"
-    }))), (0,toConsumableArray/* default */.Z)(resolveService(constants.SRV_LED_MATRIX).map(service => ({
+    }))), (0,toConsumableArray/* default */.Z)(resolveService(constants/* SRV_DOT_MATRIX */.GDq).map(service => ({
       kind: "block",
-      type: "show_leds",
-      message0: "show %1 leds %2",
+      type: "show_dots",
+      message0: "show %1 dots %2",
       args0: [roleVariable(service), {
         type: LEDMatrixField/* default.KEY */.Z.KEY,
-        name: "leds"
+        name: "dots"
       }],
       colour: this.serviceColor(service),
       inputsInline: true,
       previousStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
       nextStatement: toolbox/* CODE_STATEMENT_TYPE */.lL,
-      tooltip: "Display LEDs on the LED matrix",
+      tooltip: "Display dots on the dot matrix",
       helpUrl: serviceHelp(service),
       service,
       // encode digits
@@ -6878,4 +6878,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-vm-tsx-5bd0876cfc10ac55959a.js.map
+//# sourceMappingURL=component---src-pages-editors-vm-tsx-8a93538b1ffed06cdffa.js.map

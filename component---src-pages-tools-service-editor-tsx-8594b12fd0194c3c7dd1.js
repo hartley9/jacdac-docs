@@ -911,7 +911,8 @@ function HighlightTextField(props) {
       spellCheck: false,
       style: _objectSpread(_objectSpread({}, style), {
         minHeight: "12rem",
-        whiteSpace: "pre-wrap"
+        whiteSpace: "pre-wrap",
+        overflowWrap: "break-word"
       })
     }, tokens.map((line, i) => {
       var annotation = annotations === null || annotations === void 0 ? void 0 : annotations.find(a => a.line === i + 1);
@@ -1000,4 +1001,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-service-editor-tsx-e6c3d42d9d1b3b78702e.js.map
+//# sourceMappingURL=component---src-pages-tools-service-editor-tsx-8594b12fd0194c3c7dd1.js.map

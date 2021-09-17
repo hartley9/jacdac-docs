@@ -1378,7 +1378,7 @@ function PacketInspector() {
     mr: theme.spacing(0.1)
   }, /*#__PURE__*/react.createElement(Tooltip/* default */.ZP, {
     title: "header"
-  }, /*#__PURE__*/react.createElement("span", null, (0,utils/* toHex */.NC)(header))))), /*#__PURE__*/react.createElement("code", null, /*#__PURE__*/react.createElement(Box/* default */.Z, {
+  }, /*#__PURE__*/react.createElement("span", null, (0,utils/* toHex */.NC)(header))))), /*#__PURE__*/react.createElement("br", null), /*#__PURE__*/react.createElement("code", null, /*#__PURE__*/react.createElement(Box/* default */.Z, {
     component: "span",
     mr: theme.spacing(0.1)
   }, /*#__PURE__*/react.createElement(Tooltip/* default */.ZP, {
@@ -1419,4 +1419,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-9f67938ece826ae105ae.js.map
+//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-677b50268569bedd2d66.js.map
