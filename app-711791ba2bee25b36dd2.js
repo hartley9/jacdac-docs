@@ -38020,6 +38020,7 @@ var Packet = /*#__PURE__*/function () {
     set: function set(id) {
       var idb = (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .fromHex */ .H_)(id);
       if (idb.length != 8) (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .throwError */ ._y)("Invalid id");
+      if (this.isMultiCommand) (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .throwError */ ._y)("Invalid multicast");
 
       this._header.set(idb, 4);
 
@@ -39000,7 +39001,7 @@ function decodeRegister(service, pkt) {
 
   if (!regInfo) {
     regInfo = syntheticPktInfo("rw", addr);
-    error = "unable to decode register in " + ((service === null || service === void 0 ? void 0 : service.name) || (0,_utils__WEBPACK_IMPORTED_MODULE_1__/* .hexNum */ .Rj)(pkt.serviceClass) || "???");
+    error = "unable to decode register";
   }
 
   var decoded = decodeMembers(service, regInfo, pkt);
@@ -39094,15 +39095,7 @@ function decodePacketData(pkt) {
     }
 
     var _serviceClass = pkt.serviceClass;
-    if (isNaN(_serviceClass)) console.error("unkown serviceClass", {
-      pkt,
-      serviceClass: _serviceClass
-    });
     var service = (0,_spec__WEBPACK_IMPORTED_MODULE_2__/* .serviceSpecificationFromClassIdentifier */ .d5)(_serviceClass);
-    if (!service && _serviceClass) console.debug("unkown packet", {
-      pkt,
-      srv_class: _serviceClass
-    });
     return decodePacket(service, pkt);
   } catch (error) {
     console.error(error, {
@@ -40048,9 +40041,10 @@ var JDServerServiceProvider = /*#__PURE__*/function (_JDServiceProvider) {
       for (var h of this._services) {
         if (h.serviceClass == multiCommandClass) {
           // pretend it's directly addressed to us
-          pkt.deviceIdentifier = this.deviceId;
-          pkt.serviceIndex = h.serviceIndex;
-          h.handlePacket(pkt);
+          var npkt = pkt.clone();
+          npkt.deviceIdentifier = this.deviceId;
+          npkt.serviceIndex = h.serviceIndex;
+          h.handlePacket(npkt);
         }
       }
     } else if (devIdMatch) {
@@ -63664,7 +63658,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "024e3d8709305372291b3becf4ce02f82673ca49";
+var sha = "f86c4a9d5fc6098a417df876944c71dd4ff08b72";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64552,7 +64546,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "024e3d8709305372291b3becf4ce02f82673ca49";
+  var sha = "f86c4a9d5fc6098a417df876944c71dd4ff08b72";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71732,9 +71726,14 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
 
   _proto.processPacket = function processPacket(pkt) {
     if (!pkt.isMultiCommand && !pkt.device) {
-      pkt.device = this.device(pkt.deviceIdentifier, false, pkt); // check if devices are frozen
+      pkt.device = this.device(pkt.deviceIdentifier, false, pkt); // the device id is unknown dropping
 
-      if (!pkt.device) return;
+      if (!pkt.device) {
+        if (flags/* default.diagnostics */.Z.diagnostics) console.debug("unknown pkt device " + pkt.deviceIdentifier, {
+          pkt
+        });
+        return;
+      }
     }
 
     this.emit(constants/* PACKET_PRE_PROCESS */.bHQ, pkt);
@@ -74625,7 +74624,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.17.1"};
+var package_namespaceObject = {"i8":"1.17.2"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -81959,4 +81958,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-66599e3984772ba4fbd2.js.map
+//# sourceMappingURL=app-711791ba2bee25b36dd2.js.map

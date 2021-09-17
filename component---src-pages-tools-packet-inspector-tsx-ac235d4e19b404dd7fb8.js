@@ -1080,6 +1080,7 @@ function PacketHeaderLayout(props) {
     header
   } = pkt;
   var frameFlags = header[3];
+  var multi = pkt.isMultiCommand;
   var serviceCommand = pkt.serviceCommand;
   var slots = [{
     offset: 0,
@@ -1099,7 +1100,20 @@ function PacketHeaderLayout(props) {
     size: 1,
     name: "frame_flags",
     description: "Flags specific to this frame."
-  }, {
+  }, multi && {
+    offset: 4,
+    size: 4,
+    format: buffer/* NumberFormat.UInt32LE */.y4.UInt32LE,
+    formatHex: true,
+    name: "service_identifier",
+    description: "multicast service identifier"
+  }, multi && {
+    offset: 8,
+    size: 4,
+    formatHex: true,
+    name: "ignored",
+    description: "ignored in multicast"
+  }, !multi && {
     offset: 4,
     size: 8,
     formatHex: true,
@@ -1128,7 +1142,7 @@ function PacketHeaderLayout(props) {
     formatHex: true,
     name: "service_command",
     description: "Identifier for the command"
-  }];
+  }].filter(c => !!c);
   var flags = [{
     position: 1,
     flag: constants/* JD_FRAME_FLAG_COMMAND */.e4B,
@@ -1419,4 +1433,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-677b50268569bedd2d66.js.map
+//# sourceMappingURL=component---src-pages-tools-packet-inspector-tsx-ac235d4e19b404dd7fb8.js.map
