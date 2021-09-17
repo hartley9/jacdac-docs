@@ -115,14 +115,10 @@ var AzureIoTHubHealthClient = /*#__PURE__*/function (_JDServiceClient) {
     _this.mount(() => _this.hubNameRegister.subscribe(constants/* REPORT_UPDATE */.rGZ, () => _this.emit(constants/* CHANGE */.Ver)));
 
     _this.mount(() => _this.connectionStatusRegister.subscribe(constants/* REPORT_UPDATE */.rGZ, () => {
-      console.debug("azure iot hub: connection status changed");
-
       _this.emit(constants/* CHANGE */.Ver);
     }));
 
     _this.mount(() => _this.service.event(constants/* AzureIotHubHealthEvent.ConnectionStatusChange */.qqS.ConnectionStatusChange).on(constants/* EVENT */.Ks0, () => {
-      console.debug("azure iot hub: connection status event");
-
       _this.connectionStatusRegister.refresh();
     }));
 
@@ -373,4 +369,4 @@ function DashboardAzureIoTHubHealth(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1931-9b5521e80302ad36cf6c.js.map
+//# sourceMappingURL=1931-25e0d3d445a4032e068e.js.map

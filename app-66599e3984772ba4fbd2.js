@@ -38068,6 +38068,7 @@ var Packet = /*#__PURE__*/function () {
       var _this$device;
 
       if (this.isMultiCommand) return (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .read32 */ .Zy)(this._header, 4);
+      (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .assert */ .hu)(!!this.device);
       return (_this$device = this.device) === null || _this$device === void 0 ? void 0 : _this$device.serviceClassAt(this.serviceIndex);
     }
   }, {
@@ -38995,7 +38996,13 @@ function decodeRegister(service, pkt) {
   if (isSet == isGet) return null;
   var error = "";
   var addr = pkt.serviceCommand & _constants__WEBPACK_IMPORTED_MODULE_3__/* .CMD_REG_MASK */ .Pbb;
-  var regInfo = (service === null || service === void 0 ? void 0 : service.packets.find(p => (0,_spec__WEBPACK_IMPORTED_MODULE_2__/* .isRegister */ .x5)(p) && p.identifier == addr)) || syntheticPktInfo("rw", addr);
+  var regInfo = service === null || service === void 0 ? void 0 : service.packets.find(p => (0,_spec__WEBPACK_IMPORTED_MODULE_2__/* .isRegister */ .x5)(p) && p.identifier == addr);
+
+  if (!regInfo) {
+    regInfo = syntheticPktInfo("rw", addr);
+    error = "unable to decode register in " + ((service === null || service === void 0 ? void 0 : service.name) || (0,_utils__WEBPACK_IMPORTED_MODULE_1__/* .hexNum */ .Rj)(pkt.serviceClass) || "???");
+  }
+
   var decoded = decodeMembers(service, regInfo, pkt);
 
   if (regInfo.packFormat && pkt.data.length) {
@@ -39050,7 +39057,8 @@ function decodeCommand(service, pkt) {
 }
 
 function decodePacket(service, pkt) {
-  return decodeRegister(service, pkt) || decodeEvent(service, pkt) || decodeCommand(service, pkt);
+  var decoded = decodeRegister(service, pkt) || decodeEvent(service, pkt) || decodeCommand(service, pkt);
+  return decoded;
 }
 
 function decodePipe(pkt) {
@@ -39085,8 +39093,16 @@ function decodePacketData(pkt) {
       if (info) return info;
     }
 
-    var srv_class = pkt === null || pkt === void 0 ? void 0 : pkt.serviceClass;
-    var service = (0,_spec__WEBPACK_IMPORTED_MODULE_2__/* .serviceSpecificationFromClassIdentifier */ .d5)(srv_class);
+    var _serviceClass = pkt.serviceClass;
+    if (isNaN(_serviceClass)) console.error("unkown serviceClass", {
+      pkt,
+      serviceClass: _serviceClass
+    });
+    var service = (0,_spec__WEBPACK_IMPORTED_MODULE_2__/* .serviceSpecificationFromClassIdentifier */ .d5)(_serviceClass);
+    if (!service && _serviceClass) console.debug("unkown packet", {
+      pkt,
+      srv_class: _serviceClass
+    });
     return decodePacket(service, pkt);
   } catch (error) {
     console.error(error, {
@@ -41969,6 +41985,7 @@ function toArray(a) {
   return r;
 }
 function hexNum(n) {
+  if (isNaN(n)) return undefined;
   if (n < 0) return "-" + hexNum(-n);
   return "0x" + n.toString(16);
 }
@@ -63647,7 +63664,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "3e596f108a1e19e844eb677ea9f66d1b0f682ba3";
+var sha = "024e3d8709305372291b3becf4ce02f82673ca49";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64535,7 +64552,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3e596f108a1e19e844eb677ea9f66d1b0f682ba3";
+  var sha = "024e3d8709305372291b3becf4ce02f82673ca49";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -69917,7 +69934,6 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     this._servicesData = pkt.data; // check for restart
 
     if (w1 && (w1 & constants/* JD_ADVERTISEMENT_0_COUNTER_MASK */.GJf) < (w0 & constants/* JD_ADVERTISEMENT_0_COUNTER_MASK */.GJf)) {
-      console.debug("device " + this.shortId + " restarted");
       this.stats.processRestart();
       this.initServices(true);
       this.bus.emit(constants/* DEVICE_RESTART */.eLF, this);
@@ -70534,7 +70550,6 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
     _this = _JDEventSource.call(this) || this;
     _this._prev = Array(4).fill(0).map(() => ({
       packets: 0,
-      invalid: 0,
       announce: 0,
       acks: 0,
       bytes: 0
@@ -70542,7 +70557,6 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
     _this._previ = 0;
     _this._temp = {
       packets: 0,
-      invalid: 0,
       announce: 0,
       acks: 0,
       bytes: 0
@@ -70561,13 +70575,12 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
   var _proto = BusStatsMonitor.prototype;
 
   _proto.accumulate = function accumulate(pkt) {
-    var _pkt$header, _pkt$data, _pkt$decoded;
+    var _pkt$header, _pkt$data;
 
     this._temp.packets++;
     this._temp.bytes += (((_pkt$header = pkt.header) === null || _pkt$header === void 0 ? void 0 : _pkt$header.length) || 0) + (((_pkt$data = pkt.data) === null || _pkt$data === void 0 ? void 0 : _pkt$data.length) || 0);
     if (pkt.isAnnounce) this._temp.announce++;
     if (pkt.isCRCAck) this._temp.acks++;
-    if ((_pkt$decoded = pkt.decoded) !== null && _pkt$decoded !== void 0 && _pkt$decoded.error) this._temp.invalid++;
   };
 
   _proto.handleSelfAnnounce = function handleSelfAnnounce() {
@@ -70576,7 +70589,6 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
     this._previ = (this._previ + 1) % this._prev.length;
     this._temp = {
       packets: 0,
-      invalid: 0,
       announce: 0,
       acks: 0,
       bytes: 0
@@ -70599,7 +70611,6 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
 
       var r = {
         packets: 0,
-        invalid: 0,
         announce: 0,
         acks: 0,
         bytes: 0
@@ -70609,7 +70620,6 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
       for (var i = 0; i < this._prev.length; ++i) {
         var p = this._prev[i];
         r.packets += p.packets;
-        r.invalid += p.invalid;
         r.announce += p.announce;
         r.acks += p.acks;
         r.bytes += p.bytes;
@@ -70618,7 +70628,6 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
 
       var n2 = n / 2;
       r.packets /= n2;
-      r.invalid /= n2;
       r.announce /= n2;
       r.acks /= n2;
       r.bytes /= n2;
@@ -81950,4 +81959,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-43c79251bc758623e785.js.map
+//# sourceMappingURL=app-66599e3984772ba4fbd2.js.map

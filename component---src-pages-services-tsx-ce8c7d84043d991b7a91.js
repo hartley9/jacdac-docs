@@ -1477,13 +1477,13 @@ function ServiceCatalog() {
   } = filter;
   var allTags = (0,react.useMemo)(() => (0,utils/* unique */.Tw)((0,utils/* arrayConcatMany */.ue)((0,jdom_spec/* serviceSpecifications */.Le)().map(srv => [srv.group].concat((0,toConsumableArray/* default */.Z)(srv.tags)))).filter(t => !!t)), []);
   var services = (0,react.useMemo)(() => {
-    var m = query.toLowerCase();
+    var m = query.toLowerCase().trim();
     var r = (0,jdom_spec/* serviceSpecifications */.Le)();
 
     if (m) {
       var _filter = s => (s === null || s === void 0 ? void 0 : s.toLowerCase().indexOf(m)) > -1;
 
-      r = r.filter(srv => _filter(srv.name) || _filter(srv.notes["short"]));
+      r = r.filter(srv => _filter(srv.name) || _filter(srv.notes["short"]) || (0,utils/* hexNum */.Rj)(srv.classIdentifier) === query);
     }
 
     if (tag) {
@@ -1651,4 +1651,4 @@ function ServiceCatalog() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-services-tsx-64cc48b903b57a5d716f.js.map
+//# sourceMappingURL=component---src-pages-services-tsx-ce8c7d84043d991b7a91.js.map
