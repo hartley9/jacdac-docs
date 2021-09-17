@@ -244,6 +244,11 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
+    "href": "/jacdac-docs/clients/makecode/modules/"
+  }, "Modules")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
     "href": "/jacdac-docs/clients/makecode/servers/"
   }, "Servers"))));
 }
@@ -271,4 +276,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-mdx-b9479d6a2ef49ed78666.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-mdx-db9a695f678bb77d93bb.js.map

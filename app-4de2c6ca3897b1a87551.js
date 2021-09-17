@@ -63674,7 +63674,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "8be645458d9645ac578f7832233570668fd9dd87";
+var sha = "4d9c3c87452cd66b1360af312fbad26d8fdca787";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64562,7 +64562,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "8be645458d9645ac578f7832233570668fd9dd87";
+  var sha = "4d9c3c87452cd66b1360af312fbad26d8fdca787";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -77038,6 +77038,16 @@ exports.components = {
   "component---src-pages-clients-javascript-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-mdx */ 3290).then(__webpack_require__.bind(__webpack_require__, 79835)),
   "component---src-pages-clients-javascript-react-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-react-mdx */ 9640).then(__webpack_require__.bind(__webpack_require__, 69823)),
   "component---src-pages-clients-makecode-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-mdx */ 5348).then(__webpack_require__.bind(__webpack_require__, 82733)),
+  "component---src-pages-clients-makecode-modules-accelerometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-accelerometer-mdx */ 8858).then(__webpack_require__.bind(__webpack_require__, 33054)),
+  "component---src-pages-clients-makecode-modules-barometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-barometer-mdx */ 6771).then(__webpack_require__.bind(__webpack_require__, 44737)),
+  "component---src-pages-clients-makecode-modules-button-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-button-mdx */ 5439).then(__webpack_require__.bind(__webpack_require__, 77123)),
+  "component---src-pages-clients-makecode-modules-ledpixel-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-ledpixel-mdx */ 3985).then(__webpack_require__.bind(__webpack_require__, 23344)),
+  "component---src-pages-clients-makecode-modules-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-mdx */ 2979).then(__webpack_require__.bind(__webpack_require__, 6512)),
+  "component---src-pages-clients-makecode-modules-potentiometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-potentiometer-mdx */ 6728).then(__webpack_require__.bind(__webpack_require__, 46407)),
+  "component---src-pages-clients-makecode-modules-relay-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-relay-mdx */ 1965).then(__webpack_require__.bind(__webpack_require__, 39959)),
+  "component---src-pages-clients-makecode-modules-rotaryencoder-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-rotaryencoder-mdx */ 6371).then(__webpack_require__.bind(__webpack_require__, 73002)),
+  "component---src-pages-clients-makecode-modules-servo-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-servo-mdx */ 8839).then(__webpack_require__.bind(__webpack_require__, 49744)),
+  "component---src-pages-clients-makecode-modules-thermometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-thermometer-mdx */ 3664).then(__webpack_require__.bind(__webpack_require__, 10242)),
   "component---src-pages-clients-makecode-projects-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-mdx */ 2235).then(__webpack_require__.bind(__webpack_require__, 39091)),
   "component---src-pages-clients-makecode-servers-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-servers-mdx */ 2913).then(__webpack_require__.bind(__webpack_require__, 1979)),
   "component---src-pages-clients-makecode-user-guide-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-user-guide-mdx */ 1198).then(__webpack_require__.bind(__webpack_require__, 61198)),
@@ -81976,4 +81986,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-936a411338c8a8f30a90.js.map
+//# sourceMappingURL=app-4de2c6ca3897b1a87551.js.map
