@@ -53739,7 +53739,7 @@ function Kit() {
     alignContent: "center",
     alignItems: "center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
-    title: "Kit",
+    title: "Hardware Kit",
     subtitle3: "Hardware Module Kit",
     imageColumns: 6,
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_3__.S, {
@@ -63744,7 +63744,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "9a914028711ced74b74a74667ab27cb5216ec3de";
+var sha = "d9e6cc957bae32d2b2cf07f46452a28f8af15e95";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64632,7 +64632,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "9a914028711ced74b74a74667ab27cb5216ec3de";
+  var sha = "d9e6cc957bae32d2b2cf07f46452a28f8af15e95";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82114,4 +82114,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-eabe0add7049719e5ecd.js.map
+//# sourceMappingURL=app-73b6e5a02a30749dde36.js.map
