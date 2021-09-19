@@ -3051,81 +3051,6 @@ exports.Response = global.Response;
 
 /***/ }),
 
-/***/ 26143:
-/***/ (function(module, exports, __webpack_require__) {
-
-/* eslint-disable node/no-deprecated-api */
-var buffer = __webpack_require__(62426);
-
-var Buffer = buffer.Buffer; // alternative to using Object.keys for old browsers
-
-function copyProps(src, dst) {
-  for (var key in src) {
-    dst[key] = src[key];
-  }
-}
-
-if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
-  module.exports = buffer;
-} else {
-  // Copy properties from require('buffer')
-  copyProps(buffer, exports);
-  exports.Buffer = SafeBuffer;
-}
-
-function SafeBuffer(arg, encodingOrOffset, length) {
-  return Buffer(arg, encodingOrOffset, length);
-} // Copy static methods from Buffer
-
-
-copyProps(Buffer, SafeBuffer);
-
-SafeBuffer.from = function (arg, encodingOrOffset, length) {
-  if (typeof arg === 'number') {
-    throw new TypeError('Argument must not be a number');
-  }
-
-  return Buffer(arg, encodingOrOffset, length);
-};
-
-SafeBuffer.alloc = function (size, fill, encoding) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number');
-  }
-
-  var buf = Buffer(size);
-
-  if (fill !== undefined) {
-    if (typeof encoding === 'string') {
-      buf.fill(fill, encoding);
-    } else {
-      buf.fill(fill);
-    }
-  } else {
-    buf.fill(0);
-  }
-
-  return buf;
-};
-
-SafeBuffer.allocUnsafe = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number');
-  }
-
-  return Buffer(size);
-};
-
-SafeBuffer.allocUnsafeSlow = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number');
-  }
-
-  return buffer.SlowBuffer(size);
-};
-
-/***/ }),
-
 /***/ 4570:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -3153,7 +3078,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
 
 /*<replacement>*/
 
-var Buffer = __webpack_require__(26143).Buffer;
+var Buffer = __webpack_require__(88706).Buffer;
 /*</replacement>*/
 
 
@@ -3471,6 +3396,84 @@ function simpleWrite(buf) {
 function simpleEnd(buf) {
   return buf && buf.length ? this.write(buf) : '';
 }
+
+/***/ }),
+
+/***/ 88706:
+/***/ (function(module, exports, __webpack_require__) {
+
+/*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/* eslint-disable node/no-deprecated-api */
+var buffer = __webpack_require__(62426);
+
+var Buffer = buffer.Buffer; // alternative to using Object.keys for old browsers
+
+function copyProps(src, dst) {
+  for (var key in src) {
+    dst[key] = src[key];
+  }
+}
+
+if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
+  module.exports = buffer;
+} else {
+  // Copy properties from require('buffer')
+  copyProps(buffer, exports);
+  exports.Buffer = SafeBuffer;
+}
+
+function SafeBuffer(arg, encodingOrOffset, length) {
+  return Buffer(arg, encodingOrOffset, length);
+}
+
+SafeBuffer.prototype = Object.create(Buffer.prototype); // Copy static methods from Buffer
+
+copyProps(Buffer, SafeBuffer);
+
+SafeBuffer.from = function (arg, encodingOrOffset, length) {
+  if (typeof arg === 'number') {
+    throw new TypeError('Argument must not be a number');
+  }
+
+  return Buffer(arg, encodingOrOffset, length);
+};
+
+SafeBuffer.alloc = function (size, fill, encoding) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number');
+  }
+
+  var buf = Buffer(size);
+
+  if (fill !== undefined) {
+    if (typeof encoding === 'string') {
+      buf.fill(fill, encoding);
+    } else {
+      buf.fill(fill);
+    }
+  } else {
+    buf.fill(0);
+  }
+
+  return buf;
+};
+
+SafeBuffer.allocUnsafe = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number');
+  }
+
+  return Buffer(size);
+};
+
+SafeBuffer.allocUnsafeSlow = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number');
+  }
+
+  return buffer.SlowBuffer(size);
+};
 
 /***/ }),
 
@@ -4764,7 +4767,7 @@ $({ target: 'Math', stat: true, forced: BUGGY }, {
 /******/ 		// This function allow to reference async chunks and sibling chunks for the entrypoint
 /******/ 		__webpack_require__.u = function(chunkId) {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + {"1341":"2192cc19e677c429cb4f2592426c774329598203","1954":"8e0cf18a"}[chunkId] + "-" + {"1341":"08e897bf73614a1f1264","1954":"20fa1d5e6da7b19358a6"}[chunkId] + ".js";
+/******/ 			return "" + {"1341":"2192cc19e677c429cb4f2592426c774329598203","1954":"8e0cf18a"}[chunkId] + "-" + {"1341":"4782cc25595ed9580483","1954":"20fa1d5e6da7b19358a6"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	}();
 /******/ 	
@@ -4860,4 +4863,4 @@ $({ target: 'Math', stat: true, forced: BUGGY }, {
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=8227-978ca65cc05a574740fb.js.map
+//# sourceMappingURL=8227-e9c64d4e0a1c37af7e56.js.map

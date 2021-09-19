@@ -1,26 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
-/******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
 var __webpack_exports__ = {};
-/*!***********************************************************!*\
-  !*** ./src/workers/data/dist/node_modules/data-worker.js ***!
-  \***********************************************************/
-__webpack_require__.r(__webpack_exports__);
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -2027,4 +2007,4 @@ for(var i in __webpack_exports__) __webpack_export_target__[i] = __webpack_expor
 if(__webpack_exports__.__esModule) Object.defineProperty(__webpack_export_target__, "__esModule", { value: true });
 /******/ })()
 ;
-//# sourceMappingURL=vendors-src_workers_data_dist_node_modules_data-worker_js.render-page.js.map
+//# sourceMappingURL=784.render-page.js.map
