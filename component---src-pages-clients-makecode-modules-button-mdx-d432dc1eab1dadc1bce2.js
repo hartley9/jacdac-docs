@@ -76,9 +76,9 @@ function MDXContent(_ref) {
     parentName: "p"
   }, "onDown"), ", ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("em", {
     parentName: "p"
-  }, "onHold"), ", and ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("em", {
+  }, "onUp"), ", and ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("em", {
     parentName: "p"
-  }, "onHeld"), ") for each of\nthe three events, as shown in the small example below"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "onHold"), ") for each of\nthe three events, as shown in the small example below"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "events",
     "style": {
       "position": "relative"
@@ -156,4 +156,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-modules-button-mdx-72c2bb496aa0fc9426fe.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-modules-button-mdx-d432dc1eab1dadc1bce2.js.map
