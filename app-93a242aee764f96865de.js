@@ -63744,7 +63744,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "aa7a0d8e653505937804cc8140398bb6061b38c7";
+var sha = "c8a725c57084a07abd3926fc563bc0776f28c3c8";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64632,7 +64632,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "aa7a0d8e653505937804cc8140398bb6061b38c7";
+  var sha = "c8a725c57084a07abd3926fc563bc0776f28c3c8";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -77116,7 +77116,6 @@ exports.components = {
   "component---src-pages-clients-makecode-modules-potentiometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-potentiometer-mdx */ 6728).then(__webpack_require__.bind(__webpack_require__, 46407)),
   "component---src-pages-clients-makecode-modules-relay-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-relay-mdx */ 1965).then(__webpack_require__.bind(__webpack_require__, 39959)),
   "component---src-pages-clients-makecode-modules-rotaryencoder-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-rotaryencoder-mdx */ 6371).then(__webpack_require__.bind(__webpack_require__, 73002)),
-  "component---src-pages-clients-makecode-modules-servo-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-servo-mdx */ 8839).then(__webpack_require__.bind(__webpack_require__, 49744)),
   "component---src-pages-clients-makecode-modules-thermometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-modules-thermometer-mdx */ 3664).then(__webpack_require__.bind(__webpack_require__, 10242)),
   "component---src-pages-clients-makecode-projects-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-mdx */ 2235).then(__webpack_require__.bind(__webpack_require__, 39091)),
   "component---src-pages-clients-makecode-servers-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-servers-mdx */ 2913).then(__webpack_require__.bind(__webpack_require__, 1979)),
@@ -82114,4 +82113,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-16143503a7a1d5af628a.js.map
+//# sourceMappingURL=app-93a242aee764f96865de.js.map
