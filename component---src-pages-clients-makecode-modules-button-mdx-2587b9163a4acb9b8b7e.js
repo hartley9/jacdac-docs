@@ -68,7 +68,7 @@ function MDXContent(_ref) {
     parentName: "p"
   }, "hold"), ". The (unbounced) ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("em", {
     parentName: "p"
-  }, "down"), " event is raised when the\nbutton is pressed, while the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("em", {
+  }, "down"), " event is raised when the\nbutton is pressed, while the (unbounced) ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("em", {
     parentName: "p"
   }, "up"), " event is raised when the button is released.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("em", {
     parentName: "p"
@@ -129,4 +129,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-modules-button-mdx-d28cf6adf5cce40b85a2.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-modules-button-mdx-2587b9163a4acb9b8b7e.js.map
