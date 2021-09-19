@@ -130,7 +130,7 @@ function MDXContent(_ref) {
   }, "pressure"), " register,\nwhich ranges in value from where 0 is open and 0xffff is fully pressed."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"forever(() => {\\n    if (modules.button1.pressure() === 0xffff) \\n        basic.showString(\\\"D\\\")\\n    else if (modules.button1.pressure() === 0)\\n        basic.showString(\\\"U\\\")\\n    else\\n        basic.showString(\\\"x\\\")\\n})\",\"rendered\":{\"req\":{\"code\":\"forever(() => {\\n    if (modules.button1.pressure() === 0xffff) \\n        basic.showString(\\\"D\\\")\\n    else if (modules.button1.pressure() === 0)\\n        basic.showString(\\\"U\\\")\\n    else\\n        basic.showString(\\\"x\\\")\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-button=github:microsoft/pxt-jacdac/button\"},\"type\":\"renderblocks\",\"id\":\"cd5b4918f9985348673da92076582628\"},\"url\":\"/images/makecode/cd5b4918f9985348673da92076582628.png\",\"width\":535,\"height\":408}}\n")));
+  }, "{\"source\":\"basic.forever(() => {\\n    if (modules.button1.pressure() === 0xffff) \\n        basic.showString(\\\"D\\\")\\n    else if (modules.button1.pressure() === 0)\\n        basic.showString(\\\"U\\\")\\n    else\\n        basic.showString(\\\"x\\\")\\n})\",\"rendered\":{\"req\":{\"code\":\"basic.forever(() => {\\n    if (modules.button1.pressure() === 0xffff) \\n        basic.showString(\\\"D\\\")\\n    else if (modules.button1.pressure() === 0)\\n        basic.showString(\\\"U\\\")\\n    else\\n        basic.showString(\\\"x\\\")\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-button=github:microsoft/pxt-jacdac/button\"},\"type\":\"renderblocks\",\"id\":\"efca482b1f789eb284524b8ef4acc899\"},\"url\":\"/images/makecode/efca482b1f789eb284524b8ef4acc899.png\",\"width\":609,\"height\":416}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -156,4 +156,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-modules-button-mdx-158642a9d40dd8ee79f5.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-modules-button-mdx-72c2bb496aa0fc9426fe.js.map
