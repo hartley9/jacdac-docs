@@ -571,8 +571,8 @@ function Page() {
     repos: ["microsoft/node-red-contrib-jacdac", "microsoft/jupyter-jacdac"],
     showDescription: true
   }), /*#__PURE__*/react.createElement("h2", null, "Embedded Tools"), /*#__PURE__*/react.createElement(GithubRepositoryList, {
-    repos: ["microsoft/pxt-jacdac/tools/multitool", "microsoft/pxt-jacdac/tools/hid-events", "microsoft/pxt-jacdac/devices/microbit"],
-    showDescription: true
+    repos: ["microsoft/pxt-jacdac/tools/multitool", "microsoft/pxt-jacdac/tools/hid-events", "microsoft/pxt-jacdac/devices/microbit", "microsoft/pxt-jacdac/tools/microbit-oob"],
+    showDescription: false
   }), /*#__PURE__*/react.createElement("h2", null, " Documentation"), /*#__PURE__*/react.createElement(GithubRepositoryList, {
     repos: ["microsoft/jacdac-docs"],
     showDescription: true
@@ -592,4 +592,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-github-tsx-d2a68ec4d3945df31e8f.js.map
+//# sourceMappingURL=component---src-pages-github-tsx-d9306b7c031887e45e56.js.map
