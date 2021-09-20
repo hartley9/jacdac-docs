@@ -85,7 +85,7 @@ function MDXContent(_ref) {
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
     "href": "/jacdac-docs/clients/makecode/modules/potentiometer"
-  }, "Slider/Potentiometer")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Potentiometer"), " (for slider module)"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
@@ -126,4 +126,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-modules-mdx-4793c90038cb34d5e2be.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-modules-mdx-811f2648918a141613e5.js.map

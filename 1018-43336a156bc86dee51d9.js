@@ -220,43 +220,43 @@ function Toc(props) {
     }, {
       name: "Dashboard",
       path: "/dashboard/",
-      order: 0.5,
-      collapse: true
-    }, {
-      name: "Protocol",
-      path: "/protocol/",
-      order: 0.55,
+      order: 0.1,
       collapse: true
     }, {
       name: "Hardware",
       path: "/hardware/",
-      order: 0.6,
+      order: 0.2,
       collapse: true
     }, {
       name: "Software",
       path: "/software/",
-      order: 0.6,
+      order: 0.3,
       collapse: true
+    }, {
+      name: "Devices",
+      path: "/devices/",
+      order: 0.4
+    }, {
+      name: "Client SDKs",
+      path: "/clients/",
+      order: .5
+    }, {
+      name: "Services",
+      path: "/services/",
+      order: 0.6
     }, {
       name: "Tools",
       path: "/tools/",
       order: 0.7
     }, {
+      name: "Protocol",
+      path: "/protocol/",
+      order: 0.8,
+      collapse: true
+    }, {
       name: "Reference",
       path: "/reference/",
-      order: 0.8
-    }, {
-      name: "Services",
-      path: "/services/",
-      order: 0.9
-    }, {
-      name: "Devices",
-      path: "/devices/",
-      order: 0.95
-    }, {
-      name: "Client SDKs",
-      path: "/clients/",
-      order: 5
+      order: 0.81
     }];
     data.allMdx.edges.map(node => node.node).filter(node => {
       var _node$frontmatter;
@@ -349,4 +349,4 @@ function Toc(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1018-1b00651424283754675e.js.map
+//# sourceMappingURL=1018-43336a156bc86dee51d9.js.map
