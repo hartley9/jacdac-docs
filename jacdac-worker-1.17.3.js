@@ -1295,6 +1295,30 @@ var ECO2Reg;
      */
     ECO2Reg[ECO2Reg["Variant"] = 263] = "Variant";
 })(ECO2Reg || (ECO2Reg = {}));
+var FlexVariant;
+(function (FlexVariant) {
+    FlexVariant[FlexVariant["Linear22Inch"] = 1] = "Linear22Inch";
+    FlexVariant[FlexVariant["Linear45Inch"] = 2] = "Linear45Inch";
+})(FlexVariant || (FlexVariant = {}));
+var FlexReg;
+(function (FlexReg) {
+    /**
+     * Read-only ratio u0.16 (uint16_t). The relative position of the slider.
+     *
+     * ```
+     * const [bending] = jdunpack<[number]>(buf, "u0.16")
+     * ```
+     */
+    FlexReg[FlexReg["Bending"] = 257] = "Bending";
+    /**
+     * Constant Variant (uint8_t). Specifies the physical layout of the flex sensor.
+     *
+     * ```
+     * const [variant] = jdunpack<[FlexVariant]>(buf, "u8")
+     * ```
+     */
+    FlexReg[FlexReg["Variant"] = 263] = "Variant";
+})(FlexReg || (FlexReg = {}));
 var GyroscopeReg;
 (function (GyroscopeReg) {
     /**
