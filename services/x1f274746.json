@@ -153,7 +153,7 @@
       "kind": "ro",
       "name": "position",
       "identifier": 257,
-      "description": "The relative position of the slider.",
+      "description": "The relative position of the slider between `0` and `1`.",
       "fields": [
         {
           "name": "_",
