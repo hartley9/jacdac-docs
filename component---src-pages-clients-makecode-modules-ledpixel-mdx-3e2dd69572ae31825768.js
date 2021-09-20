@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6771],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[3985],{
 
-/***/ 44737:
+/***/ 23344:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -39,14 +39,14 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
-    "id": "barometer-client",
+    "id": "led-pixel-extension",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h1",
-    "href": "#barometer-client",
-    "aria-label": "barometer client permalink",
+    "href": "#led-pixel-extension",
+    "aria-label": "led pixel extension permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -60,10 +60,7 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Barometer Client"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
-    parentName: "pre",
-    "className": "language-blocks"
-  }, "{\"source\":\"modules.barometer1.onPressureChangedBy(1, function() {\\n    \\n})\\n\\nlet temp = modules.barometer1.pressure()\",\"rendered\":{\"req\":{\"code\":\"modules.barometer1.onPressureChangedBy(1, function() {\\n    \\n})\\n\\nlet temp = modules.barometer1.pressure()\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-barometer=github:microsoft/pxt-jacdac/barometer\"},\"type\":\"renderblocks\",\"id\":\"1fd75c97e86df372b1af6e65461ebf86\"},\"url\":\"/images/makecode/1fd75c97e86df372b1af6e65461ebf86.png\",\"width\":952,\"height\":128}}\n")));
+  }))), "LED Pixel Extension"));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -89,4 +86,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-modules-barometer-mdx-08662e7c3131db887638.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-modules-ledpixel-mdx-3e2dd69572ae31825768.js.map
