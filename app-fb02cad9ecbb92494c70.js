@@ -63744,7 +63744,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "189a445aca7c55e6c791dad2b90f8e1a4e17858f";
+var sha = "d10caf37ce3928c5959497251c5d4b9e1219b848";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64632,7 +64632,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "189a445aca7c55e6c791dad2b90f8e1a4e17858f";
+  var sha = "d10caf37ce3928c5959497251c5d4b9e1219b848";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -66184,8 +66184,7 @@ function LayoutWithContext(props) {
   } = (0,react.useContext)(DarkModeContext/* default */.Z);
   var {
     drawerType,
-    toolsMenu,
-    enqueueSnackbar
+    toolsMenu
   } = (0,react.useContext)(AppContext/* default */.ZP);
   var drawerOpen = drawerType !== AppContext/* DrawerType.None */.jw.None;
   var {
@@ -66198,11 +66197,7 @@ function LayoutWithContext(props) {
     [classes.contentPadding]: !fullWidthTools,
     [classes.contentShift]: drawerOpen,
     [classes.toolsContentShift]: toolsMenu
-  }); // show under construction warning
-
-  (0,react.useEffect)(() => {
-    if (!hideUnderConstruction) enqueueSnackbar(UNDER_CONSTRUCTION_MESSAGE, "warning");
-  }, []);
+  });
 
   var InnerMainSection = () => /*#__PURE__*/react.createElement(react.Fragment, null, !hideUnderConstruction && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     closeable: true,
@@ -82113,4 +82108,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-6361df9d59f80cb8d91a.js.map
+//# sourceMappingURL=app-fb02cad9ecbb92494c70.js.map
