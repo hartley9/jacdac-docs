@@ -60,7 +60,16 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "LED Pixel Extension"));
+  }))), "LED Pixel Extension"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The LED pixel extension provides APIs for working with\nan strip of RGB LEDs, as well as a built-in set of animations."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The number of LEDs in the strip can be figured using the following\nmethod:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-blocks"
+  }, "{\"source\":\"modules.ledPixel1.configure(10)\",\"rendered\":{\"req\":{\"code\":\"modules.ledPixel1.configure(10)\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-led=github:microsoft/pxt-jacdac/led,jacdac-led-pixel=github:microsoft/pxt-jacdac/led-pixel\"},\"type\":\"renderblocks\",\"id\":\"439ed984818104d104210ebac3da3fc4\"},\"url\":\"/images/makecode/439ed984818104d104210ebac3da3fc4.png\",\"width\":531,\"height\":128}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The brightness of the strip can be set and retrieved as follows:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-blocks"
+  }, "{\"source\":\"modules.ledPixel1.setBrightness(85)\\nlet brightness = modules.ledPixel1.brightness()\\nbasic.showNumber(brightness)\",\"rendered\":{\"req\":{\"code\":\"modules.ledPixel1.setBrightness(85)\\nlet brightness = modules.ledPixel1.brightness()\\nbasic.showNumber(brightness)\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-led=github:microsoft/pxt-jacdac/led,jacdac-led-pixel=github:microsoft/pxt-jacdac/led-pixel\"},\"type\":\"renderblocks\",\"id\":\"4c39de6de714a78b959d95f6735693aa\"},\"url\":\"/images/makecode/4c39de6de714a78b959d95f6735693aa.png\",\"width\":542,\"height\":224}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "All the LEDs in the strip may be set to a given RGB color\n(encoded using )"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-blocks"
+  }, "{\"source\":\"input.onButtonPressed(Button.A, function () {\\n    modules.ledPixel1.setAll(0xff0000)\\n    modules.ledPixel1.setPixel(2, 0x00ffff)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.A, function () {\\n    modules.ledPixel1.setAll(0xff0000)\\n    modules.ledPixel1.setPixel(2, 0x00ffff)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-led=github:microsoft/pxt-jacdac/led,jacdac-led-pixel=github:microsoft/pxt-jacdac/led-pixel\"},\"type\":\"renderblocks\",\"id\":\"06ad264497f753daed9895d7792a70f8\"},\"url\":\"/images/makecode/06ad264497f753daed9895d7792a70f8.png\",\"width\":522,\"height\":176}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -86,4 +95,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-ledpixel-mdx-9fdcc569e897000313dd.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-ledpixel-mdx-a791c579a158609aaf58.js.map

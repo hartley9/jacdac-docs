@@ -63836,7 +63836,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "b1c59b39dab9ce91fa8374be51367f74733fd6d4";
+var sha = "96f367eda39af4a818c8fa15ab1a2bc5a2b38791";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64724,7 +64724,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "b1c59b39dab9ce91fa8374be51367f74733fd6d4";
+  var sha = "96f367eda39af4a818c8fa15ab1a2bc5a2b38791";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -77198,6 +77198,7 @@ exports.components = {
   "component---src-pages-clients-makecode-extensions-barometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-barometer-mdx */ 5804).then(__webpack_require__.bind(__webpack_require__, 96240)),
   "component---src-pages-clients-makecode-extensions-button-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-button-mdx */ 3838).then(__webpack_require__.bind(__webpack_require__, 37808)),
   "component---src-pages-clients-makecode-extensions-ledpixel-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-ledpixel-mdx */ 1914).then(__webpack_require__.bind(__webpack_require__, 27122)),
+  "component---src-pages-clients-makecode-extensions-lightlevel-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-lightlevel-mdx */ 6152).then(__webpack_require__.bind(__webpack_require__, 97742)),
   "component---src-pages-clients-makecode-extensions-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-mdx */ 2763).then(__webpack_require__.bind(__webpack_require__, 42321)),
   "component---src-pages-clients-makecode-extensions-potentiometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-potentiometer-mdx */ 7129).then(__webpack_require__.bind(__webpack_require__, 95380)),
   "component---src-pages-clients-makecode-extensions-relay-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-relay-mdx */ 8918).then(__webpack_require__.bind(__webpack_require__, 26204)),
@@ -82200,4 +82201,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-328040e6e58c4c0262e5.js.map
+//# sourceMappingURL=app-fd0f747a361c1f655223.js.map
