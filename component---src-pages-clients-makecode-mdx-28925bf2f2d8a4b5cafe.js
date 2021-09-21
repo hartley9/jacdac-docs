@@ -65,7 +65,9 @@ function MDXContent(_ref) {
     "href": "https://github.com/microsoft/pxt-jacdac",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "pxt-jacdac"), " extension contains MakeCode support many Jacdac services."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "pxt-jacdac"), " extension contains MakeCode support for many Jacdac services. Each Jacdac service is represented by a separate MakeCode extension within the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+    parentName: "p"
+  }, "pxt-jacdac"), " repo; MakeCode knows which services a Jacdac module (physical or simulated) supports to help you get started quickly."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "getting-started",
     "style": {
       "position": "relative"
@@ -186,7 +188,7 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, "Click on ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "li"
-  }, "Add Blocks"), " to add the blocks for these modules in your project."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Add Blocks"), " to add the extensions for these modules' services in your project."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, "Open the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "li"
@@ -204,7 +206,7 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, "Click on ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "li"
-  }, "Add Blocks"), " and follow the same procedure as physical modules.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+  }, "Add Blocks"), " and follow the same procedure as for physical modules.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
     parentName: "p",
     "src": "/jacdac-docs/static/addbutton-214fda366f85cbd55239953b12e93a74.gif",
     "alt": "Add Jacdac button extension from simulator"
@@ -276,4 +278,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-mdx-610487a5b9ab011a81d3.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-mdx-28925bf2f2d8a4b5cafe.js.map
