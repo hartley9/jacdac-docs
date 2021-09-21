@@ -50686,7 +50686,6 @@ var DeviceLostAlert = __webpack_require__(60145);
 
 
 
-
 var ignoredServices = [constants/* SRV_CONTROL */.gm9, constants/* SRV_LOGGER */.w9j, constants/* SRV_SETTINGS */.B9b, constants/* SRV_PROTO_TEST */.$Bn];
 function DashboardDevice(props) {
   var {
@@ -50696,12 +50695,8 @@ function DashboardDevice(props) {
     toggleExpanded,
     variant,
     showAvatar,
-    showHeader,
-    hideNotifications
+    showHeader
   } = props;
-  var {
-    enqueueSnackbar
-  } = (0,react.useContext)(AppContext/* default */.ZP);
   var {
     xs: mobile
   } = (0,useMediaQueries/* default */.Z)();
@@ -50713,9 +50708,7 @@ function DashboardDevice(props) {
 
   var serviceGridRef = (0,react.useRef)();
   var intersection = useIntersectionObserver(serviceGridRef);
-  var visible = !!(intersection !== null && intersection !== void 0 && intersection.isIntersecting); // track restart events
-
-  (0,react.useEffect)(() => !hideNotifications && (device === null || device === void 0 ? void 0 : device.subscribe(constants/* RESTART */.d0K, () => enqueueSnackbar(device.shortId + " restarted...", "info"))), [device]);
+  var visible = !!(intersection !== null && intersection !== void 0 && intersection.isIntersecting);
   var ServiceWidgets = (0,react.useCallback)(() => {
     var _services$filter, _services$filter$filt;
 
@@ -63831,7 +63824,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "c8fbd918fb33b54100957308ea5c2205bfd39517";
+var sha = "b0dbdeb70364e8c13045b09f3daf29ef8c2861f6";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64719,7 +64712,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "c8fbd918fb33b54100957308ea5c2205bfd39517";
+  var sha = "b0dbdeb70364e8c13045b09f3daf29ef8c2861f6";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74792,7 +74785,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.17.3"};
+var package_namespaceObject = {"i8":"1.17.4"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -82195,4 +82188,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-76d3f5b69fee4b941a97.js.map
+//# sourceMappingURL=app-3956470a612660a19aaf.js.map
