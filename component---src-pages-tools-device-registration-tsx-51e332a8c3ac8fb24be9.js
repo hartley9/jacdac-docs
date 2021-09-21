@@ -1455,13 +1455,10 @@ function DeviceRegistration() {
     var controlService = dev.service(0);
     var descrReg = controlService.register(specconstants/* ControlReg.DeviceDescription */.toU.DeviceDescription);
     yield descrReg.refresh(true);
-    var urlReg = controlService.register(specconstants/* ControlReg.DeviceUrl */.toU.DeviceUrl);
-    yield urlReg.refresh(true);
     var fw = yield dev.resolveProductIdentifier();
     if (fw) device.productIdentifiers = [fw];
     device.services = dev.serviceClasses.slice(1);
     device.description = descrReg.stringValue;
-    device.link = urlReg.stringValue;
     updateDevice();
   });
 
@@ -1644,4 +1641,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-59fcb222fb90da828a05.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-51e332a8c3ac8fb24be9.js.map
