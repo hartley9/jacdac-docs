@@ -168,14 +168,14 @@ function MDXContent(_ref) {
     "src": "/jacdac-docs/static/onebrain-5bc7a4139a15944dfaf30476370864e9.gif",
     "alt": "Switching proxy mode between simulator and hardware micro:bit"
   })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
-    "id": "roles",
+    "id": "multiple-roles",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h2",
-    "href": "#roles",
-    "aria-label": "roles permalink",
+    "href": "#multiple-roles",
+    "aria-label": "multiple roles permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -189,7 +189,7 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Roles"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "When running your code, Jacdac binds the modules detected on the bus with the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+  }))), "Multiple Roles"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "When running your code, Jacdac binds the modules detected on the bus with the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "p"
   }, "roles"), " defined in your program.\nEach service comes with a default role which is typically what you start with. For example ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
@@ -206,7 +206,11 @@ function MDXContent(_ref) {
     parentName: "li"
   }, "Settings"), " to open the roles editor"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, "Add and remove roles and go back")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Once reloaded, you should be able to select your roles in the block drop downs."));
+  }, "Add and remove roles and go back")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Once reloaded, you should be able to select your roles in the block drop downs."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+    parentName: "p",
+    "src": "/jacdac-docs/static/multiroles-6ae1fdc24f1c5dba3e8ad86792c6ba91.gif",
+    "alt": "An animation that shows how to create new roles"
+  })));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -232,4 +236,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-user-guide-mdx-4bc270a21199604e07c1.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-user-guide-mdx-1ebc0e54e7035eaea5b3.js.map
