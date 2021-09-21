@@ -127,10 +127,10 @@ function MDXContent(_ref) {
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
   }))), "Registers"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The low-level state of the button is accesible via the the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "pressure"), " register,\nwhich ranges in value from where 0 is open and 100 is fully pressed."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "pressure"), " register,\nwhich ranges in value from 0-100, where 0 is open and 100 is fully pressed."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"basic.forever(() => {\\n    if (modules.button1.pressure() === 100) \\n        basic.showString(\\\"D\\\")\\n    else if (modules.button1.pressure() === 0)\\n        basic.showString(\\\"U\\\")\\n    else\\n        basic.showString(\\\"x\\\")\\n})\",\"rendered\":{\"req\":{\"code\":\"basic.forever(() => {\\n    if (modules.button1.pressure() === 100) \\n        basic.showString(\\\"D\\\")\\n    else if (modules.button1.pressure() === 0)\\n        basic.showString(\\\"U\\\")\\n    else\\n        basic.showString(\\\"x\\\")\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-button=github:microsoft/pxt-jacdac/button\"},\"type\":\"renderblocks\",\"id\":\"f95a41824e53b1d6d66522bbab3413c1\"},\"url\":\"/images/makecode/f95a41824e53b1d6d66522bbab3413c1.png\",\"width\":609,\"height\":416}}\n")));
+  }, "{\"source\":\"basic.forever(() => {\\n    if (modules.button1.pressure() >= 99)       // see https://github.com/microsoft/jacdac/issues/644\\n        basic.showString(\\\"D\\\")\\n    else if (modules.button1.pressure() === 0)\\n        basic.showString(\\\"U\\\")\\n    else\\n        basic.showString(\\\"x\\\")\\n})\",\"rendered\":{\"req\":{\"code\":\"basic.forever(() => {\\n    if (modules.button1.pressure() >= 99)       // see https://github.com/microsoft/jacdac/issues/644\\n        basic.showString(\\\"D\\\")\\n    else if (modules.button1.pressure() === 0)\\n        basic.showString(\\\"U\\\")\\n    else\\n        basic.showString(\\\"x\\\")\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-button=github:microsoft/pxt-jacdac/button\"},\"type\":\"renderblocks\",\"id\":\"3c0db391086a2e74834cdcb35070d843\"},\"url\":\"/images/makecode/3c0db391086a2e74834cdcb35070d843.png\",\"width\":609,\"height\":416}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -156,4 +156,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-button-mdx-766f7512b6fc20a88726.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-button-mdx-b12e7c42238846a9b10d.js.map
