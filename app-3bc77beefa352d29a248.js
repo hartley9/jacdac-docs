@@ -52969,7 +52969,7 @@ function Clients() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     right: false,
     subtitle: "MakeCode",
-    description: "Code Jacdac into your micro:bit V2, Arcade or Maker board.",
+    description: "Code Jacdac using a micro:bit V2, Arcade or Maker board.",
     buttonText: "MakeCode extension",
     buttonVariant: "link",
     buttonUrl: "/clients/makecode",
@@ -63969,7 +63969,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "2117531c14dffcc9f7b83d8da987e2fe6b27f7c0";
+var sha = "ff3c3d8782e1d0ff0646d2213689a680117e9607";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64863,7 +64863,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2117531c14dffcc9f7b83d8da987e2fe6b27f7c0";
+  var sha = "ff3c3d8782e1d0ff0646d2213689a680117e9607";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82435,4 +82435,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-1c096cdccf8ec9990fc5.js.map
+//# sourceMappingURL=app-3bc77beefa352d29a248.js.map
