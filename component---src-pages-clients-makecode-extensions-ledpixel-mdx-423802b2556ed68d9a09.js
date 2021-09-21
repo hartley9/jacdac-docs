@@ -73,12 +73,14 @@ function MDXContent(_ref) {
     "className": "language-blocks"
   }, "{\"source\":\"input.onButtonPressed(Button.A, function() {\\n    modules.ledPixel1.setAll(0x00FF00)   // set all pixels green on button press\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.A, function() {\\n    modules.ledPixel1.setAll(0x00FF00)   // set all pixels green on button press\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-led=github:microsoft/pxt-jacdac/led,jacdac-led-pixel=github:microsoft/pxt-jacdac/led-pixel\"},\"type\":\"renderblocks\",\"id\":\"4daa024a9e5fb2ae421e4aa902b484fc\"},\"url\":\"/images/makecode/4daa024a9e5fb2ae421e4aa902b484fc.png\",\"width\":457,\"height\":128}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Pixels can be individually set using the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "setPixel"), " method as shown in the\nexample below (note that this code is contained in the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "setPixel"), " method as shown in the\nexample below, which also uses the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "onConnected"), " handler\nso that it runs as soon as the device is connected to the Jacdac bus):"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "numPixels"), " method to get the number\nof pixels supported by the underlying hardware. Finally, note that the code\nis contained in the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "onConnected"), " handler so that it runs as soon as the\ndevice is connected to the Jacdac bus)."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.ledPixel1.onConnected(() => {\\n    modules.ledPixel1.setBrightness(85)\\n    modules.ledPixel1.setNumPixels(10)\\n    for(let i=0; i<10; i++) {\\n        modules.ledPixel1.setPixel(i, 0x00ff00)\\n        basic.pause(200)\\n    }    \\n})\",\"rendered\":{\"req\":{\"code\":\"modules.ledPixel1.onConnected(() => {\\n    modules.ledPixel1.setBrightness(85)\\n    modules.ledPixel1.setNumPixels(10)\\n    for(let i=0; i<10; i++) {\\n        modules.ledPixel1.setPixel(i, 0x00ff00)\\n        basic.pause(200)\\n    }    \\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-led=github:microsoft/pxt-jacdac/led,jacdac-led-pixel=github:microsoft/pxt-jacdac/led-pixel\"},\"type\":\"renderblocks\",\"id\":\"f295b8f1d0ac2b24c99ddfa65c649508\"},\"url\":\"/images/makecode/f295b8f1d0ac2b24c99ddfa65c649508.png\",\"width\":622,\"height\":352}}\n")));
+  }, "{\"source\":\"modules.ledPixel1.onConnected(() => {\\n    modules.ledPixel1.setBrightness(85)\\n    modules.ledPixel1.setAll(0)\\n    let numPixels = modules.ledPixel1.numPixels()\\n    for(let i=0; i<numPixels; i++) {\\n        modules.ledPixel1.setPixel(i, 0x00ff00)\\n        basic.pause(200)\\n    }    \\n})\",\"rendered\":{\"req\":{\"code\":\"modules.ledPixel1.onConnected(() => {\\n    modules.ledPixel1.setBrightness(85)\\n    modules.ledPixel1.setAll(0)\\n    let numPixels = modules.ledPixel1.numPixels()\\n    for(let i=0; i<numPixels; i++) {\\n        modules.ledPixel1.setPixel(i, 0x00ff00)\\n        basic.pause(200)\\n    }    \\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-led=github:microsoft/pxt-jacdac/led,jacdac-led-pixel=github:microsoft/pxt-jacdac/led-pixel\"},\"type\":\"renderblocks\",\"id\":\"6b2a8dca2042a98d9bb0efbf81c20dc9\"},\"url\":\"/images/makecode/6b2a8dca2042a98d9bb0efbf81c20dc9.png\",\"width\":622,\"height\":408}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -104,4 +106,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-ledpixel-mdx-8cc281b55a6b8a0a557e.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-ledpixel-mdx-423802b2556ed68d9a09.js.map
