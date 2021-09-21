@@ -63969,7 +63969,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "ed70ccae4f5801e9a1423e8328c8f32b8fffaaa0";
+var sha = "2117531c14dffcc9f7b83d8da987e2fe6b27f7c0";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64832,16 +64832,22 @@ var DarkModeProvider = __webpack_require__(7796);
 var DarkModeContext = __webpack_require__(91350);
 // EXTERNAL MODULE: ./src/components/ui/Alert.tsx
 var Alert = __webpack_require__(95453);
+// EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
+var gatsby_theme_material_ui = __webpack_require__(36176);
 ;// CONCATENATED MODULE: ./src/components/shell/Footer.tsx
+
 
 
 var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default */.Z)({
   footer: {
     textAlign: "center",
     "& *": {
-      fontSize: theme.typography.fontSize * 0.7 + "px",
+      fontSize: theme.typography.fontSize * 0.8 + "px",
       textDecoration: "none",
       color: theme.palette.text.primary
+    },
+    "& .note": {
+      fontSize: theme.typography.fontSize * 0.9 + "px"
     },
     "& a:hover": {
       textDecoration: "underline"
@@ -64857,11 +64863,15 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "ed70ccae4f5801e9a1423e8328c8f32b8fffaaa0";
+  var sha = "2117531c14dffcc9f7b83d8da987e2fe6b27f7c0";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
-  }, /*#__PURE__*/react.createElement("a", {
+  }, /*#__PURE__*/react.createElement("div", {
+    className: "note"
+  }, "This web site collects anonymous usage analytics.", " ", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+    to: "/privacy/"
+  }, "Learn more...")), /*#__PURE__*/react.createElement("a", {
     href: "https://github.com/microsoft/jacdac/discussions",
     target: "_blank",
     rel: "noopener noreferrer"
@@ -64892,8 +64902,6 @@ var flags = __webpack_require__(21258);
 var Suspense = __webpack_require__(69672);
 // EXTERNAL MODULE: ./node_modules/@mdx-js/react/dist/esm.js
 var esm = __webpack_require__(64983);
-// EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
-var gatsby_theme_material_ui = __webpack_require__(36176);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/useTheme.js
 var useTheme = __webpack_require__(59355);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Box/Box.js + 13 modules
@@ -77366,6 +77374,7 @@ exports.components = {
   "component---src-pages-hardware-kit-oob-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-kit-oob-mdx */ 915).then(__webpack_require__.bind(__webpack_require__, 51697)),
   "component---src-pages-hardware-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-mdx */ 3244).then(__webpack_require__.bind(__webpack_require__, 67319)),
   "component---src-pages-index-mdx": () => __webpack_require__.e(/* import() | component---src-pages-index-mdx */ 4809).then(__webpack_require__.bind(__webpack_require__, 95646)),
+  "component---src-pages-privacy-mdx": () => __webpack_require__.e(/* import() | component---src-pages-privacy-mdx */ 5853).then(__webpack_require__.bind(__webpack_require__, 92574)),
   "component---src-pages-protocol-mdx": () => __webpack_require__.e(/* import() | component---src-pages-protocol-mdx */ 1115).then(__webpack_require__.bind(__webpack_require__, 99708)),
   "component---src-pages-services-tsx": () => __webpack_require__.e(/* import() | component---src-pages-services-tsx */ 7858).then(__webpack_require__.bind(__webpack_require__, 19430)),
   "component---src-pages-software-mdx": () => __webpack_require__.e(/* import() | component---src-pages-software-mdx */ 8307).then(__webpack_require__.bind(__webpack_require__, 46690)),
@@ -82426,4 +82435,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-6ee14ee1adc24f2f5792.js.map
+//# sourceMappingURL=app-1c096cdccf8ec9990fc5.js.map
