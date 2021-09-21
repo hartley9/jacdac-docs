@@ -53923,7 +53923,7 @@ function Kit() {
 
 
 var DeviceSpecificationList = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 6684).then(__webpack_require__.bind(__webpack_require__, 46684)));
-var modules = ["microsoft-research-jmrgbledringv21", "microsoft-research-jmkeyboardkey46v10", "microsoft-research-jmbutton10v13", "microsoft-research-jmrotaryctrlbtnv10", "microsoft-research-jmanalogjoystick44v02"];
+var modules = ["microbit-foundation-microbitv2", "microsoft-research-jmrgbledringv21", "microsoft-research-jmkeyboardkey46v10", "microsoft-research-jmbutton10v13", "microsoft-research-jmrotaryctrlbtnv10", "microsoft-research-jmanalogjoystick44v02", "microsoft-research-jmtemphumidity18v11"];
 function KitModules() {
   var {
     mobile,
@@ -64002,7 +64002,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "895f9a55067d2fffba6942520a2dd4483b3b68e0";
+var sha = "eb93e95e96e03b718de6e4ec3591e7a3e6898700";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64896,7 +64896,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "895f9a55067d2fffba6942520a2dd4483b3b68e0";
+  var sha = "eb93e95e96e03b718de6e4ec3591e7a3e6898700";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82506,4 +82506,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-42d69f9698fed152649d.js.map
+//# sourceMappingURL=app-22e86ec09d305fefdaa3.js.map
