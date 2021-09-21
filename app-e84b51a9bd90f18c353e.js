@@ -53815,54 +53815,77 @@ function Home() {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ Kit; }
 /* harmony export */ });
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(80838);
-/* harmony import */ var gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2359);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(80838);
+/* harmony import */ var gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2359);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _SplitGrid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(72587);
+/* harmony import */ var _CarouselGrid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(30043);
+/* harmony import */ var _FeatureItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(19586);
+/* harmony import */ var _SplitGrid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(72587);
+
+
 
 
 
 
 function Kit() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     container: true,
     spacing: 10,
     direction: "column",
     alignContent: "center",
     alignItems: "center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     title: "Hardware Kit",
-    subtitle3: "Hardware Module Kit",
+    subtitle3: "Start experimenting with Jacdac and the Hardware module kit.",
     imageColumns: 6,
-    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_3__.S, {
-      src: "./kittop.jpg",
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
+      src: "./kit/topfront.jpg",
       alt: "Kit cardboard view from top",
-      __imageData: __webpack_require__(60707)
+      __imageData: __webpack_require__(24678)
     })
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
-    right: true,
-    subtitle: "Explore",
-    subtitle3: "Use the dashboard to interact with modules in the browser.",
-    imageColumns: 6,
-    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_3__.S, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CarouselGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+    item: true,
+    xs: 12,
+    sm: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FeatureItem__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    startImage: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
+      src: "./kit/opentopside.jpg",
+      alt: "Hardware kit box opened with contents on a table",
+      __imageData: __webpack_require__(71958)
+    }),
+    subtitle2: "Unbox",
+    description: "Use the dashboard to interact with modules in the browser.",
+    buttonText: "Modules",
+    buttonUrl: "/hardware/kit/modules"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+    item: true,
+    xs: 12,
+    sm: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FeatureItem__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    startImage: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
       src: "./dashboardkit.png",
       alt: "Jacdac devices connected to a computer with a dashboard",
       __imageData: __webpack_require__(84395)
     }),
+    subtitle2: "Explore",
+    description: "Use the dashboard to interact with modules in the browser.",
     buttonText: "Dashboard",
     buttonUrl: "/dashboard"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
-    right: false,
-    subtitle: "Build",
-    description: "Code Jacdac into your micro:bit V2, Arcade or Maker board.",
-    buttonText: "MakeCode",
-    buttonUrl: "/clients/makecode",
-    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_3__.S, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+    item: true,
+    xs: 12,
+    sm: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FeatureItem__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    startImage: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
       src: "./makecode.png",
       alt: "Block code to swipe a servo",
       __imageData: __webpack_require__(77042)
-    })
-  }));
+    }),
+    subtitle: "Build",
+    description: "Code Jacdac into your micro:bit V2, Arcade or Maker board.",
+    buttonText: "MakeCode",
+    buttonUrl: "/clients/makecode"
+  }))));
 }
 
 /***/ }),
@@ -63836,7 +63859,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "96f367eda39af4a818c8fa15ab1a2bc5a2b38791";
+var sha = "598917af5268de97990dbeb00d4ea0373293b046";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64724,7 +64747,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "96f367eda39af4a818c8fa15ab1a2bc5a2b38791";
+  var sha = "598917af5268de97990dbeb00d4ea0373293b046";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82018,6 +82041,14 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 
 /***/ }),
 
+/***/ 71958:
+/***/ (function(module) {
+
+"use strict";
+module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8","images":{"fallback":{"src":"/jacdac-docs/static/e3f7c24a4e4f6aeb589bd804a63d560d/3ceff/opentopside.jpg","srcSet":"/jacdac-docs/static/e3f7c24a4e4f6aeb589bd804a63d560d/b711f/opentopside.jpg 726w,\\n/jacdac-docs/static/e3f7c24a4e4f6aeb589bd804a63d560d/b7618/opentopside.jpg 1453w,\\n/jacdac-docs/static/e3f7c24a4e4f6aeb589bd804a63d560d/3ceff/opentopside.jpg 2905w","sizes":"(min-width: 2905px) 2905px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/e3f7c24a4e4f6aeb589bd804a63d560d/e4c21/opentopside.webp 726w,\\n/jacdac-docs/static/e3f7c24a4e4f6aeb589bd804a63d560d/36160/opentopside.webp 1453w,\\n/jacdac-docs/static/e3f7c24a4e4f6aeb589bd804a63d560d/b53a3/opentopside.webp 2905w","type":"image/webp","sizes":"(min-width: 2905px) 2905px, 100vw"}]},"width":2905,"height":2905}');
+
+/***/ }),
+
 /***/ 91241:
 /***/ (function(module) {
 
@@ -82146,6 +82177,14 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#080808"
 
 /***/ }),
 
+/***/ 24678:
+/***/ (function(module) {
+
+"use strict";
+module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8","images":{"fallback":{"src":"/jacdac-docs/static/190dad4f98d76ddfeb16e09f1d653f45/3ceff/topfront.jpg","srcSet":"/jacdac-docs/static/190dad4f98d76ddfeb16e09f1d653f45/b711f/topfront.jpg 726w,\\n/jacdac-docs/static/190dad4f98d76ddfeb16e09f1d653f45/b7618/topfront.jpg 1453w,\\n/jacdac-docs/static/190dad4f98d76ddfeb16e09f1d653f45/3ceff/topfront.jpg 2905w","sizes":"(min-width: 2905px) 2905px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/190dad4f98d76ddfeb16e09f1d653f45/e4c21/topfront.webp 726w,\\n/jacdac-docs/static/190dad4f98d76ddfeb16e09f1d653f45/36160/topfront.webp 1453w,\\n/jacdac-docs/static/190dad4f98d76ddfeb16e09f1d653f45/b53a3/topfront.webp 2905w","type":"image/webp","sizes":"(min-width: 2905px) 2905px, 100vw"}]},"width":2905,"height":2905}');
+
+/***/ }),
+
 /***/ 91798:
 /***/ (function(module) {
 
@@ -82201,4 +82240,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-fd0f747a361c1f655223.js.map
+//# sourceMappingURL=app-e84b51a9bd90f18c353e.js.map
