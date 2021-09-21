@@ -495,13 +495,18 @@ function ServiceSpecificationSelect(props) {
     setServiceClass,
     variant,
     fullWidth,
-    error
+    error,
+    hasRegisteredDevice
   } = props;
   var {
     0: labelId
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("select-" + Math.random());
   var classes = useStyles();
-  var specs = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .serviceSpecifications */ .Le)().filter(spec => !/^_/.test(spec.shortId));
+  var specs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .serviceSpecifications */ .Le)().filter(spec => !/^_/.test(spec.shortId)).filter(spec => {
+    var _deviceSpecifications;
+
+    return !hasRegisteredDevice || !!((_deviceSpecifications = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .deviceSpecificationsForService */ .zn)(spec.classIdentifier)) !== null && _deviceSpecifications !== void 0 && _deviceSpecifications.length);
+  }), [hasRegisteredDevice]);
 
   var handleChange = event => setServiceClass(parseInt(event.target.value));
 
@@ -595,7 +600,8 @@ function FilteredDeviceSpecificationList(props) {
   }, /*#__PURE__*/react.createElement(ServiceSpecificationSelect/* default */.Z, {
     label: "Filter by Service",
     serviceClass: serviceClass,
-    setServiceClass: handleServiceChanged
+    setServiceClass: handleServiceChanged,
+    hasRegisteredDevice: true
   })), /*#__PURE__*/react.createElement(DeviceSpecificationList["default"], Object.assign({}, others, {
     requiredServiceClasses: requiredServiceClasses
   })));
@@ -627,4 +633,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-devices-tsx-3997807f7243a4870215.js.map
+//# sourceMappingURL=component---src-pages-devices-tsx-73996629e1b27788f0df.js.map

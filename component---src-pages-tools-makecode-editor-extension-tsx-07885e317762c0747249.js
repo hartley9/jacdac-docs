@@ -179,13 +179,18 @@ function ServiceSpecificationSelect(props) {
     setServiceClass,
     variant,
     fullWidth,
-    error
+    error,
+    hasRegisteredDevice
   } = props;
   var {
     0: labelId
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("select-" + Math.random());
   var classes = useStyles();
-  var specs = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .serviceSpecifications */ .Le)().filter(spec => !/^_/.test(spec.shortId));
+  var specs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .serviceSpecifications */ .Le)().filter(spec => !/^_/.test(spec.shortId)).filter(spec => {
+    var _deviceSpecifications;
+
+    return !hasRegisteredDevice || !!((_deviceSpecifications = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .deviceSpecificationsForService */ .zn)(spec.classIdentifier)) !== null && _deviceSpecifications !== void 0 && _deviceSpecifications.length);
+  }), [hasRegisteredDevice]);
 
   var handleChange = event => setServiceClass(parseInt(event.target.value));
 
@@ -922,4 +927,4 @@ function MakeCodeEditorExtensionPage() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-makecode-editor-extension-tsx-322e9ec9d5c1e53d82c3.js.map
+//# sourceMappingURL=component---src-pages-tools-makecode-editor-extension-tsx-07885e317762c0747249.js.map
