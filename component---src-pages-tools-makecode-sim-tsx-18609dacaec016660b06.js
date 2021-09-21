@@ -515,7 +515,7 @@ function Carousel() {
     deviceSort: deviceSort,
     deviceFilter: deviceFilter,
     serviceFilter: serviceFilter,
-    showStartSimulators: false,
+    showStartSimulators: true,
     hideNotifications: true
   });
 }
@@ -549,4 +549,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-makecode-sim-tsx-585690f07c4f04deeb0f.js.map
+//# sourceMappingURL=component---src-pages-tools-makecode-sim-tsx-18609dacaec016660b06.js.map
