@@ -19192,34 +19192,6 @@ exports.Z = _default;
 
 /***/ }),
 
-/***/ 96522:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-var __webpack_unused_export__;
-
-
-var _interopRequireDefault = __webpack_require__(95318);
-
-var _interopRequireWildcard = __webpack_require__(20862);
-
-__webpack_unused_export__ = ({
-  value: true
-});
-exports.Z = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(67294));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14zM6 13h5v4H6zm6-6h4v3h-4zM6 7h5v5H6zm6 4h4v6h-4z"
-}), 'DeveloperBoard');
-
-exports.Z = _default;
-
-/***/ }),
-
 /***/ 6212:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -50447,9 +50419,9 @@ function ConnectButton(props) {
 /* harmony import */ var _ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(79885);
 /* harmony import */ var _hooks_useMediaQueries__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20509);
 /* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(54774);
-/* harmony import */ var _material_ui_icons_DeveloperBoard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(96522);
 /* harmony import */ var _ui_Button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2636);
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(84377);
+/* harmony import */ var _icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(36656);
 
 
 
@@ -50475,18 +50447,18 @@ function DisconnectedButton(props) {
   var small = full !== true && (!full || mobile);
   var trackName = "transport.connect.start";
   if (small) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
-    title: "Connect to physical device",
+    title: "Connect to a physical device",
     color: transparent ? "inherit" : "primary",
     className: className,
     onClick: toggleShowConnectTransportDialog
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_DeveloperBoard__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null)));else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Button__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null)));else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Button__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
     trackName: trackName,
     title: "Connect to a physical device",
     size: "small",
     variant: transparent ? "outlined" : "contained",
     color: transparent ? "inherit" : "primary",
     className: className,
-    startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_DeveloperBoard__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null),
+    startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null),
     onClick: toggleShowConnectTransportDialog
   }, "Connect");
 }
@@ -64030,7 +64002,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "ec73ffec199903bb9bc70b3e0c6787056d621f7e";
+var sha = "50809ffc8385623b15bf9a50423ab8b52c9fac89";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64924,7 +64896,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "ec73ffec199903bb9bc70b3e0c6787056d621f7e";
+  var sha = "50809ffc8385623b15bf9a50423ab8b52c9fac89";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82534,4 +82506,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-8cd6250e15da21eff037.js.map
+//# sourceMappingURL=app-77050ada0a48af6b8942.js.map
