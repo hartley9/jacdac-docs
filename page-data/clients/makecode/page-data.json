@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-clients-makecode-mdx",
     "path": "/clients/makecode/",
-    "result": {"pageContext":{"frontmatter":{"title":"MakeCode","weight":0}}},
+    "result": {"pageContext":{"frontmatter":{"title":"MakeCode","order":0}}},
     "staticQueryHashes": ["249313281","2744294623","2898794040","413816803","63159454"]}
