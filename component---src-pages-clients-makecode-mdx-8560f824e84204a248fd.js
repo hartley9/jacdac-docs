@@ -65,9 +65,12 @@ function MDXContent(_ref) {
     "href": "https://github.com/microsoft/pxt-jacdac",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "pxt-jacdac"), " extension contains MakeCode support for many Jacdac services. Each Jacdac service is represented by a separate MakeCode extension within the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
-    parentName: "p"
-  }, "pxt-jacdac"), " repo; MakeCode knows which services a Jacdac module (physical or simulated) supports to help you get started quickly."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "pxt-jacdac"), " extension contains MakeCode support for many Jacdac services.\nEach Jacdac service is represented by a separate MakeCode extension within the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "https://github.com/microsoft/pxt-jacdac",
+    "target": "_blank",
+    "rel": "nofollow noopener noreferrer"
+  }, "pxt-jacdac repository"), ";\nMakeCode knows which services a Jacdac module (physical or simulated) supports to help you get started quickly."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "getting-started",
     "style": {
       "position": "relative"
@@ -278,4 +281,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-mdx-28925bf2f2d8a4b5cafe.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-mdx-8560f824e84204a248fd.js.map
