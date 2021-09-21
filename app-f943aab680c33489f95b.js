@@ -53861,7 +53861,7 @@ function Kit() {
       alt: "Block code to swipe a servo",
       __imageData: __webpack_require__(44133)
     }),
-    subtitle: "Build",
+    subtitle2: "Build",
     description: "Code Jacdac into your micro:bit V2, Arcade or Maker board.",
     buttonText: "MakeCode",
     buttonUrl: "/clients/makecode"
@@ -63944,7 +63944,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "687ab2a69155c69e11a4f1cfbd8eda21d07214c2";
+var sha = "4d10e95f4a7fba5fee360584c4925880c9d8d46d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64832,7 +64832,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "687ab2a69155c69e11a4f1cfbd8eda21d07214c2";
+  var sha = "4d10e95f4a7fba5fee360584c4925880c9d8d46d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82384,4 +82384,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-b060ae137b89f066a196.js.map
+//# sourceMappingURL=app-f943aab680c33489f95b.js.map
