@@ -784,6 +784,8 @@ var gatsby_theme_material_ui = __webpack_require__(36176);
 var ServiceSpecificationCard = __webpack_require__(21623);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(80453);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Box/Box.js + 13 modules
+var Box = __webpack_require__(33287);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
 var Grid = __webpack_require__(80838);
 // EXTERNAL MODULE: ./src/components/useGridBreakpoints.ts
@@ -885,20 +887,21 @@ function DeviceSpecification(props) {
     variant: "subtitle1"
   }, "by", " ", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     to: "/devices/" + (0,spec/* identifierToUrlPath */.uM)((0,jdspec/* escapeDeviceIdentifier */.o9)(device.company))
-  }, device.company)), /*#__PURE__*/react.createElement("img", {
+  }, device.company), !!((_device$productIdenti = device.productIdentifiers) !== null && _device$productIdenti !== void 0 && _device$productIdenti.length) && /*#__PURE__*/react.createElement(react.Fragment, null, "\xA0", device.productIdentifiers.map(identifier => /*#__PURE__*/react.createElement(IDChip/* default */.Z, {
+    key: identifier,
+    id: identifier,
+    filter: "pid:0x" + identifier.toString(16)
+  })))), /*#__PURE__*/react.createElement(Box/* default */.Z, {
+    mt: 1
+  }, /*#__PURE__*/react.createElement("img", {
     alt: "device " + device.name,
     src: imageUrl,
     loading: "lazy"
-  }), device.description && /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
+  })), device.description && /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
     source: device.description
   }), device.repo && /*#__PURE__*/react.createElement(FirmwareCard/* default */.Z, {
     slug: device.repo
-  }), !!((_device$productIdenti = device.productIdentifiers) !== null && _device$productIdenti !== void 0 && _device$productIdenti.length) && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Product identifiers"), /*#__PURE__*/react.createElement("ul", null, device.productIdentifiers.map(identifier => /*#__PURE__*/react.createElement("li", {
-    key: identifier
-  }, /*#__PURE__*/react.createElement(IDChip/* default */.Z, {
-    id: identifier,
-    filter: "pid:0x" + identifier.toString(16)
-  }))))), /*#__PURE__*/react.createElement("h3", null, "Services"), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }), /*#__PURE__*/react.createElement("h3", null, "Services"), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
     spacing: 2
   }, device.services.map(sc => (0,spec/* serviceSpecificationFromClassIdentifier */.d5)(sc)).map(spec => /*#__PURE__*/react.createElement(Grid/* default */.Z, Object.assign({
@@ -906,7 +909,7 @@ function DeviceSpecification(props) {
     key: spec.shortId
   }, gridBreakpoints), /*#__PURE__*/react.createElement(ServiceSpecificationCard/* default */.Z, {
     specification: spec
-  })))), showSource && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h2", null, "Specification"), /*#__PURE__*/react.createElement(DeviceSpecificationSource, {
+  })))), showSource && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Specification"), /*#__PURE__*/react.createElement(DeviceSpecificationSource, {
     deviceSpecification: device,
     showJSON: true
   })));
@@ -927,4 +930,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-ef87df70edd8ce449662.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-efcb06add1f8d36a9701.js.map
