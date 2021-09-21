@@ -40192,12 +40192,22 @@ var JDServiceServer = /*#__PURE__*/function (_JDEventSource) {
       variant,
       valueValues,
       intensityValues,
-      registerValues
+      registerValues,
+      isActive
     } = options || {};
     _this.specification = (0,_spec__WEBPACK_IMPORTED_MODULE_5__/* .serviceSpecificationFromClassIdentifier */ .d5)(_this.serviceClass);
     _this.statusCode = _this.addRegister(_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemReg.StatusCode */ .ZJq.StatusCode, [_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemStatusCodes.Ready */ ._kj.Ready, 0]);
     if (valueValues) _this.addRegister(_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemReg.Value */ .ZJq.Value, valueValues);
-    if (intensityValues) _this.addRegister(_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemReg.Intensity */ .ZJq.Intensity, intensityValues);
+
+    if (intensityValues) {
+      var _intensity = _this.addRegister(_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemReg.Intensity */ .ZJq.Intensity, intensityValues);
+
+      if (isActive) _intensity.on(_constants__WEBPACK_IMPORTED_MODULE_1__/* .CHANGE */ .Ver, () => {
+        var ev = isActive(_intensity.values());
+        if (ev !== undefined) _this.sendEvent(isActive(_intensity.values()) ? _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemEvent.Active */ .nSK.Active : _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemEvent.Inactive */ .nSK.Inactive);
+      });
+    }
+
     if (variant) _this.addRegister(_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemReg.Variant */ .ZJq.Variant, [variant]);
     _this.instanceName = _this.addRegister(_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemReg.InstanceName */ .ZJq.InstanceName, [instanceName || ""]); // any extra
 
@@ -46212,6 +46222,7 @@ var _providerDefinitions = [{
   serviceClasses: [constants/* SRV_RELAY */.E4D],
   services: () => [new serviceserver/* default */.Z(constants/* SRV_RELAY */.E4D, {
     intensityValues: [false],
+    isActive: values => !!(values !== null && values !== void 0 && values[0]),
     variant: constants/* RelayVariant.Electromechanical */.fuX.Electromechanical,
     registerValues: [{
       code: constants/* RelayReg.MaxSwitchingCurrent */.D_x.MaxSwitchingCurrent,
@@ -46223,6 +46234,7 @@ var _providerDefinitions = [{
   serviceClasses: [constants/* SRV_RELAY */.E4D],
   services: () => Array(4).fill(0).map(() => new serviceserver/* default */.Z(constants/* SRV_RELAY */.E4D, {
     intensityValues: [false],
+    isActive: values => !!(values !== null && values !== void 0 && values[0]),
     variant: constants/* RelayVariant.SolidState */.fuX.SolidState,
     registerValues: [{
       code: constants/* RelayReg.MaxSwitchingCurrent */.D_x.MaxSwitchingCurrent,
@@ -63824,7 +63836,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "386b423d35180858662154fbf3643e810244b866";
+var sha = "b1c59b39dab9ce91fa8374be51367f74733fd6d4";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64712,7 +64724,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "386b423d35180858662154fbf3643e810244b866";
+  var sha = "b1c59b39dab9ce91fa8374be51367f74733fd6d4";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -74785,7 +74797,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.17.3"};
+var package_namespaceObject = {"i8":"1.17.4"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -82188,4 +82200,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-7e66812fb9643ab5f12b.js.map
+//# sourceMappingURL=app-328040e6e58c4c0262e5.js.map
