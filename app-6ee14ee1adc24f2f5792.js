@@ -53944,7 +53944,17 @@ function KitModules() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     item: true,
     xs: 12,
-    sm: 6
+    sm: 6,
+    md: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
+    src: "./kit/opentop.jpg",
+    alt: "Kit opened with micro:bit",
+    __imageData: __webpack_require__(31999)
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+    item: true,
+    xs: 12,
+    sm: 6,
+    md: 4
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
     src: "./kit/sidetop.jpg",
     alt: "Side top image of the kit",
@@ -53952,7 +53962,8 @@ function KitModules() {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     item: true,
     xs: 12,
-    sm: 6
+    sm: 6,
+    md: 4
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
     src: "./kit/sidetop2.jpg",
     alt: "Reverse side top image of the kit",
@@ -53960,7 +53971,8 @@ function KitModules() {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     item: true,
     xs: 12,
-    sm: 6
+    sm: 6,
+    md: 4
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
     src: "./kit/top.jpg",
     alt: "Top image of the kit",
@@ -53968,11 +53980,21 @@ function KitModules() {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     item: true,
     xs: 12,
-    sm: 6
+    sm: 6,
+    md: 4
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
     src: "./kit/topfront.jpg",
     alt: "top front image of the kit",
     __imageData: __webpack_require__(24678)
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+    item: true,
+    xs: 12,
+    sm: 6,
+    md: 4
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
+    src: "./kit/bottom.jpg",
+    alt: "bottom of the kit",
+    __imageData: __webpack_require__(71086)
   }))))));
 }
 
@@ -63947,7 +63969,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "22fb5d420a52bd3841b94872294a449d6c291ee4";
+var sha = "ed70ccae4f5801e9a1423e8328c8f32b8fffaaa0";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64835,7 +64857,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "22fb5d420a52bd3841b94872294a449d6c291ee4";
+  var sha = "ed70ccae4f5801e9a1423e8328c8f32b8fffaaa0";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82133,6 +82155,14 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 
 /***/ }),
 
+/***/ 71086:
+/***/ (function(module) {
+
+"use strict";
+module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8","images":{"fallback":{"src":"/jacdac-docs/static/24490665c39c3bff4561324a9488d895/3ceff/bottom.jpg","srcSet":"/jacdac-docs/static/24490665c39c3bff4561324a9488d895/b711f/bottom.jpg 726w,\\n/jacdac-docs/static/24490665c39c3bff4561324a9488d895/b7618/bottom.jpg 1453w,\\n/jacdac-docs/static/24490665c39c3bff4561324a9488d895/3ceff/bottom.jpg 2905w","sizes":"(min-width: 2905px) 2905px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/24490665c39c3bff4561324a9488d895/e4c21/bottom.webp 726w,\\n/jacdac-docs/static/24490665c39c3bff4561324a9488d895/36160/bottom.webp 1453w,\\n/jacdac-docs/static/24490665c39c3bff4561324a9488d895/b53a3/bottom.webp 2905w","type":"image/webp","sizes":"(min-width: 2905px) 2905px, 100vw"}]},"width":2905,"height":2905}');
+
+/***/ }),
+
 /***/ 27580:
 /***/ (function(module) {
 
@@ -82301,6 +82331,14 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#080808"
 
 /***/ }),
 
+/***/ 31999:
+/***/ (function(module) {
+
+"use strict";
+module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8","images":{"fallback":{"src":"/jacdac-docs/static/285a9cd82b7acd26ac811f99faf9cd59/3ceff/opentop.jpg","srcSet":"/jacdac-docs/static/285a9cd82b7acd26ac811f99faf9cd59/b711f/opentop.jpg 726w,\\n/jacdac-docs/static/285a9cd82b7acd26ac811f99faf9cd59/b7618/opentop.jpg 1453w,\\n/jacdac-docs/static/285a9cd82b7acd26ac811f99faf9cd59/3ceff/opentop.jpg 2905w","sizes":"(min-width: 2905px) 2905px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/285a9cd82b7acd26ac811f99faf9cd59/e4c21/opentop.webp 726w,\\n/jacdac-docs/static/285a9cd82b7acd26ac811f99faf9cd59/36160/opentop.webp 1453w,\\n/jacdac-docs/static/285a9cd82b7acd26ac811f99faf9cd59/b53a3/opentop.webp 2905w","type":"image/webp","sizes":"(min-width: 2905px) 2905px, 100vw"}]},"width":2905,"height":2905}');
+
+/***/ }),
+
 /***/ 22206:
 /***/ (function(module) {
 
@@ -82388,4 +82426,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-e80936c2e505df93dabf.js.map
+//# sourceMappingURL=app-6ee14ee1adc24f2f5792.js.map
