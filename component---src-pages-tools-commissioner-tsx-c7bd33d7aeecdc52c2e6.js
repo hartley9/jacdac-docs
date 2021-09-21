@@ -1732,7 +1732,6 @@ function Commissioner() {
     showAvatar: true,
     showHeader: true,
     showConnect: true,
-    showStartSimulators: false,
     deviceFilter: deviceFilter
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_31__/* ["default"] */ .Z, {
     container: true,
@@ -1793,4 +1792,4 @@ function Commissioner() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-3af325455fcca5a1d0c4.js.map
+//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-c7bd33d7aeecdc52c2e6.js.map

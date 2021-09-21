@@ -320,7 +320,7 @@ function MakeCodeAddBlocksButton() {
 }
 ;// CONCATENATED MODULE: ./src/components/dashboard/Dashboard.tsx
 
-var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators", "deviceSort", "deviceFilter"];
+var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators", "showStartRoleSimulators", "deviceSort", "deviceFilter"];
 
 
 
@@ -362,6 +362,7 @@ function Dashboard(props) {
     hideSimulators,
     showConnect,
     showStartSimulators,
+    showStartRoleSimulators,
     deviceSort = defaultDeviceSort,
     deviceFilter = defaultDeviceFilter
   } = props,
@@ -388,10 +389,11 @@ function Dashboard(props) {
 
   return /*#__PURE__*/react.createElement(react.Fragment, null, !hideSimulators && /*#__PURE__*/react.createElement(DeviceGroup, Object.assign({
     title: "Simulators",
-    action: /*#__PURE__*/react.createElement(react.Fragment, null, showStartSimulators && !!roleManager && /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    action: /*#__PURE__*/react.createElement(react.Fragment, null, showStartRoleSimulators && /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
       trackName: "dashboard.simulators.missing",
-      title: "start missing simulators",
-      onClick: handleStartSimulators
+      title: "start missing simulators for roles",
+      onClick: handleStartSimulators,
+      disabled: !roleManager
     }, /*#__PURE__*/react.createElement(Devices/* default */.Z, null)), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
       trackName: "dashboard.simulators.start",
       title: "start simulator",
@@ -590,4 +592,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-65828f3dc1e519c888bf.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-14fd479f3983a61e517b.js.map
