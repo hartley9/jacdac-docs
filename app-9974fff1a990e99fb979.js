@@ -63994,7 +63994,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "0de3962334bb957fd44f70066a285c22d8f4696d";
+var sha = "9016c450c55ae8b416af9dca2427ce7d53c686e1";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64888,7 +64888,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0de3962334bb957fd44f70066a285c22d8f4696d";
+  var sha = "9016c450c55ae8b416af9dca2427ce7d53c686e1";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -75256,13 +75256,10 @@ function useDeviceSpecification(device) {
 
 function useEventRaised(eventName, node, query) {
   var {
-    0: version,
-    1: setVersion
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-  var value = query ? query(node) : undefined;
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => node === null || node === void 0 ? void 0 : node.subscribe(eventName, () => {
-    setVersion(version + 1);
-  }), [node, version]);
+    0: value,
+    1: setValue
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(query === null || query === void 0 ? void 0 : query(node));
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => node === null || node === void 0 ? void 0 : node.subscribe(eventName, () => setValue(query === null || query === void 0 ? void 0 : query(node))), [JSON.stringify(eventName), node]);
   return value;
 }
 
@@ -82503,4 +82500,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-ae616d0cf4555a4b7ddf.js.map
+//# sourceMappingURL=app-9974fff1a990e99fb979.js.map

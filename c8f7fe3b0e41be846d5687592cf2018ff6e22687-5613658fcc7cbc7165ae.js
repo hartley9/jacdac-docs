@@ -92622,7 +92622,7 @@ function DeviceTreeItem(props) {
   var name = (0,useDeviceName/* default */.Z)(device, true);
   var kind = isPhysical ? "device" : "virtualdevice";
   var lost = (0,useEventRaised/* default */.Z)([constants/* LOST */.XWw, constants/* FOUND */.a6y], device, dev => !!(dev !== null && dev !== void 0 && dev.lost));
-  var services = (0,useChange/* default */.Z)(device, () => device.services({
+  var services = (0,useEventRaised/* default */.Z)(constants/* ANNOUNCE */.oNX, device, _ => _.services({
     mixins: false
   }).filter(srv => !serviceFilter || serviceFilter(srv)));
   var {
@@ -98885,4 +98885,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-aed5f94d8b7ca8aa6aad.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-5613658fcc7cbc7165ae.js.map
