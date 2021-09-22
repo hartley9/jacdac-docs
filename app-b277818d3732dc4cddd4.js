@@ -63962,7 +63962,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "07fac3c43fec7c257ff77b27ec5b99e424cf60c5";
+var sha = "183ce90f48ee28689d0131c64efeb7601a38610b";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64856,7 +64856,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "07fac3c43fec7c257ff77b27ec5b99e424cf60c5";
+  var sha = "183ce90f48ee28689d0131c64efeb7601a38610b";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -66475,7 +66475,7 @@ function LayoutWithContext(props) {
 
 function MakeCodeExtensions() {
   var query = (0,gatsby__WEBPACK_IMPORTED_MODULE_0__.useStaticQuery)("1530881449");
-  var nodes = query.allMdx.edges.map(edge => edge.node);
+  var nodes = query.allMdx.edges.map(edge => edge.node).sort((l, r) => l.fields.slug.localeCompare(r.fields.slug));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, null, nodes === null || nodes === void 0 ? void 0 : nodes.map(_ref => {
     var {
       fields,
@@ -82520,4 +82520,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-93fae191c15665b61547.js.map
+//# sourceMappingURL=app-b277818d3732dc4cddd4.js.map

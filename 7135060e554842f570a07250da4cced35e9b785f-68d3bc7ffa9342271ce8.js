@@ -3485,6 +3485,8 @@ var Tooltip = __webpack_require__(60102);
 var asyncToGenerator = __webpack_require__(15861);
 // EXTERNAL MODULE: ./src/components/ui/PaperBox.tsx
 var PaperBox = __webpack_require__(79739);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Button/Button.js
+var Button = __webpack_require__(83332);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Tabs/Tabs.js + 7 modules
 var Tabs = __webpack_require__(44942);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Tab/Tab.js
@@ -3581,8 +3583,6 @@ function parseMakeCodeSnippet(source) {
 }
 // EXTERNAL MODULE: ./src/components/AppContext.tsx
 var AppContext = __webpack_require__(84377);
-// EXTERNAL MODULE: ./src/components/ui/IconButtonWithTooltip.tsx + 1 modules
-var IconButtonWithTooltip = __webpack_require__(79885);
 // EXTERNAL MODULE: ./src/components/icons/MakeCodeIcon.tsx
 var MakeCodeIcon = __webpack_require__(70654);
 ;// CONCATENATED MODULE: ./src/components/makecode/MakeCodeSnippet.tsx
@@ -3592,7 +3592,6 @@ var MakeCodeIcon = __webpack_require__(70654);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 
 
 
@@ -3676,12 +3675,12 @@ function MakeCodeButton(props) {
     };
   }();
 
-  return /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
-    color: "primary",
+  return /*#__PURE__*/react.createElement(Button/* default */.Z, {
+    variant: "outlined",
     onClick: handleClick,
     disabled: importing,
-    title: "Try in MakeCode"
-  }, /*#__PURE__*/react.createElement(MakeCodeIcon/* default */.Z, null));
+    startIcon: /*#__PURE__*/react.createElement(MakeCodeIcon/* default */.Z, null)
+  }, "Try in MakeCode");
 }
 
 function MakeCodeSnippet(props) {
@@ -3957,4 +3956,4 @@ function PaperBox(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-3797e24e32859fe1d2ca.js.map
+//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-68d3bc7ffa9342271ce8.js.map
