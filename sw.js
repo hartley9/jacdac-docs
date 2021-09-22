@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-8d78c2c83b971b01115f.js"
+    "url": "webpack-runtime-ef8ab4b87de13df35a9d.js"
   },
   {
     "url": "styles.4593c18e04b78fd679c6.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "473dfe4353ce138cd4bba48e9de643e0"
+    "revision": "7e43f3956559041742d7599b4b146e76"
   },
   {
     "url": "static/webfonts/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,11 +60,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "2412012c623729f7fabf43a1e9f5babc"
+    "revision": "43d4d77261d241427612d0824b308edf"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "956bfbd30899eed7f6a6377916ea0961"
+    "revision": "9c40d11d5587c35c9bc687e52fb59493"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -72,7 +72,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "0acfb8b0a04ac444a63f0a641e7dc70f"
+    "revision": "7f63c4741acc90ee9ee91eceb7b5ac54"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "825b3af49aed90803b1d7128f69f0226"
+    "revision": "a630c73e56c144fa6539e7f61c67e3b5"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -234,7 +234,7 @@ self.__precacheManifest = [
     "url": "149f11818c122b40ce2932f15d148eda4aaa5f90-a26c7758a2fba9dafe97.js"
   },
   {
-    "url": "component---src-templates-service-tsx-eec771d5b23f2bda6639.js"
+    "url": "component---src-templates-service-tsx-f47f3d16df2e04686fad.js"
   },
   {
     "url": "page-data/services/_base/page-data.json",
@@ -265,7 +265,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/accelerometer/page-data.json",
-    "revision": "b0b38b162315d4b2cec758a939d22564"
+    "revision": "ad5183f6f6e6943c536d07af59fb8197"
   },
   {
     "url": "page-data/services/accelerometer/playground/page-data.json",
@@ -305,7 +305,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/barometer/page-data.json",
-    "revision": "1e9f86b7fede9bcded800586310062fb"
+    "revision": "2d3aa4fecd136225774695fa6f2b493a"
   },
   {
     "url": "page-data/services/barometer/playground/page-data.json",
@@ -329,7 +329,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/button/page-data.json",
-    "revision": "63d295d3d281f5866e2b98d780ff6d96"
+    "revision": "0788d140847b5a94637b7d161307ac88"
   },
   {
     "url": "page-data/services/button/playground/page-data.json",
@@ -513,7 +513,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/ledpixel/page-data.json",
-    "revision": "e13ebab86bd5ed2ca2eece55796c500c"
+    "revision": "e6deb4938505aba2162e1ba42fcc4b7f"
   },
   {
     "url": "page-data/services/ledpixel/playground/page-data.json",
@@ -521,7 +521,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/lightlevel/page-data.json",
-    "revision": "4f7238a01d2d8af6958abe3c423f9ca7"
+    "revision": "99b25e60cd34cfa3a6c27251c3e75dba"
   },
   {
     "url": "page-data/services/lightlevel/playground/page-data.json",
@@ -601,7 +601,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/potentiometer/page-data.json",
-    "revision": "96fa278d9b4f9360ab5ccd1fb0e62344"
+    "revision": "814b05818c79ec85873e35bbe77b4195"
   },
   {
     "url": "page-data/services/potentiometer/playground/page-data.json",
@@ -665,7 +665,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/relay/page-data.json",
-    "revision": "e873273db13f51094b6dfa0a5fb93576"
+    "revision": "14f3258c184445c983dff82ff7a7cb94"
   },
   {
     "url": "page-data/services/relay/playground/page-data.json",
@@ -689,7 +689,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/rotaryencoder/page-data.json",
-    "revision": "55f7bc1df909a09a8ac5959993bf8a1d"
+    "revision": "b94e388a9868433bf763ae0ee7266f12"
   },
   {
     "url": "page-data/services/rotaryencoder/playground/page-data.json",
@@ -809,7 +809,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/thermometer/page-data.json",
-    "revision": "63c1173b4299e5eb5dc5ba3daa064050"
+    "revision": "1fd8f18595de334ef5c1891a8d577f25"
   },
   {
     "url": "page-data/services/thermometer/playground/page-data.json",
@@ -1291,7 +1291,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-8afa53546a022b223d41.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-2363dfb0a61936441a08.js`))) {
     return await fetch(event.request)
   }
 

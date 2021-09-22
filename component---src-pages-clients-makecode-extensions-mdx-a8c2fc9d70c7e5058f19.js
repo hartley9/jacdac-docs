@@ -84,7 +84,7 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
-    "href": "/jacdac-docs/clients/makecode/extensions/light-level/"
+    "href": "/jacdac-docs/clients/makecode/extensions/lightlevel/"
   }, "Light Level")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
@@ -99,7 +99,7 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
-    "href": "/jacdac-docs/clients/makecode/extensions/rotary-encoder/"
+    "href": "/jacdac-docs/clients/makecode/extensions/rotaryencoder/"
   }, "Rotary Encoder")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
@@ -131,4 +131,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-mdx-7848fc95913dc78f0b92.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-mdx-a8c2fc9d70c7e5058f19.js.map

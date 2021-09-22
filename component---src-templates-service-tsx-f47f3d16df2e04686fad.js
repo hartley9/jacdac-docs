@@ -870,7 +870,10 @@ function ServiceSpecificationSource(props) {
     value: JSON.stringify(serviceSpecificationToServiceTwinSpecification(spec), null, 2)
   })));
 }
+// EXTERNAL MODULE: ./src/components/icons/MakeCodeIcon.tsx
+var MakeCodeIcon = __webpack_require__(70654);
 ;// CONCATENATED MODULE: ./src/components/ServiceMarkdown.tsx
+
 
 
 
@@ -882,7 +885,8 @@ function ServiceSpecificationSource(props) {
 function ServiceMarkdown(props) {
   var {
     classIdentifier,
-    source
+    source,
+    makecodeSlug
   } = props;
   var service = (0,jdom_spec/* serviceSpecificationFromClassIdentifier */.d5)(classIdentifier);
   var {
@@ -900,7 +904,13 @@ function ServiceMarkdown(props) {
   }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
     variant: "contained",
     to: "/services/" + shortId + "/playground/"
-  }, "Playground"))), /*#__PURE__*/react.createElement("h2", null, "Registered Devices"), /*#__PURE__*/react.createElement(DeviceSpecificationList["default"], {
+  }, "Playground")), makecodeSlug && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
+    variant: "contained",
+    to: makecodeSlug,
+    startIcon: /*#__PURE__*/react.createElement(MakeCodeIcon/* default */.Z, null)
+  }, "MakeCode"))), /*#__PURE__*/react.createElement("h2", null, "Registered Devices"), /*#__PURE__*/react.createElement(DeviceSpecificationList["default"], {
     requiredServiceClasses: [classIdentifier]
   }), /*#__PURE__*/react.createElement("h2", null, "Sources"), /*#__PURE__*/react.createElement(ServiceSpecificationSource, {
     serviceSpecification: service
@@ -925,4 +935,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-service-tsx-eec771d5b23f2bda6639.js.map
+//# sourceMappingURL=component---src-templates-service-tsx-f47f3d16df2e04686fad.js.map

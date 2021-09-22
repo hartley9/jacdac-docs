@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[527],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6152],{
 
-/***/ 92753:
+/***/ 97742:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -39,14 +39,14 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
-    "id": "rotary-encoder-extension",
+    "id": "light-level-extension",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h1",
-    "href": "#rotary-encoder-extension",
-    "aria-label": "rotary encoder extension permalink",
+    "href": "#light-level-extension",
+    "aria-label": "light level extension permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -60,12 +60,12 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Rotary Encoder Extension"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The rotary encoder extension reports the position of an incremental\nrotary encoder in number of clicks from the initial position (0),\nwhere clockwise motion increases the position and counter-clockwise\nmotion decreases the position.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }))), "Light Level Extension"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The light level extension reports light level as a floating\npoint value between 0 and 100.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "position"), " method returns the current position. "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "As is the case with all sensors, an event handler is supplied for when\nthe sensor value (position) changes by a specified amount."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The program below uses the two rotary encoder APIs to print\nthe current position whenever it changes by one click:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "lightLevel"), " method returns the current position of the potentiometer."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "As is the case with all sensors, an event handler is supplied for when\nthe sensor value (lightLevel) changes by a specified amount."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The program below use the two light level APIs to print\nthe current light level whenever it changes by 5:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.rotaryEncoder1.onPositionChangedBy(1, () => {\\n    basic.showNumber(modules.rotaryEncoder1.position())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.rotaryEncoder1.onPositionChangedBy(1, () => {\\n    basic.showNumber(modules.rotaryEncoder1.position())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-rotary-encoder=github:microsoft/pxt-jacdac/rotary-encoder\"},\"type\":\"renderblocks\",\"id\":\"163846ff7fa021ba9f6eb2e00a8c6348\"},\"url\":\"/images/makecode/163846ff7fa021ba9f6eb2e00a8c6348.png\",\"width\":494,\"height\":128}}\n")));
+  }, "{\"source\":\"modules.lightLevel1.onLightLevelChangedBy(5, () => {\\n    basic.showNumber(modules.lightLevel1.lightLevel())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.lightLevel1.onLightLevelChangedBy(5, () => {\\n    basic.showNumber(modules.lightLevel1.lightLevel())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-light-level=github:microsoft/pxt-jacdac/light-level\"},\"type\":\"renderblocks\",\"id\":\"9f56eb2a0815a894754813dd78a08948\"},\"url\":\"/images/makecode/9f56eb2a0815a894754813dd78a08948.png\",\"width\":494,\"height\":128}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -91,4 +91,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-rotary-encoder-mdx-e8dabcc5fa1e37fe6ad3.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-lightlevel-mdx-0dc0bc60dfdcd6596eac.js.map
