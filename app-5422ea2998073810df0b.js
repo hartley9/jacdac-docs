@@ -53714,11 +53714,11 @@ function Kit() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     title: "Hardware Kit",
     subtitle3: "Start experimenting with Jacdac and the Hardware module kit.",
-    imageColumns: 6,
+    imageColumns: 3,
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
-      src: "./kit/topfront.jpg",
+      src: "./kit/contents.jpg",
       alt: "Kit cardboard view from top",
-      __imageData: __webpack_require__(24678)
+      __imageData: __webpack_require__(12277)
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CarouselGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     item: true,
@@ -63858,7 +63858,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "a3b9283878b317788be39d693ac70c42149c90d4";
+var sha = "afe20d54692499ddd6e2d20c21cf4482452b60b1";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64752,7 +64752,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a3b9283878b317788be39d693ac70c42149c90d4";
+  var sha = "afe20d54692499ddd6e2d20c21cf4482452b60b1";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82364,4 +82364,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-c37fc26ceee63fcf5446.js.map
+//# sourceMappingURL=app-5422ea2998073810df0b.js.map
