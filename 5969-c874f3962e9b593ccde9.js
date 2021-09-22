@@ -133,14 +133,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": function() { return /* binding */ KeyboardKeyInput; }
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10920);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(70274);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(10920);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(70274);
 /* harmony import */ var _jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(73512);
 /* harmony import */ var react_simple_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(81751);
 /* harmony import */ var react_simple_keyboard__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_simple_keyboard__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _DarkModeContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(91350);
 /* harmony import */ var react_use_id_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(19640);
 /* harmony import */ var _jacdac_ts_src_servers_hidkeyboardserver__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(41577);
+/* harmony import */ var _hooks_useMediaQueries__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(20509);
 
 
 
@@ -149,7 +150,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)({
+
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z)({
   capture: {
     cursor: "pointer",
     "&:hover": {
@@ -204,9 +206,14 @@ function KeyboardKeyInput(props) {
 
   var classes = useStyles();
   var theme = "hg-theme-default hg-layout-default " + (darkMode === "dark" ? classes.darkKeyboard : classes.keyboard);
+  var {
+    mobile
+  } = (0,_hooks_useMediaQueries__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)();
+  var layoutName = mobile ? "mobile" : "default";
   var keyboardId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_4__/* .useId */ .Me)();
   var layout = {
-    default: ["{escape} {f1} {f2} {f3} {f4} {f5} {f6} {f7} {f8} {f9} {f10} {f11} {f12}", "` 1 2 3 4 5 6 7 8 9 0 - = {backspace}", "{tab} q w e r t y u i o p [ ] \\", "{capslock} a s d f g h j k l ; ' {enter}", "{shiftleft} z x c v b n m , . / {shiftright}", "{controlleft} {altleft} {metaleft} {space} {metaright} {altright}"]
+    default: ["{escape} {f1} {f2} {f3} {f4} {f5} {f6} {f7} {f8} {f9} {f10} {f11} {f12}", "` 1 2 3 4 5 6 7 8 9 0 - = {backspace}", "{tab} q w e r t y u i o p [ ] \\", "{capslock} a s d f g h j k l ; ' {enter}", "{shiftleft} z x c v b n m , . / {shiftright}", "{controlleft} {altleft} {metaleft} {space} {metaright} {altright}"],
+    mobile: ["{escape} {f1} {f2} {f3} {f4} {f5}", "{f6} {f7} {f8} {f9} {f10} {f11} {f12}", "` 1 2 3 4 5 6", "7 8 9 0 - = {backspace}", "{tab} q w e r t", "y u i o p [ ] \\", "{capslock} a s d f g", "h j k l ; ' {enter}", "{shiftleft} z x c v b", "n m , . / {shiftright}", "{controlleft} {altleft} {metaleft} {space}", "{metaright} {altright}"]
   };
   var display = {
     "{escape}": "esc ⎋",
@@ -273,6 +280,7 @@ function KeyboardKeyInput(props) {
     keyboardRef: r => _keyboardRef.current = r,
     onKeyPress: handleKeyboardKeyPress,
     layout: layout,
+    layoutName: layoutName,
     theme: theme,
     display: display,
     mergeDisplay: true
@@ -282,4 +290,4 @@ function KeyboardKeyInput(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5969-5caa6fa41005262bfceb.js.map
+//# sourceMappingURL=5969-c874f3962e9b593ccde9.js.map
