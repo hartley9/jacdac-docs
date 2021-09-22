@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[2763],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[527],{
 
-/***/ 42321:
+/***/ 92753:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -39,14 +39,14 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
-    "id": "extensions",
+    "id": "rotary-encoder-extension",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h1",
-    "href": "#extensions",
-    "aria-label": "extensions permalink",
+    "href": "#rotary-encoder-extension",
+    "aria-label": "rotary encoder extension permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -60,52 +60,12 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Extensions"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "/jacdac-docs/clients/makecode/extensions/accelerometer"
-  }, "Accelerometer")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "/jacdac-docs/clients/makecode/extensions/barometer"
-  }, "Barometer")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "/jacdac-docs/clients/makecode/extensions/button"
-  }, "Button")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "/jacdac-docs/clients/makecode/extensions/ledpixel"
-  }, "LED Pixel")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "/jacdac-docs/clients/makecode/extensions/lightlevel"
-  }, "Light Level")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "/jacdac-docs/clients/makecode/extensions/potentiometer"
-  }, "Potentiometer"), " (for slider module)"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "/jacdac-docs/clients/makecode/extensions/relay"
-  }, "Relay")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "/jacdac-docs/clients/makecode/extensions/rotaryencoder"
-  }, "Rotary Encoder")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
-    parentName: "ul"
-  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "/jacdac-docs/clients/makecode/extensions/thermometer"
-  }, "Thermometer"))));
+  }))), "Rotary Encoder Extension"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The rotary encoder extension reports the position of an incremental\nrotary encoder in number of clicks from the initial position (0),\nwhere clockwise motion increases the position and counter-clockwise\nmotion decreases the position.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "position"), " method returns the current position. "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "As is the case with all sensors, an event handler is supplied for when\nthe sensor value (position) changes by a specified amount."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The program below uses the two rotary encoder APIs to print\nthe current position whenever it changes by one click:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-blocks"
+  }, "{\"source\":\"modules.rotaryEncoder1.onPositionChangedBy(1, () => {\\n    basic.showNumber(modules.rotaryEncoder1.position())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.rotaryEncoder1.onPositionChangedBy(1, () => {\\n    basic.showNumber(modules.rotaryEncoder1.position())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-rotary-encoder=github:microsoft/pxt-jacdac/rotary-encoder\"},\"type\":\"renderblocks\",\"id\":\"163846ff7fa021ba9f6eb2e00a8c6348\"},\"url\":\"/images/makecode/163846ff7fa021ba9f6eb2e00a8c6348.png\",\"width\":494,\"height\":128}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -131,4 +91,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-mdx-7731472bafa4ba5fa163.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-rotary-encoder-mdx-e8dabcc5fa1e37fe6ad3.js.map

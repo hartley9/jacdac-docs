@@ -63863,7 +63863,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "7b2936436c422ad1a3feac6b4be5ba824036d392";
+var sha = "7fb1da2df08b429a5fe879b8b9d6384c155511d7";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64757,7 +64757,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "7b2936436c422ad1a3feac6b4be5ba824036d392";
+  var sha = "7fb1da2df08b429a5fe879b8b9d6384c155511d7";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -77275,11 +77275,11 @@ exports.components = {
   "component---src-pages-clients-makecode-extensions-barometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-barometer-mdx */ 5804).then(__webpack_require__.bind(__webpack_require__, 96240)),
   "component---src-pages-clients-makecode-extensions-button-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-button-mdx */ 3838).then(__webpack_require__.bind(__webpack_require__, 37808)),
   "component---src-pages-clients-makecode-extensions-ledpixel-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-ledpixel-mdx */ 1914).then(__webpack_require__.bind(__webpack_require__, 27122)),
-  "component---src-pages-clients-makecode-extensions-lightlevel-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-lightlevel-mdx */ 6152).then(__webpack_require__.bind(__webpack_require__, 97742)),
+  "component---src-pages-clients-makecode-extensions-light-level-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-light-level-mdx */ 4826).then(__webpack_require__.bind(__webpack_require__, 22899)),
   "component---src-pages-clients-makecode-extensions-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-mdx */ 2763).then(__webpack_require__.bind(__webpack_require__, 42321)),
   "component---src-pages-clients-makecode-extensions-potentiometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-potentiometer-mdx */ 7129).then(__webpack_require__.bind(__webpack_require__, 95380)),
   "component---src-pages-clients-makecode-extensions-relay-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-relay-mdx */ 8918).then(__webpack_require__.bind(__webpack_require__, 26204)),
-  "component---src-pages-clients-makecode-extensions-rotaryencoder-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-rotaryencoder-mdx */ 396).then(__webpack_require__.bind(__webpack_require__, 41426)),
+  "component---src-pages-clients-makecode-extensions-rotary-encoder-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-rotary-encoder-mdx */ 527).then(__webpack_require__.bind(__webpack_require__, 92753)),
   "component---src-pages-clients-makecode-extensions-thermometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-thermometer-mdx */ 3572).then(__webpack_require__.bind(__webpack_require__, 20147)),
   "component---src-pages-clients-makecode-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-mdx */ 5348).then(__webpack_require__.bind(__webpack_require__, 82733)),
   "component---src-pages-clients-makecode-projects-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-mdx */ 2235).then(__webpack_require__.bind(__webpack_require__, 39091)),
@@ -82371,4 +82371,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-ff1f91df2bb0d61cdaee.js.map
+//# sourceMappingURL=app-8afa53546a022b223d41.js.map

@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6152],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[4826],{
 
-/***/ 97742:
+/***/ 22899:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -91,4 +91,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-lightlevel-mdx-0dc0bc60dfdcd6596eac.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-light-level-mdx-b71be4bb6b93fddc353d.js.map
