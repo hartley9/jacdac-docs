@@ -202,7 +202,7 @@ function MDXContent(_ref) {
   }, "on disconnected"), "\nto start or stop using a role."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.button1.onDisconnected(function () {\\n    basic.showIcon(IconNames.No)\\n})\\nmodules.button1.onConnected(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.button1.onDisconnected(function () {\\n    basic.showIcon(IconNames.No)\\n})\\nmodules.button1.onConnected(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-button=github:microsoft/pxt-jacdac/button\"},\"type\":\"renderblocks\",\"id\":\"b320774ab4037f8bd36d99c26934c86d\"},\"url\":\"/images/makecode/b320774ab4037f8bd36d99c26934c86d.png\",\"width\":555,\"height\":142}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+  }, "{\"source\":\"modules.button1.onDisconnected(function () {\\n    basic.showIcon(IconNames.No)\\n})\\nmodules.button1.onConnected(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.button1.onDisconnected(function () {\\n    basic.showIcon(IconNames.No)\\n})\\nmodules.button1.onConnected(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac,jacdac-button=github:microsoft/pxt-jacdac/button\"},\"type\":\"renderblocks\",\"id\":\"b320774ab4037f8bd36d99c26934c86d\"},\"url\":\"/images/makecode/b320774ab4037f8bd36d99c26934c86d.png\",\"width\":575,\"height\":142}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
     parentName: "p",
     "src": "/jacdac-docs/static/multiroles-6ae1fdc24f1c5dba3e8ad86792c6ba91.gif",
     "alt": "An animation that shows how to create new roles"
@@ -275,4 +275,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-user-guide-mdx-0fbd2a3ce3b8bad09f68.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-user-guide-mdx-fab5a833ed71b4c636be.js.map
