@@ -63962,7 +63962,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "33c4e294b9f97d5cc3fcb02f55a044bbed8808df";
+var sha = "485985a479c27781cce99f8ae9e273497de75c4a";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -63984,8 +63984,7 @@ function splitProperties(props) {
 
 var INSTRUMENTATION_KEY = "81ad7468-8585-4970-b027-4f9e7c3eb191";
 var appInsights = typeof window !== "undefined" && INSTRUMENTATION_KEY && // ignore dev environment
-!/http:\/\/localhost/.test(window.location.href) && // TODO enable for all
-/dbg=1/.test(window.location.href) && new ApplicationInsights({
+!/http:\/\/localhost/.test(window.location.href) && new ApplicationInsights({
   instrumentationKey: INSTRUMENTATION_KEY,
   isStorageUseDisabled: true,
   isCookieUseDisabled: true,
@@ -64856,7 +64855,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "33c4e294b9f97d5cc3fcb02f55a044bbed8808df";
+  var sha = "485985a479c27781cce99f8ae9e273497de75c4a";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -75007,7 +75006,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.17.4"};
+var package_namespaceObject = {"i8":"1.17.5"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -82520,4 +82519,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-9c34308f348578cd4e8a.js.map
+//# sourceMappingURL=app-2f3b3c5c8d070bb1d455.js.map
