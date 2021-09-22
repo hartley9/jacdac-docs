@@ -62,7 +62,7 @@ function DashboardPower(props) {
 
   var toggleEnabled = () => allowedRegister.sendSetBoolAsync(!allowed, true);
 
-  var widgetSize = "clamp(3rem, 10vw, 16vw)";
+  var widgetSize = "clamp(3rem, 10vw, 10vh)";
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_SvgWidget__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     width: w,
     height: h,
@@ -107,4 +107,4 @@ function DashboardPower(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1576-3cd6e3c4b84eacbcaf52.js.map
+//# sourceMappingURL=1576-33bd695163403a4b7cfd.js.map

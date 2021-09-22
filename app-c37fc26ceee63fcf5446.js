@@ -50800,7 +50800,7 @@ function BinaryButton(props) {
 
   var handleUp = () => server === null || server === void 0 ? void 0 : server.up();
 
-  var widgetSize = "clamp(3rem, 10vw, 16vw)";
+  var widgetSize = "clamp(3rem, 10vw, 10vh)";
   return /*#__PURE__*/react.createElement(ButtonWidget/* default */.Z, {
     checked: !!pressed,
     color: color,
@@ -50837,7 +50837,7 @@ function AnalogButton(props) {
   var [threshold] = (0,useRegisterValue/* useRegisterUnpackedValue */.Pf)(thresholdRegister, {
     visible
   });
-  var widgetSize = "clamp(3rem, 10vw, 16vw)";
+  var widgetSize = "clamp(3rem, 10vw, 10vh)";
   var server = (0,useServiceServer/* default */.Z)(service);
   var color = server ? "secondary" : "primary";
   var label = "button pressure " + (0,utils/* roundWithPrecision */.JI)(pressure, LABEL_PRECISION);
@@ -51029,7 +51029,7 @@ function DashboardRotaryEncoder(props) {
     textProps
   } = (0,useWidgetTheme/* default */.Z)(color);
   var label = "" + position;
-  var widgetSize = "clamp(6rem, 15vw, 20vw)";
+  var widgetSize = "clamp(6rem, 15vw, 15vh)";
   var w = 37.794;
   var r = 0.06;
   var fs = Math.max(0.2, 0.5 - label.length * 0.1);
@@ -63858,7 +63858,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "968e90a8946e7d6693273058e4021acc18876063";
+var sha = "a3b9283878b317788be39d693ac70c42149c90d4";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64752,7 +64752,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "968e90a8946e7d6693273058e4021acc18876063";
+  var sha = "a3b9283878b317788be39d693ac70c42149c90d4";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82364,4 +82364,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-0b5ce06a42c590f662ae.js.map
+//# sourceMappingURL=app-c37fc26ceee63fcf5446.js.map
