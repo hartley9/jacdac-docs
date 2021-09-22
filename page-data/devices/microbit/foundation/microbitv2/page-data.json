@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microbit/foundation/microbitv2/",
     "result": {"pageContext":{"node":{"id":"microbit-foundation-microbitv2","name":"micro:bit V2","company":"microbit foundation","productIdentifiers":[854992189]}}},
-    "staticQueryHashes": ["249313281","2744294623","2898794040","413816803","63159454"]}
+    "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","63159454"]}
