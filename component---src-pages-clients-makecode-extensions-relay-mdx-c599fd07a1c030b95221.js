@@ -66,7 +66,7 @@ function MDXContent(_ref) {
     parentName: "p"
   }, "on"), " and ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "off"), ", with associated event handlers\nare fired when the relay transitions from closed to open,\nand from open to closely, respectively"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following example uses the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "off"), ", with associated event handlers\nare fired when the relay transitions from closed to open,\nand from open to closely, respectively"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program uses the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
   }, "setClosed"), " method to\nclose the relay (on press of button A) and to open\nthe relay (on press of button B). Event handlers for\nthe relay are fired for the change in state. Finally,\non press of buttons A and B simultaneously, the\nstate of the relay is queryed using the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
@@ -99,4 +99,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-relay-mdx-396b412153a5c9c85b8b.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-relay-mdx-c599fd07a1c030b95221.js.map
