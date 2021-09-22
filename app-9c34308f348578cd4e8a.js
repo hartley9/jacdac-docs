@@ -51420,11 +51420,11 @@ var serviceViews = {
   },
   [constants/* SRV_BIT_RADIO */.BYF]: {
     component: DashboardBitRadio,
-    weight: () => 6
+    weight: () => 4
   },
   [constants/* SRV_HID_KEYBOARD */.Hg9]: {
     component: DashboardHIDKeyboard,
-    weight: () => 12
+    weight: () => 4
   },
   [constants/* SRV_HID_MOUSE */.Eef]: {
     component: DashboardHIDMouse,
@@ -63962,7 +63962,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "ee2929c90491f315fd1fbfecfce3a0c9ce8f64b0";
+var sha = "33c4e294b9f97d5cc3fcb02f55a044bbed8808df";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64856,7 +64856,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "ee2929c90491f315fd1fbfecfce3a0c9ce8f64b0";
+  var sha = "33c4e294b9f97d5cc3fcb02f55a044bbed8808df";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82520,4 +82520,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-741e8546f5f7395f2061.js.map
+//# sourceMappingURL=app-9c34308f348578cd4e8a.js.map
