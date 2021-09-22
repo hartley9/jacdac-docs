@@ -19255,9 +19255,6 @@ function AppTheme(props) {
       secondary: {
         main: "#ffc400"
       },
-      background: {
-        default: isDark ? undefined : "#fff"
-      },
       contrastThreshold: isDark ? 5.1 : 3.1,
       type: darkMode
     }
@@ -19407,4 +19404,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-53c2fd97a55731022a36.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-d5c0730d807e9813de73.js.map
