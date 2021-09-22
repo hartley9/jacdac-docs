@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[7129],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[7609],{
 
-/***/ 95380:
+/***/ 48264:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -39,14 +39,14 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
-    "id": "potentiometer-extension",
+    "id": "humidity-extension",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h1",
-    "href": "#potentiometer-extension",
-    "aria-label": "potentiometer extension permalink",
+    "href": "#humidity-extension",
+    "aria-label": "humidity extension permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -60,12 +60,12 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Potentiometer Extension"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The potentiometer extension reports position as a floating\npoint value between 0 and 100.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }))), "Humidity Extension"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The humidity extension reports the relative humidity\nin percentage of full water saturation (0.0 to 100.0).\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "position"), " method returns the current position of the potentiometer."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the current position whenever it changes by 5:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "humidity"), " method returns the current humidity."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The program below outputs the humidity when the\nsensor is first connected and whenever the humidity\nchanges by 5 percent:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.potentiometer1.onPositionChangedBy(5, function() {\\n    basic.showNumber(modules.potentiometer1.position())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.potentiometer1.onPositionChangedBy(5, function() {\\n    basic.showNumber(modules.potentiometer1.position())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.33,jacdac-potentiometer=github:microsoft/pxt-jacdac/potentiometer#v0.6.33\"},\"type\":\"renderblocks\",\"id\":\"04c433c53227341471e27561b83b4592\"},\"url\":\"/images/makecode/04c433c53227341471e27561b83b4592.png\",\"width\":485,\"height\":128}}\n")));
+  }, "{\"source\":\"modules.humidity1.onConnected(function() {\\n    basic.showNumber(modules.humidity1.humidity())\\n})\\n\\nmodules.humidity1.onHumidityChangedBy(5, function() {\\n    basic.showNumber(modules.humidity1.humidity())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.humidity1.onConnected(function() {\\n    basic.showNumber(modules.humidity1.humidity())\\n})\\n\\nmodules.humidity1.onHumidityChangedBy(5, function() {\\n    basic.showNumber(modules.humidity1.humidity())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.33,jacdac-humidity=github:microsoft/pxt-jacdac/humidity#v0.6.33\"},\"type\":\"renderblocks\",\"id\":\"ae36b0175d98e49bd6383b2036d82090\"},\"url\":\"/images/makecode/ae36b0175d98e49bd6383b2036d82090.png\",\"width\":919,\"height\":128}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -91,4 +91,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-potentiometer-mdx-3512c3907b73b0e3a2c2.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-humidity-mdx-caa0e9ad2d81cbfa60a0.js.map
