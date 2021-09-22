@@ -63850,7 +63850,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "3dc1636800eb5a8708fcf599b948be1068592b0b";
+var sha = "b6494b2233481ecc650561e4c330092ef2fb7ed3";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64744,7 +64744,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3dc1636800eb5a8708fcf599b948be1068592b0b";
+  var sha = "b6494b2233481ecc650561e4c330092ef2fb7ed3";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -66251,6 +66251,9 @@ function LayoutWithMdx(props) {
       secondary: {
         main: "#ffc400"
       },
+      background: {
+        default: isDark ? undefined : "#fff"
+      },
       contrastThreshold: isDark ? 5.1 : 3.1,
       type: darkMode
     }
@@ -66263,7 +66266,6 @@ function LayoutWithMdx(props) {
 }
 
 var UNDER_CONSTRUCTION_BODY = "Jacdac is currently in preview. If you would like to join as a pre-release test partner, please email jacdac-tap@microsoft.com.";
-var UNDER_CONSTRUCTION_MESSAGE = "Partner Preview: " + UNDER_CONSTRUCTION_BODY + ".";
 
 function LayoutWithContext(props) {
   var {
@@ -82356,4 +82358,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-a8fd38b29e94faf93392.js.map
+//# sourceMappingURL=app-875bd5a31005215cf2f3.js.map

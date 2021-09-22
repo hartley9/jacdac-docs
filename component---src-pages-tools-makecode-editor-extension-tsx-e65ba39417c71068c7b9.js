@@ -908,8 +908,11 @@ function MakeCodeEditorExtensionPage() {
       secondary: {
         main: "#ffc400"
       },
+      background: {
+        default: "#fff"
+      },
       contrastThreshold: 5.1,
-      type: "dark"
+      type: "light"
     }
   });
   var classes = useStyles();
@@ -927,4 +930,4 @@ function MakeCodeEditorExtensionPage() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-makecode-editor-extension-tsx-07885e317762c0747249.js.map
+//# sourceMappingURL=component---src-pages-tools-makecode-editor-extension-tsx-e65ba39417c71068c7b9.js.map

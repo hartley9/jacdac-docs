@@ -532,6 +532,9 @@ function Page() {
       secondary: {
         main: "#ffc400"
       },
+      background: {
+        default: "#fff"
+      },
       type: "light",
       contrastThreshold: 3.1
     }
@@ -548,4 +551,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-makecode-sim-tsx-644c98f82ac2f5058f6a.js.map
+//# sourceMappingURL=component---src-pages-tools-makecode-sim-tsx-0dfdf84bbb6309ab8eb3.js.map
