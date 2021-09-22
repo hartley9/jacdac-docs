@@ -19332,62 +19332,6 @@ exports.Z = _default;
 
 /***/ }),
 
-/***/ 16993:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-var __webpack_unused_export__;
-
-
-var _interopRequireDefault = __webpack_require__(95318);
-
-var _interopRequireWildcard = __webpack_require__(20862);
-
-__webpack_unused_export__ = ({
-  value: true
-});
-exports.Z = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(67294));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"
-}), 'ExpandLess');
-
-exports.Z = _default;
-
-/***/ }),
-
-/***/ 47739:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-var __webpack_unused_export__;
-
-
-var _interopRequireDefault = __webpack_require__(95318);
-
-var _interopRequireWildcard = __webpack_require__(20862);
-
-__webpack_unused_export__ = ({
-  value: true
-});
-exports.Z = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(67294));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-}), 'ExpandMore');
-
-exports.Z = _default;
-
-/***/ }),
-
 /***/ 46576:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -50480,7 +50424,7 @@ function ConnectButtons(props) {
 
 /***/ }),
 
-/***/ 54886:
+/***/ 84461:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50510,12 +50454,6 @@ var constants = __webpack_require__(71815);
 var useChange = __webpack_require__(54774);
 // EXTERNAL MODULE: ./src/components/devices/DeviceName.tsx
 var DeviceName = __webpack_require__(26390);
-// EXTERNAL MODULE: ./src/components/ui/IconButtonWithTooltip.tsx + 1 modules
-var IconButtonWithTooltip = __webpack_require__(79885);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/ExpandMore.js
-var ExpandMore = __webpack_require__(47739);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/ExpandLess.js
-var ExpandLess = __webpack_require__(16993);
 // EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts + 1 modules
 var useDeviceSpecification = __webpack_require__(34246);
 // EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 1 modules
@@ -50611,58 +50549,6 @@ function DashboardServiceWidgetItem(props) {
 }
 // EXTERNAL MODULE: ./src/components/DeviceActions.tsx
 var DeviceActions = __webpack_require__(87993);
-// EXTERNAL MODULE: ./src/components/RegisterInput.tsx + 2 modules
-var RegisterInput = __webpack_require__(24162);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
-var spec = __webpack_require__(45656);
-;// CONCATENATED MODULE: ./src/components/dashboard/DashboardServiceDetails.tsx
-
-
-
-
-
-// filter out common registers
-var ignoreRegisters = [constants/* SystemReg.StatusCode */.ZJq.StatusCode, constants/* SystemReg.StreamingPreferredInterval */.ZJq.StreamingPreferredInterval, constants/* SystemReg.StreamingSamples */.ZJq.StreamingSamples, constants/* SystemReg.StreamingInterval */.ZJq.StreamingInterval];
-var collapsedRegisters = [constants/* SystemReg.Reading */.ZJq.Reading, constants/* SystemReg.Value */.ZJq.Value, constants/* SystemReg.Intensity */.ZJq.Intensity];
-function DashboardServiceDetails(props) {
-  var {
-    service,
-    expanded,
-    visible
-  } = props;
-  var specification = (0,react.useMemo)(() => service === null || service === void 0 ? void 0 : service.specification, [service]);
-  var registers = (0,react.useMemo)(() => {
-    var _packets$filter;
-
-    var packets = specification === null || specification === void 0 ? void 0 : specification.packets;
-    var ids = (packets === null || packets === void 0 ? void 0 : (_packets$filter = packets.filter(pkt => (0,spec/* isRegister */.x5)(pkt))) === null || _packets$filter === void 0 ? void 0 : _packets$filter.map(pkt => pkt.identifier)) || [];
-    ids = ids.filter(id => ignoreRegisters.indexOf(id) < 0);
-    if (!expanded) // grab the first interresting register
-      ids = ids.filter(id => collapsedRegisters.indexOf(id) > -1).slice(0, 1);
-    return ids.map(id => service.register(id)).filter(reg => !!reg) // hide optional const register without values
-    .filter(reg => {
-      var _reg$specification, _reg$specification2;
-
-      return !((_reg$specification = reg.specification) !== null && _reg$specification !== void 0 && _reg$specification.optional) || ((_reg$specification2 = reg.specification) === null || _reg$specification2 === void 0 ? void 0 : _reg$specification2.kind) === "const" && reg.lastGetAttempts < constants/* REGISTER_OPTIONAL_POLL_COUNT */.Go2;
-    });
-  }, [specification, expanded]);
-  if (!(registers !== null && registers !== void 0 && registers.length)) // nothing to see here
-    return null;
-  return /*#__PURE__*/react.createElement(react.Fragment, null, registers.map(register => {
-    return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-      key: register.id,
-      item: true,
-      xs: true
-    }, /*#__PURE__*/react.createElement(RegisterInput/* default */.Z, {
-      register: register,
-      showServiceName: true,
-      showRegisterName: true,
-      hideMissingValues: false,
-      showTrend: false,
-      visible: visible
-    }));
-  }));
-}
 // EXTERNAL MODULE: ./src/components/devices/useDeviceName.ts
 var useDeviceName = __webpack_require__(5738);
 ;// CONCATENATED MODULE: ./src/components/hooks/useIntersectionObserver.ts
@@ -50713,12 +50599,8 @@ var DeviceLostAlert = __webpack_require__(60145);
 
 
 
-
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
-
- // tslint:disable-next-line: no-submodule-imports match-default-export-name
-
-
+// tslint:disable-next-line: no-submodule-imports match-default-export-name
 
 
 
@@ -50734,8 +50616,6 @@ function DashboardDevice(props) {
   var {
     device,
     serviceFilter,
-    expanded,
-    toggleExpanded,
     variant,
     showAvatar,
     showHeader
@@ -50763,15 +50643,14 @@ function DashboardDevice(props) {
       justifyContent: "center",
       alignItems: "flex-end",
       alignContent: "space-between"
-    }, services === null || services === void 0 ? void 0 : (_services$filter = services.filter(srv => expanded || !srv.isMixin)) === null || _services$filter === void 0 ? void 0 : (_services$filter$filt = _services$filter.filter(srv => !serviceFilter || serviceFilter(srv))) === null || _services$filter$filt === void 0 ? void 0 : _services$filter$filt.map(service => /*#__PURE__*/react.createElement(DashboardServiceWidgetItem, {
+    }, services === null || services === void 0 ? void 0 : (_services$filter = services.filter(srv => !srv.isMixin)) === null || _services$filter === void 0 ? void 0 : (_services$filter$filt = _services$filter.filter(srv => !serviceFilter || serviceFilter(srv))) === null || _services$filter$filt === void 0 ? void 0 : _services$filter$filt.map(service => /*#__PURE__*/react.createElement(DashboardServiceWidgetItem, {
       key: service.id,
       service: service,
-      expanded: expanded,
       services: services,
       variant: variant,
       visible: visible
     })));
-  }, [(0,eventsource/* dependencyId */.BX)(services), expanded, variant, visible]);
+  }, [(0,eventsource/* dependencyId */.BX)(services), variant, visible]);
   if (!showHeader) return /*#__PURE__*/react.createElement(Paper/* default */.Z, {
     style: {
       padding: "0.25em"
@@ -50790,14 +50669,11 @@ function DashboardDevice(props) {
     }),
     action: /*#__PURE__*/react.createElement(DeviceActions/* default */.Z, {
       device: device,
-      showStop: expanded,
-      hideIdentity: !expanded,
-      showReset: expanded && !mobile,
-      showSettings: expanded && !mobile
-    }, toggleExpanded && /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
-      onClick: toggleExpanded,
-      title: expanded ? "Collapse" : "Expand"
-    }, expanded ? /*#__PURE__*/react.createElement(ExpandLess/* default */.Z, null) : /*#__PURE__*/react.createElement(ExpandMore/* default */.Z, null))),
+      showStop: true,
+      hideIdentity: true,
+      showReset: false,
+      showSettings: false
+    }),
     title: /*#__PURE__*/react.createElement(DeviceName/* default */.Z, {
       showShortId: false,
       device: device
@@ -50812,19 +50688,7 @@ function DashboardDevice(props) {
     }
   }, /*#__PURE__*/react.createElement(DeviceLostAlert/* DeviceLostAlert */.M, {
     device: device
-  }), /*#__PURE__*/react.createElement(ServiceWidgets, null), expanded && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    container: true,
-    direction: "column",
-    spacing: 1,
-    alignContent: "stretch"
-  }, services === null || services === void 0 ? void 0 : services.map(service => /*#__PURE__*/react.createElement(DashboardServiceDetails, {
-    key: "details" + service.serviceIndex,
-    service: service,
-    services: services,
-    expanded: expanded,
-    variant: variant,
-    visible: visible
-  })))));
+  }), /*#__PURE__*/react.createElement(ServiceWidgets, null)));
 }
 
 /***/ }),
@@ -54426,7 +54290,7 @@ function SplitGrid(props) {
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(71815);
 /* harmony import */ var _hooks_useServiceProviderFromServiceClass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(36134);
 /* harmony import */ var _hooks_useDevices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(53074);
-/* harmony import */ var _dashboard_DashboardDevice__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(54886);
+/* harmony import */ var _dashboard_DashboardDevice__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(84461);
 
 
 
@@ -63994,7 +63858,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "9016c450c55ae8b416af9dca2427ce7d53c686e1";
+var sha = "968e90a8946e7d6693273058e4021acc18876063";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64888,7 +64752,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "9016c450c55ae8b416af9dca2427ce7d53c686e1";
+  var sha = "968e90a8946e7d6693273058e4021acc18876063";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82500,4 +82364,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-9974fff1a990e99fb979.js.map
+//# sourceMappingURL=app-0b5ce06a42c590f662ae.js.map

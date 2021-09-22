@@ -10,7 +10,7 @@
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(45987);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(80838);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _DashboardDevice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(54886);
+/* harmony import */ var _DashboardDevice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(84461);
 /* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(54774);
 /* harmony import */ var _DashboardServiceWidget__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23069);
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(84377);
@@ -29,10 +29,6 @@ function DashboardDeviceItem(props) {
   } = props,
       other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(props, _excluded);
 
-  var {
-    0: expanded,
-    1: setExpanded
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   var {
     drawerType
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .ZP);
@@ -59,23 +55,18 @@ function DashboardDeviceItem(props) {
       lg: 3,
       xl: 4
     };else return {
-      xs: expanded ? 12 : 6,
+      xs: 6,
       sm: 4,
       md: 3,
       lg: 2,
       xl: "auto"
     };
-  }, [expanded, drawerType]);
-
-  var handleExpanded = () => setExpanded(!expanded); // based on size, expanded or reduce widget size
-
+  }, [drawerType]); // based on size, expanded or reduce widget size
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, Object.assign({
     item: true
   }, breakpoints), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardDevice__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, Object.assign({
     device: device,
-    expanded: expanded,
-    toggleExpanded: handleExpanded,
     variant: variant
   }, other)));
 }
@@ -285,4 +276,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-service-playground-tsx-cc0a7d2f8496c3f175d4.js.map
+//# sourceMappingURL=component---src-templates-service-playground-tsx-dcc0fd1b98db0b915d16.js.map

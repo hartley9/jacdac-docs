@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6080],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[3828],{
 
 /***/ 98468:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
@@ -591,151 +591,224 @@ var TableCell = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(funct
 
 /***/ }),
 
-/***/ 96080:
+/***/ 47739:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+}), 'ExpandMore');
+
+exports.Z = _default;
+
+/***/ }),
+
+/***/ 3828:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "default": function() { return /* binding */ ModelSummaryDropdown; }
-});
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Accordion/Accordion.js + 1 modules
-var Accordion = __webpack_require__(98468);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/AccordionSummary/AccordionSummary.js
-var AccordionSummary = __webpack_require__(95371);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/AccordionDetails/AccordionDetails.js
-var AccordionDetails = __webpack_require__(37171);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
-var Grid = __webpack_require__(80838);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/ExpandMore.js
-var ExpandMore = __webpack_require__(47739);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Table/Table.js
-var Table = __webpack_require__(49683);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TableHead/TableHead.js
-var TableHead = __webpack_require__(4093);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TableRow/TableRow.js
-var TableRow = __webpack_require__(99395);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TableCell/TableCell.js
-var TableCell = __webpack_require__(49400);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TableBody/TableBody.js
-var TableBody = __webpack_require__(86300);
-// EXTERNAL MODULE: ./src/components/model-editor/MBModel.ts
-var MBModel = __webpack_require__(73102);
-;// CONCATENATED MODULE: ./src/components/model-editor/components/ModelSummary.tsx
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ WebDiagnostics; }
+/* harmony export */ });
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(4093);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(99395);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(49400);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(86300);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(78475);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(49683);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(83332);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(98468);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(95371);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(37171);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(71815);
+/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20392);
+/* harmony import */ var _ui_PaperBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(79739);
+/* harmony import */ var _material_ui_icons_ExpandMore__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(47739);
+/* harmony import */ var _ui_Alert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(95453);
+/* harmony import */ var _material_ui_lab__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(99330);
 
 
 
-function ModelSummary(props) {
-  var {
-    model,
-    dataset
-  } = props;
-  return /*#__PURE__*/react.createElement(react.Fragment, null, !!dataset && /*#__PURE__*/react.createElement(react.Fragment, null, " ", dataset.summary.map((line, lineIdx) => {
-    return /*#__PURE__*/react.createElement("span", {
-      key: "dataset-summary-" + lineIdx
-    }, " ", line, " ", /*#__PURE__*/react.createElement("br", null));
-  }), " "), model.summary.map((line, lineIdx) => {
-    return /*#__PURE__*/react.createElement("span", {
-      style: {
-        whiteSpace: "pre-wrap"
-      },
-      key: "model-summary-" + lineIdx
-    }, line, /*#__PURE__*/react.createElement("br", null));
-  }), !!model.modelStats && /*#__PURE__*/react.createElement(Table/* default */.Z, null, /*#__PURE__*/react.createElement(TableHead/* default */.Z, null, /*#__PURE__*/react.createElement(TableRow/* default */.Z, null, /*#__PURE__*/react.createElement(TableCell/* default */.Z, null, "Layer"), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, "Shape"), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, "# of Params"), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, "# of Bytes (%)"), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, "# of Cycles (%)"))), /*#__PURE__*/react.createElement(TableBody/* default */.Z, null, /*#__PURE__*/react.createElement(TableRow/* default */.Z, {
-    key: "input"
-  }, /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    component: "th",
-    scope: "row"
-  }, "INPUT"), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, "[", model.inputShape.join(", "), "]"), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  })), model.modelStats.layers.map(layer => /*#__PURE__*/react.createElement(TableRow/* default */.Z, {
-    key: layer.name
-  }, /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    component: "th",
-    scope: "row"
-  }, layer.name), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, "[", layer.outputShape.join(", "), "]"), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, layer.weightBytes / 2), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, layer.weightBytes + layer.codeBytes, " (", ((layer.weightBytes + layer.codeBytes) * 100 / (model.modelStats.total.weightBytes + model.modelStats.total.codeBytes)).toPrecision(3), "%)"), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, layer.optimizedCycles, " (", (layer.optimizedCycles * 100 / model.modelStats.total.optimizedCycles).toPrecision(3), "%)"))), /*#__PURE__*/react.createElement(TableRow/* default */.Z, null, /*#__PURE__*/react.createElement(TableCell/* default */.Z, null, "TOTAL"), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, model.modelStats.layers.map(layer => {
-    return layer.weightBytes;
-  }).reduce((total, current) => {
-    return total + current;
-  }) / MBModel/* MCU_FLOAT_SIZE */.Xl), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, model.modelStats.total.weightBytes + model.modelStats.total.codeBytes, /*#__PURE__*/react.createElement("br", null), "(", ((model.modelStats.total.weightBytes + model.modelStats.total.codeBytes - model.modelStats.layers.map(layer => {
-    return layer.weightBytes + layer.codeBytes;
-  }).reduce((total, current) => {
-    return total + current;
-  })) / 1000).toPrecision(2), " ", "KB overhead)"), /*#__PURE__*/react.createElement(TableCell/* default */.Z, {
-    align: "right"
-  }, model.modelStats.total.optimizedCycles, " ", /*#__PURE__*/react.createElement("br", null), "(", (model.modelStats.total.optimizedCycles / MBModel/* MCU_SPEED */.HG).toPrecision(2), "ms @ 64MHz)")))));
+
+ // tslint:disable-next-line: match-default-export-name no-submodule-imports
+
+
+
+
+
+function visitNodes(node, vis) {
+  var todo = [node];
+
+  while (todo.length) {
+    var _node = todo.pop();
+
+    vis(_node);
+
+    _node.children.forEach(child => todo.push(child));
+  }
 }
-;// CONCATENATED MODULE: ./src/components/model-editor/components/ModelSummaryDropdown.tsx
 
-
- // tslint:disable-next-line: no-submodule-imports match-default-export-name
-
-
-function ModelSummaryDropdown(props) {
+function NodeCallRow(props) {
   var {
-    dataset,
-    model
+    node
   } = props;
-  var classes = props.reactStyle;
-  var [expanded, setExpanded] = react.useState(false);
+  var emitStats = node.eventStats;
+  var newListenerStats = node.newListenerStats || {};
+  var events = Object.keys(emitStats).filter(ev => emitStats[ev] || newListenerStats[ev]).sort((l, r) => -emitStats[l] + emitStats[r]);
+  var emitTotal = events.filter(ev => ev !== _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .REMOVE_LISTENER */ .MnB && ev !== _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .NEW_LISTENER */ .nxl).map(ev => emitStats[ev] | 0).reduce((prev, curr) => prev + curr, 0);
+  var newListenerTotal = events.map(ev => newListenerStats[ev] | 0).reduce((prev, curr) => prev + curr, 0);
+  if (emitTotal == 0) return null;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, node.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, emitTotal), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, newListenerTotal))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null, events.map(ev => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+    key: "event:" + ev
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, ev), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, emitStats[ev] || 0), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, newListenerStats[ev] || 0)))));
+}
 
-  var handleExpandedSummaryChange = panel => (event, isExpanded) => {
+function NodeCalls() {
+  var {
+    bus
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z);
+  var nodes = {};
+  visitNodes(bus, n => nodes[n.id] = n);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_PaperBox__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    key: "slots"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
+    size: "small"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, "node"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, "calls"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, "new listener"))), Object.values(nodes).map(node => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(NodeCallRow, {
+    key: "calls:" + node.id,
+    node: node
+  })))));
+}
+
+function NodeListenerRow(props) {
+  var {
+    node
+  } = props;
+  var eventNames = node.eventNames().filter(ev => node.listenerCount(ev)).sort((l, r) => -node.listenerCount(l) + node.listenerCount(r));
+  var counts = eventNames.map(ev => node.listenerCount(ev));
+  var total = counts.reduce((p, c) => p + c, 0);
+
+  var handleClick = ev => () => {
+    var stackTraces = node.listenerStackTraces(ev);
+    stackTraces.forEach(st => console.log(st));
+  };
+
+  if (total == 0) return null;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+    valign: "top"
+  }, node.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+    valign: "top"
+  }, total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null, eventNames.map((ev, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+    key: "listener:" + ev
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, ev), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, counts[i]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
+    size: "small",
+    onClick: handleClick(ev)
+  }, "traces"))))));
+}
+
+function NodeListeners() {
+  var {
+    bus
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z);
+  var nodes = {};
+  visitNodes(bus, n => nodes[n.id] = n);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_PaperBox__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    key: "slots"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
+    size: "small"
+  }, Object.values(nodes).map(node => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(NodeListenerRow, {
+    key: "node:" + node.id,
+    node: node
+  })))));
+}
+
+function WebDiagnostics() {
+  var [expanded, setExpanded] = react__WEBPACK_IMPORTED_MODULE_0__.useState(false);
+  var {
+    0: v,
+    1: setV
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+
+  var handleRefresh = () => {
+    setV(v + 1);
+  };
+
+  var handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  return /*#__PURE__*/react.createElement(Accordion/* default */.Z, {
-    expanded: expanded === "modelSummary",
-    onChange: handleExpandedSummaryChange("modelSummary")
-  }, /*#__PURE__*/react.createElement(AccordionSummary/* default */.Z, {
-    expandIcon: /*#__PURE__*/react.createElement(ExpandMore/* default */.Z, null)
-  }, /*#__PURE__*/react.createElement("div", null, expanded == "modelSummary" ? /*#__PURE__*/react.createElement("h2", null, " Summary ") : /*#__PURE__*/react.createElement("span", null, "Classes: ", model.labels.join(", "), " ", /*#__PURE__*/react.createElement("br", null), "Training Status: ", model.status, " ", /*#__PURE__*/react.createElement("br", null)))), /*#__PURE__*/react.createElement(AccordionDetails/* default */.Z, null, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    container: true,
-    direction: "column",
-    spacing: 1
-  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: 12
-  }, /*#__PURE__*/react.createElement(ModelSummary, {
-    reactStyle: classes,
-    dataset: dataset,
-    model: model
-  })))));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Alert__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+    severity: "info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_lab__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, null, "Diagnostics", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
+    variant: "outlined",
+    onClick: handleRefresh
+  }, "refresh")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "This diagnostics view does not register events to refresh automatically. Click the button above to refresh data."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
+    expanded: expanded === "listeners",
+    onChange: handleChange("listeners")
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
+    expandIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_ExpandMore__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, null)
+  }, "Event Listeners"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(NodeListeners, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
+    expanded: expanded === "calls",
+    onChange: handleChange("calls")
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
+    expandIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_ExpandMore__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, null)
+  }, "Event Calls"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(NodeCalls, null))));
+}
+
+/***/ }),
+
+/***/ 79739:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ PaperBox; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45987);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(59355);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(33287);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(58063);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+
+var _excluded = ["children", "padding", "elevation", "bgcolor"];
+
+
+function PaperBox(props) {
+  var {
+    children,
+    padding,
+    elevation,
+    bgcolor
+  } = props,
+      others = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(props, _excluded);
+
+  var theme = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, Object.assign({}, others, {
+    bgcolor: bgcolor,
+    mb: theme.spacing(0.25)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+    square: true,
+    elevation: elevation
+  }, padding !== 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    p: theme.spacing(padding || 0.25)
+  }, children), padding === 0 && children));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=6080-3c685b438cabacfe7b00.js.map
+//# sourceMappingURL=3828-37e968716e22da4a0564.js.map
