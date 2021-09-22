@@ -51329,7 +51329,7 @@ var serviceViews = {
   },
   [constants/* SRV_HID_MOUSE */.Eef]: {
     component: DashboardHIDMouse,
-    weight: () => 2
+    weight: () => 1
   },
 
   /*
@@ -63850,7 +63850,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "575ac4ee5ac53f7fda920f61aab5d57e220ac53b";
+var sha = "3dc1636800eb5a8708fcf599b948be1068592b0b";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64744,7 +64744,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "575ac4ee5ac53f7fda920f61aab5d57e220ac53b";
+  var sha = "3dc1636800eb5a8708fcf599b948be1068592b0b";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82356,4 +82356,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-be1421db045671a6b8a1.js.map
+//# sourceMappingURL=app-a8fd38b29e94faf93392.js.map

@@ -1,6 +1,33 @@
 "use strict";
 (self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[5233],{
 
+/***/ 65482:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M20 9c-.04-4.39-3.6-7.93-8-7.93S4.04 4.61 4 9v6c0 4.42 3.58 8 8 8s8-3.58 8-8V9zm-2 0h-5V3.16c2.81.47 4.96 2.9 5 5.84zm-7-5.84V9H6c.04-2.94 2.19-5.37 5-5.84zM18 15c0 3.31-2.69 6-6 6s-6-2.69-6-6v-4h12v4z"
+}), 'MouseOutlined');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 45233:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -13,12 +40,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10920);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(70274);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(80838);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(80453);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(80453);
 /* harmony import */ var _jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(73512);
 /* harmony import */ var _jacdac_ts_src_jdom_pack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(91635);
 /* harmony import */ var _hooks_useServiceServer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(49013);
 /* harmony import */ var _jacdac_ts_src_servers_hidmouseserver__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(72191);
 /* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(54774);
+/* harmony import */ var _material_ui_icons_MouseOutlined__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(65482);
+
+
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 
 
 
@@ -29,6 +62,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)({
   capture: {
+    whiteSpace: "pre-wrap",
     cursor: "pointer",
     "&:hover": {
       borderColor: theme.palette.primary.main
@@ -43,6 +77,7 @@ function DashboardHIDMouse(props) {
     service
   } = props;
   var classes = useStyles();
+  var preRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var server = (0,_hooks_useServiceServer__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)(service);
   var {
     0: observed,
@@ -83,13 +118,13 @@ function DashboardHIDMouse(props) {
   }();
 
   var serverValue = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(server, _ => _ === null || _ === void 0 ? void 0 : _.lastCommand);
-  var value = serverValue || "...";
   var preview = serverValue || observed;
 
   var handleMouseDown = ev => {
     var {
       buttons
     } = ev;
+    preRef.current.focus();
     setObserved("set button " + (0,_jacdac_ts_src_servers_hidmouseserver__WEBPACK_IMPORTED_MODULE_4__/* .renderHidMouseButtons */ .z)(buttons) + " down");
   };
 
@@ -157,18 +192,22 @@ function DashboardHIDMouse(props) {
     spacing: 1
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
     item: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_MouseOutlined__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
+    fontSize: "large"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+    item: true,
+    xs: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("pre", {
+    ref: preRef,
     className: classes.capture,
     tabIndex: 0,
     onMouseDown: handleMouseDown,
     onMouseUp: handleMouseUp,
     onKeyDown: handleKeyDown
-  }, value || "..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
-    variant: "caption"
-  }, "focus and type l(eft), r(ight), m(iddle) for buttons, arrow keys to move, w(heel up), d(wheel down) for the wheel")), preview && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+  }, "focus and type l(eft), r(ight), m(iddle) for buttons, arrow keys to move, w(heel up), d(wheel down) for the wheel")), server && preview && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
     variant: "caption",
     component: "pre"
   }, "mouse preview: ", preview || "...")));
@@ -177,4 +216,4 @@ function DashboardHIDMouse(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5233-fa0989abb4f871a9f148.js.map
+//# sourceMappingURL=5233-8f520a702bf836c62df3.js.map
