@@ -63994,7 +63994,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "b4ca451002330be75ac8f204289b0a456f85f1aa";
+var sha = "0de3962334bb957fd44f70066a285c22d8f4696d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64888,7 +64888,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "b4ca451002330be75ac8f204289b0a456f85f1aa";
+  var sha = "0de3962334bb957fd44f70066a285c22d8f4696d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70030,7 +70030,10 @@ var DeviceStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
    * @internal
    */
   _proto.processAnnouncement = function processAnnouncement(pkt) {
-    // collect metrics
+    var {
+      current: oldCurrent
+    } = this; // collect metrics
+
     var received = this._receivedPackets;
     var total = pkt.data[2];
     var restarts = this._restarts;
@@ -70043,7 +70046,10 @@ var DeviceStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
 
     this._receivedPackets = 0;
     this._restarts = 0;
-    this.emit(constants/* CHANGE */.Ver);
+    var {
+      current
+    } = this;
+    if (oldCurrent.dropped !== current.dropped || oldCurrent.restarts !== current.restarts) this.emit(constants/* CHANGE */.Ver);
   }
   /**
    * @internal
@@ -70061,7 +70067,6 @@ var DeviceStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
 
   _proto.processRestart = function processRestart() {
     this._restarts++;
-    this.emit(constants/* CHANGE */.Ver);
   };
 
   (0,createClass/* default */.Z)(DeviceStatsMonitor, [{
@@ -82498,4 +82503,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-8f4909533f9b632d3dda.js.map
+//# sourceMappingURL=app-ae616d0cf4555a4b7ddf.js.map
