@@ -63951,6 +63951,10 @@ var ApplicationInsights = function () {
 
 
 
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/random.ts
+var random = __webpack_require__(80303);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
+var utils = __webpack_require__(81794);
 ;// CONCATENATED MODULE: ./src/components/hooks/useAnalytics.ts
 
 
@@ -63961,8 +63965,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
+
 var repo = "microsoft/jacdac-docs";
-var sha = "5b7cddf0487e546b93ad17283c4647fa3e955a2c";
+var sha = "dfb49f0743c8d12b41c090dee03d57765978eb81";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -63982,6 +63988,7 @@ function splitProperties(props) {
   };
 }
 
+var sessionId = (0,utils/* toHex */.NC)((0,random/* cryptoRandomUint32 */.dG)(64));
 var INSTRUMENTATION_KEY = "81ad7468-8585-4970-b027-4f9e7c3eb191";
 var appInsights = typeof window !== "undefined" && INSTRUMENTATION_KEY && // ignore dev environment
 !/http:\/\/localhost/.test(window.location.href) && new ApplicationInsights({
@@ -63995,6 +64002,11 @@ var appInsights = typeof window !== "undefined" && INSTRUMENTATION_KEY && // ign
 var page = appInsights ? () => appInsights.track({
   name: "",
   time: new Date().toUTCString(),
+  ext: {
+    app: {
+      sesId: sessionId
+    }
+  },
   tags: [],
   data: {
     repo,
@@ -64009,6 +64021,11 @@ var page = appInsights ? () => appInsights.track({
 var trackEvent = appInsights ? (name, properties) => appInsights.track({
   name: "",
   time: new Date().toUTCString(),
+  ext: {
+    app: {
+      sesId: sessionId
+    }
+  },
   data: {
     repo,
     sha
@@ -64021,6 +64038,11 @@ var trackEvent = appInsights ? (name, properties) => appInsights.track({
 var trackError = appInsights ? (error, properties) => appInsights.track({
   name: "",
   time: new Date().toUTCString(),
+  ext: {
+    app: {
+      sesId: sessionId
+    }
+  },
   data: {
     repo,
     sha
@@ -64855,7 +64877,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "5b7cddf0487e546b93ad17283c4647fa3e955a2c";
+  var sha = "dfb49f0743c8d12b41c090dee03d57765978eb81";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82524,4 +82546,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-bae56a7d6ed2697ae362.js.map
+//# sourceMappingURL=app-5bd01e0b8f69ed217d9e.js.map
