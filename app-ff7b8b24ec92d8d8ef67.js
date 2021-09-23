@@ -63962,7 +63962,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "3ee7f793e71db4c1b7f66fc78a571f2fd4615ea4";
+var sha = "9851eb92847be7784800566fe67cd51b266c0e1e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64855,7 +64855,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3ee7f793e71db4c1b7f66fc78a571f2fd4615ea4";
+  var sha = "9851eb92847be7784800566fe67cd51b266c0e1e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -68482,8 +68482,6 @@ __webpack_require__.d(__webpack_exports__, {
   "Z": function() { return /* binding */ providerbus; }
 });
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(15861);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
 var setPrototypeOf = __webpack_require__(89611);
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js
@@ -68502,6 +68500,8 @@ function _inherits(subClass, superClass) {
   });
   if (superClass) (0,setPrototypeOf/* default */.Z)(subClass, superClass);
 }
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(15861);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
 var createClass = __webpack_require__(43144);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
@@ -75026,7 +75026,6 @@ var useAnalytics = __webpack_require__(58057);
 
 
 
-
 function sniffQueryArguments() {
   var _window$location$hash;
 
@@ -75083,6 +75082,30 @@ function createBus() {
   } = useAnalytics/* analytics */.co;
 
   if (trackEvent) {
+    var createPayload = d => {
+      var _d$source, _d$source$split$;
+
+      var productId = d.isPhysical ? d.productIdentifier : undefined;
+      var services = {};
+
+      for (var srv of d.services().filter(srv => !(0,jdom_spec/* isInfrastructure */.lz)(srv.specification))) {
+        var {
+          name
+        } = srv;
+        services[name] = (services[name] || 0) + 1;
+      }
+
+      var payload = {
+        deviceId: d.anonymizedDeviceId,
+        source: (_d$source = d.source) === null || _d$source === void 0 ? void 0 : (_d$source$split$ = _d$source.split("-", 1)[0]) === null || _d$source$split$ === void 0 ? void 0 : _d$source$split$.toLowerCase(),
+        physical: d.isPhysical,
+        productId: productId === null || productId === void 0 ? void 0 : productId.toString(16),
+        services: JSON.stringify(services),
+        serviceClasses: JSON.stringify(d.serviceClasses.slice(1))
+      };
+      return payload;
+    };
+
     var cleanCount = 0; // track connections
 
     b.on(constants/* CONNECTION_STATE */.pzj, transport => transport.connectionState === transport_transport/* ConnectionState.Connected */.em.Connected || transport.connectionState === transport_transport/* ConnectionState.Disconnected */.em.Disconnected && trackEvent("jd.transport." + transport.connectionState, {
@@ -75090,41 +75113,22 @@ function createBus() {
       connectionState: transport.connectionState
     })); // track services
 
-    b.on(constants/* DEVICE_ANNOUNCE */.Hob, /*#__PURE__*/function () {
-      var _ref = (0,asyncToGenerator/* default */.Z)(function* (d) {
-        var _d$source, _d$source$split$;
+    b.on(constants/* DEVICE_ANNOUNCE */.Hob, d => {
+      trackEvent("jd.announce", createPayload(d)); // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-        var productId = d.isPhysical ? yield d.resolveProductIdentifier() : undefined;
-        var services = {};
-
-        for (var srv of d.services().filter(srv => !(0,jdom_spec/* isInfrastructure */.lz)(srv.specification))) {
-          var {
-            name
-          } = srv;
-          services[name] = (services[name] || 0) + 1;
-        }
-
-        trackEvent("jd.announce", {
-          deviceId: d.anonymizedDeviceId,
-          source: (_d$source = d.source) === null || _d$source === void 0 ? void 0 : (_d$source$split$ = _d$source.split("-", 1)[0]) === null || _d$source$split$ === void 0 ? void 0 : _d$source$split$.toLowerCase(),
-          physical: d.isPhysical,
-          productId: productId === null || productId === void 0 ? void 0 : productId.toString(16),
-          services: JSON.stringify(services),
-          serviceClasses: JSON.stringify(d.serviceClasses.slice(1))
-        }); // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
-        trackEvent("jd.stats", b.stats.current);
-      });
-
-      return function (_x) {
-        return _ref.apply(this, arguments);
-      };
-    }()); // general stats
+      trackEvent("jd.stats", b.stats.current);
+    }); // general stats
 
     b.on(constants/* DEVICE_CLEAN */.vl4, () => {
       // log roughly every minute
       if (!(cleanCount++ % 30)) // eslint-disable-next-line @typescript-eslint/no-explicit-any
         trackEvent("jd.stats", b.stats.current);
+    }); // track restarts
+
+    b.on(constants/* DEVICE_RESTART */.eLF, d => {
+      if (d.isPhysical) {
+        trackEvent("jd.restart", createPayload(d));
+      }
     });
   }
 
@@ -82519,4 +82523,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-f2b1b1426484eacef697.js.map
+//# sourceMappingURL=app-ff7b8b24ec92d8d8ef67.js.map
