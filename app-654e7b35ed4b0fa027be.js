@@ -63983,7 +63983,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "f3eb179ddfaa210aea523bce853a017a38489daa";
+var sha = "a93af07ec4a18cf602c1f7a5a7566cc921d87084";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64892,7 +64892,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "f3eb179ddfaa210aea523bce853a017a38489daa";
+  var sha = "a93af07ec4a18cf602c1f7a5a7566cc921d87084";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72272,7 +72272,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     var _sendResetIn = (0,asyncToGenerator/* default */.Z)(function* () {
       // don't send reset if already received
       // or no devices
-      if (this._lastResetInTime - this.timestamp < constants/* RESET_IN_TIME_US */._$y / 5 || !this.devices({
+      if (!this.devices({
         ignoreSelf: true
       }).length) return;
       this._lastResetInTime = this.timestamp;
@@ -72608,6 +72608,11 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     key: "selfDevice",
     get: function get() {
       return this.device(this.selfDeviceId);
+    }
+  }, {
+    key: "lastResetInTime",
+    get: function get() {
+      return this._lastResetInTime;
     }
   }, {
     key: "backgroundRefreshRegisters",
@@ -82613,4 +82618,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-f80e500b1b17183dd1c5.js.map
+//# sourceMappingURL=app-654e7b35ed4b0fa027be.js.map
