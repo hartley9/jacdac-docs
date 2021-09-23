@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[3572],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6152],{
 
-/***/ 20147:
+/***/ 97742:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -39,14 +39,14 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
-    "id": "thermometer-extension",
+    "id": "light-level",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h1",
-    "href": "#thermometer-extension",
-    "aria-label": "thermometer extension permalink",
+    "href": "#light-level",
+    "aria-label": "light level permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -60,12 +60,12 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Thermometer Extension"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The thermometer extension reports the temperature in degrees Celsius.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }))), "Light Level"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The light level extension reports light level as a floating\npoint value between 0.0 and 100.0.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "temperature"), " method returns the current temperature."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the current temperature whenever it changes by\none degree Celsius:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "lightLevel"), " method returns the current light level."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the light level whenever the light level changes by 5:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.thermometer1.onTemperatureChangedBy(1, function () {\\n    basic.showNumber(modules.thermometer1.temperature())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.thermometer1.onTemperatureChangedBy(1, function () {\\n    basic.showNumber(modules.thermometer1.temperature())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.33,jacdac-thermometer=github:microsoft/pxt-jacdac/thermometer#v0.6.33\"},\"type\":\"renderblocks\",\"id\":\"cb25f9abca843d1b7a0065fa95317826\"},\"url\":\"/images/makecode/cb25f9abca843d1b7a0065fa95317826.png\",\"width\":494,\"height\":128}}\n")));
+  }, "{\"source\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.33,jacdac-light-level=github:microsoft/pxt-jacdac/light-level#v0.6.33\"},\"type\":\"renderblocks\",\"id\":\"0e98cc759297e71abf10e0ce9a4ee35c\"},\"url\":\"/images/makecode/0e98cc759297e71abf10e0ce9a4ee35c.png\",\"width\":554,\"height\":176}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -91,4 +91,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-thermometer-mdx-a42db9995bad47fa14f9.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-lightlevel-mdx-2385582be902c36bd972.js.map
