@@ -46647,16 +46647,15 @@ function startServiceProviderFromServiceClass(bus, serviceClass) {
 /* harmony export */   "jw": function() { return /* binding */ DrawerType; },
 /* harmony export */   "wI": function() { return /* binding */ AppProvider; }
 /* harmony export */ });
-/* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36176);
-/* harmony import */ var notistack__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(70076);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(67294);
-/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(71815);
-/* harmony import */ var _jacdac_ts_src_jdom_error__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(52800);
-/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(81794);
-/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(20392);
-/* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(58057);
-/* harmony import */ var _PacketsContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(43226);
-/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(69672);
+/* harmony import */ var notistack__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(70076);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(71815);
+/* harmony import */ var _jacdac_ts_src_jdom_error__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(52800);
+/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(81794);
+/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(20392);
+/* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(58057);
+/* harmony import */ var _PacketsContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(43226);
+/* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(69672);
 
 
 
@@ -46666,10 +46665,9 @@ function startServiceProviderFromServiceClass(bus, serviceClass) {
 
 
 
-
-var StartSimulatorDialog = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_2__.lazy)(() => __webpack_require__.e(/* import() */ 4610).then(__webpack_require__.bind(__webpack_require__, 44610)));
-var SelectRoleDialog = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_2__.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(1745)]).then(__webpack_require__.bind(__webpack_require__, 31745)));
-var ConnectTransportDialog = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_2__.lazy)(() => __webpack_require__.e(/* import() */ 9474).then(__webpack_require__.bind(__webpack_require__, 9474)));
+var StartSimulatorDialog = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.lazy)(() => __webpack_require__.e(/* import() */ 4610).then(__webpack_require__.bind(__webpack_require__, 44610)));
+var SelectRoleDialog = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(1745)]).then(__webpack_require__.bind(__webpack_require__, 31745)));
+var ConnectTransportDialog = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.lazy)(() => __webpack_require__.e(/* import() */ 9474).then(__webpack_require__.bind(__webpack_require__, 9474)));
 var DrawerType;
 
 (function (DrawerType) {
@@ -46679,7 +46677,7 @@ var DrawerType;
   DrawerType[DrawerType["Dom"] = 3] = "Dom";
 })(DrawerType || (DrawerType = {}));
 
-var AppContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_2__.createContext)({
+var AppContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({
   drawerType: DrawerType.None,
   setDrawerType: () => {},
   searchQuery: undefined,
@@ -46703,49 +46701,49 @@ var AppProvider = _ref => {
   } = _ref;
   var {
     bus
-  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z);
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z);
   var {
     setPaused
-  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_PacketsContext__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z);
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_PacketsContext__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z);
   var {
     0: type,
     1: setType
-  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(DrawerType.None);
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(DrawerType.None);
   var {
     0: searchQuery,
     1: setSearchQuery
-  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)("");
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("");
   var {
     0: toolsMenu,
     1: _setToolsMenu
-  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
   var {
     0: showDeviceHostsDialog,
     1: setShowDeviceHostsDialog
-  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
   var {
     0: showConnectTransportDialog,
     1: setShowConnectTransportDialog
-  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
   var {
     0: showSelectRoleDialogService,
     1: setShowSelectRoleDialogService
-  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(undefined);
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(undefined);
   var {
     trackError
-  } = (0,_hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .ZP)();
+  } = (0,_hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .ZP)();
   var {
     0: selectedPacket,
     1: setSelectedPacket
-  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(undefined);
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(undefined);
   var {
     enqueueSnackbar: _enqueueSnackbar
-  } = (0,notistack__WEBPACK_IMPORTED_MODULE_1__/* .useSnackbar */ .Ds)(); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } = (0,notistack__WEBPACK_IMPORTED_MODULE_0__/* .useSnackbar */ .Ds)(); // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
   var setError = e => {
-    if (!e || (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_5__/* .isCancelError */ .G5)(e)) return;
+    if (!e || (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_4__/* .isCancelError */ .G5)(e)) return;
     var msg = (e === null || e === void 0 ? void 0 : e.message) || e + "";
-    var code = (0,_jacdac_ts_src_jdom_error__WEBPACK_IMPORTED_MODULE_4__/* .errorCode */ .uY)(e);
+    var code = (0,_jacdac_ts_src_jdom_error__WEBPACK_IMPORTED_MODULE_3__/* .errorCode */ .uY)(e);
     trackError === null || trackError === void 0 ? void 0 : trackError(e, {
       code
     });
@@ -46753,12 +46751,7 @@ var AppProvider = _ref => {
     _enqueueSnackbar(msg, {
       variant: "error",
       autoHideDuration: code ? 8000 : 4000,
-      preventDuplicate: true,
-      action: !!code && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_0__.Button, {
-        variant: "outlined",
-        "aria-label": "Open help page on " + code + " error",
-        to: "/errors/" + code
-      }, "Help")
+      preventDuplicate: true
     });
   };
 
@@ -46779,8 +46772,8 @@ var AppProvider = _ref => {
   }; // notify errors
 
 
-  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => bus.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_3__/* .ERROR */ .pnR, e => {
-    if ((0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_5__/* .isCancelError */ .G5)(e.exception)) return;
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => bus.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .ERROR */ .pnR, e => {
+    if ((0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_4__/* .isCancelError */ .G5)(e.exception)) return;
     setError(e.exception);
   }), []);
 
@@ -46800,7 +46793,7 @@ var AppProvider = _ref => {
 
   var showSelectRoleDialog = srv => setShowSelectRoleDialogService(srv);
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(AppContext.Provider, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(AppContext.Provider, {
     value: {
       drawerType: type,
       setDrawerType,
@@ -46816,13 +46809,13 @@ var AppProvider = _ref => {
       selectedPacket,
       setSelectedPacket
     }
-  }, children, showDeviceHostsDialog && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(StartSimulatorDialog, {
+  }, children, showDeviceHostsDialog && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(StartSimulatorDialog, {
     open: showDeviceHostsDialog,
     onClose: toggleShowDeviceHostsDialog
-  })), showSelectRoleDialogService && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(SelectRoleDialog, {
+  })), showSelectRoleDialogService && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(SelectRoleDialog, {
     service: showSelectRoleDialogService,
     onClose: handleCloseRoleDialog
-  })), showConnectTransportDialog && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(ConnectTransportDialog, {
+  })), showConnectTransportDialog && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(ConnectTransportDialog, {
     open: showConnectTransportDialog,
     onClose: toggleShowConnectTransportDialog
   })));
@@ -63967,7 +63960,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "11bdf1e127849e6bf281fc3467397230cb3dde26";
+var sha = "e1187f6b119240ae0f48e06ce3f2f09cb1929f81";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64876,7 +64869,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "11bdf1e127849e6bf281fc3467397230cb3dde26";
+  var sha = "e1187f6b119240ae0f48e06ce3f2f09cb1929f81";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82545,4 +82538,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-564bf61aab31a07e5266.js.map
+//# sourceMappingURL=app-cfe222d8056370952b1e.js.map
