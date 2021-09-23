@@ -63960,7 +63960,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "e1187f6b119240ae0f48e06ce3f2f09cb1929f81";
+var sha = "32787783a7930761881ea9f68060ca21afd6cfd2";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64869,7 +64869,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "e1187f6b119240ae0f48e06ce3f2f09cb1929f81";
+  var sha = "32787783a7930761881ea9f68060ca21afd6cfd2";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -68496,6 +68496,8 @@ __webpack_require__.d(__webpack_exports__, {
   "Z": function() { return /* binding */ providerbus; }
 });
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(15861);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
 var setPrototypeOf = __webpack_require__(89611);
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js
@@ -68514,8 +68516,6 @@ function _inherits(subClass, superClass) {
   });
   if (superClass) (0,setPrototypeOf/* default */.Z)(subClass, superClass);
 }
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(15861);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
 var createClass = __webpack_require__(43144);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
@@ -75040,6 +75040,7 @@ var useAnalytics = __webpack_require__(58057);
 
 
 
+
 function sniffQueryArguments() {
   var _window$location$hash;
 
@@ -75140,11 +75141,18 @@ function createBus() {
         trackEvent("jd.stats", b.stats.current);
     }); // track restarts
 
-    b.on(constants/* DEVICE_RESTART */.eLF, d => {
-      if (d.isPhysical) {
-        trackEvent("jd.restart", createPayload(d));
-      }
-    });
+    b.on(constants/* DEVICE_RESTART */.eLF, /*#__PURE__*/function () {
+      var _ref = (0,asyncToGenerator/* default */.Z)(function* (d) {
+        if (d.isPhysical) {
+          yield d.resolveProductIdentifier();
+          trackEvent("jd.restart", createPayload(d));
+        }
+      });
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
   }
 
   return b;
@@ -82538,4 +82546,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-cfe222d8056370952b1e.js.map
+//# sourceMappingURL=app-3054f2fad54eb2a85284.js.map
