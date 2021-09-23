@@ -65,7 +65,7 @@ function MDXContent(_ref) {
   }, "position"), " method returns the current position of the potentiometer."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the position whenever the position changes by\n5:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.potentiometer1.onPositionChangedBy(5, function() {\\n    led.plotBarGraph(modules.potentiometer1.position(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.potentiometer1.onPositionChangedBy(5, function() {\\n    led.plotBarGraph(modules.potentiometer1.position(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.33,jacdac-potentiometer=github:microsoft/pxt-jacdac/potentiometer#v0.6.33\"},\"type\":\"renderblocks\",\"id\":\"0b918c825ca57a3fcc582a258ef7112c\"},\"url\":\"/images/makecode/0b918c825ca57a3fcc582a258ef7112c.png\",\"width\":544,\"height\":176}}\n")));
+  }, "{\"source\":\"modules.potentiometer1.onPositionChangedBy(5, function() {\\n    led.plotBarGraph(modules.potentiometer1.position(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.potentiometer1.onPositionChangedBy(5, function() {\\n    led.plotBarGraph(modules.potentiometer1.position(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.36,jacdac-potentiometer=github:microsoft/pxt-jacdac/potentiometer#v0.6.36\"},\"type\":\"renderblocks\",\"id\":\"099ca61b2c0e63cc37916c957ca020f2\"},\"url\":\"/images/makecode/099ca61b2c0e63cc37916c957ca020f2.png\",\"width\":544,\"height\":176}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -91,4 +91,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-potentiometer-mdx-2b8d0a9350e88ede0a35.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-potentiometer-mdx-aea158a8b8954f981f98.js.map
