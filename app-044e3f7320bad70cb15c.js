@@ -45979,6 +45979,13 @@ var _providerDefinitions = [{
     instanceName: "humidity"
   }), new AnalogSensorServer(constants/* SRV_THERMOMETER */.O$i, indoorThermometerOptions)]
 }, {
+  name: "flex sensor (2.2 inch)",
+  serviceClasses: [constants/* SRV_FLEX */.YYl],
+  services: () => [new AnalogSensorServer(constants/* SRV_FLEX */.YYl, {
+    variant: constants/* FlexVariant.Linear22Inch */.MhZ.Linear22Inch,
+    readingValues: [0.5]
+  })]
+}, {
   name: "gyroscope",
   serviceClasses: [constants/* SRV_GYROSCOPE */.R0$],
   services: () => [new sensorserver/* default */.Z(constants/* SRV_GYROSCOPE */.R0$, {
@@ -46308,13 +46315,6 @@ var _providerDefinitions = [{
   serviceClasses: [constants/* SRV_POTENTIOMETER */.GQv],
   services: () => [new AnalogSensorServer(constants/* SRV_POTENTIOMETER */.GQv, {
     variant: constants/* PotentiometerVariant.Rotary */.cmA.Rotary,
-    readingValues: [0.5]
-  })]
-}, {
-  name: "flex sensor (2.2 inch)",
-  serviceClasses: [constants/* SRV_FLEX */.YYl],
-  services: () => [new AnalogSensorServer(constants/* SRV_FLEX */.YYl, {
-    variant: constants/* FlexVariant.Linear22Inch */.MhZ.Linear22Inch,
     readingValues: [0.5]
   })]
 }, {
@@ -63976,7 +63976,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "f030c726ce40c131f84a4e1664f3222315c13d2d";
+var sha = "48891af29895afb2741ddf047901cef83763fa88";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64885,7 +64885,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "f030c726ce40c131f84a4e1664f3222315c13d2d";
+  var sha = "48891af29895afb2741ddf047901cef83763fa88";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82562,4 +82562,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-0965e2d0358bc81bb4a8.js.map
+//# sourceMappingURL=app-044e3f7320bad70cb15c.js.map

@@ -99,17 +99,7 @@ function MDXContent(_ref) {
     "href": "https://makecode.microbit.org/",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "MakeCode for micro:bit"), ", ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "https://arcade.makecode.com/",
-    "target": "_blank",
-    "rel": "nofollow noopener noreferrer"
-  }, "Arcade"), " or ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "https://maker.makecode.com/",
-    "target": "_blank",
-    "rel": "nofollow noopener noreferrer"
-  }, "Maker")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "MakeCode for micro:bit")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, "Open or create a new project."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
@@ -281,4 +271,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-mdx-6ca520fe0fbd8bf1ae72.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-mdx-117a015792a473486149.js.map
