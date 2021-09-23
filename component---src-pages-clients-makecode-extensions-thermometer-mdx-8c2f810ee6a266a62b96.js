@@ -65,7 +65,7 @@ function MDXContent(_ref) {
   }, "temperature"), " method returns the current temperature."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the current temperature whenever it changes by\none degree Celsius:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.thermometer1.onTemperatureChangedBy(1, function () {\\n    led.stopAnimation()\\n    basic.showNumber(modules.thermometer1.temperature())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.thermometer1.onTemperatureChangedBy(1, function () {\\n    led.stopAnimation()\\n    basic.showNumber(modules.thermometer1.temperature())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.37,jacdac-thermometer=github:microsoft/pxt-jacdac/thermometer#v0.6.37\"},\"type\":\"renderblocks\",\"id\":\"ad66131ef8519afdc81dd84d9d6fa790\"},\"url\":\"/images/makecode/ad66131ef8519afdc81dd84d9d6fa790.png\",\"width\":485,\"height\":176}}\n")));
+  }, "{\"source\":\"modules.thermometer1.onTemperatureChangedBy(1, function () {\\n    led.stopAnimation()\\n    basic.showNumber(modules.thermometer1.temperature())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.thermometer1.onTemperatureChangedBy(1, function () {\\n    led.stopAnimation()\\n    basic.showNumber(modules.thermometer1.temperature())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.38,jacdac-thermometer=github:microsoft/pxt-jacdac/thermometer#v0.6.38\"},\"type\":\"renderblocks\",\"id\":\"b3d3dbfd87863232c8956dbc3ab8fa68\"},\"url\":\"/images/makecode/b3d3dbfd87863232c8956dbc3ab8fa68.png\",\"width\":485,\"height\":176}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -91,4 +91,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-thermometer-mdx-ce5763530ac1fc924dd1.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-thermometer-mdx-8c2f810ee6a266a62b96.js.map

@@ -65,7 +65,7 @@ function MDXContent(_ref) {
   }, "lightLevel"), " method returns the current light level."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the light level whenever the light level changes by 5:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.37,jacdac-light-level=github:microsoft/pxt-jacdac/light-level#v0.6.37\"},\"type\":\"renderblocks\",\"id\":\"93e1b86d4fbb1d2a984e2c612ad19493\"},\"url\":\"/images/makecode/93e1b86d4fbb1d2a984e2c612ad19493.png\",\"width\":554,\"height\":176}}\n")));
+  }, "{\"source\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.38,jacdac-light-level=github:microsoft/pxt-jacdac/light-level#v0.6.38\"},\"type\":\"renderblocks\",\"id\":\"ad6f8b53bb138aa4d0a3b3e99aa4d3a4\"},\"url\":\"/images/makecode/ad6f8b53bb138aa4d0a3b3e99aa4d3a4.png\",\"width\":554,\"height\":176}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -91,4 +91,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-lightlevel-mdx-79e76f53025f4b269518.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-lightlevel-mdx-ad7df181c5dda4dd1c89.js.map

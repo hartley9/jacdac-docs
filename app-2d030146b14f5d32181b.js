@@ -63983,7 +63983,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "a93af07ec4a18cf602c1f7a5a7566cc921d87084";
+var sha = "aa51d342f08cf07a5da8ff041a9e82b7d3ab8993";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64892,7 +64892,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a93af07ec4a18cf602c1f7a5a7566cc921d87084";
+  var sha = "aa51d342f08cf07a5da8ff041a9e82b7d3ab8993";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70865,6 +70865,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
         this.emit(constants/* CHANGE */.Ver);
         this.bus.emit(constants/* DEVICE_CHANGE */.RoP, this);
         this.bus.emit(constants/* CHANGE */.Ver);
+        if (this._flashing) this.bus.sendStopStreaming();
       }
     }
     /**
@@ -72248,7 +72249,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   ;
 
   _proto.handleSelfAnnounce = function handleSelfAnnounce() {
-    return Promise.all([this.sendAnnounce(), this.sendResetIn(), this.pingLoggers()]).then(() => {});
+    return Promise.all([this.sendAnnounce(), this.sendResetIn(), this.sendPingLoggers()]).then(() => {});
   };
 
   _proto.sendAnnounce = /*#__PURE__*/function () {
@@ -72287,8 +72288,25 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     return sendResetIn;
   }();
 
-  _proto.pingLoggers = /*#__PURE__*/function () {
-    var _pingLoggers = (0,asyncToGenerator/* default */.Z)(function* () {
+  _proto.sendStopStreaming = /*#__PURE__*/function () {
+    var _sendStopStreaming = (0,asyncToGenerator/* default */.Z)(function* () {
+      console.debug("bus: stop streaming");
+      var readingRegisters = this.services({
+        announced: true,
+        ignoreSelf: true
+      }).map(srv => srv.readingRegister && srv.register(constants/* SensorReg.StreamingSamples */.q9t.StreamingSamples)).filter(reg => !!reg);
+      yield Promise.all(readingRegisters.map(reg => reg.sendSetPackedAsync([0])));
+    });
+
+    function sendStopStreaming() {
+      return _sendStopStreaming.apply(this, arguments);
+    }
+
+    return sendStopStreaming;
+  }();
+
+  _proto.sendPingLoggers = /*#__PURE__*/function () {
+    var _sendPingLoggers = (0,asyncToGenerator/* default */.Z)(function* () {
       if (this._minLoggerPriority < constants/* LoggerPriority.Silent */.qit.Silent && this.timestamp - this._lastPingLoggerTime > constants/* PING_LOGGERS_POLL */.Cot && this.devices({
         ignoreSelf: true,
         serviceClass: constants/* SRV_LOGGER */.w9j
@@ -72299,11 +72317,11 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
       }
     });
 
-    function pingLoggers() {
-      return _pingLoggers.apply(this, arguments);
+    function sendPingLoggers() {
+      return _sendPingLoggers.apply(this, arguments);
     }
 
-    return pingLoggers;
+    return sendPingLoggers;
   }()
   /**
    * Indicates if registers are automatically refreshed in the background.
@@ -82618,4 +82636,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-654e7b35ed4b0fa027be.js.map
+//# sourceMappingURL=app-2d030146b14f5d32181b.js.map

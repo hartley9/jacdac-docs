@@ -101253,9 +101253,6 @@ function RegisterTreeItem(props) {
     visible: true,
     maxLength: 18
   });
-  console.log({
-    humanValue
-  });
   var handleClick = (0,react.useCallback)(() => register.sendGetAsync(), [register]);
   (0,react.useEffect)(() => register === null || register === void 0 ? void 0 : register.subscribe(constants/* GET_ATTEMPT */.tDM, () => {
     setAttempts(register.lastGetAttempts);
@@ -107369,4 +107366,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-8c187f2c8c2c35a53176.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-208e485318b44328d2de.js.map

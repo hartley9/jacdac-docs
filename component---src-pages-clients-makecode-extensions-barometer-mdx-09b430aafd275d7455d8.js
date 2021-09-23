@@ -65,7 +65,7 @@ function MDXContent(_ref) {
   }, "pressure"), " method returns the current barometric pressure."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the pressure whenever the pressure changes by 0.2 hPa:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.barometer1.onPressureChangedBy(0.2, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.barometer1.pressure())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.barometer1.onPressureChangedBy(0.2, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.barometer1.pressure())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.37,jacdac-barometer=github:microsoft/pxt-jacdac/barometer#v0.6.37\"},\"type\":\"renderblocks\",\"id\":\"62a88771f471a2d86bfd39f10cceb0d3\"},\"url\":\"/images/makecode/62a88771f471a2d86bfd39f10cceb0d3.png\",\"width\":437,\"height\":176}}\n")));
+  }, "{\"source\":\"modules.barometer1.onPressureChangedBy(0.2, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.barometer1.pressure())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.barometer1.onPressureChangedBy(0.2, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.barometer1.pressure())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.38,jacdac-barometer=github:microsoft/pxt-jacdac/barometer#v0.6.38\"},\"type\":\"renderblocks\",\"id\":\"ccca9b6595802f71926e749a4f5c5e3d\"},\"url\":\"/images/makecode/ccca9b6595802f71926e749a4f5c5e3d.png\",\"width\":437,\"height\":176}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -91,4 +91,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-barometer-mdx-1135a813032de611b770.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-barometer-mdx-09b430aafd275d7455d8.js.map
