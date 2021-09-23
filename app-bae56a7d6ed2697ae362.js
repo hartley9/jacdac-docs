@@ -63962,7 +63962,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "fedc24f1a8ea64155a07bd518f3d2326cbe9c838";
+var sha = "5b7cddf0487e546b93ad17283c4647fa3e955a2c";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64855,7 +64855,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "fedc24f1a8ea64155a07bd518f3d2326cbe9c838";
+  var sha = "5b7cddf0487e546b93ad17283c4647fa3e955a2c";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -75083,9 +75083,10 @@ function createBus() {
 
   if (trackEvent) {
     var createPayload = d => {
-      var _d$source, _d$source$split$;
+      var _deviceSpecificationF, _d$source, _d$source$split$;
 
       var productId = d.isPhysical ? d.productIdentifier : undefined;
+      var product = (_deviceSpecificationF = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(productId)) === null || _deviceSpecificationF === void 0 ? void 0 : _deviceSpecificationF.id;
       var services = {};
 
       for (var srv of d.services().filter(srv => !(0,jdom_spec/* isInfrastructure */.lz)(srv.specification))) {
@@ -75095,15 +75096,15 @@ function createBus() {
         services[name] = (services[name] || 0) + 1;
       }
 
-      var payload = {
+      return {
         deviceId: d.anonymizedDeviceId,
         source: (_d$source = d.source) === null || _d$source === void 0 ? void 0 : (_d$source$split$ = _d$source.split("-", 1)[0]) === null || _d$source$split$ === void 0 ? void 0 : _d$source$split$.toLowerCase(),
         physical: d.isPhysical,
         productId: productId === null || productId === void 0 ? void 0 : productId.toString(16),
+        product,
         services: JSON.stringify(services),
         serviceClasses: JSON.stringify(d.serviceClasses.slice(1))
       };
-      return payload;
     };
 
     var cleanCount = 0; // track connections
@@ -82523,4 +82524,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-a9aa97fecb80cfb81413.js.map
+//# sourceMappingURL=app-bae56a7d6ed2697ae362.js.map
