@@ -188,33 +188,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ ToolsDrawer; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(93433);
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(93433);
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4942);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(10920);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(70274);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(4381);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(50144);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(38030);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(71892);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(80791);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(62846);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(10920);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(70274);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(4381);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(50144);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(38030);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(71892);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(80791);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(62846);
 /* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(36176);
 /* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(48534);
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(84377);
 /* harmony import */ var _ui_useUnitConverter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(44111);
-/* harmony import */ var _material_ui_icons_ChevronRight__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(65735);
-/* harmony import */ var _material_ui_icons_SettingsBrightness__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(80837);
-/* harmony import */ var _material_ui_icons_SystemUpdateAlt__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(96898);
-/* harmony import */ var _material_ui_icons_Wifi__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(14695);
-/* harmony import */ var _material_ui_icons_Settings__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(88237);
-/* harmony import */ var _material_ui_icons_FiberManualRecord__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(95067);
+/* harmony import */ var _material_ui_icons_ChevronRight__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(65735);
+/* harmony import */ var _material_ui_icons_SettingsBrightness__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(80837);
+/* harmony import */ var _material_ui_icons_SystemUpdateAlt__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(96898);
+/* harmony import */ var _material_ui_icons_Wifi__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(14695);
+/* harmony import */ var _material_ui_icons_Settings__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(88237);
+/* harmony import */ var _material_ui_icons_FiberManualRecord__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(95067);
 /* harmony import */ var _icons_MakeCodeIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(70654);
 /* harmony import */ var _ui_DarkModeContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(91350);
 /* harmony import */ var _KindIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(50048);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(71815);
 /* harmony import */ var _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(47751);
 /* harmony import */ var _jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(13996);
+/* harmony import */ var _icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(36656);
 
 
 
@@ -246,7 +247,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z)({
+
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z)({
   drawer: {
     width: _layout__WEBPACK_IMPORTED_MODULE_3__/* .TOOLS_DRAWER_WIDTH */ .wW + "rem",
     flexShrink: 0,
@@ -283,18 +285,18 @@ function ToolsListItem(props) {
     href: href,
     target: href ? "_blank" : undefined,
     onClick: to ? onClose : undefined
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, {
     button: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, null, icon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, null, icon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z, {
     primaryTypographyProps: {
       color: "textPrimary"
     },
     primary: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, text)
-  }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
+  }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, {
     button: true,
     onClick: onClick,
     "aria-label": text
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, null, icon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, null, icon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z, {
     primaryTypographyProps: {
       color: "textPrimary"
     },
@@ -310,7 +312,8 @@ function ToolsDrawer() {
     toggleShowDeviceHostsDialog
   } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .ZP);
   var {
-    enqueueSnackbar
+    enqueueSnackbar,
+    toggleShowConnectTransportDialog
   } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .ZP);
   var {
     toggleDarkMode,
@@ -343,6 +346,10 @@ function ToolsDrawer() {
   };
 
   var links = [{
+    text: "Connect",
+    action: toggleShowConnectTransportDialog,
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, null)
+  }, {
     text: "Start simulator",
     action: toggleShowDeviceHostsDialog,
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_KindIcon__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .ZP, {
@@ -351,19 +358,19 @@ function ToolsDrawer() {
   }, {
     text: "Data Collector",
     to: "/tools/collector/",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_FiberManualRecord__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z, null)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_FiberManualRecord__WEBPACK_IMPORTED_MODULE_18__/* ["default"] */ .Z, null)
   }, _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_10__/* .UIFlags.peers */ .A.peers && {
     text: "Peers",
     to: "/tools/peers/",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Wifi__WEBPACK_IMPORTED_MODULE_18__/* ["default"] */ .Z, null)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Wifi__WEBPACK_IMPORTED_MODULE_19__/* ["default"] */ .Z, null)
   }, {}, {
     text: "Device Settings",
     to: "/tools/settings/",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Settings__WEBPACK_IMPORTED_MODULE_19__/* ["default"] */ .Z, null)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_Settings__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z, null)
   }, {
     text: "Firmware Update",
     to: "/tools/updater/",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_SystemUpdateAlt__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z, null)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_SystemUpdateAlt__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z, null)
   }, {// separator
   }, {
     text: "MakeCode",
@@ -396,7 +403,7 @@ function ToolsDrawer() {
       kind: _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_9__/* .DEVICE_NODE_NAME */ .tY6
     })
   }, {// separator
-  }].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z)(converters.map(_ref => {
+  }].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z)(converters.map(_ref => {
     var {
       unit,
       name,
@@ -408,7 +415,7 @@ function ToolsDrawer() {
     };
   }))).filter(l => !!l);
   if (!toolsMenu) return null;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .ZP, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_23__/* ["default"] */ .ZP, {
     className: classes.drawer,
     variant: "persistent",
     anchor: "right",
@@ -421,21 +428,21 @@ function ToolsDrawer() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_2__.IconButton, {
     "aria-label": "Collapse",
     onClick: handleDrawerClose
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_ChevronRight__WEBPACK_IMPORTED_MODULE_23__/* ["default"] */ .Z, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_24__/* ["default"] */ .Z, null, links.map((link, i) => link.text ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(ToolsListItem, Object.assign({
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_ChevronRight__WEBPACK_IMPORTED_MODULE_24__/* ["default"] */ .Z, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* ["default"] */ .Z, null, links.map((link, i) => link.text ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(ToolsListItem, Object.assign({
     key: link.text
   }, link, {
     onClick: handleClick(link),
     onClose: handleDrawerClose
-  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* ["default"] */ .Z, {
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_26__/* ["default"] */ .Z, {
     key: "div" + i
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_25__/* ["default"] */ .Z, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_26__/* ["default"] */ .Z, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, {
     button: true,
     onClick: handleDarkMode,
     "aria-label": "Toggle Dark Mode"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_SettingsBrightness__WEBPACK_IMPORTED_MODULE_26__/* ["default"] */ .Z, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, null, darkMode === "light" ? "Dark Mode" : "Light mode"))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_icons_SettingsBrightness__WEBPACK_IMPORTED_MODULE_27__/* ["default"] */ .Z, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z, null, darkMode === "light" ? "Dark Mode" : "Light mode"))));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=4986-8c8bb96149b2268c9941.js.map
+//# sourceMappingURL=4986-8c93e3e322e10582219a.js.map
