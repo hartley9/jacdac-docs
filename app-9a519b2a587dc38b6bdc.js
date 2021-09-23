@@ -53844,8 +53844,8 @@ function Kit() {
     }),
     subtitle2: "Unbox",
     description: "Power up the micro:bit and plug the cables and modules!",
-    buttonText: "Modules",
-    buttonUrl: "/hardware/kit/modules"
+    buttonText: "Unbox your kit",
+    buttonUrl: "/hardware/kit/unbox"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     item: true,
     xs: 12,
@@ -53858,7 +53858,7 @@ function Kit() {
     }),
     subtitle2: "Explore",
     description: "Use the dashboard to interact with modules in the browser.",
-    buttonText: "Dashboard",
+    buttonText: "Explore the dashboard",
     buttonUrl: "/dashboard"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     item: true,
@@ -53871,8 +53871,8 @@ function Kit() {
       __imageData: __webpack_require__(44133)
     }),
     subtitle2: "Build",
-    description: "Code Jacdac into your micro:bit V2, Arcade or Maker board.",
-    buttonText: "MakeCode",
+    description: "Code Jacdac into your micro:bit V2.",
+    buttonText: "Build with MakeCode",
     buttonUrl: "/clients/makecode"
   }))));
 }
@@ -63976,7 +63976,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "48891af29895afb2741ddf047901cef83763fa88";
+var sha = "791c0b09964235783dba1a9c0644ee632169200b";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64885,7 +64885,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "48891af29895afb2741ddf047901cef83763fa88";
+  var sha = "791c0b09964235783dba1a9c0644ee632169200b";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -77479,8 +77479,8 @@ exports.components = {
   "component---src-pages-github-tsx": () => __webpack_require__.e(/* import() | component---src-pages-github-tsx */ 2566).then(__webpack_require__.bind(__webpack_require__, 82017)),
   "component---src-pages-hardware-connector-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-connector-mdx */ 2124).then(__webpack_require__.bind(__webpack_require__, 80427)),
   "component---src-pages-hardware-kit-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-kit-mdx */ 9306).then(__webpack_require__.bind(__webpack_require__, 25420)),
-  "component---src-pages-hardware-kit-modules-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-kit-modules-mdx */ 128).then(__webpack_require__.bind(__webpack_require__, 55991)),
   "component---src-pages-hardware-kit-oob-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-kit-oob-mdx */ 915).then(__webpack_require__.bind(__webpack_require__, 51697)),
+  "component---src-pages-hardware-kit-unbox-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-kit-unbox-mdx */ 6575).then(__webpack_require__.bind(__webpack_require__, 69114)),
   "component---src-pages-hardware-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-mdx */ 3244).then(__webpack_require__.bind(__webpack_require__, 67319)),
   "component---src-pages-index-mdx": () => __webpack_require__.e(/* import() | component---src-pages-index-mdx */ 4809).then(__webpack_require__.bind(__webpack_require__, 95646)),
   "component---src-pages-privacy-mdx": () => __webpack_require__.e(/* import() | component---src-pages-privacy-mdx */ 5853).then(__webpack_require__.bind(__webpack_require__, 92574)),
@@ -82562,4 +82562,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-044e3f7320bad70cb15c.js.map
+//# sourceMappingURL=app-9a519b2a587dc38b6bdc.js.map
