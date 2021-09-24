@@ -822,8 +822,6 @@ var DbContext = __webpack_require__(94904);
 var DeleteForever = __webpack_require__(86426);
 // EXTERNAL MODULE: ./src/components/ui/SwitchWithLabel.tsx
 var SwitchWithLabel = __webpack_require__(64973);
-// EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/dist/specconstants.ts
-var specconstants = __webpack_require__(73512);
 ;// CONCATENATED MODULE: ./src/components/firmware/SafeBootAlert.tsx
 
 
@@ -832,8 +830,6 @@ var specconstants = __webpack_require__(73512);
 
 
  // tslint:disable-next-line: match-default-export-name tslint:disable-next-line: no-submodule-imports
-
-
 
 
 
@@ -879,13 +875,6 @@ function SafeBootAlert() {
 
   (0,react.useEffect)(() => {
     bus.safeBoot = safeBoot;
-
-    if (safeBoot) {
-      // tell all brains to enter proxy mode
-      var pkt = packet/* default.onlyHeader */.Z.onlyHeader(specconstants/* ControlCmd.Proxy */.VSW.Proxy);
-      pkt.sendAsMultiCommandAsync(bus, specconstants/* SRV_CONTROL */.gm9);
-    }
-
     return () => {
       bus.safeBoot = false;
     };
@@ -1120,6 +1109,9 @@ var GridHeader = __webpack_require__(95393);
 
 
 
+
+
+
 function FlashDiagnostics() {
   var blobs = (0,useFirmwareBlobs/* default */.Z)();
   var stores = (0,utils/* groupBy */.vM)(blobs, blob => blob.store);
@@ -1144,14 +1136,29 @@ function FlashDiagnostics() {
 
 function Flash() {
   var {
+    bus
+  } = (0,react.useContext)(Context/* default */.Z);
+  var {
     0: tab,
     1: setTab
   } = (0,react.useState)(0);
 
   var handleTabChange = (event, newValue) => {
     setTab(newValue);
-  };
+  }; // put brains into proxy mode
 
+
+  (0,react.useEffect)(() => {
+    var forceProxy = () => {
+      console.debug("jacdac: force clients to proxy mode");
+      var pkt = packet/* default.onlyHeader */.Z.onlyHeader(constants/* ControlCmd.Proxy */.VSW.Proxy);
+      pkt.sendAsMultiCommandAsync(bus, constants/* SRV_CONTROL */.gm9);
+    };
+
+    var unsub = bus.subscribe(constants/* DEVICE_ANNOUNCE */.Hob, forceProxy);
+    forceProxy();
+    return unsub;
+  }, []);
   return /*#__PURE__*/react.createElement(Box/* default */.Z, {
     mb: 2
   }, /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, null), /*#__PURE__*/react.createElement(Tabs/* default */.Z, {
@@ -1180,4 +1187,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-71bcc8344f7368ec4435.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-60932882a7419f2a7930.js.map
