@@ -46722,7 +46722,7 @@ var AppProvider = _ref => {
     bus
   } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z);
   var {
-    setPaused
+    setSilent
   } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_PacketsContext__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z);
   var {
     0: type,
@@ -46781,7 +46781,7 @@ var AppProvider = _ref => {
   var setDrawerType = type => {
     if (type !== DrawerType.None) _setToolsMenu(false);
     setType(type);
-    setPaused(type !== DrawerType.Packets);
+    setSilent(type !== DrawerType.Packets);
   };
 
   var setToolsMenu = open => {
@@ -49062,9 +49062,10 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
     _this = _JDClient.call(this) || this;
     _this.id = "v" + Math.random();
     _this._maxFilteredLength = FILTERED_TRACE_MAX_ITEMS;
-    _this._paused = true;
+    _this._paused = false;
     _this._packetFilter = undefined;
     _this._filteredPackets = [];
+    _this.silent = false;
     _this.bus = bus;
     _this._trace = new trace/* default */.ZP([], {
       maxLength: TRACE_MAX_ITEMS
@@ -49072,7 +49073,7 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
     _this.handlePacket = _this.handlePacket.bind((0,assertThisInitialized/* default */.Z)(_this));
     _this.handleFilterUpdate = _this.handleFilterUpdate.bind((0,assertThisInitialized/* default */.Z)(_this));
     _this.notifyPacketsChanged = (0,utils/* throttle */.P2)(() => {
-      _this.setFilteredPackets();
+      if (!_this.silent) _this.setFilteredPackets();
     }, throttleDelay);
 
     _this.mount(_this.bus.subscribe([constants/* PACKET_PROCESS */.wY8, constants/* PACKET_SEND */.RaS], _this.handlePacket));
@@ -49109,6 +49110,8 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
   };
 
   _proto.refreshFilter = function refreshFilter() {
+    var _this$notifyPacketsCh;
+
     this.id = "view" + Math.random();
     this._packetFilter = parsePacketFilter(this.bus, this._filter);
     this._filteredPackets = [];
@@ -49125,7 +49128,7 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
     }
 
     this._filteredPackets = this._filteredPackets.reverse();
-    this.notifyPacketsChanged();
+    (_this$notifyPacketsCh = this.notifyPacketsChanged) === null || _this$notifyPacketsCh === void 0 ? void 0 : _this$notifyPacketsCh.call(this);
   };
 
   _proto.handlePacket = function handlePacket(pkt) {
@@ -49136,9 +49139,11 @@ var TraceView = /*#__PURE__*/function (_JDClient) {
     this.trace.addPacket(pkt); // add packet to live list
 
     if ((_this$_packetFilter2 = this._packetFilter) !== null && _this$_packetFilter2 !== void 0 && _this$_packetFilter2.filter(pkt)) {
+      var _this$notifyPacketsCh2;
+
       this.addFilteredPacket(pkt); // debounced notification of changes
 
-      this.notifyPacketsChanged();
+      (_this$notifyPacketsCh2 = this.notifyPacketsChanged) === null || _this$notifyPacketsCh2 === void 0 ? void 0 : _this$notifyPacketsCh2.call(this);
     }
   };
 
@@ -49333,6 +49338,7 @@ var PacketsContext = /*#__PURE__*/(0,react.createContext)({
   toggleTracing: () => {},
   paused: false,
   setPaused: () => {},
+  setSilent: () => {},
   progress: undefined,
   timeRange: undefined,
   toggleTimeRange: () => {},
@@ -49376,7 +49382,11 @@ var PacketsProvider = _ref => {
   var {
     0: paused,
     1: _setPaused
-  } = (0,react.useState)(true);
+  } = (0,react.useState)(false);
+  var {
+    0: silent,
+    1: _setSilent
+  } = (0,react.useState)(false);
 
   var clearPackets = () => {
     setProgress(undefined);
@@ -49450,6 +49460,14 @@ var PacketsProvider = _ref => {
 
       view.current.paused = p;
     }
+  };
+
+  var setSilent = p => {
+    if (p !== silent) {
+      _setSilent(p);
+
+      view.current.silent = p;
+    }
   }; // views
 
 
@@ -49496,6 +49514,7 @@ var PacketsProvider = _ref => {
       toggleTracing,
       paused,
       setPaused,
+      setSilent,
       progress,
       timeRange,
       setTimeRange,
@@ -63984,7 +64003,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "18659ac6b644cd5088396b3176124851b6e136f1";
+var sha = "3ce1ba9df1b9baa37eda2e072586eefc8af766d5";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64893,7 +64912,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "18659ac6b644cd5088396b3176124851b6e136f1";
+  var sha = "3ce1ba9df1b9baa37eda2e072586eefc8af766d5";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82637,4 +82656,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-3f449e9bcfaa6b55c0f6.js.map
+//# sourceMappingURL=app-fddb1c6f65db67e1a301.js.map
