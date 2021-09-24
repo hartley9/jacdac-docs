@@ -91,10 +91,10 @@ function MDXContent(_ref) {
       "height": "27rem",
       "border": "none"
     },
-    allow: "usb",
-    sandbox: "allow-scripts allow-same-origin",
+    allow: "usb;serial;bluetooth",
+    sandbox: "allow-scripts allow-download allow-same-origin",
     "aria-label": "Jacdac tools",
-    src: "https://microsoft.github.io/jacdac-docs/tools/collector"
+    src: "https://microsoft.github.io/jacdac-docs/tools/collector?embed=1"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "message-protocol",
     "style": {
@@ -143,4 +143,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-embed-mdx-edce1925fec904511052.js.map
+//# sourceMappingURL=component---src-pages-clients-embed-mdx-9e061e5bd2f15e3f45c7.js.map

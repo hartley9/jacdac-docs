@@ -53052,8 +53052,8 @@ function Clients() {
       __imageData: __webpack_require__(27645)
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
-    subtitle2: "Can I embed Jacdac in my web pages?",
-    description: "Absolutely! With a few lines of HTML, you can bring Jacdac to your web pages.",
+    subtitle2: "Can I embed the dashboard in my web pages?",
+    description: "Absolutely! With a few lines of HTML, you'll get a dashboard in your web pages.",
     buttonText: "Copy HTML code to add Jacdac to your web site.",
     buttonVariant: "link",
     buttonUrl: "/clients/embed/"
@@ -64035,7 +64035,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "25378d8ed4364e971e3d2d0d60bc1337eaf4f794";
+var sha = "f219df2173266a1a4847d7eb81c2fae65f7acc8b";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64944,7 +64944,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "25378d8ed4364e971e3d2d0d60bc1337eaf4f794";
+  var sha = "f219df2173266a1a4847d7eb81c2fae65f7acc8b";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -66317,12 +66317,15 @@ function DataEditorAppBar() {
 }
 // EXTERNAL MODULE: ./node_modules/@material-ui/lab/esm/AlertTitle/AlertTitle.js
 var AlertTitle = __webpack_require__(99330);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
+var iframeclient = __webpack_require__(9809);
 ;// CONCATENATED MODULE: ./src/components/layout.tsx
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -66477,6 +66480,7 @@ function LayoutWithContext(props) {
   var {
     frontmatter
   } = pageContext || {};
+  var isHosted = (0,iframeclient/* inIFrame */.H)() && /(hosted|embed)=1/.test(window.location.href);
   var tools = /^\/tools\//.test(path);
   var makeCodeTool = /tools\/makecode-/.test(path);
   var fullWidthTools = /^\/editors\/\w+\/$/.test(path) || /^\/(tools\/makecode-|dashboard)/.test(path);
@@ -66485,7 +66489,7 @@ function LayoutWithContext(props) {
     hideUnderConstruction = false,
     hideBreadcrumbs = false
   } = frontmatter || {
-    hideMainMenu: makeCodeTool,
+    hideMainMenu: isHosted || makeCodeTool,
     hideUnderConstruction: makeCodeTool || fullWidthTools,
     hideBreadcrumbs: tools || fullWidthTools
   };
@@ -82829,4 +82833,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-524a65ddc8cc67c9c038.js.map
+//# sourceMappingURL=app-2b3415c5b50f4684a708.js.map
