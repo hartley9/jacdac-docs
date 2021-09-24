@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[5804],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6152],{
 
-/***/ 96240:
+/***/ 97742:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -39,14 +39,14 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
-    "id": "barometer",
+    "id": "light-level",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h1",
-    "href": "#barometer",
-    "aria-label": "barometer permalink",
+    "href": "#light-level",
+    "aria-label": "light level permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -60,12 +60,39 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Barometer"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The barometer extension reports the pressure in hPa\n(the abbreviated name for a hectopascal pressure unit,\nwhich is exactly equal to a millibar).\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }))), "Light Level"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The light level extension reports light level as a floating\npoint value between 0.0 and 100.0.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "pressure"), " method returns the current barometric pressure."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the pressure whenever the pressure changes by 0.2 hPa:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "lightLevel"), " method returns the current light level."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the light level whenever the light level changes by 5:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.barometer1.onPressureChangedBy(0.2, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.barometer1.pressure())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.barometer1.onPressureChangedBy(0.2, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.barometer1.pressure())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.40,jacdac-barometer=github:microsoft/pxt-jacdac/barometer#v0.6.40\"},\"type\":\"renderblocks\",\"id\":\"02abf5d060ad137f1259b156d632c48d\"},\"url\":\"/images/makecode/02abf5d060ad137f1259b156d632c48d.png\",\"width\":437,\"height\":176}}\n")));
+  }, "{\"source\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.40,jacdac-light-level=github:microsoft/pxt-jacdac/light-level#v0.6.40\"},\"type\":\"renderblocks\",\"id\":\"cc7e7eb951f4dc472c40c2e747a040bf\"},\"url\":\"/images/makecode/cc7e7eb951f4dc472c40c2e747a040bf.png\",\"width\":554,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "see-also",
+    "style": {
+      "position": "relative"
+    }
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "h2",
+    "href": "#see-also",
+    "aria-label": "see also permalink",
+    "className": "anchor before"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
+    parentName: "a",
+    "aria-hidden": "true",
+    "focusable": "false",
+    "height": "16",
+    "version": "1.1",
+    "viewBox": "0 0 16 16",
+    "width": "16"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("path", {
+    parentName: "svg",
+    "fillRule": "evenodd",
+    "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+  }))), "See Also"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
+    "href": "/jacdac-docs/services/lightlevel/"
+  }, "service specification"))));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -91,4 +118,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-barometer-mdx-d165c7a5f923d025e1c9.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-lightlevel-mdx-6e7238d94448a2518a2a.js.map
