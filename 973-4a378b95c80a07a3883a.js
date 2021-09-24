@@ -416,6 +416,8 @@ var Save = __webpack_require__(8567);
 var ServiceManagerContext = __webpack_require__(99808);
 // EXTERNAL MODULE: ./src/components/ui/IconButtonWithTooltip.tsx + 1 modules
 var IconButtonWithTooltip = __webpack_require__(79885);
+// EXTERNAL MODULE: ./src/jacdac/Context.tsx
+var Context = __webpack_require__(20392);
 ;// CONCATENATED MODULE: ./src/components/trace/TraceSaveButton.tsx
  // tslint:disable-next-line: match-default-export-name no-submodule-imports
 
@@ -423,7 +425,11 @@ var IconButtonWithTooltip = __webpack_require__(79885);
 
 
 
+
 function TraceSaveButton() {
+  var {
+    bus
+  } = (0,react.useContext)(Context/* default */.Z);
   var {
     replayTrace,
     view,
@@ -435,8 +441,15 @@ function TraceSaveButton() {
   } = (0,react.useContext)(ServiceManagerContext/* default */.ZP);
 
   var saveTrace = () => {
+    var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
-    var text = savedTrace.serializeToText();
+    var traceText = savedTrace.serializeToText();
+    var text = "# Jacdac Trace\n\n## devices\n\n```yaml\n" + busText + "\n```\n\n## packets\n\n```\n" + traceText + "\n```\n";
+    console.log({
+      busText,
+      traceText,
+      text
+    });
     fileStorage.saveText("trace.jd.txt", text);
   };
 
@@ -645,4 +658,4 @@ function AppDrawer(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=973-f1f51271f6c1efcdc2c0.js.map
+//# sourceMappingURL=973-4a378b95c80a07a3883a.js.map

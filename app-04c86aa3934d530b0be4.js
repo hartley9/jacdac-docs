@@ -49831,10 +49831,10 @@ var BrowserFileStorage = /*#__PURE__*/function () {
 
   _proto.saveText = function saveText(name, data, mimeType) {
     if (!mimeType) {
-      if (/\.csv/i.test(name)) mimeType = "text/plain";else if (/\.json/i.test(name)) mimeType = "application/json";
+      if (/\.(csv|txt)/i.test(name)) mimeType = "text/plain";else if (/\.json/i.test(name)) mimeType = "application/json";
     }
 
-    var url = "data:" + (mimeType || "text/plain") + ";charset=utf-8," + encodeURI(data);
+    var url = "data:" + (mimeType || "text/plain") + ";charset=utf-8," + encodeURIComponent(data);
     return this.downloadUrl(name, url);
   };
 
@@ -64020,7 +64020,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "b1bb9895dc0325dbf12f0a2aee7bb1a2583907e8";
+var sha = "7c0094c1294302f6bd597569e3e2dce98b8f0b50";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64929,7 +64929,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "b1bb9895dc0325dbf12f0a2aee7bb1a2583907e8";
+  var sha = "7c0094c1294302f6bd597569e3e2dce98b8f0b50";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70313,6 +70313,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
         this.emitPropagated(constants/* DEVICE_PRODUCT_IDENTIFY */.dY6);
         this.emitPropagated(constants/* CHANGE */.Ver);
       });
+      ctrl.register(constants/* ControlReg.FirmwareVersion */.toU.FirmwareVersion).once(constants/* REPORT_UPDATE */.rGZ, () => {});
     }
   }
   /**
@@ -70967,6 +70968,21 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
       var fwIdRegister = (_this$service3 = this.service(0)) === null || _this$service3 === void 0 ? void 0 : _this$service3.register(constants/* ControlReg.ProductIdentifier */.toU.ProductIdentifier);
       var v = fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.uintValue;
       if (fwIdRegister && v === undefined) fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.refresh(true);
+      return v;
+    }
+    /**
+     * Returns the firmware version synchronously. If needed, tries to refresh the value in the background.
+     * @category Control
+     */
+
+  }, {
+    key: "firmwareVersion",
+    get: function get() {
+      var _this$service4;
+
+      var reg = (_this$service4 = this.service(0)) === null || _this$service4 === void 0 ? void 0 : _this$service4.register(constants/* ControlReg.FirmwareVersion */.toU.FirmwareVersion);
+      var v = reg === null || reg === void 0 ? void 0 : reg.stringValue;
+      if (reg && v === undefined) reg === null || reg === void 0 ? void 0 : reg.refresh(true);
       return v;
     }
   }]);
@@ -71862,6 +71878,21 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     var _this$_devices, _this$_transports;
 
     return "bus: " + (((_this$_devices = this._devices) === null || _this$_devices === void 0 ? void 0 : _this$_devices.length) || 0) + " devices, " + (((_this$_transports = this._transports) === null || _this$_transports === void 0 ? void 0 : _this$_transports.filter(tr => tr.connected).map(tr => tr.type).join(", ")) || "");
+  }
+  /**
+   * Gets a detailled description of the devices and services connected to the bus
+   * @returns
+   */
+  ;
+
+  _proto.describe = function describe() {
+    return this.devices({
+      ignoreSelf: true
+    }).map(dev => {
+      var _deviceSpecificationF, _dev$productIdentifie;
+
+      return "device: \n  id: " + dev.shortId + " (" + dev.id + ")\n  product: " + (((_deviceSpecificationF = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(dev.productIdentifier)) === null || _deviceSpecificationF === void 0 ? void 0 : _deviceSpecificationF.id) || "?") + " (" + (((_dev$productIdentifie = dev.productIdentifier) === null || _dev$productIdentifie === void 0 ? void 0 : _dev$productIdentifie.toString(16)) || "...") + ")\n  firmware_version: " + (dev.firmwareVersion || "") + "\n  services:\n" + dev.services().slice(1).map(srv => "    " + srv.name + " (" + srv.serviceClass.toString(16) + ")").join("\n") + "\n";
+    }).join("\n");
   }
   /**
    * Resolves a JDOM node from an identifier
@@ -82680,4 +82711,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-cf723c8f62c841747ec7.js.map
+//# sourceMappingURL=app-04c86aa3934d530b0be4.js.map
