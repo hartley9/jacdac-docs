@@ -64035,7 +64035,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "be7a90eed93f60fffe0b0ff69d7d120ae1f74470";
+var sha = "25378d8ed4364e971e3d2d0d60bc1337eaf4f794";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64944,7 +64944,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "be7a90eed93f60fffe0b0ff69d7d120ae1f74470";
+  var sha = "25378d8ed4364e971e3d2d0d60bc1337eaf4f794";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -75272,7 +75272,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.17.13"};
+var package_namespaceObject = {"i8":"1.17.14"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -82829,4 +82829,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-77a7167a07510e3325be.js.map
+//# sourceMappingURL=app-524a65ddc8cc67c9c038.js.map
