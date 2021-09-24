@@ -53014,6 +53014,7 @@ function Clients() {
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     right: true,
+    imageColumns: 8,
     subtitle: "Node-RED",
     description: "Add Jacdac to your Node-RED flows.",
     buttonText: "Jacdac node",
@@ -53040,6 +53041,7 @@ function Clients() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     right: true,
     subtitle: "A-Frame",
+    imageColumns: 7,
     description: "Put Reality back into Virtual Reality.",
     buttonText: "A-Frame demo",
     buttonVariant: "link",
@@ -53047,7 +53049,7 @@ function Clients() {
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__.S, {
       src: "./a-frame.jpg",
       alt: "Control the radius of a sphere using a slider using our Javascript SDK.",
-      __error: "No data found for image \"./a-frame.jpg\"\n              undefinedCould not read image data file \"/home/runner/work/jacdac-docs/jacdac-docs/.cache/caches/gatsby-plugin-image/1692177154.json\". \nThis may mean that the images in \"/home/runner/work/jacdac-docs/jacdac-docs/src/components/home/Clients.tsx\" were not processed.\nPlease ensure that your gatsby version is at least 2.24.78."
+      __imageData: __webpack_require__(27645)
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
     subtitle2: "Can I embed Jacdac in my web pages?",
@@ -64033,7 +64035,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "f41efb79238d79a0633aa79793052928e0f2e49b";
+var sha = "be7a90eed93f60fffe0b0ff69d7d120ae1f74470";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64942,7 +64944,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "f41efb79238d79a0633aa79793052928e0f2e49b";
+  var sha = "be7a90eed93f60fffe0b0ff69d7d120ae1f74470";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82484,6 +82486,14 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#080808"
 
 /***/ }),
 
+/***/ 27645:
+/***/ (function(module) {
+
+"use strict";
+module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#e8e8e8","images":{"fallback":{"src":"/jacdac-docs/static/ecb3ca5e7d0a7e987951218da1082189/dd505/a-frame.jpg","srcSet":"/jacdac-docs/static/ecb3ca5e7d0a7e987951218da1082189/46be3/a-frame.jpg 249w,\\n/jacdac-docs/static/ecb3ca5e7d0a7e987951218da1082189/f1654/a-frame.jpg 498w,\\n/jacdac-docs/static/ecb3ca5e7d0a7e987951218da1082189/dd505/a-frame.jpg 995w","sizes":"(min-width: 995px) 995px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/ecb3ca5e7d0a7e987951218da1082189/ec4ed/a-frame.webp 249w,\\n/jacdac-docs/static/ecb3ca5e7d0a7e987951218da1082189/81a8d/a-frame.webp 498w,\\n/jacdac-docs/static/ecb3ca5e7d0a7e987951218da1082189/ec251/a-frame.webp 995w","type":"image/webp","sizes":"(min-width: 995px) 995px, 100vw"}]},"width":995,"height":560}');
+
+/***/ }),
+
 /***/ 60707:
 /***/ (function(module) {
 
@@ -82819,4 +82829,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-96f3c393411628ed8054.js.map
+//# sourceMappingURL=app-77a7167a07510e3325be.js.map
