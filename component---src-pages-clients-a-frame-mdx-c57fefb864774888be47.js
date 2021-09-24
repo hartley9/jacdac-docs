@@ -74,17 +74,18 @@ function MDXContent(_ref) {
     },
     width: "480",
     height: "320",
-    allow: "usb;serial;bluetooth;vr"
+    allow: "usb;serial;bluetooth;vr",
+    allowFullScreen: true
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following snippet is a possible use of Jacdac in a VR setting.\nThe radius of the sphere is controlled by any potentiometer module."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-typescript"
-  }, "// grab the aframe sphere\nconst sphere = document.getElementById(\"sphere\");\n// using an animation frame to query sensor and update DOM\nfunction step() {\n  // collect all sensor info into a simple object data structure\n  const { potentiometer } = jacdac.snapshotSensors(bus)\n  // grab the first position on potentiometer\n  // !! data will be undefined if nothing is connected ``\n  const [pos = 0] = potentiometer\n  // a-frame magic\n  sphere.setAttribute(\"radius\", 0.5 + pos)\n  // keep animating\n  window.requestAnimationFrame(step);\n}\nwindow.requestAnimationFrame(step);\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The HTML of the A-Frame starter has been slightly modified to import the Jacdac SDK"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "// grab the aframe sphere\nconst sphere = document.getElementById(\"sphere\")\n// using an animation frame to query sensor and update DOM\nfunction step() {\n    // collect all sensor info into a simple object data structure\n    const { potentiometer } = jacdac.snapshotSensors(bus)\n    // grab the first position on potentiometer\n    // !! data will be undefined if nothing is connected ``\n    const [pos = 0] = potentiometer\n    // a-frame magic\n    sphere.setAttribute(\"radius\", 0.5 + pos)\n    // keep animating\n    window.requestAnimationFrame(step)\n}\nwindow.requestAnimationFrame(step)\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The HTML of the A-Frame starter has been slightly modified to import the Jacdac SDK"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
   }, "<script src=\"https://unpkg.com/jacdac-ts/dist/jacdac.umd.js\"></script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "and display a connect button. Connection to a physical device needs to be started from a user interaction like a button click."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, "<button id=\"connectbtn\" style=\"position:absolute; left: 1rem; top: 1rem; z-index:1000;\">jacdac connect</button>    \n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "<button\n    id=\"connectbtn\"\n    style=\"position:absolute; left: 1rem; top: 1rem; z-index:1000;\"\n>\n    jacdac connect\n</button>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
@@ -117,4 +118,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-a-frame-mdx-0fadda3066ce03a65232.js.map
+//# sourceMappingURL=component---src-pages-clients-a-frame-mdx-c57fefb864774888be47.js.map
