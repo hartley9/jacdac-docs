@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-clients-a-frame-mdx",
     "path": "/clients/a-frame/",
-    "result": {"pageContext":{"frontmatter":{}}},
+    "result": {"pageContext":{"frontmatter":{"title":"A-Frame","order":100}}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","63159454"]}
