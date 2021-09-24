@@ -9,10 +9,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_frontmatter": function() { return /* binding */ _frontmatter; },
 /* harmony export */   "default": function() { return /* binding */ MDXContent; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(45987);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(45987);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _mdx_js_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(64983);
 /* harmony import */ var _home_runner_work_jacdac_docs_jacdac_docs_src_components_Page_tsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(64425);
+/* harmony import */ var _components_ui_DowloadRawFileButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(14784);
 
 var _excluded = ["components"];
 
@@ -24,6 +25,7 @@ var _excluded = ["components"];
 /* @jsx mdx */
 
 
+
 var _frontmatter = {};
 var layoutProps = {
   _frontmatter
@@ -33,7 +35,7 @@ function MDXContent(_ref) {
   var {
     components
   } = _ref,
-      props = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)(_ref, _excluded);
+      props = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(_ref, _excluded);
 
   return (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(MDXLayout, Object.assign({}, layoutProps, props, {
     components: components,
@@ -136,9 +138,12 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Download again"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The out-of-the-box experience is a MakeCode program that you can download or even modify!"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    href: "https://raw.githubusercontent.com/microsoft/pxt-jacdac/master/tools/microbit-oob/firmware.hex",
-    download: "microbit-oob.hex"
+  }))), "Download again"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The out-of-the-box experience is a MakeCode program that you can download or even modify!"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_components_ui_DowloadRawFileButton__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    variant: "contained",
+    url: "https://raw.githubusercontent.com/microsoft/pxt-jacdac/master/tools/microbit-oob/firmware.hex",
+    name: "microbit-oob.hex",
+    disconnect: true,
+    mdxType: "DowloadRawFileButton"
   }, "Download firmware"));
 }
 ;
@@ -165,4 +170,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-hardware-kit-oob-mdx-779b4cc10a3f22869091.js.map
+//# sourceMappingURL=component---src-pages-hardware-kit-oob-mdx-9f33fac576b5d2b10830.js.map

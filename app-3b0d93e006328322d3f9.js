@@ -64020,7 +64020,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "ecddd51f7985df21a1be4e37c7dfe064d95b87df";
+var sha = "81309515232fe340df9c54d413b4718f7969768e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64929,7 +64929,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "ecddd51f7985df21a1be4e37c7dfe064d95b87df";
+  var sha = "81309515232fe340df9c54d413b4718f7969768e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -67199,6 +67199,63 @@ function DarkModeProvider(props) {
       darkModeMounted
     }
   }, children);
+}
+
+/***/ }),
+
+/***/ 14784:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ DowloadRawFileButton; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(15861);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(45987);
+/* harmony import */ var gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71481);
+/* harmony import */ var gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20392);
+/* harmony import */ var _ServiceManagerContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(99808);
+
+
+var _excluded = ["url", "name", "children", "disconnect"];
+
+
+
+
+function DowloadRawFileButton(props) {
+  var {
+    url,
+    name,
+    children,
+    disconnect
+  } = props,
+      rest = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(props, _excluded);
+
+  var {
+    bus
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z);
+  var {
+    fileStorage
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .ZP);
+
+  var handleClick = /*#__PURE__*/function () {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(function* () {
+      if (disconnect) yield bus.disconnect();
+      var req = yield fetch(url);
+      var text = yield req.text();
+      fileStorage.saveText(name, text);
+    });
+
+    return function handleClick() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_0__.Button, Object.assign({}, rest, {
+    onClick: handleClick
+  }), children);
 }
 
 /***/ }),
@@ -80298,6 +80355,22 @@ var react__WEBPACK_IMPORTED_MODULE_0___namespace_cache;
 
 /***/ }),
 
+/***/ 54437:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var react__WEBPACK_IMPORTED_MODULE_1___namespace_cache;
+/* harmony import */ var _src_components_ui_DowloadRawFileButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14784);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+
+
+/* harmony default export */ __webpack_exports__["Z"] = ({
+  DowloadRawFileButton: _src_components_ui_DowloadRawFileButton__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z,
+  React: /*#__PURE__*/ (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache || (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache = __webpack_require__.t(react__WEBPACK_IMPORTED_MODULE_1__, 2)))
+});
+
+/***/ }),
+
 /***/ 93191:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -80373,7 +80446,9 @@ var scope_10 = __webpack_require__(34239)/* ["default"] */ .Z;
 
 var scope_11 = __webpack_require__(15643)/* ["default"] */ .Z;
 
-/* harmony default export */ var mdx_scopes = (Object.assign({}, scope_0, scope_1, scope_2, scope_3, scope_4, scope_5, scope_6, scope_7, scope_8, scope_9, scope_10, scope_11));
+var scope_12 = __webpack_require__(54437)/* ["default"] */ .Z;
+
+/* harmony default export */ var mdx_scopes = (Object.assign({}, scope_0, scope_1, scope_2, scope_3, scope_4, scope_5, scope_6, scope_7, scope_8, scope_9, scope_10, scope_11, scope_12));
 ;// CONCATENATED MODULE: ./node_modules/gatsby-plugin-mdx/wrap-root-element.js
 
 
@@ -82711,4 +82786,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-a58a1b37ef9393d166f0.js.map
+//# sourceMappingURL=app-3b0d93e006328322d3f9.js.map
