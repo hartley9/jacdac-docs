@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-privacy-mdx",
     "path": "/privacy/",
-    "result": {"pageContext":{"frontmatter":{}}},
+    "result": {"pageContext":{"frontmatter":{"title":"Privacy","order":1000}}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","63159454"]}
