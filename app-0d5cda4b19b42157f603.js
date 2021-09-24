@@ -47552,7 +47552,8 @@ function DrawerToolsButtonGroup(props) {
     showToc,
     showCurrent,
     showConnect,
-    showTrace
+    showTrace,
+    showPackets
   } = props;
   var {
     drawerType,
@@ -47572,7 +47573,7 @@ function DrawerToolsButtonGroup(props) {
     drawer: _AppContext__WEBPACK_IMPORTED_MODULE_1__/* .DrawerType.Dom */ .jw.Dom,
     label: "open device tree",
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_AccountTree__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null)
-  }, {
+  }, showPackets && {
     drawer: _AppContext__WEBPACK_IMPORTED_MODULE_1__/* .DrawerType.Packets */ .jw.Packets,
     label: "open packet console",
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_History__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null)
@@ -64003,7 +64004,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "3ce1ba9df1b9baa37eda2e072586eefc8af766d5";
+var sha = "d9cd05e015f11700f50bb657038bc2d0b5aa169b";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64912,7 +64913,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3ce1ba9df1b9baa37eda2e072586eefc8af766d5";
+  var sha = "d9cd05e015f11700f50bb657038bc2d0b5aa169b";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82656,4 +82657,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-fddb1c6f65db67e1a301.js.map
+//# sourceMappingURL=app-0d5cda4b19b42157f603.js.map

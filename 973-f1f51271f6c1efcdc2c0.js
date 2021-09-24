@@ -628,6 +628,7 @@ function AppDrawer(props) {
   }, /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(DrawerSearchInput, null))), !toc && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(PacketRecorder, null), /*#__PURE__*/react.createElement("span", {
     className: classes.fluid
   }), /*#__PURE__*/react.createElement(DrawerToolsButtonGroup/* default */.Z, {
+    showPackets: true,
     showConnect: true
   })), /*#__PURE__*/react.createElement(gatsby_theme_material_ui.IconButton, {
     "aria-label": "Collapse",
@@ -644,4 +645,4 @@ function AppDrawer(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=973-317655707620d143a9ee.js.map
+//# sourceMappingURL=973-f1f51271f6c1efcdc2c0.js.map
