@@ -824,6 +824,8 @@ var DbContext = __webpack_require__(94904);
 var DeleteForever = __webpack_require__(86426);
 // EXTERNAL MODULE: ./src/components/ui/SwitchWithLabel.tsx
 var SwitchWithLabel = __webpack_require__(64973);
+// EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/dist/specconstants.ts
+var specconstants = __webpack_require__(73512);
 ;// CONCATENATED MODULE: ./src/components/firmware/SafeBootAlert.tsx
 
 
@@ -832,6 +834,8 @@ var SwitchWithLabel = __webpack_require__(64973);
 
 
  // tslint:disable-next-line: match-default-export-name tslint:disable-next-line: no-submodule-imports
+
+
 
 
 
@@ -877,6 +881,13 @@ function SafeBootAlert() {
 
   (0,react.useEffect)(() => {
     bus.safeBoot = safeBoot;
+
+    if (safeBoot) {
+      // tell all brains to enter proxy mode
+      var pkt = packet/* default.onlyHeader */.Z.onlyHeader(specconstants/* ControlCmd.Proxy */.VSW.Proxy);
+      pkt.sendAsMultiCommandAsync(bus, specconstants/* SRV_CONTROL */.gm9);
+    }
+
     return () => {
       bus.safeBoot = false;
     };
@@ -1171,4 +1182,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-25f2692b3336e5e97644.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-732f5b69387b78063b0c.js.map
