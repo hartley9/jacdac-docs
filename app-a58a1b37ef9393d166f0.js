@@ -64020,7 +64020,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "2f847113b700ebee10c34bb6ee8ba666b19250fb";
+var sha = "ecddd51f7985df21a1be4e37c7dfe064d95b87df";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64929,7 +64929,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2f847113b700ebee10c34bb6ee8ba666b19250fb";
+  var sha = "ecddd51f7985df21a1be4e37c7dfe064d95b87df";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71891,7 +71891,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     }).map(dev => {
       var _deviceSpecificationF, _dev$productIdentifie;
 
-      return "device: \n  id: " + dev.shortId + " (" + dev.id + ")\n  product: " + (((_deviceSpecificationF = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(dev.productIdentifier)) === null || _deviceSpecificationF === void 0 ? void 0 : _deviceSpecificationF.id) || "?") + " (" + (((_dev$productIdentifie = dev.productIdentifier) === null || _dev$productIdentifie === void 0 ? void 0 : _dev$productIdentifie.toString(16)) || "...") + ")\n  firmware_version: " + (dev.firmwareVersion || "") + "\n  services:\n" + dev.services().slice(1).map(srv => "    " + srv.name + " (" + srv.serviceClass.toString(16) + ")").join("\n") + "\n";
+      return "device: \n  id: " + dev.shortId + " (" + dev.id + ")\n  product: " + (dev.productIdentifier ? (((_deviceSpecificationF = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(dev.productIdentifier)) === null || _deviceSpecificationF === void 0 ? void 0 : _deviceSpecificationF.id) || "?") + " (" + ((_dev$productIdentifie = dev.productIdentifier) === null || _dev$productIdentifie === void 0 ? void 0 : _dev$productIdentifie.toString(16)) + ")" : "") + "\n  firmware_version: " + (dev.firmwareVersion || "") + "\n  services:\n" + dev.services().slice(1).map(srv => "    " + srv.name + " (" + srv.serviceClass.toString(16) + ")").join("\n") + "\n";
     }).join("\n");
   }
   /**
@@ -82711,4 +82711,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-7d2264773cd9f7d46d19.js.map
+//# sourceMappingURL=app-a58a1b37ef9393d166f0.js.map

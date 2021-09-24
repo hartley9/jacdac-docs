@@ -444,7 +444,7 @@ function TraceSaveButton() {
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
-    var text = "# Jacdac Trace\n\n## devices\n\n```yaml\n" + busText + "\n```\n\n## packets\n\n```\n" + traceText + "\n```\n";
+    var text = "# Jacdac Trace \n        \nTo import, go to https://aka.ms/jacdac, open device tree and click import icon.\n\n## devices\n\n```yaml\n" + busText + "\n```\n\n## packets\n\n```\n" + traceText + "\n```\n";
     console.log({
       busText,
       traceText,
@@ -658,4 +658,4 @@ function AppDrawer(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=973-4a378b95c80a07a3883a.js.map
+//# sourceMappingURL=973-799308246a9105c0e5df.js.map
