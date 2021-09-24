@@ -64036,7 +64036,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "86b738676e7182151ff585d60e801c582f7f9ab4";
+var sha = "1ae674d9f3ae8fabdbdcc027bf339cafc5eaaa8c";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64945,7 +64945,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "86b738676e7182151ff585d60e801c582f7f9ab4";
+  var sha = "1ae674d9f3ae8fabdbdcc027bf339cafc5eaaa8c";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -66318,15 +66318,12 @@ function DataEditorAppBar() {
 }
 // EXTERNAL MODULE: ./node_modules/@material-ui/lab/esm/AlertTitle/AlertTitle.js
 var AlertTitle = __webpack_require__(99330);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
-var iframeclient = __webpack_require__(9809);
 ;// CONCATENATED MODULE: ./src/components/layout.tsx
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 
 
 
@@ -66481,7 +66478,7 @@ function LayoutWithContext(props) {
   var {
     frontmatter
   } = pageContext || {};
-  var isHosted = (0,iframeclient/* inIFrame */.H)() && /(hosted|embed)=1/.test(window.location.href);
+  var isHosted = /(hosted|embed)=1/.test(window.location.href);
   var tools = /^\/tools\//.test(path);
   var makeCodeTool = /tools\/makecode-/.test(path);
   var fullWidthTools = /^\/editors\/\w+\/$/.test(path) || /^\/(tools\/makecode-|dashboard)/.test(path);
@@ -66495,7 +66492,7 @@ function LayoutWithContext(props) {
     hideBreadcrumbs: tools || fullWidthTools
   };
   var isDataEditor = /^\/editors\/data/.test(path);
-  var appBar = isDataEditor ? /*#__PURE__*/react.createElement(DataEditorAppBar, null) : /*#__PURE__*/react.createElement(MainAppBar, null);
+  var appBar = hideMainMenu ? undefined : isDataEditor ? /*#__PURE__*/react.createElement(DataEditorAppBar, null) : /*#__PURE__*/react.createElement(MainAppBar, null);
   var title = isDataEditor ? "Data Science Editor (Experimental)" : undefined;
   var classes = layout_useStyles();
   var {
@@ -66530,7 +66527,7 @@ function LayoutWithContext(props) {
 
   var MainSection = () => /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("main", {
     className: classes.mainContent
-  }, /*#__PURE__*/react.createElement("div", {
+  }, !hideMainMenu && /*#__PURE__*/react.createElement("div", {
     className: classes.drawerHeader
   }), container ? /*#__PURE__*/react.createElement(Container_Container, null, /*#__PURE__*/react.createElement(InnerMainSection, null)) : /*#__PURE__*/react.createElement(InnerMainSection, null)), /*#__PURE__*/react.createElement(Footer, null));
 
@@ -82834,4 +82831,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-68543cf387ab52982498.js.map
+//# sourceMappingURL=app-cb14a50f1cc4e3986c06.js.map
