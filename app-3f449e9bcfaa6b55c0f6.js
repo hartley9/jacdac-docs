@@ -54423,7 +54423,7 @@ function SplitGrid(props) {
 
 
 var JDomTreeView = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(188)]).then(__webpack_require__.bind(__webpack_require__, 10188)));
-var PacketView = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 8445).then(__webpack_require__.bind(__webpack_require__, 38445)));
+var PacketView = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 133).then(__webpack_require__.bind(__webpack_require__, 20133)));
 function Tools() {
   var _useDevices;
 
@@ -63984,7 +63984,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "2669498919776fb5c7191d5b5aceb57d53680c8c";
+var sha = "18659ac6b644cd5088396b3176124851b6e136f1";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64893,7 +64893,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2669498919776fb5c7191d5b5aceb57d53680c8c";
+  var sha = "18659ac6b644cd5088396b3176124851b6e136f1";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82637,4 +82637,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-5f7163eab036385cd202.js.map
+//# sourceMappingURL=app-3f449e9bcfaa6b55c0f6.js.map

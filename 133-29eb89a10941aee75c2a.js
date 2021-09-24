@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[8445],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[133],{
 
 /***/ 50144:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
@@ -190,6 +190,33 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 82226:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M21 6h-7.59l3.29-3.29L16 2l-4 4-4-4-.71.71L10.59 6H3c-1.1 0-2 .89-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.11-.9-2-2-2zm0 14H3V8h18v12zM9 10v8l7-4z"
+}), 'LiveTv');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 23443:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -244,6 +271,33 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 66601:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+}), 'Pause');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 43704:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -268,6 +322,33 @@ var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement(Rea
 }), /*#__PURE__*/React.createElement("path", {
   d: "M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
 })), 'QueryBuilder');
+
+exports.Z = _default;
+
+/***/ }),
+
+/***/ 69313:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
+}), 'Replay');
 
 exports.Z = _default;
 
@@ -810,7 +891,7 @@ function PacketListItem(props) {
 
 /***/ }),
 
-/***/ 38445:
+/***/ 20133:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -3429,6 +3510,55 @@ var spec = __webpack_require__(45656);
 var Tooltip = __webpack_require__(60102);
 // EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
 var react_use_id_hook_esm = __webpack_require__(19640);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Replay.js
+var Replay = __webpack_require__(69313);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Pause.js
+var Pause = __webpack_require__(66601);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/LiveTv.js
+var LiveTv = __webpack_require__(82226);
+;// CONCATENATED MODULE: ./src/components/PacketListButtons.tsx
+// tslint:disable-next-line: no-submodule-imports match-default-export-name
+
+
+
+ // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
+ // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
+ // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
+
+function PacketControlButtons() {
+  var {
+    clearPackets,
+    clearBus,
+    recording,
+    tracing,
+    paused,
+    setPaused
+  } = (0,react.useContext)(PacketsContext/* default */.Z);
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    trackName: "recorder." + (paused ? "resume" : "pause"),
+    title: paused ? "Resume packets" : "pause packets",
+    size: "small",
+    key: "pausepackets",
+    onClick: () => setPaused(!paused)
+  }, paused ? /*#__PURE__*/react.createElement(LiveTv/* default */.Z, null) : /*#__PURE__*/react.createElement(Pause/* default */.Z, null)), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    trackName: "recorder.packets.clear",
+    title: "Clear Packets",
+    size: "small",
+    key: "clearpackets",
+    onClick: clearPackets,
+    disabled: recording || tracing
+  }, /*#__PURE__*/react.createElement(Clear/* default */.Z, null)), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    trackName: "recorder.bus.clear",
+    title: "Clear Devices",
+    size: "small",
+    key: "clearbus",
+    onClick: clearBus,
+    disabled: recording || tracing
+  }, /*#__PURE__*/react.createElement(Replay/* default */.Z, null)));
+}
 ;// CONCATENATED MODULE: ./src/components/PacketFilter.tsx
  // tslint:disable-next-line: match-default-export-name no-submodule-imports
 
@@ -3447,8 +3577,9 @@ var react_use_id_hook_esm = __webpack_require__(19640);
 
 
 
+ // tslint:disable-next-line: match-default-export-name no-submodule-imports
 
-// tslint:disable-next-line: match-default-export-name no-submodule-imports
+
 
 
 
@@ -3661,7 +3792,7 @@ function PacketFilter() {
     elevation: 1
   }, /*#__PURE__*/react.createElement(Box/* default */.Z, {
     display: "flex"
-  }, /*#__PURE__*/react.createElement(FilterMenu, {
+  }, /*#__PURE__*/react.createElement(PacketControlButtons, null), /*#__PURE__*/react.createElement(FilterMenu, {
     text: "Filters",
     handleAddFilter: handleAddFilter
   }), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
@@ -3772,4 +3903,4 @@ function PacketView(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=8445-b3824ca2cbaf3ac41f09.js.map
+//# sourceMappingURL=133-29eb89a10941aee75c2a.js.map

@@ -28,87 +28,6 @@ exports.Z = _default;
 
 /***/ }),
 
-/***/ 82226:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-var __webpack_unused_export__;
-
-
-var _interopRequireDefault = __webpack_require__(95318);
-
-var _interopRequireWildcard = __webpack_require__(20862);
-
-__webpack_unused_export__ = ({
-  value: true
-});
-exports.Z = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(67294));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M21 6h-7.59l3.29-3.29L16 2l-4 4-4-4-.71.71L10.59 6H3c-1.1 0-2 .89-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.11-.9-2-2-2zm0 14H3V8h18v12zM9 10v8l7-4z"
-}), 'LiveTv');
-
-exports.Z = _default;
-
-/***/ }),
-
-/***/ 66601:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-var __webpack_unused_export__;
-
-
-var _interopRequireDefault = __webpack_require__(95318);
-
-var _interopRequireWildcard = __webpack_require__(20862);
-
-__webpack_unused_export__ = ({
-  value: true
-});
-exports.Z = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(67294));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M6 19h4V5H6v14zm8-14v14h4V5h-4z"
-}), 'Pause');
-
-exports.Z = _default;
-
-/***/ }),
-
-/***/ 69313:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-var __webpack_unused_export__;
-
-
-var _interopRequireDefault = __webpack_require__(95318);
-
-var _interopRequireWildcard = __webpack_require__(20862);
-
-__webpack_unused_export__ = ({
-  value: true
-});
-exports.Z = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(67294));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
-}), 'Replay');
-
-exports.Z = _default;
-
-/***/ }),
-
 /***/ 8567:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -400,8 +319,6 @@ var ChevronLeft = __webpack_require__(80460);
 var AppContext = __webpack_require__(84377);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(80453);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Clear.js
-var Clear = __webpack_require__(58590);
 // EXTERNAL MODULE: ./src/components/PacketsContext.tsx + 3 modules
 var PacketsContext = __webpack_require__(43226);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
@@ -581,41 +498,22 @@ function TraceRecordButton(props) {
 }
 // EXTERNAL MODULE: ./src/components/trace/TracePlayButton.tsx
 var TracePlayButton = __webpack_require__(86360);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Replay.js
-var Replay = __webpack_require__(69313);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Pause.js
-var Pause = __webpack_require__(66601);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/LiveTv.js
-var LiveTv = __webpack_require__(82226);
 // EXTERNAL MODULE: ./src/components/trace/TraceClearButton.tsx
 var TraceClearButton = __webpack_require__(77653);
 ;// CONCATENATED MODULE: ./src/components/PacketRecorder.tsx
- // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
 
 
 
 
-
-
-
- // tslint:disable-next-line: no-submodule-imports match-default-export-name
-
- // tslint:disable-next-line: no-submodule-imports match-default-export-name
-
- // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
 
 
 function PacketRecorder() {
   var {
-    clearPackets,
-    clearBus,
     replayTrace,
     recording,
-    tracing,
-    paused,
-    setPaused
+    tracing
   } = (0,react.useContext)(PacketsContext/* default */.Z);
   return /*#__PURE__*/react.createElement(react.Fragment, null, !recording && replayTrace && /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     variant: "caption"
@@ -628,27 +526,7 @@ function PacketRecorder() {
     size: "small"
   }), /*#__PURE__*/react.createElement(TraceClearButton/* default */.Z, {
     size: "small"
-  }), "|", /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
-    trackName: "recorder." + (paused ? "resume" : "pause"),
-    title: paused ? "Resume packets" : "pause packets",
-    size: "small",
-    key: "pausepackets",
-    onClick: () => setPaused(!paused)
-  }, paused ? /*#__PURE__*/react.createElement(LiveTv/* default */.Z, null) : /*#__PURE__*/react.createElement(Pause/* default */.Z, null)), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
-    trackName: "recorder.packets.clear",
-    title: "Clear Packets",
-    size: "small",
-    key: "clearpackets",
-    onClick: clearPackets,
-    disabled: recording || tracing
-  }, /*#__PURE__*/react.createElement(Clear/* default */.Z, null)), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
-    trackName: "recorder.bus.clear",
-    title: "Clear Devices",
-    size: "small",
-    key: "clearbus",
-    onClick: clearBus,
-    disabled: recording || tracing
-  }, /*#__PURE__*/react.createElement(Replay/* default */.Z, null)));
+  }));
 }
 // EXTERNAL MODULE: ./src/components/DrawerToolsButtonGroup.tsx
 var DrawerToolsButtonGroup = __webpack_require__(95743);
@@ -674,7 +552,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var Toc = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 1018).then(__webpack_require__.bind(__webpack_require__, 91018)));
-var PacketView = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 8445).then(__webpack_require__.bind(__webpack_require__, 38445)));
+var PacketView = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 133).then(__webpack_require__.bind(__webpack_require__, 20133)));
 var JDomTreeView = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(188)]).then(__webpack_require__.bind(__webpack_require__, 10188)));
 var DrawerSearchResults = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 6130).then(__webpack_require__.bind(__webpack_require__, 86130)));
 var DrawerSearchInput = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 2470).then(__webpack_require__.bind(__webpack_require__, 32470)));
@@ -766,4 +644,4 @@ function AppDrawer(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=973-38d84bcd34396e72f4f5.js.map
+//# sourceMappingURL=973-317655707620d143a9ee.js.map
