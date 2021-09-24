@@ -64006,7 +64006,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "20aa6d0f801569d04580a41bdde9631a6da1e9b8";
+var sha = "6c2dc6b3c349550d7365f10dff3dc3365e360373";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64915,7 +64915,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "20aa6d0f801569d04580a41bdde9631a6da1e9b8";
+  var sha = "6c2dc6b3c349550d7365f10dff3dc3365e360373";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -75257,7 +75257,9 @@ function createBus() {
         trackEvent("jd.stats", b.stats.current);
     }); // product info
 
-    b.on(constants/* DEVICE_PRODUCT_IDENTIFY */.dY6, d => trackEvent("jd.product", createPayload(d))); // track restarts
+    b.on(constants/* DEVICE_PRODUCT_IDENTIFY */.dY6, d => {
+      if (d.isPhysical) trackEvent("jd.product", createPayload(d));
+    }); // track restarts
 
     b.on(constants/* DEVICE_RESTART */.eLF, /*#__PURE__*/function () {
       var _ref = (0,asyncToGenerator/* default */.Z)(function* (d) {
@@ -82664,4 +82666,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-449fc1393d57d032dfd2.js.map
+//# sourceMappingURL=app-10c1a39b798526bc0bbe.js.map
