@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-361210ac7a89ac2ac741.js"
+    "url": "webpack-runtime-dbeddbe8e837ffe15f2a.js"
   },
   {
     "url": "styles.966bf09ab205fadd540b.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "74e72be02d444203df2054b5733f9703"
+    "revision": "a618c70e4836fdb701b95ec7ae4f2103"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "fd7585f24f693ee4bd3767ae270ed2a2"
+    "revision": "d6e5f6b6e80b163bd472cba7d1bbae01"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "a50f9e6f273b5586aded5b202bca07df"
+    "revision": "14cb2b9c6f773dff598afc09178a98c5"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "4878fea472451f9b1b0861b72d214d75"
+    "revision": "c6e522ae91cf05abfe90c2211fe44cb5"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "d7881f5f30a412b889e464ce11c01ef6"
+    "revision": "9d418d97ff0ccaad7ec70b4fb3eada46"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "18d445cba8b1b6844230e2f2929182a4"
+    "revision": "84d910f0ac1d8fb64f4553bdaf2d4bdc"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -933,8 +933,16 @@ self.__precacheManifest = [
     "revision": "854099eb2f88ea4e50007e1f2cd5e823"
   },
   {
+    "url": "page-data/devices/microsoft/research/jmaccessswitchoutput11/page-data.json",
+    "revision": "4995bed1cb2025e5c8333da45fdecc06"
+  },
+  {
     "url": "page-data/devices/microsoft/research/jmaccv2/page-data.json",
     "revision": "cfd6690069b79a3682ff43d108066cd1"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jmambientlight55v01/page-data.json",
+    "revision": "ad471981759d43c28c1c56373857a48e"
   },
   {
     "url": "page-data/devices/microsoft/research/jmanalogjoystick44v02/page-data.json",
@@ -953,6 +961,10 @@ self.__precacheManifest = [
     "revision": "3dc520974f4676ff6c6a105c52db6866"
   },
   {
+    "url": "page-data/devices/microsoft/research/jmbuttonterminal62v01/page-data.json",
+    "revision": "fc3c3d351c4eee644fd2f8cdac064daa"
+  },
+  {
     "url": "page-data/devices/microsoft/research/jmclickairquality4v32/page-data.json",
     "revision": "69adb586ba16eb65fdba6f7bd990a738"
   },
@@ -969,12 +981,20 @@ self.__precacheManifest = [
     "revision": "1fbcd66bce8036aac6704ac5dc405d6c"
   },
   {
+    "url": "page-data/devices/microsoft/research/jmflexv10/page-data.json",
+    "revision": "4eb44a5fff3e4d249b7df71d6ee357a7"
+  },
+  {
     "url": "page-data/devices/microsoft/research/jmgamepadv2/page-data.json",
     "revision": "bb4ecd826d2e18241802e373913dc934"
   },
   {
     "url": "page-data/devices/microsoft/research/jmkeyboardkey46v10/page-data.json",
     "revision": "415580922ba9e43c8032f9dc9216df6c"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jmkeyboardkey46v11/page-data.json",
+    "revision": "2848ba57edeecf0f207f9a8370653193"
   },
   {
     "url": "page-data/devices/microsoft/research/jmmachinelearning/page-data.json",
@@ -1009,12 +1029,24 @@ self.__precacheManifest = [
     "revision": "859e8a5623cbfbedabcc242e59069e79"
   },
   {
+    "url": "page-data/devices/microsoft/research/jmrgbledbar10v01/page-data.json",
+    "revision": "b99bddd55ff934b9d0b0bb69969278ae"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jmrgbledgenericv01/page-data.json",
+    "revision": "b1e83c22d4114dfb9c2fed9b17eda852"
+  },
+  {
     "url": "page-data/devices/microsoft/research/jmrgbledringv21/page-data.json",
     "revision": "efedfa961670f17d7da1d630451bf73d"
   },
   {
     "url": "page-data/devices/microsoft/research/jmrotaryctrlbtnv10/page-data.json",
     "revision": "cc960b796979e61f2a0403eb1663c096"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jmsinglergbled42v01/page-data.json",
+    "revision": "8836dad2494b352b0f8596755fd5a089"
   },
   {
     "url": "page-data/devices/microsoft/research/jmslider49v10/page-data.json",
@@ -1303,7 +1335,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-2e1b9ab06b156f1e0b28.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-f6a0e85743575c2000f4.js`))) {
     return await fetch(event.request)
   }
 
