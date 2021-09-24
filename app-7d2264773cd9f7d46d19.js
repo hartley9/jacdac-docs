@@ -64020,7 +64020,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "7c0094c1294302f6bd597569e3e2dce98b8f0b50";
+var sha = "2f847113b700ebee10c34bb6ee8ba666b19250fb";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64929,7 +64929,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "7c0094c1294302f6bd597569e3e2dce98b8f0b50";
+  var sha = "2f847113b700ebee10c34bb6ee8ba666b19250fb";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71886,7 +71886,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   ;
 
   _proto.describe = function describe() {
-    return this.devices({
+    return "\ntransport:\n" + this._transports.map(tr => "  " + tr.type + ": " + tr.connectionState).join("\n") + "\n\n" + this.devices({
       ignoreSelf: true
     }).map(dev => {
       var _deviceSpecificationF, _dev$productIdentifie;
@@ -82711,4 +82711,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-04c86aa3934d530b0be4.js.map
+//# sourceMappingURL=app-7d2264773cd9f7d46d19.js.map
