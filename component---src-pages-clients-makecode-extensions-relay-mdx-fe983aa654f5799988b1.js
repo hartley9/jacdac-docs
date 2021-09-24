@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[7129],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[8918],{
 
-/***/ 95380:
+/***/ 26204:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -39,14 +39,14 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
-    "id": "potentiometer",
+    "id": "relay",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h1",
-    "href": "#potentiometer",
-    "aria-label": "potentiometer permalink",
+    "href": "#relay",
+    "aria-label": "relay permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -60,12 +60,23 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Potentiometer"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The potentiometer extension reports position as a floating\npoint value between 0.0 and 100.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }))), "Relay"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The relay extension exposes the state of the relay\nvia the method ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "position"), " method returns the current position of the potentiometer."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the position whenever the position changes by\n5:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "closed"), ", which returns the value\ntrue when the circuit is energized."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program uses the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "setClosed"), " method to\nclose the relay (on press of button A) and to open\nthe relay (on press of button B). Event handlers for\nthe relay are fired for the change in state. Finally,\non press of buttons A and B simultaneously, the\nstate of the relay is queryed using the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "closed"), "\nmethod:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.potentiometer1.onPositionChangedBy(5, function() {\\n    led.plotBarGraph(modules.potentiometer1.position(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.potentiometer1.onPositionChangedBy(5, function() {\\n    led.plotBarGraph(modules.potentiometer1.position(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.40,jacdac-potentiometer=github:microsoft/pxt-jacdac/potentiometer#v0.6.40\"},\"type\":\"renderblocks\",\"id\":\"46515cefe2be58f5bbb2529d4f636eff\"},\"url\":\"/images/makecode/46515cefe2be58f5bbb2529d4f636eff.png\",\"width\":534,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"input.onButtonPressed(Button.A, function () {\\n    modules.relay1.setClosed(true)\\n})\\n\\ninput.onButtonPressed(Button.B, function () {\\n    modules.relay1.setClosed(false)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.A, function () {\\n    modules.relay1.setClosed(true)\\n})\\n\\ninput.onButtonPressed(Button.B, function () {\\n    modules.relay1.setClosed(false)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.41,jacdac-relay=github:microsoft/pxt-jacdac/relay#v0.6.41\"},\"type\":\"renderblocks\",\"id\":\"e43bc661bbf3f7603eeb6c93278ae381\"},\"url\":\"/images/makecode/e43bc661bbf3f7603eeb6c93278ae381.png\",\"width\":891,\"height\":128}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The events ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "active"), " and ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "inactive"), ", with associated event handlers\nare fired when the relay transitions. Normally closed relays will energize when active,\nand normally closed (NC) relays will energize when inactive."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-blocks"
+  }, "{\"source\":\"modules.relay1.onActive(() => {\\n    basic.showString(\\\"A\\\")\\n})\\n\\nmodules.relay1.onInactive(() => {\\n    basic.showString(\\\"I\\\")\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.relay1.onActive(() => {\\n    basic.showString(\\\"A\\\")\\n})\\n\\nmodules.relay1.onInactive(() => {\\n    basic.showString(\\\"I\\\")\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.41,jacdac-relay=github:microsoft/pxt-jacdac/relay#v0.6.41\"},\"type\":\"renderblocks\",\"id\":\"f07254a5215120c06edd01b6f21e14b7\"},\"url\":\"/images/makecode/f07254a5215120c06edd01b6f21e14b7.png\",\"width\":532,\"height\":128}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -91,7 +102,7 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
-    "href": "/jacdac-docs/services/potentiometer/"
+    "href": "/jacdac-docs/services/relay/"
   }, "service specification"))));
 }
 ;
@@ -118,4 +129,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-potentiometer-mdx-82572b49c09ed72fa13f.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-relay-mdx-fe983aa654f5799988b1.js.map

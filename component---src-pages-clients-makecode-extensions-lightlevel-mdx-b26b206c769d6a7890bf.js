@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[2235],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6152],{
 
-/***/ 39091:
+/***/ 97742:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -39,14 +39,14 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
-    "id": "projects",
+    "id": "light-level",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h1",
-    "href": "#projects",
-    "aria-label": "projects permalink",
+    "href": "#light-level",
+    "aria-label": "light level permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -60,15 +60,20 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Projects"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
-    "id": "hello-jacdac-heart-beat",
+  }))), "Light Level"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The light level extension reports light level as a floating\npoint value between 0.0 and 100.0.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "lightLevel"), " method returns the current light level."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the light level whenever the light level changes by 5:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-blocks"
+  }, "{\"source\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.41,jacdac-light-level=github:microsoft/pxt-jacdac/light-level#v0.6.41\"},\"type\":\"renderblocks\",\"id\":\"b6264744a9b072766db603283a265145\"},\"url\":\"/images/makecode/b6264744a9b072766db603283a265145.png\",\"width\":554,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "see-also",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h2",
-    "href": "#hello-jacdac-heart-beat",
-    "aria-label": "hello jacdac heart beat permalink",
+    "href": "#see-also",
+    "aria-label": "see also permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -82,20 +87,12 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Hello Jacdac Heart beat"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Start a button simulator and add the blocks below to your project. Jacdac should automatically \"bind\" your simulated button\nto ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
-    parentName: "p"
-  }, "button1"), " and respond to ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
-    parentName: "p"
-  }, "up"), "/", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
-    parentName: "p"
-  }, "down"), " events by showing icons on the screen."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
-    parentName: "p",
-    "src": "/jacdac-docs/static/simheartbeat-a81fc09e5bb688e372eb1ab5820656fa.gif",
-    "alt": "Simulated button show large and small heart when pressed"
-  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
-    parentName: "pre",
-    "className": "language-blocks"
-  }, "{\"source\":\"modules.button1.onUp(function () {\\n    basic.showIcon(IconNames.SmallHeart)\\n})\\nmodules.button1.onDown(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.button1.onUp(function () {\\n    basic.showIcon(IconNames.SmallHeart)\\n})\\nmodules.button1.onDown(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.40,jacdac-button=github:microsoft/pxt-jacdac/button#v0.6.40\"},\"type\":\"renderblocks\",\"id\":\"ef50b78e07b77e3b7cb965ee7ea9d414\"},\"url\":\"/images/makecode/ef50b78e07b77e3b7cb965ee7ea9d414.png\",\"width\":546,\"height\":142}}\n")));
+  }))), "See Also"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
+    "href": "/jacdac-docs/services/lightlevel/"
+  }, "service specification"))));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -121,4 +118,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-projects-mdx-5aa960a181a5480b24cf.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-lightlevel-mdx-b26b206c769d6a7890bf.js.map

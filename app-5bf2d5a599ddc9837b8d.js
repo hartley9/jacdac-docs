@@ -35323,14 +35323,14 @@ function memberSize(fld) {
 }
 
 function toTypescript(info, language) {
-  var staticTypeScript = language === "sts";
+  var sts = language === "sts";
   var csharp = language === "c#";
-  var useNamespace = staticTypeScript || csharp;
+  var useNamespace = sts || csharp;
   var indent = useNamespace ? "    " : "";
   var indent2 = indent + "    ";
   var numberkw = csharp ? "uint " : "";
   var hexkw = csharp ? "byte[]" : "";
-  var enumkw = csharp ? indent + "public enum" : staticTypeScript ? indent + "export const enum" : "export enum";
+  var enumkw = csharp ? indent + "public enum" : sts ? indent + "export const enum" : "export enum";
   var exportkw = csharp ? "public" : "export";
   var cskw = csharp ? ";" : "";
   var r = useNamespace ? "namespace " + (csharp ? capitalize(TYPESCRIPT_STATIC_NAMESPACE) : TYPESCRIPT_STATIC_NAMESPACE) + " {\n" : "";
@@ -35364,6 +35364,7 @@ function toTypescript(info, language) {
     r += "\n" + enumkw + " " + enPref + (csharp ? ": " + cSharpStorage(en.storage) : "") + " { // " + cStorage(en.storage) + "\n";
 
     for (var k of Object.keys(en.members)) {
+      if (sts) r += indent2 + ("//% block=\"" + humanify(k).toLowerCase() + "\"\n");
       r += indent2 + k + " = " + toHex(en.members[k]) + ",\n";
     }
 
@@ -35376,7 +35377,7 @@ function toTypescript(info, language) {
     if (pkt.derived) continue;
     var cmt = addComment(pkt);
     var pack = pkt.fields.length ? packInfo(info, pkt, {
-      isStatic: staticTypeScript,
+      isStatic: sts,
       useBooleans: false
     }).buffers : "";
     var inner = "Cmd";
@@ -35389,7 +35390,7 @@ function toTypescript(info, language) {
     } else {
       var val = toHex(pkt.identifier);
 
-      if (staticTypeScript && pkt.kind === "event") {
+      if (sts && pkt.kind === "event") {
         meta = "//% block=\"" + snakify(pkt.name).replace(/_/g, " ") + "\"\n";
       }
 
@@ -64035,7 +64036,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "ec9d373c767b9e2468045ffe23e1a6c3638aeb4f";
+var sha = "0861e10c1253b02b39c756efbdf0d332655f931d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64944,7 +64945,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "ec9d373c767b9e2468045ffe23e1a6c3638aeb4f";
+  var sha = "0861e10c1253b02b39c756efbdf0d332655f931d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82833,4 +82834,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-5570afdef47e70590536.js.map
+//# sourceMappingURL=app-5bf2d5a599ddc9837b8d.js.map

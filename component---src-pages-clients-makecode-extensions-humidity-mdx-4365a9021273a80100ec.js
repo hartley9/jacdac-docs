@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6152],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[7609],{
 
-/***/ 97742:
+/***/ 48264:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -39,14 +39,14 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
-    "id": "light-level",
+    "id": "humidity",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h1",
-    "href": "#light-level",
-    "aria-label": "light level permalink",
+    "href": "#humidity",
+    "aria-label": "humidity permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -60,12 +60,12 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Light Level"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The light level extension reports light level as a floating\npoint value between 0.0 and 100.0.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }))), "Humidity"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The humidity extension reports the relative humidity\nin percentage of full water saturation (0.0 to 100.0).\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "lightLevel"), " method returns the current light level."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the light level whenever the light level changes by 5:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "humidity"), " method returns the current humidity."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The program below outputs the humidity whenever the humidity\nchanges by 5 percent:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.lightLevel1.onLightLevelChangedBy(1, () => {\\n    led.plotBarGraph(modules.lightLevel1.lightLevel(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.40,jacdac-light-level=github:microsoft/pxt-jacdac/light-level#v0.6.40\"},\"type\":\"renderblocks\",\"id\":\"cc7e7eb951f4dc472c40c2e747a040bf\"},\"url\":\"/images/makecode/cc7e7eb951f4dc472c40c2e747a040bf.png\",\"width\":554,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"modules.humidity1.onHumidityChangedBy(5, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.humidity1.humidity())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.humidity1.onHumidityChangedBy(5, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.humidity1.humidity())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.41,jacdac-humidity=github:microsoft/pxt-jacdac/humidity#v0.6.41\"},\"type\":\"renderblocks\",\"id\":\"22e91d3aaddcdf5f2722bb28593138cb\"},\"url\":\"/images/makecode/22e91d3aaddcdf5f2722bb28593138cb.png\",\"width\":427,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -91,7 +91,7 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
-    "href": "/jacdac-docs/services/lightlevel/"
+    "href": "/jacdac-docs/services/humidity/"
   }, "service specification"))));
 }
 ;
@@ -118,4 +118,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-lightlevel-mdx-6e7238d94448a2518a2a.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-humidity-mdx-4365a9021273a80100ec.js.map

@@ -65,7 +65,7 @@ function MDXContent(_ref) {
   }, "pressure"), " method returns the current barometric pressure."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the pressure whenever the pressure changes by 0.2 hPa:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.barometer1.onPressureChangedBy(0.2, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.barometer1.pressure())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.barometer1.onPressureChangedBy(0.2, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.barometer1.pressure())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.40,jacdac-barometer=github:microsoft/pxt-jacdac/barometer#v0.6.40\"},\"type\":\"renderblocks\",\"id\":\"02abf5d060ad137f1259b156d632c48d\"},\"url\":\"/images/makecode/02abf5d060ad137f1259b156d632c48d.png\",\"width\":437,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"modules.barometer1.onPressureChangedBy(0.2, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.barometer1.pressure())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.barometer1.onPressureChangedBy(0.2, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.barometer1.pressure())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.41,jacdac-barometer=github:microsoft/pxt-jacdac/barometer#v0.6.41\"},\"type\":\"renderblocks\",\"id\":\"ffeb08b4910c2168a195209b4743a244\"},\"url\":\"/images/makecode/ffeb08b4910c2168a195209b4743a244.png\",\"width\":437,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -118,4 +118,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-barometer-mdx-e419292cd3d56853a431.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-barometer-mdx-ae9f69d7afdda4c962d7.js.map

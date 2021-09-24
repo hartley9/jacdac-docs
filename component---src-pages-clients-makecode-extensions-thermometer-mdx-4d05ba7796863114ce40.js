@@ -65,7 +65,7 @@ function MDXContent(_ref) {
   }, "temperature"), " method returns the current temperature."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the current temperature whenever it changes by\none degree Celsius:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.thermometer1.onTemperatureChangedBy(1, function () {\\n    led.stopAnimation()\\n    basic.showNumber(modules.thermometer1.temperature())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.thermometer1.onTemperatureChangedBy(1, function () {\\n    led.stopAnimation()\\n    basic.showNumber(modules.thermometer1.temperature())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.40,jacdac-thermometer=github:microsoft/pxt-jacdac/thermometer#v0.6.40\"},\"type\":\"renderblocks\",\"id\":\"91f4503626c0678a67d53464dea323ee\"},\"url\":\"/images/makecode/91f4503626c0678a67d53464dea323ee.png\",\"width\":485,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"modules.thermometer1.onTemperatureChangedBy(1, function () {\\n    led.stopAnimation()\\n    basic.showNumber(modules.thermometer1.temperature())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.thermometer1.onTemperatureChangedBy(1, function () {\\n    led.stopAnimation()\\n    basic.showNumber(modules.thermometer1.temperature())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.41,jacdac-thermometer=github:microsoft/pxt-jacdac/thermometer#v0.6.41\"},\"type\":\"renderblocks\",\"id\":\"e61b9269f27b879884b66d8c6b6b0117\"},\"url\":\"/images/makecode/e61b9269f27b879884b66d8c6b6b0117.png\",\"width\":485,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -118,4 +118,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-thermometer-mdx-1a683f4b42896052f9da.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-thermometer-mdx-4d05ba7796863114ce40.js.map

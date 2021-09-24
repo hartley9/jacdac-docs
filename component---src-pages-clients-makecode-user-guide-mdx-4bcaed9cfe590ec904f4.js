@@ -202,7 +202,7 @@ function MDXContent(_ref) {
   }, "on disconnected"), "\nto start or stop using a role."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.button1.onDisconnected(function () {\\n    basic.showIcon(IconNames.No)\\n})\\nmodules.button1.onConnected(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.button1.onDisconnected(function () {\\n    basic.showIcon(IconNames.No)\\n})\\nmodules.button1.onConnected(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.40,jacdac-button=github:microsoft/pxt-jacdac/button#v0.6.40\"},\"type\":\"renderblocks\",\"id\":\"ef9db836db61b0a8769d815b7d2bda6b\"},\"url\":\"/images/makecode/ef9db836db61b0a8769d815b7d2bda6b.png\",\"width\":565,\"height\":142}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+  }, "{\"source\":\"modules.button1.onDisconnected(function () {\\n    basic.showIcon(IconNames.No)\\n})\\nmodules.button1.onConnected(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.button1.onDisconnected(function () {\\n    basic.showIcon(IconNames.No)\\n})\\nmodules.button1.onConnected(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.41,jacdac-button=github:microsoft/pxt-jacdac/button#v0.6.41\"},\"type\":\"renderblocks\",\"id\":\"3c0409570335c80823630436654078ca\"},\"url\":\"/images/makecode/3c0409570335c80823630436654078ca.png\",\"width\":565,\"height\":142}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
     parentName: "p",
     "src": "/jacdac-docs/static/multiroles-6ae1fdc24f1c5dba3e8ad86792c6ba91.gif",
     "alt": "An animation that shows how to create new roles"
@@ -235,7 +235,7 @@ function MDXContent(_ref) {
   }, "button1"), " is the default role for buttons."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.button1.onUp(function () {\\n    basic.showIcon(IconNames.SmallHeart)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.button1.onUp(function () {\\n    basic.showIcon(IconNames.SmallHeart)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.40,jacdac-button=github:microsoft/pxt-jacdac/button#v0.6.40\"},\"type\":\"renderblocks\",\"id\":\"754ae87056a9f32ee16d86e45663a706\"},\"url\":\"/images/makecode/754ae87056a9f32ee16d86e45663a706.png\",\"width\":250,\"height\":142}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "However, if you want to create a program with multiple buttons, you would need to define additional roles in your program."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "{\"source\":\"modules.button1.onUp(function () {\\n    basic.showIcon(IconNames.SmallHeart)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.button1.onUp(function () {\\n    basic.showIcon(IconNames.SmallHeart)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.41,jacdac-button=github:microsoft/pxt-jacdac/button#v0.6.41\"},\"type\":\"renderblocks\",\"id\":\"33bb70df0fe93d353abf5eaa7c3936bd\"},\"url\":\"/images/makecode/33bb70df0fe93d353abf5eaa7c3936bd.png\",\"width\":250,\"height\":142}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "However, if you want to create a program with multiple buttons, you would need to define additional roles in your program."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, "Open the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "li"
@@ -275,4 +275,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-user-guide-mdx-74e2e4ebb2eaa07bfb11.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-user-guide-mdx-4bcaed9cfe590ec904f4.js.map
