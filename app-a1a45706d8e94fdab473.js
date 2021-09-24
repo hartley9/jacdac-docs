@@ -50637,7 +50637,7 @@ function ServiceRole(props) {
 
   var handleClick = () => showSelectRoleDialog(service);
 
-  var hasRoleForService = (0,useChange/* default */.Z)(roleManager, _ => _ === null || _ === void 0 ? void 0 : _.hasRoleForService(service)); // hide if no role manager or role not compatible with required roles
+  var hasRoleForService = (0,useChange/* default */.Z)(roleManager, _ => _ === null || _ === void 0 ? void 0 : _.hasRoleForService(service), [service]); // hide if no role manager or role not compatible with required roles
 
   if (!hasRoleForService) return null;
   return /*#__PURE__*/react.createElement(RoleButton, {
@@ -64020,7 +64020,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "81309515232fe340df9c54d413b4718f7969768e";
+var sha = "7d78d8f6dd23ab29a1102fb2bcc9c5fd114a17ad";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64929,7 +64929,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "81309515232fe340df9c54d413b4718f7969768e";
+  var sha = "7d78d8f6dd23ab29a1102fb2bcc9c5fd114a17ad";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82786,4 +82786,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-3b0d93e006328322d3f9.js.map
+//# sourceMappingURL=app-a1a45706d8e94fdab473.js.map
