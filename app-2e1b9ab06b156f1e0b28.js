@@ -64020,7 +64020,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "7d78d8f6dd23ab29a1102fb2bcc9c5fd114a17ad";
+var sha = "ecd32b2b68de7a4367a4281eb6645ccce2a32a9d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64929,7 +64929,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "7d78d8f6dd23ab29a1102fb2bcc9c5fd114a17ad";
+  var sha = "ecd32b2b68de7a4367a4281eb6645ccce2a32a9d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71607,6 +71607,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     _this._minLoggerPriority = constants/* LoggerPriority.Debug */.qit.Debug;
     _this._gcDevicesFrozen = 0;
     _this._serviceProviders = [];
+    _this._streaming = false;
     _this.selfDeviceId = (options === null || options === void 0 ? void 0 : options.deviceId) || (0,random/* randomDeviceId */.b_)();
     _this.scheduler = (options === null || options === void 0 ? void 0 : options.scheduler) || new WallClockScheduler();
     _this.parentOrigin = (options === null || options === void 0 ? void 0 : options.parentOrigin) || "*";
@@ -72471,7 +72472,9 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     var registers = (0,utils/* arrayConcatMany */.ue)(devices.map(device => (0,utils/* arrayConcatMany */.ue)(device.services({
       specification: true
     }).map(service => service.registers() // someone is listening for reports
-    .filter(reg => reg.listenerCount(constants/* REPORT_RECEIVE */.Gb8) > 0 || reg.listenerCount(constants/* REPORT_UPDATE */.rGZ) > 0) // ask if data is missing or non-const/status code
+    .filter(reg => // automatic streaming
+    this._streaming && reg.code === constants/* SystemReg.Reading */.ZJq.Reading || // listening for updates
+    reg.listenerCount(constants/* REPORT_RECEIVE */.Gb8) > 0 || reg.listenerCount(constants/* REPORT_UPDATE */.rGZ) > 0) // ask if data is missing or non-const/status code
     .filter(reg => !reg.data || !((0,jdom_spec/* isConstRegister */.n6)(reg.specification) || reg.code === constants/* SystemReg.StatusCode */.ZJq.StatusCode || reg.code === constants/* SystemReg.ReadingError */.ZJq.ReadingError)) // stop asking optional registers
     .filter(reg => {
       var _reg$specification;
@@ -72698,6 +72701,22 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     key: "timestamp",
     get: function get() {
       return this.scheduler.timestamp;
+    }
+    /**
+     * Indicates if the bus should force all sensors to stream
+     */
+
+  }, {
+    key: "streaming",
+    get: function get() {
+      return this._streaming;
+    }
+    /**
+     * Sets automatic streaming on and off
+     */
+    ,
+    set: function set(value) {
+      this._streaming = value;
     }
   }, {
     key: "minLoggerPriority",
@@ -75238,7 +75257,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.17.11"};
+var package_namespaceObject = {"i8":"1.17.13"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
 var useAnalytics = __webpack_require__(58057);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -82786,4 +82805,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-a1a45706d8e94fdab473.js.map
+//# sourceMappingURL=app-2e1b9ab06b156f1e0b28.js.map
