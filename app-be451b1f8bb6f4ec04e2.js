@@ -64004,7 +64004,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "28a75ca96666242337cdeab52e98398d5ad3c987";
+var sha = "46c930bf352f645d2a2c59aae812351a45c7659f";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64913,7 +64913,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "28a75ca96666242337cdeab52e98398d5ad3c987";
+  var sha = "46c930bf352f645d2a2c59aae812351a45c7659f";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -66446,6 +66446,7 @@ function LayoutWithContext(props) {
   var {
     frontmatter
   } = pageContext || {};
+  var tools = /tools\//.test(path);
   var makeCodeTool = /tools\/makecode-/.test(path);
   var fullWidthTools = /^\/editors\/\w+\/$/.test(path) || /^\/(tools\/makecode-|dashboard)/.test(path);
   var {
@@ -66455,7 +66456,7 @@ function LayoutWithContext(props) {
   } = frontmatter || {
     hideMainMenu: makeCodeTool,
     hideUnderConstruction: makeCodeTool || fullWidthTools,
-    hideBreadcrumbs: fullWidthTools
+    hideBreadcrumbs: tools
   };
   var isDataEditor = /^\/editors\/data/.test(path);
   var appBar = isDataEditor ? /*#__PURE__*/react.createElement(DataEditorAppBar, null) : /*#__PURE__*/react.createElement(MainAppBar, null);
@@ -82657,4 +82658,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-ed8b90987a01e3557cac.js.map
+//# sourceMappingURL=app-be451b1f8bb6f4ec04e2.js.map
