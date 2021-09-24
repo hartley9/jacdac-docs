@@ -74,7 +74,7 @@ function MDXContent(_ref) {
     },
     width: "480",
     height: "320",
-    allow: "usb;serial;bluetooth"
+    allow: "usb;serial;bluetooth;vr"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following snippet is a possible use of Jacdac in a VR setting.\nThe radius of the sphere is controlled by any potentiometer module."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-typescript"
@@ -117,4 +117,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-a-frame-mdx-c12687c3b4468e5dfa62.js.map
+//# sourceMappingURL=component---src-pages-clients-a-frame-mdx-0fadda3066ce03a65232.js.map
