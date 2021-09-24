@@ -666,7 +666,8 @@ function FlashDeviceButton(props) {
     setError
   } = (0,react.useContext)(AppContext/* default */.ZP);
   var {
-    trackEvent
+    trackEvent,
+    trackError
   } = (0,useAnalytics/* default */.ZP)();
   var {
     0: progress,
@@ -683,10 +684,12 @@ function FlashDeviceButton(props) {
   var handleFlashing = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
       if (device.flashing) return;
-      trackEvent("flash.start", {
-        firmware: firmwareInfo.productIdentifier,
+      var props = {
+        productId: firmwareInfo.productIdentifier,
+        name: firmwareInfo.name,
         version: firmwareInfo.version
-      });
+      };
+      trackEvent("flash.start", props);
 
       try {
         setProgress(0);
@@ -698,18 +701,13 @@ function FlashDeviceButton(props) {
         }); // trigger info
 
         device.firmwareInfo = undefined;
+        trackEvent("flash.success", props);
       } catch (e) {
-        trackEvent("flash.error", {
-          firmware: firmwareInfo.productIdentifier,
-          version: firmwareInfo.version
-        });
+        trackError(e, props);
+        trackEvent("flash.error", props);
         if (mounted()) setError(e);
       } finally {
         device.flashing = false;
-        trackEvent("flash.success", {
-          firmware: firmwareInfo.productIdentifier,
-          version: firmwareInfo.version
-        });
       }
     });
 
@@ -1182,4 +1180,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-732f5b69387b78063b0c.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-71bcc8344f7368ec4435.js.map
