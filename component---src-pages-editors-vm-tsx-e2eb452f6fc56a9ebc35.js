@@ -3562,7 +3562,7 @@ function VMDiagnostics(props) {
 // EXTERNAL MODULE: ./src/jacdac/useChange.ts
 var useChange = __webpack_require__(54774);
 // EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 16 modules
-var BlockContext = __webpack_require__(23985);
+var BlockContext = __webpack_require__(26212);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
 var Context = __webpack_require__(20392);
 // EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 1 modules
@@ -6561,8 +6561,8 @@ var chartdsl = __webpack_require__(57611);
 var datadsl = __webpack_require__(73595);
 // EXTERNAL MODULE: ./src/components/blockly/fields/DataColumnChooserField.ts
 var DataColumnChooserField = __webpack_require__(44393);
-// EXTERNAL MODULE: ./src/components/blockly/fields/GaugeWidgetField.tsx + 22 modules
-var GaugeWidgetField = __webpack_require__(95548);
+// EXTERNAL MODULE: ./src/components/blockly/fields/GaugeWidgetField.tsx
+var GaugeWidgetField = __webpack_require__(61162);
 ;// CONCATENATED MODULE: ./src/components/blockly/dsl/widgetdsl.ts
 
 
@@ -6878,4 +6878,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-vm-tsx-93e9671e73b5f7bcb797.js.map
+//# sourceMappingURL=component---src-pages-editors-vm-tsx-e2eb452f6fc56a9ebc35.js.map

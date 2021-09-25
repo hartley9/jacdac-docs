@@ -42364,7 +42364,9 @@ function uniqueMap(values, id, converter) {
 function toMap(a, keyConverter, valueConverter) {
   var m = {};
   if (a) for (var i = 0; i < a.length; ++i) {
-    m[keyConverter(a[i], i)] = valueConverter(a[i], i);
+    var key = keyConverter(a[i], i);
+    if (key === undefined || key === null) continue;
+    m[key] = valueConverter(a[i], i);
   }
   return m;
 }
@@ -52668,18 +52670,20 @@ function MembersInput(props) {
 /* harmony export */   "cr": function() { return /* binding */ importModelJSONIntoWorkspace; }
 /* harmony export */ });
 /* unused harmony exports listDirectories, listFiles, fileOpen, importFiles */
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15861);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15861);
+/* harmony import */ var _jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9809);
+
 
 
 function fileSystemHandleSupported() {
-  return typeof window !== "undefined" && !!window.showDirectoryPicker;
+  return typeof window !== "undefined" && !!window.showDirectoryPicker && !(0,_jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_0__/* .inIFrame */ .H)();
 }
 function writeFileText(_x, _x2) {
   return _writeFileText.apply(this, arguments);
 }
 
 function _writeFileText() {
-  _writeFileText = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z)(function* (fileHandle, content) {
+  _writeFileText = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (fileHandle, content) {
     var file = yield fileHandle.createWritable({
       keepExistingData: false
     });
@@ -52704,7 +52708,7 @@ function readFileText(_x3) {
 }
 
 function _readFileText() {
-  _readFileText = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z)(function* (fileHandle) {
+  _readFileText = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (fileHandle) {
     var file = yield fileHandle.getFile();
 
     try {
@@ -52807,7 +52811,7 @@ function fileOpen(_x7) {
 }
 
 function _fileOpen() {
-  _fileOpen = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z)(function* (options) {
+  _fileOpen = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (options) {
     if (options === void 0) {
       options = {};
     }
@@ -52843,7 +52847,7 @@ function importFiles(_x8, _x9) {
 }
 
 function _importFiles() {
-  _importFiles = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z)(function* (directory, files) {
+  _importFiles = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (directory, files) {
     if (!directory || !(files !== null && files !== void 0 && files.length)) return;
 
     for (var file of files) {
@@ -52863,7 +52867,7 @@ function importCSVFilesIntoWorkspace(_x10) {
 }
 
 function _importCSVFilesIntoWorkspace() {
-  _importCSVFilesIntoWorkspace = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z)(function* (directory) {
+  _importCSVFilesIntoWorkspace = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (directory) {
     var files = yield fileOpen({
       multiple: true,
       mimeTypes: {
@@ -52880,7 +52884,7 @@ function importModelJSONIntoWorkspace(_x11) {
 }
 
 function _importModelJSONIntoWorkspace() {
-  _importModelJSONIntoWorkspace = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z)(function* (directory) {
+  _importModelJSONIntoWorkspace = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (directory) {
     var files = yield fileOpen({
       multiple: true,
       mimeTypes: {
@@ -64036,7 +64040,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "3a29dfdf623778b08bb088331c47748283a36d83";
+var sha = "4bdb1e221e403dbcfd37d528eaeb99b0fed68b6e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64945,7 +64949,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3a29dfdf623778b08bb088331c47748283a36d83";
+  var sha = "4bdb1e221e403dbcfd37d528eaeb99b0fed68b6e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -77709,10 +77713,11 @@ exports.components = {
   "component---src-pages-dashboard-tsx": () => Promise.all(/* import() | component---src-pages-dashboard-tsx */[__webpack_require__.e(8517), __webpack_require__.e(7378)]).then(__webpack_require__.bind(__webpack_require__, 54542)),
   "component---src-pages-devices-tsx": () => __webpack_require__.e(/* import() | component---src-pages-devices-tsx */ 8524).then(__webpack_require__.bind(__webpack_require__, 29903)),
   "component---src-pages-editors-data-about-mdx": () => __webpack_require__.e(/* import() | component---src-pages-editors-data-about-mdx */ 1495).then(__webpack_require__.bind(__webpack_require__, 31586)),
-  "component---src-pages-editors-data-tsx": () => Promise.all(/* import() | component---src-pages-editors-data-tsx */[__webpack_require__.e(9978), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(8044), __webpack_require__.e(5901), __webpack_require__.e(4128), __webpack_require__.e(1621)]).then(__webpack_require__.bind(__webpack_require__, 55575)),
+  "component---src-pages-editors-data-embed-tsx": () => Promise.all(/* import() | component---src-pages-editors-data-embed-tsx */[__webpack_require__.e(9978), __webpack_require__.e(2790), __webpack_require__.e(9750)]).then(__webpack_require__.bind(__webpack_require__, 99211)),
+  "component---src-pages-editors-data-tsx": () => Promise.all(/* import() | component---src-pages-editors-data-tsx */[__webpack_require__.e(9978), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(2790), __webpack_require__.e(8044), __webpack_require__.e(5901), __webpack_require__.e(4128), __webpack_require__.e(1621)]).then(__webpack_require__.bind(__webpack_require__, 72083)),
   "component---src-pages-editors-mdx": () => __webpack_require__.e(/* import() | component---src-pages-editors-mdx */ 7668).then(__webpack_require__.bind(__webpack_require__, 90088)),
-  "component---src-pages-editors-ml-tsx": () => Promise.all(/* import() | component---src-pages-editors-ml-tsx */[__webpack_require__.e(9978), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(8044), __webpack_require__.e(5901), __webpack_require__.e(6602), __webpack_require__.e(4230)]).then(__webpack_require__.bind(__webpack_require__, 66362)),
-  "component---src-pages-editors-vm-tsx": () => Promise.all(/* import() | component---src-pages-editors-vm-tsx */[__webpack_require__.e(9978), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(8044), __webpack_require__.e(5901), __webpack_require__.e(4128), __webpack_require__.e(2186)]).then(__webpack_require__.bind(__webpack_require__, 77894)),
+  "component---src-pages-editors-ml-tsx": () => Promise.all(/* import() | component---src-pages-editors-ml-tsx */[__webpack_require__.e(9978), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(2790), __webpack_require__.e(8044), __webpack_require__.e(5901), __webpack_require__.e(6602), __webpack_require__.e(4230)]).then(__webpack_require__.bind(__webpack_require__, 66362)),
+  "component---src-pages-editors-vm-tsx": () => Promise.all(/* import() | component---src-pages-editors-vm-tsx */[__webpack_require__.e(9978), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(2790), __webpack_require__.e(8044), __webpack_require__.e(5901), __webpack_require__.e(4128), __webpack_require__.e(2186)]).then(__webpack_require__.bind(__webpack_require__, 77894)),
   "component---src-pages-errors-mdx": () => __webpack_require__.e(/* import() | component---src-pages-errors-mdx */ 4198).then(__webpack_require__.bind(__webpack_require__, 31502)),
   "component---src-pages-errors-microbit-invalid-memory-mdx": () => __webpack_require__.e(/* import() | component---src-pages-errors-microbit-invalid-memory-mdx */ 4347).then(__webpack_require__.bind(__webpack_require__, 79318)),
   "component---src-pages-errors-microbit-jacdac-missing-mdx": () => __webpack_require__.e(/* import() | component---src-pages-errors-microbit-jacdac-missing-mdx */ 7003).then(__webpack_require__.bind(__webpack_require__, 3150)),
@@ -82831,4 +82836,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-ce8c46d62f9e1eceddf7.js.map
+//# sourceMappingURL=app-34eab045bc21967ab054.js.map
