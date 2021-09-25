@@ -5,7 +5,7 @@
 
 /*!
  * 
- *   react-simple-keyboard v3.2.89
+ *   react-simple-keyboard v3.2.90
  *   https://github.com/hodgef/react-simple-keyboard
  *
  *   Copyright (c) Francisco Hodge (https://github.com/hodgef) and project contributors.
@@ -155,7 +155,7 @@
       86: function _(t) {
         /*!
          * 
-         *   simple-keyboard v3.2.60
+         *   simple-keyboard v3.2.61
          *   https://github.com/hodgef/simple-keyboard
          *
          *   Copyright (c) Francisco Hodge (https://github.com/hodgef) and project contributors.
@@ -4935,4 +4935,4 @@
 /***/ })
 
 }]);
-//# sourceMappingURL=ae29c6db-e905153a1ae62f28c71b.js.map
+//# sourceMappingURL=ae29c6db-4c7aec451bcf0703b5b6.js.map

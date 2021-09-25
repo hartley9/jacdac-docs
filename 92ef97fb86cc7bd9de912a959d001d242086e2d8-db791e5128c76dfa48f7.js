@@ -55,7 +55,7 @@ function singleOrArray_singleOrArray(d) {
 
 function arrange_arrange(comparators) {
   var _arrange = items => {
-    var comparatorFns = singleOrArray_singleOrArray(comparators).map(comp => typeof comp === "function" ? comp : asc(comp));
+    var comparatorFns = singleOrArray_singleOrArray(comparators).map(comp => typeof comp === "function" ? comp.length === 1 ? asc(comp) : comp : asc(comp));
     return items.slice().sort((a, b) => {
       for (var comparator of comparatorFns) {
         var result = comparator(a, b);
@@ -6885,4 +6885,4 @@ function useWorkspaceEvent(workspace, handler) {
 /***/ })
 
 }]);
-//# sourceMappingURL=92ef97fb86cc7bd9de912a959d001d242086e2d8-c3b2c90106bb679b8021.js.map
+//# sourceMappingURL=92ef97fb86cc7bd9de912a959d001d242086e2d8-db791e5128c76dfa48f7.js.map

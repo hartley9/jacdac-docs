@@ -500,7 +500,7 @@ function shuffler(random) {
 
 function _arrange2(comparators) {
   var _arrange = items => {
-    var comparatorFns = singleOrArray(comparators).map(comp => typeof comp === "function" ? comp : asc(comp));
+    var comparatorFns = singleOrArray(comparators).map(comp => typeof comp === "function" ? comp.length === 1 ? asc(comp) : comp : asc(comp));
     return items.slice().sort((a, b) => {
       for (var comparator of comparatorFns) {
         var result = comparator(a, b);
@@ -2727,4 +2727,4 @@ $({ target: 'Object', stat: true }, {
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=2066-3e6ec7506e3eff5d815d.js.map
+//# sourceMappingURL=2066-7f45c136f773c83f1918.js.map

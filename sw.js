@@ -27,10 +27,10 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-18cff1fde0064b31b347.js"
+    "url": "webpack-runtime-04c7daf00008769eebf3.js"
   },
   {
-    "url": "styles.966bf09ab205fadd540b.css"
+    "url": "styles.545775ca4d150d94f93d.css"
   },
   {
     "url": "framework-3e5fdc5ba728e15d7465.js"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "96fb73bf6b423f2d23897ce74c98f890"
+    "revision": "885d04cb7e7e74433cd932beb717d6ad"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "cae6587a909e1cb3a53bbfca4f82d2ea"
+    "revision": "90c3bf94f49277af84dcd32c1e15d7ab"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "e608a23be9d4437b1ef0a92cd3b06aca"
+    "revision": "b8414d67a4d1e0287487c50a28008a4e"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "c528cfa067dce1e7512511b8cf95e160"
+    "revision": "39104664ed18f942ff9f73b00dfb1dfa"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "d779a47aa329c7870fc65676cb9fe40f"
+    "revision": "e7e9d53e3d9506d5699ea24ad6c595a6"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "e8b187a911d3e474e839da685df8f416"
+    "revision": "39503d52aaae2fd458638a9124f0c680"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1125,7 +1125,7 @@ self.__precacheManifest = [
     "revision": "c14512471d11242af95dddcdfe649041"
   },
   {
-    "url": "ae29c6db-e905153a1ae62f28c71b.js"
+    "url": "ae29c6db-4c7aec451bcf0703b5b6.js"
   },
   {
     "url": "component---src-pages-tools-hid-events-tsx-05c860b3b87f71c822ea.js"
@@ -1339,7 +1339,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-34eab045bc21967ab054.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-c7e02555e452a11423dd.js`))) {
     return await fetch(event.request)
   }
 

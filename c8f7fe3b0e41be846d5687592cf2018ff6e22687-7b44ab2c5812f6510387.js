@@ -104706,6 +104706,8 @@ class OrbitControls extends three_module.EventDispatcher {
 
     (0,defineProperty/* default */.Z)(this, "setAzimuthalAngle", void 0);
 
+    (0,defineProperty/* default */.Z)(this, "getDistance", void 0);
+
     (0,defineProperty/* default */.Z)(this, "listenToKeyEvents", void 0);
 
     (0,defineProperty/* default */.Z)(this, "saveState", void 0);
@@ -104772,6 +104774,8 @@ class OrbitControls extends three_module.EventDispatcher {
       sphericalDelta.theta = theta - currentTheta;
       scope.update();
     };
+
+    this.getDistance = () => scope.object.position.distanceTo(scope.target);
 
     this.listenToKeyEvents = domElement => {
       domElement.addEventListener('keydown', onKeyDown);
@@ -107366,4 +107370,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-208e485318b44328d2de.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-7b44ab2c5812f6510387.js.map

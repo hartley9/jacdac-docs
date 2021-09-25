@@ -416,7 +416,7 @@ function shuffler(random) {
 
 function arrange(comparators) {
   const _arrange = items => {
-    const comparatorFns = singleOrArray(comparators).map(comp => typeof comp === "function" ? comp : asc(comp));
+    const comparatorFns = singleOrArray(comparators).map(comp => typeof comp === "function" ? comp.length === 1 ? asc(comp) : comp : asc(comp));
     return items.slice().sort((a, b) => {
       for (const comparator of comparatorFns) {
         const result = comparator(a, b);
