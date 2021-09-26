@@ -121,14 +121,13 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
 
 
       if (action === "change") {
-        console.log("iframedsl: change requested");
-
+        //console.log(`iframedsl: change requested`)
         this._workspace.getTopBlocks(false).filter(b => {
           var _resolveBlockDefiniti;
 
           return ((_resolveBlockDefiniti = (0,toolbox/* resolveBlockDefinition */.Pq)(b.type)) === null || _resolveBlockDefiniti === void 0 ? void 0 : _resolveBlockDefiniti.dsl) === this.id;
         }).forEach(b => {
-          console.log("change " + b.id);
+          //console.log(`change ${b.id}`)
           var {
             jacdacServices
           } = b;
@@ -278,4 +277,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-tsx-467fdedbb7383a5eaa32.js.map
+//# sourceMappingURL=component---src-pages-editors-data-tsx-c5ddfdf1aaf896c24ae8.js.map
