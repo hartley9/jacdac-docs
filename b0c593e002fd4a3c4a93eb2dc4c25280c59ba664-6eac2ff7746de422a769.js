@@ -4248,10 +4248,10 @@ function BlockProvider(props) {
     var unmounnts = dsls.map(dsl => {
       var _dsl$mount;
 
-      return (_dsl$mount = dsl.mount) === null || _dsl$mount === void 0 ? void 0 : _dsl$mount.call(dsl);
+      return workspace && ((_dsl$mount = dsl.mount) === null || _dsl$mount === void 0 ? void 0 : _dsl$mount.call(dsl, workspace));
     }).filter(u => !!u);
     return () => unmounnts.forEach(u => u());
-  }, []);
+  }, [workspace]);
   return /*#__PURE__*/react.createElement(BlockContext.Provider, {
     value: {
       editorId,
@@ -5922,7 +5922,7 @@ function addDataPreviewField(block) {
       message0
     } = block;
     var i = message0.lastIndexOf("%");
-    var index = parseInt(message0.substr(i + 1));
+    var index = parseInt(message0.substr(i + 1)) || 0;
     block.message0 += " %" + (index + 1); // does this mutate the data?
 
     var identity = preview === "after" || block.transformData === _toolbox__WEBPACK_IMPORTED_MODULE_2__/* .identityTransformData */ .FW; // add field
@@ -12795,4 +12795,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-4989f6ba9f5f1b79412a.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-6eac2ff7746de422a769.js.map

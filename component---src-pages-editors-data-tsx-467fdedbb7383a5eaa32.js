@@ -40,6 +40,8 @@ var toolbox = __webpack_require__(16582);
 var FileSystemContext = __webpack_require__(48202);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
 var defineProperty = __webpack_require__(4942);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
+var constants = __webpack_require__(71815);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
 var iframeclient = __webpack_require__(9809);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/random.ts
@@ -60,13 +62,15 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
+
 var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
-  function IFrameDomainSpecificLanguage(targetOrigin) {
-    this.id = "iframe";
+  function IFrameDomainSpecificLanguage(id, targetOrigin) {
     this.dslid = (0,random/* randomDeviceId */.b_)();
     this.blocks = [];
     this.category = [];
     this.pendings = {};
+    this.id = id;
     this.targetOrigin = targetOrigin;
     this.handleMessage = this.handleMessage.bind(this);
   } // eslint-disable-next-line @typescript-eslint/ban-types
@@ -86,11 +90,13 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
     return payload;
   };
 
-  _proto.mount = function mount() {
+  _proto.mount = function mount(workspace) {
+    this._workspace = workspace;
     window.addEventListener("message", this.handleMessage);
     this.post("mount");
     return () => {
       this.post("unmount");
+      this._workspace = undefined;
       window.removeEventListener("message", this.handleMessage);
     };
   };
@@ -102,13 +108,32 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
 
     if (data.type === "dsl" && data.dslid === this.dslid) {
       var {
-        id
-      } = data;
-      var pending = this.pendings[id];
+        id: _id,
+        action
+      } = data; // check for pending request
+
+      var pending = _id !== undefined && this.pendings[_id];
 
       if (pending) {
-        delete this.pendings[id];
+        delete this.pendings[_id];
         pending(data);
+      } // trigger recomputation
+
+
+      if (action === "change") {
+        console.log("iframedsl: change requested");
+
+        this._workspace.getTopBlocks(false).filter(b => {
+          var _resolveBlockDefiniti;
+
+          return ((_resolveBlockDefiniti = (0,toolbox/* resolveBlockDefinition */.Pq)(b.type)) === null || _resolveBlockDefiniti === void 0 ? void 0 : _resolveBlockDefiniti.dsl) === this.id;
+        }).forEach(b => {
+          console.log("change " + b.id);
+          var {
+            jacdacServices
+          } = b;
+          jacdacServices.emit(constants/* CHANGE */.Ver);
+        });
       }
     }
   };
@@ -183,12 +208,12 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
  */
 
 
-function createIFrameDSL(targetOrigin) {
+function createIFrameDSL(id, targetOrigin) {
   if (targetOrigin === void 0) {
     targetOrigin = "*";
   }
 
-  return (0,iframeclient/* inIFrame */.H)() && new IFrameDomainSpecificLanguage(targetOrigin);
+  return (0,iframeclient/* inIFrame */.H)() && new IFrameDomainSpecificLanguage(id, targetOrigin);
 }
 ;// CONCATENATED MODULE: ./src/components/data-science/DSBlockEditor.tsx
 
@@ -236,7 +261,7 @@ function DSEditorWithContext() {
 
 function DSBlockEditor() {
   var dsls = (0,react.useMemo)(() => {
-    return [datadsl/* default */.Z, chartdsl/* default */.Z, fieldsdsl/* default */.Z, createIFrameDSL("*")].filter(dsl => !!dsl);
+    return [datadsl/* default */.Z, chartdsl/* default */.Z, fieldsdsl/* default */.Z, createIFrameDSL("host", "*")].filter(dsl => !!dsl);
   }, []);
   return /*#__PURE__*/react.createElement(NoSsr/* default */.Z, null, /*#__PURE__*/react.createElement(BlockContext/* BlockProvider */.Z, {
     storageKey: DS_SOURCE_STORAGE_KEY,
@@ -253,4 +278,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-tsx-5847cbac51e38d4ecde1.js.map
+//# sourceMappingURL=component---src-pages-editors-data-tsx-467fdedbb7383a5eaa32.js.map

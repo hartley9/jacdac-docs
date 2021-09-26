@@ -87,6 +87,8 @@ function useWindowEvent(type, listener, passive, deps) {
 }
 // EXTERNAL MODULE: ./node_modules/@tidyjs/tidy/dist/es/index.js + 23 modules
 var es = __webpack_require__(86388);
+// EXTERNAL MODULE: ./node_modules/gatsby-material-ui-components/lib/index.js
+var lib = __webpack_require__(71481);
 ;// CONCATENATED MODULE: ./src/pages/editors/data-embed.tsx
 
 
@@ -103,10 +105,21 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
 function Page() {
   var frame = (0,react.useRef)();
+  var dslidRef = (0,react.useRef)(undefined);
   var colour = "#f01010";
   var blocks = [{
+    kind: "block",
+    type: "iframe_random",
+    message0: "iframe random",
+    colour,
+    args0: [],
+    nextStatement: toolbox/* DATA_SCIENCE_STATEMENT_TYPE */.zN,
+    dataPreviewField: true,
+    template: "meta"
+  }, {
     kind: "block",
     type: "iframe_sort",
     message0: "iframe arrange %1 %2",
@@ -134,22 +147,27 @@ function Page() {
     }))
   }];
   var transforms = {
-    iframe_identity: function () {
-      var _iframe_identity = (0,asyncToGenerator/* default */.Z)(function* (b, dataset) {
-        console.debug("hostdsl: identity");
+    iframe_random: function () {
+      var _iframe_random = (0,asyncToGenerator/* default */.Z)(function* (b) {
+        console.debug("hostdsl: random");
+        var dataset = Array(10).fill(0).map((_, i) => ({
+          x: i,
+          y: Math.random()
+        }));
         return {
           dataset
         };
       });
 
-      function iframe_identity(_x, _x2) {
-        return _iframe_identity.apply(this, arguments);
+      function iframe_random(_x) {
+        return _iframe_random.apply(this, arguments);
       }
 
-      return iframe_identity;
+      return iframe_random;
     }(),
     iframe_sort: function () {
       var _iframe_sort = (0,asyncToGenerator/* default */.Z)(function* (b, dataset) {
+        console.debug("hostdsl: sort");
         var {
           column,
           warning
@@ -175,7 +193,7 @@ function Page() {
         };
       });
 
-      function iframe_sort(_x3, _x4) {
+      function iframe_sort(_x2, _x3) {
         return _iframe_sort.apply(this, arguments);
       }
 
@@ -196,13 +214,15 @@ function Page() {
       }));
     });
 
-    return function handleBlocks(_x5) {
+    return function handleBlocks(_x4) {
       return _ref.apply(this, arguments);
     };
   }();
 
   var handleTransform = /*#__PURE__*/function () {
     var _ref2 = (0,asyncToGenerator/* default */.Z)(function* (data) {
+      console.log("hostdsl: transform");
+
       var {
         blockId,
         workspace,
@@ -216,7 +236,7 @@ function Page() {
       post(_objectSpread(_objectSpread({}, rest), res || {}));
     });
 
-    return function handleTransform(_x6) {
+    return function handleTransform(_x5) {
       return _ref2.apply(this, arguments);
     };
   }();
@@ -227,14 +247,17 @@ function Page() {
     } = msg;
     if (data.type !== "dsl") return;
     var {
-      action
+      action,
+      dslid
     } = data;
 
     switch (action) {
       case "mount":
+        dslidRef.current = dslid;
         break;
 
       case "unmount":
+        dslidRef.current = dslid;
         break;
 
       case "blocks":
@@ -250,7 +273,19 @@ function Page() {
         }
     }
   }, false, []);
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h1", null, "Data Editor + hosted blocks"), /*#__PURE__*/react.createElement("p", null, "The data editor below is an example of hosted editor with additional blocks injected by host (Custom category)."), /*#__PURE__*/react.createElement("iframe", {
+
+  var handleRefresh = () => {
+    post({
+      type: "dsl",
+      action: "change",
+      dslid: dslidRef.current
+    });
+  };
+
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h1", null, "Data Editor + hosted blocks"), /*#__PURE__*/react.createElement("p", null, "The data editor below is an example of hosted editor with additional blocks injected by host (Custom category)."), /*#__PURE__*/react.createElement("p", null, /*#__PURE__*/react.createElement(lib.Button, {
+    title: "Click this button to trigger a refresh",
+    onClick: handleRefresh
+  }, "Refresh")), /*#__PURE__*/react.createElement("iframe", {
     ref: frame,
     title: "data editor",
     src: "./data?embed=1",
@@ -267,4 +302,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-embed-tsx-208eb856ce83bbdb6b42.js.map
+//# sourceMappingURL=component---src-pages-editors-data-embed-tsx-20add7b4f605c45e3b3b.js.map
