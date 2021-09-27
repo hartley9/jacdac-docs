@@ -10349,8 +10349,8 @@ function ModelViewer(props) {
   return /*#__PURE__*/react.createElement("div", {
     style: {
       position: "relative",
-      width: 640,
-      height: 480
+      width: "clamp(640, 100vw - 1rem)",
+      height: "clamp(480, 100vh - 1rem)"
     }
   }, /*#__PURE__*/react.createElement(react_three_fiber_esm/* Canvas */.Xz, {
     shadows: true,
@@ -10374,4 +10374,4 @@ function ModelViewer(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1136-e31b88799242266dd135.js.map
+//# sourceMappingURL=1136-95359ddfba1c489a2d02.js.map
