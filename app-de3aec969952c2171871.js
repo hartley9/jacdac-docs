@@ -68704,7 +68704,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "012e6168f9f0732c794faab50c41ff4803ffe994";
+var sha = "a51782c98d983e2f62c0f9b108a249123dc0efc7";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69501,7 +69501,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "012e6168f9f0732c794faab50c41ff4803ffe994";
+  var sha = "a51782c98d983e2f62c0f9b108a249123dc0efc7";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71674,7 +71674,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "012e6168f9f0732c794faab50c41ff4803ffe994";
+    var sha = "a51782c98d983e2f62c0f9b108a249123dc0efc7";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -82346,6 +82346,7 @@ exports.components = {
   "component---src-pages-404-tsx": () => __webpack_require__.e(/* import() | component---src-pages-404-tsx */ 9218).then(__webpack_require__.bind(__webpack_require__, 63205)),
   "component---src-pages-clients-a-frame-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-a-frame-mdx */ 2059).then(__webpack_require__.bind(__webpack_require__, 62994)),
   "component---src-pages-clients-embed-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-embed-mdx */ 8706).then(__webpack_require__.bind(__webpack_require__, 66256)),
+  "component---src-pages-clients-javascript-debugging-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-debugging-mdx */ 2051).then(__webpack_require__.bind(__webpack_require__, 28697)),
   "component---src-pages-clients-javascript-jdom-bus-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-jdom-bus-mdx */ 2611).then(__webpack_require__.bind(__webpack_require__, 19712)),
   "component---src-pages-clients-javascript-jdom-device-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-jdom-device-mdx */ 2588).then(__webpack_require__.bind(__webpack_require__, 8131)),
   "component---src-pages-clients-javascript-jdom-event-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-jdom-event-mdx */ 8160).then(__webpack_require__.bind(__webpack_require__, 54201)),
@@ -87529,4 +87530,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-3dcc84113db48892aba9.js.map
+//# sourceMappingURL=app-de3aec969952c2171871.js.map
