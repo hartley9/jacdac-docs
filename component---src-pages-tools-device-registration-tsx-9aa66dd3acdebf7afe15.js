@@ -1344,6 +1344,8 @@ function DeviceRegistration() {
   var identifierId = (0,react_use_id_hook_esm/* useId */.Me)();
   var descriptionId = (0,react_use_id_hook_esm/* useId */.Me)();
   var homepageId = (0,react_use_id_hook_esm/* useId */.Me)();
+  var hardwareVersionId = (0,react_use_id_hook_esm/* useId */.Me)();
+  var hardwareDesignId = (0,react_use_id_hook_esm/* useId */.Me)();
 
   var handleServiceAdd = srv => {
     console.log("add", srv.classIdentifier);
@@ -1406,6 +1408,16 @@ function DeviceRegistration() {
 
   var handleDeleteFirmware = i => () => {
     device.productIdentifiers.splice(i, 1);
+    updateDevice();
+  };
+
+  var handleHardwareDesign = ev => {
+    device.hardwareDesignIdentifier = ev.target.value;
+    updateDevice();
+  };
+
+  var handleHardwareVersion = ev => {
+    device.hardwareDesignVersion = ev.target.value;
     updateDevice();
   };
 
@@ -1509,6 +1521,30 @@ function DeviceRegistration() {
     value: device === null || device === void 0 ? void 0 : device.company,
     error: companyError,
     onValueChange: handleCompanyChanged
+  })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true,
+    xs: 12
+  }, /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+    id: hardwareDesignId,
+    required: true,
+    fullWidth: true,
+    helperText: "A unique identifier for this hardware design.",
+    label: "Hardware design identifier",
+    value: "",
+    onChange: handleHardwareDesign,
+    variant: variant
+  })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true,
+    xs: 12
+  }, /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+    id: hardwareVersionId,
+    required: true,
+    fullWidth: true,
+    helperText: "Revision identifier for this hardware design.",
+    label: "Hardware version",
+    value: "",
+    onChange: handleHardwareVersion,
+    variant: variant
   })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
@@ -1641,4 +1677,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-d42bc3c3004ac8a715f3.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-9aa66dd3acdebf7afe15.js.map
