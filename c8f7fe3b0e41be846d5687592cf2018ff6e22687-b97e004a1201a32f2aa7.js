@@ -104593,8 +104593,8 @@ var useBestRegister = __webpack_require__(39687);
 var jdspec = __webpack_require__(13996);
 // EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts + 1 modules
 var useDeviceSpecification = __webpack_require__(34246);
-// EXTERNAL MODULE: ./src/components/devices/DeviceIcon.tsx + 2 modules
-var DeviceIcon = __webpack_require__(72618);
+// EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 4 modules
+var DeviceAvatar = __webpack_require__(37172);
 ;// CONCATENATED MODULE: ./src/components/tools/JDomTreeViewItems.tsx
 
 var JDomTreeViewItems_excluded = ["device", "serviceFilter"],
@@ -104658,13 +104658,15 @@ function DeviceTreeItem(props) {
     warning: warning,
     alert: alert,
     kind: kind,
-    icon: /*#__PURE__*/react.createElement(DeviceIcon/* default */.Z, {
+    icon: /*#__PURE__*/react.createElement(DeviceAvatar/* default */.Z, {
       device: device,
-      size: "small"
+      size: "small",
+      center: false
     }),
     actions: showActions && /*#__PURE__*/react.createElement(DeviceActions/* default */.Z, {
       device: device,
-      showReset: true
+      showReset: true,
+      hideIdentity: true
     })
   }, /*#__PURE__*/react.createElement(DeviceProductInformationTreeItem, {
     device: device
@@ -107438,4 +107440,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-d180f567f37c73d8dd68.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-b97e004a1201a32f2aa7.js.map

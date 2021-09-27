@@ -3565,8 +3565,8 @@ var useChange = __webpack_require__(54774);
 var BlockContext = __webpack_require__(26212);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
 var Context = __webpack_require__(20392);
-// EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 1 modules
-var DeviceAvatar = __webpack_require__(93679);
+// EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 4 modules
+var DeviceAvatar = __webpack_require__(37172);
 // EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 27 modules
 var servers = __webpack_require__(70767);
 // EXTERNAL MODULE: ./src/components/hooks/useServiceServer.ts
@@ -6878,4 +6878,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-vm-tsx-e2eb452f6fc56a9ebc35.js.map
+//# sourceMappingURL=component---src-pages-editors-vm-tsx-4fcd5d33a007c92a903d.js.map
