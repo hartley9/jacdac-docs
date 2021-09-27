@@ -115,7 +115,7 @@ function DashboardHIDKeyboard(props) {
     disabled: disabled,
     onClick: handleClick,
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Keyboard__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CmdButton__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+  }, "Send keys"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CmdButton__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     title: "clear keys",
     disabled: disabled,
     onClick: handleClear,
@@ -290,4 +290,4 @@ function KeyboardKeyInput(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5969-c874f3962e9b593ccde9.js.map
+//# sourceMappingURL=5969-244156ba72cfacdce427.js.map
