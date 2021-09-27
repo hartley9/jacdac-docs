@@ -621,7 +621,10 @@ var Alert = __webpack_require__(95453);
 
 
 function Page() {
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(FilteredDeviceSpecificationList, null), /*#__PURE__*/react.createElement(Box/* default */.Z, {
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(FilteredDeviceSpecificationList, {
+    count: 20,
+    shuffle: true
+  }), /*#__PURE__*/react.createElement(Box/* default */.Z, {
     mt: 2
   }, /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "info"
@@ -635,4 +638,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-devices-tsx-aba471a67459a8c26487.js.map
+//# sourceMappingURL=component---src-pages-devices-tsx-c8a017598428d8ef873b.js.map
