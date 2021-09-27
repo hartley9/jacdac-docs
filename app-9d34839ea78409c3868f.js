@@ -68704,7 +68704,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "a51782c98d983e2f62c0f9b108a249123dc0efc7";
+var sha = "898553c918a7fc130368bc7af5349da703d1ff69";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69501,7 +69501,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a51782c98d983e2f62c0f9b108a249123dc0efc7";
+  var sha = "898553c918a7fc130368bc7af5349da703d1ff69";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71389,7 +71389,7 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
 
   _proto.postPacket = function postPacket(pkt) {
     // check if this packet was already sent from another spot
-    if (!!pkt.sender || !this.hosted) return;
+    if (/^bridge/.test(pkt.sender) || !this.hosted) return;
     this.packetSent++;
     pkt.sender = this.bridgeId;
     var msg = {
@@ -71674,7 +71674,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "a51782c98d983e2f62c0f9b108a249123dc0efc7";
+    var sha = "898553c918a7fc130368bc7af5349da703d1ff69";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87530,4 +87530,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-de3aec969952c2171871.js.map
+//# sourceMappingURL=app-9d34839ea78409c3868f.js.map
