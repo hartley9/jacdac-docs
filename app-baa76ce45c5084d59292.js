@@ -68701,7 +68701,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "411000e0e19eb341b7c8b2fde08d5f87b464a6d8";
+var sha = "cf9b88f12c3371e7200b5f6631ab03576dcde4f2";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69498,7 +69498,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "411000e0e19eb341b7c8b2fde08d5f87b464a6d8";
+  var sha = "cf9b88f12c3371e7200b5f6631ab03576dcde4f2";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71637,7 +71637,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "411000e0e19eb341b7c8b2fde08d5f87b464a6d8";
+    var sha = "cf9b88f12c3371e7200b5f6631ab03576dcde4f2";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -71887,7 +71887,8 @@ function GithubDowloadRawFileButton(props) {
         try {
           var req = yield fetch(url);
           var text = yield req.text();
-          fileStorage.saveText(name, text);
+          var downloadName = url.slice(url.lastIndexOf("/") + 1);
+          fileStorage.saveText(downloadName, text);
         } catch (e) {
           setError(e);
         }
@@ -87463,4 +87464,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-7f60379cd44033a0fa4c.js.map
+//# sourceMappingURL=app-baa76ce45c5084d59292.js.map
