@@ -47517,9 +47517,15 @@ function DeviceActions(props) {
     };
   }();
 
-  var handleSettings = () => {
-    (0,gatsby_link__WEBPACK_IMPORTED_MODULE_6__/* .navigate */ .c4)("/tools/settings");
-  };
+  var handleSettings = /*#__PURE__*/function () {
+    var _ref4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* () {
+      (0,gatsby_link__WEBPACK_IMPORTED_MODULE_6__/* .navigate */ .c4)("/tools/settings");
+    });
+
+    return function handleSettings() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, showStop && provider && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CmdButton__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     trackName: "device.stop",
@@ -68629,7 +68635,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "bf4decbb1d40c5cc48fb88610b488f6855187699";
+var sha = "aa4bf6339b0a83d0732bf7b2a8efb9eba7792fe5";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69508,7 +69514,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "bf4decbb1d40c5cc48fb88610b488f6855187699";
+  var sha = "aa4bf6339b0a83d0732bf7b2a8efb9eba7792fe5";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71647,7 +71653,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "bf4decbb1d40c5cc48fb88610b488f6855187699";
+    var sha = "aa4bf6339b0a83d0732bf7b2a8efb9eba7792fe5";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87458,4 +87464,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-5821bea6361bb8f04eb9.js.map
+//# sourceMappingURL=app-36f0b5b6230d0e2d6c9a.js.map
