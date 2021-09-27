@@ -51855,7 +51855,7 @@ function IdentifyDialog(props) {
   var {
     statusLightFlags
   } = device;
-  var mono = statusLightFlags === specconstants/* ControlAnnounceFlags.StatusLightMono */.P99.StatusLightMono;
+  var blue = statusLightFlags === specconstants/* ControlAnnounceFlags.StatusLightRgbFade */.P99.StatusLightRgbFade || statusLightFlags === specconstants/* ControlAnnounceFlags.StatusLightRgbNoFade */.P99.StatusLightRgbNoFade;
   (0,useInterval/* default */.Z)(open, handleSendIdentify, 5000, [device]);
   return /*#__PURE__*/react.createElement(Dialog/* default */.Z, {
     open: open,
@@ -51874,7 +51874,7 @@ function IdentifyDialog(props) {
     xs: true
   }, /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "info"
-  }, "Look for four blinks in around 2 seconds with the", mono ? "" : " blue", " LED.")))), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(Button/* default */.Z, {
+  }, "Look for four blinks in around 2 seconds with the", blue ? "blue" : " ", " LED.")))), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(Button/* default */.Z, {
     variant: "outlined",
     onClick: handleCloseIdentify
   }, "Dismiss")));
@@ -68701,7 +68701,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "40e885f4011f00e9cbafe7eb7e3bbde8dabefb9d";
+var sha = "c0098d9b69c8e9d87c6c429cf1c7dd2ef4020a76";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69498,7 +69498,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "40e885f4011f00e9cbafe7eb7e3bbde8dabefb9d";
+  var sha = "c0098d9b69c8e9d87c6c429cf1c7dd2ef4020a76";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71637,7 +71637,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "40e885f4011f00e9cbafe7eb7e3bbde8dabefb9d";
+    var sha = "c0098d9b69c8e9d87c6c429cf1c7dd2ef4020a76";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87463,4 +87463,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-269f16436bfa808cb386.js.map
+//# sourceMappingURL=app-bc8637a9cef246793e47.js.map
