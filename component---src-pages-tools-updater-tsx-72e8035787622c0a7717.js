@@ -205,7 +205,7 @@ function NoSsrConnectAlert(props) {
   } = bus;
   var devices = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(bus, b => b.devices({
     serviceClass,
-    ignoreSelf: true
+    ignoreInfrastructure: true
   }));
   var spec = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__/* .serviceSpecificationFromClassIdentifier */ .d5)(serviceClass); // don't show if no transport, some devices
 
@@ -435,7 +435,7 @@ function useFirmwareRepos(showAllRepos) {
   } = (0,react.useState)([]);
   var devices = (0,useEventRaised/* default */.Z)(constants/* DEVICE_CHANGE */.RoP, bus, () => bus.devices({
     announced: true,
-    ignoreSelf: true
+    ignoreInfrastructure: true
   }));
   var bootloaders = devices.filter(device => device.hasService(constants/* SRV_BOOTLOADER */.PWm));
   var registers = devices.filter(device => !device.hasService(constants/* SRV_BOOTLOADER */.PWm)) // not a bootloader
@@ -776,7 +776,7 @@ function UpdateDeviceList() {
   var safeBoot = (0,useChange/* default */.Z)(bus, b => b.safeBoot);
   var devices = (0,useDevices/* default */.Z)({
     announced: true,
-    ignoreSelf: true,
+    ignoreInfrastructure: true,
     ignoreSimulators: true
   }, [safeBoot]).filter(dev => safeBoot || !dev.hasService(constants/* SRV_BOOTLOADER */.PWm)).sort((l, r) => -(l.productIdentifier || 0) + (r.productIdentifier || 0));
   var isFlashing = (0,useChange/* default */.Z)(bus, () => devices.some(dev => dev.flashing));
@@ -976,7 +976,7 @@ function ManualFirmware() {
   } = (0,react.useContext)(Context/* default */.Z);
   var devices = (0,useDevices/* default */.Z)({
     announced: true,
-    ignoreSelf: true,
+    ignoreInfrastructure: true,
     ignoreSimulators: true
   });
   var firmwares = (0,useFirmwareBlobs/* default */.Z)();
@@ -1187,4 +1187,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-585140106bc2de52ce08.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-72e8035787622c0a7717.js.map

@@ -1325,7 +1325,7 @@ function DeviceRegistration() {
   var devices = (0,useDevices/* default */.Z)({
     announced: true,
     physical: true,
-    ignoreSelf: true,
+    ignoreInfrastructure: true,
     productIdentifier: true
   });
 
@@ -1677,4 +1677,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-9aa66dd3acdebf7afe15.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-86c4c136d464d0908f17.js.map

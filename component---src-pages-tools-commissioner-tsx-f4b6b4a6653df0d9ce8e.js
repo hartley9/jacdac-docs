@@ -1525,7 +1525,7 @@ function Commissioner() {
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   var devices = (0,_components_hooks_useDevices__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)({
     announced: true,
-    ignoreSelf: true,
+    ignoreInfrastructure: true,
     ignoreSimulators: true
   }).filter(d => !filterBrains || !isBrain(d));
   var {
@@ -1765,4 +1765,4 @@ function Commissioner() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-c5380ed3a6da7a3ffbed.js.map
+//# sourceMappingURL=component---src-pages-tools-commissioner-tsx-f4b6b4a6653df0d9ce8e.js.map

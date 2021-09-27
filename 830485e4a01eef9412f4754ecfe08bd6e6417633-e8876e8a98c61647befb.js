@@ -93,7 +93,7 @@ function NoSsrConnectAlert(props) {
   } = bus;
   var devices = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(bus, b => b.devices({
     serviceClass,
-    ignoreSelf: true
+    ignoreInfrastructure: true
   }));
   var spec = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__/* .serviceSpecificationFromClassIdentifier */ .d5)(serviceClass); // don't show if no transport, some devices
 
@@ -318,6 +318,8 @@ function MakeCodeAddBlocksButton() {
     "aria-label": "Add blocks"
   }, "Add blocks"));
 }
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
+var flags = __webpack_require__(21258);
 ;// CONCATENATED MODULE: ./src/components/dashboard/Dashboard.tsx
 
 var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators", "showStartRoleSimulators", "deviceSort", "deviceFilter"];
@@ -333,6 +335,7 @@ var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators"
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
 
 
@@ -376,7 +379,7 @@ function Dashboard(props) {
   } = (0,react.useContext)(AppContext/* default */.ZP);
   var devices = (0,useDevices/* default */.Z)({
     announced: true,
-    ignoreSelf: true
+    ignoreInfrastructure: !flags/* default.diagnostics */.Z.diagnostics
   }).filter(deviceFilter).sort(deviceSort);
   var [simulators, physicals] = (0,utils/* splitFilter */.ap)(devices, d => !!bus.findServiceProvider(d.deviceId));
   var roleManager = (0,useRoleManagerClient/* default */.Z)();
@@ -583,4 +586,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-835fedba7d955344321a.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-e8876e8a98c61647befb.js.map

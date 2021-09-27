@@ -54631,11 +54631,11 @@ function Tools() {
 
   var simulatorClass = _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_5__/* .SRV_DOT_MATRIX */ .GDq;
   var dashboards = (0,_hooks_useDevices__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)({
-    ignoreSelf: true,
+    ignoreInfrastructure: true,
     announced: true
   }).filter(dev => !dev.hasService(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_5__/* .SRV_ROLE_MANAGER */ .igi) && !dev.hasService(simulatorClass)).slice(0, 4);
   var simulator = (_useDevices = (0,_hooks_useDevices__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)({
-    ignoreSelf: true,
+    ignoreInfrastructure: true,
     announced: true,
     serviceClass: simulatorClass
   })) === null || _useDevices === void 0 ? void 0 : _useDevices[0];
@@ -68704,7 +68704,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "bb369a6e54c747e382202b7ee0bedd8c367dad09";
+var sha = "9d7b6a0127d1df8e2a4f9affd9036278404e8681";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -68867,7 +68867,7 @@ function useDevices(options, deps) {
   var {
     bus
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z);
-  var devices = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(bus, _ => (_ === null || _ === void 0 ? void 0 : _.devices(options)) || [], [JSON.stringify(options)].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)(deps)));
+  var devices = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(bus, _ => _.devices(options), [JSON.stringify(options)].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)(deps)));
   return devices;
 }
 
@@ -69501,7 +69501,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "bb369a6e54c747e382202b7ee0bedd8c367dad09";
+  var sha = "9d7b6a0127d1df8e2a4f9affd9036278404e8681";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70459,8 +70459,8 @@ var JacdacIcon = __webpack_require__(36656);
 var useDevices = __webpack_require__(53074);
 ;// CONCATENATED MODULE: ./src/components/hooks/useDeviceCount.ts
 
-function useDeviceCount(options) {
-  var devices = (0,useDevices/* default */.Z)(options);
+function useDeviceCount(options, deps) {
+  var devices = (0,useDevices/* default */.Z)(options, deps);
   return devices.length;
 }
 ;// CONCATENATED MODULE: ./src/components/buttons/OpenDashboardButton.tsx
@@ -70474,7 +70474,7 @@ function OpenDashboardButton(props) {
     className
   } = props;
   var count = useDeviceCount({
-    ignoreSelf: true
+    ignoreInfrastructure: true
   });
   return /*#__PURE__*/react.createElement(ui_IconButtonWithTooltip/* default */.Z, {
     trackName: "menu.dashboard",
@@ -71450,7 +71450,7 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
         return [];
       var devices = this.bus.devices({
         announced: true,
-        ignoreSelf: true
+        ignoreInfrastructure: true
       }).filter(this.deviceFilter.bind(this));
       var extensions = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_4__/* .unique */ .Tw)((0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_4__/* .arrayConcatMany */ .ue)(devices.map(device => device.services().map(srv => (0,_services__WEBPACK_IMPORTED_MODULE_2__/* .resolveMakecodeServiceFromClassIdentifier */ .WB)(srv.serviceClass)).map(info => info === null || info === void 0 ? void 0 : info.client.repo).filter(q => !!q))));
       var dependencies = Object.values(((_this$_runOptions3 = this._runOptions) === null || _this$_runOptions3 === void 0 ? void 0 : _this$_runOptions3.dependencies) || {}).filter(d => /^github:/.test(d)).map(d => /^github:([^#]+)(#.?)?/.exec(d)[1]);
@@ -71674,7 +71674,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "bb369a6e54c747e382202b7ee0bedd8c367dad09";
+    var sha = "9d7b6a0127d1df8e2a4f9affd9036278404e8681";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -75848,7 +75848,7 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
       r.bytes /= n2;
       return _objectSpread({
         devices: this.bus.devices({
-          ignoreSelf: true
+          ignoreInfrastructure: true
         }).length,
         simulators: this.bus.serviceProviders().length,
         transport: (_this$bus$transports$ = this.bus.transports.find(transport => transport.connected)) === null || _this$bus$transports$ === void 0 ? void 0 : _this$bus$transports$.type
@@ -76632,7 +76632,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
 
   _proto.describe = function describe() {
     return "\ntransport:\n" + this._transports.map(tr => "  " + tr.type + ": " + tr.connectionState).join("\n") + "\n\n" + this.devices({
-      ignoreSelf: true
+      ignoreInfrastructure: true
     }).map(dev => {
       var _deviceSpecificationF, _dev$productIdentifie;
 
@@ -76781,7 +76781,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     var r = this._devices.slice(0);
 
     if (sc > -1) r = r.filter(s => s.hasService(sc));
-    if (options !== null && options !== void 0 && options.ignoreSelf) r = r.filter(s => s.deviceId !== this.selfDeviceId);
+    if (options !== null && options !== void 0 && options.ignoreInfrastructure) r = r.filter(s => s.deviceId !== this.selfDeviceId && s.serviceClasses.indexOf(constants/* SRV_INFRASTRUCTURE */.QWn) < 0);
     if (options !== null && options !== void 0 && options.announced) r = r.filter(s => s.announced);
     if (options !== null && options !== void 0 && options.ignoreSimulators) r = r.filter(r => !this.findServiceProvider(r.deviceId));
     if (options !== null && options !== void 0 && options.productIdentifier) r = r.filter(r => !!r.productIdentifier);
@@ -77090,7 +77090,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
       // don't send reset if already received
       // or no devices
       if (!this.devices({
-        ignoreSelf: true
+        ignoreInfrastructure: true
       }).length) return;
       this._lastResetInTime = this.timestamp;
       var rst = packet/* default.jdpacked */.Z.jdpacked(constants/* CMD_SET_REG */.YUL | specconstants/* ControlReg.ResetIn */.toU.ResetIn, "u32", [constants/* RESET_IN_TIME_US */._$y]);
@@ -77109,7 +77109,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
       console.debug("bus: stop streaming");
       var readingRegisters = this.services({
         announced: true,
-        ignoreSelf: true
+        ignoreInfrastructure: true
       }).map(srv => srv.readingRegister && srv.register(constants/* SensorReg.StreamingSamples */.q9t.StreamingSamples)).filter(reg => !!reg);
       yield Promise.all(readingRegisters.map(reg => reg.sendSetPackedAsync([0])));
     });
@@ -77124,7 +77124,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   _proto.sendPingLoggers = /*#__PURE__*/function () {
     var _sendPingLoggers = (0,asyncToGenerator/* default */.Z)(function* () {
       if (this._minLoggerPriority < constants/* LoggerPriority.Silent */.qit.Silent && this.timestamp - this._lastPingLoggerTime > constants/* PING_LOGGERS_POLL */.Cot && this.devices({
-        ignoreSelf: true,
+        ignoreInfrastructure: true,
         serviceClass: constants/* SRV_LOGGER */.w9j
       }).length > 0) {
         this._lastPingLoggerTime = this.timestamp;
@@ -79944,7 +79944,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.17.15"};
+var package_namespaceObject = {"i8":"1.18.0"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -87529,4 +87529,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-5fe604bff660ccebe204.js.map
+//# sourceMappingURL=app-2ac4f7a13dcd393fc6d1.js.map

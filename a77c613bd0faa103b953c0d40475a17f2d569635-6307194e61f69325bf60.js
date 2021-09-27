@@ -319,7 +319,7 @@ function NoSsrConnectAlert(props) {
   } = bus;
   var devices = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(bus, b => b.devices({
     serviceClass,
-    ignoreSelf: true
+    ignoreInfrastructure: true
   }));
   var spec = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__/* .serviceSpecificationFromClassIdentifier */ .d5)(serviceClass); // don't show if no transport, some devices
 
@@ -1289,4 +1289,4 @@ function ModelUploader() {
 /***/ })
 
 }]);
-//# sourceMappingURL=a77c613bd0faa103b953c0d40475a17f2d569635-96d5cd62dc62e52f880a.js.map
+//# sourceMappingURL=a77c613bd0faa103b953c0d40475a17f2d569635-6307194e61f69325bf60.js.map

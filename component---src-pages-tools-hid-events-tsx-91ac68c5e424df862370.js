@@ -247,7 +247,7 @@ function NoSsrConnectAlert(props) {
   } = bus;
   var devices = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(bus, b => b.devices({
     serviceClass,
-    ignoreSelf: true
+    ignoreInfrastructure: true
   }));
   var spec = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__/* .serviceSpecificationFromClassIdentifier */ .d5)(serviceClass); // don't show if no transport, some devices
 
@@ -744,7 +744,7 @@ function SelectHIDEvent(props) {
   var eventFilter = ev => ev.code !== _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_3__/* .SystemEvent.StatusCodeChanged */ .nSK.StatusCodeChanged;
 
   var services = (0,_components_hooks_useServices__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z)({
-    ignoreSelf: true,
+    ignoreInfrastructure: true,
     specification: true
   }).filter(srv => excludedServices.indexOf(srv.serviceClass) < 0).filter(srv => srv.events.some(eventFilter));
   var events = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_8__/* .arrayConcatMany */ .ue)(services.map(service => service.events.filter(eventFilter)));
@@ -1027,4 +1027,4 @@ function HIDEvents() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-hid-events-tsx-6ebc68b1a5a2978ed291.js.map
+//# sourceMappingURL=component---src-pages-tools-hid-events-tsx-91ac68c5e424df862370.js.map

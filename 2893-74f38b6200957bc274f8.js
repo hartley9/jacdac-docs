@@ -232,7 +232,7 @@ function NoSsrConnectAlert(props) {
   } = bus;
   var devices = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(bus, b => b.devices({
     serviceClass,
-    ignoreSelf: true
+    ignoreInfrastructure: true
   }));
   var spec = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__/* .serviceSpecificationFromClassIdentifier */ .d5)(serviceClass); // don't show if no transport, some devices
 
@@ -582,4 +582,4 @@ function AppDrawer(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=2893-67a5f8af0b1616290194.js.map
+//# sourceMappingURL=2893-74f38b6200957bc274f8.js.map

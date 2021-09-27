@@ -2686,7 +2686,7 @@ var RoleManager = /*#__PURE__*/function (_JDClient) {
 
   _proto.bindRole = function bindRole(role) {
     var ret = this.bus.services({
-      ignoreSelf: true,
+      ignoreInfrastructure: true,
       serviceClass: role.serviceClass
     }).filter(s => !this.roles(true).find(r => r.service === s));
 
@@ -12795,4 +12795,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-aefeaf1fb4e4b7312aa2.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-7d1ee813ab7dc1a082a8.js.map

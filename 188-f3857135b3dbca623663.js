@@ -62,7 +62,7 @@ function JDomTreeView(props) {
     1: setSelected
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultSelected || []);
   var devices = (0,_hooks_useDevices__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)({
-    ignoreSelf: !_jacdac_ts_src_jdom_flags__WEBPACK_IMPORTED_MODULE_3__/* ["default"].diagnostics */ .Z.diagnostics
+    ignoreInfrastructure: !_jacdac_ts_src_jdom_flags__WEBPACK_IMPORTED_MODULE_3__/* ["default"].diagnostics */ .Z.diagnostics
   });
 
   var handleToggle = (event, nodeIds) => {
@@ -97,4 +97,4 @@ function JDomTreeView(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=188-fe2026b5e13ab01fd110.js.map
+//# sourceMappingURL=188-f3857135b3dbca623663.js.map

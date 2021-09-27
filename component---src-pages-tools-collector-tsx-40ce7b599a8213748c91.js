@@ -1506,7 +1506,7 @@ function Collector() {
   var starting = countdown > 0;
   var chartPalette = (0,useChartPalette/* default */.Z)();
   var devices = (0,useDevices/* default */.Z)({
-    ignoreSelf: true,
+    ignoreInfrastructure: true,
     announced: true
   });
   var readingRegisters = (0,utils/* arrayConcatMany */.ue)(devices.map(device => device.services().filter(srv => (0,spec/* isSensor */.rq)(srv.specification)).map(srv => srv.readingRegister)));
@@ -1854,4 +1854,4 @@ function Collector() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-collector-tsx-9412057740d1806dfeae.js.map
+//# sourceMappingURL=component---src-pages-tools-collector-tsx-40ce7b599a8213748c91.js.map
