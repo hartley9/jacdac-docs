@@ -922,7 +922,8 @@ function DeviceSpecification(props) {
       key: url
     }, /*#__PURE__*/react.createElement(GithubDowloadRawFileButton/* default */.Z, {
       url: url,
-      name: name
+      name: name,
+      variant: "outlined"
     }, name));
   }))), !!(services !== null && services !== void 0 && services.length) && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Services"), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
@@ -953,4 +954,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-5301212a225611a9609d.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-e94245056950bc2c63c3.js.map
