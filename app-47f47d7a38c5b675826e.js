@@ -68702,7 +68702,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "305b6e16b50f94d250701d0e241845d36c6016f9";
+var sha = "29cd7400a7efb9486e7bf729dd72bace136ea8e3";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69499,7 +69499,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "305b6e16b50f94d250701d0e241845d36c6016f9";
+  var sha = "29cd7400a7efb9486e7bf729dd72bace136ea8e3";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71638,7 +71638,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "305b6e16b50f94d250701d0e241845d36c6016f9";
+    var sha = "29cd7400a7efb9486e7bf729dd72bace136ea8e3";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -76353,6 +76353,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
    * @param bridge
    * @returns callback to remove bridge
    * @category Transports and Bridges
+   * @internal
    */
   _proto.addBridge = function addBridge(bridge) {
     if (this._bridges.indexOf(bridge) < 0) {
@@ -87465,4 +87466,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-c0a98deaee3030178017.js.map
+//# sourceMappingURL=app-47f47d7a38c5b675826e.js.map
