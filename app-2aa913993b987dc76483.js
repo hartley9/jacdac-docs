@@ -53095,8 +53095,14 @@ function Connector() {
     spacing: 10,
     direction: "column",
     alignContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    style: {
+      marginTop: 0
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+    style: {
+      paddingTop: 0
+    },
     title: "Connector",
     description: "Jacdac uses 3-pin custom-designed connectors to quickly interface development boards with sensors, relays and more.",
     buttonText: "Go to specification",
@@ -53982,8 +53988,14 @@ function KitModules() {
     spacing: 10,
     direction: "column",
     alignContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    style: {
+      marginTop: 0
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    style: {
+      paddingTop: 0
+    },
     title: "Kit Modules",
     subtitle3: "Explore the contents of the kit.",
     imageColumns: 6,
@@ -54422,7 +54434,7 @@ function Software() {
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(80838);
 /* harmony import */ var _FeatureItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19586);
 
-var _excluded = ["right", "image", "centered", "imageColumns"];
+var _excluded = ["right", "image", "centered", "imageColumns", "style"];
 
 
 
@@ -54431,7 +54443,8 @@ function SplitGrid(props) {
     right,
     image,
     centered,
-    imageColumns = 5
+    imageColumns = 5,
+    style
   } = props,
       others = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(props, _excluded);
 
@@ -54452,7 +54465,8 @@ function SplitGrid(props) {
   }, image);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     item: true,
-    xs: 12
+    xs: 12,
+    style: style
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     container: true,
     direction: "row",
@@ -64055,7 +64069,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "d49c73f1ebc2ad5d08b55b03676bc5e54e421f51";
+var sha = "9666922612069367ccb29c7a50ed4fa99f625238";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64964,7 +64978,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "d49c73f1ebc2ad5d08b55b03676bc5e54e421f51";
+  var sha = "9666922612069367ccb29c7a50ed4fa99f625238";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -82851,4 +82865,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-3fd084bc50561abc358b.js.map
+//# sourceMappingURL=app-2aa913993b987dc76483.js.map
