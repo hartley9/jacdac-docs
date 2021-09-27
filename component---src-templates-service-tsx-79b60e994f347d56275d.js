@@ -503,14 +503,13 @@ function DeviceSpecificationList(props) {
   } = (0,useMediaQueries/* default */.Z)();
   var cols = mobile ? 1 : medium ? 3 : 4;
   var specs = (0,react.useMemo)(() => {
-    var r = (0,jdom_spec/* deviceSpecifications */.qx)().filter(spec => spec.status !== "deprecated");
+    var r = (devices || (0,jdom_spec/* deviceSpecifications */.qx)()).filter(spec => spec.status !== "deprecated");
     if (company) r = r.filter(spec => spec.company === company);
     if (requiredServiceClasses) r = r.filter(spec => spec.services.length && requiredServiceClasses.every(srv => spec.services.indexOf(srv) > -1));
-    if (devices) r = r.filter(spec => devices.indexOf(spec.id) > -1);
     if (shuffle) (0,utils/* arrayShuffle */.r)(r);
     if (count !== undefined) r = r.slice(0, count);
     return r;
-  }, [requiredServiceClasses, shuffle, count, JSON.stringify(devices)]);
+  }, [requiredServiceClasses, shuffle, count, JSON.stringify(devices === null || devices === void 0 ? void 0 : devices.map(d => d.id))]);
   if (!specs.length) return /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     variant: "body1"
   }, "No device registered yet.");
@@ -935,4 +934,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-service-tsx-460d6eee08c1fdceb69a.js.map
+//# sourceMappingURL=component---src-templates-service-tsx-79b60e994f347d56275d.js.map
