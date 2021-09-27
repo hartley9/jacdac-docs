@@ -467,7 +467,8 @@ function KeyboardKeyInput(props) {
     "{altleft}": "alt ⌥",
     "{altright}": "alt ⌥",
     "{metaleft}": "cmd ⌘",
-    "{metaright}": "cmd ⌘"
+    "{metaright}": "cmd ⌘",
+    "{space}": "⎵"
   };
 
   var handleKeyboardKeyPress = code => {
@@ -1026,4 +1027,4 @@ function HIDEvents() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-hid-events-tsx-05c860b3b87f71c822ea.js.map
+//# sourceMappingURL=component---src-pages-tools-hid-events-tsx-6ebc68b1a5a2978ed291.js.map

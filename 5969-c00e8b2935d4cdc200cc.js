@@ -329,7 +329,8 @@ function KeyboardKeyInput(props) {
     "{altleft}": "alt ⌥",
     "{altright}": "alt ⌥",
     "{metaleft}": "cmd ⌘",
-    "{metaright}": "cmd ⌘"
+    "{metaright}": "cmd ⌘",
+    "{space}": "⎵"
   };
 
   var handleKeyboardKeyPress = code => {
@@ -456,4 +457,4 @@ function SelectWithLabel(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5969-154732ebbe85931754b4.js.map
+//# sourceMappingURL=5969-c00e8b2935d4cdc200cc.js.map

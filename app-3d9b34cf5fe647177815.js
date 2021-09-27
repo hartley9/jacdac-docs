@@ -42690,6 +42690,7 @@ var selectors = {
   escape: 0x29,
   backspace: 0x2a,
   tab: 0x2b,
+  space: 0x2c,
   " ": 0x2c,
   "-": 0x2d,
   _: 0x2d,
@@ -42707,11 +42708,11 @@ var selectors = {
   ":": 0x33,
   "'": 0x34,
   '"': 0x34,
-  // grave accent tilde
+  "`": 0x35,
   ",": 0x36,
-  "<": 0x37,
+  //"<": 0x37,
   ".": 0x37,
-  ">": 0x37,
+  //">": 0x37,
   "/": 0x38,
   "?": 0x38,
   capslock: 0x39,
@@ -68701,7 +68702,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "cf9b88f12c3371e7200b5f6631ab03576dcde4f2";
+var sha = "1be0fdd91123958d3e59949cfbc45a5e8571a1b9";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69498,7 +69499,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "cf9b88f12c3371e7200b5f6631ab03576dcde4f2";
+  var sha = "1be0fdd91123958d3e59949cfbc45a5e8571a1b9";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71637,7 +71638,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "cf9b88f12c3371e7200b5f6631ab03576dcde4f2";
+    var sha = "1be0fdd91123958d3e59949cfbc45a5e8571a1b9";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87464,4 +87465,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-baa76ce45c5084d59292.js.map
+//# sourceMappingURL=app-3d9b34cf5fe647177815.js.map
