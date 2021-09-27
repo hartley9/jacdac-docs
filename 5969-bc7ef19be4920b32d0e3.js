@@ -96,6 +96,12 @@ function DashboardHIDKeyboard(props) {
   }), [selector, modifiers, service]);
   (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(bus, () => {
     var triggerEvent = bus.node(triggerEventId);
+    console.log({
+      triggerEventId,
+      triggerEvent,
+      selector,
+      modifiers
+    });
     var un = triggerEvent === null || triggerEvent === void 0 ? void 0 : triggerEvent.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_8__/* .EVENT */ .Ks0, handleClick);
     return () => un === null || un === void 0 ? void 0 : un();
   }, [triggerEventId, handleClick]);
@@ -456,4 +462,4 @@ function SelectWithLabel(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5969-154732ebbe85931754b4.js.map
+//# sourceMappingURL=5969-bc7ef19be4920b32d0e3.js.map
