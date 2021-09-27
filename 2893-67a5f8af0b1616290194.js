@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[973],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[2893],{
 
 /***/ 80460:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
@@ -23,33 +23,6 @@ var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
 }), 'ChevronLeft');
-
-exports.Z = _default;
-
-/***/ }),
-
-/***/ 8567:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-var __webpack_unused_export__;
-
-
-var _interopRequireDefault = __webpack_require__(95318);
-
-var _interopRequireWildcard = __webpack_require__(20862);
-
-__webpack_unused_export__ = ({
-  value: true
-});
-exports.Z = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(67294));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"
-}), 'Save');
 
 exports.Z = _default;
 
@@ -284,7 +257,7 @@ function ConnectAlert(props) {
 
 /***/ }),
 
-/***/ 80973:
+/***/ 52893:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -410,57 +383,8 @@ function TraceImportButton(props) {
     onFilesUploaded: handleFiles
   }));
 }
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Save.js
-var Save = __webpack_require__(8567);
-// EXTERNAL MODULE: ./src/components/ServiceManagerContext.tsx + 3 modules
-var ServiceManagerContext = __webpack_require__(99808);
-// EXTERNAL MODULE: ./src/components/ui/IconButtonWithTooltip.tsx + 1 modules
-var IconButtonWithTooltip = __webpack_require__(79885);
-// EXTERNAL MODULE: ./src/jacdac/Context.tsx
-var Context = __webpack_require__(20392);
-;// CONCATENATED MODULE: ./src/components/trace/TraceSaveButton.tsx
- // tslint:disable-next-line: match-default-export-name no-submodule-imports
-
-
-
-
-
-
-function TraceSaveButton() {
-  var {
-    bus
-  } = (0,react.useContext)(Context/* default */.Z);
-  var {
-    replayTrace,
-    view,
-    recording,
-    tracing
-  } = (0,react.useContext)(PacketsContext/* default */.Z);
-  var {
-    fileStorage
-  } = (0,react.useContext)(ServiceManagerContext/* default */.ZP);
-
-  var saveTrace = () => {
-    var busText = bus.describe();
-    var savedTrace = replayTrace || view.trace;
-    var traceText = savedTrace.serializeToText();
-    var text = "# Jacdac Trace \n        \nTo import, go to https://aka.ms/jacdac, open device tree and click import icon.\n\n## devices\n\n```yaml\n" + busText + "\n```\n\n## packets\n\n```\n" + traceText + "\n```\n";
-    console.log({
-      busText,
-      traceText,
-      text
-    });
-    fileStorage.saveText("trace.jd.txt", text);
-  };
-
-  return /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
-    title: "save trace",
-    disabled: recording || tracing,
-    size: "small",
-    key: "save",
-    onClick: saveTrace
-  }, /*#__PURE__*/react.createElement(Save/* default */.Z, null));
-}
+// EXTERNAL MODULE: ./src/components/trace/TraceSaveButton.tsx
+var TraceSaveButton = __webpack_require__(34439);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(45987);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/createSvgIcon.js
@@ -533,7 +457,7 @@ function PacketRecorder() {
   }, replayTrace.packets.length, " packets"), /*#__PURE__*/react.createElement(TraceImportButton, {
     icon: true,
     disabled: tracing || recording
-  }), /*#__PURE__*/react.createElement(TraceSaveButton, null), "|", /*#__PURE__*/react.createElement(TraceRecordButton, {
+  }), /*#__PURE__*/react.createElement(TraceSaveButton/* default */.Z, null), "|", /*#__PURE__*/react.createElement(TraceRecordButton, {
     size: "small"
   }), /*#__PURE__*/react.createElement(TracePlayButton/* default */.Z, {
     size: "small"
@@ -658,4 +582,4 @@ function AppDrawer(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=973-799308246a9105c0e5df.js.map
+//# sourceMappingURL=2893-67a5f8af0b1616290194.js.map

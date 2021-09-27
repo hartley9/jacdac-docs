@@ -19886,6 +19886,34 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 8567:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"
+}), 'Save');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 88237:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -64069,7 +64097,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "9666922612069367ccb29c7a50ed4fa99f625238";
+var sha = "fc0c35eba656328e009e2db1e5f925a7f92f0953";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64949,7 +64977,10 @@ var DarkModeContext = __webpack_require__(91350);
 var Alert = __webpack_require__(95453);
 // EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
 var gatsby_theme_material_ui = __webpack_require__(36176);
+// EXTERNAL MODULE: ./src/components/trace/TraceSaveButton.tsx
+var TraceSaveButton = __webpack_require__(34439);
 ;// CONCATENATED MODULE: ./src/components/shell/Footer.tsx
+
 
 
 
@@ -64978,7 +65009,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "9666922612069367ccb29c7a50ed4fa99f625238";
+  var sha = "fc0c35eba656328e009e2db1e5f925a7f92f0953";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -65002,11 +65033,13 @@ function Footer() {
     href: "https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, "Trademarks"), "|", repo && sha && /*#__PURE__*/react.createElement("a", {
+  }, "Trademarks"), repo && sha && /*#__PURE__*/react.createElement(react.Fragment, null, "|", /*#__PURE__*/react.createElement("a", {
     href: "https://github.com/" + repo + "/commit/" + sha,
     target: "_blank",
     rel: "noopener noreferrer"
-  }, sha.slice(0, 8)), /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+  }, sha.slice(0, 8))), "| ", /*#__PURE__*/react.createElement(TraceSaveButton/* default */.Z, {
+    variant: "link"
+  }), "\xA0", /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     component: "span",
     variant: "inherit"
   }, "\xA9 ", new Date().getFullYear(), " Microsoft Corporation"));
@@ -66379,7 +66412,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var WebDiagnostics = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 3828).then(__webpack_require__.bind(__webpack_require__, 3828)));
-var AppDrawer = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(973)]).then(__webpack_require__.bind(__webpack_require__, 80973)));
+var AppDrawer = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(2893)]).then(__webpack_require__.bind(__webpack_require__, 52893)));
 var ToolsDrawer = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(4986)]).then(__webpack_require__.bind(__webpack_require__, 74986)));
 var TOC_DRAWER_WIDTH = 18;
 var DRAWER_WIDTH = 40;
@@ -67072,6 +67105,67 @@ function TracePlayButton(props) {
     progressColor: "secondary",
     color: "inherit"
   }), tracing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Stop__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_PlayArrow__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, null));
+}
+
+/***/ }),
+
+/***/ 34439:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ TraceSaveButton; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8567);
+/* harmony import */ var _ServiceManagerContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(99808);
+/* harmony import */ var _PacketsContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(43226);
+/* harmony import */ var _ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(79885);
+/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20392);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(94850);
+ // tslint:disable-next-line: match-default-export-name no-submodule-imports
+
+
+
+
+
+
+
+function TraceSaveButton(props) {
+  var {
+    variant
+  } = props;
+  var {
+    bus
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z);
+  var {
+    replayTrace,
+    view
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_PacketsContext__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z);
+  var {
+    fileStorage
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .ZP);
+
+  var saveTrace = () => {
+    var repo = "microsoft/jacdac-docs";
+    var sha = "fc0c35eba656328e009e2db1e5f925a7f92f0953";
+    var busText = bus.describe();
+    var savedTrace = replayTrace || view.trace;
+    var traceText = savedTrace.serializeToText();
+    var text = "# Jacdac Trace \n        \nTo import, go to https://aka.ms/jacdac, open device tree and click import icon.\n\n## bus\n\n```yaml\n" + busText + "\n```\n\n## packets\n\n```\n" + traceText + "\n```\n\n## environment\n\n```yaml\njacdac: https://github.com/" + repo + "/commit/" + sha + "\nuser-agent: " + (typeof window !== undefined && window.navigator.userAgent) + "\n```\n\n";
+    fileStorage.saveText("trace.jd.txt", text);
+  };
+
+  return variant === "link" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+    title: "save trace and environment information in a file",
+    component: "button",
+    onClick: saveTrace
+  }, "Save trace") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    title: "save trace",
+    size: "small",
+    key: "save",
+    onClick: saveTrace
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null));
 }
 
 /***/ }),
@@ -82865,4 +82959,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-2aa913993b987dc76483.js.map
+//# sourceMappingURL=app-7f99795405302e6bc38a.js.map
