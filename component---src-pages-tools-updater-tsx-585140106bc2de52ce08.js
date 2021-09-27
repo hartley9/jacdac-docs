@@ -639,8 +639,8 @@ var CircularProgressWithLabel = __webpack_require__(29177);
 var AppContext = __webpack_require__(84377);
 // EXTERNAL MODULE: ./src/components/hooks/useMounted.ts
 var useMounted = __webpack_require__(72179);
-// EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
-var useAnalytics = __webpack_require__(58057);
+// EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
+var useAnalytics = __webpack_require__(72513);
 ;// CONCATENATED MODULE: ./src/components/firmware/FlashDeviceButton.tsx
 
 
@@ -1187,4 +1187,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-60932882a7419f2a7930.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-585140106bc2de52ce08.js.map

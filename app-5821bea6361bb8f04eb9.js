@@ -46706,7 +46706,7 @@ function startServiceProviderFromServiceClass(bus, serviceClass) {
 /* harmony import */ var _jacdac_ts_src_jdom_error__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(52800);
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(81794);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(20392);
-/* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(58057);
+/* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(72513);
 /* harmony import */ var _PacketsContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(43226);
 /* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(69672);
 
@@ -46893,7 +46893,7 @@ var AppProvider = _ref => {
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(84377);
 /* harmony import */ var _material_ui_icons_Error__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(13840);
 /* harmony import */ var _ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(79885);
-/* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(58057);
+/* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(72513);
 /* harmony import */ var _hooks_useMounted__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(72179);
 /* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(85505);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(20392);
@@ -54662,7 +54662,7 @@ function Tools() {
 
 /***/ }),
 
-/***/ 58057:
+/***/ 72513:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54684,13 +54684,13 @@ var react = __webpack_require__(67294);
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 var Constants_strShimFunction = "function";
-var Constants_strShimObject = "object";
+var strShimObject = "object";
 var Constants_strShimUndefined = "undefined";
-var strShimPrototype = "prototype";
+var Constants_strShimPrototype = "prototype";
 var strShimHasOwnProperty = "hasOwnProperty";
 var Constants_strDefault = "default";
 var Constants_ObjClass = Object;
-var Constants_ObjProto = Constants_ObjClass[strShimPrototype];
+var Constants_ObjProto = Constants_ObjClass[Constants_strShimPrototype];
 var ObjAssign = Constants_ObjClass["assign"];
 var Constants_ObjCreate = Constants_ObjClass["create"];
 var Constants_ObjDefineProperty = Constants_ObjClass["defineProperty"];
@@ -54755,702 +54755,14 @@ function objCreateFn(obj) {
 
   var type = typeof obj;
 
-  if (type !== Constants_strShimObject && type !== Constants_strShimFunction) {
+  if (type !== strShimObject && type !== Constants_strShimFunction) {
     Helpers_throwTypeError('Object prototype may only be an Object:' + obj);
   }
 
   function tmpFunc() {}
 
-  tmpFunc[strShimPrototype] = obj;
+  tmpFunc[Constants_strShimPrototype] = obj;
   return new tmpFunc();
-}
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/HelperFuncs.js
-/*
- * Application Insights JavaScript SDK - Core, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
- // RESTRICT and AVOID circular dependencies you should not import other contained modules or export the contents of this file directly
-// Added to help with minfication
-
-var strOnPrefix = "on";
-var strAttachEvent = "attachEvent";
-var strAddEventHelper = "addEventListener";
-var strDetachEvent = "detachEvent";
-var strRemoveEventListener = "removeEventListener";
-var _objDefineProperty = Constants_ObjDefineProperty;
-var _objFreeze = Constants_ObjClass.freeze;
-var _objSeal = Constants_ObjClass.seal;
-function objToString(obj) {
-  return Constants_ObjProto.toString.call(obj);
-}
-function isTypeof(value, theType) {
-  return typeof value === theType;
-}
-;
-function isUndefined(value) {
-  return value === undefined || typeof value === Constants_strShimUndefined;
-}
-;
-function isNotUndefined(value) {
-  return !isUndefined(value);
-}
-function isNullOrUndefined(value) {
-  return value === null || isUndefined(value);
-}
-function isNotNullOrUndefined(value) {
-  return !isNullOrUndefined(value);
-}
-function HelperFuncs_hasOwnProperty(obj, prop) {
-  return obj && Constants_ObjHasOwnProperty.call(obj, prop);
-}
-;
-function isObject(value) {
-  // Changing to inline for performance
-  return typeof value === Constants_strShimObject;
-}
-;
-function isFunction(value) {
-  // Changing to inline for performance
-  return typeof value === Constants_strShimFunction;
-}
-;
-/**
- * Binds the specified function to an event, so that the function gets called whenever the event fires on the object
- * @param obj Object to add the event too.
- * @param eventNameWithoutOn String that specifies any of the standard DHTML Events without "on" prefix
- * @param handlerRef Pointer that specifies the function to call when event fires
- * @param useCapture [Optional] Defaults to false
- * @returns True if the function was bound successfully to the event, otherwise false
- */
-
-function attachEvent(obj, eventNameWithoutOn, handlerRef, useCapture) {
-  if (useCapture === void 0) {
-    useCapture = false;
-  }
-
-  var result = false;
-
-  if (!isNullOrUndefined(obj)) {
-    try {
-      if (!isNullOrUndefined(obj[strAddEventHelper])) {
-        // all browsers except IE before version 9
-        obj[strAddEventHelper](eventNameWithoutOn, handlerRef, useCapture);
-        result = true;
-      } else if (!isNullOrUndefined(obj[strAttachEvent])) {
-        // IE before version 9                    
-        obj[strAttachEvent](strOnPrefix + eventNameWithoutOn, handlerRef);
-        result = true;
-      }
-    } catch (e) {// Just Ignore any error so that we don't break any execution path
-    }
-  }
-
-  return result;
-}
-/**
- * Removes an event handler for the specified event
- * @param Object to remove the event from
- * @param eventNameWithoutOn {string} - The name of the event
- * @param handlerRef {any} - The callback function that needs to be executed for the given event
- * @param useCapture [Optional] Defaults to false
- */
-
-function detachEvent(obj, eventNameWithoutOn, handlerRef, useCapture) {
-  if (useCapture === void 0) {
-    useCapture = false;
-  }
-
-  if (!isNullOrUndefined(obj)) {
-    try {
-      if (!isNullOrUndefined(obj[strRemoveEventListener])) {
-        obj[strRemoveEventListener](eventNameWithoutOn, handlerRef, useCapture);
-      } else if (!isNullOrUndefined(obj[strDetachEvent])) {
-        obj[strDetachEvent](strOnPrefix + eventNameWithoutOn, handlerRef);
-      }
-    } catch (e) {// Just Ignore any error so that we don't break any execution path
-    }
-  }
-}
-/**
- * Validates that the string name conforms to the JS IdentifierName specification and if not
- * normalizes the name so that it would. This method does not identify or change any keywords
- * meaning that if you pass in a known keyword the same value will be returned.
- * This is a simplified version
- * @param name The name to validate
- */
-
-function normalizeJsName(name) {
-  var value = name;
-  var match = /([^\w\d_$])/g;
-
-  if (match.test(name)) {
-    value = name.replace(match, "_");
-  }
-
-  return value;
-}
-/**
- * This is a helper function for the equivalent of arForEach(objKeys(target), callbackFn), this is a
- * performance optimization to avoid the creation of a new array for large objects
- * @param target The target object to find and process the keys
- * @param callbackfn The function to call with the details
- */
-
-function objForEachKey(target, callbackfn) {
-  if (target) {
-    for (var prop in target) {
-      if (Constants_ObjHasOwnProperty.call(target, prop)) {
-        callbackfn.call(target, prop, target[prop]);
-      }
-    }
-  }
-}
-/**
- * The strEndsWith() method determines whether a string ends with the characters of a specified string, returning true or false as appropriate.
- * @param value - The value to check whether it ends with the search value.
- * @param search - The characters to be searched for at the end of the value.
- * @returns true if the given search value is found at the end of the string, otherwise false.
- */
-
-function strEndsWith(value, search) {
-  if (value && search) {
-    var searchLen = search.length;
-    var valLen = value.length;
-
-    if (value === search) {
-      return true;
-    } else if (valLen >= searchLen) {
-      var pos = valLen - 1;
-
-      for (var lp = searchLen - 1; lp >= 0; lp--) {
-        if (value[pos] != search[lp]) {
-          return false;
-        }
-
-        pos--;
-      }
-
-      return true;
-    }
-  }
-
-  return false;
-}
-/**
- * The strStartsWith() method determines whether a string starts with the characters of the specified string, returning true or false as appropriate.
- * @param value - The value to check whether it ends with the search value.
- * @param checkValue - The characters to be searched for at the start of the value.
- * @returns true if the given search value is found at the start of the string, otherwise false.
- */
-
-function strStartsWith(value, checkValue) {
-  // Using helper for performance and because string startsWith() is not available on IE
-  var result = false;
-
-  if (value && checkValue) {
-    var chkLen = checkValue.length;
-
-    if (value === checkValue) {
-      return true;
-    } else if (value.length >= chkLen) {
-      for (var lp = 0; lp < chkLen; lp++) {
-        if (value[lp] !== checkValue[lp]) {
-          return false;
-        }
-      }
-
-      result = true;
-    }
-  }
-
-  return result;
-}
-/**
- * A simple wrapper (for minification support) to check if the value contains the search string.
- * @param value - The string value to check for the existence of the search value
- * @param search - The value search within the value
- */
-
-function strContains(value, search) {
-  if (value && search) {
-    return value.indexOf(search) !== -1;
-  }
-
-  return false;
-}
-/**
- * Check if an object is of type Date
- */
-
-function isDate(obj) {
-  return objToString(obj) === "[object Date]";
-}
-/**
- * Check if an object is of type Array
- */
-
-function isArray(obj) {
-  return objToString(obj) === "[object Array]";
-}
-/**
- * Check if an object is of type Error
- */
-
-function isError(obj) {
-  return objToString(obj) === "[object Error]";
-}
-/**
- * Checks if the type of value is a string.
- * @param {any} value - Value to be checked.
- * @return {boolean} True if the value is a string, false otherwise.
- */
-
-function HelperFuncs_isString(value) {
-  // Changing to inline for performance
-  return typeof value === "string";
-}
-/**
- * Checks if the type of value is a number.
- * @param {any} value - Value to be checked.
- * @return {boolean} True if the value is a number, false otherwise.
- */
-
-function isNumber(value) {
-  // Changing to inline for performance
-  return typeof value === "number";
-}
-/**
- * Checks if the type of value is a boolean.
- * @param {any} value - Value to be checked.
- * @return {boolean} True if the value is a boolean, false otherwise.
- */
-
-function isBoolean(value) {
-  // Changing to inline for performance
-  return typeof value === "boolean";
-}
-/**
- * Checks if the type of value is a Symbol.
- * This only returns a boolean as returning value is Symbol will cause issues for older TypeScript consumers
- * @param {any} value - Value to be checked.
- * @return {boolean} True if the value is a Symbol, false otherwise.
- */
-
-function isSymbol(value) {
-  return typeof value === "symbol";
-}
-/**
- * Convert a date to I.S.O. format in IE8
- */
-
-function toISOString(date) {
-  if (isDate(date)) {
-    var pad = function pad(num) {
-      var r = String(num);
-
-      if (r.length === 1) {
-        r = "0" + r;
-      }
-
-      return r;
-    };
-
-    return date.getUTCFullYear() + "-" + pad(date.getUTCMonth() + 1) + "-" + pad(date.getUTCDate()) + "T" + pad(date.getUTCHours()) + ":" + pad(date.getUTCMinutes()) + ":" + pad(date.getUTCSeconds()) + "." + String((date.getUTCMilliseconds() / 1000).toFixed(3)).slice(2, 5) + "Z";
-  }
-}
-/**
- * Performs the specified action for each element in an array. This helper exists to avoid adding a polyfil for older browsers
- * that do not define Array.prototype.xxxx (eg. ES3 only, IE8) just in case any page checks for presence/absence of the prototype
- * implementation. Note: For consistency this will not use the Array.prototype.xxxx implementation if it exists as this would
- * cause a testing requirement to test with and without the implementations
- * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array. It can return -1 to break out of the loop
- * @param thisArg  [Optional] An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
- */
-
-function arrForEach(arr, callbackfn, thisArg) {
-  var len = arr.length;
-
-  try {
-    for (var idx = 0; idx < len; idx++) {
-      if (idx in arr) {
-        if (callbackfn.call(thisArg || arr, arr[idx], idx, arr) === -1) {
-          break;
-        }
-      }
-    }
-  } catch (e) {// This can happen with some native browser objects, but should not happen for the type we are checking for
-  }
-}
-/**
- * Returns the index of the first occurrence of a value in an array. This helper exists to avoid adding a polyfil for older browsers
- * that do not define Array.prototype.xxxx (eg. ES3 only, IE8) just in case any page checks for presence/absence of the prototype
- * implementation. Note: For consistency this will not use the Array.prototype.xxxx implementation if it exists as this would
- * cause a testing requirement to test with and without the implementations
- * @param searchElement The value to locate in the array.
- * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.
- */
-
-function arrIndexOf(arr, searchElement, fromIndex) {
-  var len = arr.length;
-  var from = fromIndex || 0;
-
-  try {
-    for (var lp = Math.max(from >= 0 ? from : len - Math.abs(from), 0); lp < len; lp++) {
-      if (lp in arr && arr[lp] === searchElement) {
-        return lp;
-      }
-    }
-  } catch (e) {// This can happen with some native browser objects, but should not happen for the type we are checking for
-  }
-
-  return -1;
-}
-/**
- * Calls a defined callback function on each element of an array, and returns an array that contains the results. This helper exists
- * to avoid adding a polyfil for older browsers that do not define Array.prototype.xxxx (eg. ES3 only, IE8) just in case any page
- * checks for presence/absence of the prototype implementation. Note: For consistency this will not use the Array.prototype.xxxx
- * implementation if it exists as this would cause a testing requirement to test with and without the implementations
- * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
- * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
- */
-
-function arrMap(arr, callbackfn, thisArg) {
-  var len = arr.length;
-
-  var _this = thisArg || arr;
-
-  var results = new Array(len);
-
-  try {
-    for (var lp = 0; lp < len; lp++) {
-      if (lp in arr) {
-        results[lp] = callbackfn.call(_this, arr[lp], arr);
-      }
-    }
-  } catch (e) {// This can happen with some native browser objects, but should not happen for the type we are checking for
-  }
-
-  return results;
-}
-/**
- * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is
- * provided as an argument in the next call to the callback function. This helper exists to avoid adding a polyfil for older browsers that do not define
- * Array.prototype.xxxx (eg. ES3 only, IE8) just in case any page checks for presence/absence of the prototype implementation. Note: For consistency
- * this will not use the Array.prototype.xxxx implementation if it exists as this would cause a testing requirement to test with and without the implementations
- * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
- * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
- */
-
-function arrReduce(arr, callbackfn, initialValue) {
-  var len = arr.length;
-  var lp = 0;
-  var value; // Specifically checking the number of passed arguments as the value could be anything
-
-  if (arguments.length >= 3) {
-    value = arguments[2];
-  } else {
-    while (lp < len && !(lp in arr)) {
-      lp++;
-    }
-
-    value = arr[lp++];
-  }
-
-  while (lp < len) {
-    if (lp in arr) {
-      value = callbackfn(value, arr[lp], lp, arr);
-    }
-
-    lp++;
-  }
-
-  return value;
-}
-/**
- * helper method to trim strings (IE8 does not implement String.prototype.trim)
- */
-
-function strTrim(str) {
-  if (typeof str !== "string") {
-    return str;
-  }
-
-  return str.replace(/^\s+|\s+$/g, "");
-}
-
-var _objKeysHasDontEnumBug = !{
-  toString: null
-}.propertyIsEnumerable('toString');
-
-var _objKeysDontEnums = ['toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable', 'constructor'];
-/**
- * Returns the names of the enumerable string properties and methods of an object. This helper exists to avoid adding a polyfil for older browsers
- * that do not define Object.keys eg. ES3 only, IE8 just in case any page checks for presence/absence of the prototype implementation.
- * Note: For consistency this will not use the Object.keys implementation if it exists as this would cause a testing requirement to test with and without the implementations
- * @param obj Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
- */
-
-function objKeys(obj) {
-  var objType = typeof obj;
-
-  if (objType !== Constants_strShimFunction && (objType !== Constants_strShimObject || obj === null)) {
-    Helpers_throwTypeError('objKeys called on non-object');
-  }
-
-  var result = [];
-
-  for (var prop in obj) {
-    if (obj && Constants_ObjHasOwnProperty.call(obj, prop)) {
-      result.push(prop);
-    }
-  }
-
-  if (_objKeysHasDontEnumBug) {
-    var dontEnumsLength = _objKeysDontEnums.length;
-
-    for (var lp = 0; lp < dontEnumsLength; lp++) {
-      if (obj && Constants_ObjHasOwnProperty.call(obj, _objKeysDontEnums[lp])) {
-        result.push(_objKeysDontEnums[lp]);
-      }
-    }
-  }
-
-  return result;
-}
-/**
- * Try to define get/set object property accessors for the target object/prototype, this will provide compatibility with
- * existing API definition when run within an ES5+ container that supports accessors but still enable the code to be loaded
- * and executed in an ES3 container, providing basic IE8 compatibility.
- * @param target The object on which to define the property.
- * @param prop The name of the property to be defined or modified.
- * @param getProp The getter function to wire against the getter.
- * @param setProp The setter function to wire against the setter.
- * @returns True if it was able to create the accessors otherwise false
- */
-
-function objDefineAccessors(target, prop, getProp, setProp) {
-  if (_objDefineProperty) {
-    try {
-      var descriptor = {
-        enumerable: true,
-        configurable: true
-      };
-
-      if (getProp) {
-        descriptor.get = getProp;
-      }
-
-      if (setProp) {
-        descriptor.set = setProp;
-      }
-
-      _objDefineProperty(target, prop, descriptor);
-
-      return true;
-    } catch (e) {// IE8 Defines a defineProperty on Object but it's only supported for DOM elements so it will throw
-      // We will just ignore this here.
-    }
-  }
-
-  return false;
-}
-function objFreeze(value) {
-  if (_objFreeze) {
-    value = _objFreeze(value);
-  }
-
-  return value;
-}
-function objSeal(value) {
-  if (_objSeal) {
-    value = _objSeal(value);
-  }
-
-  return value;
-}
-/**
- * Return the current time via the Date now() function (if available) and falls back to (new Date()).getTime() if now() is unavailable (IE8 or less)
- * https://caniuse.com/#search=Date.now
- */
-
-function dateNow() {
-  var dt = Date;
-
-  if (dt.now) {
-    return dt.now();
-  }
-
-  return new dt().getTime();
-}
-/**
- * Returns the name of object if it's an Error. Otherwise, returns empty string.
- */
-
-function getExceptionName(object) {
-  if (isError(object)) {
-    return object.name;
-  }
-
-  return "";
-}
-/**
- * Sets the provided value on the target instance using the field name when the provided chk function returns true, the chk
- * function will only be called if the new value is no equal to the original value.
- * @param target - The target object
- * @param field - The key of the target
- * @param value - The value to set
- * @param valChk - [Optional] Callback to check the value that if supplied will be called check if the new value can be set
- * @param srcChk - [Optional] Callback to check to original value that if supplied will be called if the new value should be set (if allowed)
- * @returns The existing or new value, depending what was set
- */
-
-function setValue(target, field, value, valChk, srcChk) {
-  var theValue = value;
-
-  if (target) {
-    theValue = target[field];
-
-    if (theValue !== value && (!srcChk || srcChk(theValue)) && (!valChk || valChk(value))) {
-      theValue = value;
-      target[field] = theValue;
-    }
-  }
-
-  return theValue;
-}
-/**
- * Returns the current value from the target object if not null or undefined otherwise sets the new value and returns it
- * @param target - The target object to return or set the default value
- * @param field - The key for the field to set on the target
- * @param defValue - [Optional] The value to set if not already present, when not provided a empty object will be added
- */
-
-function getSetValue(target, field, defValue) {
-  var theValue;
-
-  if (target) {
-    theValue = target[field];
-
-    if (!theValue && isNullOrUndefined(theValue)) {
-      // Supports having the default as null
-      theValue = !isUndefined(defValue) ? defValue : {};
-      target[field] = theValue;
-    }
-  } else {
-    // Expanded for performance so we only check defValue if required
-    theValue = !isUndefined(defValue) ? defValue : {};
-  }
-
-  return theValue;
-}
-function isNotTruthy(value) {
-  return !value;
-}
-function isTruthy(value) {
-  return !!value;
-}
-function throwError(message) {
-  throw new Error(message);
-}
-/**
- * Effectively assigns all enumerable properties (not just own properties) and functions (including inherited prototype) from
- * the source object to the target, it attempts to use proxy getters / setters (if possible) and proxy functions to avoid potential
- * implementation issues by assigning prototype functions as instance ones
- *
- * This method is the primary method used to "update" the snippet proxy with the ultimate implementations.
- *
- * Special ES3 Notes:
- * Updates (setting) of direct property values on the target or indirectly on the source object WILL NOT WORK PROPERLY, updates to the
- * properties of "referenced" object will work (target.context.newValue = 10 => will be reflected in the source.context as it's the
- * same object). ES3 Failures: assigning target.myProp = 3 -> Won't change source.myProp = 3, likewise the reverse would also fail.
- * @param target - The target object to be assigned with the source properties and functions
- * @param source - The source object which will be assigned / called by setting / calling the targets proxies
- * @param chkSet - An optional callback to determine whether a specific property/function should be proxied
- * @memberof Initialization
- */
-
-function proxyAssign(target, source, chkSet) {
-  if (target && source && target !== source && isObject(target) && isObject(source)) {
-    var _loop_1 = function _loop_1(field) {
-      if (HelperFuncs_isString(field)) {
-        var value = source[field];
-
-        if (isFunction(value)) {
-          if (!chkSet || chkSet(field, true, source, target)) {
-            // Create a proxy function rather than just copying the (possible) prototype to the new object as an instance function
-            target[field] = function (funcName) {
-              return function () {
-                // Capture the original arguments passed to the method
-                var originalArguments = arguments;
-                return source[funcName].apply(source, originalArguments);
-              };
-            }(field);
-          }
-        } else if (!chkSet || chkSet(field, false, source, target)) {
-          if (HelperFuncs_hasOwnProperty(target, field)) {
-            // Remove any previous instance property
-            delete target[field];
-          }
-
-          if (!objDefineAccessors(target, field, function () {
-            return source[field];
-          }, function (theValue) {
-            source[field] = theValue;
-          })) {
-            // Unable to create an accessor, so just assign the values as a fallback
-            // -- this will (mostly) work for objects
-            // -- but will fail for accessing primitives (if the source changes it) and all types of "setters" as the source won't be modified
-            target[field] = value;
-          }
-        }
-      }
-    }; // effectively apply/proxy full source to the target instance
-
-
-    for (var field in source) {
-      _loop_1(field);
-    }
-  }
-
-  return target;
-}
-/**
- * Simpler helper to create a dynamic class that implements the interface and populates the values with the defaults.
- * Only instance properties (hasOwnProperty) values are copied from the defaults to the new instance
- * @param defaults Simple helper
- */
-
-function createClassFromInterface(defaults) {
-  return function () {
-    function class_1() {
-      var _this_1 = this;
-
-      if (defaults) {
-        objForEachKey(defaults, function (field, value) {
-          _this_1[field] = value;
-        });
-      }
-    }
-
-    return class_1;
-  }();
-}
-/**
- * A helper function to assist with JIT performance for objects that have properties added / removed dynamically
- * this is primarily for chromium based browsers and has limited effects on Firefox and none of IE. Only call this
- * function after you have finished "updating" the object, calling this within loops reduces or defeats the benefits.
- * This helps when iterating using for..in, objKeys() and objForEach()
- * @param theObject - The object to be optimized if possible
- */
-
-function optimizeObject(theObject) {
-  // V8 Optimization to cause the JIT compiler to create a new optimized object for looking up the own properties
-  // primarily for object with <= 19 properties for >= 20 the effect is reduced or non-existent
-  if (theObject) {
-    theObject = Constants_ObjClass(ObjAssign ? ObjAssign({}, theObject) : theObject);
-  }
-
-  return theObject;
 }
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-shims/dist-esm/TsLibShims.js
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -55515,7 +54827,7 @@ function __extendsFn(d, b) {
   } // tslint:disable-next-line: ban-comma-operator
 
 
-  d[strShimPrototype] = b === null ? objCreateFn(b) : (__[strShimPrototype] = b[strShimPrototype], new __());
+  d[Constants_strShimPrototype] = b === null ? objCreateFn(b) : (__[Constants_strShimPrototype] = b[Constants_strShimPrototype], new __());
 }
 function __restFn(s, e) {
   var t = {};
@@ -56416,6 +55728,694 @@ var _InternalMessageId = {
   TrackPageActionEventFailed: 103,
   FailedAddingCustomDefinedRequestContext: 104
 };
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/HelperFuncs.js
+/*
+ * Application Insights JavaScript SDK - Core, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+ // RESTRICT and AVOID circular dependencies you should not import other contained modules or export the contents of this file directly
+// Added to help with minfication
+
+var strOnPrefix = "on";
+var strAttachEvent = "attachEvent";
+var strAddEventHelper = "addEventListener";
+var strDetachEvent = "detachEvent";
+var strRemoveEventListener = "removeEventListener";
+var _objDefineProperty = Constants_ObjDefineProperty;
+var _objFreeze = Constants_ObjClass.freeze;
+var _objSeal = Constants_ObjClass.seal;
+function objToString(obj) {
+  return Constants_ObjProto.toString.call(obj);
+}
+function isTypeof(value, theType) {
+  return typeof value === theType;
+}
+;
+function isUndefined(value) {
+  return value === undefined || typeof value === Constants_strShimUndefined;
+}
+;
+function isNotUndefined(value) {
+  return !isUndefined(value);
+}
+function isNullOrUndefined(value) {
+  return value === null || isUndefined(value);
+}
+function isNotNullOrUndefined(value) {
+  return !isNullOrUndefined(value);
+}
+function HelperFuncs_hasOwnProperty(obj, prop) {
+  return obj && Constants_ObjHasOwnProperty.call(obj, prop);
+}
+;
+function isObject(value) {
+  // Changing to inline for performance
+  return typeof value === strShimObject;
+}
+;
+function isFunction(value) {
+  // Changing to inline for performance
+  return typeof value === Constants_strShimFunction;
+}
+;
+/**
+ * Binds the specified function to an event, so that the function gets called whenever the event fires on the object
+ * @param obj Object to add the event too.
+ * @param eventNameWithoutOn String that specifies any of the standard DHTML Events without "on" prefix
+ * @param handlerRef Pointer that specifies the function to call when event fires
+ * @param useCapture [Optional] Defaults to false
+ * @returns True if the function was bound successfully to the event, otherwise false
+ */
+
+function attachEvent(obj, eventNameWithoutOn, handlerRef, useCapture) {
+  if (useCapture === void 0) {
+    useCapture = false;
+  }
+
+  var result = false;
+
+  if (!isNullOrUndefined(obj)) {
+    try {
+      if (!isNullOrUndefined(obj[strAddEventHelper])) {
+        // all browsers except IE before version 9
+        obj[strAddEventHelper](eventNameWithoutOn, handlerRef, useCapture);
+        result = true;
+      } else if (!isNullOrUndefined(obj[strAttachEvent])) {
+        // IE before version 9                    
+        obj[strAttachEvent](strOnPrefix + eventNameWithoutOn, handlerRef);
+        result = true;
+      }
+    } catch (e) {// Just Ignore any error so that we don't break any execution path
+    }
+  }
+
+  return result;
+}
+/**
+ * Removes an event handler for the specified event
+ * @param Object to remove the event from
+ * @param eventNameWithoutOn {string} - The name of the event
+ * @param handlerRef {any} - The callback function that needs to be executed for the given event
+ * @param useCapture [Optional] Defaults to false
+ */
+
+function detachEvent(obj, eventNameWithoutOn, handlerRef, useCapture) {
+  if (useCapture === void 0) {
+    useCapture = false;
+  }
+
+  if (!isNullOrUndefined(obj)) {
+    try {
+      if (!isNullOrUndefined(obj[strRemoveEventListener])) {
+        obj[strRemoveEventListener](eventNameWithoutOn, handlerRef, useCapture);
+      } else if (!isNullOrUndefined(obj[strDetachEvent])) {
+        obj[strDetachEvent](strOnPrefix + eventNameWithoutOn, handlerRef);
+      }
+    } catch (e) {// Just Ignore any error so that we don't break any execution path
+    }
+  }
+}
+/**
+ * Validates that the string name conforms to the JS IdentifierName specification and if not
+ * normalizes the name so that it would. This method does not identify or change any keywords
+ * meaning that if you pass in a known keyword the same value will be returned.
+ * This is a simplified version
+ * @param name The name to validate
+ */
+
+function normalizeJsName(name) {
+  var value = name;
+  var match = /([^\w\d_$])/g;
+
+  if (match.test(name)) {
+    value = name.replace(match, "_");
+  }
+
+  return value;
+}
+/**
+ * This is a helper function for the equivalent of arForEach(objKeys(target), callbackFn), this is a
+ * performance optimization to avoid the creation of a new array for large objects
+ * @param target The target object to find and process the keys
+ * @param callbackfn The function to call with the details
+ */
+
+function objForEachKey(target, callbackfn) {
+  if (target) {
+    for (var prop in target) {
+      if (Constants_ObjHasOwnProperty.call(target, prop)) {
+        callbackfn.call(target, prop, target[prop]);
+      }
+    }
+  }
+}
+/**
+ * The strEndsWith() method determines whether a string ends with the characters of a specified string, returning true or false as appropriate.
+ * @param value - The value to check whether it ends with the search value.
+ * @param search - The characters to be searched for at the end of the value.
+ * @returns true if the given search value is found at the end of the string, otherwise false.
+ */
+
+function strEndsWith(value, search) {
+  if (value && search) {
+    var searchLen = search.length;
+    var valLen = value.length;
+
+    if (value === search) {
+      return true;
+    } else if (valLen >= searchLen) {
+      var pos = valLen - 1;
+
+      for (var lp = searchLen - 1; lp >= 0; lp--) {
+        if (value[pos] != search[lp]) {
+          return false;
+        }
+
+        pos--;
+      }
+
+      return true;
+    }
+  }
+
+  return false;
+}
+/**
+ * The strStartsWith() method determines whether a string starts with the characters of the specified string, returning true or false as appropriate.
+ * @param value - The value to check whether it ends with the search value.
+ * @param checkValue - The characters to be searched for at the start of the value.
+ * @returns true if the given search value is found at the start of the string, otherwise false.
+ */
+
+function strStartsWith(value, checkValue) {
+  // Using helper for performance and because string startsWith() is not available on IE
+  var result = false;
+
+  if (value && checkValue) {
+    var chkLen = checkValue.length;
+
+    if (value === checkValue) {
+      return true;
+    } else if (value.length >= chkLen) {
+      for (var lp = 0; lp < chkLen; lp++) {
+        if (value[lp] !== checkValue[lp]) {
+          return false;
+        }
+      }
+
+      result = true;
+    }
+  }
+
+  return result;
+}
+/**
+ * A simple wrapper (for minification support) to check if the value contains the search string.
+ * @param value - The string value to check for the existence of the search value
+ * @param search - The value search within the value
+ */
+
+function strContains(value, search) {
+  if (value && search) {
+    return value.indexOf(search) !== -1;
+  }
+
+  return false;
+}
+/**
+ * Check if an object is of type Date
+ */
+
+function isDate(obj) {
+  return objToString(obj) === "[object Date]";
+}
+/**
+ * Check if an object is of type Array
+ */
+
+function isArray(obj) {
+  return objToString(obj) === "[object Array]";
+}
+/**
+ * Check if an object is of type Error
+ */
+
+function isError(obj) {
+  return objToString(obj) === "[object Error]";
+}
+/**
+ * Checks if the type of value is a string.
+ * @param {any} value - Value to be checked.
+ * @return {boolean} True if the value is a string, false otherwise.
+ */
+
+function HelperFuncs_isString(value) {
+  // Changing to inline for performance
+  return typeof value === "string";
+}
+/**
+ * Checks if the type of value is a number.
+ * @param {any} value - Value to be checked.
+ * @return {boolean} True if the value is a number, false otherwise.
+ */
+
+function isNumber(value) {
+  // Changing to inline for performance
+  return typeof value === "number";
+}
+/**
+ * Checks if the type of value is a boolean.
+ * @param {any} value - Value to be checked.
+ * @return {boolean} True if the value is a boolean, false otherwise.
+ */
+
+function isBoolean(value) {
+  // Changing to inline for performance
+  return typeof value === "boolean";
+}
+/**
+ * Checks if the type of value is a Symbol.
+ * This only returns a boolean as returning value is Symbol will cause issues for older TypeScript consumers
+ * @param {any} value - Value to be checked.
+ * @return {boolean} True if the value is a Symbol, false otherwise.
+ */
+
+function isSymbol(value) {
+  return typeof value === "symbol";
+}
+/**
+ * Convert a date to I.S.O. format in IE8
+ */
+
+function toISOString(date) {
+  if (isDate(date)) {
+    var pad = function pad(num) {
+      var r = String(num);
+
+      if (r.length === 1) {
+        r = "0" + r;
+      }
+
+      return r;
+    };
+
+    return date.getUTCFullYear() + "-" + pad(date.getUTCMonth() + 1) + "-" + pad(date.getUTCDate()) + "T" + pad(date.getUTCHours()) + ":" + pad(date.getUTCMinutes()) + ":" + pad(date.getUTCSeconds()) + "." + String((date.getUTCMilliseconds() / 1000).toFixed(3)).slice(2, 5) + "Z";
+  }
+}
+/**
+ * Performs the specified action for each element in an array. This helper exists to avoid adding a polyfil for older browsers
+ * that do not define Array.prototype.xxxx (eg. ES3 only, IE8) just in case any page checks for presence/absence of the prototype
+ * implementation. Note: For consistency this will not use the Array.prototype.xxxx implementation if it exists as this would
+ * cause a testing requirement to test with and without the implementations
+ * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array. It can return -1 to break out of the loop
+ * @param thisArg  [Optional] An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
+ */
+
+function arrForEach(arr, callbackfn, thisArg) {
+  var len = arr.length;
+
+  try {
+    for (var idx = 0; idx < len; idx++) {
+      if (idx in arr) {
+        if (callbackfn.call(thisArg || arr, arr[idx], idx, arr) === -1) {
+          break;
+        }
+      }
+    }
+  } catch (e) {// This can happen with some native browser objects, but should not happen for the type we are checking for
+  }
+}
+/**
+ * Returns the index of the first occurrence of a value in an array. This helper exists to avoid adding a polyfil for older browsers
+ * that do not define Array.prototype.xxxx (eg. ES3 only, IE8) just in case any page checks for presence/absence of the prototype
+ * implementation. Note: For consistency this will not use the Array.prototype.xxxx implementation if it exists as this would
+ * cause a testing requirement to test with and without the implementations
+ * @param searchElement The value to locate in the array.
+ * @param fromIndex The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.
+ */
+
+function arrIndexOf(arr, searchElement, fromIndex) {
+  var len = arr.length;
+  var from = fromIndex || 0;
+
+  try {
+    for (var lp = Math.max(from >= 0 ? from : len - Math.abs(from), 0); lp < len; lp++) {
+      if (lp in arr && arr[lp] === searchElement) {
+        return lp;
+      }
+    }
+  } catch (e) {// This can happen with some native browser objects, but should not happen for the type we are checking for
+  }
+
+  return -1;
+}
+/**
+ * Calls a defined callback function on each element of an array, and returns an array that contains the results. This helper exists
+ * to avoid adding a polyfil for older browsers that do not define Array.prototype.xxxx (eg. ES3 only, IE8) just in case any page
+ * checks for presence/absence of the prototype implementation. Note: For consistency this will not use the Array.prototype.xxxx
+ * implementation if it exists as this would cause a testing requirement to test with and without the implementations
+ * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
+ * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
+ */
+
+function arrMap(arr, callbackfn, thisArg) {
+  var len = arr.length;
+
+  var _this = thisArg || arr;
+
+  var results = new Array(len);
+
+  try {
+    for (var lp = 0; lp < len; lp++) {
+      if (lp in arr) {
+        results[lp] = callbackfn.call(_this, arr[lp], arr);
+      }
+    }
+  } catch (e) {// This can happen with some native browser objects, but should not happen for the type we are checking for
+  }
+
+  return results;
+}
+/**
+ * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is
+ * provided as an argument in the next call to the callback function. This helper exists to avoid adding a polyfil for older browsers that do not define
+ * Array.prototype.xxxx (eg. ES3 only, IE8) just in case any page checks for presence/absence of the prototype implementation. Note: For consistency
+ * this will not use the Array.prototype.xxxx implementation if it exists as this would cause a testing requirement to test with and without the implementations
+ * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
+ * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
+ */
+
+function arrReduce(arr, callbackfn, initialValue) {
+  var len = arr.length;
+  var lp = 0;
+  var value; // Specifically checking the number of passed arguments as the value could be anything
+
+  if (arguments.length >= 3) {
+    value = arguments[2];
+  } else {
+    while (lp < len && !(lp in arr)) {
+      lp++;
+    }
+
+    value = arr[lp++];
+  }
+
+  while (lp < len) {
+    if (lp in arr) {
+      value = callbackfn(value, arr[lp], lp, arr);
+    }
+
+    lp++;
+  }
+
+  return value;
+}
+/**
+ * helper method to trim strings (IE8 does not implement String.prototype.trim)
+ */
+
+function strTrim(str) {
+  if (typeof str !== "string") {
+    return str;
+  }
+
+  return str.replace(/^\s+|\s+$/g, "");
+}
+
+var _objKeysHasDontEnumBug = !{
+  toString: null
+}.propertyIsEnumerable('toString');
+
+var _objKeysDontEnums = ['toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable', 'constructor'];
+/**
+ * Returns the names of the enumerable string properties and methods of an object. This helper exists to avoid adding a polyfil for older browsers
+ * that do not define Object.keys eg. ES3 only, IE8 just in case any page checks for presence/absence of the prototype implementation.
+ * Note: For consistency this will not use the Object.keys implementation if it exists as this would cause a testing requirement to test with and without the implementations
+ * @param obj Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
+ */
+
+function objKeys(obj) {
+  var objType = typeof obj;
+
+  if (objType !== Constants_strShimFunction && (objType !== strShimObject || obj === null)) {
+    Helpers_throwTypeError('objKeys called on non-object');
+  }
+
+  var result = [];
+
+  for (var prop in obj) {
+    if (obj && Constants_ObjHasOwnProperty.call(obj, prop)) {
+      result.push(prop);
+    }
+  }
+
+  if (_objKeysHasDontEnumBug) {
+    var dontEnumsLength = _objKeysDontEnums.length;
+
+    for (var lp = 0; lp < dontEnumsLength; lp++) {
+      if (obj && Constants_ObjHasOwnProperty.call(obj, _objKeysDontEnums[lp])) {
+        result.push(_objKeysDontEnums[lp]);
+      }
+    }
+  }
+
+  return result;
+}
+/**
+ * Try to define get/set object property accessors for the target object/prototype, this will provide compatibility with
+ * existing API definition when run within an ES5+ container that supports accessors but still enable the code to be loaded
+ * and executed in an ES3 container, providing basic IE8 compatibility.
+ * @param target The object on which to define the property.
+ * @param prop The name of the property to be defined or modified.
+ * @param getProp The getter function to wire against the getter.
+ * @param setProp The setter function to wire against the setter.
+ * @returns True if it was able to create the accessors otherwise false
+ */
+
+function objDefineAccessors(target, prop, getProp, setProp) {
+  if (_objDefineProperty) {
+    try {
+      var descriptor = {
+        enumerable: true,
+        configurable: true
+      };
+
+      if (getProp) {
+        descriptor.get = getProp;
+      }
+
+      if (setProp) {
+        descriptor.set = setProp;
+      }
+
+      _objDefineProperty(target, prop, descriptor);
+
+      return true;
+    } catch (e) {// IE8 Defines a defineProperty on Object but it's only supported for DOM elements so it will throw
+      // We will just ignore this here.
+    }
+  }
+
+  return false;
+}
+function objFreeze(value) {
+  if (_objFreeze) {
+    value = _objFreeze(value);
+  }
+
+  return value;
+}
+function objSeal(value) {
+  if (_objSeal) {
+    value = _objSeal(value);
+  }
+
+  return value;
+}
+/**
+ * Return the current time via the Date now() function (if available) and falls back to (new Date()).getTime() if now() is unavailable (IE8 or less)
+ * https://caniuse.com/#search=Date.now
+ */
+
+function dateNow() {
+  var dt = Date;
+
+  if (dt.now) {
+    return dt.now();
+  }
+
+  return new dt().getTime();
+}
+/**
+ * Returns the name of object if it's an Error. Otherwise, returns empty string.
+ */
+
+function getExceptionName(object) {
+  if (isError(object)) {
+    return object.name;
+  }
+
+  return "";
+}
+/**
+ * Sets the provided value on the target instance using the field name when the provided chk function returns true, the chk
+ * function will only be called if the new value is no equal to the original value.
+ * @param target - The target object
+ * @param field - The key of the target
+ * @param value - The value to set
+ * @param valChk - [Optional] Callback to check the value that if supplied will be called check if the new value can be set
+ * @param srcChk - [Optional] Callback to check to original value that if supplied will be called if the new value should be set (if allowed)
+ * @returns The existing or new value, depending what was set
+ */
+
+function setValue(target, field, value, valChk, srcChk) {
+  var theValue = value;
+
+  if (target) {
+    theValue = target[field];
+
+    if (theValue !== value && (!srcChk || srcChk(theValue)) && (!valChk || valChk(value))) {
+      theValue = value;
+      target[field] = theValue;
+    }
+  }
+
+  return theValue;
+}
+/**
+ * Returns the current value from the target object if not null or undefined otherwise sets the new value and returns it
+ * @param target - The target object to return or set the default value
+ * @param field - The key for the field to set on the target
+ * @param defValue - [Optional] The value to set if not already present, when not provided a empty object will be added
+ */
+
+function getSetValue(target, field, defValue) {
+  var theValue;
+
+  if (target) {
+    theValue = target[field];
+
+    if (!theValue && isNullOrUndefined(theValue)) {
+      // Supports having the default as null
+      theValue = !isUndefined(defValue) ? defValue : {};
+      target[field] = theValue;
+    }
+  } else {
+    // Expanded for performance so we only check defValue if required
+    theValue = !isUndefined(defValue) ? defValue : {};
+  }
+
+  return theValue;
+}
+function isNotTruthy(value) {
+  return !value;
+}
+function isTruthy(value) {
+  return !!value;
+}
+function throwError(message) {
+  throw new Error(message);
+}
+/**
+ * Effectively assigns all enumerable properties (not just own properties) and functions (including inherited prototype) from
+ * the source object to the target, it attempts to use proxy getters / setters (if possible) and proxy functions to avoid potential
+ * implementation issues by assigning prototype functions as instance ones
+ *
+ * This method is the primary method used to "update" the snippet proxy with the ultimate implementations.
+ *
+ * Special ES3 Notes:
+ * Updates (setting) of direct property values on the target or indirectly on the source object WILL NOT WORK PROPERLY, updates to the
+ * properties of "referenced" object will work (target.context.newValue = 10 => will be reflected in the source.context as it's the
+ * same object). ES3 Failures: assigning target.myProp = 3 -> Won't change source.myProp = 3, likewise the reverse would also fail.
+ * @param target - The target object to be assigned with the source properties and functions
+ * @param source - The source object which will be assigned / called by setting / calling the targets proxies
+ * @param chkSet - An optional callback to determine whether a specific property/function should be proxied
+ * @memberof Initialization
+ */
+
+function proxyAssign(target, source, chkSet) {
+  if (target && source && target !== source && isObject(target) && isObject(source)) {
+    var _loop_1 = function _loop_1(field) {
+      if (HelperFuncs_isString(field)) {
+        var value = source[field];
+
+        if (isFunction(value)) {
+          if (!chkSet || chkSet(field, true, source, target)) {
+            // Create a proxy function rather than just copying the (possible) prototype to the new object as an instance function
+            target[field] = function (funcName) {
+              return function () {
+                // Capture the original arguments passed to the method
+                var originalArguments = arguments;
+                return source[funcName].apply(source, originalArguments);
+              };
+            }(field);
+          }
+        } else if (!chkSet || chkSet(field, false, source, target)) {
+          if (HelperFuncs_hasOwnProperty(target, field)) {
+            // Remove any previous instance property
+            delete target[field];
+          }
+
+          if (!objDefineAccessors(target, field, function () {
+            return source[field];
+          }, function (theValue) {
+            source[field] = theValue;
+          })) {
+            // Unable to create an accessor, so just assign the values as a fallback
+            // -- this will (mostly) work for objects
+            // -- but will fail for accessing primitives (if the source changes it) and all types of "setters" as the source won't be modified
+            target[field] = value;
+          }
+        }
+      }
+    }; // effectively apply/proxy full source to the target instance
+
+
+    for (var field in source) {
+      _loop_1(field);
+    }
+  }
+
+  return target;
+}
+/**
+ * Simpler helper to create a dynamic class that implements the interface and populates the values with the defaults.
+ * Only instance properties (hasOwnProperty) values are copied from the defaults to the new instance
+ * @param defaults Simple helper
+ */
+
+function createClassFromInterface(defaults) {
+  return function () {
+    function class_1() {
+      var _this_1 = this;
+
+      if (defaults) {
+        objForEachKey(defaults, function (field, value) {
+          _this_1[field] = value;
+        });
+      }
+    }
+
+    return class_1;
+  }();
+}
+/**
+ * A helper function to assist with JIT performance for objects that have properties added / removed dynamically
+ * this is primarily for chromium based browsers and has limited effects on Firefox and none of IE. Only call this
+ * function after you have finished "updating" the object, calling this within loops reduces or defeats the benefits.
+ * This helps when iterating using for..in, objKeys() and objForEach()
+ * @param theObject - The object to be optimized if possible
+ */
+
+function optimizeObject(theObject) {
+  // V8 Optimization to cause the JIT compiler to create a new optimized object for looking up the own properties
+  // primarily for object with <= 19 properties for >= 20 the effect is reduced or non-existent
+  if (theObject) {
+    theObject = Constants_ObjClass(ObjAssign ? ObjAssign({}, theObject) : theObject);
+  }
+
+  return theObject;
+}
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/EnvUtils.js
 /*
  * Application Insights JavaScript SDK - Core, 2.7.0
@@ -56459,7 +56459,7 @@ function _hasProperty(theClass, property) {
       supported = property in theClass;
 
       if (!supported) {
-        var proto = theClass[strShimPrototype];
+        var proto = theClass[Constants_strShimPrototype];
 
         if (proto) {
           supported = property in proto;
@@ -56517,7 +56517,7 @@ function getGlobalInst(name) {
  */
 
 function hasWindow() {
-  return Boolean(typeof window === Constants_strShimObject && window);
+  return Boolean(typeof window === strShimObject && window);
 }
 /**
  * Returns the global window object if it is present otherwise null.
@@ -56542,7 +56542,7 @@ function getWindow() {
  */
 
 function hasDocument() {
-  return Boolean(typeof document === Constants_strShimObject && document);
+  return Boolean(typeof document === strShimObject && document);
 }
 /**
  * Returns the global document object if it is present otherwise null.
@@ -56566,7 +56566,7 @@ function getDocument() {
  */
 
 function hasNavigator() {
-  return Boolean(typeof navigator === Constants_strShimObject && navigator);
+  return Boolean(typeof navigator === strShimObject && navigator);
 }
 /**
  * Returns the global navigator object if it is present otherwise null.
@@ -56620,7 +56620,7 @@ function getLocation(checkForMock) {
     }
   }
 
-  if (typeof location === Constants_strShimObject && location) {
+  if (typeof location === strShimObject && location) {
     return location;
   }
 
@@ -56655,7 +56655,7 @@ function getPerformance() {
  */
 
 function hasJSON() {
-  return Boolean(typeof JSON === Constants_strShimObject && JSON || getGlobalInst(strJSON) !== null);
+  return Boolean(typeof JSON === strShimObject && JSON || getGlobalInst(strJSON) !== null);
 }
 /**
  * Returns the global JSON object if it is present otherwise null.
@@ -56753,7 +56753,7 @@ function getIEVersion(userAgentStr) {
  */
 
 function dumpObj(object) {
-  var objectTypeDump = Object[strShimPrototype].toString.call(object);
+  var objectTypeDump = Object[Constants_strShimPrototype].toString.call(object);
   var propertyValueDump = "";
 
   if (objectTypeDump === "[object Error]") {
@@ -58860,934 +58860,6 @@ var AppInsightsCore = function (_super) {
 }(BaseCore);
 
 
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Enums.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-/**
- * Type of storage to differentiate between local storage and session storage
- */
-var StorageType;
-
-(function (StorageType) {
-  StorageType[StorageType["LocalStorage"] = 0] = "LocalStorage";
-  StorageType[StorageType["SessionStorage"] = 1] = "SessionStorage";
-})(StorageType || (StorageType = {}));
-
-;
-var DistributedTracingModes;
-
-(function (DistributedTracingModes) {
-  /**
-   * (Default) Send Application Insights correlation headers
-   */
-  DistributedTracingModes[DistributedTracingModes["AI"] = 0] = "AI";
-  /**
-   * Send both W3C Trace Context headers and back-compatibility Application Insights headers
-   */
-
-  DistributedTracingModes[DistributedTracingModes["AI_AND_W3C"] = 1] = "AI_AND_W3C";
-  /**
-   * Send W3C Trace Context headers
-   */
-
-  DistributedTracingModes[DistributedTracingModes["W3C"] = 2] = "W3C";
-})(DistributedTracingModes || (DistributedTracingModes = {}));
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/StorageHelperFuncs.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-
-var _canUseLocalStorage = undefined;
-var _canUseSessionStorage = undefined;
-/**
- * Gets the localStorage object if available
- * @return {Storage} - Returns the storage object if available else returns null
- */
-
-function _getLocalStorageObject() {
-  if (utlCanUseLocalStorage()) {
-    return _getVerifiedStorageObject(StorageType.LocalStorage);
-  }
-
-  return null;
-}
-/**
- * Tests storage object (localStorage or sessionStorage) to verify that it is usable
- * More details here: https://mathiasbynens.be/notes/localstorage-pattern
- * @param storageType Type of storage
- * @return {Storage} Returns storage object verified that it is usable
- */
-
-
-function _getVerifiedStorageObject(storageType) {
-  try {
-    if (isNullOrUndefined(getGlobal())) {
-      return null;
-    }
-
-    var uid = new Date();
-    var storage = getGlobalInst(storageType === StorageType.LocalStorage ? "localStorage" : "sessionStorage");
-    storage.setItem(uid.toString(), uid.toString());
-    var fail = storage.getItem(uid.toString()) !== uid.toString();
-    storage.removeItem(uid.toString());
-
-    if (!fail) {
-      return storage;
-    }
-  } catch (exception) {// eslint-disable-next-line no-empty
-  }
-
-  return null;
-}
-/**
- * Gets the sessionStorage object if available
- * @return {Storage} - Returns the storage object if available else returns null
- */
-
-
-function _getSessionStorageObject() {
-  if (utlCanUseSessionStorage()) {
-    return _getVerifiedStorageObject(StorageType.SessionStorage);
-  }
-
-  return null;
-}
-
-function utlDisableStorage() {
-  _canUseLocalStorage = false;
-  _canUseSessionStorage = false;
-}
-function utlCanUseLocalStorage() {
-  if (_canUseLocalStorage === undefined) {
-    _canUseLocalStorage = !!_getVerifiedStorageObject(StorageType.LocalStorage);
-  }
-
-  return _canUseLocalStorage;
-}
-function utlGetLocalStorage(logger, name) {
-  var storage = _getLocalStorageObject();
-
-  if (storage !== null) {
-    try {
-      return storage.getItem(name);
-    } catch (e) {
-      _canUseLocalStorage = false;
-      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserCannotReadLocalStorage, "Browser failed read of local storage. " + getExceptionName(e), {
-        exception: dumpObj(e)
-      });
-    }
-  }
-
-  return null;
-}
-function utlSetLocalStorage(logger, name, data) {
-  var storage = _getLocalStorageObject();
-
-  if (storage !== null) {
-    try {
-      storage.setItem(name, data);
-      return true;
-    } catch (e) {
-      _canUseLocalStorage = false;
-      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserCannotWriteLocalStorage, "Browser failed write to local storage. " + getExceptionName(e), {
-        exception: dumpObj(e)
-      });
-    }
-  }
-
-  return false;
-}
-function utlRemoveStorage(logger, name) {
-  var storage = _getLocalStorageObject();
-
-  if (storage !== null) {
-    try {
-      storage.removeItem(name);
-      return true;
-    } catch (e) {
-      _canUseLocalStorage = false;
-      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserFailedRemovalFromLocalStorage, "Browser failed removal of local storage item. " + getExceptionName(e), {
-        exception: dumpObj(e)
-      });
-    }
-  }
-
-  return false;
-}
-function utlCanUseSessionStorage() {
-  if (_canUseSessionStorage === undefined) {
-    _canUseSessionStorage = !!_getVerifiedStorageObject(StorageType.SessionStorage);
-  }
-
-  return _canUseSessionStorage;
-}
-function utlGetSessionStorageKeys() {
-  var keys = [];
-
-  if (utlCanUseSessionStorage()) {
-    objForEachKey(getGlobalInst("sessionStorage"), function (key) {
-      keys.push(key);
-    });
-  }
-
-  return keys;
-}
-function utlGetSessionStorage(logger, name) {
-  var storage = _getSessionStorageObject();
-
-  if (storage !== null) {
-    try {
-      return storage.getItem(name);
-    } catch (e) {
-      _canUseSessionStorage = false;
-      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserCannotReadSessionStorage, "Browser failed read of session storage. " + getExceptionName(e), {
-        exception: dumpObj(e)
-      });
-    }
-  }
-
-  return null;
-}
-function utlSetSessionStorage(logger, name, data) {
-  var storage = _getSessionStorageObject();
-
-  if (storage !== null) {
-    try {
-      storage.setItem(name, data);
-      return true;
-    } catch (e) {
-      _canUseSessionStorage = false;
-      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserCannotWriteSessionStorage, "Browser failed write to session storage. " + getExceptionName(e), {
-        exception: dumpObj(e)
-      });
-    }
-  }
-
-  return false;
-}
-function utlRemoveSessionStorage(logger, name) {
-  var storage = _getSessionStorageObject();
-
-  if (storage !== null) {
-    try {
-      storage.removeItem(name);
-      return true;
-    } catch (e) {
-      _canUseSessionStorage = false;
-      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserFailedRemovalFromSessionStorage, "Browser failed removal of session storage item. " + getExceptionName(e), {
-        exception: dumpObj(e)
-      });
-    }
-  }
-
-  return false;
-}
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/SendBuffer.js
-/*
- * Application Insights JavaScript SDK - Channel, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-
-
-
-
-var BaseSendBuffer = function () {
-  function BaseSendBuffer(config) {
-    var _buffer = [];
-
-    this._get = function () {
-      return _buffer;
-    };
-
-    this._set = function (buffer) {
-      _buffer = buffer;
-      return _buffer;
-    };
-
-    dynamicproto_js(BaseSendBuffer, this, function (_self) {
-      _self.enqueue = function (payload) {
-        _buffer.push(payload);
-      };
-
-      _self.count = function () {
-        return _buffer.length;
-      };
-
-      _self.size = function () {
-        var size = _buffer.length;
-
-        for (var lp = 0; lp < _buffer.length; lp++) {
-          size += _buffer[lp].length;
-        }
-
-        if (!config.emitLineDelimitedJson()) {
-          size += 2;
-        }
-
-        return size;
-      };
-
-      _self.clear = function () {
-        _buffer = [];
-      };
-
-      _self.getItems = function () {
-        return _buffer.slice(0);
-      };
-
-      _self.batchPayloads = function (payload) {
-        if (payload && payload.length > 0) {
-          var batch = config.emitLineDelimitedJson() ? payload.join("\n") : "[" + payload.join(",") + "]";
-          return batch;
-        }
-
-        return null;
-      };
-    });
-  } // Removed Stub for BaseSendBuffer.prototype.enqueue.
-  // Removed Stub for BaseSendBuffer.prototype.count.
-  // Removed Stub for BaseSendBuffer.prototype.size.
-  // Removed Stub for BaseSendBuffer.prototype.clear.
-  // Removed Stub for BaseSendBuffer.prototype.getItems.
-  // Removed Stub for BaseSendBuffer.prototype.batchPayloads.
-
-
-  return BaseSendBuffer;
-}();
-/*
- * An array based send buffer.
- */
-
-
-var ArraySendBuffer = function (_super) {
-  __extendsFn(ArraySendBuffer, _super);
-
-  function ArraySendBuffer(config) {
-    var _this = _super.call(this, config) || this;
-
-    dynamicproto_js(ArraySendBuffer, _this, function (_self, _base) {
-      _self.markAsSent = function (payload) {
-        _base.clear();
-      };
-
-      _self.clearSent = function (payload) {// not supported
-      };
-    });
-    return _this;
-  } // Removed Stub for ArraySendBuffer.prototype.markAsSent.
-  // Removed Stub for ArraySendBuffer.prototype.clearSent.
-
-
-  return ArraySendBuffer;
-}(BaseSendBuffer);
-
-
-/*
- * Session storage buffer holds a copy of all unsent items in the browser session storage.
- */
-
-var SessionStorageSendBuffer = function (_super) {
-  __extendsFn(SessionStorageSendBuffer, _super);
-
-  function SessionStorageSendBuffer(logger, config) {
-    var _this = _super.call(this, config) || this;
-
-    var _bufferFullMessageSent = false;
-    dynamicproto_js(SessionStorageSendBuffer, _this, function (_self, _base) {
-      var bufferItems = _getBuffer(SessionStorageSendBuffer.BUFFER_KEY);
-
-      var notDeliveredItems = _getBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY);
-
-      var buffer = _self._set(bufferItems.concat(notDeliveredItems)); // If the buffer has too many items, drop items from the end.
-
-
-      if (buffer.length > SessionStorageSendBuffer.MAX_BUFFER_SIZE) {
-        buffer.length = SessionStorageSendBuffer.MAX_BUFFER_SIZE;
-      }
-
-      _setBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY, []);
-
-      _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, buffer);
-
-      _self.enqueue = function (payload) {
-        if (_self.count() >= SessionStorageSendBuffer.MAX_BUFFER_SIZE) {
-          // sent internal log only once per page view
-          if (!_bufferFullMessageSent) {
-            logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.SessionStorageBufferFull, "Maximum buffer size reached: " + _self.count(), true);
-            _bufferFullMessageSent = true;
-          }
-
-          return;
-        }
-
-        _base.enqueue(payload);
-
-        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _self._get());
-      };
-
-      _self.clear = function () {
-        _base.clear();
-
-        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _self._get());
-
-        _setBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY, []);
-
-        _bufferFullMessageSent = false;
-      };
-
-      _self.markAsSent = function (payload) {
-        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _self._set(_removePayloadsFromBuffer(payload, _self._get())));
-
-        var sentElements = _getBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY);
-
-        if (sentElements instanceof Array && payload instanceof Array) {
-          sentElements = sentElements.concat(payload);
-
-          if (sentElements.length > SessionStorageSendBuffer.MAX_BUFFER_SIZE) {
-            // We send telemetry normally. If the SENT_BUFFER is too big we don't add new elements
-            // until we receive a response from the backend and the buffer has free space again (see clearSent method)
-            logger.throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.SessionStorageBufferFull, "Sent buffer reached its maximum size: " + sentElements.length, true);
-            sentElements.length = SessionStorageSendBuffer.MAX_BUFFER_SIZE;
-          }
-
-          _setBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY, sentElements);
-        }
-      };
-
-      _self.clearSent = function (payload) {
-        var sentElements = _getBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY);
-
-        sentElements = _removePayloadsFromBuffer(payload, sentElements);
-
-        _setBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY, sentElements);
-      };
-
-      function _removePayloadsFromBuffer(payloads, buffer) {
-        var remaining = [];
-        arrForEach(buffer, function (value) {
-          if (!isFunction(value) && arrIndexOf(payloads, value) === -1) {
-            remaining.push(value);
-          }
-        });
-        return remaining;
-      }
-
-      function _getBuffer(key) {
-        var prefixedKey = key;
-
-        try {
-          prefixedKey = config.namePrefix && config.namePrefix() ? config.namePrefix() + "_" + prefixedKey : prefixedKey;
-          var bufferJson = utlGetSessionStorage(logger, prefixedKey);
-
-          if (bufferJson) {
-            var buffer_1 = getJSON().parse(bufferJson);
-
-            if (HelperFuncs_isString(buffer_1)) {
-              // When using some version prototype.js the stringify / parse cycle does not decode array's correctly
-              buffer_1 = getJSON().parse(buffer_1);
-            }
-
-            if (buffer_1 && isArray(buffer_1)) {
-              return buffer_1;
-            }
-          }
-        } catch (e) {
-          logger.throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.FailedToRestoreStorageBuffer, " storage key: " + prefixedKey + ", " + getExceptionName(e), {
-            exception: dumpObj(e)
-          });
-        }
-
-        return [];
-      }
-
-      function _setBuffer(key, buffer) {
-        var prefixedKey = key;
-
-        try {
-          prefixedKey = config.namePrefix && config.namePrefix() ? config.namePrefix() + "_" + prefixedKey : prefixedKey;
-          var bufferJson = JSON.stringify(buffer);
-          utlSetSessionStorage(logger, prefixedKey, bufferJson);
-        } catch (e) {
-          // if there was an error, clear the buffer
-          // telemetry is stored in the _buffer array so we won't loose any items
-          utlSetSessionStorage(logger, prefixedKey, JSON.stringify([]));
-          logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.FailedToSetStorageBuffer, " storage key: " + prefixedKey + ", " + getExceptionName(e) + ". Buffer cleared", {
-            exception: dumpObj(e)
-          });
-        }
-      }
-    });
-    return _this;
-  } // Removed Stub for SessionStorageSendBuffer.prototype.enqueue.
-  // Removed Stub for SessionStorageSendBuffer.prototype.clear.
-  // Removed Stub for SessionStorageSendBuffer.prototype.markAsSent.
-  // Removed Stub for SessionStorageSendBuffer.prototype.clearSent.
-
-
-  SessionStorageSendBuffer.BUFFER_KEY = "AI_buffer";
-  SessionStorageSendBuffer.SENT_BUFFER_KEY = "AI_sentBuffer"; // Maximum number of payloads stored in the buffer. If the buffer is full, new elements will be dropped.
-
-  SessionStorageSendBuffer.MAX_BUFFER_SIZE = 2000;
-  return SessionStorageSendBuffer;
-}(BaseSendBuffer);
-
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/ContextTagKeys.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-
-
-function _aiNameFunc(baseName) {
-  var aiName = "ai." + baseName + ".";
-  return function (name) {
-    return aiName + name;
-  };
-}
-
-var _aiApplication = _aiNameFunc("application");
-
-var _aiDevice = _aiNameFunc("device");
-
-var _aiLocation = _aiNameFunc("location");
-
-var _aiOperation = _aiNameFunc("operation");
-
-var _aiSession = _aiNameFunc("session");
-
-var _aiUser = _aiNameFunc("user");
-
-var _aiCloud = _aiNameFunc("cloud");
-
-var _aiInternal = _aiNameFunc("internal");
-
-var ContextTagKeys = function (_super) {
-  __extendsFn(ContextTagKeys, _super);
-
-  function ContextTagKeys() {
-    return _super.call(this) || this;
-  }
-
-  return ContextTagKeys;
-}(createClassFromInterface({
-  applicationVersion: _aiApplication("ver"),
-  applicationBuild: _aiApplication("build"),
-  applicationTypeId: _aiApplication("typeId"),
-  applicationId: _aiApplication("applicationId"),
-  applicationLayer: _aiApplication("layer"),
-  deviceId: _aiDevice("id"),
-  deviceIp: _aiDevice("ip"),
-  deviceLanguage: _aiDevice("language"),
-  deviceLocale: _aiDevice("locale"),
-  deviceModel: _aiDevice("model"),
-  deviceFriendlyName: _aiDevice("friendlyName"),
-  deviceNetwork: _aiDevice("network"),
-  deviceNetworkName: _aiDevice("networkName"),
-  deviceOEMName: _aiDevice("oemName"),
-  deviceOS: _aiDevice("os"),
-  deviceOSVersion: _aiDevice("osVersion"),
-  deviceRoleInstance: _aiDevice("roleInstance"),
-  deviceRoleName: _aiDevice("roleName"),
-  deviceScreenResolution: _aiDevice("screenResolution"),
-  deviceType: _aiDevice("type"),
-  deviceMachineName: _aiDevice("machineName"),
-  deviceVMName: _aiDevice("vmName"),
-  deviceBrowser: _aiDevice("browser"),
-  deviceBrowserVersion: _aiDevice("browserVersion"),
-  locationIp: _aiLocation("ip"),
-  locationCountry: _aiLocation("country"),
-  locationProvince: _aiLocation("province"),
-  locationCity: _aiLocation("city"),
-  operationId: _aiOperation("id"),
-  operationName: _aiOperation("name"),
-  operationParentId: _aiOperation("parentId"),
-  operationRootId: _aiOperation("rootId"),
-  operationSyntheticSource: _aiOperation("syntheticSource"),
-  operationCorrelationVector: _aiOperation("correlationVector"),
-  sessionId: _aiSession("id"),
-  sessionIsFirst: _aiSession("isFirst"),
-  sessionIsNew: _aiSession("isNew"),
-  userAccountAcquisitionDate: _aiUser("accountAcquisitionDate"),
-  userAccountId: _aiUser("accountId"),
-  userAgent: _aiUser("userAgent"),
-  userId: _aiUser("id"),
-  userStoreRegion: _aiUser("storeRegion"),
-  userAuthUserId: _aiUser("authUserId"),
-  userAnonymousUserAcquisitionDate: _aiUser("anonUserAcquisitionDate"),
-  userAuthenticatedUserAcquisitionDate: _aiUser("authUserAcquisitionDate"),
-  cloudName: _aiCloud("name"),
-  cloudRole: _aiCloud("role"),
-  cloudRoleVer: _aiCloud("roleVer"),
-  cloudRoleInstance: _aiCloud("roleInstance"),
-  cloudEnvironment: _aiCloud("environment"),
-  cloudLocation: _aiCloud("location"),
-  cloudDeploymentUnit: _aiCloud("deploymentUnit"),
-  internalNodeName: _aiInternal("nodeName"),
-  internalSdkVersion: _aiInternal("sdkVersion"),
-  internalAgentVersion: _aiInternal("agentVersion"),
-  internalSnippet: _aiInternal("snippet"),
-  internalSdkSrc: _aiInternal("sdkSrc")
-}));
-
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/PartAExtensions.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-var Extensions = {
-  UserExt: "user",
-  DeviceExt: "device",
-  TraceExt: "trace",
-  WebExt: "web",
-  AppExt: "app",
-  OSExt: "os",
-  SessionExt: "ses",
-  SDKExt: "sdk"
-};
-var CtxTagKeys = new ContextTagKeys();
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/Envelope.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-/**
- * System variables for a telemetry item.
- */
-var Envelope = function () {
-  function Envelope() {
-    /**
-     * Envelope version. For internal use only. By assigning this the default, it will not be serialized within the payload unless changed to a value other than #1.
-     */
-    this.ver = 1;
-    /**
-     * Sampling rate used in application. This telemetry item represents 1 / sampleRate actual telemetry items.
-     */
-
-    this.sampleRate = 100.0;
-    /**
-     * Key/value collection of context properties. See ContextTagKeys for information on available properties.
-     */
-
-    this.tags = {};
-  }
-
-  return Envelope;
-}();
-
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/DataSanitizer.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-;
-function dataSanitizeKeyAndAddUniqueness(logger, key, map) {
-  var origLength = key.length;
-  var field = dataSanitizeKey(logger, key); // validation truncated the length.  We need to add uniqueness
-
-  if (field.length !== origLength) {
-    var i = 0;
-    var uniqueField = field;
-
-    while (map[uniqueField] !== undefined) {
-      i++;
-      uniqueField = field.substring(0, 150
-      /* MAX_NAME_LENGTH */
-      - 3) + dsPadNumber(i);
-    }
-
-    field = uniqueField;
-  }
-
-  return field;
-}
-function dataSanitizeKey(logger, name) {
-  var nameTrunc;
-
-  if (name) {
-    // Remove any leading or trailing whitepace
-    name = strTrim(name.toString()); // truncate the string to 150 chars
-
-    if (name.length > 150
-    /* MAX_NAME_LENGTH */
-    ) {
-      nameTrunc = name.substring(0, 150
-      /* MAX_NAME_LENGTH */
-      );
-      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.NameTooLong, "name is too long.  It has been truncated to " + 150
-      /* MAX_NAME_LENGTH */
-      + " characters.", {
-        name: name
-      }, true);
-    }
-  }
-
-  return nameTrunc || name;
-}
-function dataSanitizeString(logger, value, maxLength) {
-  if (maxLength === void 0) {
-    maxLength = 1024
-    /* MAX_STRING_LENGTH */
-    ;
-  }
-
-  var valueTrunc;
-
-  if (value) {
-    maxLength = maxLength ? maxLength : 1024
-    /* MAX_STRING_LENGTH */
-    ; // in case default parameters dont work
-
-    value = strTrim(value);
-
-    if (value.toString().length > maxLength) {
-      valueTrunc = value.toString().substring(0, maxLength);
-      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.StringValueTooLong, "string value is too long. It has been truncated to " + maxLength + " characters.", {
-        value: value
-      }, true);
-    }
-  }
-
-  return valueTrunc || value;
-}
-function dataSanitizeUrl(logger, url) {
-  return dataSanitizeInput(logger, url, 2048
-  /* MAX_URL_LENGTH */
-  , _InternalMessageId.UrlTooLong);
-}
-function dataSanitizeMessage(logger, message) {
-  var messageTrunc;
-
-  if (message) {
-    if (message.length > 32768
-    /* MAX_MESSAGE_LENGTH */
-    ) {
-      messageTrunc = message.substring(0, 32768
-      /* MAX_MESSAGE_LENGTH */
-      );
-      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.MessageTruncated, "message is too long, it has been truncated to " + 32768
-      /* MAX_MESSAGE_LENGTH */
-      + " characters.", {
-        message: message
-      }, true);
-    }
-  }
-
-  return messageTrunc || message;
-}
-function dataSanitizeException(logger, exception) {
-  var exceptionTrunc;
-
-  if (exception) {
-    // Make surte its a string
-    var value = "" + exception;
-
-    if (value.length > 32768
-    /* MAX_EXCEPTION_LENGTH */
-    ) {
-      exceptionTrunc = value.substring(0, 32768
-      /* MAX_EXCEPTION_LENGTH */
-      );
-      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.ExceptionTruncated, "exception is too long, it has been truncated to " + 32768
-      /* MAX_EXCEPTION_LENGTH */
-      + " characters.", {
-        exception: exception
-      }, true);
-    }
-  }
-
-  return exceptionTrunc || exception;
-}
-function dataSanitizeProperties(logger, properties) {
-  if (properties) {
-    var tempProps_1 = {};
-    objForEachKey(properties, function (prop, value) {
-      if (isObject(value) && hasJSON()) {
-        // Stringify any part C properties
-        try {
-          value = getJSON().stringify(value);
-        } catch (e) {
-          logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.CannotSerializeObjectNonSerializable, "custom property is not valid", {
-            exception: e
-          }, true);
-        }
-      }
-
-      value = dataSanitizeString(logger, value, 8192
-      /* MAX_PROPERTY_LENGTH */
-      );
-      prop = dataSanitizeKeyAndAddUniqueness(logger, prop, tempProps_1);
-      tempProps_1[prop] = value;
-    });
-    properties = tempProps_1;
-  }
-
-  return properties;
-}
-function dataSanitizeMeasurements(logger, measurements) {
-  if (measurements) {
-    var tempMeasurements_1 = {};
-    objForEachKey(measurements, function (measure, value) {
-      measure = dataSanitizeKeyAndAddUniqueness(logger, measure, tempMeasurements_1);
-      tempMeasurements_1[measure] = value;
-    });
-    measurements = tempMeasurements_1;
-  }
-
-  return measurements;
-}
-function dataSanitizeId(logger, id) {
-  return id ? dataSanitizeInput(logger, id, 128
-  /* MAX_ID_LENGTH */
-  , _InternalMessageId.IdTooLong).toString() : id;
-}
-function dataSanitizeInput(logger, input, maxLength, _msgId) {
-  var inputTrunc;
-
-  if (input) {
-    input = strTrim(input);
-
-    if (input.length > maxLength) {
-      inputTrunc = input.substring(0, maxLength);
-      logger.throwInternal(LoggingSeverity.WARNING, _msgId, "input is too long, it has been truncated to " + maxLength + " characters.", {
-        data: input
-      }, true);
-    }
-  }
-
-  return inputTrunc || input;
-}
-function dsPadNumber(num) {
-  var s = "00" + num;
-  return s.substr(s.length - 3);
-}
-;
-/**
- * Provides the DataSanitizer functions within the previous namespace.
- */
-
-var DataSanitizer = {
-  MAX_NAME_LENGTH: 150
-  /* MAX_NAME_LENGTH */
-  ,
-  MAX_ID_LENGTH: 128
-  /* MAX_ID_LENGTH */
-  ,
-  MAX_PROPERTY_LENGTH: 8192
-  /* MAX_PROPERTY_LENGTH */
-  ,
-  MAX_STRING_LENGTH: 1024
-  /* MAX_STRING_LENGTH */
-  ,
-  MAX_URL_LENGTH: 2048
-  /* MAX_URL_LENGTH */
-  ,
-  MAX_MESSAGE_LENGTH: 32768
-  /* MAX_MESSAGE_LENGTH */
-  ,
-  MAX_EXCEPTION_LENGTH: 32768
-  /* MAX_EXCEPTION_LENGTH */
-  ,
-  sanitizeKeyAndAddUniqueness: dataSanitizeKeyAndAddUniqueness,
-  sanitizeKey: dataSanitizeKey,
-  sanitizeString: dataSanitizeString,
-  sanitizeUrl: dataSanitizeUrl,
-  sanitizeMessage: dataSanitizeMessage,
-  sanitizeException: dataSanitizeException,
-  sanitizeProperties: dataSanitizeProperties,
-  sanitizeMeasurements: dataSanitizeMeasurements,
-  sanitizeId: dataSanitizeId,
-  sanitizeInput: dataSanitizeInput,
-  padNumber: dsPadNumber,
-  trim: strTrim
-};
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Constants.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-/**
- * This is an internal property used to cause internal (reporting) requests to be ignored from reporting
- * additional telemetry, to handle polyfil implementations ALL urls used with a disabled request will
- * also be ignored for future requests even when this property is not provided.
- * Tagging as Ignore as this is an internal value and is not expected to be used outside of the SDK
- * @ignore
- */
-var DisabledPropertyName = "Microsoft_ApplicationInsights_BypassAjaxInstrumentation";
-var SampleRate = "sampleRate";
-var ProcessLegacy = "ProcessLegacy";
-var HttpMethod = "http.method";
-var DEFAULT_BREEZE_ENDPOINT = "https://dc.services.visualstudio.com";
-var strNotSpecified = "not_specified";
-var strIkey = "iKey";
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/Envelope.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-
-
-
-
-
-var Envelope_Envelope = function (_super) {
-  __extendsFn(Envelope, _super);
-  /**
-   * Constructs a new instance of telemetry data.
-   */
-
-
-  function Envelope(logger, data, name) {
-    var _this = _super.call(this) || this;
-
-    _this.name = dataSanitizeString(logger, name) || strNotSpecified;
-    _this.data = data;
-    _this.time = toISOString(new Date());
-    _this.aiDataContract = {
-      time: 1
-      /* Required */
-      ,
-      iKey: 1
-      /* Required */
-      ,
-      name: 1
-      /* Required */
-      ,
-      sampleRate: function sampleRate() {
-        return _this.sampleRate === 100 ? 4
-        /* Hidden */
-        : 1
-        /* Required */
-        ;
-      },
-      tags: 1
-      /* Required */
-      ,
-      data: 1
-      /* Required */
-
-    };
-    return _this;
-  }
-
-  return Envelope;
-}(Envelope);
-
-
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/RandomHelper.js
 /*
  * Application Insights JavaScript SDK - Core, 2.7.0
@@ -60174,662 +59246,349 @@ function setCookie(logger, name, value, domain) {
 function deleteCookie(logger, name) {
   return _legacyCookieMgr(null, logger).del(name);
 }
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/RequestResponseHeaders.js
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/applicationinsights-common.js
 /*
  * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
-var RequestHeaders = {
-  requestContextHeader: "Request-Context",
-  requestContextTargetKey: "appId",
-  requestContextAppIdFormat: "appId=cid-v1:",
-  requestIdHeader: "Request-Id",
-  traceParentHeader: "traceparent",
-  traceStateHeader: "tracestate",
-  sdkContextHeader: "Sdk-Context",
-  sdkContextHeaderAppIdRequest: "appId",
-  requestContextHeaderLowerCase: "request-context"
-};
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/DomHelperFuncs.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
+// Licensed under the
 
-function createDomEvent(eventName) {
-  var event = null;
 
-  if (isFunction(Event)) {
-    // Use Event constructor when available
-    event = new Event(eventName);
-  } else {
-    // Event has no constructor in IE
-    var doc = getDocument();
 
-    if (doc && doc.createEvent) {
-      event = doc.createEvent("Event");
-      event.initEvent(eventName, true, true);
-    }
-  }
 
-  return event;
-}
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/HelperFuncs.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
 
-function stringToBoolOrDefault(str, defaultValue) {
-  if (defaultValue === void 0) {
-    defaultValue = false;
-  }
 
-  if (str === undefined || str === null) {
-    return defaultValue;
-  }
 
-  return str.toString().toLowerCase() === "true";
-}
-/**
- * Convert ms to c# time span format
- */
 
-function msToTimeSpan(totalms) {
-  if (isNaN(totalms) || totalms < 0) {
-    totalms = 0;
-  }
 
-  totalms = Math.round(totalms);
-  var ms = "" + totalms % 1000;
-  var sec = "" + Math.floor(totalms / 1000) % 60;
-  var min = "" + Math.floor(totalms / (1000 * 60)) % 60;
-  var hour = "" + Math.floor(totalms / (1000 * 60 * 60)) % 24;
-  var days = Math.floor(totalms / (1000 * 60 * 60 * 24));
-  ms = ms.length === 1 ? "00" + ms : ms.length === 2 ? "0" + ms : ms;
-  sec = sec.length < 2 ? "0" + sec : sec;
-  min = min.length < 2 ? "0" + min : min;
-  hour = hour.length < 2 ? "0" + hour : hour;
-  return (days > 0 ? days + "." : "") + hour + ":" + min + ":" + sec + "." + ms;
-}
-function getExtensionByName(extensions, identifier) {
-  var extension = null;
-  arrForEach(extensions, function (value) {
-    if (value.identifier === identifier) {
-      extension = value;
-      return -1;
-    }
-  });
-  return extension;
-}
-function isCrossOriginError(message, url, lineNumber, columnNumber, error) {
-  return !error && HelperFuncs_isString(message) && (message === "Script error." || message === "Script error");
-}
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/UrlHelperFuncs.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var PropertiesPluginIdentifier = "AppInsightsPropertiesPlugin";
+var BreezeChannelIdentifier = "AppInsightsChannelPlugin";
+var AnalyticsPluginIdentifier = "ApplicationInsightsAnalytics";
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/DataSanitizer.js
 /*
  * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
-
-var _document = getDocument() || {};
-
-var _htmlAnchorIdx = 0; // Use an array of temporary values as it's possible for multiple calls to parseUrl() will be called with different URLs
-// Using a cache size of 5 for now as it current depth usage is at least 2, so adding a minor buffer to handle future updates
-
-var _htmlAnchorElement = [null, null, null, null, null];
-function urlParseUrl(url) {
-  var anchorIdx = _htmlAnchorIdx;
-  var anchorCache = _htmlAnchorElement;
-  var tempAnchor = anchorCache[anchorIdx];
-
-  if (!_document.createElement) {
-    // Always create the temp instance if createElement is not available
-    tempAnchor = {
-      host: urlParseHost(url, true)
-    };
-  } else if (!anchorCache[anchorIdx]) {
-    // Create and cache the unattached anchor instance 
-    tempAnchor = anchorCache[anchorIdx] = _document.createElement('a');
-  }
-
-  tempAnchor.href = url; // Move the cache index forward
-
-  anchorIdx++;
-
-  if (anchorIdx >= anchorCache.length) {
-    anchorIdx = 0;
-  }
-
-  _htmlAnchorIdx = anchorIdx;
-  return tempAnchor;
-}
-function urlGetAbsoluteUrl(url) {
-  var result;
-  var a = urlParseUrl(url);
-
-  if (a) {
-    result = a.href;
-  }
-
-  return result;
-}
-function urlGetPathName(url) {
-  var result;
-  var a = urlParseUrl(url);
-
-  if (a) {
-    result = a.pathname;
-  }
-
-  return result;
-}
-function urlGetCompleteUrl(method, absoluteUrl) {
-  if (method) {
-    return method.toUpperCase() + " " + absoluteUrl;
-  }
-
-  return absoluteUrl;
-} // Fallback method to grab host from url if document.createElement method is not available
-
-function urlParseHost(url, inclPort) {
-  var fullHost = urlParseFullHost(url, inclPort) || "";
-
-  if (fullHost) {
-    var match = fullHost.match(/(www[0-9]?\.)?(.[^/:]+)(\:[\d]+)?/i);
-
-    if (match != null && match.length > 3 && HelperFuncs_isString(match[2]) && match[2].length > 0) {
-      return match[2] + (match[3] || "");
-    }
-  }
-
-  return fullHost;
-}
-function urlParseFullHost(url, inclPort) {
-  var result = null;
-
-  if (url) {
-    var match = url.match(/(\w*):\/\/(.[^/:]+)(\:[\d]+)?/i);
-
-    if (match != null && match.length > 2 && HelperFuncs_isString(match[2]) && match[2].length > 0) {
-      result = match[2] || "";
-
-      if (inclPort && match.length > 2) {
-        var protocol = (match[1] || "").toLowerCase();
-        var port = match[3] || ""; // IE includes the standard port so pass it off if it's the same as the protocol
-
-        if (protocol === "http" && port === ":80") {
-          port = "";
-        } else if (protocol === "https" && port === ":443") {
-          port = "";
-        }
-
-        result += port;
-      }
-    }
-  }
-
-  return result;
-}
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Util.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-
-
-
-
-
-
- // listing only non-geo specific locations
-
-var _internalEndpoints = ["https://dc.services.visualstudio.com/v2/track", "https://breeze.aimon.applicationinsights.io/v2/track", "https://dc-int.services.visualstudio.com/v2/track"];
-function isInternalApplicationInsightsEndpoint(endpointUrl) {
-  return _internalEndpoints.indexOf(endpointUrl.toLowerCase()) !== -1;
-}
-var Util = {
-  NotSpecified: strNotSpecified,
-  createDomEvent: createDomEvent,
-  disableStorage: utlDisableStorage,
-  isInternalApplicationInsightsEndpoint: isInternalApplicationInsightsEndpoint,
-  canUseLocalStorage: utlCanUseLocalStorage,
-  getStorage: utlGetLocalStorage,
-  setStorage: utlSetLocalStorage,
-  removeStorage: utlRemoveStorage,
-  canUseSessionStorage: utlCanUseSessionStorage,
-  getSessionStorageKeys: utlGetSessionStorageKeys,
-  getSessionStorage: utlGetSessionStorage,
-  setSessionStorage: utlSetSessionStorage,
-  removeSessionStorage: utlRemoveSessionStorage,
-  disableCookies: disableCookies,
-  canUseCookies: canUseCookies,
-  disallowsSameSiteNone: uaDisallowsSameSiteNone,
-  setCookie: setCookie,
-  stringToBoolOrDefault: stringToBoolOrDefault,
-  getCookie: getCookie,
-  deleteCookie: deleteCookie,
-  trim: strTrim,
-  newId: newId,
-  random32: function random32() {
-    return RandomHelper_random32(true);
-  },
-  generateW3CId: generateW3CId,
-  isArray: isArray,
-  isError: isError,
-  isDate: isDate,
-  toISOStringForIE8: toISOString,
-  getIEVersion: getIEVersion,
-  msToTimeSpan: msToTimeSpan,
-  isCrossOriginError: isCrossOriginError,
-  dump: dumpObj,
-  getExceptionName: getExceptionName,
-  addEventHandler: attachEvent,
-  IsBeaconApiSupported: isBeaconsSupported,
-  getExtension: getExtensionByName
-};
 ;
-var UrlHelper = {
-  parseUrl: urlParseUrl,
-  getAbsoluteUrl: urlGetAbsoluteUrl,
-  getPathName: urlGetPathName,
-  getCompleteUrl: urlGetCompleteUrl,
-  parseHost: urlParseHost,
-  parseFullHost: urlParseFullHost
-};
-var CorrelationIdHelper = {
-  correlationIdPrefix: "cid-v1:",
+function dataSanitizeKeyAndAddUniqueness(logger, key, map) {
+  var origLength = key.length;
+  var field = dataSanitizeKey(logger, key); // validation truncated the length.  We need to add uniqueness
 
-  /**
-   * Checks if a request url is not on a excluded domain list and if it is safe to add correlation headers.
-   * Headers are always included if the current domain matches the request domain. If they do not match (CORS),
-   * they are regex-ed across correlationHeaderDomains and correlationHeaderExcludedDomains to determine if headers are included.
-   * Some environments don't give information on currentHost via window.location.host (e.g. Cordova). In these cases, the user must
-   * manually supply domains to include correlation headers on. Else, no headers will be included at all.
-   */
-  canIncludeCorrelationHeader: function canIncludeCorrelationHeader(config, requestUrl, currentHost) {
-    if (!requestUrl || config && config.disableCorrelationHeaders) {
-      return false;
+  if (field.length !== origLength) {
+    var i = 0;
+    var uniqueField = field;
+
+    while (map[uniqueField] !== undefined) {
+      i++;
+      uniqueField = field.substring(0, 150
+      /* MAX_NAME_LENGTH */
+      - 3) + dsPadNumber(i);
     }
 
-    if (config && config.correlationHeaderExcludePatterns) {
-      for (var i = 0; i < config.correlationHeaderExcludePatterns.length; i++) {
-        if (config.correlationHeaderExcludePatterns[i].test(requestUrl)) {
-          return false;
+    field = uniqueField;
+  }
+
+  return field;
+}
+function dataSanitizeKey(logger, name) {
+  var nameTrunc;
+
+  if (name) {
+    // Remove any leading or trailing whitepace
+    name = strTrim(name.toString()); // truncate the string to 150 chars
+
+    if (name.length > 150
+    /* MAX_NAME_LENGTH */
+    ) {
+      nameTrunc = name.substring(0, 150
+      /* MAX_NAME_LENGTH */
+      );
+      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.NameTooLong, "name is too long.  It has been truncated to " + 150
+      /* MAX_NAME_LENGTH */
+      + " characters.", {
+        name: name
+      }, true);
+    }
+  }
+
+  return nameTrunc || name;
+}
+function dataSanitizeString(logger, value, maxLength) {
+  if (maxLength === void 0) {
+    maxLength = 1024
+    /* MAX_STRING_LENGTH */
+    ;
+  }
+
+  var valueTrunc;
+
+  if (value) {
+    maxLength = maxLength ? maxLength : 1024
+    /* MAX_STRING_LENGTH */
+    ; // in case default parameters dont work
+
+    value = strTrim(value);
+
+    if (value.toString().length > maxLength) {
+      valueTrunc = value.toString().substring(0, maxLength);
+      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.StringValueTooLong, "string value is too long. It has been truncated to " + maxLength + " characters.", {
+        value: value
+      }, true);
+    }
+  }
+
+  return valueTrunc || value;
+}
+function dataSanitizeUrl(logger, url) {
+  return dataSanitizeInput(logger, url, 2048
+  /* MAX_URL_LENGTH */
+  , _InternalMessageId.UrlTooLong);
+}
+function dataSanitizeMessage(logger, message) {
+  var messageTrunc;
+
+  if (message) {
+    if (message.length > 32768
+    /* MAX_MESSAGE_LENGTH */
+    ) {
+      messageTrunc = message.substring(0, 32768
+      /* MAX_MESSAGE_LENGTH */
+      );
+      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.MessageTruncated, "message is too long, it has been truncated to " + 32768
+      /* MAX_MESSAGE_LENGTH */
+      + " characters.", {
+        message: message
+      }, true);
+    }
+  }
+
+  return messageTrunc || message;
+}
+function dataSanitizeException(logger, exception) {
+  var exceptionTrunc;
+
+  if (exception) {
+    // Make surte its a string
+    var value = "" + exception;
+
+    if (value.length > 32768
+    /* MAX_EXCEPTION_LENGTH */
+    ) {
+      exceptionTrunc = value.substring(0, 32768
+      /* MAX_EXCEPTION_LENGTH */
+      );
+      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.ExceptionTruncated, "exception is too long, it has been truncated to " + 32768
+      /* MAX_EXCEPTION_LENGTH */
+      + " characters.", {
+        exception: exception
+      }, true);
+    }
+  }
+
+  return exceptionTrunc || exception;
+}
+function dataSanitizeProperties(logger, properties) {
+  if (properties) {
+    var tempProps_1 = {};
+    objForEachKey(properties, function (prop, value) {
+      if (isObject(value) && hasJSON()) {
+        // Stringify any part C properties
+        try {
+          value = getJSON().stringify(value);
+        } catch (e) {
+          logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.CannotSerializeObjectNonSerializable, "custom property is not valid", {
+            exception: e
+          }, true);
         }
       }
+
+      value = dataSanitizeString(logger, value, 8192
+      /* MAX_PROPERTY_LENGTH */
+      );
+      prop = dataSanitizeKeyAndAddUniqueness(logger, prop, tempProps_1);
+      tempProps_1[prop] = value;
+    });
+    properties = tempProps_1;
+  }
+
+  return properties;
+}
+function dataSanitizeMeasurements(logger, measurements) {
+  if (measurements) {
+    var tempMeasurements_1 = {};
+    objForEachKey(measurements, function (measure, value) {
+      measure = dataSanitizeKeyAndAddUniqueness(logger, measure, tempMeasurements_1);
+      tempMeasurements_1[measure] = value;
+    });
+    measurements = tempMeasurements_1;
+  }
+
+  return measurements;
+}
+function dataSanitizeId(logger, id) {
+  return id ? dataSanitizeInput(logger, id, 128
+  /* MAX_ID_LENGTH */
+  , _InternalMessageId.IdTooLong).toString() : id;
+}
+function dataSanitizeInput(logger, input, maxLength, _msgId) {
+  var inputTrunc;
+
+  if (input) {
+    input = strTrim(input);
+
+    if (input.length > maxLength) {
+      inputTrunc = input.substring(0, maxLength);
+      logger.throwInternal(LoggingSeverity.WARNING, _msgId, "input is too long, it has been truncated to " + maxLength + " characters.", {
+        data: input
+      }, true);
+    }
+  }
+
+  return inputTrunc || input;
+}
+function dsPadNumber(num) {
+  var s = "00" + num;
+  return s.substr(s.length - 3);
+}
+;
+/**
+ * Provides the DataSanitizer functions within the previous namespace.
+ */
+
+var DataSanitizer = {
+  MAX_NAME_LENGTH: 150
+  /* MAX_NAME_LENGTH */
+  ,
+  MAX_ID_LENGTH: 128
+  /* MAX_ID_LENGTH */
+  ,
+  MAX_PROPERTY_LENGTH: 8192
+  /* MAX_PROPERTY_LENGTH */
+  ,
+  MAX_STRING_LENGTH: 1024
+  /* MAX_STRING_LENGTH */
+  ,
+  MAX_URL_LENGTH: 2048
+  /* MAX_URL_LENGTH */
+  ,
+  MAX_MESSAGE_LENGTH: 32768
+  /* MAX_MESSAGE_LENGTH */
+  ,
+  MAX_EXCEPTION_LENGTH: 32768
+  /* MAX_EXCEPTION_LENGTH */
+  ,
+  sanitizeKeyAndAddUniqueness: dataSanitizeKeyAndAddUniqueness,
+  sanitizeKey: dataSanitizeKey,
+  sanitizeString: dataSanitizeString,
+  sanitizeUrl: dataSanitizeUrl,
+  sanitizeMessage: dataSanitizeMessage,
+  sanitizeException: dataSanitizeException,
+  sanitizeProperties: dataSanitizeProperties,
+  sanitizeMeasurements: dataSanitizeMeasurements,
+  sanitizeId: dataSanitizeId,
+  sanitizeInput: dataSanitizeInput,
+  padNumber: dsPadNumber,
+  trim: strTrim
+};
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Constants.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+/**
+ * This is an internal property used to cause internal (reporting) requests to be ignored from reporting
+ * additional telemetry, to handle polyfil implementations ALL urls used with a disabled request will
+ * also be ignored for future requests even when this property is not provided.
+ * Tagging as Ignore as this is an internal value and is not expected to be used outside of the SDK
+ * @ignore
+ */
+var DisabledPropertyName = "Microsoft_ApplicationInsights_BypassAjaxInstrumentation";
+var SampleRate = "sampleRate";
+var ProcessLegacy = "ProcessLegacy";
+var HttpMethod = "http.method";
+var DEFAULT_BREEZE_ENDPOINT = "https://dc.services.visualstudio.com";
+var strNotSpecified = "not_specified";
+var strIkey = "iKey";
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/TelemetryItemCreator.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+
+var TelemetryItemCreator = function () {
+  function TelemetryItemCreator() {}
+  /**
+   * Create a telemetry item that the 1DS channel understands
+   * @param item domain specific properties; part B
+   * @param baseType telemetry item type. ie PageViewData
+   * @param envelopeName name of the envelope. ie Microsoft.ApplicationInsights.<instrumentation key>.PageView
+   * @param customProperties user defined custom properties; part C
+   * @param systemProperties system properties that are added to the context; part A
+   * @returns ITelemetryItem that is sent to channel
+   */
+
+
+  TelemetryItemCreator.create = function (item, baseType, envelopeName, logger, customProperties, systemProperties) {
+    envelopeName = dataSanitizeString(logger, envelopeName) || strNotSpecified;
+
+    if (isNullOrUndefined(item) || isNullOrUndefined(baseType) || isNullOrUndefined(envelopeName)) {
+      throw Error("Input doesn't contain all required fields");
     }
 
-    var requestHost = urlParseUrl(requestUrl).host.toLowerCase();
+    var iKey = "";
 
-    if (requestHost && (requestHost.indexOf(":443") !== -1 || requestHost.indexOf(":80") !== -1)) {
-      // [Bug #1260] IE can include the port even for http and https URLs so if present 
-      // try and parse it to remove if it matches the default protocol port
-      requestHost = (urlParseFullHost(requestUrl, true) || "").toLowerCase();
+    if (item[strIkey]) {
+      iKey = item[strIkey];
+      delete item[strIkey];
     }
 
-    if ((!config || !config.enableCorsCorrelation) && requestHost && requestHost !== currentHost) {
-      return false;
-    }
+    var telemetryItem = {
+      name: envelopeName,
+      time: toISOString(new Date()),
+      iKey: iKey,
+      ext: systemProperties ? systemProperties : {},
+      tags: [],
+      data: {},
+      baseType: baseType,
+      baseData: item // Part B
 
-    var includedDomains = config && config.correlationHeaderDomains;
+    }; // Part C
 
-    if (includedDomains) {
-      var matchExists_1;
-      arrForEach(includedDomains, function (domain) {
-        var regex = new RegExp(domain.toLowerCase().replace(/\\/g, "\\\\").replace(/\./g, "\\.").replace(/\*/g, ".*"));
-        matchExists_1 = matchExists_1 || regex.test(requestHost);
+    if (!isNullOrUndefined(customProperties)) {
+      objForEachKey(customProperties, function (prop, value) {
+        telemetryItem.data[prop] = value;
       });
-
-      if (!matchExists_1) {
-        return false;
-      }
     }
 
-    var excludedDomains = config && config.correlationHeaderExcludedDomains;
-
-    if (!excludedDomains || excludedDomains.length === 0) {
-      return true;
-    }
-
-    for (var i = 0; i < excludedDomains.length; i++) {
-      var regex = new RegExp(excludedDomains[i].toLowerCase().replace(/\\/g, "\\\\").replace(/\./g, "\\.").replace(/\*/g, ".*"));
-
-      if (regex.test(requestHost)) {
-        return false;
-      }
-    } // if we don't know anything about the requestHost, require the user to use included/excludedDomains.
-    // Previously we always returned false for a falsy requestHost
-
-
-    return requestHost && requestHost.length > 0;
-  },
-
-  /**
-   * Combines target appId and target role name from response header.
-   */
-  getCorrelationContext: function getCorrelationContext(responseHeader) {
-    if (responseHeader) {
-      var correlationId = CorrelationIdHelper.getCorrelationContextValue(responseHeader, RequestHeaders.requestContextTargetKey);
-
-      if (correlationId && correlationId !== CorrelationIdHelper.correlationIdPrefix) {
-        return correlationId;
-      }
-    }
-  },
-
-  /**
-   * Gets key from correlation response header
-   */
-  getCorrelationContextValue: function getCorrelationContextValue(responseHeader, key) {
-    if (responseHeader) {
-      var keyValues = responseHeader.split(",");
-
-      for (var i = 0; i < keyValues.length; ++i) {
-        var keyValue = keyValues[i].split("=");
-
-        if (keyValue.length === 2 && keyValue[0] === key) {
-          return keyValue[1];
-        }
-      }
-    }
-  }
-};
-function AjaxHelperParseDependencyPath(logger, absoluteUrl, method, commandName) {
-  var target,
-      name = commandName,
-      data = commandName;
-
-  if (absoluteUrl && absoluteUrl.length > 0) {
-    var parsedUrl = urlParseUrl(absoluteUrl);
-    target = parsedUrl.host;
-
-    if (!name) {
-      if (parsedUrl.pathname != null) {
-        var pathName = parsedUrl.pathname.length === 0 ? "/" : parsedUrl.pathname;
-
-        if (pathName.charAt(0) !== '/') {
-          pathName = "/" + pathName;
-        }
-
-        data = parsedUrl.pathname;
-        name = dataSanitizeString(logger, method ? method + " " + pathName : pathName);
-      } else {
-        name = dataSanitizeString(logger, absoluteUrl);
-      }
-    }
-  } else {
-    target = commandName;
-    name = commandName;
-  }
-
-  return {
-    target: target,
-    name: name,
-    data: data
+    return telemetryItem;
   };
-}
-function dateTimeUtilsNow() {
-  // returns the window or webworker performance object
-  var perf = getPerformance();
 
-  if (perf && perf.now && perf.timing) {
-    var now = perf.now() + perf.timing.navigationStart; // Known issue with IE where this calculation can be negative, so if it is then ignore and fallback
-
-    if (now > 0) {
-      return now;
-    }
-  }
-
-  return dateNow();
-}
-function dateTimeUtilsDuration(start, end) {
-  var result = null;
-
-  if (start !== 0 && end !== 0 && !isNullOrUndefined(start) && !isNullOrUndefined(end)) {
-    result = end - start;
-  }
-
-  return result;
-}
-/**
- * A utility class that helps getting time related parameters
- */
-
-var DateTimeUtils = {
-  Now: dateTimeUtilsNow,
-  GetDuration: dateTimeUtilsDuration
-};
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/RemoteDependencyData.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-/**
- * An instance of Remote Dependency represents an interaction of the monitored component with a remote component/service like SQL or an HTTP endpoint.
- */
-var RemoteDependencyData = function () {
-  function RemoteDependencyData() {
-    /**
-     * Schema version
-     */
-    this.ver = 2;
-    /**
-     * Indication of successful or unsuccessful call.
-     */
-
-    this.success = true;
-    /**
-     * Collection of custom properties.
-     */
-
-    this.properties = {};
-    /**
-     * Collection of custom measurements.
-     */
-
-    this.measurements = {};
-  }
-
-  return RemoteDependencyData;
+  return TelemetryItemCreator;
 }();
-
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/RemoteDependencyData.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-
-
-
-
-
-var RemoteDependencyData_RemoteDependencyData = function (_super) {
-  __extendsFn(RemoteDependencyData, _super);
-  /**
-   * Constructs a new instance of the RemoteDependencyData object
-   */
-
-
-  function RemoteDependencyData(logger, id, absoluteUrl, commandName, value, success, resultCode, method, requestAPI, correlationContext, properties, measurements) {
-    if (requestAPI === void 0) {
-      requestAPI = "Ajax";
-    }
-
-    var _this = _super.call(this) || this;
-
-    _this.aiDataContract = {
-      id: 1
-      /* Required */
-      ,
-      ver: 1
-      /* Required */
-      ,
-      name: 0
-      /* Default */
-      ,
-      resultCode: 0
-      /* Default */
-      ,
-      duration: 0
-      /* Default */
-      ,
-      success: 0
-      /* Default */
-      ,
-      data: 0
-      /* Default */
-      ,
-      target: 0
-      /* Default */
-      ,
-      type: 0
-      /* Default */
-      ,
-      properties: 0
-      /* Default */
-      ,
-      measurements: 0
-      /* Default */
-      ,
-      kind: 0
-      /* Default */
-      ,
-      value: 0
-      /* Default */
-      ,
-      count: 0
-      /* Default */
-      ,
-      min: 0
-      /* Default */
-      ,
-      max: 0
-      /* Default */
-      ,
-      stdDev: 0
-      /* Default */
-      ,
-      dependencyKind: 0
-      /* Default */
-      ,
-      dependencySource: 0
-      /* Default */
-      ,
-      commandName: 0
-      /* Default */
-      ,
-      dependencyTypeName: 0
-      /* Default */
-
-    };
-    _this.id = id;
-    _this.duration = msToTimeSpan(value);
-    _this.success = success;
-    _this.resultCode = resultCode + "";
-    _this.type = dataSanitizeString(logger, requestAPI);
-    var dependencyFields = AjaxHelperParseDependencyPath(logger, absoluteUrl, method, commandName);
-    _this.data = dataSanitizeUrl(logger, commandName) || dependencyFields.data; // get a value from hosturl if commandName not available
-
-    _this.target = dataSanitizeString(logger, dependencyFields.target);
-
-    if (correlationContext) {
-      _this.target = _this.target + " | " + correlationContext;
-    }
-
-    _this.name = dataSanitizeString(logger, dependencyFields.name);
-    _this.properties = dataSanitizeProperties(logger, properties);
-    _this.measurements = dataSanitizeMeasurements(logger, measurements);
-    return _this;
-  }
-
-  RemoteDependencyData.envelopeType = "Microsoft.ApplicationInsights.{0}.RemoteDependency";
-  RemoteDependencyData.dataType = "RemoteDependencyData";
-  return RemoteDependencyData;
-}(RemoteDependencyData);
-
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/Base.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-// THIS FILE WAS AUTOGENERATED
-
-/**
- * Data struct to contain only C section with custom fields.
- */
-var Base = function () {
-  function Base() {}
-
-  return Base;
-}();
-
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/Data.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
- // THIS FILE WAS AUTOGENERATED
-
-
-/**
- * Data struct to contain both B and C sections.
- */
-
-var Data = function (_super) {
-  __extendsFn(Data, _super);
-
-  function Data() {
-    return _super.call(this) || this;
-  }
-
-  return Data;
-}(Base);
-
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/Data.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-
-
-var Data_Data = function (_super) {
-  __extendsFn(Data, _super);
-  /**
-   * Constructs a new instance of telemetry data.
-   */
-
-
-  function Data(baseType, data) {
-    var _this = _super.call(this) || this;
-    /**
-     * The data contract for serializing this object.
-     */
-
-
-    _this.aiDataContract = {
-      baseType: 1
-      /* Required */
-      ,
-      baseData: 1
-      /* Required */
-
-    };
-    _this.baseType = baseType;
-    _this.baseData = data;
-    return _this;
-  }
-
-  return Data;
-}(Data);
 
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/EventData.js
@@ -60907,6 +59666,533 @@ var Event_Event = function (_super) {
   Event.dataType = "EventData";
   return Event;
 }(EventData);
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/MessageData.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+/**
+ * Instances of Message represent printf-like trace statements that are text-searched. Log4Net, NLog and other text-based log file entries are translated into intances of this type. The message does not have measurements.
+ */
+var MessageData = function () {
+  function MessageData() {
+    /**
+     * Schema version
+     */
+    this.ver = 2;
+    /**
+     * Collection of custom properties.
+     */
+
+    this.properties = {};
+    /**
+     * Collection of custom measurements.
+     */
+
+    this.measurements = {};
+  }
+
+  return MessageData;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Trace.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+
+
+var Trace = function (_super) {
+  __extendsFn(Trace, _super);
+  /**
+   * Constructs a new instance of the TraceTelemetry object
+   */
+
+
+  function Trace(logger, message, severityLevel, properties, measurements) {
+    var _this = _super.call(this) || this;
+
+    _this.aiDataContract = {
+      ver: 1
+      /* Required */
+      ,
+      message: 1
+      /* Required */
+      ,
+      severityLevel: 0
+      /* Default */
+      ,
+      properties: 0
+      /* Default */
+
+    };
+    message = message || strNotSpecified;
+    _this.message = dataSanitizeMessage(logger, message);
+    _this.properties = dataSanitizeProperties(logger, properties);
+    _this.measurements = dataSanitizeMeasurements(logger, measurements);
+
+    if (severityLevel) {
+      _this.severityLevel = severityLevel;
+    }
+
+    return _this;
+  }
+
+  Trace.envelopeType = "Microsoft.ApplicationInsights.{0}.Message";
+  Trace.dataType = "MessageData";
+  return Trace;
+}(MessageData);
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/MetricData.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+/**
+ * An instance of the Metric item is a list of measurements (single data points) and/or aggregations.
+ */
+var MetricData = function () {
+  function MetricData() {
+    /**
+     * Schema version
+     */
+    this.ver = 2;
+    /**
+     * List of metrics. Only one metric in the list is currently supported by Application Insights storage. If multiple data points were sent only the first one will be used.
+     */
+
+    this.metrics = [];
+    /**
+     * Collection of custom properties.
+     */
+
+    this.properties = {};
+    /**
+     * Collection of custom measurements.
+     */
+
+    this.measurements = {};
+  }
+
+  return MetricData;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/DataPointType.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+// THIS FILE WAS AUTOGENERATED
+
+/**
+ * Type of the metric data measurement.
+ */
+var DataPointType;
+
+(function (DataPointType) {
+  DataPointType[DataPointType["Measurement"] = 0] = "Measurement";
+  DataPointType[DataPointType["Aggregation"] = 1] = "Aggregation";
+})(DataPointType || (DataPointType = {}));
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/DataPoint.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+/**
+ * Metric data single measurement.
+ */
+
+var DataPoint = function () {
+  function DataPoint() {
+    /**
+     * Metric type. Single measurement or the aggregated value.
+     */
+    this.kind = DataPointType.Measurement;
+  }
+
+  return DataPoint;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/DataPoint.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+var DataPoint_DataPoint = function (_super) {
+  __extendsFn(DataPoint, _super);
+
+  function DataPoint() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+    /**
+     * The data contract for serializing this object.
+     */
+
+
+    _this.aiDataContract = {
+      name: 1
+      /* Required */
+      ,
+      kind: 0
+      /* Default */
+      ,
+      value: 1
+      /* Required */
+      ,
+      count: 0
+      /* Default */
+      ,
+      min: 0
+      /* Default */
+      ,
+      max: 0
+      /* Default */
+      ,
+      stdDev: 0
+      /* Default */
+
+    };
+    return _this;
+  }
+
+  return DataPoint;
+}(DataPoint);
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Metric.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+
+
+
+var Metric = function (_super) {
+  __extendsFn(Metric, _super);
+  /**
+   * Constructs a new instance of the MetricTelemetry object
+   */
+
+
+  function Metric(logger, name, value, count, min, max, properties, measurements) {
+    var _this = _super.call(this) || this;
+
+    _this.aiDataContract = {
+      ver: 1
+      /* Required */
+      ,
+      metrics: 1
+      /* Required */
+      ,
+      properties: 0
+      /* Default */
+
+    };
+    var dataPoint = new DataPoint_DataPoint();
+    dataPoint.count = count > 0 ? count : undefined;
+    dataPoint.max = isNaN(max) || max === null ? undefined : max;
+    dataPoint.min = isNaN(min) || min === null ? undefined : min;
+    dataPoint.name = dataSanitizeString(logger, name) || strNotSpecified;
+    dataPoint.value = value;
+    _this.metrics = [dataPoint];
+    _this.properties = dataSanitizeProperties(logger, properties);
+    _this.measurements = dataSanitizeMeasurements(logger, measurements);
+    return _this;
+  }
+
+  Metric.envelopeType = "Microsoft.ApplicationInsights.{0}.Metric";
+  Metric.dataType = "MetricData";
+  return Metric;
+}(MetricData);
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/PageViewData.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+ // THIS FILE WAS AUTOGENERATED
+
+
+/**
+ * An instance of PageView represents a generic action on a page like a button click. It is also the base type for PageView.
+ */
+
+var PageViewData = function (_super) {
+  __extendsFn(PageViewData, _super);
+
+  function PageViewData() {
+    var _this = _super.call(this) || this;
+    /**
+     * Schema version
+     */
+
+
+    _this.ver = 2;
+    /**
+     * Collection of custom properties.
+     */
+
+    _this.properties = {};
+    /**
+     * Collection of custom measurements.
+     */
+
+    _this.measurements = {};
+    return _this;
+  }
+
+  return PageViewData;
+}(EventData);
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/HelperFuncs.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+function stringToBoolOrDefault(str, defaultValue) {
+  if (defaultValue === void 0) {
+    defaultValue = false;
+  }
+
+  if (str === undefined || str === null) {
+    return defaultValue;
+  }
+
+  return str.toString().toLowerCase() === "true";
+}
+/**
+ * Convert ms to c# time span format
+ */
+
+function msToTimeSpan(totalms) {
+  if (isNaN(totalms) || totalms < 0) {
+    totalms = 0;
+  }
+
+  totalms = Math.round(totalms);
+  var ms = "" + totalms % 1000;
+  var sec = "" + Math.floor(totalms / 1000) % 60;
+  var min = "" + Math.floor(totalms / (1000 * 60)) % 60;
+  var hour = "" + Math.floor(totalms / (1000 * 60 * 60)) % 24;
+  var days = Math.floor(totalms / (1000 * 60 * 60 * 24));
+  ms = ms.length === 1 ? "00" + ms : ms.length === 2 ? "0" + ms : ms;
+  sec = sec.length < 2 ? "0" + sec : sec;
+  min = min.length < 2 ? "0" + min : min;
+  hour = hour.length < 2 ? "0" + hour : hour;
+  return (days > 0 ? days + "." : "") + hour + ":" + min + ":" + sec + "." + ms;
+}
+function getExtensionByName(extensions, identifier) {
+  var extension = null;
+  arrForEach(extensions, function (value) {
+    if (value.identifier === identifier) {
+      extension = value;
+      return -1;
+    }
+  });
+  return extension;
+}
+function isCrossOriginError(message, url, lineNumber, columnNumber, error) {
+  return !error && HelperFuncs_isString(message) && (message === "Script error." || message === "Script error");
+}
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/PageView.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+
+
+
+var PageView = function (_super) {
+  __extendsFn(PageView, _super);
+  /**
+   * Constructs a new instance of the PageEventTelemetry object
+   */
+
+
+  function PageView(logger, name, url, durationMs, properties, measurements, id) {
+    var _this = _super.call(this) || this;
+
+    _this.aiDataContract = {
+      ver: 1
+      /* Required */
+      ,
+      name: 0
+      /* Default */
+      ,
+      url: 0
+      /* Default */
+      ,
+      duration: 0
+      /* Default */
+      ,
+      properties: 0
+      /* Default */
+      ,
+      measurements: 0
+      /* Default */
+      ,
+      id: 0
+      /* Default */
+
+    };
+    _this.id = dataSanitizeId(logger, id);
+    _this.url = dataSanitizeUrl(logger, url);
+    _this.name = dataSanitizeString(logger, name) || strNotSpecified;
+
+    if (!isNaN(durationMs)) {
+      _this.duration = msToTimeSpan(durationMs);
+    }
+
+    _this.properties = dataSanitizeProperties(logger, properties);
+    _this.measurements = dataSanitizeMeasurements(logger, measurements);
+    return _this;
+  }
+
+  PageView.envelopeType = "Microsoft.ApplicationInsights.{0}.Pageview";
+  PageView.dataType = "PageviewData";
+  return PageView;
+}(PageViewData);
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/PageViewPerfData.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+ // THIS FILE WAS AUTOGENERATED
+
+
+/**
+ * An instance of PageViewPerf represents: a page view with no performance data, a page view with performance data, or just the performance data of an earlier page request.
+ */
+
+var PageViewPerfData = function (_super) {
+  __extendsFn(PageViewPerfData, _super);
+
+  function PageViewPerfData() {
+    var _this = _super.call(this) || this;
+    /**
+     * Schema version
+     */
+
+
+    _this.ver = 2;
+    /**
+     * Collection of custom properties.
+     */
+
+    _this.properties = {};
+    /**
+     * Collection of custom measurements.
+     */
+
+    _this.measurements = {};
+    return _this;
+  }
+
+  return PageViewPerfData;
+}(PageViewData);
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/PageViewPerformance.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+
+
+var PageViewPerformance = function (_super) {
+  __extendsFn(PageViewPerformance, _super);
+  /**
+   * Constructs a new instance of the PageEventTelemetry object
+   */
+
+
+  function PageViewPerformance(logger, name, url, unused, properties, measurements, cs4BaseData) {
+    var _this = _super.call(this) || this;
+
+    _this.aiDataContract = {
+      ver: 1
+      /* Required */
+      ,
+      name: 0
+      /* Default */
+      ,
+      url: 0
+      /* Default */
+      ,
+      duration: 0
+      /* Default */
+      ,
+      perfTotal: 0
+      /* Default */
+      ,
+      networkConnect: 0
+      /* Default */
+      ,
+      sentRequest: 0
+      /* Default */
+      ,
+      receivedResponse: 0
+      /* Default */
+      ,
+      domProcessing: 0
+      /* Default */
+      ,
+      properties: 0
+      /* Default */
+      ,
+      measurements: 0
+      /* Default */
+
+    };
+    _this.url = dataSanitizeUrl(logger, url);
+    _this.name = dataSanitizeString(logger, name) || strNotSpecified;
+    _this.properties = dataSanitizeProperties(logger, properties);
+    _this.measurements = dataSanitizeMeasurements(logger, measurements);
+
+    if (cs4BaseData) {
+      _this.domProcessing = cs4BaseData.domProcessing;
+      _this.duration = cs4BaseData.duration;
+      _this.networkConnect = cs4BaseData.networkConnect;
+      _this.perfTotal = cs4BaseData.perfTotal;
+      _this.receivedResponse = cs4BaseData.receivedResponse;
+      _this.sentRequest = cs4BaseData.sentRequest;
+    }
+
+    return _this;
+  }
+
+  PageViewPerformance.envelopeType = "Microsoft.ApplicationInsights.{0}.PageviewPerformance";
+  PageViewPerformance.dataType = "PageviewPerformanceData";
+  return PageViewPerformance;
+}(PageViewPerfData);
 
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/StackFrame.js
@@ -61624,26 +60910,648 @@ var _StackFrame = function (_super) {
 }(StackFrame);
 
 
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/MetricData.js
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/SeverityLevel.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+// THIS FILE WAS AUTOGENERATED
+
+/**
+ * Defines the level of severity for the event.
+ */
+var SeverityLevel;
+
+(function (SeverityLevel) {
+  SeverityLevel[SeverityLevel["Verbose"] = 0] = "Verbose";
+  SeverityLevel[SeverityLevel["Information"] = 1] = "Information";
+  SeverityLevel[SeverityLevel["Warning"] = 2] = "Warning";
+  SeverityLevel[SeverityLevel["Error"] = 3] = "Error";
+  SeverityLevel[SeverityLevel["Critical"] = 4] = "Critical";
+})(SeverityLevel || (SeverityLevel = {}));
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Enums.js
 /*
  * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
 /**
- * An instance of the Metric item is a list of measurements (single data points) and/or aggregations.
+ * Type of storage to differentiate between local storage and session storage
  */
-var MetricData = function () {
-  function MetricData() {
+var StorageType;
+
+(function (StorageType) {
+  StorageType[StorageType["LocalStorage"] = 0] = "LocalStorage";
+  StorageType[StorageType["SessionStorage"] = 1] = "SessionStorage";
+})(StorageType || (StorageType = {}));
+
+;
+var DistributedTracingModes;
+
+(function (DistributedTracingModes) {
+  /**
+   * (Default) Send Application Insights correlation headers
+   */
+  DistributedTracingModes[DistributedTracingModes["AI"] = 0] = "AI";
+  /**
+   * Send both W3C Trace Context headers and back-compatibility Application Insights headers
+   */
+
+  DistributedTracingModes[DistributedTracingModes["AI_AND_W3C"] = 1] = "AI_AND_W3C";
+  /**
+   * Send W3C Trace Context headers
+   */
+
+  DistributedTracingModes[DistributedTracingModes["W3C"] = 2] = "W3C";
+})(DistributedTracingModes || (DistributedTracingModes = {}));
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/StorageHelperFuncs.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+var _canUseLocalStorage = undefined;
+var _canUseSessionStorage = undefined;
+/**
+ * Gets the localStorage object if available
+ * @return {Storage} - Returns the storage object if available else returns null
+ */
+
+function _getLocalStorageObject() {
+  if (utlCanUseLocalStorage()) {
+    return _getVerifiedStorageObject(StorageType.LocalStorage);
+  }
+
+  return null;
+}
+/**
+ * Tests storage object (localStorage or sessionStorage) to verify that it is usable
+ * More details here: https://mathiasbynens.be/notes/localstorage-pattern
+ * @param storageType Type of storage
+ * @return {Storage} Returns storage object verified that it is usable
+ */
+
+
+function _getVerifiedStorageObject(storageType) {
+  try {
+    if (isNullOrUndefined(getGlobal())) {
+      return null;
+    }
+
+    var uid = new Date();
+    var storage = getGlobalInst(storageType === StorageType.LocalStorage ? "localStorage" : "sessionStorage");
+    storage.setItem(uid.toString(), uid.toString());
+    var fail = storage.getItem(uid.toString()) !== uid.toString();
+    storage.removeItem(uid.toString());
+
+    if (!fail) {
+      return storage;
+    }
+  } catch (exception) {// eslint-disable-next-line no-empty
+  }
+
+  return null;
+}
+/**
+ * Gets the sessionStorage object if available
+ * @return {Storage} - Returns the storage object if available else returns null
+ */
+
+
+function _getSessionStorageObject() {
+  if (utlCanUseSessionStorage()) {
+    return _getVerifiedStorageObject(StorageType.SessionStorage);
+  }
+
+  return null;
+}
+
+function utlDisableStorage() {
+  _canUseLocalStorage = false;
+  _canUseSessionStorage = false;
+}
+function utlCanUseLocalStorage() {
+  if (_canUseLocalStorage === undefined) {
+    _canUseLocalStorage = !!_getVerifiedStorageObject(StorageType.LocalStorage);
+  }
+
+  return _canUseLocalStorage;
+}
+function utlGetLocalStorage(logger, name) {
+  var storage = _getLocalStorageObject();
+
+  if (storage !== null) {
+    try {
+      return storage.getItem(name);
+    } catch (e) {
+      _canUseLocalStorage = false;
+      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserCannotReadLocalStorage, "Browser failed read of local storage. " + getExceptionName(e), {
+        exception: dumpObj(e)
+      });
+    }
+  }
+
+  return null;
+}
+function utlSetLocalStorage(logger, name, data) {
+  var storage = _getLocalStorageObject();
+
+  if (storage !== null) {
+    try {
+      storage.setItem(name, data);
+      return true;
+    } catch (e) {
+      _canUseLocalStorage = false;
+      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserCannotWriteLocalStorage, "Browser failed write to local storage. " + getExceptionName(e), {
+        exception: dumpObj(e)
+      });
+    }
+  }
+
+  return false;
+}
+function utlRemoveStorage(logger, name) {
+  var storage = _getLocalStorageObject();
+
+  if (storage !== null) {
+    try {
+      storage.removeItem(name);
+      return true;
+    } catch (e) {
+      _canUseLocalStorage = false;
+      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserFailedRemovalFromLocalStorage, "Browser failed removal of local storage item. " + getExceptionName(e), {
+        exception: dumpObj(e)
+      });
+    }
+  }
+
+  return false;
+}
+function utlCanUseSessionStorage() {
+  if (_canUseSessionStorage === undefined) {
+    _canUseSessionStorage = !!_getVerifiedStorageObject(StorageType.SessionStorage);
+  }
+
+  return _canUseSessionStorage;
+}
+function utlGetSessionStorageKeys() {
+  var keys = [];
+
+  if (utlCanUseSessionStorage()) {
+    objForEachKey(getGlobalInst("sessionStorage"), function (key) {
+      keys.push(key);
+    });
+  }
+
+  return keys;
+}
+function utlGetSessionStorage(logger, name) {
+  var storage = _getSessionStorageObject();
+
+  if (storage !== null) {
+    try {
+      return storage.getItem(name);
+    } catch (e) {
+      _canUseSessionStorage = false;
+      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserCannotReadSessionStorage, "Browser failed read of session storage. " + getExceptionName(e), {
+        exception: dumpObj(e)
+      });
+    }
+  }
+
+  return null;
+}
+function utlSetSessionStorage(logger, name, data) {
+  var storage = _getSessionStorageObject();
+
+  if (storage !== null) {
+    try {
+      storage.setItem(name, data);
+      return true;
+    } catch (e) {
+      _canUseSessionStorage = false;
+      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserCannotWriteSessionStorage, "Browser failed write to session storage. " + getExceptionName(e), {
+        exception: dumpObj(e)
+      });
+    }
+  }
+
+  return false;
+}
+function utlRemoveSessionStorage(logger, name) {
+  var storage = _getSessionStorageObject();
+
+  if (storage !== null) {
+    try {
+      storage.removeItem(name);
+      return true;
+    } catch (e) {
+      _canUseSessionStorage = false;
+      logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserFailedRemovalFromSessionStorage, "Browser failed removal of session storage item. " + getExceptionName(e), {
+        exception: dumpObj(e)
+      });
+    }
+  }
+
+  return false;
+}
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/DomHelperFuncs.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+function createDomEvent(eventName) {
+  var event = null;
+
+  if (isFunction(Event)) {
+    // Use Event constructor when available
+    event = new Event(eventName);
+  } else {
+    // Event has no constructor in IE
+    var doc = getDocument();
+
+    if (doc && doc.createEvent) {
+      event = doc.createEvent("Event");
+      event.initEvent(eventName, true, true);
+    }
+  }
+
+  return event;
+}
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/RequestResponseHeaders.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+var RequestHeaders = {
+  requestContextHeader: "Request-Context",
+  requestContextTargetKey: "appId",
+  requestContextAppIdFormat: "appId=cid-v1:",
+  requestIdHeader: "Request-Id",
+  traceParentHeader: "traceparent",
+  traceStateHeader: "tracestate",
+  sdkContextHeader: "Sdk-Context",
+  sdkContextHeaderAppIdRequest: "appId",
+  requestContextHeaderLowerCase: "request-context"
+};
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/UrlHelperFuncs.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+var _document = getDocument() || {};
+
+var _htmlAnchorIdx = 0; // Use an array of temporary values as it's possible for multiple calls to parseUrl() will be called with different URLs
+// Using a cache size of 5 for now as it current depth usage is at least 2, so adding a minor buffer to handle future updates
+
+var _htmlAnchorElement = [null, null, null, null, null];
+function urlParseUrl(url) {
+  var anchorIdx = _htmlAnchorIdx;
+  var anchorCache = _htmlAnchorElement;
+  var tempAnchor = anchorCache[anchorIdx];
+
+  if (!_document.createElement) {
+    // Always create the temp instance if createElement is not available
+    tempAnchor = {
+      host: urlParseHost(url, true)
+    };
+  } else if (!anchorCache[anchorIdx]) {
+    // Create and cache the unattached anchor instance 
+    tempAnchor = anchorCache[anchorIdx] = _document.createElement('a');
+  }
+
+  tempAnchor.href = url; // Move the cache index forward
+
+  anchorIdx++;
+
+  if (anchorIdx >= anchorCache.length) {
+    anchorIdx = 0;
+  }
+
+  _htmlAnchorIdx = anchorIdx;
+  return tempAnchor;
+}
+function urlGetAbsoluteUrl(url) {
+  var result;
+  var a = urlParseUrl(url);
+
+  if (a) {
+    result = a.href;
+  }
+
+  return result;
+}
+function urlGetPathName(url) {
+  var result;
+  var a = urlParseUrl(url);
+
+  if (a) {
+    result = a.pathname;
+  }
+
+  return result;
+}
+function urlGetCompleteUrl(method, absoluteUrl) {
+  if (method) {
+    return method.toUpperCase() + " " + absoluteUrl;
+  }
+
+  return absoluteUrl;
+} // Fallback method to grab host from url if document.createElement method is not available
+
+function urlParseHost(url, inclPort) {
+  var fullHost = urlParseFullHost(url, inclPort) || "";
+
+  if (fullHost) {
+    var match = fullHost.match(/(www[0-9]?\.)?(.[^/:]+)(\:[\d]+)?/i);
+
+    if (match != null && match.length > 3 && HelperFuncs_isString(match[2]) && match[2].length > 0) {
+      return match[2] + (match[3] || "");
+    }
+  }
+
+  return fullHost;
+}
+function urlParseFullHost(url, inclPort) {
+  var result = null;
+
+  if (url) {
+    var match = url.match(/(\w*):\/\/(.[^/:]+)(\:[\d]+)?/i);
+
+    if (match != null && match.length > 2 && HelperFuncs_isString(match[2]) && match[2].length > 0) {
+      result = match[2] || "";
+
+      if (inclPort && match.length > 2) {
+        var protocol = (match[1] || "").toLowerCase();
+        var port = match[3] || ""; // IE includes the standard port so pass it off if it's the same as the protocol
+
+        if (protocol === "http" && port === ":80") {
+          port = "";
+        } else if (protocol === "https" && port === ":443") {
+          port = "";
+        }
+
+        result += port;
+      }
+    }
+  }
+
+  return result;
+}
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Util.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+
+
+
+
+ // listing only non-geo specific locations
+
+var _internalEndpoints = ["https://dc.services.visualstudio.com/v2/track", "https://breeze.aimon.applicationinsights.io/v2/track", "https://dc-int.services.visualstudio.com/v2/track"];
+function isInternalApplicationInsightsEndpoint(endpointUrl) {
+  return _internalEndpoints.indexOf(endpointUrl.toLowerCase()) !== -1;
+}
+var Util = {
+  NotSpecified: strNotSpecified,
+  createDomEvent: createDomEvent,
+  disableStorage: utlDisableStorage,
+  isInternalApplicationInsightsEndpoint: isInternalApplicationInsightsEndpoint,
+  canUseLocalStorage: utlCanUseLocalStorage,
+  getStorage: utlGetLocalStorage,
+  setStorage: utlSetLocalStorage,
+  removeStorage: utlRemoveStorage,
+  canUseSessionStorage: utlCanUseSessionStorage,
+  getSessionStorageKeys: utlGetSessionStorageKeys,
+  getSessionStorage: utlGetSessionStorage,
+  setSessionStorage: utlSetSessionStorage,
+  removeSessionStorage: utlRemoveSessionStorage,
+  disableCookies: disableCookies,
+  canUseCookies: canUseCookies,
+  disallowsSameSiteNone: uaDisallowsSameSiteNone,
+  setCookie: setCookie,
+  stringToBoolOrDefault: stringToBoolOrDefault,
+  getCookie: getCookie,
+  deleteCookie: deleteCookie,
+  trim: strTrim,
+  newId: newId,
+  random32: function random32() {
+    return RandomHelper_random32(true);
+  },
+  generateW3CId: generateW3CId,
+  isArray: isArray,
+  isError: isError,
+  isDate: isDate,
+  toISOStringForIE8: toISOString,
+  getIEVersion: getIEVersion,
+  msToTimeSpan: msToTimeSpan,
+  isCrossOriginError: isCrossOriginError,
+  dump: dumpObj,
+  getExceptionName: getExceptionName,
+  addEventHandler: attachEvent,
+  IsBeaconApiSupported: isBeaconsSupported,
+  getExtension: getExtensionByName
+};
+;
+var UrlHelper = {
+  parseUrl: urlParseUrl,
+  getAbsoluteUrl: urlGetAbsoluteUrl,
+  getPathName: urlGetPathName,
+  getCompleteUrl: urlGetCompleteUrl,
+  parseHost: urlParseHost,
+  parseFullHost: urlParseFullHost
+};
+var CorrelationIdHelper = {
+  correlationIdPrefix: "cid-v1:",
+
+  /**
+   * Checks if a request url is not on a excluded domain list and if it is safe to add correlation headers.
+   * Headers are always included if the current domain matches the request domain. If they do not match (CORS),
+   * they are regex-ed across correlationHeaderDomains and correlationHeaderExcludedDomains to determine if headers are included.
+   * Some environments don't give information on currentHost via window.location.host (e.g. Cordova). In these cases, the user must
+   * manually supply domains to include correlation headers on. Else, no headers will be included at all.
+   */
+  canIncludeCorrelationHeader: function canIncludeCorrelationHeader(config, requestUrl, currentHost) {
+    if (!requestUrl || config && config.disableCorrelationHeaders) {
+      return false;
+    }
+
+    if (config && config.correlationHeaderExcludePatterns) {
+      for (var i = 0; i < config.correlationHeaderExcludePatterns.length; i++) {
+        if (config.correlationHeaderExcludePatterns[i].test(requestUrl)) {
+          return false;
+        }
+      }
+    }
+
+    var requestHost = urlParseUrl(requestUrl).host.toLowerCase();
+
+    if (requestHost && (requestHost.indexOf(":443") !== -1 || requestHost.indexOf(":80") !== -1)) {
+      // [Bug #1260] IE can include the port even for http and https URLs so if present 
+      // try and parse it to remove if it matches the default protocol port
+      requestHost = (urlParseFullHost(requestUrl, true) || "").toLowerCase();
+    }
+
+    if ((!config || !config.enableCorsCorrelation) && requestHost && requestHost !== currentHost) {
+      return false;
+    }
+
+    var includedDomains = config && config.correlationHeaderDomains;
+
+    if (includedDomains) {
+      var matchExists_1;
+      arrForEach(includedDomains, function (domain) {
+        var regex = new RegExp(domain.toLowerCase().replace(/\\/g, "\\\\").replace(/\./g, "\\.").replace(/\*/g, ".*"));
+        matchExists_1 = matchExists_1 || regex.test(requestHost);
+      });
+
+      if (!matchExists_1) {
+        return false;
+      }
+    }
+
+    var excludedDomains = config && config.correlationHeaderExcludedDomains;
+
+    if (!excludedDomains || excludedDomains.length === 0) {
+      return true;
+    }
+
+    for (var i = 0; i < excludedDomains.length; i++) {
+      var regex = new RegExp(excludedDomains[i].toLowerCase().replace(/\\/g, "\\\\").replace(/\./g, "\\.").replace(/\*/g, ".*"));
+
+      if (regex.test(requestHost)) {
+        return false;
+      }
+    } // if we don't know anything about the requestHost, require the user to use included/excludedDomains.
+    // Previously we always returned false for a falsy requestHost
+
+
+    return requestHost && requestHost.length > 0;
+  },
+
+  /**
+   * Combines target appId and target role name from response header.
+   */
+  getCorrelationContext: function getCorrelationContext(responseHeader) {
+    if (responseHeader) {
+      var correlationId = CorrelationIdHelper.getCorrelationContextValue(responseHeader, RequestHeaders.requestContextTargetKey);
+
+      if (correlationId && correlationId !== CorrelationIdHelper.correlationIdPrefix) {
+        return correlationId;
+      }
+    }
+  },
+
+  /**
+   * Gets key from correlation response header
+   */
+  getCorrelationContextValue: function getCorrelationContextValue(responseHeader, key) {
+    if (responseHeader) {
+      var keyValues = responseHeader.split(",");
+
+      for (var i = 0; i < keyValues.length; ++i) {
+        var keyValue = keyValues[i].split("=");
+
+        if (keyValue.length === 2 && keyValue[0] === key) {
+          return keyValue[1];
+        }
+      }
+    }
+  }
+};
+function AjaxHelperParseDependencyPath(logger, absoluteUrl, method, commandName) {
+  var target,
+      name = commandName,
+      data = commandName;
+
+  if (absoluteUrl && absoluteUrl.length > 0) {
+    var parsedUrl = urlParseUrl(absoluteUrl);
+    target = parsedUrl.host;
+
+    if (!name) {
+      if (parsedUrl.pathname != null) {
+        var pathName = parsedUrl.pathname.length === 0 ? "/" : parsedUrl.pathname;
+
+        if (pathName.charAt(0) !== '/') {
+          pathName = "/" + pathName;
+        }
+
+        data = parsedUrl.pathname;
+        name = dataSanitizeString(logger, method ? method + " " + pathName : pathName);
+      } else {
+        name = dataSanitizeString(logger, absoluteUrl);
+      }
+    }
+  } else {
+    target = commandName;
+    name = commandName;
+  }
+
+  return {
+    target: target,
+    name: name,
+    data: data
+  };
+}
+function dateTimeUtilsNow() {
+  // returns the window or webworker performance object
+  var perf = getPerformance();
+
+  if (perf && perf.now && perf.timing) {
+    var now = perf.now() + perf.timing.navigationStart; // Known issue with IE where this calculation can be negative, so if it is then ignore and fallback
+
+    if (now > 0) {
+      return now;
+    }
+  }
+
+  return dateNow();
+}
+function dateTimeUtilsDuration(start, end) {
+  var result = null;
+
+  if (start !== 0 && end !== 0 && !isNullOrUndefined(start) && !isNullOrUndefined(end)) {
+    result = end - start;
+  }
+
+  return result;
+}
+/**
+ * A utility class that helps getting time related parameters
+ */
+
+var DateTimeUtils = {
+  Now: dateTimeUtilsNow,
+  GetDuration: dateTimeUtilsDuration
+};
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/RemoteDependencyData.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+/**
+ * An instance of Remote Dependency represents an interaction of the monitored component with a remote component/service like SQL or an HTTP endpoint.
+ */
+var RemoteDependencyData = function () {
+  function RemoteDependencyData() {
     /**
      * Schema version
      */
     this.ver = 2;
     /**
-     * List of metrics. Only one metric in the list is currently supported by Application Insights storage. If multiple data points were sent only the first one will be used.
+     * Indication of successful or unsuccessful call.
      */
 
-    this.metrics = [];
+    this.success = true;
     /**
      * Collection of custom properties.
      */
@@ -61656,49 +61564,11 @@ var MetricData = function () {
     this.measurements = {};
   }
 
-  return MetricData;
+  return RemoteDependencyData;
 }();
 
 
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/DataPointType.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-// THIS FILE WAS AUTOGENERATED
-
-/**
- * Type of the metric data measurement.
- */
-var DataPointType;
-
-(function (DataPointType) {
-  DataPointType[DataPointType["Measurement"] = 0] = "Measurement";
-  DataPointType[DataPointType["Aggregation"] = 1] = "Aggregation";
-})(DataPointType || (DataPointType = {}));
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/DataPoint.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-/**
- * Metric data single measurement.
- */
-
-var DataPoint = function () {
-  function DataPoint() {
-    /**
-     * Metric type. Single measurement or the aggregated value.
-     */
-    this.kind = DataPointType.Measurement;
-  }
-
-  return DataPoint;
-}();
-
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/DataPoint.js
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/RemoteDependencyData.js
 /*
  * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
@@ -61706,25 +61576,62 @@ var DataPoint = function () {
 
 
 
-var DataPoint_DataPoint = function (_super) {
-  __extendsFn(DataPoint, _super);
 
-  function DataPoint() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
-    /**
-     * The data contract for serializing this object.
-     */
 
+
+var RemoteDependencyData_RemoteDependencyData = function (_super) {
+  __extendsFn(RemoteDependencyData, _super);
+  /**
+   * Constructs a new instance of the RemoteDependencyData object
+   */
+
+
+  function RemoteDependencyData(logger, id, absoluteUrl, commandName, value, success, resultCode, method, requestAPI, correlationContext, properties, measurements) {
+    if (requestAPI === void 0) {
+      requestAPI = "Ajax";
+    }
+
+    var _this = _super.call(this) || this;
 
     _this.aiDataContract = {
-      name: 1
+      id: 1
       /* Required */
+      ,
+      ver: 1
+      /* Required */
+      ,
+      name: 0
+      /* Default */
+      ,
+      resultCode: 0
+      /* Default */
+      ,
+      duration: 0
+      /* Default */
+      ,
+      success: 0
+      /* Default */
+      ,
+      data: 0
+      /* Default */
+      ,
+      target: 0
+      /* Default */
+      ,
+      type: 0
+      /* Default */
+      ,
+      properties: 0
+      /* Default */
+      ,
+      measurements: 0
+      /* Default */
       ,
       kind: 0
       /* Default */
       ,
-      value: 1
-      /* Required */
+      value: 0
+      /* Default */
       ,
       count: 0
       /* Default */
@@ -61737,318 +61644,1785 @@ var DataPoint_DataPoint = function (_super) {
       ,
       stdDev: 0
       /* Default */
-
-    };
-    return _this;
-  }
-
-  return DataPoint;
-}(DataPoint);
-
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Metric.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-
-
-
-
-
-var Metric = function (_super) {
-  __extendsFn(Metric, _super);
-  /**
-   * Constructs a new instance of the MetricTelemetry object
-   */
-
-
-  function Metric(logger, name, value, count, min, max, properties, measurements) {
-    var _this = _super.call(this) || this;
-
-    _this.aiDataContract = {
-      ver: 1
-      /* Required */
       ,
-      metrics: 1
-      /* Required */
+      dependencyKind: 0
+      /* Default */
       ,
-      properties: 0
+      dependencySource: 0
+      /* Default */
+      ,
+      commandName: 0
+      /* Default */
+      ,
+      dependencyTypeName: 0
       /* Default */
 
     };
-    var dataPoint = new DataPoint_DataPoint();
-    dataPoint.count = count > 0 ? count : undefined;
-    dataPoint.max = isNaN(max) || max === null ? undefined : max;
-    dataPoint.min = isNaN(min) || min === null ? undefined : min;
-    dataPoint.name = dataSanitizeString(logger, name) || strNotSpecified;
-    dataPoint.value = value;
-    _this.metrics = [dataPoint];
-    _this.properties = dataSanitizeProperties(logger, properties);
-    _this.measurements = dataSanitizeMeasurements(logger, measurements);
-    return _this;
-  }
+    _this.id = id;
+    _this.duration = msToTimeSpan(value);
+    _this.success = success;
+    _this.resultCode = resultCode + "";
+    _this.type = dataSanitizeString(logger, requestAPI);
+    var dependencyFields = AjaxHelperParseDependencyPath(logger, absoluteUrl, method, commandName);
+    _this.data = dataSanitizeUrl(logger, commandName) || dependencyFields.data; // get a value from hosturl if commandName not available
 
-  Metric.envelopeType = "Microsoft.ApplicationInsights.{0}.Metric";
-  Metric.dataType = "MetricData";
-  return Metric;
-}(MetricData);
+    _this.target = dataSanitizeString(logger, dependencyFields.target);
 
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/PageViewData.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
- // THIS FILE WAS AUTOGENERATED
-
-
-/**
- * An instance of PageView represents a generic action on a page like a button click. It is also the base type for PageView.
- */
-
-var PageViewData = function (_super) {
-  __extendsFn(PageViewData, _super);
-
-  function PageViewData() {
-    var _this = _super.call(this) || this;
-    /**
-     * Schema version
-     */
-
-
-    _this.ver = 2;
-    /**
-     * Collection of custom properties.
-     */
-
-    _this.properties = {};
-    /**
-     * Collection of custom measurements.
-     */
-
-    _this.measurements = {};
-    return _this;
-  }
-
-  return PageViewData;
-}(EventData);
-
-
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/PageView.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-
-
-
-
-
-
-var PageView = function (_super) {
-  __extendsFn(PageView, _super);
-  /**
-   * Constructs a new instance of the PageEventTelemetry object
-   */
-
-
-  function PageView(logger, name, url, durationMs, properties, measurements, id) {
-    var _this = _super.call(this) || this;
-
-    _this.aiDataContract = {
-      ver: 1
-      /* Required */
-      ,
-      name: 0
-      /* Default */
-      ,
-      url: 0
-      /* Default */
-      ,
-      duration: 0
-      /* Default */
-      ,
-      properties: 0
-      /* Default */
-      ,
-      measurements: 0
-      /* Default */
-      ,
-      id: 0
-      /* Default */
-
-    };
-    _this.id = dataSanitizeId(logger, id);
-    _this.url = dataSanitizeUrl(logger, url);
-    _this.name = dataSanitizeString(logger, name) || strNotSpecified;
-
-    if (!isNaN(durationMs)) {
-      _this.duration = msToTimeSpan(durationMs);
+    if (correlationContext) {
+      _this.target = _this.target + " | " + correlationContext;
     }
 
+    _this.name = dataSanitizeString(logger, dependencyFields.name);
     _this.properties = dataSanitizeProperties(logger, properties);
     _this.measurements = dataSanitizeMeasurements(logger, measurements);
     return _this;
   }
 
-  PageView.envelopeType = "Microsoft.ApplicationInsights.{0}.Pageview";
-  PageView.dataType = "PageviewData";
-  return PageView;
-}(PageViewData);
+  RemoteDependencyData.envelopeType = "Microsoft.ApplicationInsights.{0}.RemoteDependency";
+  RemoteDependencyData.dataType = "RemoteDependencyData";
+  return RemoteDependencyData;
+}(RemoteDependencyData);
 
 
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/PageViewPerfData.js
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-analytics-js/dist-esm/JavaScriptSDK/Telemetry/PageViewManager.js
 /*
- * Application Insights JavaScript SDK - Common, 2.7.0
+ * Application Insights JavaScript SDK - Web Analytics, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
- // THIS FILE WAS AUTOGENERATED
+
 
 
 /**
- * An instance of PageViewPerf represents: a page view with no performance data, a page view with performance data, or just the performance data of an earlier page request.
+ * Class encapsulates sending page views and page view performance telemetry.
  */
 
-var PageViewPerfData = function (_super) {
-  __extendsFn(PageViewPerfData, _super);
+var PageViewManager = function () {
+  function PageViewManager(appInsights, overridePageViewDuration, core, pageViewPerformanceManager) {
+    dynamicproto_js(PageViewManager, this, function (_self) {
+      var intervalHandle = null;
+      var itemQueue = [];
+      var pageViewPerformanceSent = false;
 
-  function PageViewPerfData() {
-    var _this = _super.call(this) || this;
-    /**
-     * Schema version
-     */
+      var _logger;
 
+      if (core) {
+        _logger = core.logger;
+      }
 
-    _this.ver = 2;
-    /**
-     * Collection of custom properties.
-     */
+      function _flushChannels() {
+        if (core) {
+          arrForEach(core.getTransmissionControls(), function (queues) {
+            arrForEach(queues, function (q) {
+              return q.flush(true);
+            });
+          });
+        }
+      }
 
-    _this.properties = {};
-    /**
-     * Collection of custom measurements.
-     */
+      function _addQueue(cb) {
+        itemQueue.push(cb);
 
-    _this.measurements = {};
-    return _this;
-  }
+        if (!intervalHandle) {
+          intervalHandle = setInterval(function () {
+            var allItems = itemQueue.slice(0);
+            var doFlush = false;
+            itemQueue = [];
+            arrForEach(allItems, function (item) {
+              if (!item()) {
+                // Not processed so rescheduled
+                itemQueue.push(item);
+              } else {
+                doFlush = true;
+              }
+            });
 
-  return PageViewPerfData;
-}(PageViewData);
+            if (itemQueue.length === 0) {
+              clearInterval(intervalHandle);
+              intervalHandle = null;
+            }
 
+            if (doFlush) {
+              // We process at least one item so flush the queue
+              _flushChannels();
+            }
+          }, 100);
+        }
+      }
 
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/PageViewPerformance.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
+      _self.trackPageView = function (pageView, customProperties) {
+        var name = pageView.name;
 
+        if (isNullOrUndefined(name) || typeof name !== "string") {
+          var doc = getDocument();
+          name = pageView.name = doc && doc.title || "";
+        }
 
+        var uri = pageView.uri;
 
-
-
-var PageViewPerformance = function (_super) {
-  __extendsFn(PageViewPerformance, _super);
-  /**
-   * Constructs a new instance of the PageEventTelemetry object
-   */
-
-
-  function PageViewPerformance(logger, name, url, unused, properties, measurements, cs4BaseData) {
-    var _this = _super.call(this) || this;
-
-    _this.aiDataContract = {
-      ver: 1
-      /* Required */
-      ,
-      name: 0
-      /* Default */
-      ,
-      url: 0
-      /* Default */
-      ,
-      duration: 0
-      /* Default */
-      ,
-      perfTotal: 0
-      /* Default */
-      ,
-      networkConnect: 0
-      /* Default */
-      ,
-      sentRequest: 0
-      /* Default */
-      ,
-      receivedResponse: 0
-      /* Default */
-      ,
-      domProcessing: 0
-      /* Default */
-      ,
-      properties: 0
-      /* Default */
-      ,
-      measurements: 0
-      /* Default */
-
-    };
-    _this.url = dataSanitizeUrl(logger, url);
-    _this.name = dataSanitizeString(logger, name) || strNotSpecified;
-    _this.properties = dataSanitizeProperties(logger, properties);
-    _this.measurements = dataSanitizeMeasurements(logger, measurements);
-
-    if (cs4BaseData) {
-      _this.domProcessing = cs4BaseData.domProcessing;
-      _this.duration = cs4BaseData.duration;
-      _this.networkConnect = cs4BaseData.networkConnect;
-      _this.perfTotal = cs4BaseData.perfTotal;
-      _this.receivedResponse = cs4BaseData.receivedResponse;
-      _this.sentRequest = cs4BaseData.sentRequest;
-    }
-
-    return _this;
-  }
-
-  PageViewPerformance.envelopeType = "Microsoft.ApplicationInsights.{0}.PageviewPerformance";
-  PageViewPerformance.dataType = "PageviewPerformanceData";
-  return PageViewPerformance;
-}(PageViewPerfData);
+        if (isNullOrUndefined(uri) || typeof uri !== "string") {
+          var location_1 = getLocation();
+          uri = pageView.uri = location_1 && location_1.href || "";
+        } // case 1a. if performance timing is not supported by the browser, send the page view telemetry with the duration provided by the user. If the user
+        // do not provide the duration, set duration to undefined
+        // Also this is case 4
 
 
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/MessageData.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
+        if (!pageViewPerformanceManager.isPerformanceTimingSupported()) {
+          appInsights.sendPageViewInternal(pageView, customProperties);
 
-/**
- * Instances of Message represent printf-like trace statements that are text-searched. Log4Net, NLog and other text-based log file entries are translated into intances of this type. The message does not have measurements.
- */
-var MessageData = function () {
-  function MessageData() {
-    /**
-     * Schema version
-     */
-    this.ver = 2;
-    /**
-     * Collection of custom properties.
-     */
+          _flushChannels(); // no navigation timing (IE 8, iOS Safari 8.4, Opera Mini 8 - see http://caniuse.com/#feat=nav-timing)
 
-    this.properties = {};
-    /**
-     * Collection of custom measurements.
-     */
 
-    this.measurements = {};
-  }
+          _logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.NavigationTimingNotSupported, "trackPageView: navigation timing API used for calculation of page duration is not supported in this browser. This page view will be collected without duration and timing info.");
 
-  return MessageData;
+          return;
+        }
+
+        var pageViewSent = false;
+        var customDuration; // if the performance timing is supported by the browser, calculate the custom duration
+
+        var start = pageViewPerformanceManager.getPerformanceTiming().navigationStart;
+
+        if (start > 0) {
+          customDuration = dateTimeUtilsDuration(start, +new Date());
+
+          if (!pageViewPerformanceManager.shouldCollectDuration(customDuration)) {
+            customDuration = undefined;
+          }
+        } // if the user has provided duration, send a page view telemetry with the provided duration. Otherwise, if
+        // overridePageViewDuration is set to true, send a page view telemetry with the custom duration calculated earlier
+
+
+        var duration;
+
+        if (!isNullOrUndefined(customProperties) && !isNullOrUndefined(customProperties.duration)) {
+          duration = customProperties.duration;
+        }
+
+        if (overridePageViewDuration || !isNaN(duration)) {
+          if (isNaN(duration)) {
+            // case 3
+            if (!customProperties) {
+              customProperties = {};
+            }
+
+            customProperties["duration"] = customDuration;
+          } // case 2
+
+
+          appInsights.sendPageViewInternal(pageView, customProperties);
+
+          _flushChannels();
+
+          pageViewSent = true;
+        } // now try to send the page view performance telemetry
+
+
+        var maxDurationLimit = 60000;
+
+        if (!customProperties) {
+          customProperties = {};
+        } // Queue the event for processing
+
+
+        _addQueue(function () {
+          var processed = false;
+
+          try {
+            if (pageViewPerformanceManager.isPerformanceTimingDataReady()) {
+              processed = true;
+              var pageViewPerformance = {
+                name: name,
+                uri: uri
+              };
+              pageViewPerformanceManager.populatePageViewPerformanceEvent(pageViewPerformance);
+
+              if (!pageViewPerformance.isValid && !pageViewSent) {
+                // If navigation timing gives invalid numbers, then go back to "override page view duration" mode.
+                // That's the best value we can get that makes sense.
+                customProperties["duration"] = customDuration;
+                appInsights.sendPageViewInternal(pageView, customProperties);
+              } else {
+                if (!pageViewSent) {
+                  customProperties["duration"] = pageViewPerformance.durationMs;
+                  appInsights.sendPageViewInternal(pageView, customProperties);
+                }
+
+                if (!pageViewPerformanceSent) {
+                  appInsights.sendPageViewPerformanceInternal(pageViewPerformance, customProperties);
+                  pageViewPerformanceSent = true;
+                }
+              }
+            } else if (start > 0 && dateTimeUtilsDuration(start, +new Date()) > maxDurationLimit) {
+              // if performance timings are not ready but we exceeded the maximum duration limit, just log a page view telemetry
+              // with the maximum duration limit. Otherwise, keep waiting until performance timings are ready
+              processed = true;
+
+              if (!pageViewSent) {
+                customProperties["duration"] = maxDurationLimit;
+                appInsights.sendPageViewInternal(pageView, customProperties);
+              }
+            }
+          } catch (e) {
+            _logger.throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.TrackPVFailedCalc, "trackPageView failed on page load calculation: " + getExceptionName(e), {
+              exception: dumpObj(e)
+            });
+          }
+
+          return processed;
+        });
+      };
+    });
+  } // Removed Stub for PageViewManager.prototype.trackPageView.
+
+
+  return PageViewManager;
 }();
 
 
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Trace.js
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-analytics-js/dist-esm/JavaScriptSDK/Telemetry/PageVisitTimeManager.js
+/*
+ * Application Insights JavaScript SDK - Web Analytics, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+/**
+ * Used to track page visit durations
+ */
+
+var PageVisitTimeManager = function () {
+  /**
+   * Creates a new instance of PageVisitTimeManager
+   * @param pageVisitTimeTrackingHandler Delegate that will be called to send telemetry data to AI (when trackPreviousPageVisit is called)
+   * @returns {}
+   */
+  function PageVisitTimeManager(logger, pageVisitTimeTrackingHandler) {
+    this.prevPageVisitDataKeyName = "prevPageVisitData";
+    this.pageVisitTimeTrackingHandler = pageVisitTimeTrackingHandler;
+    this._logger = logger;
+  }
+  /**
+   * Tracks the previous page visit time telemetry (if exists) and starts timing of new page visit time
+   * @param currentPageName Name of page to begin timing for visit duration
+   * @param currentPageUrl Url of page to begin timing for visit duration
+   */
+
+
+  PageVisitTimeManager.prototype.trackPreviousPageVisit = function (currentPageName, currentPageUrl) {
+    try {
+      // Restart timer for new page view
+      var prevPageVisitTimeData = this.restartPageVisitTimer(currentPageName, currentPageUrl); // If there was a page already being timed, track the visit time for it now.
+
+      if (prevPageVisitTimeData) {
+        this.pageVisitTimeTrackingHandler(prevPageVisitTimeData.pageName, prevPageVisitTimeData.pageUrl, prevPageVisitTimeData.pageVisitTime);
+      }
+    } catch (e) {
+      this._logger.warnToConsole("Auto track page visit time failed, metric will not be collected: " + dumpObj(e));
+    }
+  };
+  /**
+   * Stops timing of current page (if exists) and starts timing for duration of visit to pageName
+   * @param pageName Name of page to begin timing visit duration
+   * @returns {PageVisitData} Page visit data (including duration) of pageName from last call to start or restart, if exists. Null if not.
+   */
+
+
+  PageVisitTimeManager.prototype.restartPageVisitTimer = function (pageName, pageUrl) {
+    try {
+      var prevPageVisitData = this.stopPageVisitTimer();
+      this.startPageVisitTimer(pageName, pageUrl);
+      return prevPageVisitData;
+    } catch (e) {
+      this._logger.warnToConsole("Call to restart failed: " + dumpObj(e));
+
+      return null;
+    }
+  };
+  /**
+   * Starts timing visit duration of pageName
+   * @param pageName
+   * @returns {}
+   */
+
+
+  PageVisitTimeManager.prototype.startPageVisitTimer = function (pageName, pageUrl) {
+    try {
+      if (utlCanUseSessionStorage()) {
+        if (utlGetSessionStorage(this._logger, this.prevPageVisitDataKeyName) != null) {
+          throwError("Cannot call startPageVisit consecutively without first calling stopPageVisit");
+        }
+
+        var currPageVisitData = new PageVisitData(pageName, pageUrl);
+        var currPageVisitDataStr = getJSON().stringify(currPageVisitData);
+        utlSetSessionStorage(this._logger, this.prevPageVisitDataKeyName, currPageVisitDataStr);
+      }
+    } catch (e) {
+      // TODO: Remove this catch in next phase, since if start is called twice in a row the exception needs to be propagated out
+      this._logger.warnToConsole("Call to start failed: " + dumpObj(e));
+    }
+  };
+  /**
+   * Stops timing of current page, if exists.
+   * @returns {PageVisitData} Page visit data (including duration) of pageName from call to start, if exists. Null if not.
+   */
+
+
+  PageVisitTimeManager.prototype.stopPageVisitTimer = function () {
+    try {
+      if (utlCanUseSessionStorage()) {
+        // Define end time of page's visit
+        var pageVisitEndTime = dateNow(); // Try to retrieve  page name and start time from session storage
+
+        var pageVisitDataJsonStr = utlGetSessionStorage(this._logger, this.prevPageVisitDataKeyName);
+
+        if (pageVisitDataJsonStr && hasJSON()) {
+          // if previous page data exists, set end time of visit
+          var prevPageVisitData = getJSON().parse(pageVisitDataJsonStr);
+          prevPageVisitData.pageVisitTime = pageVisitEndTime - prevPageVisitData.pageVisitStartTime; // Remove data from storage since we already used it
+
+          utlRemoveSessionStorage(this._logger, this.prevPageVisitDataKeyName); // Return page visit data
+
+          return prevPageVisitData;
+        } else {
+          return null;
+        }
+      }
+
+      return null;
+    } catch (e) {
+      this._logger.warnToConsole("Stop page visit timer failed: " + dumpObj(e));
+
+      return null;
+    }
+  };
+
+  return PageVisitTimeManager;
+}();
+
+
+
+var PageVisitData = function () {
+  function PageVisitData(pageName, pageUrl) {
+    this.pageVisitStartTime = dateNow();
+    this.pageName = pageName;
+    this.pageUrl = pageUrl;
+  }
+
+  return PageVisitData;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-analytics-js/dist-esm/JavaScriptSDK/Telemetry/PageViewPerformanceManager.js
+/*
+ * Application Insights JavaScript SDK - Web Analytics, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+/**
+ * Class encapsulates sending page view performance telemetry.
+ */
+
+var PageViewPerformanceManager = function () {
+  function PageViewPerformanceManager(core) {
+    this.MAX_DURATION_ALLOWED = 3600000; // 1h
+
+    if (core) {
+      this._logger = core.logger;
+    }
+  }
+
+  PageViewPerformanceManager.prototype.populatePageViewPerformanceEvent = function (pageViewPerformance) {
+    pageViewPerformance.isValid = false;
+    /*
+     * http://www.w3.org/TR/navigation-timing/#processing-model
+     *  |-navigationStart
+     *  |             |-connectEnd
+     *  |             ||-requestStart
+     *  |             ||             |-responseStart
+     *  |             ||             |              |-responseEnd
+     *  |             ||             |              |
+     *  |             ||             |              |         |-loadEventEnd
+     *  |---network---||---request---|---response---|---dom---|
+     *  |--------------------------total----------------------|
+     *
+     *  total = The difference between the load event of the current document is completed and the first recorded timestamp of the performance entry : https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings#duration
+     *  network = Redirect time + App Cache + DNS lookup time + TCP connection time
+     *  request = Request time : https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings#request_time
+     *  response = Response time
+     *  dom = Document load time : https://html.spec.whatwg.org/multipage/dom.html#document-load-timing-info
+     *      = Document processing time : https://developers.google.com/web/fundamentals/performance/navigation-and-resource-timing/#document_processing
+     *      + Loading time : https://developers.google.com/web/fundamentals/performance/navigation-and-resource-timing/#loading
+     */
+
+    var navigationTiming = this.getPerformanceNavigationTiming();
+    var timing = this.getPerformanceTiming();
+    var total = 0;
+    var network = 0;
+    var request = 0;
+    var response = 0;
+    var dom = 0;
+
+    if (navigationTiming || timing) {
+      if (navigationTiming) {
+        total = navigationTiming.duration;
+        /**
+         * support both cases:
+         * - startTime is always zero: https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming
+         * - for older browsers where the startTime is not zero
+         */
+
+        network = navigationTiming.startTime === 0 ? navigationTiming.connectEnd : dateTimeUtilsDuration(navigationTiming.startTime, navigationTiming.connectEnd);
+        request = dateTimeUtilsDuration(navigationTiming.requestStart, navigationTiming.responseStart);
+        response = dateTimeUtilsDuration(navigationTiming.responseStart, navigationTiming.responseEnd);
+        dom = dateTimeUtilsDuration(navigationTiming.responseEnd, navigationTiming.loadEventEnd);
+      } else {
+        total = dateTimeUtilsDuration(timing.navigationStart, timing.loadEventEnd);
+        network = dateTimeUtilsDuration(timing.navigationStart, timing.connectEnd);
+        request = dateTimeUtilsDuration(timing.requestStart, timing.responseStart);
+        response = dateTimeUtilsDuration(timing.responseStart, timing.responseEnd);
+        dom = dateTimeUtilsDuration(timing.responseEnd, timing.loadEventEnd);
+      }
+
+      if (total === 0) {
+        this._logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.ErrorPVCalc, "error calculating page view performance.", {
+          total: total,
+          network: network,
+          request: request,
+          response: response,
+          dom: dom
+        });
+      } else if (!this.shouldCollectDuration(total, network, request, response, dom)) {
+        this._logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.InvalidDurationValue, "Invalid page load duration value. Browser perf data won't be sent.", {
+          total: total,
+          network: network,
+          request: request,
+          response: response,
+          dom: dom
+        });
+      } else if (total < Math.floor(network) + Math.floor(request) + Math.floor(response) + Math.floor(dom)) {
+        // some browsers may report individual components incorrectly so that the sum of the parts will be bigger than total PLT
+        // in this case, don't report client performance from this page
+        this._logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.ClientPerformanceMathError, "client performance math error.", {
+          total: total,
+          network: network,
+          request: request,
+          response: response,
+          dom: dom
+        });
+      } else {
+        pageViewPerformance.durationMs = total; // // convert to timespans
+
+        pageViewPerformance.perfTotal = pageViewPerformance.duration = msToTimeSpan(total);
+        pageViewPerformance.networkConnect = msToTimeSpan(network);
+        pageViewPerformance.sentRequest = msToTimeSpan(request);
+        pageViewPerformance.receivedResponse = msToTimeSpan(response);
+        pageViewPerformance.domProcessing = msToTimeSpan(dom);
+        pageViewPerformance.isValid = true;
+      }
+    }
+  };
+
+  PageViewPerformanceManager.prototype.getPerformanceTiming = function () {
+    if (this.isPerformanceTimingSupported()) {
+      return getPerformance().timing;
+    }
+
+    return null;
+  };
+
+  PageViewPerformanceManager.prototype.getPerformanceNavigationTiming = function () {
+    if (this.isPerformanceNavigationTimingSupported()) {
+      return getPerformance().getEntriesByType("navigation")[0];
+    }
+
+    return null;
+  };
+  /**
+   * Returns true is window PerformanceNavigationTiming API is supported, false otherwise.
+   */
+
+
+  PageViewPerformanceManager.prototype.isPerformanceNavigationTimingSupported = function () {
+    var perf = getPerformance();
+    return perf && perf.getEntriesByType && perf.getEntriesByType("navigation").length > 0;
+  };
+  /**
+   * Returns true is window performance timing API is supported, false otherwise.
+   */
+
+
+  PageViewPerformanceManager.prototype.isPerformanceTimingSupported = function () {
+    var perf = getPerformance();
+    return perf && perf.timing;
+  };
+  /**
+   * As page loads different parts of performance timing numbers get set. When all of them are set we can report it.
+   * Returns true if ready, false otherwise.
+   */
+
+
+  PageViewPerformanceManager.prototype.isPerformanceTimingDataReady = function () {
+    var perf = getPerformance();
+    var timing = perf ? perf.timing : 0;
+    return timing && timing.domainLookupStart > 0 && timing.navigationStart > 0 && timing.responseStart > 0 && timing.requestStart > 0 && timing.loadEventEnd > 0 && timing.responseEnd > 0 && timing.connectEnd > 0 && timing.domLoading > 0;
+  };
+  /**
+   * This method tells if given durations should be excluded from collection.
+   */
+
+
+  PageViewPerformanceManager.prototype.shouldCollectDuration = function () {
+    var durations = [];
+
+    for (var _i = 0; _i < arguments.length; _i++) {
+      durations[_i] = arguments[_i];
+    }
+
+    var _navigator = getNavigator() || {}; // a full list of Google crawlers user agent strings - https://support.google.com/webmasters/answer/1061943?hl=en
+
+
+    var botAgentNames = ['googlebot', 'adsbot-google', 'apis-google', 'mediapartners-google'];
+    var userAgent = _navigator.userAgent;
+    var isGoogleBot = false;
+
+    if (userAgent) {
+      for (var i = 0; i < botAgentNames.length; i++) {
+        isGoogleBot = isGoogleBot || userAgent.toLowerCase().indexOf(botAgentNames[i]) !== -1;
+      }
+    }
+
+    if (isGoogleBot) {
+      // Don't report durations for GoogleBot, it is returning invalid values in performance.timing API.
+      return false;
+    } else {
+      // for other page views, don't report if it's outside of a reasonable range
+      for (var i = 0; i < durations.length; i++) {
+        if (durations[i] < 0 || durations[i] >= this.MAX_DURATION_ALLOWED) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  };
+
+  return PageViewPerformanceManager;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-analytics-js/dist-esm/JavaScriptSDK/ApplicationInsights.js
+/*
+ * Application Insights JavaScript SDK - Web Analytics, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+/**
+ * ApplicationInsights.ts
+ * @copyright Microsoft 2018
+ */
+
+
+
+
+
+
+
+"use strict";
+
+var durationProperty = "duration";
+var strEvent = "event";
+
+function _dispatchEvent(target, evnt) {
+  if (target && target.dispatchEvent && evnt) {
+    target.dispatchEvent(evnt);
+  }
+}
+
+function _getReason(error) {
+  if (error && error.reason) {
+    var reason = error.reason;
+
+    if (!HelperFuncs_isString(reason) && isFunction(reason.toString)) {
+      return reason.toString();
+    }
+
+    return dumpObj(reason);
+  } // Pass the original object down which will eventually get evaluated for any message or description
+
+
+  return error || "";
+}
+
+var ApplicationInsights = function (_super) {
+  __extendsFn(ApplicationInsights, _super);
+
+  function ApplicationInsights() {
+    var _this = _super.call(this) || this;
+
+    _this.identifier = AnalyticsPluginIdentifier; // do not change name or priority
+
+    _this.priority = 180; // take from reserved priority range 100- 200
+
+    _this.autoRoutePVDelay = 500; // ms; Time to wait after a route change before triggering a pageview to allow DOM changes to take place
+
+    var _eventTracking;
+
+    var _pageTracking;
+
+    var _properties; // Counts number of trackAjax invocations.
+    // By default we only monitor X ajax call per view to avoid too much load.
+    // Default value is set in config.
+    // This counter keeps increasing even after the limit is reached.
+
+
+    var _trackAjaxAttempts = 0; // array with max length of 2 that store current url and previous url for SPA page route change trackPageview use.
+
+    var _prevUri; // Assigned in the constructor
+
+
+    var _currUri;
+
+    dynamicproto_js(ApplicationInsights, _this, function (_self, _base) {
+      var location = getLocation(true);
+      _prevUri = location && location.href || "";
+
+      _self.getCookieMgr = function () {
+        return safeGetCookieMgr(_self.core);
+      };
+
+      _self.processTelemetry = function (env, itemCtx) {
+        doPerf(_self.core, function () {
+          return _self.identifier + ":processTelemetry";
+        }, function () {
+          var doNotSendItem = false;
+          var telemetryInitializersCount = _self._telemetryInitializers.length;
+          itemCtx = _self._getTelCtx(itemCtx);
+
+          for (var i = 0; i < telemetryInitializersCount; ++i) {
+            var telemetryInitializer = _self._telemetryInitializers[i];
+
+            if (telemetryInitializer) {
+              try {
+                if (telemetryInitializer.apply(null, [env]) === false) {
+                  doNotSendItem = true;
+                  break;
+                }
+              } catch (e) {
+                // log error but dont stop executing rest of the telemetry initializers
+                // doNotSendItem = true;
+                itemCtx.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.TelemetryInitializerFailed, "One of telemetry initializers failed, telemetry item will not be sent: " + getExceptionName(e), {
+                  exception: dumpObj(e)
+                }, true);
+              }
+            }
+          }
+
+          if (!doNotSendItem) {
+            _self.processNext(env, itemCtx);
+          }
+        }, function () {
+          return {
+            item: env
+          };
+        }, !env.sync);
+      };
+
+      _self.trackEvent = function (event, customProperties) {
+        try {
+          var telemetryItem = TelemetryItemCreator.create(event, Event_Event.dataType, Event_Event.envelopeType, _self.diagLog(), customProperties);
+
+          _self.core.track(telemetryItem);
+        } catch (e) {
+          _self.diagLog().throwInternal(LoggingSeverity.WARNING, _InternalMessageId.TrackTraceFailed, "trackTrace failed, trace will not be collected: " + getExceptionName(e), {
+            exception: dumpObj(e)
+          });
+        }
+      };
+      /**
+       * Start timing an extended event. Call `stopTrackEvent` to log the event when it ends.
+       * @param   name    A string that identifies this event uniquely within the document.
+       */
+
+
+      _self.startTrackEvent = function (name) {
+        try {
+          _eventTracking.start(name);
+        } catch (e) {
+          _self.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.StartTrackEventFailed, "startTrackEvent failed, event will not be collected: " + getExceptionName(e), {
+            exception: dumpObj(e)
+          });
+        }
+      };
+      /**
+       * Log an extended event that you started timing with `startTrackEvent`.
+       * @param   name    The string you used to identify this event in `startTrackEvent`.
+       * @param   properties  map[string, string] - additional data used to filter events and metrics in the portal. Defaults to empty.
+       * @param   measurements    map[string, number] - metrics associated with this event, displayed in Metrics Explorer on the portal. Defaults to empty.
+       */
+
+
+      _self.stopTrackEvent = function (name, properties, measurements) {
+        try {
+          _eventTracking.stop(name, undefined, properties); // Todo: Fix to pass measurements once type is updated
+
+        } catch (e) {
+          _self.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.StopTrackEventFailed, "stopTrackEvent failed, event will not be collected: " + getExceptionName(e), {
+            exception: dumpObj(e)
+          });
+        }
+      };
+      /**
+       * @description Log a diagnostic message
+       * @param {ITraceTelemetry} trace
+       * @param ICustomProperties.
+       * @memberof ApplicationInsights
+       */
+
+
+      _self.trackTrace = function (trace, customProperties) {
+        try {
+          var telemetryItem = TelemetryItemCreator.create(trace, Trace.dataType, Trace.envelopeType, _self.diagLog(), customProperties);
+
+          _self.core.track(telemetryItem);
+        } catch (e) {
+          _self.diagLog().throwInternal(LoggingSeverity.WARNING, _InternalMessageId.TrackTraceFailed, "trackTrace failed, trace will not be collected: " + getExceptionName(e), {
+            exception: dumpObj(e)
+          });
+        }
+      };
+      /**
+       * @description Log a numeric value that is not associated with a specific event. Typically
+       * used to send regular reports of performance indicators. To send single measurement, just
+       * use the name and average fields of {@link IMetricTelemetry}. If you take measurements
+       * frequently, you can reduce the telemetry bandwidth by aggregating multiple measurements
+       * and sending the resulting average at intervals
+       * @param {IMetricTelemetry} metric input object argument. Only name and average are mandatory.
+       * @param {{[key: string]: any}} customProperties additional data used to filter metrics in the
+       * portal. Defaults to empty.
+       * @memberof ApplicationInsights
+       */
+
+
+      _self.trackMetric = function (metric, customProperties) {
+        try {
+          var telemetryItem = TelemetryItemCreator.create(metric, Metric.dataType, Metric.envelopeType, _self.diagLog(), customProperties);
+
+          _self.core.track(telemetryItem);
+        } catch (e) {
+          _self.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.TrackMetricFailed, "trackMetric failed, metric will not be collected: " + getExceptionName(e), {
+            exception: dumpObj(e)
+          });
+        }
+      };
+      /**
+       * Logs that a page or other item was viewed.
+       * @param IPageViewTelemetry The string you used as the name in startTrackPage. Defaults to the document title.
+       * @param customProperties Additional data used to filter events and metrics. Defaults to empty.
+       * If a user wants to provide duration for pageLoad, it'll have to be in pageView.properties.duration
+       */
+
+
+      _self.trackPageView = function (pageView, customProperties) {
+        try {
+          var inPv = pageView || {};
+
+          _self._pageViewManager.trackPageView(inPv, __assignFn(__assignFn(__assignFn({}, inPv.properties), inPv.measurements), customProperties));
+
+          if (_self.config.autoTrackPageVisitTime) {
+            _self._pageVisitTimeManager.trackPreviousPageVisit(inPv.name, inPv.uri);
+          }
+        } catch (e) {
+          _self.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.TrackPVFailed, "trackPageView failed, page view will not be collected: " + getExceptionName(e), {
+            exception: dumpObj(e)
+          });
+        }
+      };
+      /**
+       * Create a page view telemetry item and send it to the SDK pipeline through the core.track API
+       * @param pageView Page view item to be sent
+       * @param properties Custom properties (Part C) that a user can add to the telemetry item
+       * @param systemProperties System level properties (Part A) that a user can add to the telemetry item
+       */
+
+
+      _self.sendPageViewInternal = function (pageView, properties, systemProperties) {
+        var doc = getDocument();
+
+        if (doc) {
+          pageView.refUri = pageView.refUri === undefined ? doc.referrer : pageView.refUri;
+        }
+
+        var telemetryItem = TelemetryItemCreator.create(pageView, PageView.dataType, PageView.envelopeType, _self.diagLog(), properties, systemProperties);
+
+        _self.core.track(telemetryItem); // reset ajaxes counter
+
+
+        _trackAjaxAttempts = 0;
+      };
+      /**
+       * @ignore INTERNAL ONLY
+       * @param pageViewPerformance
+       * @param properties
+       */
+
+
+      _self.sendPageViewPerformanceInternal = function (pageViewPerformance, properties, systemProperties) {
+        var telemetryItem = TelemetryItemCreator.create(pageViewPerformance, PageViewPerformance.dataType, PageViewPerformance.envelopeType, _self.diagLog(), properties, systemProperties);
+
+        _self.core.track(telemetryItem);
+      };
+      /**
+       * Send browser performance metrics.
+       * @param pageViewPerformance
+       * @param customProperties
+       */
+
+
+      _self.trackPageViewPerformance = function (pageViewPerformance, customProperties) {
+        try {
+          _self._pageViewPerformanceManager.populatePageViewPerformanceEvent(pageViewPerformance);
+
+          _self.sendPageViewPerformanceInternal(pageViewPerformance, customProperties);
+        } catch (e) {
+          _self.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.TrackPVFailed, "trackPageViewPerformance failed, page view will not be collected: " + getExceptionName(e), {
+            exception: dumpObj(e)
+          });
+        }
+      };
+      /**
+       * Starts the timer for tracking a page load time. Use this instead of `trackPageView` if you want to control when the page view timer starts and stops,
+       * but don't want to calculate the duration yourself. This method doesn't send any telemetry. Call `stopTrackPage` to log the end of the page view
+       * and send the event.
+       * @param name A string that idenfities this item, unique within this HTML document. Defaults to the document title.
+       */
+
+
+      _self.startTrackPage = function (name) {
+        try {
+          if (typeof name !== "string") {
+            var doc = getDocument();
+            name = doc && doc.title || "";
+          }
+
+          _pageTracking.start(name);
+        } catch (e) {
+          _self.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.StartTrackFailed, "startTrackPage failed, page view may not be collected: " + getExceptionName(e), {
+            exception: dumpObj(e)
+          });
+        }
+      };
+      /**
+       * Stops the timer that was started by calling `startTrackPage` and sends the pageview load time telemetry with the specified properties and measurements.
+       * The duration of the page view will be the time between calling `startTrackPage` and `stopTrackPage`.
+       * @param   name  The string you used as the name in startTrackPage. Defaults to the document title.
+       * @param   url   String - a relative or absolute URL that identifies the page or other item. Defaults to the window location.
+       * @param   properties  map[string, string] - additional data used to filter pages and metrics in the portal. Defaults to empty.
+       * @param   measurements    map[string, number] - metrics associated with this page, displayed in Metrics Explorer on the portal. Defaults to empty.
+       */
+
+
+      _self.stopTrackPage = function (name, url, properties, measurement) {
+        try {
+          if (typeof name !== "string") {
+            var doc = getDocument();
+            name = doc && doc.title || "";
+          }
+
+          if (typeof url !== "string") {
+            var loc = getLocation();
+            url = loc && loc.href || "";
+          }
+
+          _pageTracking.stop(name, url, properties, measurement);
+
+          if (_self.config.autoTrackPageVisitTime) {
+            _self._pageVisitTimeManager.trackPreviousPageVisit(name, url);
+          }
+        } catch (e) {
+          _self.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.StopTrackFailed, "stopTrackPage failed, page view will not be collected: " + getExceptionName(e), {
+            exception: dumpObj(e)
+          });
+        }
+      };
+      /**
+       * @ignore INTERNAL ONLY
+       * @param exception
+       * @param properties
+       * @param systemProperties
+       */
+
+
+      _self.sendExceptionInternal = function (exception, customProperties, systemProperties) {
+        var theError = exception.exception || exception.error || new Error(strNotSpecified);
+        var exceptionPartB = new Exception(_self.diagLog(), theError, exception.properties || customProperties, exception.measurements, exception.severityLevel, exception.id).toInterface();
+        var telemetryItem = TelemetryItemCreator.create(exceptionPartB, Exception.dataType, Exception.envelopeType, _self.diagLog(), customProperties, systemProperties);
+
+        _self.core.track(telemetryItem);
+      };
+      /**
+       * Log an exception you have caught.
+       *
+       * @param {IExceptionTelemetry} exception   Object which contains exception to be sent
+       * @param {{[key: string]: any}} customProperties   Additional data used to filter pages and metrics in the portal. Defaults to empty.
+       *
+       * Any property of type double will be considered a measurement, and will be treated by Application Insights as a metric.
+       * @memberof ApplicationInsights
+       */
+
+
+      _self.trackException = function (exception, customProperties) {
+        try {
+          _self.sendExceptionInternal(exception, customProperties);
+        } catch (e) {
+          _self.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.TrackExceptionFailed, "trackException failed, exception will not be collected: " + getExceptionName(e), {
+            exception: dumpObj(e)
+          });
+        }
+      };
+      /**
+       * @description Custom error handler for Application Insights Analytics
+       * @param {IAutoExceptionTelemetry} exception
+       * @memberof ApplicationInsights
+       */
+
+
+      _self._onerror = function (exception) {
+        var error = exception && exception.error;
+        var evt = exception && exception.evt;
+
+        try {
+          if (!evt) {
+            var _window = getWindow();
+
+            if (_window) {
+              evt = _window[strEvent];
+            }
+          }
+
+          var url = exception && exception.url || (getDocument() || {}).URL; // If no error source is provided assume the default window.onerror handler
+
+          var errorSrc = exception.errorSrc || "window.onerror@" + url + ":" + (exception.lineNumber || 0) + ":" + (exception.columnNumber || 0);
+          var properties = {
+            errorSrc: errorSrc,
+            url: url,
+            lineNumber: exception.lineNumber || 0,
+            columnNumber: exception.columnNumber || 0,
+            message: exception.message
+          };
+
+          if (isCrossOriginError(exception.message, exception.url, exception.lineNumber, exception.columnNumber, exception.error)) {
+            _sendCORSException(Exception.CreateAutoException("Script error: The browser's same-origin policy prevents us from getting the details of this exception. Consider using the 'crossorigin' attribute.", url, exception.lineNumber || 0, exception.columnNumber || 0, error, evt, null, errorSrc), properties);
+          } else {
+            if (!exception.errorSrc) {
+              exception.errorSrc = errorSrc;
+            }
+
+            _self.trackException({
+              exception: exception,
+              severityLevel: SeverityLevel.Error
+            }, properties);
+          }
+        } catch (e) {
+          var errorString = error ? error.name + ", " + error.message : "null";
+
+          _self.diagLog().throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.ExceptionWhileLoggingError, "_onError threw exception while logging error, error will not be collected: " + getExceptionName(e), {
+            exception: dumpObj(e),
+            errorString: errorString
+          });
+        }
+      };
+
+      _self.addTelemetryInitializer = function (telemetryInitializer) {
+        _self._telemetryInitializers.push(telemetryInitializer);
+      };
+
+      _self.initialize = function (config, core, extensions, pluginChain) {
+        if (_self.isInitialized()) {
+          return;
+        }
+
+        if (isNullOrUndefined(core)) {
+          throw Error("Error initializing");
+        }
+
+        _base.initialize(config, core, extensions, pluginChain);
+
+        _self.setInitialized(false); // resetting the initialized state, just in case the following fails
+
+
+        var ctx = _self._getTelCtx();
+
+        var identifier = _self.identifier;
+        _self.config = ctx.getExtCfg(identifier); // load default values if specified
+
+        var defaults = ApplicationInsights.getDefaultConfig(config);
+
+        if (defaults !== undefined) {
+          objForEachKey(defaults, function (field, value) {
+            // for each unspecified field, set the default value
+            _self.config[field] = ctx.getConfig(identifier, field, value);
+
+            if (_self.config[field] === undefined) {
+              _self.config[field] = value;
+            }
+          });
+        } // Todo: move this out of static state
+
+
+        if (_self.config.isStorageUseDisabled) {
+          utlDisableStorage();
+        }
+
+        var configGetters = {
+          instrumentationKey: function instrumentationKey() {
+            return config.instrumentationKey;
+          },
+          accountId: function accountId() {
+            return _self.config.accountId || config.accountId;
+          },
+          sessionRenewalMs: function sessionRenewalMs() {
+            return _self.config.sessionRenewalMs || config.sessionRenewalMs;
+          },
+          sessionExpirationMs: function sessionExpirationMs() {
+            return _self.config.sessionExpirationMs || config.sessionExpirationMs;
+          },
+          sampleRate: function sampleRate() {
+            return _self.config.samplingPercentage || config.samplingPercentage;
+          },
+          sdkExtension: function sdkExtension() {
+            return _self.config.sdkExtension || config.sdkExtension;
+          },
+          isBrowserLinkTrackingEnabled: function isBrowserLinkTrackingEnabled() {
+            return _self.config.isBrowserLinkTrackingEnabled || config.isBrowserLinkTrackingEnabled;
+          },
+          appId: function appId() {
+            return _self.config.appId || config.appId;
+          }
+        };
+        _self._pageViewPerformanceManager = new PageViewPerformanceManager(_self.core);
+        _self._pageViewManager = new PageViewManager(_this, _self.config.overridePageViewDuration, _self.core, _self._pageViewPerformanceManager);
+        _self._pageVisitTimeManager = new PageVisitTimeManager(_self.diagLog(), function (pageName, pageUrl, pageVisitTime) {
+          return trackPageVisitTime(pageName, pageUrl, pageVisitTime);
+        });
+        _self._telemetryInitializers = _self._telemetryInitializers || [];
+
+        _addDefaultTelemetryInitializers(configGetters);
+
+        _eventTracking = new Timing(_self.diagLog(), "trackEvent");
+
+        _eventTracking.action = function (name, url, duration, properties) {
+          if (!properties) {
+            properties = {};
+          }
+
+          properties[durationProperty] = duration.toString();
+
+          _self.trackEvent({
+            name: name,
+            properties: properties
+          });
+        }; // initialize page view timing
+
+
+        _pageTracking = new Timing(_self.diagLog(), "trackPageView");
+
+        _pageTracking.action = function (name, url, duration, properties, measurements) {
+          // duration must be a custom property in order for the collector to extract it
+          if (isNullOrUndefined(properties)) {
+            properties = {};
+          }
+
+          properties[durationProperty] = duration.toString();
+          var pageViewItem = {
+            name: name,
+            uri: url,
+            properties: properties,
+            measurements: measurements
+          };
+
+          _self.sendPageViewInternal(pageViewItem, properties);
+        };
+
+        var _window = getWindow();
+
+        var _history = getHistory();
+
+        var _location = getLocation(true);
+
+        var instance = _this;
+
+        if (_self.config.disableExceptionTracking === false && !_self.config.autoExceptionInstrumented && _window) {
+          // We want to enable exception auto collection and it has not been done so yet
+          var onerror_1 = "onerror";
+          var originalOnError_1 = _window[onerror_1];
+
+          _window.onerror = function (message, url, lineNumber, columnNumber, error) {
+            var evt = _window[strEvent];
+            var handled = originalOnError_1 && originalOnError_1(message, url, lineNumber, columnNumber, error);
+
+            if (handled !== true) {
+              // handled could be typeof function
+              instance._onerror(Exception.CreateAutoException(message, url, lineNumber, columnNumber, error, evt));
+            }
+
+            return handled;
+          };
+
+          _self.config.autoExceptionInstrumented = true;
+        }
+
+        if (_self.config.disableExceptionTracking === false && _self.config.enableUnhandledPromiseRejectionTracking === true && !_self.config.autoUnhandledPromiseInstrumented && _window) {
+          // We want to enable exception auto collection and it has not been done so yet
+          var onunhandledrejection_1 = "onunhandledrejection";
+          var originalOnUnhandledRejection_1 = _window[onunhandledrejection_1];
+
+          _window[onunhandledrejection_1] = function (error) {
+            var evt = _window[strEvent];
+            var handled = originalOnUnhandledRejection_1 && originalOnUnhandledRejection_1.call(_window, error);
+
+            if (handled !== true) {
+              // handled could be typeof function
+              instance._onerror(Exception.CreateAutoException(_getReason(error), _location ? _location.href : "", 0, 0, error, evt));
+            }
+
+            return handled;
+          };
+
+          _self.config.autoUnhandledPromiseInstrumented = true;
+        }
+        /**
+         * Create a custom "locationchange" event which is triggered each time the history object is changed
+         */
+
+
+        if (_self.config.enableAutoRouteTracking === true && _history && isFunction(_history.pushState) && isFunction(_history.replaceState) && _window && typeof Event !== "undefined") {
+          var _self_1 = _this; // Find the properties plugin
+
+          arrForEach(extensions, function (extension) {
+            if (extension.identifier === PropertiesPluginIdentifier) {
+              _properties = extension;
+            }
+          });
+
+          _history.pushState = function (f) {
+            return function pushState() {
+              var ret = f.apply(this, arguments);
+
+              _dispatchEvent(_window, createDomEvent(_self_1.config.namePrefix + "pushState"));
+
+              _dispatchEvent(_window, createDomEvent(_self_1.config.namePrefix + "locationchange"));
+
+              return ret;
+            };
+          }(_history.pushState);
+
+          _history.replaceState = function (f) {
+            return function replaceState() {
+              var ret = f.apply(this, arguments);
+
+              _dispatchEvent(_window, createDomEvent(_self_1.config.namePrefix + "replaceState"));
+
+              _dispatchEvent(_window, createDomEvent(_self_1.config.namePrefix + "locationchange"));
+
+              return ret;
+            };
+          }(_history.replaceState);
+
+          if (_window.addEventListener) {
+            _window.addEventListener(_self_1.config.namePrefix + "popstate", function () {
+              _dispatchEvent(_window, createDomEvent(_self_1.config.namePrefix + "locationchange"));
+            });
+
+            _window.addEventListener(_self_1.config.namePrefix + "locationchange", function () {
+              if (_properties && _properties.context && _properties.context.telemetryTrace) {
+                _properties.context.telemetryTrace.traceID = generateW3CId();
+                var traceLocationName = "_unknown_";
+
+                if (_location && _location.pathname) {
+                  traceLocationName = _location.pathname + (_location.hash || "");
+                }
+
+                _properties.context.telemetryTrace.name = traceLocationName;
+              }
+
+              if (_currUri) {
+                _prevUri = _currUri;
+                _currUri = _location && _location.href || "";
+              } else {
+                _currUri = _location && _location.href || "";
+              }
+
+              setTimeout(function (uri) {
+                // todo: override start time so that it is not affected by autoRoutePVDelay
+                _self_1.trackPageView({
+                  refUri: uri,
+                  properties: {
+                    duration: 0
+                  }
+                }); // SPA route change loading durations are undefined, so send 0
+
+              }.bind(_this, _prevUri), _self_1.autoRoutePVDelay);
+            });
+          }
+        }
+
+        _self.setInitialized(true);
+      };
+      /**
+       * Log a page visit time
+       * @param    pageName    Name of page
+       * @param    pageVisitDuration Duration of visit to the page in milleseconds
+       */
+
+
+      function trackPageVisitTime(pageName, pageUrl, pageVisitTime) {
+        var properties = {
+          PageName: pageName,
+          PageUrl: pageUrl
+        };
+
+        _self.trackMetric({
+          name: "PageVisitTime",
+          average: pageVisitTime,
+          max: pageVisitTime,
+          min: pageVisitTime,
+          sampleCount: 1
+        }, properties);
+      }
+
+      function _addDefaultTelemetryInitializers(configGetters) {
+        if (!configGetters.isBrowserLinkTrackingEnabled()) {
+          var browserLinkPaths_1 = ['/browserLinkSignalR/', '/__browserLink/'];
+
+          var dropBrowserLinkRequests = function dropBrowserLinkRequests(envelope) {
+            if (envelope.baseType === RemoteDependencyData_RemoteDependencyData.dataType) {
+              var remoteData = envelope.baseData;
+
+              if (remoteData) {
+                for (var i = 0; i < browserLinkPaths_1.length; i++) {
+                  if (remoteData.target && remoteData.target.indexOf(browserLinkPaths_1[i]) >= 0) {
+                    return false;
+                  }
+                }
+              }
+            }
+
+            return true;
+          };
+
+          _addTelemetryInitializer(dropBrowserLinkRequests);
+        }
+      }
+
+      function _addTelemetryInitializer(telemetryInitializer) {
+        _self._telemetryInitializers.push(telemetryInitializer);
+      }
+
+      function _sendCORSException(exception, properties) {
+        var telemetryItem = TelemetryItemCreator.create(exception, Exception.dataType, Exception.envelopeType, _self.diagLog(), properties);
+
+        _self.core.track(telemetryItem);
+      }
+    });
+    return _this;
+  }
+
+  ApplicationInsights.getDefaultConfig = function (config) {
+    if (!config) {
+      config = {};
+    } // set default values
+
+
+    config.sessionRenewalMs = 30 * 60 * 1000;
+    config.sessionExpirationMs = 24 * 60 * 60 * 1000;
+    config.disableExceptionTracking = stringToBoolOrDefault(config.disableExceptionTracking);
+    config.autoTrackPageVisitTime = stringToBoolOrDefault(config.autoTrackPageVisitTime);
+    config.overridePageViewDuration = stringToBoolOrDefault(config.overridePageViewDuration);
+    config.enableUnhandledPromiseRejectionTracking = stringToBoolOrDefault(config.enableUnhandledPromiseRejectionTracking);
+
+    if (isNaN(config.samplingPercentage) || config.samplingPercentage <= 0 || config.samplingPercentage >= 100) {
+      config.samplingPercentage = 100;
+    }
+
+    config.isStorageUseDisabled = stringToBoolOrDefault(config.isStorageUseDisabled);
+    config.isBrowserLinkTrackingEnabled = stringToBoolOrDefault(config.isBrowserLinkTrackingEnabled);
+    config.enableAutoRouteTracking = stringToBoolOrDefault(config.enableAutoRouteTracking);
+    config.namePrefix = config.namePrefix || "";
+    config.enableDebug = stringToBoolOrDefault(config.enableDebug);
+    config.disableFlushOnBeforeUnload = stringToBoolOrDefault(config.disableFlushOnBeforeUnload);
+    config.disableFlushOnUnload = stringToBoolOrDefault(config.disableFlushOnUnload, config.disableFlushOnBeforeUnload);
+    return config;
+  }; // Removed Stub for ApplicationInsights.prototype.getCookieMgr.
+  // Removed Stub for ApplicationInsights.prototype.processTelemetry.
+  // Removed Stub for ApplicationInsights.prototype.trackEvent.
+  // Removed Stub for ApplicationInsights.prototype.startTrackEvent.
+  // Removed Stub for ApplicationInsights.prototype.stopTrackEvent.
+  // Removed Stub for ApplicationInsights.prototype.trackTrace.
+  // Removed Stub for ApplicationInsights.prototype.trackMetric.
+  // Removed Stub for ApplicationInsights.prototype.trackPageView.
+  // Removed Stub for ApplicationInsights.prototype.sendPageViewInternal.
+  // Removed Stub for ApplicationInsights.prototype.sendPageViewPerformanceInternal.
+  // Removed Stub for ApplicationInsights.prototype.trackPageViewPerformance.
+  // Removed Stub for ApplicationInsights.prototype.startTrackPage.
+  // Removed Stub for ApplicationInsights.prototype.stopTrackPage.
+  // Removed Stub for ApplicationInsights.prototype.sendExceptionInternal.
+  // Removed Stub for ApplicationInsights.prototype.trackException.
+  // Removed Stub for ApplicationInsights.prototype._onerror.
+  // Removed Stub for ApplicationInsights.prototype.addTelemetryInitializer.
+  // Removed Stub for ApplicationInsights.prototype.initialize.
+
+
+  ApplicationInsights.Version = "2.7.0"; // Not currently used anywhere
+
+  return ApplicationInsights;
+}(BaseTelemetryPlugin);
+
+
+/**
+ * Used to record timed events and page views.
+ */
+
+var Timing = function () {
+  function Timing(logger, name) {
+    var _self = this;
+
+    var _events = {};
+
+    _self.start = function (name) {
+      if (typeof _events[name] !== "undefined") {
+        logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.StartCalledMoreThanOnce, "start was called more than once for this event without calling stop.", {
+          name: name,
+          key: name
+        }, true);
+      }
+
+      _events[name] = +new Date();
+    };
+
+    _self.stop = function (name, url, properties, measurements) {
+      var start = _events[name];
+
+      if (isNaN(start)) {
+        logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.StopCalledWithoutStart, "stop was called without a corresponding start.", {
+          name: name,
+          key: name
+        }, true);
+      } else {
+        var end = +new Date();
+        var duration = dateTimeUtilsDuration(start, end);
+
+        _self.action(name, url, duration, properties, measurements);
+      }
+
+      delete _events[name];
+      _events[name] = undefined;
+    };
+  }
+
+  return Timing;
+}();
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/SendBuffer.js
+/*
+ * Application Insights JavaScript SDK - Channel, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+
+
+var BaseSendBuffer = function () {
+  function BaseSendBuffer(config) {
+    var _buffer = [];
+
+    this._get = function () {
+      return _buffer;
+    };
+
+    this._set = function (buffer) {
+      _buffer = buffer;
+      return _buffer;
+    };
+
+    dynamicproto_js(BaseSendBuffer, this, function (_self) {
+      _self.enqueue = function (payload) {
+        _buffer.push(payload);
+      };
+
+      _self.count = function () {
+        return _buffer.length;
+      };
+
+      _self.size = function () {
+        var size = _buffer.length;
+
+        for (var lp = 0; lp < _buffer.length; lp++) {
+          size += _buffer[lp].length;
+        }
+
+        if (!config.emitLineDelimitedJson()) {
+          size += 2;
+        }
+
+        return size;
+      };
+
+      _self.clear = function () {
+        _buffer = [];
+      };
+
+      _self.getItems = function () {
+        return _buffer.slice(0);
+      };
+
+      _self.batchPayloads = function (payload) {
+        if (payload && payload.length > 0) {
+          var batch = config.emitLineDelimitedJson() ? payload.join("\n") : "[" + payload.join(",") + "]";
+          return batch;
+        }
+
+        return null;
+      };
+    });
+  } // Removed Stub for BaseSendBuffer.prototype.enqueue.
+  // Removed Stub for BaseSendBuffer.prototype.count.
+  // Removed Stub for BaseSendBuffer.prototype.size.
+  // Removed Stub for BaseSendBuffer.prototype.clear.
+  // Removed Stub for BaseSendBuffer.prototype.getItems.
+  // Removed Stub for BaseSendBuffer.prototype.batchPayloads.
+
+
+  return BaseSendBuffer;
+}();
+/*
+ * An array based send buffer.
+ */
+
+
+var ArraySendBuffer = function (_super) {
+  __extendsFn(ArraySendBuffer, _super);
+
+  function ArraySendBuffer(config) {
+    var _this = _super.call(this, config) || this;
+
+    dynamicproto_js(ArraySendBuffer, _this, function (_self, _base) {
+      _self.markAsSent = function (payload) {
+        _base.clear();
+      };
+
+      _self.clearSent = function (payload) {// not supported
+      };
+    });
+    return _this;
+  } // Removed Stub for ArraySendBuffer.prototype.markAsSent.
+  // Removed Stub for ArraySendBuffer.prototype.clearSent.
+
+
+  return ArraySendBuffer;
+}(BaseSendBuffer);
+
+
+/*
+ * Session storage buffer holds a copy of all unsent items in the browser session storage.
+ */
+
+var SessionStorageSendBuffer = function (_super) {
+  __extendsFn(SessionStorageSendBuffer, _super);
+
+  function SessionStorageSendBuffer(logger, config) {
+    var _this = _super.call(this, config) || this;
+
+    var _bufferFullMessageSent = false;
+    dynamicproto_js(SessionStorageSendBuffer, _this, function (_self, _base) {
+      var bufferItems = _getBuffer(SessionStorageSendBuffer.BUFFER_KEY);
+
+      var notDeliveredItems = _getBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY);
+
+      var buffer = _self._set(bufferItems.concat(notDeliveredItems)); // If the buffer has too many items, drop items from the end.
+
+
+      if (buffer.length > SessionStorageSendBuffer.MAX_BUFFER_SIZE) {
+        buffer.length = SessionStorageSendBuffer.MAX_BUFFER_SIZE;
+      }
+
+      _setBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY, []);
+
+      _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, buffer);
+
+      _self.enqueue = function (payload) {
+        if (_self.count() >= SessionStorageSendBuffer.MAX_BUFFER_SIZE) {
+          // sent internal log only once per page view
+          if (!_bufferFullMessageSent) {
+            logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.SessionStorageBufferFull, "Maximum buffer size reached: " + _self.count(), true);
+            _bufferFullMessageSent = true;
+          }
+
+          return;
+        }
+
+        _base.enqueue(payload);
+
+        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _self._get());
+      };
+
+      _self.clear = function () {
+        _base.clear();
+
+        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _self._get());
+
+        _setBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY, []);
+
+        _bufferFullMessageSent = false;
+      };
+
+      _self.markAsSent = function (payload) {
+        _setBuffer(SessionStorageSendBuffer.BUFFER_KEY, _self._set(_removePayloadsFromBuffer(payload, _self._get())));
+
+        var sentElements = _getBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY);
+
+        if (sentElements instanceof Array && payload instanceof Array) {
+          sentElements = sentElements.concat(payload);
+
+          if (sentElements.length > SessionStorageSendBuffer.MAX_BUFFER_SIZE) {
+            // We send telemetry normally. If the SENT_BUFFER is too big we don't add new elements
+            // until we receive a response from the backend and the buffer has free space again (see clearSent method)
+            logger.throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.SessionStorageBufferFull, "Sent buffer reached its maximum size: " + sentElements.length, true);
+            sentElements.length = SessionStorageSendBuffer.MAX_BUFFER_SIZE;
+          }
+
+          _setBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY, sentElements);
+        }
+      };
+
+      _self.clearSent = function (payload) {
+        var sentElements = _getBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY);
+
+        sentElements = _removePayloadsFromBuffer(payload, sentElements);
+
+        _setBuffer(SessionStorageSendBuffer.SENT_BUFFER_KEY, sentElements);
+      };
+
+      function _removePayloadsFromBuffer(payloads, buffer) {
+        var remaining = [];
+        arrForEach(buffer, function (value) {
+          if (!isFunction(value) && arrIndexOf(payloads, value) === -1) {
+            remaining.push(value);
+          }
+        });
+        return remaining;
+      }
+
+      function _getBuffer(key) {
+        var prefixedKey = key;
+
+        try {
+          prefixedKey = config.namePrefix && config.namePrefix() ? config.namePrefix() + "_" + prefixedKey : prefixedKey;
+          var bufferJson = utlGetSessionStorage(logger, prefixedKey);
+
+          if (bufferJson) {
+            var buffer_1 = getJSON().parse(bufferJson);
+
+            if (HelperFuncs_isString(buffer_1)) {
+              // When using some version prototype.js the stringify / parse cycle does not decode array's correctly
+              buffer_1 = getJSON().parse(buffer_1);
+            }
+
+            if (buffer_1 && isArray(buffer_1)) {
+              return buffer_1;
+            }
+          }
+        } catch (e) {
+          logger.throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.FailedToRestoreStorageBuffer, " storage key: " + prefixedKey + ", " + getExceptionName(e), {
+            exception: dumpObj(e)
+          });
+        }
+
+        return [];
+      }
+
+      function _setBuffer(key, buffer) {
+        var prefixedKey = key;
+
+        try {
+          prefixedKey = config.namePrefix && config.namePrefix() ? config.namePrefix() + "_" + prefixedKey : prefixedKey;
+          var bufferJson = JSON.stringify(buffer);
+          utlSetSessionStorage(logger, prefixedKey, bufferJson);
+        } catch (e) {
+          // if there was an error, clear the buffer
+          // telemetry is stored in the _buffer array so we won't loose any items
+          utlSetSessionStorage(logger, prefixedKey, JSON.stringify([]));
+          logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.FailedToSetStorageBuffer, " storage key: " + prefixedKey + ", " + getExceptionName(e) + ". Buffer cleared", {
+            exception: dumpObj(e)
+          });
+        }
+      }
+    });
+    return _this;
+  } // Removed Stub for SessionStorageSendBuffer.prototype.enqueue.
+  // Removed Stub for SessionStorageSendBuffer.prototype.clear.
+  // Removed Stub for SessionStorageSendBuffer.prototype.markAsSent.
+  // Removed Stub for SessionStorageSendBuffer.prototype.clearSent.
+
+
+  SessionStorageSendBuffer.BUFFER_KEY = "AI_buffer";
+  SessionStorageSendBuffer.SENT_BUFFER_KEY = "AI_sentBuffer"; // Maximum number of payloads stored in the buffer. If the buffer is full, new elements will be dropped.
+
+  SessionStorageSendBuffer.MAX_BUFFER_SIZE = 2000;
+  return SessionStorageSendBuffer;
+}(BaseSendBuffer);
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/ContextTagKeys.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+function _aiNameFunc(baseName) {
+  var aiName = "ai." + baseName + ".";
+  return function (name) {
+    return aiName + name;
+  };
+}
+
+var _aiApplication = _aiNameFunc("application");
+
+var _aiDevice = _aiNameFunc("device");
+
+var _aiLocation = _aiNameFunc("location");
+
+var _aiOperation = _aiNameFunc("operation");
+
+var _aiSession = _aiNameFunc("session");
+
+var _aiUser = _aiNameFunc("user");
+
+var _aiCloud = _aiNameFunc("cloud");
+
+var _aiInternal = _aiNameFunc("internal");
+
+var ContextTagKeys = function (_super) {
+  __extendsFn(ContextTagKeys, _super);
+
+  function ContextTagKeys() {
+    return _super.call(this) || this;
+  }
+
+  return ContextTagKeys;
+}(createClassFromInterface({
+  applicationVersion: _aiApplication("ver"),
+  applicationBuild: _aiApplication("build"),
+  applicationTypeId: _aiApplication("typeId"),
+  applicationId: _aiApplication("applicationId"),
+  applicationLayer: _aiApplication("layer"),
+  deviceId: _aiDevice("id"),
+  deviceIp: _aiDevice("ip"),
+  deviceLanguage: _aiDevice("language"),
+  deviceLocale: _aiDevice("locale"),
+  deviceModel: _aiDevice("model"),
+  deviceFriendlyName: _aiDevice("friendlyName"),
+  deviceNetwork: _aiDevice("network"),
+  deviceNetworkName: _aiDevice("networkName"),
+  deviceOEMName: _aiDevice("oemName"),
+  deviceOS: _aiDevice("os"),
+  deviceOSVersion: _aiDevice("osVersion"),
+  deviceRoleInstance: _aiDevice("roleInstance"),
+  deviceRoleName: _aiDevice("roleName"),
+  deviceScreenResolution: _aiDevice("screenResolution"),
+  deviceType: _aiDevice("type"),
+  deviceMachineName: _aiDevice("machineName"),
+  deviceVMName: _aiDevice("vmName"),
+  deviceBrowser: _aiDevice("browser"),
+  deviceBrowserVersion: _aiDevice("browserVersion"),
+  locationIp: _aiLocation("ip"),
+  locationCountry: _aiLocation("country"),
+  locationProvince: _aiLocation("province"),
+  locationCity: _aiLocation("city"),
+  operationId: _aiOperation("id"),
+  operationName: _aiOperation("name"),
+  operationParentId: _aiOperation("parentId"),
+  operationRootId: _aiOperation("rootId"),
+  operationSyntheticSource: _aiOperation("syntheticSource"),
+  operationCorrelationVector: _aiOperation("correlationVector"),
+  sessionId: _aiSession("id"),
+  sessionIsFirst: _aiSession("isFirst"),
+  sessionIsNew: _aiSession("isNew"),
+  userAccountAcquisitionDate: _aiUser("accountAcquisitionDate"),
+  userAccountId: _aiUser("accountId"),
+  userAgent: _aiUser("userAgent"),
+  userId: _aiUser("id"),
+  userStoreRegion: _aiUser("storeRegion"),
+  userAuthUserId: _aiUser("authUserId"),
+  userAnonymousUserAcquisitionDate: _aiUser("anonUserAcquisitionDate"),
+  userAuthenticatedUserAcquisitionDate: _aiUser("authUserAcquisitionDate"),
+  cloudName: _aiCloud("name"),
+  cloudRole: _aiCloud("role"),
+  cloudRoleVer: _aiCloud("roleVer"),
+  cloudRoleInstance: _aiCloud("roleInstance"),
+  cloudEnvironment: _aiCloud("environment"),
+  cloudLocation: _aiCloud("location"),
+  cloudDeploymentUnit: _aiCloud("deploymentUnit"),
+  internalNodeName: _aiInternal("nodeName"),
+  internalSdkVersion: _aiInternal("sdkVersion"),
+  internalAgentVersion: _aiInternal("agentVersion"),
+  internalSnippet: _aiInternal("snippet"),
+  internalSdkSrc: _aiInternal("sdkSrc")
+}));
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/PartAExtensions.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+var Extensions = {
+  UserExt: "user",
+  DeviceExt: "device",
+  TraceExt: "trace",
+  WebExt: "web",
+  AppExt: "app",
+  OSExt: "os",
+  SessionExt: "ses",
+  SDKExt: "sdk"
+};
+var CtxTagKeys = new ContextTagKeys();
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/Envelope.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+/**
+ * System variables for a telemetry item.
+ */
+var Envelope = function () {
+  function Envelope() {
+    /**
+     * Envelope version. For internal use only. By assigning this the default, it will not be serialized within the payload unless changed to a value other than #1.
+     */
+    this.ver = 1;
+    /**
+     * Sampling rate used in application. This telemetry item represents 1 / sampleRate actual telemetry items.
+     */
+
+    this.sampleRate = 100.0;
+    /**
+     * Key/value collection of context properties. See ContextTagKeys for information on available properties.
+     */
+
+    this.tags = {};
+  }
+
+  return Envelope;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/Envelope.js
 /*
  * Application Insights JavaScript SDK - Common, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
@@ -62058,46 +63432,128 @@ var MessageData = function () {
 
 
 
-var Trace = function (_super) {
-  __extendsFn(Trace, _super);
+
+var Envelope_Envelope = function (_super) {
+  __extendsFn(Envelope, _super);
   /**
-   * Constructs a new instance of the TraceTelemetry object
+   * Constructs a new instance of telemetry data.
    */
 
 
-  function Trace(logger, message, severityLevel, properties, measurements) {
+  function Envelope(logger, data, name) {
     var _this = _super.call(this) || this;
 
+    _this.name = dataSanitizeString(logger, name) || strNotSpecified;
+    _this.data = data;
+    _this.time = toISOString(new Date());
     _this.aiDataContract = {
-      ver: 1
+      time: 1
       /* Required */
       ,
-      message: 1
+      iKey: 1
       /* Required */
       ,
-      severityLevel: 0
-      /* Default */
+      name: 1
+      /* Required */
       ,
-      properties: 0
-      /* Default */
+      sampleRate: function sampleRate() {
+        return _this.sampleRate === 100 ? 4
+        /* Hidden */
+        : 1
+        /* Required */
+        ;
+      },
+      tags: 1
+      /* Required */
+      ,
+      data: 1
+      /* Required */
 
     };
-    message = message || strNotSpecified;
-    _this.message = dataSanitizeMessage(logger, message);
-    _this.properties = dataSanitizeProperties(logger, properties);
-    _this.measurements = dataSanitizeMeasurements(logger, measurements);
-
-    if (severityLevel) {
-      _this.severityLevel = severityLevel;
-    }
-
     return _this;
   }
 
-  Trace.envelopeType = "Microsoft.ApplicationInsights.{0}.Message";
-  Trace.dataType = "MessageData";
-  return Trace;
-}(MessageData);
+  return Envelope;
+}(Envelope);
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/Base.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+// THIS FILE WAS AUTOGENERATED
+
+/**
+ * Data struct to contain only C section with custom fields.
+ */
+var Base = function () {
+  function Base() {}
+
+  return Base;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/Contracts/Generated/Data.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+ // THIS FILE WAS AUTOGENERATED
+
+
+/**
+ * Data struct to contain both B and C sections.
+ */
+
+var Data = function (_super) {
+  __extendsFn(Data, _super);
+
+  function Data() {
+    return _super.call(this) || this;
+  }
+
+  return Data;
+}(Base);
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/Data.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+var Data_Data = function (_super) {
+  __extendsFn(Data, _super);
+  /**
+   * Constructs a new instance of telemetry data.
+   */
+
+
+  function Data(baseType, data) {
+    var _this = _super.call(this) || this;
+    /**
+     * The data contract for serializing this object.
+     */
+
+
+    _this.aiDataContract = {
+      baseType: 1
+      /* Required */
+      ,
+      baseData: 1
+      /* Required */
+
+    };
+    _this.baseType = baseType;
+    _this.baseData = data;
+    return _this;
+  }
+
+  return Data;
+}(Data);
 
 
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/EnvelopeCreator.js
@@ -62664,43 +64120,6 @@ var Serializer = function () {
 }();
 
 
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/applicationinsights-common.js
-/*
- * Application Insights JavaScript SDK - Common, 2.7.0
- * Copyright (c) Microsoft and contributors. All rights reserved.
- */
-// Licensed under the
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var PropertiesPluginIdentifier = "AppInsightsPropertiesPlugin";
-var BreezeChannelIdentifier = "AppInsightsChannelPlugin";
-var AnalyticsPluginIdentifier = "ApplicationInsightsAnalytics";
 ;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-channel-js/dist-esm/Offline.js
 /*
  * Application Insights JavaScript SDK - Channel, 2.7.0
@@ -63985,105 +65404,3220 @@ var Sender = function (_super) {
 }(BaseTelemetryPlugin);
 
 
-;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-web-basic/dist-esm/index.js
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-properties-js/dist-esm/Context/Session.js
 /*
- * Application Insights JavaScript Web SDK - Basic, 2.7.0
+ * Application Insights JavaScript SDK - Properties Plugin, 2.7.0
  * Copyright (c) Microsoft and contributors. All rights reserved.
  */
 
 
-"use strict";
-/**
- * @export
- * @class ApplicationInsights
- */
 
+var cookieNameConst = 'ai_session';
 
-var ApplicationInsights = function () {
-  /**
-   * Creates an instance of ApplicationInsights.
-   * @param {IConfiguration & IConfig} config
-   * @memberof ApplicationInsights
-   */
-  function ApplicationInsights(config) {
-    // initialize the queue and config in case they are undefined
-    if (isNullOrUndefined(config) || isNullOrUndefined(config.instrumentationKey)) {
-      throwError("Invalid input configuration");
-    }
+var Session = function () {
+  function Session() {}
 
-    this.config = config;
-    this.getSKUDefaults();
-    this.initialize();
-  }
-  /**
-   * Initialize this instance of ApplicationInsights
-   *
-   * @memberof ApplicationInsights
-   */
-
-
-  ApplicationInsights.prototype.initialize = function () {
-    this.core = new AppInsightsCore();
-    var extensions = [];
-    var appInsightsChannel = new Sender();
-    extensions.push(appInsightsChannel); // initialize core
-
-    this.core.initialize(this.config, extensions); // initialize extensions
-
-    appInsightsChannel.initialize(this.config, this.core, extensions);
-    this.pollInternalLogs();
-  };
-  /**
-   * Send a manually constructed custom event
-   *
-   * @param {ITelemetryItem} item
-   * @memberof ApplicationInsights
-   */
-
-
-  ApplicationInsights.prototype.track = function (item) {
-    this.core.track(item);
-  };
-  /**
-   * Immediately send all batched telemetry
-   * @param {boolean} [async=true]
-   * @memberof ApplicationInsights
-   */
-
-
-  ApplicationInsights.prototype.flush = function (async) {
-    if (async === void 0) {
-      async = true;
-    }
-
-    arrForEach(this.core.getTransmissionControls(), function (controls) {
-      arrForEach(controls, function (plugin) {
-        async ? plugin.flush() : plugin.triggerSend(async, null, 1
-        /* ManualFlush */
-        );
-      });
-    });
-  };
-
-  ApplicationInsights.prototype.pollInternalLogs = function () {
-    this.core.pollInternalLogs();
-  };
-
-  ApplicationInsights.prototype.getSKUDefaults = function () {
-    this.config.diagnosticLogInterval = this.config.diagnosticLogInterval && this.config.diagnosticLogInterval > 0 ? this.config.diagnosticLogInterval : 10000;
-  };
-
-  return ApplicationInsights;
+  return Session;
 }();
 
 
 
+var _SessionManager = function () {
+  function _SessionManager(config, core) {
+    var self = this;
+
+    var _storageNamePrefix;
+
+    var _cookieUpdatedTimestamp;
+
+    var _logger = safeGetLogger(core);
+
+    var _cookieManager = safeGetCookieMgr(core);
+
+    dynamicproto_js(_SessionManager, self, function (_self) {
+      if (!config) {
+        config = {};
+      }
+
+      if (!isFunction(config.sessionExpirationMs)) {
+        config.sessionExpirationMs = function () {
+          return _SessionManager.acquisitionSpan;
+        };
+      }
+
+      if (!isFunction(config.sessionRenewalMs)) {
+        config.sessionRenewalMs = function () {
+          return _SessionManager.renewalSpan;
+        };
+      }
+
+      _self.config = config; // sessionCookiePostfix takes the preference if it is configured, otherwise takes namePrefix if configured.
+
+      var sessionCookiePostfix = _self.config.sessionCookiePostfix && _self.config.sessionCookiePostfix() ? _self.config.sessionCookiePostfix() : _self.config.namePrefix && _self.config.namePrefix() ? _self.config.namePrefix() : "";
+
+      _storageNamePrefix = function _storageNamePrefix() {
+        return cookieNameConst + sessionCookiePostfix;
+      };
+
+      _self.automaticSession = new Session();
+
+      _self.update = function () {
+        // Always using Date getTime() as there is a bug in older IE instances that causes the performance timings to have the hi-bit set eg 0x800000000 causing
+        // the number to be incorrect.
+        var nowMs = dateNow();
+        var isExpired = false;
+        var session = _self.automaticSession;
+
+        if (!session.id) {
+          isExpired = !_initializeAutomaticSession(session, nowMs);
+        }
+
+        var sessionExpirationMs = _self.config.sessionExpirationMs();
+
+        if (!isExpired && sessionExpirationMs > 0) {
+          var sessionRenewalMs = _self.config.sessionRenewalMs();
+
+          var timeSinceAcqMs = nowMs - session.acquisitionDate;
+          var timeSinceRenewalMs = nowMs - session.renewalDate;
+          isExpired = timeSinceAcqMs < 0 || timeSinceRenewalMs < 0; // expired if the acquisition or last renewal are in the future
+
+          isExpired = isExpired || timeSinceAcqMs > sessionExpirationMs; // expired if the time since acquisition is more than session Expiration
+
+          isExpired = isExpired || timeSinceRenewalMs > sessionRenewalMs; // expired if the time since last renewal is more than renewal period
+        } // renew if acquisitionSpan or renewalSpan has elapsed
 
 
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/random.ts
-var random = __webpack_require__(80303);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
-var utils = __webpack_require__(81794);
+        if (isExpired) {
+          // update automaticSession so session state has correct id
+          _renew(nowMs);
+        } else {
+          // do not update the cookie more often than cookieUpdateInterval
+          if (!_cookieUpdatedTimestamp || nowMs - _cookieUpdatedTimestamp > _SessionManager.cookieUpdateInterval) {
+            _setCookie(session, nowMs);
+          }
+        }
+      };
+      /**
+       *  Record the current state of the automatic session and store it in our cookie string format
+       *  into the browser's local storage. This is used to restore the session data when the cookie
+       *  expires.
+       */
+
+
+      _self.backup = function () {
+        var session = _self.automaticSession;
+
+        _setStorage(session.id, session.acquisitionDate, session.renewalDate);
+      };
+      /**
+       * Use config.namePrefix + ai_session cookie data or local storage data (when the cookie is unavailable) to
+       * initialize the automatic session.
+       * @returns true if values set otherwise false
+       */
+
+
+      function _initializeAutomaticSession(session, now) {
+        var isValid = false;
+
+        var cookieValue = _cookieManager.get(_storageNamePrefix());
+
+        if (cookieValue && isFunction(cookieValue.split)) {
+          isValid = _initializeAutomaticSessionWithData(session, cookieValue);
+        } else {
+          // There's no cookie, but we might have session data in local storage
+          // This can happen if the session expired or the user actively deleted the cookie
+          // We only want to recover data if the cookie is missing from expiry. We should respect the user's wishes if the cookie was deleted actively.
+          // The User class handles this for us and deletes our local storage object if the persistent user cookie was removed.
+          var storageValue = utlGetLocalStorage(_logger, _storageNamePrefix());
+
+          if (storageValue) {
+            isValid = _initializeAutomaticSessionWithData(session, storageValue);
+          }
+        }
+
+        return isValid || !!session.id;
+      }
+      /**
+       * Extract id, acquisitionDate, and renewalDate from an ai_session payload string and
+       * use this data to initialize automaticSession.
+       *
+       * @param {string} sessionData - The string stored in an ai_session cookie or local storage backup
+       * @returns true if values set otherwise false
+       */
+
+
+      function _initializeAutomaticSessionWithData(session, sessionData) {
+        var isValid = false;
+        var sessionReset = ", session will be reset";
+        var tokens = sessionData.split("|");
+
+        if (tokens.length >= 2) {
+          try {
+            var acqMs = +tokens[1] || 0;
+            var renewalMs = +tokens[2] || 0;
+
+            if (isNaN(acqMs) || acqMs <= 0) {
+              _logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.SessionRenewalDateIsZero, "AI session acquisition date is 0" + sessionReset);
+            } else if (isNaN(renewalMs) || renewalMs <= 0) {
+              _logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.SessionRenewalDateIsZero, "AI session renewal date is 0" + sessionReset);
+            } else if (tokens[0]) {
+              // Everything looks valid so set the values
+              session.id = tokens[0];
+              session.acquisitionDate = acqMs;
+              session.renewalDate = renewalMs;
+              isValid = true;
+            }
+          } catch (e) {
+            _logger.throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.ErrorParsingAISessionCookie, "Error parsing ai_session value [" + (sessionData || "") + "]" + sessionReset + " - " + getExceptionName(e), {
+              exception: dumpObj(e)
+            });
+          }
+        }
+
+        return isValid;
+      }
+
+      function _renew(nowMs) {
+        var theConfig = _self.config || {};
+        var getNewId = (theConfig.getNewId ? theConfig.getNewId() : null) || newId;
+        _self.automaticSession.id = getNewId(theConfig.idLength ? theConfig.idLength() : 22);
+        _self.automaticSession.acquisitionDate = nowMs;
+
+        _setCookie(_self.automaticSession, nowMs); // If this browser does not support local storage, fire an internal log to keep track of it at this point
+
+
+        if (!utlCanUseLocalStorage()) {
+          _logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.BrowserDoesNotSupportLocalStorage, "Browser does not support local storage. Session durations will be inaccurate.");
+        }
+      }
+
+      function _setCookie(session, nowMs) {
+        var acq = session.acquisitionDate;
+        session.renewalDate = nowMs;
+        var config = _self.config;
+        var renewalPeriodMs = config.sessionRenewalMs(); // Set cookie to expire after the session expiry time passes or the session renewal deadline, whichever is sooner
+        // Expiring the cookie will cause the session to expire even if the user isn't on the page
+
+        var acqTimeLeftMs = acq + config.sessionExpirationMs() - nowMs;
+        var cookie = [session.id, acq, nowMs];
+        var maxAgeSec = 0;
+
+        if (acqTimeLeftMs < renewalPeriodMs) {
+          maxAgeSec = acqTimeLeftMs / 1000;
+        } else {
+          maxAgeSec = renewalPeriodMs / 1000;
+        }
+
+        var cookieDomain = config.cookieDomain ? config.cookieDomain() : null; // if sessionExpirationMs is set to 0, it means the expiry is set to 0 for this session cookie
+        // A cookie with 0 expiry in the session cookie will never expire for that browser session.  If the browser is closed the cookie expires.  
+        // Depending on the browser, another instance does not inherit this cookie, however, another tab will
+
+        _cookieManager.set(_storageNamePrefix(), cookie.join('|'), config.sessionExpirationMs() > 0 ? maxAgeSec : null, cookieDomain);
+
+        _cookieUpdatedTimestamp = nowMs;
+      }
+
+      function _setStorage(guid, acq, renewal) {
+        // Keep data in local storage to retain the last session id, allowing us to cleanly end the session when it expires
+        // Browsers that don't support local storage won't be able to end sessions cleanly from the client
+        // The server will notice this and end the sessions itself, with loss of accurate session duration
+        utlSetLocalStorage(_logger, _storageNamePrefix(), [guid, acq, renewal].join('|'));
+      }
+    });
+  } // Removed Stub for _SessionManager.prototype.update.
+  // Removed Stub for _SessionManager.prototype.backup.
+
+
+  _SessionManager.acquisitionSpan = 86400000; // 24 hours in ms
+
+  _SessionManager.renewalSpan = 1800000; // 30 minutes in ms
+
+  _SessionManager.cookieUpdateInterval = 60000; // 1 minute in ms
+
+  return _SessionManager;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-properties-js/dist-esm/Context/Application.js
+/*
+ * Application Insights JavaScript SDK - Properties Plugin, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+var Application = function () {
+  function Application() {}
+
+  return Application;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-properties-js/dist-esm/Context/Device.js
+/*
+ * Application Insights JavaScript SDK - Properties Plugin, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+var Device = function () {
+  /**
+   * Constructs a new instance of the Device class
+   */
+  function Device() {
+    // don't attempt to fingerprint browsers
+    this.id = "browser"; // Device type is a dimension in our data platform
+    // Setting it to 'Browser' allows to separate client and server dependencies/exceptions
+
+    this.deviceClass = "Browser";
+  }
+
+  return Device;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-properties-js/dist-esm/Context/Internal.js
+/*
+ * Application Insights JavaScript SDK - Properties Plugin, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+var Version = "2.7.0";
+
+var Internal = function () {
+  /**
+   * Constructs a new instance of the internal telemetry data class.
+   */
+  function Internal(config) {
+    this.sdkVersion = (config.sdkExtension && config.sdkExtension() ? config.sdkExtension() + "_" : "") + "javascript:" + Version;
+  }
+
+  return Internal;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-properties-js/dist-esm/Context/User.js
+/*
+ * Application Insights JavaScript SDK - Properties Plugin, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+
+function _validateUserInput(id) {
+  // Validate:
+  // 1. Id is a non-empty string.
+  // 2. It does not contain special characters for cookies.
+  if (typeof id !== 'string' || !id || id.match(/,|;|=| |\|/)) {
+    return false;
+  }
+
+  return true;
+}
+
+var User = function () {
+  function User(config, core) {
+    /**
+     * A flag indicating whether this represents a new user
+     */
+    this.isNewUser = false;
+    /**
+     * A flag indicating whether the user cookie has been set
+     */
+
+    this.isUserCookieSet = false;
+
+    var _logger = safeGetLogger(core);
+
+    var _cookieManager = safeGetCookieMgr(core);
+
+    var _storageNamePrefix;
+
+    dynamicproto_js(User, this, function (_self) {
+      _self.config = config;
+      var userCookiePostfix = _self.config.userCookiePostfix && _self.config.userCookiePostfix() ? _self.config.userCookiePostfix() : "";
+
+      _storageNamePrefix = function _storageNamePrefix() {
+        return User.userCookieName + userCookiePostfix;
+      }; // get userId or create new one if none exists
+
+
+      var cookie = _cookieManager.get(_storageNamePrefix());
+
+      if (cookie) {
+        _self.isNewUser = false;
+        var params = cookie.split(User.cookieSeparator);
+
+        if (params.length > 0) {
+          _self.id = params[0]; // we already have a cookie
+
+          _self.isUserCookieSet = !!_self.id;
+        }
+      }
+
+      function _generateNewId() {
+        var theConfig = config || {};
+        var getNewId = (theConfig.getNewId ? theConfig.getNewId() : null) || newId;
+        var id = getNewId(theConfig.idLength ? config.idLength() : 22);
+        return id;
+      }
+
+      function _generateNewCookie(userId) {
+        var acqStr = toISOString(new Date());
+        _self.accountAcquisitionDate = acqStr;
+        _self.isNewUser = true;
+        var newCookie = [userId, acqStr];
+        return newCookie;
+      }
+
+      function _setUserCookie(cookie) {
+        // without expiration, cookies expire at the end of the session
+        // set it to 365 days from now
+        // 365 * 24 * 60 * 60 = 31536000 
+        var oneYear = 31536000;
+        _self.isUserCookieSet = _cookieManager.set(_storageNamePrefix(), cookie, oneYear);
+      }
+
+      if (!_self.id) {
+        _self.id = _generateNewId();
+
+        var newCookie = _generateNewCookie(_self.id);
+
+        _setUserCookie(newCookie.join(User.cookieSeparator)); // If we have an config.namePrefix() + ai_session in local storage this means the user actively removed our cookies.
+        // We should respect their wishes and clear ourselves from local storage
+
+
+        var name_1 = config.namePrefix && config.namePrefix() ? config.namePrefix() + 'ai_session' : 'ai_session';
+        utlRemoveStorage(_logger, name_1);
+      } // We still take the account id from the ctor param for backward compatibility. 
+      // But if the the customer set the accountId through the newer setAuthenticatedUserContext API, we will override it.
+
+
+      _self.accountId = config.accountId ? config.accountId() : undefined; // Get the auth user id and account id from the cookie if exists
+      // Cookie is in the pattern: <authenticatedId>|<accountId>
+
+      var authCookie = _cookieManager.get(User.authUserCookieName);
+
+      if (authCookie) {
+        authCookie = decodeURI(authCookie);
+        var authCookieString = authCookie.split(User.cookieSeparator);
+
+        if (authCookieString[0]) {
+          _self.authenticatedId = authCookieString[0];
+        }
+
+        if (authCookieString.length > 1 && authCookieString[1]) {
+          _self.accountId = authCookieString[1];
+        }
+      }
+
+      _self.setAuthenticatedUserContext = function (authenticatedUserId, accountId, storeInCookie) {
+        if (storeInCookie === void 0) {
+          storeInCookie = false;
+        } // Validate inputs to ensure no cookie control characters.
+
+
+        var isInvalidInput = !_validateUserInput(authenticatedUserId) || accountId && !_validateUserInput(accountId);
+
+        if (isInvalidInput) {
+          _logger.throwInternal(LoggingSeverity.WARNING, _InternalMessageId.SetAuthContextFailedAccountName, "Setting auth user context failed. " + "User auth/account id should be of type string, and not contain commas, semi-colons, equal signs, spaces, or vertical-bars.", true);
+
+          return;
+        } // Create cookie string.
+
+
+        _self.authenticatedId = authenticatedUserId;
+        var authCookie = _self.authenticatedId;
+
+        if (accountId) {
+          _self.accountId = accountId;
+          authCookie = [_self.authenticatedId, _self.accountId].join(User.cookieSeparator);
+        }
+
+        if (storeInCookie) {
+          // Set the cookie. No expiration date because this is a session cookie (expires when browser closed).
+          // Encoding the cookie to handle unexpected unicode characters.
+          _cookieManager.set(User.authUserCookieName, encodeURI(authCookie));
+        }
+      };
+      /**
+       * Clears the authenticated user id and the account id from the user context.
+       * @returns {}
+       */
+
+
+      _self.clearAuthenticatedUserContext = function () {
+        _self.authenticatedId = null;
+        _self.accountId = null;
+
+        _cookieManager.del(User.authUserCookieName);
+      };
+
+      _self.update = function (userId) {
+        // Optimizations to avoid setting and processing the cookie when not needed
+        if (_self.id !== userId || !_self.isUserCookieSet) {
+          var user_id = userId ? userId : _generateNewId();
+
+          var user_cookie = _generateNewCookie(user_id);
+
+          _setUserCookie(user_cookie.join(User.cookieSeparator));
+        }
+      };
+    });
+  } // Removed Stub for User.prototype.setAuthenticatedUserContext.
+  // Removed Stub for User.prototype.clearAuthenticatedUserContext.
+  // Removed Stub for User.prototype.update.
+
+
+  User.cookieSeparator = '|';
+  User.userCookieName = 'ai_user';
+  User.authUserCookieName = 'ai_authUser';
+  return User;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-properties-js/dist-esm/Context/Location.js
+/*
+ * Application Insights JavaScript SDK - Properties Plugin, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+var Location = function () {
+  function Location() {}
+
+  return Location;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-properties-js/dist-esm/Context/TelemetryTrace.js
+/*
+ * Application Insights JavaScript SDK - Properties Plugin, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+var TelemetryTrace = function () {
+  function TelemetryTrace(id, parentId, name, logger) {
+    var _self = this;
+
+    _self.traceID = id || generateW3CId();
+    _self.parentID = parentId;
+    _self.name = name;
+    var location = getLocation();
+
+    if (!name && location && location.pathname) {
+      _self.name = location.pathname;
+    }
+
+    _self.name = dataSanitizeString(logger, _self.name);
+  }
+
+  return TelemetryTrace;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-properties-js/dist-esm/TelemetryContext.js
+/*
+ * Application Insights JavaScript SDK - Properties Plugin, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+/**
+ * TelemetryContext.ts
+ * @copyright Microsoft 2018
+ */
+
+
+
+
+
+
+
+
+
+
+var strExt = "ext";
+var strTags = "tags";
+
+function _removeEmpty(target, name) {
+  if (target && target[name] && objKeys(target[name]).length === 0) {
+    delete target[name];
+  }
+}
+
+var TelemetryContext = function () {
+  function TelemetryContext(core, defaultConfig) {
+    var _this = this;
+
+    var logger = core.logger;
+
+    this.appId = function () {
+      return null;
+    };
+
+    this.getSessionId = function () {
+      return null;
+    };
+
+    dynamicproto_js(TelemetryContext, this, function (_self) {
+      _self.application = new Application();
+      _self.internal = new Internal(defaultConfig);
+
+      if (hasWindow()) {
+        _self.sessionManager = new _SessionManager(defaultConfig, core);
+        _self.device = new Device();
+        _self.location = new Location();
+        _self.user = new User(defaultConfig, core);
+        _self.telemetryTrace = new TelemetryTrace(undefined, undefined, undefined, logger);
+        _self.session = new Session();
+      }
+
+      _self.getSessionId = function () {
+        var session = _self.session;
+        var sesId = null; // If customer set session info, apply their context; otherwise apply context automatically generated
+
+        if (session && HelperFuncs_isString(session.id)) {
+          sesId = session.id;
+        } else {
+          // Gets the automatic session if it exists or an empty object
+          var autoSession = (_self.sessionManager || {}).automaticSession;
+          sesId = autoSession && HelperFuncs_isString(autoSession.id) ? autoSession.id : null;
+        }
+
+        return sesId;
+      };
+
+      _self.applySessionContext = function (evt, itemCtx) {
+        setValue(getSetValue(evt.ext, Extensions.AppExt), "sesId", _self.getSessionId(), HelperFuncs_isString);
+      };
+
+      _self.applyOperatingSystemContxt = function (evt, itemCtx) {
+        setValue(evt.ext, Extensions.OSExt, _self.os);
+      };
+
+      _self.applyApplicationContext = function (evt, itemCtx) {
+        var application = _self.application;
+
+        if (application) {
+          // evt.ext.app
+          var tags = getSetValue(evt, strTags);
+          setValue(tags, CtxTagKeys.applicationVersion, application.ver, HelperFuncs_isString);
+          setValue(tags, CtxTagKeys.applicationBuild, application.build, HelperFuncs_isString);
+        }
+      };
+
+      _self.applyDeviceContext = function (evt, itemCtx) {
+        var device = _self.device;
+
+        if (device) {
+          // evt.ext.device
+          var extDevice = getSetValue(getSetValue(evt, strExt), Extensions.DeviceExt);
+          setValue(extDevice, "localId", device.id, HelperFuncs_isString);
+          setValue(extDevice, "ip", device.ip, HelperFuncs_isString);
+          setValue(extDevice, "model", device.model, HelperFuncs_isString);
+          setValue(extDevice, "deviceClass", device.deviceClass, HelperFuncs_isString);
+        }
+      };
+
+      _self.applyInternalContext = function (evt, itemCtx) {
+        var internal = _self.internal;
+
+        if (internal) {
+          var tags = getSetValue(evt, strTags);
+          setValue(tags, CtxTagKeys.internalAgentVersion, internal.agentVersion, HelperFuncs_isString); // not mapped in CS 4.0
+
+          setValue(tags, CtxTagKeys.internalSdkVersion, internal.sdkVersion, HelperFuncs_isString);
+
+          if (evt.baseType === _InternalLogMessage.dataType || evt.baseType === PageView.dataType) {
+            setValue(tags, CtxTagKeys.internalSnippet, internal.snippetVer, HelperFuncs_isString);
+            setValue(tags, CtxTagKeys.internalSdkSrc, internal.sdkSrc, HelperFuncs_isString);
+          }
+        }
+      };
+
+      _self.applyLocationContext = function (evt, itemCtx) {
+        var location = _this.location;
+
+        if (location) {
+          setValue(getSetValue(evt, strTags, []), CtxTagKeys.locationIp, location.ip, HelperFuncs_isString);
+        }
+      };
+
+      _self.applyOperationContext = function (evt, itemCtx) {
+        var telemetryTrace = _self.telemetryTrace;
+
+        if (telemetryTrace) {
+          var extTrace = getSetValue(getSetValue(evt, strExt), Extensions.TraceExt, {
+            traceID: undefined,
+            parentID: undefined
+          });
+          setValue(extTrace, "traceID", telemetryTrace.traceID, HelperFuncs_isString);
+          setValue(extTrace, "name", telemetryTrace.name, HelperFuncs_isString);
+          setValue(extTrace, "parentID", telemetryTrace.parentID, HelperFuncs_isString);
+        }
+      };
+
+      _self.applyWebContext = function (evt, itemCtx) {
+        var web = _this.web;
+
+        if (web) {
+          setValue(getSetValue(evt, strExt), Extensions.WebExt, web);
+        }
+      };
+
+      _self.applyUserContext = function (evt, itemCtx) {
+        var user = _self.user;
+
+        if (user) {
+          var tags = getSetValue(evt, strTags, []); // stays in tags
+
+          setValue(tags, CtxTagKeys.userAccountId, user.accountId, HelperFuncs_isString); // CS 4.0
+
+          var extUser = getSetValue(getSetValue(evt, strExt), Extensions.UserExt);
+          setValue(extUser, "id", user.id, HelperFuncs_isString);
+          setValue(extUser, "authId", user.authenticatedId, HelperFuncs_isString);
+        }
+      };
+
+      _self.cleanUp = function (evt, itemCtx) {
+        var ext = evt.ext;
+
+        if (ext) {
+          _removeEmpty(ext, Extensions.DeviceExt);
+
+          _removeEmpty(ext, Extensions.UserExt);
+
+          _removeEmpty(ext, Extensions.WebExt);
+
+          _removeEmpty(ext, Extensions.OSExt);
+
+          _removeEmpty(ext, Extensions.AppExt);
+
+          _removeEmpty(ext, Extensions.TraceExt);
+        }
+      };
+    });
+  } // Removed Stub for TelemetryContext.prototype.applySessionContext.
+  // Removed Stub for TelemetryContext.prototype.applyOperatingSystemContxt.
+  // Removed Stub for TelemetryContext.prototype.applyApplicationContext.
+  // Removed Stub for TelemetryContext.prototype.applyDeviceContext.
+  // Removed Stub for TelemetryContext.prototype.applyInternalContext.
+  // Removed Stub for TelemetryContext.prototype.applyLocationContext.
+  // Removed Stub for TelemetryContext.prototype.applyOperationContext.
+  // Removed Stub for TelemetryContext.prototype.applyWebContext.
+  // Removed Stub for TelemetryContext.prototype.applyUserContext.
+  // Removed Stub for TelemetryContext.prototype.cleanUp.
+
+
+  return TelemetryContext;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-properties-js/dist-esm/PropertiesPlugin.js
+/*
+ * Application Insights JavaScript SDK - Properties Plugin, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+/**
+ * PropertiesPlugin.ts
+ * @copyright Microsoft 2018
+ */
+
+
+
+
+
+
+var PropertiesPlugin = function (_super) {
+  __extendsFn(PropertiesPlugin, _super);
+
+  function PropertiesPlugin() {
+    var _this = _super.call(this) || this;
+
+    _this.priority = 110;
+    _this.identifier = PropertiesPluginIdentifier;
+
+    var _breezeChannel; // optional. If exists, grab appId from it
+
+
+    var _extensionConfig;
+
+    dynamicproto_js(PropertiesPlugin, _this, function (_self, _base) {
+      _self.initialize = function (config, core, extensions, pluginChain) {
+        _base.initialize(config, core, extensions, pluginChain);
+
+        var ctx = _self._getTelCtx();
+
+        var identifier = _self.identifier;
+        var defaultConfig = PropertiesPlugin.getDefaultConfig();
+        _extensionConfig = _extensionConfig || {};
+        objForEachKey(defaultConfig, function (field, value) {
+          _extensionConfig[field] = function () {
+            return ctx.getConfig(identifier, field, value());
+          };
+        });
+        _self.context = new TelemetryContext(core, _extensionConfig);
+        _breezeChannel = getExtensionByName(extensions, BreezeChannelIdentifier);
+
+        _self.context.appId = function () {
+          return _breezeChannel ? _breezeChannel["_appId"] : null;
+        }; // Test hook to allow accessing the internal values -- explicitly not defined as an available property on the class
+
+
+        _self["_extConfig"] = _extensionConfig;
+      };
+      /**
+       * Add Part A fields to the event
+       * @param event The event that needs to be processed
+       */
+
+
+      _self.processTelemetry = function (event, itemCtx) {
+        if (isNullOrUndefined(event)) {// TODO(barustum): throw an internal event once we have support for internal logging
+        } else {
+          itemCtx = _self._getTelCtx(itemCtx); // If the envelope is PageView, reset the internal message count so that we can send internal telemetry for the new page.
+
+          if (event.name === PageView.envelopeType) {
+            itemCtx.diagLog().resetInternalMessageCount();
+          }
+
+          var theContext = _self.context || {};
+
+          if (theContext.session) {
+            // If customer did not provide custom session id update the session manager
+            if (typeof _self.context.session.id !== "string" && theContext.sessionManager) {
+              theContext.sessionManager.update();
+            }
+          }
+
+          var userCtx = theContext.user;
+
+          if (userCtx && !userCtx.isUserCookieSet) {
+            userCtx.update(theContext.user.id);
+          }
+
+          _processTelemetryInternal(event, itemCtx);
+
+          if (userCtx && userCtx.isNewUser) {
+            userCtx.isNewUser = false;
+            var message = new _InternalLogMessage(_InternalMessageId.SendBrowserInfoOnUserInit, (getNavigator() || {}).userAgent || "");
+            itemCtx.diagLog().logInternalMessage(LoggingSeverity.CRITICAL, message);
+          }
+
+          _self.processNext(event, itemCtx);
+        }
+      };
+
+      function _processTelemetryInternal(evt, itemCtx) {
+        // Set Part A fields
+        getSetValue(evt, "tags", []);
+        getSetValue(evt, "ext", {});
+        var ctx = _self.context;
+        ctx.applySessionContext(evt, itemCtx);
+        ctx.applyApplicationContext(evt, itemCtx);
+        ctx.applyDeviceContext(evt, itemCtx);
+        ctx.applyOperationContext(evt, itemCtx);
+        ctx.applyUserContext(evt, itemCtx);
+        ctx.applyOperatingSystemContxt(evt, itemCtx);
+        ctx.applyWebContext(evt, itemCtx);
+        ctx.applyLocationContext(evt, itemCtx); // legacy tags
+
+        ctx.applyInternalContext(evt, itemCtx); // legacy tags
+
+        ctx.cleanUp(evt, itemCtx);
+      }
+    });
+    return _this;
+  }
+
+  PropertiesPlugin.getDefaultConfig = function () {
+    var defaultConfig = {
+      instrumentationKey: function instrumentationKey() {
+        return undefined;
+      },
+      accountId: function accountId() {
+        return null;
+      },
+      sessionRenewalMs: function sessionRenewalMs() {
+        return 30 * 60 * 1000;
+      },
+      samplingPercentage: function samplingPercentage() {
+        return 100;
+      },
+      sessionExpirationMs: function sessionExpirationMs() {
+        return 24 * 60 * 60 * 1000;
+      },
+      cookieDomain: function cookieDomain() {
+        return null;
+      },
+      sdkExtension: function sdkExtension() {
+        return null;
+      },
+      isBrowserLinkTrackingEnabled: function isBrowserLinkTrackingEnabled() {
+        return false;
+      },
+      appId: function appId() {
+        return null;
+      },
+      getSessionId: function getSessionId() {
+        return null;
+      },
+      namePrefix: function namePrefix() {
+        return undefined;
+      },
+      sessionCookiePostfix: function sessionCookiePostfix() {
+        return undefined;
+      },
+      userCookiePostfix: function userCookiePostfix() {
+        return undefined;
+      },
+      idLength: function idLength() {
+        return 22;
+      },
+      getNewId: function getNewId() {
+        return null;
+      }
+    };
+    return defaultConfig;
+  }; // Removed Stub for PropertiesPlugin.prototype.initialize.
+  // Removed Stub for PropertiesPlugin.prototype.processTelemetry.
+
+
+  return PropertiesPlugin;
+}(BaseTelemetryPlugin);
+
+/* harmony default export */ var dist_esm_PropertiesPlugin = (PropertiesPlugin);
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-core-js/dist-esm/JavaScriptSDK/InstrumentHooks.js
+/*
+ * Application Insights JavaScript SDK - Core, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+var aiInstrumentHooks = "_aiHooks";
+;
+var cbNames = ["req", "rsp", "hkErr", "fnErr"];
+/**
+ * Constant string defined to support minimization
+ * @ignore
+ */
+
+var InstrumentHooks_str_Proto = "__proto__";
+/**
+ * Constant string defined to support minimization
+ * @ignore
+ */
+
+var strConstructor = "constructor";
+/** @ignore */
+
+function _arrLoop(arr, fn) {
+  if (arr) {
+    for (var lp = 0; lp < arr.length; lp++) {
+      if (fn(arr[lp], lp)) {
+        break;
+      }
+    }
+  }
+}
+/** @ignore */
+
+
+function _doCallbacks(hooks, callDetails, cbArgs, hookCtx, type) {
+  if (type >= 0
+  /* Request */
+  && type <= 2
+  /* HookError */
+  ) {
+    _arrLoop(hooks, function (hook, idx) {
+      var cbks = hook.cbks;
+      var cb = cbks[cbNames[type]];
+
+      if (cb) {
+        // Set the specific hook context implementation using a lazy creation pattern
+        callDetails.ctx = function () {
+          var ctx = hookCtx[idx] = hookCtx[idx] || {};
+          return ctx;
+        };
+
+        try {
+          cb.apply(callDetails.inst, cbArgs);
+        } catch (err) {
+          var orgEx = callDetails.err;
+
+          try {
+            // Report Hook error via the callback
+            var hookErrorCb = cbks[cbNames[2
+            /* HookError */
+            ]];
+
+            if (hookErrorCb) {
+              callDetails.err = err;
+              hookErrorCb.apply(callDetails.inst, cbArgs);
+            }
+          } catch (e) {// Not much we can do here -- swallowing the exception to avoid crashing the hosting app
+          } finally {
+            // restore the original exception (if any)
+            callDetails.err = orgEx;
+          }
+        }
+      }
+    });
+  }
+}
+/** @ignore */
+
+
+function _createFunctionHook(aiHook) {
+  // Define a temporary method that queues-up a the real method call
+  return function () {
+    var funcThis = this; // Capture the original arguments passed to the method
+
+    var orgArgs = arguments;
+    var hooks = aiHook.h;
+    var funcArgs = {
+      name: aiHook.n,
+      inst: funcThis,
+      ctx: null,
+      set: _replaceArg
+    };
+    var hookCtx = [];
+
+    var cbArgs = _createArgs([funcArgs], orgArgs);
+
+    function _createArgs(target, theArgs) {
+      _arrLoop(theArgs, function (arg) {
+        target.push(arg);
+      });
+
+      return target;
+    }
+
+    function _replaceArg(idx, value) {
+      orgArgs = _createArgs([], orgArgs);
+      orgArgs[idx] = value;
+      cbArgs = _createArgs([funcArgs], orgArgs);
+    } // Call the pre-request hooks
+
+
+    _doCallbacks(hooks, funcArgs, cbArgs, hookCtx, 0
+    /* Request */
+    ); // Call the original function was called
+
+
+    var theFunc = aiHook.f;
+
+    try {
+      funcArgs.rslt = theFunc.apply(funcThis, orgArgs);
+    } catch (err) {
+      // Report the request callback
+      funcArgs.err = err;
+
+      _doCallbacks(hooks, funcArgs, cbArgs, hookCtx, 3
+      /* FunctionError */
+      ); // rethrow the original exception so anyone listening for it can catch the exception
+
+
+      throw err;
+    } // Call the post-request hooks
+
+
+    _doCallbacks(hooks, funcArgs, cbArgs, hookCtx, 1
+    /* Response */
+    );
+
+    return funcArgs.rslt;
+  };
+}
+/**
+ * Pre-lookup to check if we are running on a modern browser (i.e. not IE8)
+ * @ignore
+ */
+
+
+var InstrumentHooks_objGetPrototypeOf = Object["getPrototypeOf"];
+/**
+ * Helper used to get the prototype of the target object as getPrototypeOf is not available in an ES3 environment.
+ * @ignore
+ */
+
+function InstrumentHooks_getObjProto(target) {
+  if (target) {
+    // This method doesn't existing in older browsers (e.g. IE8)
+    if (InstrumentHooks_objGetPrototypeOf) {
+      return InstrumentHooks_objGetPrototypeOf(target);
+    } // target[Constructor] May break if the constructor has been changed or removed
+
+
+    var newProto = target[InstrumentHooks_str_Proto] || target[Constants_strShimPrototype] || target[strConstructor];
+
+    if (newProto) {
+      return newProto;
+    }
+  }
+
+  return null;
+}
+/** @ignore */
+
+
+function _getOwner(target, name, checkPrototype) {
+  var owner = null;
+
+  if (target) {
+    if (HelperFuncs_hasOwnProperty(target, name)) {
+      owner = target;
+    } else if (checkPrototype) {
+      owner = _getOwner(InstrumentHooks_getObjProto(target), name, false);
+    }
+  }
+
+  return owner;
+}
+/**
+ * Intercept the named prototype functions for the target class / object
+ * @param target - The target object
+ * @param funcName - The function name
+ * @param callbacks - The callbacks to configure and call whenever the function is called
+ */
+
+
+function InstrumentProto(target, funcName, callbacks) {
+  if (target) {
+    return InstrumentFunc(target[Constants_strShimPrototype], funcName, callbacks, false);
+  }
+
+  return null;
+}
+/**
+ * Intercept the named prototype functions for the target class / object
+ * @param target - The target object
+ * @param funcNames - The function names to intercept and call
+ * @param callbacks - The callbacks to configure and call whenever the function is called
+ */
+
+function InstrumentProtos(target, funcNames, callbacks) {
+  if (target) {
+    return InstrumentFuncs(target[strShimPrototype], funcNames, callbacks, false);
+  }
+
+  return null;
+}
+/**
+ * Intercept the named prototype functions for the target class / object
+ * @param target - The target object
+ * @param funcName - The function name
+ * @param callbacks - The callbacks to configure and call whenever the function is called
+ * @param checkPrototype - If the function doesn't exist on the target should it attempt to hook the prototype function
+ */
+
+function InstrumentFunc(target, funcName, callbacks, checkPrototype) {
+  if (checkPrototype === void 0) {
+    checkPrototype = true;
+  }
+
+  if (target && funcName && callbacks) {
+    var owner = _getOwner(target, funcName, checkPrototype);
+
+    if (owner) {
+      var fn = owner[funcName];
+
+      if (typeof fn === Constants_strShimFunction) {
+        var aiHook_1 = fn[aiInstrumentHooks];
+
+        if (!aiHook_1) {
+          // Only hook the function once
+          aiHook_1 = {
+            i: 0,
+            n: funcName,
+            f: fn,
+            h: []
+          }; // Override (hook) the original function
+
+          var newFunc = _createFunctionHook(aiHook_1);
+
+          newFunc[aiInstrumentHooks] = aiHook_1; // Tag and store the function hooks
+
+          owner[funcName] = newFunc;
+        }
+
+        var theHook = {
+          // tslint:disable:object-literal-shorthand
+          id: aiHook_1.i,
+          cbks: callbacks,
+          rm: function rm() {
+            // DO NOT Use () => { shorthand for the function as the this gets replaced
+            // with the outer this and not the this for theHook instance.
+            var id = this.id;
+
+            _arrLoop(aiHook_1.h, function (hook, idx) {
+              if (hook.id === id) {
+                aiHook_1.h.splice(idx, 1);
+                return 1;
+              }
+            });
+          } // tslint:enable:object-literal-shorthand
+
+        };
+        aiHook_1.i++;
+        aiHook_1.h.push(theHook);
+        return theHook;
+      }
+    }
+  }
+
+  return null;
+}
+/**
+ * Intercept the named functions for the target class / object
+ * @param target - The target object
+ * @param funcNames - The function names to intercept and call
+ * @param callbacks - The callbacks to configure and call whenever the function is called
+ * @param checkPrototype - If the function doesn't exist on the target should it attempt to hook the prototype function
+ */
+
+function InstrumentFuncs(target, funcNames, callbacks, checkPrototype) {
+  if (checkPrototype === void 0) {
+    checkPrototype = true;
+  }
+
+  var hooks = null;
+
+  _arrLoop(funcNames, function (funcName) {
+    var hook = InstrumentFunc(target, funcName, callbacks, checkPrototype);
+
+    if (hook) {
+      if (!hooks) {
+        hooks = [];
+      }
+
+      hooks.push(hook);
+    }
+  });
+
+  return hooks;
+}
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-dependencies-js/dist-esm/ajaxRecord.js
+/*
+ * Application Insights JavaScript SDK - Dependencies Plugin, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+var ajaxRecord_strProperties = "properties";
+/** @ignore */
+
+function _calcPerfDuration(resourceEntry, start, end) {
+  var result = 0;
+  var from = resourceEntry[start];
+  var to = resourceEntry[end];
+
+  if (from && to) {
+    result = dateTimeUtilsDuration(from, to);
+  }
+
+  return result;
+}
+/** @ignore */
+
+
+function _setPerfDuration(props, name, resourceEntry, start, end) {
+  var result = 0;
+
+  var value = _calcPerfDuration(resourceEntry, start, end);
+
+  if (value) {
+    result = _setPerfValue(props, name, msToTimeSpan(value));
+  }
+
+  return result;
+}
+/** @ignore */
+
+
+function _setPerfValue(props, name, value) {
+  var strPerf = "ajaxPerf";
+  var result = 0;
+
+  if (props && name && value) {
+    var perfData = props[strPerf] = props[strPerf] || {};
+    perfData[name] = value;
+    result = 1;
+  }
+
+  return result;
+}
+/** @ignore */
+
+
+function _populatePerfData(ajaxData, dependency) {
+  /*
+  * https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API
+  *  | -startTime
+  *  | -redirectStart
+  *  |            | -redirectEnd
+  *  |            | | -fetchStart
+  *  |            | |   | -domainLookupStart
+  *  |            | |   |                |- domainLookupEnd
+  *  |            | |   |                | | -connectStart
+  *  |            | |   |                | |  | -secureConnectionStart
+  *  |            | |   |                | |  |        | -connectEnd
+  *  |            | |   |                | |  |        | | -requestStart
+  *  |            | |   |                | |  |        | |           | | -responseStart
+  *  |            | |   |                | |  |        | |           | |            | | -responseEnd
+  *  +------------+-+---+----------------+-+--+--------+-+-----------+-+------------+-+
+  *  |--redirect--| |---|--domainLookup--| |--connect--| |--request--| |--response--| |
+  *  |-------------------networkConnect----------------|
+  *  |                                                   |---------sentRequest--------|
+  *  |------------------------------------perfTotal-----------------------------------|
+  */
+  var resourceEntry = ajaxData.perfTiming;
+  var props = dependency[ajaxRecord_strProperties] || {};
+  var propsSet = 0;
+  var strName = "name";
+  var strStart = "Start";
+  var strEnd = "End";
+  var strDomainLookup = "domainLookup";
+  var strConnect = "connect";
+  var strRedirect = "redirect";
+  var strRequest = "request";
+  var strResponse = "response";
+  var strDuration = "duration";
+  var strStartTime = "startTime";
+  var strDomainLookupStart = strDomainLookup + strStart;
+  var strDomainLookupEnd = strDomainLookup + strEnd;
+  var strConnectStart = strConnect + strStart;
+  var strConnectEnd = strConnect + strEnd;
+  var strRequestStart = strRequest + strStart;
+  var strRequestEnd = strRequest + strEnd;
+  var strResponseStart = strResponse + strStart;
+  var strResponseEnd = strResponse + strEnd;
+  var strRedirectStart = strRedirect + strStart;
+  var strRedirectEnd = strRedirect = strEnd;
+  var strTransferSize = "transferSize";
+  var strEncodedBodySize = "encodedBodySize";
+  var strDecodedBodySize = "decodedBodySize";
+  var strServerTiming = "serverTiming";
+
+  if (resourceEntry) {
+    // redirect
+    propsSet |= _setPerfDuration(props, strRedirect, resourceEntry, strRedirectStart, strRedirectEnd); // domainLookup
+
+    propsSet |= _setPerfDuration(props, strDomainLookup, resourceEntry, strDomainLookupStart, strDomainLookupEnd); // connect
+
+    propsSet |= _setPerfDuration(props, strConnect, resourceEntry, strConnectStart, strConnectEnd); // request
+
+    propsSet |= _setPerfDuration(props, strRequest, resourceEntry, strRequestStart, strRequestEnd); // response
+
+    propsSet |= _setPerfDuration(props, strResponse, resourceEntry, strResponseStart, strResponseEnd); // Network connection time
+
+    propsSet |= _setPerfDuration(props, "networkConnect", resourceEntry, strStartTime, strConnectEnd); // Sent Request
+
+    propsSet |= _setPerfDuration(props, "sentRequest", resourceEntry, strRequestStart, strResponseEnd); // PerfTotal / Duration
+
+    var duration = resourceEntry[strDuration];
+
+    if (!duration) {
+      duration = _calcPerfDuration(resourceEntry, strStartTime, strResponseEnd) || 0;
+    }
+
+    propsSet |= _setPerfValue(props, strDuration, duration);
+    propsSet |= _setPerfValue(props, "perfTotal", duration);
+    var serverTiming = resourceEntry[strServerTiming];
+
+    if (serverTiming) {
+      var server_1 = {};
+      arrForEach(serverTiming, function (value, idx) {
+        var name = normalizeJsName(value[strName] || "" + idx);
+        var newValue = server_1[name] || {};
+        objForEachKey(value, function (key, val) {
+          if (key !== strName && HelperFuncs_isString(val) || isNumber(val)) {
+            if (newValue[key]) {
+              val = newValue[key] + ";" + val;
+            }
+
+            if (val || !HelperFuncs_isString(val)) {
+              // Only set the value if it has a value and it's not an empty string
+              newValue[key] = val;
+            }
+          }
+        });
+        server_1[name] = newValue;
+      });
+      propsSet |= _setPerfValue(props, strServerTiming, server_1);
+    }
+
+    propsSet |= _setPerfValue(props, strTransferSize, resourceEntry[strTransferSize]);
+    propsSet |= _setPerfValue(props, strEncodedBodySize, resourceEntry[strEncodedBodySize]);
+    propsSet |= _setPerfValue(props, strDecodedBodySize, resourceEntry[strDecodedBodySize]);
+  } else {
+    if (ajaxData.perfMark) {
+      propsSet |= _setPerfValue(props, "missing", ajaxData.perfAttempts);
+    }
+  }
+
+  if (propsSet) {
+    dependency[ajaxRecord_strProperties] = props;
+  }
+}
+
+var XHRMonitoringState = function () {
+  function XHRMonitoringState() {
+    var self = this;
+    self.openDone = false;
+    self.setRequestHeaderDone = false;
+    self.sendDone = false;
+    self.abortDone = false; // <summary>True, if onreadyStateChangeCallback function attached to xhr, otherwise false</summary>
+
+    self.stateChangeAttached = false;
+  }
+
+  return XHRMonitoringState;
+}();
+
+
+
+var ajaxRecord = function () {
+  function ajaxRecord(traceID, spanID, logger) {
+    var self = this;
+    var _logger = logger;
+    var strResponseText = "responseText"; // Assigning the initial/default values within the constructor to avoid typescript from creating a bunch of
+    // this.XXXX = null
+
+    self.perfMark = null;
+    self.completed = false;
+    self.requestHeadersSize = null;
+    self.requestHeaders = null;
+    self.responseReceivingDuration = null;
+    self.callbackDuration = null;
+    self.ajaxTotalDuration = null;
+    self.aborted = 0;
+    self.pageUrl = null;
+    self.requestUrl = null;
+    self.requestSize = 0;
+    self.method = null;
+    self.status = null;
+    self.requestSentTime = null;
+    self.responseStartedTime = null;
+    self.responseFinishedTime = null;
+    self.callbackFinishedTime = null;
+    self.endTime = null;
+    self.xhrMonitoringState = new XHRMonitoringState();
+    self.clientFailure = 0;
+    self.traceID = traceID;
+    self.spanID = spanID;
+    dynamicproto_js(ajaxRecord, self, function (self) {
+      self.getAbsoluteUrl = function () {
+        return self.requestUrl ? urlGetAbsoluteUrl(self.requestUrl) : null;
+      };
+
+      self.getPathName = function () {
+        return self.requestUrl ? dataSanitizeUrl(_logger, urlGetCompleteUrl(self.method, self.requestUrl)) : null;
+      };
+
+      self.CreateTrackItem = function (ajaxType, enableRequestHeaderTracking, getResponse) {
+        var _a; // round to 3 decimal points
+
+
+        self.ajaxTotalDuration = Math.round(dateTimeUtilsDuration(self.requestSentTime, self.responseFinishedTime) * 1000) / 1000;
+
+        if (self.ajaxTotalDuration < 0) {
+          return null;
+        }
+
+        var dependency = (_a = {
+          id: "|" + self.traceID + "." + self.spanID,
+          target: self.getAbsoluteUrl(),
+          name: self.getPathName(),
+          type: ajaxType,
+          startTime: null,
+          duration: self.ajaxTotalDuration,
+          success: +self.status >= 200 && +self.status < 400,
+          responseCode: +self.status,
+          method: self.method
+        }, _a[ajaxRecord_strProperties] = {
+          HttpMethod: self.method
+        }, _a);
+
+        if (self.requestSentTime) {
+          // Set the correct dependency start time
+          dependency.startTime = new Date();
+          dependency.startTime.setTime(self.requestSentTime);
+        } // Add Ajax perf details if available
+
+
+        _populatePerfData(self, dependency);
+
+        if (enableRequestHeaderTracking) {
+          if (objKeys(self.requestHeaders).length > 0) {
+            dependency[ajaxRecord_strProperties] = dependency[ajaxRecord_strProperties] || {};
+            dependency[ajaxRecord_strProperties].requestHeaders = self.requestHeaders;
+          }
+        }
+
+        if (getResponse) {
+          var response = getResponse();
+
+          if (response) {
+            // enrich dependency target with correlation context from the server
+            var correlationContext = response.correlationContext;
+
+            if (correlationContext) {
+              dependency.correlationContext =
+              /* dependency.target + " | " + */
+              correlationContext;
+            }
+
+            if (response.headerMap) {
+              if (objKeys(response.headerMap).length > 0) {
+                dependency[ajaxRecord_strProperties] = dependency[ajaxRecord_strProperties] || {};
+                dependency[ajaxRecord_strProperties].responseHeaders = response.headerMap;
+              }
+            }
+
+            if (self.errorStatusText && self.status >= 400) {
+              var responseType = response.type;
+              dependency[ajaxRecord_strProperties] = dependency[ajaxRecord_strProperties] || {};
+
+              if (responseType === "" || responseType === "text") {
+                dependency[ajaxRecord_strProperties][strResponseText] = response[strResponseText] ? response.statusText + " - " + response[strResponseText] : response.statusText;
+              }
+
+              if (responseType === "json") {
+                dependency[ajaxRecord_strProperties][strResponseText] = response.response ? response.statusText + " - " + JSON.stringify(response.response) : response.statusText;
+              }
+            }
+          }
+        }
+
+        return dependency;
+      };
+    });
+  } // Removed Stub for ajaxRecord.prototype.getAbsoluteUrl.
+  // Removed Stub for ajaxRecord.prototype.getPathName.
+  // Removed Stub for ajaxRecord.prototype.CreateTrackItem.
+
+
+  return ajaxRecord;
+}();
+
+
+;
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-dependencies-js/dist-esm/TraceParent.js
+/*
+ * Application Insights JavaScript SDK - Dependencies Plugin, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+var Traceparent = function () {
+  function Traceparent(traceId, spanId) {
+    var self = this;
+    self.traceFlag = Traceparent.DEFAULT_TRACE_FLAG;
+    self.version = Traceparent.DEFAULT_VERSION;
+
+    if (traceId && Traceparent.isValidTraceId(traceId)) {
+      self.traceId = traceId;
+    } else {
+      self.traceId = generateW3CId();
+    }
+
+    if (spanId && Traceparent.isValidSpanId(spanId)) {
+      self.spanId = spanId;
+    } else {
+      self.spanId = generateW3CId().substr(0, 16);
+    }
+  }
+
+  Traceparent.isValidTraceId = function (id) {
+    return id.match(/^[0-9a-f]{32}$/) && id !== "00000000000000000000000000000000";
+  };
+
+  Traceparent.isValidSpanId = function (id) {
+    return id.match(/^[0-9a-f]{16}$/) && id !== "0000000000000000";
+  };
+
+  Traceparent.prototype.toString = function () {
+    var self = this;
+    return self.version + "-" + self.traceId + "-" + self.spanId + "-" + self.traceFlag;
+  };
+
+  Traceparent.DEFAULT_TRACE_FLAG = "01";
+  Traceparent.DEFAULT_VERSION = "00";
+  return Traceparent;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-dependencies-js/dist-esm/ajax.js
+/*
+ * Application Insights JavaScript SDK - Dependencies Plugin, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+
+
+
+var AJAX_MONITOR_PREFIX = "ai.ajxmn.";
+var strDiagLog = "diagLog";
+var strAjaxData = "ajaxData";
+var strThrowInternal = "throwInternal";
+var strFetch = "fetch"; // Using a global value so that to handle same iKey with multiple app insights instances (mostly for testing)
+
+var _markCount = 0;
+/** @Ignore */
+
+function _supportsFetch() {
+  var _global = getGlobal();
+
+  if (!_global || isNullOrUndefined(_global.Request) || isNullOrUndefined(_global.Request[Constants_strShimPrototype]) || isNullOrUndefined(_global[strFetch])) {
+    return null;
+  }
+
+  return _global[strFetch];
+}
+/**
+ * Determines whether ajax monitoring can be enabled on this document
+ * @returns True if Ajax monitoring is supported on this page, otherwise false
+ * @ignore
+ */
+
+
+function _supportsAjaxMonitoring(ajaxMonitorInstance) {
+  var result = false;
+
+  if (isXhrSupported()) {
+    var proto = XMLHttpRequest[Constants_strShimPrototype];
+    result = !isNullOrUndefined(proto) && !isNullOrUndefined(proto.open) && // eslint-disable-line security/detect-non-literal-fs-filename -- false positive
+    !isNullOrUndefined(proto.send) && !isNullOrUndefined(proto.abort);
+  }
+
+  var ieVer = getIEVersion();
+
+  if (ieVer && ieVer < 9) {
+    result = false;
+  }
+
+  if (result) {
+    // Disable if the XmlHttpRequest can't be extended or hooked
+    try {
+      var xhr = new XMLHttpRequest();
+      xhr[strAjaxData] = {}; // Check that we can update the prototype
+
+      var theOpen = XMLHttpRequest[Constants_strShimPrototype].open;
+      XMLHttpRequest[Constants_strShimPrototype].open = theOpen;
+    } catch (e) {
+      // We can't decorate the xhr object so disable monitoring
+      result = false;
+
+      _throwInternalCritical(ajaxMonitorInstance, _InternalMessageId.FailedMonitorAjaxOpen, "Failed to enable XMLHttpRequest monitoring, extension is not supported", {
+        exception: dumpObj(e)
+      });
+    }
+  }
+
+  return result;
+}
+/** @Ignore */
+
+
+function _getFailedAjaxDiagnosticsMessage(xhr) {
+  var result = "";
+
+  try {
+    if (!isNullOrUndefined(xhr) && !isNullOrUndefined(xhr[strAjaxData]) && !isNullOrUndefined(xhr[strAjaxData].requestUrl)) {
+      result += "(url: '" + xhr[strAjaxData].requestUrl + "')";
+    }
+  } catch (e) {// eslint-disable-next-line no-empty
+  }
+
+  return result;
+}
+/** @ignore */
+
+
+function _throwInternalCritical(ajaxMonitorInstance, msgId, message, properties, isUserAct) {
+  ajaxMonitorInstance[strDiagLog]()[strThrowInternal](LoggingSeverity.CRITICAL, msgId, message, properties, isUserAct);
+}
+/** @ignore */
+
+
+function _throwInternalWarning(ajaxMonitorInstance, msgId, message, properties, isUserAct) {
+  ajaxMonitorInstance[strDiagLog]()[strThrowInternal](LoggingSeverity.WARNING, msgId, message, properties, isUserAct);
+}
+/** @Ignore */
+
+
+function _createErrorCallbackFunc(ajaxMonitorInstance, internalMessage, message) {
+  // tslint:disable-next-line
+  return function (args) {
+    _throwInternalCritical(ajaxMonitorInstance, internalMessage, message, {
+      ajaxDiagnosticsMessage: _getFailedAjaxDiagnosticsMessage(args.inst),
+      exception: dumpObj(args.err)
+    });
+  };
+}
+
+function _indexOf(value, match) {
+  if (value && match) {
+    return value.indexOf(match);
+  }
+
+  return -1;
+}
+
+var AjaxMonitor = function (_super) {
+  __extendsFn(AjaxMonitor, _super);
+
+  function AjaxMonitor() {
+    var _this = _super.call(this) || this;
+
+    _this.identifier = AjaxMonitor.identifier;
+    _this.priority = 120;
+    var strTrackDependencyDataInternal = "trackDependencyDataInternal"; // Using string to help with minification
+
+    var location = getLocation();
+    var _fetchInitialized = false; // fetch monitoring initialized
+
+    var _xhrInitialized = false; // XHR monitoring initialized
+
+    var _currentWindowHost = location && location.host && location.host.toLowerCase();
+
+    var _config = AjaxMonitor.getEmptyConfig();
+
+    var _enableRequestHeaderTracking = false;
+    var _enableAjaxErrorStatusText = false;
+    var _trackAjaxAttempts = 0;
+
+    var _context;
+
+    var _isUsingW3CHeaders;
+
+    var _isUsingAIHeaders;
+
+    var _markPrefix;
+
+    var _enableAjaxPerfTracking = false;
+    var _maxAjaxCallsPerView = 0;
+    var _enableResponseHeaderTracking = false;
+    var _hooks = [];
+    var _disabledUrls = {};
+
+    var _excludeRequestFromAutoTrackingPatterns;
+
+    var _addRequestContext;
+
+    dynamicproto_js(AjaxMonitor, _this, function (_self, base) {
+      _self.initialize = function (config, core, extensions, pluginChain) {
+        if (!_self.isInitialized()) {
+          base.initialize(config, core, extensions, pluginChain);
+
+          var ctx_1 = _self._getTelCtx();
+
+          var defaultConfig = AjaxMonitor.getDefaultConfig();
+          objForEachKey(defaultConfig, function (field, value) {
+            _config[field] = ctx_1.getConfig(AjaxMonitor.identifier, field, value);
+          });
+          var distributedTracingMode = _config.distributedTracingMode;
+          _enableRequestHeaderTracking = _config.enableRequestHeaderTracking;
+          _enableAjaxErrorStatusText = _config.enableAjaxErrorStatusText;
+          _enableAjaxPerfTracking = _config.enableAjaxPerfTracking;
+          _maxAjaxCallsPerView = _config.maxAjaxCallsPerView;
+          _enableResponseHeaderTracking = _config.enableResponseHeaderTracking;
+          _excludeRequestFromAutoTrackingPatterns = _config.excludeRequestFromAutoTrackingPatterns;
+          _addRequestContext = _config.addRequestContext;
+          _isUsingAIHeaders = distributedTracingMode === DistributedTracingModes.AI || distributedTracingMode === DistributedTracingModes.AI_AND_W3C;
+          _isUsingW3CHeaders = distributedTracingMode === DistributedTracingModes.AI_AND_W3C || distributedTracingMode === DistributedTracingModes.W3C;
+
+          if (_enableAjaxPerfTracking) {
+            var iKey = config.instrumentationKey || "unkwn";
+
+            if (iKey.length > 5) {
+              _markPrefix = AJAX_MONITOR_PREFIX + iKey.substring(iKey.length - 5) + ".";
+            } else {
+              _markPrefix = AJAX_MONITOR_PREFIX + iKey + ".";
+            }
+          }
+
+          if (_config.disableAjaxTracking === false) {
+            _instrumentXhr();
+          }
+
+          _instrumentFetch();
+
+          if (extensions.length > 0 && extensions) {
+            var propExt = void 0,
+                extIx = 0;
+
+            while (!propExt && extIx < extensions.length) {
+              if (extensions[extIx] && extensions[extIx].identifier === PropertiesPluginIdentifier) {
+                propExt = extensions[extIx];
+              }
+
+              extIx++;
+            }
+
+            if (propExt) {
+              _context = propExt.context; // we could move IPropertiesPlugin to common as well
+            }
+          }
+        }
+      };
+
+      _self.teardown = function () {
+        // Remove all instrumentation hooks
+        arrForEach(_hooks, function (fn) {
+          fn.rm();
+        });
+        _hooks = [];
+        _fetchInitialized = false;
+        _xhrInitialized = false;
+
+        _self.setInitialized(false);
+      };
+
+      _self.trackDependencyData = function (dependency, properties) {
+        _self[strTrackDependencyDataInternal](dependency, properties);
+      };
+
+      _self.includeCorrelationHeaders = function (ajaxData, input, init, xhr) {
+        // Test Hook to allow the overriding of the location host
+        var currentWindowHost = _self["_currentWindowHost"] || _currentWindowHost;
+
+        if (input) {
+          // Fetch
+          if (CorrelationIdHelper.canIncludeCorrelationHeader(_config, ajaxData.getAbsoluteUrl(), currentWindowHost)) {
+            if (!init) {
+              init = {};
+            } // init headers override original request headers
+            // so, if they exist use only them, otherwise use request's because they should have been applied in the first place
+            // not using original request headers will result in them being lost
+
+
+            init.headers = new Headers(init.headers || (input instanceof Request ? input.headers || {} : {}));
+
+            if (_isUsingAIHeaders) {
+              var id = "|" + ajaxData.traceID + "." + ajaxData.spanID;
+              init.headers.set(RequestHeaders.requestIdHeader, id);
+
+              if (_enableRequestHeaderTracking) {
+                ajaxData.requestHeaders[RequestHeaders.requestIdHeader] = id;
+              }
+            }
+
+            var appId = _config.appId || _context && _context.appId();
+
+            if (appId) {
+              init.headers.set(RequestHeaders.requestContextHeader, RequestHeaders.requestContextAppIdFormat + appId);
+
+              if (_enableRequestHeaderTracking) {
+                ajaxData.requestHeaders[RequestHeaders.requestContextHeader] = RequestHeaders.requestContextAppIdFormat + appId;
+              }
+            }
+
+            if (_isUsingW3CHeaders) {
+              var traceparent = new Traceparent(ajaxData.traceID, ajaxData.spanID);
+              init.headers.set(RequestHeaders.traceParentHeader, traceparent.toString());
+
+              if (_enableRequestHeaderTracking) {
+                ajaxData.requestHeaders[RequestHeaders.traceParentHeader] = traceparent.toString();
+              }
+            }
+          }
+
+          return init;
+        } else if (xhr) {
+          // XHR
+          if (CorrelationIdHelper.canIncludeCorrelationHeader(_config, ajaxData.getAbsoluteUrl(), currentWindowHost)) {
+            if (_isUsingAIHeaders) {
+              var id = "|" + ajaxData.traceID + "." + ajaxData.spanID;
+              xhr.setRequestHeader(RequestHeaders.requestIdHeader, id);
+
+              if (_enableRequestHeaderTracking) {
+                ajaxData.requestHeaders[RequestHeaders.requestIdHeader] = id;
+              }
+            }
+
+            var appId = _config.appId || _context && _context.appId();
+
+            if (appId) {
+              xhr.setRequestHeader(RequestHeaders.requestContextHeader, RequestHeaders.requestContextAppIdFormat + appId);
+
+              if (_enableRequestHeaderTracking) {
+                ajaxData.requestHeaders[RequestHeaders.requestContextHeader] = RequestHeaders.requestContextAppIdFormat + appId;
+              }
+            }
+
+            if (_isUsingW3CHeaders) {
+              var traceparent = new Traceparent(ajaxData.traceID, ajaxData.spanID);
+              xhr.setRequestHeader(RequestHeaders.traceParentHeader, traceparent.toString());
+
+              if (_enableRequestHeaderTracking) {
+                ajaxData.requestHeaders[RequestHeaders.traceParentHeader] = traceparent.toString();
+              }
+            }
+          }
+
+          return xhr;
+        }
+
+        return undefined;
+      };
+
+      _self[strTrackDependencyDataInternal] = function (dependency, properties, systemProperties) {
+        if (_maxAjaxCallsPerView === -1 || _trackAjaxAttempts < _maxAjaxCallsPerView) {
+          // Hack since expected format in w3c mode is |abc.def.
+          // Non-w3c format is |abc.def
+          // @todo Remove if better solution is available, e.g. handle in portal
+          if ((_config.distributedTracingMode === DistributedTracingModes.W3C || _config.distributedTracingMode === DistributedTracingModes.AI_AND_W3C) && typeof dependency.id === "string" && dependency.id[dependency.id.length - 1] !== ".") {
+            dependency.id += ".";
+          }
+
+          if (isNullOrUndefined(dependency.startTime)) {
+            dependency.startTime = new Date();
+          }
+
+          var item = TelemetryItemCreator.create(dependency, RemoteDependencyData_RemoteDependencyData.dataType, RemoteDependencyData_RemoteDependencyData.envelopeType, _self[strDiagLog](), properties, systemProperties);
+
+          _self.core.track(item);
+        } else if (_trackAjaxAttempts === _maxAjaxCallsPerView) {
+          _throwInternalCritical(_self, _InternalMessageId.MaxAjaxPerPVExceeded, "Maximum ajax per page view limit reached, ajax monitoring is paused until the next trackPageView(). In order to increase the limit set the maxAjaxCallsPerView configuration parameter.", true);
+        }
+
+        ++_trackAjaxAttempts;
+      }; // discard the header if it's defined as ignoreHeaders in ICorrelationConfig
+
+
+      function _canIncludeHeaders(header) {
+        var rlt = true;
+
+        if (header || _config.ignoreHeaders) {
+          arrForEach(_config.ignoreHeaders, function (key) {
+            if (key.toLowerCase() === header.toLowerCase()) {
+              rlt = false;
+              return -1;
+            }
+          });
+        }
+
+        return rlt;
+      } // Fetch Stuff
+
+
+      function _instrumentFetch() {
+        var fetch = _supportsFetch();
+
+        if (!fetch) {
+          return;
+        }
+
+        var global = getGlobal();
+        var isPolyfill = fetch.polyfill;
+
+        if (_config.disableFetchTracking === false) {
+          _hooks.push(InstrumentFunc(global, strFetch, {
+            // Add request hook
+            req: function req(callDetails, input, init) {
+              var fetchData;
+
+              if (_fetchInitialized && !_isDisabledRequest(null, input, init) && // If we have a polyfil and XHR instrumented then let XHR report otherwise we get duplicates
+              !(isPolyfill && _xhrInitialized)) {
+                var ctx = callDetails.ctx();
+                fetchData = _createFetchRecord(input, init);
+
+                var newInit = _self.includeCorrelationHeaders(fetchData, input, init);
+
+                if (newInit !== init) {
+                  callDetails.set(1, newInit);
+                }
+
+                ctx.data = fetchData;
+              }
+            },
+            rsp: function rsp(callDetails, input) {
+              var fetchData = callDetails.ctx().data;
+
+              if (fetchData) {
+                // Replace the result with the new promise from this code
+                callDetails.rslt = callDetails.rslt.then(function (response) {
+                  _reportFetchMetrics(callDetails, (response || {}).status, input, response, fetchData, function () {
+                    var ajaxResponse = {
+                      statusText: response.statusText,
+                      headerMap: null,
+                      correlationContext: _getFetchCorrelationContext(response)
+                    };
+
+                    if (_enableResponseHeaderTracking) {
+                      var responseHeaderMap_1 = {};
+                      response.headers.forEach(function (value, name) {
+                        if (_canIncludeHeaders(name)) {
+                          responseHeaderMap_1[name] = value;
+                        }
+                      });
+                      ajaxResponse.headerMap = responseHeaderMap_1;
+                    }
+
+                    return ajaxResponse;
+                  });
+
+                  return response;
+                })["catch"](function (reason) {
+                  _reportFetchMetrics(callDetails, 0, input, null, fetchData, null, {
+                    error: reason.message
+                  });
+
+                  throw reason;
+                });
+              }
+            },
+            // Create an error callback to report any hook errors
+            hkErr: _createErrorCallbackFunc(_self, _InternalMessageId.FailedMonitorAjaxOpen, "Failed to monitor Window.fetch, monitoring data for this fetch call may be incorrect.")
+          }));
+
+          _fetchInitialized = true;
+        } else if (isPolyfill) {
+          // If fetch is a polyfill we need to capture the request to ensure that we correctly track
+          // disabled request URLS (i.e. internal urls) to ensure we don't end up in a constant loop
+          // of reporting ourselves, for example React Native uses a polyfill for fetch
+          // Note: Polyfill implementations that don't support the "poyyfill" tag are not supported
+          // the workaround is to add a polyfill property to your fetch implementation before initializing
+          // App Insights
+          _hooks.push(InstrumentFunc(global, strFetch, {
+            req: function req(callDetails, input, init) {
+              // Just call so that we record any disabled URL
+              _isDisabledRequest(null, input, init);
+            }
+          }));
+        }
+
+        if (isPolyfill) {
+          // retag the instrumented fetch with the same polyfill settings this is mostly for testing
+          // But also supports multiple App Insights usages
+          global[strFetch].polyfill = isPolyfill;
+        }
+      }
+
+      function _hookProto(target, funcName, callbacks) {
+        _hooks.push(InstrumentProto(target, funcName, callbacks));
+      }
+
+      function _instrumentXhr() {
+        if (_supportsAjaxMonitoring(_self) && !_xhrInitialized) {
+          // Instrument open
+          _hookProto(XMLHttpRequest, "open", {
+            req: function req(args, method, url, async) {
+              var xhr = args.inst;
+              var ajaxData = xhr[strAjaxData];
+
+              if (!_isDisabledRequest(xhr, url) && _isMonitoredXhrInstance(xhr, true) && (!ajaxData || !ajaxData.xhrMonitoringState.openDone)) {
+                _openHandler(xhr, method, url, async);
+              }
+            },
+            hkErr: _createErrorCallbackFunc(_self, _InternalMessageId.FailedMonitorAjaxOpen, "Failed to monitor XMLHttpRequest.open, monitoring data for this ajax call may be incorrect.")
+          }); // Instrument send
+
+
+          _hookProto(XMLHttpRequest, "send", {
+            req: function req(args, context) {
+              var xhr = args.inst;
+              var ajaxData = xhr[strAjaxData];
+
+              if (_isMonitoredXhrInstance(xhr) && !ajaxData.xhrMonitoringState.sendDone) {
+                _createMarkId("xhr", ajaxData);
+
+                ajaxData.requestSentTime = dateTimeUtilsNow();
+
+                _self.includeCorrelationHeaders(ajaxData, undefined, undefined, xhr);
+
+                ajaxData.xhrMonitoringState.sendDone = true;
+              }
+            },
+            hkErr: _createErrorCallbackFunc(_self, _InternalMessageId.FailedMonitorAjaxSend, "Failed to monitor XMLHttpRequest, monitoring data for this ajax call may be incorrect.")
+          }); // Instrument abort
+
+
+          _hookProto(XMLHttpRequest, "abort", {
+            req: function req(args) {
+              var xhr = args.inst;
+              var ajaxData = xhr[strAjaxData];
+
+              if (_isMonitoredXhrInstance(xhr) && !ajaxData.xhrMonitoringState.abortDone) {
+                ajaxData.aborted = 1;
+                ajaxData.xhrMonitoringState.abortDone = true;
+              }
+            },
+            hkErr: _createErrorCallbackFunc(_self, _InternalMessageId.FailedMonitorAjaxAbort, "Failed to monitor XMLHttpRequest.abort, monitoring data for this ajax call may be incorrect.")
+          }); // Instrument setRequestHeader
+
+
+          if (_enableRequestHeaderTracking) {
+            _hookProto(XMLHttpRequest, "setRequestHeader", {
+              req: function req(args, header, value) {
+                var xhr = args.inst;
+
+                if (_isMonitoredXhrInstance(xhr) && _canIncludeHeaders(header)) {
+                  xhr[strAjaxData].requestHeaders[header] = value;
+                }
+              },
+              hkErr: _createErrorCallbackFunc(_self, _InternalMessageId.FailedMonitorAjaxSetRequestHeader, "Failed to monitor XMLHttpRequest.setRequestHeader, monitoring data for this ajax call may be incorrect.")
+            });
+          }
+
+          _xhrInitialized = true;
+        }
+      }
+
+      function _isDisabledRequest(xhr, request, init) {
+        var isDisabled = false;
+        var theUrl = ((!HelperFuncs_isString(request) ? (request || {}).url || "" : request) || "").toLowerCase(); // check excludeRequestFromAutoTrackingPatterns before stripping off any query string
+
+        arrForEach(_excludeRequestFromAutoTrackingPatterns, function (regex) {
+          var theRegex = regex;
+
+          if (HelperFuncs_isString(regex)) {
+            theRegex = new RegExp(regex);
+          }
+
+          if (!isDisabled) {
+            isDisabled = theRegex.test(theUrl);
+          }
+        }); // if request url matches with exclude regex pattern, return true and no need to check for headers
+
+        if (isDisabled) {
+          return isDisabled;
+        }
+
+        var idx = _indexOf(theUrl, "?");
+
+        var idx2 = _indexOf(theUrl, "#");
+
+        if (idx === -1 || idx2 !== -1 && idx2 < idx) {
+          idx = idx2;
+        }
+
+        if (idx !== -1) {
+          // Strip off any Query string
+          theUrl = theUrl.substring(0, idx);
+        } // check that this instance is not not used by ajax call performed inside client side monitoring to send data to collector
+
+
+        if (!isNullOrUndefined(xhr)) {
+          // Look on the XMLHttpRequest of the URL string value
+          isDisabled = xhr[DisabledPropertyName] === true || theUrl[DisabledPropertyName] === true;
+        } else if (!isNullOrUndefined(request)) {
+          // fetch
+          // Look for DisabledPropertyName in either Request or RequestInit
+          isDisabled = (typeof request === 'object' ? request[DisabledPropertyName] === true : false) || (init ? init[DisabledPropertyName] === true : false);
+        } // Also add extra check just in case the XHR or fetch objects where not decorated with the DisableProperty due to sealing or freezing
+
+
+        if (!isDisabled && theUrl && isInternalApplicationInsightsEndpoint(theUrl)) {
+          isDisabled = true;
+        }
+
+        if (isDisabled) {
+          // Add the disabled url if not present
+          if (!_disabledUrls[theUrl]) {
+            _disabledUrls[theUrl] = 1;
+          }
+        } else {
+          // Check to see if the url is listed as disabled
+          if (_disabledUrls[theUrl]) {
+            isDisabled = true;
+          }
+        }
+
+        return isDisabled;
+      } /// <summary>Verifies that particalar instance of XMLHttpRequest needs to be monitored</summary>
+      /// <param name="excludeAjaxDataValidation">Optional parameter. True if ajaxData must be excluded from verification</param>
+      /// <returns type="bool">True if instance needs to be monitored, otherwise false</returns>
+
+
+      function _isMonitoredXhrInstance(xhr, excludeAjaxDataValidation) {
+        var ajaxValidation = true;
+        var initialized = _xhrInitialized;
+
+        if (!isNullOrUndefined(xhr)) {
+          ajaxValidation = excludeAjaxDataValidation === true || !isNullOrUndefined(xhr[strAjaxData]);
+        } // checking to see that all interested functions on xhr were instrumented
+
+
+        return initialized // checking on ajaxData to see that it was not removed in user code
+        && ajaxValidation;
+      }
+
+      function _openHandler(xhr, method, url, async) {
+        var traceID = _context && _context.telemetryTrace && _context.telemetryTrace.traceID || generateW3CId();
+        var spanID = generateW3CId().substr(0, 16);
+        var ajaxData = new ajaxRecord(traceID, spanID, _self[strDiagLog]());
+        ajaxData.method = method;
+        ajaxData.requestUrl = url;
+        ajaxData.xhrMonitoringState.openDone = true;
+        ajaxData.requestHeaders = {};
+        ajaxData.async = async;
+        ajaxData.errorStatusText = _enableAjaxErrorStatusText;
+        xhr[strAjaxData] = ajaxData;
+
+        _attachToOnReadyStateChange(xhr);
+      }
+
+      function _attachToOnReadyStateChange(xhr) {
+        xhr[strAjaxData].xhrMonitoringState.stateChangeAttached = attachEvent(xhr, "readystatechange", function () {
+          try {
+            if (xhr && xhr.readyState === 4 && _isMonitoredXhrInstance(xhr)) {
+              _onAjaxComplete(xhr);
+            }
+          } catch (e) {
+            var exceptionText = dumpObj(e); // ignore messages with c00c023f, as this a known IE9 XHR abort issue
+
+            if (!exceptionText || _indexOf(exceptionText.toLowerCase(), "c00c023f") === -1) {
+              _throwInternalCritical(_self, _InternalMessageId.FailedMonitorAjaxRSC, "Failed to monitor XMLHttpRequest 'readystatechange' event handler, monitoring data for this ajax call may be incorrect.", {
+                ajaxDiagnosticsMessage: _getFailedAjaxDiagnosticsMessage(xhr),
+                exception: exceptionText
+              });
+            }
+          }
+        });
+      }
+
+      function _getResponseText(xhr) {
+        try {
+          var responseType = xhr.responseType;
+
+          if (responseType === "" || responseType === "text") {
+            // As per the specification responseText is only valid if the type is an empty string or "text"
+            return xhr.responseText;
+          }
+        } catch (e) {// This shouldn't happen because of the above check -- but just in case, so just ignore
+        }
+
+        return null;
+      }
+
+      function _onAjaxComplete(xhr) {
+        var ajaxData = xhr[strAjaxData];
+        ajaxData.responseFinishedTime = dateTimeUtilsNow();
+        ajaxData.status = xhr.status;
+
+        function _reportXhrError(e, failedProps) {
+          var errorProps = failedProps || {};
+          errorProps["ajaxDiagnosticsMessage"] = _getFailedAjaxDiagnosticsMessage(xhr);
+
+          if (e) {
+            errorProps["exception"] = dumpObj(e);
+          }
+
+          _throwInternalWarning(_self, _InternalMessageId.FailedMonitorAjaxDur, "Failed to calculate the duration of the ajax call, monitoring data for this ajax call won't be sent.", errorProps);
+        }
+
+        _findPerfResourceEntry("xmlhttprequest", ajaxData, function () {
+          try {
+            var dependency = ajaxData.CreateTrackItem("Ajax", _enableRequestHeaderTracking, function () {
+              var ajaxResponse = {
+                statusText: xhr.statusText,
+                headerMap: null,
+                correlationContext: _getAjaxCorrelationContext(xhr),
+                type: xhr.responseType,
+                responseText: _getResponseText(xhr),
+                response: xhr.response
+              };
+
+              if (_enableResponseHeaderTracking) {
+                var headers = xhr.getAllResponseHeaders();
+
+                if (headers) {
+                  // xhr.getAllResponseHeaders() method returns all the response headers, separated by CRLF, as a string or null
+                  // the regex converts the header string into an array of individual headers
+                  var arr = strTrim(headers).split(/[\r\n]+/);
+                  var responseHeaderMap_2 = {};
+                  arrForEach(arr, function (line) {
+                    var parts = line.split(': ');
+                    var header = parts.shift();
+                    var value = parts.join(': ');
+
+                    if (_canIncludeHeaders(header)) {
+                      responseHeaderMap_2[header] = value;
+                    }
+                  });
+                  ajaxResponse.headerMap = responseHeaderMap_2;
+                }
+              }
+
+              return ajaxResponse;
+            });
+            var properties = void 0;
+
+            try {
+              if (!!_addRequestContext) {
+                properties = _addRequestContext({
+                  status: xhr.status,
+                  xhr: xhr
+                });
+              }
+            } catch (e) {
+              _throwInternalWarning(_self, _InternalMessageId.FailedAddingCustomDefinedRequestContext, "Failed to add custom defined request context as configured call back may missing a null check.");
+            }
+
+            if (dependency) {
+              if (properties !== undefined) {
+                dependency.properties = __assignFn(__assignFn({}, dependency.properties), properties);
+              }
+
+              _self[strTrackDependencyDataInternal](dependency);
+            } else {
+              _reportXhrError(null, {
+                requestSentTime: ajaxData.requestSentTime,
+                responseFinishedTime: ajaxData.responseFinishedTime
+              });
+            }
+          } finally {
+            // cleanup telemetry data
+            try {
+              xhr[strAjaxData] = null;
+            } catch (e) {// May throw in environments that prevent extension or freeze xhr
+            }
+          }
+        }, function (e) {
+          _reportXhrError(e, null);
+        });
+      }
+
+      function _getAjaxCorrelationContext(xhr) {
+        try {
+          var responseHeadersString = xhr.getAllResponseHeaders();
+
+          if (responseHeadersString !== null) {
+            var index = _indexOf(responseHeadersString.toLowerCase(), RequestHeaders.requestContextHeaderLowerCase);
+
+            if (index !== -1) {
+              var responseHeader = xhr.getResponseHeader(RequestHeaders.requestContextHeader);
+              return CorrelationIdHelper.getCorrelationContext(responseHeader);
+            }
+          }
+        } catch (e) {
+          _throwInternalWarning(_self, _InternalMessageId.FailedMonitorAjaxGetCorrelationHeader, "Failed to get Request-Context correlation header as it may be not included in the response or not accessible.", {
+            ajaxDiagnosticsMessage: _getFailedAjaxDiagnosticsMessage(xhr),
+            exception: dumpObj(e)
+          });
+        }
+      }
+
+      function _createMarkId(type, ajaxData) {
+        if (ajaxData.requestUrl && _markPrefix && _enableAjaxPerfTracking) {
+          var performance_1 = getPerformance();
+
+          if (performance_1 && isFunction(performance_1.mark)) {
+            _markCount++;
+            var markId = _markPrefix + type + "#" + _markCount;
+            performance_1.mark(markId);
+            var entries = performance_1.getEntriesByName(markId);
+
+            if (entries && entries.length === 1) {
+              ajaxData.perfMark = entries[0];
+            }
+          }
+        }
+      }
+
+      function _findPerfResourceEntry(initiatorType, ajaxData, trackCallback, reportError) {
+        var perfMark = ajaxData.perfMark;
+        var performance = getPerformance();
+        var maxAttempts = _config.maxAjaxPerfLookupAttempts;
+        var retryDelay = _config.ajaxPerfLookupDelay;
+        var requestUrl = ajaxData.requestUrl;
+        var attempt = 0;
+
+        (function locateResourceTiming() {
+          try {
+            if (performance && perfMark) {
+              attempt++;
+              var perfTiming = null;
+              var entries = performance.getEntries();
+
+              for (var lp = entries.length - 1; lp >= 0; lp--) {
+                var entry = entries[lp];
+
+                if (entry) {
+                  if (entry.entryType === "resource") {
+                    if (entry.initiatorType === initiatorType && (_indexOf(entry.name, requestUrl) !== -1 || _indexOf(requestUrl, entry.name) !== -1)) {
+                      perfTiming = entry;
+                    }
+                  } else if (entry.entryType === "mark" && entry.name === perfMark.name) {
+                    // We hit the start event
+                    ajaxData.perfTiming = perfTiming;
+                    break;
+                  }
+
+                  if (entry.startTime < perfMark.startTime - 1000) {
+                    // Fallback to try and reduce the time spent looking for the perf entry
+                    break;
+                  }
+                }
+              }
+            }
+
+            if (!perfMark || // - we don't have a perfMark or
+            ajaxData.perfTiming || // - we have not found the perf entry or
+            attempt >= maxAttempts || // - we have tried too many attempts or
+            ajaxData.async === false) {
+              // - this is a sync request
+              if (perfMark && isFunction(performance.clearMarks)) {
+                // Remove the mark so we don't fill up the performance resources too much
+                performance.clearMarks(perfMark.name);
+              }
+
+              ajaxData.perfAttempts = attempt; // just continue and report the track event
+
+              trackCallback();
+            } else {
+              // We need to wait for the browser to populate the window.performance entry
+              // This needs to be at least 1ms as waiting <= 1 (on firefox) is not enough time for fetch or xhr,
+              // this is a scheduling issue for the browser implementation
+              setTimeout(locateResourceTiming, retryDelay);
+            }
+          } catch (e) {
+            reportError(e);
+          }
+        })();
+      }
+
+      function _createFetchRecord(input, init) {
+        var traceID = _context && _context.telemetryTrace && _context.telemetryTrace.traceID || generateW3CId();
+        var spanID = generateW3CId().substr(0, 16);
+        var ajaxData = new ajaxRecord(traceID, spanID, _self[strDiagLog]());
+        ajaxData.requestSentTime = dateTimeUtilsNow();
+        ajaxData.errorStatusText = _enableAjaxErrorStatusText;
+
+        if (input instanceof Request) {
+          ajaxData.requestUrl = input ? input.url : "";
+        } else {
+          ajaxData.requestUrl = input;
+        }
+
+        var method = "GET";
+
+        if (init && init.method) {
+          method = init.method;
+        } else if (input && input instanceof Request) {
+          method = input.method;
+        }
+
+        ajaxData.method = method;
+        var requestHeaders = {};
+
+        if (_enableRequestHeaderTracking) {
+          var headers = new Headers((init ? init.headers : 0) || (input instanceof Request ? input.headers || {} : {}));
+          headers.forEach(function (value, key) {
+            if (_canIncludeHeaders(key)) {
+              requestHeaders[key] = value;
+            }
+          });
+        }
+
+        ajaxData.requestHeaders = requestHeaders;
+
+        _createMarkId("fetch", ajaxData);
+
+        return ajaxData;
+      }
+
+      function _getFailedFetchDiagnosticsMessage(input) {
+        var result = "";
+
+        try {
+          if (!isNullOrUndefined(input)) {
+            if (typeof input === "string") {
+              result += "(url: '" + input + "')";
+            } else {
+              result += "(url: '" + input.url + "')";
+            }
+          }
+        } catch (e) {
+          _throwInternalCritical(_self, _InternalMessageId.FailedMonitorAjaxOpen, "Failed to grab failed fetch diagnostics message", {
+            exception: dumpObj(e)
+          });
+        }
+
+        return result;
+      }
+
+      function _reportFetchMetrics(callDetails, status, input, response, ajaxData, getResponse, properties) {
+        if (!ajaxData) {
+          return;
+        }
+
+        function _reportFetchError(msgId, e, failedProps) {
+          var errorProps = failedProps || {};
+          errorProps["fetchDiagnosticsMessage"] = _getFailedFetchDiagnosticsMessage(input);
+
+          if (e) {
+            errorProps["exception"] = dumpObj(e);
+          }
+
+          _throwInternalWarning(_self, msgId, "Failed to calculate the duration of the fetch call, monitoring data for this fetch call won't be sent.", errorProps);
+        }
+
+        ajaxData.responseFinishedTime = dateTimeUtilsNow();
+        ajaxData.status = status;
+
+        _findPerfResourceEntry("fetch", ajaxData, function () {
+          var dependency = ajaxData.CreateTrackItem("Fetch", _enableRequestHeaderTracking, getResponse);
+          var properties;
+
+          try {
+            if (!!_addRequestContext) {
+              properties = _addRequestContext({
+                status: status,
+                request: input,
+                response: response
+              });
+            }
+          } catch (e) {
+            _throwInternalWarning(_self, _InternalMessageId.FailedAddingCustomDefinedRequestContext, "Failed to add custom defined request context as configured call back may missing a null check.");
+          }
+
+          if (dependency) {
+            if (properties !== undefined) {
+              dependency.properties = __assignFn(__assignFn({}, dependency.properties), properties);
+            }
+
+            _self[strTrackDependencyDataInternal](dependency);
+          } else {
+            _reportFetchError(_InternalMessageId.FailedMonitorAjaxDur, null, {
+              requestSentTime: ajaxData.requestSentTime,
+              responseFinishedTime: ajaxData.responseFinishedTime
+            });
+          }
+        }, function (e) {
+          _reportFetchError(_InternalMessageId.FailedMonitorAjaxGetCorrelationHeader, e, null);
+        });
+      }
+
+      function _getFetchCorrelationContext(response) {
+        if (response && response.headers) {
+          try {
+            var responseHeader = response.headers.get(RequestHeaders.requestContextHeader);
+            return CorrelationIdHelper.getCorrelationContext(responseHeader);
+          } catch (e) {
+            _throwInternalWarning(_self, _InternalMessageId.FailedMonitorAjaxGetCorrelationHeader, "Failed to get Request-Context correlation header as it may be not included in the response or not accessible.", {
+              fetchDiagnosticsMessage: _getFailedFetchDiagnosticsMessage(response),
+              exception: dumpObj(e)
+            });
+          }
+        }
+      }
+    });
+    return _this;
+  }
+
+  AjaxMonitor.getDefaultConfig = function () {
+    var config = {
+      maxAjaxCallsPerView: 500,
+      disableAjaxTracking: false,
+      disableFetchTracking: true,
+      excludeRequestFromAutoTrackingPatterns: undefined,
+      disableCorrelationHeaders: false,
+      distributedTracingMode: DistributedTracingModes.AI_AND_W3C,
+      correlationHeaderExcludedDomains: ["*.blob.core.windows.net", "*.blob.core.chinacloudapi.cn", "*.blob.core.cloudapi.de", "*.blob.core.usgovcloudapi.net"],
+      correlationHeaderDomains: undefined,
+      correlationHeaderExcludePatterns: undefined,
+      appId: undefined,
+      enableCorsCorrelation: false,
+      enableRequestHeaderTracking: false,
+      enableResponseHeaderTracking: false,
+      enableAjaxErrorStatusText: false,
+      enableAjaxPerfTracking: false,
+      maxAjaxPerfLookupAttempts: 3,
+      ajaxPerfLookupDelay: 25,
+      ignoreHeaders: ["Authorization", "X-API-Key", "WWW-Authenticate"],
+      addRequestContext: undefined
+    };
+    return config;
+  };
+
+  AjaxMonitor.getEmptyConfig = function () {
+    var emptyConfig = this.getDefaultConfig();
+    objForEachKey(emptyConfig, function (value) {
+      emptyConfig[value] = undefined;
+    });
+    return emptyConfig;
+  }; // Removed Stub for AjaxMonitor.prototype.initialize.
+  // Removed Stub for AjaxMonitor.prototype.teardown.
+
+
+  AjaxMonitor.prototype.processTelemetry = function (item, itemCtx) {
+    this.processNext(item, itemCtx);
+  }; // Removed Stub for AjaxMonitor.prototype.trackDependencyData.
+  // Removed Stub for AjaxMonitor.prototype.includeCorrelationHeaders.
+  // Removed Stub for AjaxMonitor.prototype.trackDependencyDataInternal.
+
+
+  AjaxMonitor.identifier = "AjaxDependencyPlugin";
+  return AjaxMonitor;
+}(BaseTelemetryPlugin);
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/ConnectionStringParser.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+var _FIELDS_SEPARATOR = ";";
+var _FIELD_KEY_VALUE_SEPARATOR = "=";
+function parseConnectionString(connectionString) {
+  if (!connectionString) {
+    return {};
+  }
+
+  var kvPairs = connectionString.split(_FIELDS_SEPARATOR);
+  var result = arrReduce(kvPairs, function (fields, kv) {
+    var kvParts = kv.split(_FIELD_KEY_VALUE_SEPARATOR);
+
+    if (kvParts.length === 2) {
+      // only save fields with valid formats
+      var key = kvParts[0].toLowerCase();
+      var value = kvParts[1];
+      fields[key] = value;
+    }
+
+    return fields;
+  }, {});
+
+  if (objKeys(result).length > 0) {
+    // this is a valid connection string, so parse the results
+    if (result.endpointsuffix) {
+      // use endpoint suffix where overrides are not provided
+      var locationPrefix = result.location ? result.location + "." : "";
+      result.ingestionendpoint = result.ingestionendpoint || "https://" + locationPrefix + "dc." + result.endpointsuffix;
+    } // apply the default endpoints
+
+
+    result.ingestionendpoint = result.ingestionendpoint || DEFAULT_BREEZE_ENDPOINT;
+  }
+
+  return result;
+}
+var ConnectionStringParser = {
+  parse: parseConnectionString
+};
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-common/dist-esm/Interfaces/IConfig.js
+/*
+ * Application Insights JavaScript SDK - Common, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+var ConfigurationManager = function () {
+  function ConfigurationManager() {}
+
+  ConfigurationManager.getConfig = function (config, field, identifier, defaultValue) {
+    if (defaultValue === void 0) {
+      defaultValue = false;
+    }
+
+    var configValue;
+
+    if (identifier && config.extensionConfig && config.extensionConfig[identifier] && !isNullOrUndefined(config.extensionConfig[identifier][field])) {
+      configValue = config.extensionConfig[identifier][field];
+    } else {
+      configValue = config[field];
+    }
+
+    return !isNullOrUndefined(configValue) ? configValue : defaultValue;
+  };
+
+  return ConfigurationManager;
+}();
+
+
+;// CONCATENATED MODULE: ./node_modules/@microsoft/applicationinsights-web/dist-esm/Initialization.js
+/*
+ * Application Insights JavaScript SDK - Web, 2.7.0
+ * Copyright (c) Microsoft and contributors. All rights reserved.
+ */
+
+
+
+
+
+
+"use strict";
+
+var _internalSdkSrc; // This is an exclude list of properties that should not be updated during initialization
+// They include a combination of private and internal property names
+
+
+var _ignoreUpdateSnippetProperties = ["snippet", "dependencies", "properties", "_snippetVersion", "appInsightsNew", "getSKUDefaults"];
+; // Re-exposing the Common classes as Telemetry, the list was taken by reviewing the generated code for the build while using
+// the previous configuration :-
+// import * as Common from "@microsoft/applicationinsights-common"
+// export const Telemetry = Common;
+
+var fieldType = {
+  Default: 0
+  /* Default */
+  ,
+  Required: 1
+  /* Required */
+  ,
+  Array: 2
+  /* Array */
+  ,
+  Hidden: 4
+  /* Hidden */
+
+};
+/**
+ * Telemetry type classes, e.g. PageView, Exception, etc
+ */
+
+var Telemetry = {
+  __proto__: null,
+  PropertiesPluginIdentifier: PropertiesPluginIdentifier,
+  BreezeChannelIdentifier: BreezeChannelIdentifier,
+  AnalyticsPluginIdentifier: AnalyticsPluginIdentifier,
+  Util: Util,
+  CorrelationIdHelper: CorrelationIdHelper,
+  UrlHelper: UrlHelper,
+  DateTimeUtils: DateTimeUtils,
+  ConnectionStringParser: ConnectionStringParser,
+  FieldType: fieldType,
+  RequestHeaders: RequestHeaders,
+  DisabledPropertyName: DisabledPropertyName,
+  ProcessLegacy: ProcessLegacy,
+  SampleRate: SampleRate,
+  HttpMethod: HttpMethod,
+  DEFAULT_BREEZE_ENDPOINT: DEFAULT_BREEZE_ENDPOINT,
+  AIData: Data,
+  AIBase: Base,
+  Envelope: Envelope_Envelope,
+  Event: Event_Event,
+  Exception: Exception,
+  Metric: Metric,
+  PageView: PageView,
+  PageViewData: PageViewData,
+  RemoteDependencyData: RemoteDependencyData_RemoteDependencyData,
+  Trace: Trace,
+  PageViewPerformance: PageViewPerformance,
+  Data: Data_Data,
+  SeverityLevel: SeverityLevel,
+  ConfigurationManager: ConfigurationManager,
+  ContextTagKeys: ContextTagKeys,
+  DataSanitizer: DataSanitizer,
+  TelemetryItemCreator: TelemetryItemCreator,
+  CtxTagKeys: CtxTagKeys,
+  Extensions: Extensions,
+  DistributedTracingModes: DistributedTracingModes
+};
+/**
+ * Application Insights API
+ * @class Initialization
+ * @implements {IApplicationInsights}
+ */
+
+var Initialization = function () {
+  function Initialization(snippet) {
+    var _self = this; // initialize the queue and config in case they are undefined
+
+
+    _self._snippetVersion = "" + (snippet.sv || snippet.version || "");
+    snippet.queue = snippet.queue || [];
+    snippet.version = snippet.version || 2.0; // Default to new version
+
+    var config = snippet.config || {};
+
+    if (config.connectionString) {
+      var cs = parseConnectionString(config.connectionString);
+      var ingest = cs.ingestionendpoint;
+      config.endpointUrl = ingest ? ingest + "/v2/track" : config.endpointUrl; // only add /v2/track when from connectionstring
+
+      config.instrumentationKey = cs.instrumentationkey || config.instrumentationKey;
+    }
+
+    _self.appInsights = new ApplicationInsights();
+    _self.properties = new dist_esm_PropertiesPlugin();
+    _self.dependencies = new AjaxMonitor();
+    _self.core = new AppInsightsCore();
+    _self._sender = new Sender();
+    _self.snippet = snippet;
+    _self.config = config;
+
+    _self.getSKUDefaults();
+  } // Analytics Plugin
+
+  /**
+   * Get the current cookie manager for this instance
+   */
+
+
+  Initialization.prototype.getCookieMgr = function () {
+    return this.appInsights.getCookieMgr();
+  };
+
+  ;
+  /**
+   * Log a user action or other occurrence.
+   * @param {IEventTelemetry} event
+   * @param {ICustomProperties} [customProperties]
+   * @memberof Initialization
+   */
+
+  Initialization.prototype.trackEvent = function (event, customProperties) {
+    this.appInsights.trackEvent(event, customProperties);
+  };
+  /**
+   * Logs that a page, or similar container was displayed to the user.
+   * @param {IPageViewTelemetry} pageView
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.trackPageView = function (pageView) {
+    var inPv = pageView || {};
+    this.appInsights.trackPageView(inPv);
+  };
+  /**
+   * Log a bag of performance information via the customProperties field.
+   * @param {IPageViewPerformanceTelemetry} pageViewPerformance
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.trackPageViewPerformance = function (pageViewPerformance) {
+    var inPvp = pageViewPerformance || {};
+    this.appInsights.trackPageViewPerformance(inPvp);
+  };
+  /**
+   * Log an exception that you have caught.
+   * @param {IExceptionTelemetry} exception
+   * @param {{[key: string]: any}} customProperties   Additional data used to filter pages and metrics in the portal. Defaults to empty.
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.trackException = function (exception, customProperties) {
+    if (exception && !exception.exception && exception.error) {
+      exception.exception = exception.error;
+    }
+
+    this.appInsights.trackException(exception, customProperties);
+  };
+  /**
+   * Manually send uncaught exception telemetry. This method is automatically triggered
+   * on a window.onerror event.
+   * @param {IAutoExceptionTelemetry} exception
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype._onerror = function (exception) {
+    this.appInsights._onerror(exception);
+  };
+  /**
+   * Log a diagnostic scenario such entering or leaving a function.
+   * @param {ITraceTelemetry} trace
+   * @param {ICustomProperties} [customProperties]
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.trackTrace = function (trace, customProperties) {
+    this.appInsights.trackTrace(trace, customProperties);
+  };
+  /**
+   * Log a numeric value that is not associated with a specific event. Typically used
+   * to send regular reports of performance indicators.
+   *
+   * To send a single measurement, just use the `name` and `average` fields
+   * of {@link IMetricTelemetry}.
+   *
+   * If you take measurements frequently, you can reduce the telemetry bandwidth by
+   * aggregating multiple measurements and sending the resulting average and modifying
+   * the `sampleCount` field of {@link IMetricTelemetry}.
+   * @param {IMetricTelemetry} metric input object argument. Only `name` and `average` are mandatory.
+   * @param {ICustomProperties} [customProperties]
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.trackMetric = function (metric, customProperties) {
+    this.appInsights.trackMetric(metric, customProperties);
+  };
+  /**
+   * Starts the timer for tracking a page load time. Use this instead of `trackPageView` if you want to control when the page view timer starts and stops,
+   * but don't want to calculate the duration yourself. This method doesn't send any telemetry. Call `stopTrackPage` to log the end of the page view
+   * and send the event.
+   * @param name A string that idenfities this item, unique within this HTML document. Defaults to the document title.
+   */
+
+
+  Initialization.prototype.startTrackPage = function (name) {
+    this.appInsights.startTrackPage(name);
+  };
+  /**
+   * Stops the timer that was started by calling `startTrackPage` and sends the pageview load time telemetry with the specified properties and measurements.
+   * The duration of the page view will be the time between calling `startTrackPage` and `stopTrackPage`.
+   * @param   name  The string you used as the name in startTrackPage. Defaults to the document title.
+   * @param   url   String - a relative or absolute URL that identifies the page or other item. Defaults to the window location.
+   * @param   properties  map[string, string] - additional data used to filter pages and metrics in the portal. Defaults to empty.
+   * @param   measurements    map[string, number] - metrics associated with this page, displayed in Metrics Explorer on the portal. Defaults to empty.
+   */
+
+
+  Initialization.prototype.stopTrackPage = function (name, url, customProperties, measurements) {
+    this.appInsights.stopTrackPage(name, url, customProperties, measurements);
+  };
+
+  Initialization.prototype.startTrackEvent = function (name) {
+    this.appInsights.startTrackEvent(name);
+  };
+  /**
+   * Log an extended event that you started timing with `startTrackEvent`.
+   * @param   name    The string you used to identify this event in `startTrackEvent`.
+   * @param   properties  map[string, string] - additional data used to filter events and metrics in the portal. Defaults to empty.
+   * @param   measurements    map[string, number] - metrics associated with this event, displayed in Metrics Explorer on the portal. Defaults to empty.
+   */
+
+
+  Initialization.prototype.stopTrackEvent = function (name, properties, measurements) {
+    this.appInsights.stopTrackEvent(name, properties, measurements); // Todo: Fix to pass measurements once type is updated
+  };
+
+  Initialization.prototype.addTelemetryInitializer = function (telemetryInitializer) {
+    return this.appInsights.addTelemetryInitializer(telemetryInitializer);
+  }; // Properties Plugin
+
+  /**
+   * Set the authenticated user id and the account id. Used for identifying a specific signed-in user. Parameters must not contain whitespace or ,;=|
+   *
+   * The method will only set the `authenticatedUserId` and `accountId` in the current page view. To set them for the whole session, you should set `storeInCookie = true`
+   * @param {string} authenticatedUserId
+   * @param {string} [accountId]
+   * @param {boolean} [storeInCookie=false]
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.setAuthenticatedUserContext = function (authenticatedUserId, accountId, storeInCookie) {
+    if (storeInCookie === void 0) {
+      storeInCookie = false;
+    }
+
+    this.properties.context.user.setAuthenticatedUserContext(authenticatedUserId, accountId, storeInCookie);
+  };
+  /**
+   * Clears the authenticated user id and account id. The associated cookie is cleared, if present.
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.clearAuthenticatedUserContext = function () {
+    this.properties.context.user.clearAuthenticatedUserContext();
+  }; // Dependencies Plugin
+
+  /**
+   * Log a dependency call (e.g. ajax)
+   * @param {IDependencyTelemetry} dependency
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.trackDependencyData = function (dependency) {
+    this.dependencies.trackDependencyData(dependency);
+  }; // Misc
+
+  /**
+   * Manually trigger an immediate send of all telemetry still in the buffer.
+   * @param {boolean} [async=true]
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.flush = function (async) {
+    var _this = this;
+
+    if (async === void 0) {
+      async = true;
+    }
+
+    doPerf(this.core, function () {
+      return "AISKU.flush";
+    }, function () {
+      arrForEach(_this.core.getTransmissionControls(), function (channels) {
+        arrForEach(channels, function (channel) {
+          channel.flush(async);
+        });
+      });
+    }, null, async);
+  };
+  /**
+   * Manually trigger an immediate send of all telemetry still in the buffer using beacon Sender.
+   * Fall back to xhr sender if beacon is not supported.
+   * @param {boolean} [async=true]
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.onunloadFlush = function (async) {
+    if (async === void 0) {
+      async = true;
+    }
+
+    arrForEach(this.core.getTransmissionControls(), function (channels) {
+      arrForEach(channels, function (channel) {
+        if (channel.onunloadFlush) {
+          channel.onunloadFlush();
+        } else {
+          channel.flush(async);
+        }
+      });
+    });
+  };
+  /**
+   * Initialize this instance of ApplicationInsights
+   * @returns {IApplicationInsights}
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.loadAppInsights = function (legacyMode, logger, notificationManager) {
+    var _this = this;
+
+    if (legacyMode === void 0) {
+      legacyMode = false;
+    }
+
+    var _self = this;
+
+    function _updateSnippetProperties(snippet) {
+      if (snippet) {
+        var snippetVer = "";
+
+        if (!isNullOrUndefined(_self._snippetVersion)) {
+          snippetVer += _self._snippetVersion;
+        }
+
+        if (legacyMode) {
+          snippetVer += ".lg";
+        }
+
+        if (_self.context && _self.context.internal) {
+          _self.context.internal.snippetVer = snippetVer || "-";
+        } // apply updated properties to the global instance (snippet)
+
+
+        objForEachKey(_self, function (field, value) {
+          if (HelperFuncs_isString(field) && !isFunction(value) && field && field[0] !== "_" && // Don't copy "internal" values
+          _ignoreUpdateSnippetProperties.indexOf(field) === -1) {
+            snippet[field] = value;
+          }
+        });
+      }
+    } // dont allow additional channels/other extensions for legacy mode; legacy mode is only to allow users to switch with no code changes!
+
+
+    if (legacyMode && _self.config.extensions && _self.config.extensions.length > 0) {
+      throwError("Extensions not allowed in legacy mode");
+    }
+
+    doPerf(_self.core, function () {
+      return "AISKU.loadAppInsights";
+    }, function () {
+      var extensions = [];
+      extensions.push(_self._sender);
+      extensions.push(_self.properties);
+      extensions.push(_self.dependencies);
+      extensions.push(_self.appInsights); // initialize core
+
+      _self.core.initialize(_self.config, extensions, logger, notificationManager);
+
+      _self.context = _self.properties.context;
+
+      if (_internalSdkSrc && _self.context) {
+        _self.context.internal.sdkSrc = _internalSdkSrc;
+      }
+
+      _updateSnippetProperties(_self.snippet); // Empty queue of all api calls logged prior to sdk download
+
+
+      _self.emptyQueue();
+
+      _self.pollInternalLogs();
+
+      _self.addHousekeepingBeforeUnload(_this);
+    });
+    return _self;
+  };
+  /**
+   * Overwrite the lazy loaded fields of global window snippet to contain the
+   * actual initialized API methods
+   * @param {Snippet} snippet
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.updateSnippetDefinitions = function (snippet) {
+    // apply full appInsights to the global instance
+    // Note: This must be called before loadAppInsights is called
+    proxyAssign(snippet, this, function (name) {
+      // Not excluding names prefixed with "_" as we need to proxy some functions like _onError
+      return name && _ignoreUpdateSnippetProperties.indexOf(name) === -1;
+    });
+  };
+  /**
+   * Call any functions that were queued before the main script was loaded
+   * @memberof Initialization
+   */
+
+
+  Initialization.prototype.emptyQueue = function () {
+    var _self = this; // call functions that were queued before the main script was loaded
+
+
+    try {
+      if (isArray(_self.snippet.queue)) {
+        // note: do not check length in the for-loop conditional in case something goes wrong and the stub methods are not overridden.
+        var length_1 = _self.snippet.queue.length;
+
+        for (var i = 0; i < length_1; i++) {
+          var call = _self.snippet.queue[i];
+          call();
+        }
+
+        _self.snippet.queue = undefined;
+        delete _self.snippet.queue;
+      }
+    } catch (exception) {
+      var properties = {};
+
+      if (exception && isFunction(exception.toString)) {
+        properties.exception = exception.toString();
+      } // need from core
+      // Microsoft.ApplicationInsights._InternalLogging.throwInternal(
+      //     LoggingSeverity.WARNING,
+      //     _InternalMessageId.FailedToSendQueuedTelemetry,
+      //     "Failed to send queued telemetry",
+      //     properties);
+
+    }
+  };
+
+  Initialization.prototype.pollInternalLogs = function () {
+    this.core.pollInternalLogs();
+  };
+
+  Initialization.prototype.addHousekeepingBeforeUnload = function (appInsightsInstance) {
+    // Add callback to push events when the user navigates away
+    if (hasWindow() || hasDocument()) {
+      var performHousekeeping = function performHousekeeping() {
+        // Adds the ability to flush all data before the page unloads.
+        // Note: This approach tries to push a sync request with all the pending events onbeforeunload.
+        // Firefox does not respect this.Other browsers DO push out the call with < 100% hit rate.
+        // Telemetry here will help us analyze how effective this approach is.
+        // Another approach would be to make this call sync with a acceptable timeout to reduce the
+        // impact on user experience.
+        // appInsightsInstance.context._sender.triggerSend();
+        appInsightsInstance.onunloadFlush(false); // Back up the current session to local storage
+        // This lets us close expired sessions after the cookies themselves expire
+
+        arrForEach(appInsightsInstance.appInsights.core['_extensions'], function (ext) {
+          if (ext.identifier === PropertiesPluginIdentifier) {
+            if (ext && ext.context && ext.context._sessionManager) {
+              ext.context._sessionManager.backup();
+            }
+
+            return -1;
+          }
+        });
+      };
+
+      if (!appInsightsInstance.appInsights.config.disableFlushOnBeforeUnload) {
+        // Hook the unload event for the document, window and body to ensure that the client events are flushed to the server
+        // As just hooking the window does not always fire (on chrome) for page navigations.
+        var added = addEventHandler('beforeunload', performHousekeeping);
+        added = addEventHandler('unload', performHousekeeping) || added;
+        added = addEventHandler('pagehide', performHousekeeping) || added;
+        added = addEventHandler('visibilitychange', performHousekeeping) || added; // A reactNative app may not have a window and therefore the beforeunload/pagehide events -- so don't
+        // log the failure in this case
+
+        if (!added && !isReactNative()) {
+          appInsightsInstance.appInsights.core.logger.throwInternal(LoggingSeverity.CRITICAL, _InternalMessageId.FailedToAddHandlerForOnBeforeUnload, 'Could not add handler for beforeunload and pagehide');
+        }
+      } // We also need to hook the pagehide and visibilitychange events as not all versions of Safari support load/unload events.
+
+
+      if (!appInsightsInstance.appInsights.config.disableFlushOnUnload) {
+        // Not adding any telemetry as pagehide as it's not supported on all browsers
+        addEventHandler('pagehide', performHousekeeping);
+        addEventHandler('visibilitychange', performHousekeeping);
+      }
+    }
+  };
+
+  Initialization.prototype.getSender = function () {
+    return this._sender;
+  };
+
+  Initialization.prototype.getSKUDefaults = function () {
+    var _self = this;
+
+    _self.config.diagnosticLogInterval = _self.config.diagnosticLogInterval && _self.config.diagnosticLogInterval > 0 ? _self.config.diagnosticLogInterval : 10000;
+  };
+
+  return Initialization;
+}();
+
+ // tslint:disable-next-line
+
+(function () {
+  var sdkSrc = null;
+  var isModule = false;
+  var cdns = ["://js.monitor.azure.com/", "://az416426.vo.msecnd.net/"];
+
+  try {
+    // Try and determine whether the sdk is being loaded from the CDN
+    // currentScript is only valid during initial processing
+    var scrpt = (document || {}).currentScript;
+
+    if (scrpt) {
+      sdkSrc = scrpt.src; // } else {
+      //     // We need to update to at least typescript 2.9 for this to work :-(
+      //     // Leaving as a stub for now so after we upgrade this breadcrumb is available
+      //     let meta = import.meta;
+      //     sdkSrc = (meta || {}).url;
+      //     isModule = true;
+    }
+  } catch (e) {// eslint-disable-next-line no-empty
+  }
+
+  if (sdkSrc) {
+    try {
+      var url = sdkSrc.toLowerCase();
+
+      if (url) {
+        var src = "";
+
+        for (var idx = 0; idx < cdns.length; idx++) {
+          if (url.indexOf(cdns[idx]) !== -1) {
+            src = "cdn" + (idx + 1);
+
+            if (url.indexOf("/scripts/") === -1) {
+              if (url.indexOf("/next/") !== -1) {
+                src += "-next";
+              } else if (url.indexOf("/beta/") !== -1) {
+                src += "-beta";
+              }
+            }
+
+            _internalSdkSrc = src + (isModule ? ".mod" : "");
+            break;
+          }
+        }
+      }
+    } catch (e) {// eslint-disable-next-line no-empty
+    }
+  }
+})();
 ;// CONCATENATED MODULE: ./src/components/hooks/useAnalytics.ts
 
 
@@ -64094,10 +68628,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-
-
 var repo = "microsoft/jacdac-docs";
-var sha = "a7f7bbac6ebb83615a5719b97c589ae98594bc5f";
+var sha = "bf4decbb1d40c5cc48fb88610b488f6855187699";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -64117,70 +68649,37 @@ function splitProperties(props) {
   };
 }
 
-var sessionId = (0,utils/* toHex */.NC)((0,random/* cryptoRandomUint32 */.dG)(32));
 var INSTRUMENTATION_KEY = "81ad7468-8585-4970-b027-4f9e7c3eb191";
 var appInsights = typeof window !== "undefined" && INSTRUMENTATION_KEY && // ignore dev environment
-!/http:\/\/localhost/.test(window.location.href) && new ApplicationInsights({
-  instrumentationKey: INSTRUMENTATION_KEY,
-  isStorageUseDisabled: true,
-  isCookieUseDisabled: true,
-  disableCookiesUsage: true,
-  disableAjaxTracking: true,
-  enableSessionStorageBuffer: false
-});
-var page = appInsights ? () => appInsights.track({
-  name: "",
-  time: new Date().toUTCString(),
-  ext: {
-    app: {
-      sesId: sessionId
-    }
-  },
-  tags: [],
-  data: {
-    repo,
-    sha
-  },
-  baseType: "PageviewData",
-  baseData: {
-    name: window.location.href,
-    uri: window.location.href
+!/http:\/\/localhost/.test(window.location.href) && new Initialization({
+  config: {
+    instrumentationKey: INSTRUMENTATION_KEY,
+    isStorageUseDisabled: true,
+    isCookieUseDisabled: true,
+    disableCookiesUsage: true,
+    disableAjaxTracking: true,
+    enableSessionStorageBuffer: false
   }
+});
+
+if (appInsights) {
+  appInsights.loadAppInsights();
+  appInsights.addTelemetryInitializer(envelope => {
+    envelope.tags["repo"] = repo;
+    envelope.tags["sha"] = sha;
+  });
+  appInsights.trackPageView();
+}
+
+var page = appInsights ? () => appInsights.trackPageView({
+  name: window.location.href
 }) : () => {};
-var trackEvent = appInsights ? (name, properties) => appInsights.track({
-  name: "",
-  time: new Date().toUTCString(),
-  ext: {
-    app: {
-      sesId: sessionId
-    }
-  },
-  data: {
-    repo,
-    sha
-  },
-  baseType: "EventData",
-  baseData: _objectSpread({
-    name
-  }, splitProperties(properties))
-}) : () => {};
-var trackError = appInsights ? (error, properties) => appInsights.track({
-  name: "",
-  time: new Date().toUTCString(),
-  ext: {
-    app: {
-      sesId: sessionId
-    }
-  },
-  data: {
-    repo,
-    sha
-  },
-  baseType: "ExceptionData",
-  baseData: _objectSpread({
-    error
-  }, splitProperties(properties))
-}) : () => {};
+var trackEvent = appInsights ? (name, properties) => appInsights.trackEvent(_objectSpread({
+  name
+}, splitProperties(properties))) : () => {};
+var trackError = appInsights ? (error, properties) => appInsights.trackException(_objectSpread({
+  error
+}, splitProperties(properties))) : () => {};
 var analytics = {
   page,
   trackEvent,
@@ -65009,7 +69508,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a7f7bbac6ebb83615a5719b97c589ae98594bc5f";
+  var sha = "bf4decbb1d40c5cc48fb88610b488f6855187699";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -67148,7 +71647,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "a7f7bbac6ebb83615a5719b97c589ae98594bc5f";
+    var sha = "bf4decbb1d40c5cc48fb88610b488f6855187699";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -67238,7 +71737,7 @@ function Alert(props) {
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(45987);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(36176);
-/* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(58057);
+/* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(72513);
 
 var _excluded = ["trackName", "trackProperties", "onClick"];
 
@@ -67673,8 +72172,8 @@ var Zoom = /*#__PURE__*/react.forwardRef(function Zoom(props, ref) {
 /* harmony default export */ var Zoom_Zoom = (Zoom);
 // EXTERNAL MODULE: ./src/components/ui/Tooltip.tsx
 var Tooltip = __webpack_require__(60102);
-// EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
-var useAnalytics = __webpack_require__(58057);
+// EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
+var useAnalytics = __webpack_require__(72513);
 ;// CONCATENATED MODULE: ./src/components/ui/IconButtonWithTooltip.tsx
 
 var _excluded = ["title", "children", "disabled", "trackName", "trackProperties", "onClick"];
@@ -67794,7 +72293,7 @@ function Suspense(props) {
 /* harmony import */ var _makecode_MakeCodeSnippetContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(54888);
 /* harmony import */ var _WebAudioContext__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(94564);
 /* harmony import */ var _FileSystemContext__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(48202);
-/* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(58057);
+/* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(72513);
 
 
 
@@ -75402,8 +79901,8 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
 var package_namespaceObject = {"i8":"1.17.14"};
-// EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 67 modules
-var useAnalytics = __webpack_require__(58057);
+// EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
+var useAnalytics = __webpack_require__(72513);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
 
 
@@ -75688,7 +80187,7 @@ function useEventRaised(eventName, node, query) {
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(71815);
-/* harmony import */ var _components_hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(58057);
+/* harmony import */ var _components_hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(72513);
 
 
 
@@ -82959,4 +87458,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-c47e92c6bf01000b7c5b.js.map
+//# sourceMappingURL=app-5821bea6361bb8f04eb9.js.map
