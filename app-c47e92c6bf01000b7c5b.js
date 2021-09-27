@@ -53973,7 +53973,7 @@ function Kit() {
     description: "Jacdac modules can be updated from this web site.",
     buttonText: "Check for firmware updates",
     buttonVariant: "link",
-    buttonUrl: "/tools/uploader/"
+    buttonUrl: "/tools/updater/"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     subtitle2: "Can I add Jacdac to my app?",
     description: "Absolutely! Use our client software to integrate into your apps.",
@@ -64097,7 +64097,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "fc0c35eba656328e009e2db1e5f925a7f92f0953";
+var sha = "a7f7bbac6ebb83615a5719b97c589ae98594bc5f";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -65009,7 +65009,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "fc0c35eba656328e009e2db1e5f925a7f92f0953";
+  var sha = "a7f7bbac6ebb83615a5719b97c589ae98594bc5f";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -67148,7 +67148,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "fc0c35eba656328e009e2db1e5f925a7f92f0953";
+    var sha = "a7f7bbac6ebb83615a5719b97c589ae98594bc5f";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -82959,4 +82959,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-7f99795405302e6bc38a.js.map
+//# sourceMappingURL=app-c47e92c6bf01000b7c5b.js.map
