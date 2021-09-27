@@ -68701,7 +68701,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "d7d20b08771dd7c24389295a44aa047a0de9b1a6";
+var sha = "2c7830b00978e54c6b5ca0ac0262b692b667752d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69498,7 +69498,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "d7d20b08771dd7c24389295a44aa047a0de9b1a6";
+  var sha = "2c7830b00978e54c6b5ca0ac0262b692b667752d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71637,7 +71637,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "d7d20b08771dd7c24389295a44aa047a0de9b1a6";
+    var sha = "2c7830b00978e54c6b5ca0ac0262b692b667752d";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -71881,13 +71881,18 @@ function GithubDowloadRawFileButton(props) {
   var handleClick = /*#__PURE__*/function () {
     var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* () {
       if (disconnect) yield bus.disconnect();
+      var shouldDownload = /\.hex$/g.test(url);
 
-      try {
-        var req = yield fetch(url);
-        var text = yield req.text();
-        fileStorage.saveText(name, text);
-      } catch (e) {
-        setError(e);
+      if (shouldDownload) {
+        try {
+          var req = yield fetch(url);
+          var text = yield req.text();
+          fileStorage.saveText(name, text);
+        } catch (e) {
+          setError(e);
+        }
+      } else {
+        window.location.href = url;
       }
     });
 
@@ -87458,4 +87463,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-50ac8c28b8459101c012.js.map
+//# sourceMappingURL=app-a5631990e3bac9055d20.js.map
