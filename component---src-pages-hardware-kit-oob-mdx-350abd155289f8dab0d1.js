@@ -92,15 +92,19 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
     parentName: "li"
-  }, "Connect one or more buttons")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Plug the micro:bit into the Jacdaptor (make sure the front of the micro:bit and raise numbers on plastic edge connector of Jacdaptor are both visible) ")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
     parentName: "li"
-  }, "when a Jacdac module is added to or removed from the bus, the micro:bit displays the new count of devices on the bus")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Supply power to the micro:bit")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
     parentName: "li"
-  }, "when a Jacdac button module is attached, the micro:bit will respond to the following events as follows"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", {
+  }, "When a Jacdac module is added to or removed from the bus, the micro:bit displays the new count of devices on the bus")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
+    parentName: "li"
+  }, "When a Jacdac button module is attached, the micro:bit will respond to the following events as follows"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", {
     parentName: "li"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
@@ -112,11 +116,11 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
     parentName: "li"
-  }, "when a Jacdac sensor (slider, rotary encoder, thermometer) is attached and the sensor value changes appreciably,\nmicro:bit will display a bar chart showing the magnitude of the reading register, or will display the value as a number")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "When a Jacdac sensor (slider, rotary encoder, thermometer) is attached and the sensor value changes appreciably,\nmicro:bit will display a bar chart showing the magnitude of the reading register, or will display the value as a number")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
     parentName: "li"
-  }, "when a Jacdac actuator (servor, lights) is attached, the micro:bit will send a command to it based\non which button of micro:bit is pressed (A, B, A+B)"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "When a Jacdac actuator (LED pixel strip, single LED) is attached, the micro:bit will send a command to it based\non which button of micro:bit is pressed (A, B, A+B)"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "download-again",
     "style": {
       "position": "relative"
@@ -170,4 +174,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-hardware-kit-oob-mdx-897243dd4550e5b93d10.js.map
+//# sourceMappingURL=component---src-pages-hardware-kit-oob-mdx-350abd155289f8dab0d1.js.map
