@@ -104662,11 +104662,6 @@ function DeviceTreeItem(props) {
       device: device,
       size: "small",
       center: false
-    }),
-    actions: showActions && /*#__PURE__*/react.createElement(DeviceActions/* default */.Z, {
-      device: device,
-      showReset: true,
-      hideIdentity: true
     })
   }, /*#__PURE__*/react.createElement(DeviceProductInformationTreeItem, {
     device: device
@@ -104692,7 +104687,12 @@ function DeviceProductInformationTreeItem(props) {
     nodeId: id + ":catalog",
     labelTo: to,
     labelText: specification.name,
-    labelInfo: specification.company
+    labelInfo: specification.company,
+    actions: /*#__PURE__*/react.createElement(DeviceActions/* default */.Z, {
+      device: device,
+      showReset: true,
+      hideIdentity: true
+    })
   });
 }
 
@@ -107440,4 +107440,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-b97e004a1201a32f2aa7.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-69e15da488587b04758f.js.map

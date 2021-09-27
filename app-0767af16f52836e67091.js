@@ -68704,7 +68704,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "16055266318978a24cc6b8a42822a03b21057063";
+var sha = "6f560f950437ef53f7ea580fa249bebb1b884e7e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69501,7 +69501,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "16055266318978a24cc6b8a42822a03b21057063";
+  var sha = "6f560f950437ef53f7ea580fa249bebb1b884e7e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71674,7 +71674,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "16055266318978a24cc6b8a42822a03b21057063";
+    var sha = "6f560f950437ef53f7ea580fa249bebb1b884e7e";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -84915,22 +84915,6 @@ var react__WEBPACK_IMPORTED_MODULE_1___namespace_cache;
 
 /***/ }),
 
-/***/ 85728:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var react__WEBPACK_IMPORTED_MODULE_1___namespace_cache;
-/* harmony import */ var _src_components_makecode_MakeCodeProjects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86206);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
-
-
-/* harmony default export */ __webpack_exports__["Z"] = ({
-  MakeCodeExtensions: _src_components_makecode_MakeCodeProjects__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z,
-  React: /*#__PURE__*/ (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache || (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache = __webpack_require__.t(react__WEBPACK_IMPORTED_MODULE_1__, 2)))
-});
-
-/***/ }),
-
 /***/ 78395:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -85006,6 +84990,22 @@ var react__WEBPACK_IMPORTED_MODULE_1___namespace_cache;
 
 /* harmony default export */ __webpack_exports__["Z"] = ({
   Software: _src_components_home_Software__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z,
+  React: /*#__PURE__*/ (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache || (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache = __webpack_require__.t(react__WEBPACK_IMPORTED_MODULE_1__, 2)))
+});
+
+/***/ }),
+
+/***/ 7074:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var react__WEBPACK_IMPORTED_MODULE_1___namespace_cache;
+/* harmony import */ var _src_components_makecode_MakeCodeProjects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86206);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+
+
+/* harmony default export */ __webpack_exports__["Z"] = ({
+  MakeCodeProjects: _src_components_makecode_MakeCodeProjects__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z,
   React: /*#__PURE__*/ (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache || (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache = __webpack_require__.t(react__WEBPACK_IMPORTED_MODULE_1__, 2)))
 });
 
@@ -85159,17 +85159,17 @@ var scope_0 = __webpack_require__(63558)/* ["default"] */ .Z;
 
 var scope_1 = __webpack_require__(26115)/* ["default"] */ .Z;
 
-var scope_2 = __webpack_require__(85728)/* ["default"] */ .Z;
+var scope_2 = __webpack_require__(78395)/* ["default"] */ .Z;
 
-var scope_3 = __webpack_require__(78395)/* ["default"] */ .Z;
+var scope_3 = __webpack_require__(58074)/* ["default"] */ .Z;
 
-var scope_4 = __webpack_require__(58074)/* ["default"] */ .Z;
+var scope_4 = __webpack_require__(31386)/* ["default"] */ .Z;
 
-var scope_5 = __webpack_require__(31386)/* ["default"] */ .Z;
+var scope_5 = __webpack_require__(77358)/* ["default"] */ .Z;
 
-var scope_6 = __webpack_require__(77358)/* ["default"] */ .Z;
+var scope_6 = __webpack_require__(88910)/* ["default"] */ .Z;
 
-var scope_7 = __webpack_require__(88910)/* ["default"] */ .Z;
+var scope_7 = __webpack_require__(7074)/* ["default"] */ .Z;
 
 var scope_8 = __webpack_require__(52551)/* ["default"] */ .Z;
 
@@ -87529,4 +87529,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-1521610cbe95d77af933.js.map
+//# sourceMappingURL=app-0767af16f52836e67091.js.map
