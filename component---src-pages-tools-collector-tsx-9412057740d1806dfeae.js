@@ -889,6 +889,30 @@ function FileTabs(props) {
 
 /***/ }),
 
+/***/ 50010:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ useEvents; }
+/* harmony export */ });
+/* harmony import */ var _jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(73512);
+/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(81794);
+/* harmony import */ var _useServices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2928);
+
+
+
+function useEvents(options) {
+  var {
+    ignoreChange
+  } = options || {};
+  var services = (0,_useServices__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(options);
+  var events = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_1__/* .arrayConcatMany */ .ue)(services.map(srv => srv.events));
+  if (ignoreChange) events = events.filter(ev => ev.code !== _jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemEvent.StatusCodeChanged */ .nSK.StatusCodeChanged && ev.code !== _jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemEvent.Change */ .nSK.Change);
+  return events;
+}
+
+/***/ }),
+
 /***/ 68786:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -986,6 +1010,45 @@ function useServices(options) {
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z);
   var services = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(bus, _ => (_ === null || _ === void 0 ? void 0 : _.services(options)) || [], [JSON.stringify(options)]);
   return services;
+}
+
+/***/ }),
+
+/***/ 16354:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ SelectEvent; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(65541);
+/* harmony import */ var _ui_SelectWithLabel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15789);
+
+
+
+function SelectEvent(props) {
+  var {
+    events,
+    eventId,
+    onChange,
+    friendlyName,
+    label
+  } = props;
+
+  var handleChange = ev => {
+    onChange(ev.target.value);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_SelectWithLabel__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
+    helperText: label || "choose an event",
+    value: eventId,
+    onChange: handleChange,
+    disabled: !(events !== null && events !== void 0 && events.length),
+    none: "None"
+  }, events === null || events === void 0 ? void 0 : events.map(ev => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    key: ev.id,
+    value: ev.id
+  }, friendlyName ? ev.friendlyName : ev.name)));
 }
 
 /***/ }),
@@ -1138,7 +1201,7 @@ function useGridBreakpoints(itemCount) {
 
 /***/ }),
 
-/***/ 21586:
+/***/ 39885:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -1189,38 +1252,8 @@ var FieldDataSet = __webpack_require__(64616);
 var Trend = __webpack_require__(25090);
 // EXTERNAL MODULE: ./src/components/ui/Alert.tsx
 var Alert = __webpack_require__(95453);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/MenuItem/MenuItem.js
-var MenuItem = __webpack_require__(65541);
-// EXTERNAL MODULE: ./src/components/ui/SelectWithLabel.tsx
-var SelectWithLabel = __webpack_require__(15789);
-;// CONCATENATED MODULE: ./src/components/select/SelectEvent.tsx
-
-
-
-function SelectEvent(props) {
-  var {
-    events,
-    eventId,
-    onChange,
-    friendlyName,
-    label
-  } = props;
-
-  var handleChange = ev => {
-    onChange(ev.target.value);
-  };
-
-  return /*#__PURE__*/react.createElement(SelectWithLabel/* default */.Z, {
-    helperText: label || "choose an event",
-    value: eventId,
-    onChange: handleChange,
-    disabled: !(events !== null && events !== void 0 && events.length),
-    none: "None"
-  }, events === null || events === void 0 ? void 0 : events.map(ev => /*#__PURE__*/react.createElement(MenuItem/* default */.Z, {
-    key: ev.id,
-    value: ev.id
-  }, friendlyName ? ev.friendlyName : ev.name)));
-}
+// EXTERNAL MODULE: ./src/components/select/SelectEvent.tsx
+var SelectEvent = __webpack_require__(16354);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
 var constants = __webpack_require__(71815);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
@@ -1307,23 +1340,8 @@ var sensoraggregatorclient = __webpack_require__(59381);
 var useChartPalette = __webpack_require__(74039);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
 var spec = __webpack_require__(45656);
-// EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/dist/specconstants.ts
-var specconstants = __webpack_require__(73512);
-// EXTERNAL MODULE: ./src/components/hooks/useServices.ts
-var useServices = __webpack_require__(2928);
-;// CONCATENATED MODULE: ./src/components/hooks/useEvents.ts
-
-
-
-function useEvents(options) {
-  var {
-    ignoreChange
-  } = options || {};
-  var services = (0,useServices/* default */.Z)(options);
-  var events = (0,utils/* arrayConcatMany */.ue)(services.map(srv => srv.events));
-  if (ignoreChange) events = events.filter(ev => ev.code !== specconstants/* SystemEvent.StatusCodeChanged */.nSK.StatusCodeChanged && ev.code !== specconstants/* SystemEvent.Change */.nSK.Change);
-  return events;
-}
+// EXTERNAL MODULE: ./src/components/hooks/useEvents.ts
+var useEvents = __webpack_require__(50010);
 // EXTERNAL MODULE: ./src/components/hooks/useDevices.ts
 var useDevices = __webpack_require__(53074);
 // EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
@@ -1334,6 +1352,8 @@ var DashboardDeviceItem = __webpack_require__(24301);
 var AppContext = __webpack_require__(84377);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Add.js
 var Add = __webpack_require__(88880);
+// EXTERNAL MODULE: ./src/components/hooks/useServices.ts
+var useServices = __webpack_require__(2928);
 // EXTERNAL MODULE: ./src/components/hooks/useLocalStorage.ts
 var useLocalStorage = __webpack_require__(34093);
 // EXTERNAL MODULE: ./src/components/fs/FileTabs.tsx + 3 modules
@@ -1499,7 +1519,7 @@ function Collector() {
   var samplingCount = Math.ceil(samplingDuration * 1000 / samplingIntervalDelay);
   var triggerEvent = bus.node(triggerEventId);
   var startEnabled = !starting && !!(recordingRegisters !== null && recordingRegisters !== void 0 && recordingRegisters.length);
-  var events = useEvents({
+  var events = (0,useEvents/* default */.Z)({
     ignoreChange: true
   });
   var aggregatorsId = (0,react_use_id_hook_esm/* useId */.Me)();
@@ -1797,7 +1817,7 @@ function Collector() {
     value: prefix,
     variant: "outlined",
     onChange: handlePrefixChange
-  }), /*#__PURE__*/react.createElement(SelectEvent, {
+  }), /*#__PURE__*/react.createElement(SelectEvent/* default */.Z, {
     events: events,
     eventId: triggerEventId,
     onChange: handleTriggerChange,
@@ -1834,4 +1854,4 @@ function Collector() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-collector-tsx-a96161c575379206ada4.js.map
+//# sourceMappingURL=component---src-pages-tools-collector-tsx-9412057740d1806dfeae.js.map

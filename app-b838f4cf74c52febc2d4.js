@@ -68701,7 +68701,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "a4abfd966f212213694b5802839b3935740928ca";
+var sha = "58a0ec44068395604a29a2e81418515080187c8a";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69498,7 +69498,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a4abfd966f212213694b5802839b3935740928ca";
+  var sha = "58a0ec44068395604a29a2e81418515080187c8a";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71637,7 +71637,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "a4abfd966f212213694b5802839b3935740928ca";
+    var sha = "58a0ec44068395604a29a2e81418515080187c8a";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -82363,7 +82363,7 @@ exports.components = {
   "component---src-pages-services-tsx": () => __webpack_require__.e(/* import() | component---src-pages-services-tsx */ 7858).then(__webpack_require__.bind(__webpack_require__, 19430)),
   "component---src-pages-software-mdx": () => __webpack_require__.e(/* import() | component---src-pages-software-mdx */ 8307).then(__webpack_require__.bind(__webpack_require__, 46690)),
   "component---src-pages-tools-accelerometer-theremin-tsx": () => Promise.all(/* import() | component---src-pages-tools-accelerometer-theremin-tsx */[__webpack_require__.e(6004), __webpack_require__.e(8517), __webpack_require__.e(5023)]).then(__webpack_require__.bind(__webpack_require__, 67396)),
-  "component---src-pages-tools-collector-tsx": () => Promise.all(/* import() | component---src-pages-tools-collector-tsx */[__webpack_require__.e(6004), __webpack_require__.e(8814)]).then(__webpack_require__.bind(__webpack_require__, 21586)),
+  "component---src-pages-tools-collector-tsx": () => Promise.all(/* import() | component---src-pages-tools-collector-tsx */[__webpack_require__.e(6004), __webpack_require__.e(8814)]).then(__webpack_require__.bind(__webpack_require__, 39885)),
   "component---src-pages-tools-commissioner-tsx": () => Promise.all(/* import() | component---src-pages-tools-commissioner-tsx */[__webpack_require__.e(8517), __webpack_require__.e(1322)]).then(__webpack_require__.bind(__webpack_require__, 7877)),
   "component---src-pages-tools-device-registration-tsx": () => Promise.all(/* import() | component---src-pages-tools-device-registration-tsx */[__webpack_require__.e(6004), __webpack_require__.e(8270), __webpack_require__.e(9231)]).then(__webpack_require__.bind(__webpack_require__, 50151)),
   "component---src-pages-tools-edge-impulse-tsx": () => Promise.all(/* import() | component---src-pages-tools-edge-impulse-tsx */[__webpack_require__.e(6004), __webpack_require__.e(5637), __webpack_require__.e(3382)]).then(__webpack_require__.bind(__webpack_require__, 2649)),
@@ -87463,4 +87463,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-603f17fd566a86c606b6.js.map
+//# sourceMappingURL=app-b838f4cf74c52febc2d4.js.map
