@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-4d281041fa9fd37b5e0b.js"
+    "url": "webpack-runtime-7bf036b36a2fd94edeb8.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "31471c8f4be988437d7d6c479d0ed8bb"
+    "revision": "28bfb433d12e6be64eb1e18785594bdb"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "b1154ea8ceeec95cff186baa15e256bb"
+    "revision": "9fc06cae0d3998c8d2c124df22f83bfa"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "2f8b88d2c7f85c05ec641a213748b0df"
+    "revision": "74319c6c2e206e3d83915e7544976e46"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "6fe230b9680fd036b513a725bb605a85"
+    "revision": "bfae836f5e903d680215b9904aa203b1"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "60f884cfb9e520c204b5b4f3bd9a96c7"
+    "revision": "61ff4a9f068549f332c690a7f8619167"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "747adc88a190a4ed491f58781b7795a2"
+    "revision": "5e97164fcce634ddc5e3af867ac8cec7"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -918,7 +918,7 @@ self.__precacheManifest = [
     "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-b48721bb2d8044c12f15.js"
   },
   {
-    "url": "component---src-templates-device-tsx-e94245056950bc2c63c3.js"
+    "url": "component---src-templates-device-tsx-e587675b79c0f7c08891.js"
   },
   {
     "url": "page-data/devices/microbit/foundation/microbitv2/page-data.json",
@@ -1355,7 +1355,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-b37ab28a884bf6873d00.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-269f16436bfa808cb386.js`))) {
     return await fetch(event.request)
   }
 

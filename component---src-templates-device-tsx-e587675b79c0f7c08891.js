@@ -913,7 +913,7 @@ function DeviceSpecification(props) {
     source: description
   }), repo && /*#__PURE__*/react.createElement(FirmwareCard/* default */.Z, {
     slug: repo
-  }), !!firmwares && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Firmwares"), /*#__PURE__*/react.createElement("ul", null, firmwares.map(_ref => {
+  }), !!firmwares && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Firmwares"), /*#__PURE__*/react.createElement("p", null, "Drag and drop the files below to your device drive. You might have to press the bootloader button once to see this drive."), /*#__PURE__*/react.createElement("ul", null, firmwares.map(_ref => {
     var {
       name,
       url
@@ -954,4 +954,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-e94245056950bc2c63c3.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-e587675b79c0f7c08891.js.map
