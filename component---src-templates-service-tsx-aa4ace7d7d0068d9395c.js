@@ -534,7 +534,11 @@ function DeviceSpecificationList(props) {
         to: "/devices/" + (0,jdom_spec/* identifierToUrlPath */.uM)(spec.id),
         "aria-label": "info about " + spec.name,
         className: classes.icon
-      }, /*#__PURE__*/react.createElement(Info/* default */.Z, null)))
+      }, /*#__PURE__*/react.createElement(Info/* default */.Z, {
+        style: {
+          color: "white"
+        }
+      })))
     }));
   }));
 }
@@ -934,4 +938,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-service-tsx-273d09b251fbbcb62c1a.js.map
+//# sourceMappingURL=component---src-templates-service-tsx-aa4ace7d7d0068d9395c.js.map
