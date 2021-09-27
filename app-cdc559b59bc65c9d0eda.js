@@ -68704,7 +68704,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "9c86d7b32c2bdd8dbb5ef103dae314c872107b2e";
+var sha = "0aab73300008f62a8e098dec0fabebc984ad0ea8";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69501,7 +69501,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "9c86d7b32c2bdd8dbb5ef103dae314c872107b2e";
+  var sha = "0aab73300008f62a8e098dec0fabebc984ad0ea8";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71141,6 +71141,40 @@ function MakeCodeExtensions() {
 
 /***/ }),
 
+/***/ 86206:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ MakeCodeProjects; }
+/* harmony export */ });
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(80791);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4381);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(38030);
+/* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(35313);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+
+
+
+function MakeCodeProjects() {
+  var query = (0,gatsby__WEBPACK_IMPORTED_MODULE_0__.useStaticQuery)("4292774041");
+  var nodes = query.allMdx.edges.map(edge => edge.node).sort((l, r) => l.fields.slug.localeCompare(r.fields.slug));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, null, nodes === null || nodes === void 0 ? void 0 : nodes.map(_ref => {
+    var {
+      fields,
+      frontmatter
+    } = _ref;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby__WEBPACK_IMPORTED_MODULE_0__.Link, {
+      to: fields.slug,
+      key: fields.slug
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+      primary: frontmatter.title
+    })));
+  }));
+}
+
+/***/ }),
+
 /***/ 54888:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -71640,7 +71674,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "9c86d7b32c2bdd8dbb5ef103dae314c872107b2e";
+    var sha = "0aab73300008f62a8e098dec0fabebc984ad0ea8";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -82341,7 +82375,9 @@ exports.components = {
   "component---src-pages-clients-makecode-extensions-thermometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-thermometer-mdx */ 3572).then(__webpack_require__.bind(__webpack_require__, 20147)),
   "component---src-pages-clients-makecode-extensions-tvoc-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-tvoc-mdx */ 395).then(__webpack_require__.bind(__webpack_require__, 93741)),
   "component---src-pages-clients-makecode-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-mdx */ 5348).then(__webpack_require__.bind(__webpack_require__, 82733)),
+  "component---src-pages-clients-makecode-projects-heartbeat-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-heartbeat-mdx */ 9089).then(__webpack_require__.bind(__webpack_require__, 28258)),
   "component---src-pages-clients-makecode-projects-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-mdx */ 2235).then(__webpack_require__.bind(__webpack_require__, 39091)),
+  "component---src-pages-clients-makecode-projects-rotary-2-mouse-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-rotary-2-mouse-mdx */ 1720).then(__webpack_require__.bind(__webpack_require__, 1626)),
   "component---src-pages-clients-makecode-servers-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-servers-mdx */ 2913).then(__webpack_require__.bind(__webpack_require__, 1979)),
   "component---src-pages-clients-makecode-user-guide-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-user-guide-mdx */ 1198).then(__webpack_require__.bind(__webpack_require__, 61198)),
   "component---src-pages-clients-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-mdx */ 2858).then(__webpack_require__.bind(__webpack_require__, 63895)),
@@ -84879,6 +84915,22 @@ var react__WEBPACK_IMPORTED_MODULE_1___namespace_cache;
 
 /***/ }),
 
+/***/ 85728:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var react__WEBPACK_IMPORTED_MODULE_1___namespace_cache;
+/* harmony import */ var _src_components_makecode_MakeCodeProjects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86206);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+
+
+/* harmony default export */ __webpack_exports__["Z"] = ({
+  MakeCodeExtensions: _src_components_makecode_MakeCodeProjects__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z,
+  React: /*#__PURE__*/ (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache || (react__WEBPACK_IMPORTED_MODULE_1___namespace_cache = __webpack_require__.t(react__WEBPACK_IMPORTED_MODULE_1__, 2)))
+});
+
+/***/ }),
+
 /***/ 78395:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -85107,29 +85159,31 @@ var scope_0 = __webpack_require__(63558)/* ["default"] */ .Z;
 
 var scope_1 = __webpack_require__(26115)/* ["default"] */ .Z;
 
-var scope_2 = __webpack_require__(78395)/* ["default"] */ .Z;
+var scope_2 = __webpack_require__(85728)/* ["default"] */ .Z;
 
-var scope_3 = __webpack_require__(58074)/* ["default"] */ .Z;
+var scope_3 = __webpack_require__(78395)/* ["default"] */ .Z;
 
-var scope_4 = __webpack_require__(31386)/* ["default"] */ .Z;
+var scope_4 = __webpack_require__(58074)/* ["default"] */ .Z;
 
-var scope_5 = __webpack_require__(77358)/* ["default"] */ .Z;
+var scope_5 = __webpack_require__(31386)/* ["default"] */ .Z;
 
-var scope_6 = __webpack_require__(88910)/* ["default"] */ .Z;
+var scope_6 = __webpack_require__(77358)/* ["default"] */ .Z;
 
-var scope_7 = __webpack_require__(52551)/* ["default"] */ .Z;
+var scope_7 = __webpack_require__(88910)/* ["default"] */ .Z;
 
-var scope_8 = __webpack_require__(22608)/* ["default"] */ .Z;
+var scope_8 = __webpack_require__(52551)/* ["default"] */ .Z;
 
-var scope_9 = __webpack_require__(53184)/* ["default"] */ .Z;
+var scope_9 = __webpack_require__(22608)/* ["default"] */ .Z;
 
-var scope_10 = __webpack_require__(22416)/* ["default"] */ .Z;
+var scope_10 = __webpack_require__(53184)/* ["default"] */ .Z;
 
-var scope_11 = __webpack_require__(34239)/* ["default"] */ .Z;
+var scope_11 = __webpack_require__(22416)/* ["default"] */ .Z;
 
-var scope_12 = __webpack_require__(15643)/* ["default"] */ .Z;
+var scope_12 = __webpack_require__(34239)/* ["default"] */ .Z;
 
-/* harmony default export */ var mdx_scopes = (Object.assign({}, scope_0, scope_1, scope_2, scope_3, scope_4, scope_5, scope_6, scope_7, scope_8, scope_9, scope_10, scope_11, scope_12));
+var scope_13 = __webpack_require__(15643)/* ["default"] */ .Z;
+
+/* harmony default export */ var mdx_scopes = (Object.assign({}, scope_0, scope_1, scope_2, scope_3, scope_4, scope_5, scope_6, scope_7, scope_8, scope_9, scope_10, scope_11, scope_12, scope_13));
 ;// CONCATENATED MODULE: ./node_modules/gatsby-plugin-mdx/wrap-root-element.js
 
 
@@ -87475,4 +87529,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-99e55b5025c0d3dfd6da.js.map
+//# sourceMappingURL=app-cdc559b59bc65c9d0eda.js.map

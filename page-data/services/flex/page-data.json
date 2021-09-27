@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-service-tsx",
     "path": "/services/flex/",
     "result": {"pageContext":{"classIdentifier":524797638,"source":"# Flex\n\n    identifier: 0x1f47c6c6\n    extends: _sensor\n    group: slider\n    tags: C, 8bit\n\nA bending or deflection sensor.\n\n## Registers\n\n    ro bending: u0.16 / @ reading\n\nThe relative position of the slider.\n\n    enum Variant: u8 {\n        Linear22Inch = 1,\n        Linear45Inch = 2,\n    }\n    const variant?: Variant @ variant\n\nSpecifies the physical layout of the flex sensor.","makecodeSlug":"/clients/makecode/extensions/flex/"}},
-    "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","63159454"]}
+    "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","4292774041","63159454"]}
