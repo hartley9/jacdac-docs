@@ -526,7 +526,7 @@ function DeviceSpecificationList(props) {
       loading: "lazy"
     }), /*#__PURE__*/react.createElement(ImageListItemBar_ImageListItemBar, {
       title: spec.name,
-      subtitle: /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
+      subtitle: !!spec.description && /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
         className: classes.ellipsis,
         source: spec.description.split(".", 1)[0]
       }),
@@ -934,4 +934,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-service-tsx-79b60e994f347d56275d.js.map
+//# sourceMappingURL=component---src-templates-service-tsx-273d09b251fbbcb62c1a.js.map

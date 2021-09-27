@@ -888,6 +888,9 @@ function DeviceSpecification(props) {
     repo,
     firmwares
   } = device;
+  var {
+    services
+  } = device;
   var gridBreakpoints = (0,useGridBreakpoints/* default */.Z)();
   var imageUrl = (0,useDeviceImage/* default */.Z)(device);
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h2", {
@@ -920,16 +923,16 @@ function DeviceSpecification(props) {
     }, /*#__PURE__*/react.createElement(GithubDowloadRawFileButton/* default */.Z, {
       url: url,
       name: name
-    }));
-  }))), /*#__PURE__*/react.createElement("h3", null, "Services"), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    }, name));
+  }))), !!(services !== null && services !== void 0 && services.length) && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Services"), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
     spacing: 2
-  }, device.services.map(sc => (0,spec/* serviceSpecificationFromClassIdentifier */.d5)(sc)).map(spec => /*#__PURE__*/react.createElement(Grid/* default */.Z, Object.assign({
+  }, services.map(sc => (0,spec/* serviceSpecificationFromClassIdentifier */.d5)(sc)).map(spec => /*#__PURE__*/react.createElement(Grid/* default */.Z, Object.assign({
     item: true,
     key: spec.shortId
   }, gridBreakpoints), /*#__PURE__*/react.createElement(ServiceSpecificationCard/* default */.Z, {
     specification: spec
-  })))), showSource && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Specification"), /*#__PURE__*/react.createElement(DeviceSpecificationSource, {
+  }))))), showSource && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h3", null, "Specification"), /*#__PURE__*/react.createElement(DeviceSpecificationSource, {
     deviceSpecification: device,
     showJSON: true
   })));
@@ -950,4 +953,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-13759ce8cef2736fc63e.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-5301212a225611a9609d.js.map

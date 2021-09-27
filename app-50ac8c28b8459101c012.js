@@ -68701,7 +68701,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "d7ac84754d6803466987b0d3d1bc685532497915";
+var sha = "d7d20b08771dd7c24389295a44aa047a0de9b1a6";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69498,7 +69498,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "d7ac84754d6803466987b0d3d1bc685532497915";
+  var sha = "d7d20b08771dd7c24389295a44aa047a0de9b1a6";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71637,7 +71637,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "d7ac84754d6803466987b0d3d1bc685532497915";
+    var sha = "d7d20b08771dd7c24389295a44aa047a0de9b1a6";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -71843,16 +71843,18 @@ function DarkModeProvider(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ GithubDowloadRawFileButton; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(15861);
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(45987);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(15861);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(45987);
 /* harmony import */ var gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71481);
 /* harmony import */ var gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20392);
-/* harmony import */ var _ServiceManagerContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(99808);
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(84377);
+/* harmony import */ var _ServiceManagerContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(99808);
 
 
 var _excluded = ["url", "name", "children", "disconnect"];
+
 
 
 
@@ -71864,21 +71866,29 @@ function GithubDowloadRawFileButton(props) {
     children,
     disconnect
   } = props,
-      rest = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(props, _excluded);
+      rest = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(props, _excluded);
 
   var {
     bus
   } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z);
   var {
+    setError
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .ZP);
+  var {
     fileStorage
-  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .ZP);
+  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .ZP);
 
   var handleClick = /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(function* () {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(function* () {
       if (disconnect) yield bus.disconnect();
-      var req = yield fetch(url);
-      var text = yield req.text();
-      fileStorage.saveText(name, text);
+
+      try {
+        var req = yield fetch(url);
+        var text = yield req.text();
+        fileStorage.saveText(name, text);
+      } catch (e) {
+        setError(e);
+      }
     });
 
     return function handleClick() {
@@ -87448,4 +87458,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-c7986139e758995a141b.js.map
+//# sourceMappingURL=app-50ac8c28b8459101c012.js.map
