@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19640);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20392);
-/* harmony import */ var _buttons_ConnectButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(84125);
+/* harmony import */ var _buttons_ConnectButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2092);
 /* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(45656);
 /* harmony import */ var _devices_useDeviceImage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(81546);
 /* harmony import */ var _ui_CardMediaWithSkeleton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(141);
@@ -266,4 +266,4 @@ function CardMediaWithSkeleton(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=9474-2193819d226c2941034f.js.map
+//# sourceMappingURL=9474-04a6117194caed894333.js.map
