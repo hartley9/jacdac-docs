@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-82d5a41003d20339d3be.js"
+    "url": "webpack-runtime-a07d1e258c0fa07372fc.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "2d37809d69c3be6497fcf809f4b12314"
+    "revision": "7832091d277b25445924a735c81e066e"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "32e9c2da1da792691336e6c4e69f5423"
+    "revision": "18bedf36bfe0bdd9ed167af4393c4c6a"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "06cb52e06359f3f7a2f99c9d13154f0f"
+    "revision": "40dc6d4e9d90f799ba8e8d07ae1e3ab1"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "468063e21e9fc6b81edb2e0007f8683c"
+    "revision": "88375363667e40b555b3be22219689bb"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "f18c598fc3efa82288deac8695b537cd"
+    "revision": "6b377297057cca2962ef1153873140d2"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "751525cdbeb40811fb1e87a75e5d8e2d"
+    "revision": "277aec44383d55f94e6a6779a6798579"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -365,7 +365,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/color/page-data.json",
-    "revision": "f7c24b66848ea34949b288dc57092529"
+    "revision": "95fb8fda97774abaeea19ddc5aa2d8c1"
   },
   {
     "url": "page-data/services/color/playground/page-data.json",
@@ -421,7 +421,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/eco2/page-data.json",
-    "revision": "97efed824ddb7e3521d05a4746c6f884"
+    "revision": "884737326db695c9e9baa43affc41ffc"
   },
   {
     "url": "page-data/services/eco2/playground/page-data.json",
@@ -429,7 +429,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/flex/page-data.json",
-    "revision": "c78d6f91a4463c438da8e54ae053aef0"
+    "revision": "cc9419b97c1364d722da34c376236f47"
   },
   {
     "url": "page-data/services/flex/playground/page-data.json",
@@ -461,7 +461,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/hidkeyboard/page-data.json",
-    "revision": "a74b983c47fd7b7da008262868836687"
+    "revision": "9263597ccb1f2020ec714598b2a4c09d"
   },
   {
     "url": "page-data/services/hidkeyboard/playground/page-data.json",
@@ -469,7 +469,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/hidmouse/page-data.json",
-    "revision": "143af5cc25982c085f2c2256069c34cc"
+    "revision": "c41a7ce0fe5b2ebfaa67a8666f2a2052"
   },
   {
     "url": "page-data/services/hidmouse/playground/page-data.json",
@@ -509,7 +509,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/joystick/page-data.json",
-    "revision": "51773e03e405f77a4291e799498fb3b8"
+    "revision": "4623c7604524985c20a6f036ed1cddac"
   },
   {
     "url": "page-data/services/joystick/playground/page-data.json",
@@ -837,7 +837,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/tvoc/page-data.json",
-    "revision": "326b3ccd13a1caf46c824b2867c060e2"
+    "revision": "df135f30055797fd8a3e5dea93e5f1fb"
   },
   {
     "url": "page-data/services/tvoc/playground/page-data.json",
@@ -1355,7 +1355,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-9a550f872084ebce2d9a.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-ca325ae163060b372b46.js`))) {
     return await fetch(event.request)
   }
 

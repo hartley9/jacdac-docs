@@ -68702,7 +68702,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "7ed8d2c8db0251d160623f10f5179e19e636e4fa";
+var sha = "01922f9dfb07eba6c12f3c3b09629a2764350e6b";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69499,7 +69499,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "7ed8d2c8db0251d160623f10f5179e19e636e4fa";
+  var sha = "01922f9dfb07eba6c12f3c3b09629a2764350e6b";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71638,7 +71638,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "7ed8d2c8db0251d160623f10f5179e19e636e4fa";
+    var sha = "01922f9dfb07eba6c12f3c3b09629a2764350e6b";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -82323,7 +82323,13 @@ exports.components = {
   "component---src-pages-clients-makecode-extensions-accelerometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-accelerometer-mdx */ 5168).then(__webpack_require__.bind(__webpack_require__, 73275)),
   "component---src-pages-clients-makecode-extensions-barometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-barometer-mdx */ 5804).then(__webpack_require__.bind(__webpack_require__, 96240)),
   "component---src-pages-clients-makecode-extensions-button-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-button-mdx */ 3838).then(__webpack_require__.bind(__webpack_require__, 37808)),
+  "component---src-pages-clients-makecode-extensions-color-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-color-mdx */ 219).then(__webpack_require__.bind(__webpack_require__, 34565)),
+  "component---src-pages-clients-makecode-extensions-eco-2-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-eco-2-mdx */ 8785).then(__webpack_require__.bind(__webpack_require__, 40248)),
+  "component---src-pages-clients-makecode-extensions-flex-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-flex-mdx */ 7968).then(__webpack_require__.bind(__webpack_require__, 29459)),
+  "component---src-pages-clients-makecode-extensions-hidkeyboard-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-hidkeyboard-mdx */ 197).then(__webpack_require__.bind(__webpack_require__, 99420)),
+  "component---src-pages-clients-makecode-extensions-hidmouse-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-hidmouse-mdx */ 7477).then(__webpack_require__.bind(__webpack_require__, 21540)),
   "component---src-pages-clients-makecode-extensions-humidity-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-humidity-mdx */ 7609).then(__webpack_require__.bind(__webpack_require__, 48264)),
+  "component---src-pages-clients-makecode-extensions-joystick-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-joystick-mdx */ 8363).then(__webpack_require__.bind(__webpack_require__, 17245)),
   "component---src-pages-clients-makecode-extensions-ledpixel-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-ledpixel-mdx */ 1914).then(__webpack_require__.bind(__webpack_require__, 27122)),
   "component---src-pages-clients-makecode-extensions-lightlevel-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-lightlevel-mdx */ 6152).then(__webpack_require__.bind(__webpack_require__, 97742)),
   "component---src-pages-clients-makecode-extensions-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-mdx */ 2763).then(__webpack_require__.bind(__webpack_require__, 42321)),
@@ -82331,6 +82337,7 @@ exports.components = {
   "component---src-pages-clients-makecode-extensions-relay-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-relay-mdx */ 8918).then(__webpack_require__.bind(__webpack_require__, 26204)),
   "component---src-pages-clients-makecode-extensions-rotaryencoder-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-rotaryencoder-mdx */ 396).then(__webpack_require__.bind(__webpack_require__, 41426)),
   "component---src-pages-clients-makecode-extensions-thermometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-thermometer-mdx */ 3572).then(__webpack_require__.bind(__webpack_require__, 20147)),
+  "component---src-pages-clients-makecode-extensions-tvoc-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-tvoc-mdx */ 395).then(__webpack_require__.bind(__webpack_require__, 93741)),
   "component---src-pages-clients-makecode-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-mdx */ 5348).then(__webpack_require__.bind(__webpack_require__, 82733)),
   "component---src-pages-clients-makecode-projects-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-mdx */ 2235).then(__webpack_require__.bind(__webpack_require__, 39091)),
   "component---src-pages-clients-makecode-servers-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-servers-mdx */ 2913).then(__webpack_require__.bind(__webpack_require__, 1979)),
@@ -87466,4 +87473,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-9a550f872084ebce2d9a.js.map
+//# sourceMappingURL=app-ca325ae163060b372b46.js.map

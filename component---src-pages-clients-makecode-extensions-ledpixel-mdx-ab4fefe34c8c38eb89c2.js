@@ -60,7 +60,29 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "LED Pixel"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The LED pixel extension provides methods for working with\nan strip of RGB LEDs, as well as a built-in set of animations."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "All the pixels on a strip can be set to a color using the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }))), "LED Pixel"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The LED pixel extension provides methods for working with\nan strip of RGB LEDs, as well as a built-in set of animations."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
+    "id": "direct-control-of-pixels",
+    "style": {
+      "position": "relative"
+    }
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "h1",
+    "href": "#direct-control-of-pixels",
+    "aria-label": "direct control of pixels permalink",
+    "className": "anchor before"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
+    parentName: "a",
+    "aria-hidden": "true",
+    "focusable": "false",
+    "height": "16",
+    "version": "1.1",
+    "viewBox": "0 0 16 16",
+    "width": "16"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("path", {
+    parentName: "svg",
+    "fillRule": "evenodd",
+    "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+  }))), "Direct control of pixels"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "All the pixels on a strip can be set to a color using the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
   }, "setAll"), " method:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
@@ -76,6 +98,63 @@ function MDXContent(_ref) {
     parentName: "pre",
     "className": "language-blocks"
   }, "{\"source\":\"modules.ledPixel1.onConnected(() => {\\n    modules.ledPixel1.setAll(0)\\n    let n = modules.ledPixel1.numPixels()\\n    for(let i = 0; i <= n - 1; i++) {\\n        modules.ledPixel1.setPixel(i, 0x00ff00)\\n        basic.pause(200)\\n    }\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.ledPixel1.onConnected(() => {\\n    modules.ledPixel1.setAll(0)\\n    let n = modules.ledPixel1.numPixels()\\n    for(let i = 0; i <= n - 1; i++) {\\n        modules.ledPixel1.setPixel(i, 0x00ff00)\\n        basic.pause(200)\\n    }\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.43,jacdac-led=github:microsoft/pxt-jacdac/led#v0.6.43,jacdac-led-pixel=github:microsoft/pxt-jacdac/led-pixel#v0.6.43\"},\"type\":\"renderblocks\",\"id\":\"5ab2f2a67302ebb5c79752c860caddfe\"},\"url\":\"/images/makecode/5ab2f2a67302ebb5c79752c860caddfe.png\",\"width\":622,\"height\":360}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "built-in-animations",
+    "style": {
+      "position": "relative"
+    }
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "h2",
+    "href": "#built-in-animations",
+    "aria-label": "built in animations permalink",
+    "className": "anchor before"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
+    parentName: "a",
+    "aria-hidden": "true",
+    "focusable": "false",
+    "height": "16",
+    "version": "1.1",
+    "viewBox": "0 0 16 16",
+    "width": "16"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("path", {
+    parentName: "svg",
+    "fillRule": "evenodd",
+    "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+  }))), "Built-in Animations"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The MakeCode extension provides support for a set of animations\nthat can be triggered via the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "showAnimation"), " method:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-blocks"
+  }, "{\"source\":\"input.onButtonPressed(Button.A, () => {\\n    modules.ledPixel1.showAnimation(modules.ledPixelAnimations.sparkle, 2000)\\n})\\ninput.onButtonPressed(Button.B, () => {\\n    modules.ledPixel1.showAnimation(modules.ledPixelAnimations.firefly, 2000)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.A, () => {\\n    modules.ledPixel1.showAnimation(modules.ledPixelAnimations.sparkle, 2000)\\n})\\ninput.onButtonPressed(Button.B, () => {\\n    modules.ledPixel1.showAnimation(modules.ledPixelAnimations.firefly, 2000)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.43,jacdac-led=github:microsoft/pxt-jacdac/led#v0.6.43,jacdac-led-pixel=github:microsoft/pxt-jacdac/led-pixel#v0.6.43\"},\"type\":\"renderblocks\",\"id\":\"a9dfbd421d308a0ddfef5d8529ddc07d\"},\"url\":\"/images/makecode/a9dfbd421d308a0ddfef5d8529ddc07d.png\",\"width\":1267,\"height\":128}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "commands",
+    "style": {
+      "position": "relative"
+    }
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "h2",
+    "href": "#commands",
+    "aria-label": "commands permalink",
+    "className": "anchor before"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
+    parentName: "a",
+    "aria-hidden": "true",
+    "focusable": "false",
+    "height": "16",
+    "version": "1.1",
+    "viewBox": "0 0 16 16",
+    "width": "16"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("path", {
+    parentName: "svg",
+    "fillRule": "evenodd",
+    "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+  }))), "Commands"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "https://microsoft.github.io/jacdac-docs/services/ledpixel",
+    "target": "_blank",
+    "rel": "nofollow noopener noreferrer"
+  }, "LED pixel service"), " has\na small command language that can be used to create your own animations\nand effects."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-blocks"
+  }, "{\"source\":\"function runEncoded(prog: string, args?: number[]) {\\n    const encoded = jacdac.lightEncode(prog, args)\\n    modules.ledPixel1.runProgram(encoded)\\n}\\n\\ninput.onButtonPressed(Button.A, () => {\\n     runEncoded(\\\"rotfwd 1\\\")\\n     modules.ledPixel1.setPixel(0, 0x00ff00)\\n})\",\"rendered\":{\"req\":{\"code\":\"function runEncoded(prog: string, args?: number[]) {\\n    const encoded = jacdac.lightEncode(prog, args)\\n    modules.ledPixel1.runProgram(encoded)\\n}\\n\\ninput.onButtonPressed(Button.A, () => {\\n     runEncoded(\\\"rotfwd 1\\\")\\n     modules.ledPixel1.setPixel(0, 0x00ff00)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.43,jacdac-led=github:microsoft/pxt-jacdac/led#v0.6.43,jacdac-led-pixel=github:microsoft/pxt-jacdac/led-pixel#v0.6.43\"},\"type\":\"renderblocks\",\"id\":\"91c96dcd257e09f210d34d2b6a236352\"},\"url\":\"/images/makecode/91c96dcd257e09f210d34d2b6a236352.png\",\"width\":1092,\"height\":198}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -128,4 +207,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-ledpixel-mdx-4e8f958ce208edf8d6dc.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-ledpixel-mdx-ab4fefe34c8c38eb89c2.js.map
