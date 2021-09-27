@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmrgbledbar10v01/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrgbledbar10v01","name":"JM RGB LED BAR 10 v0.1","company":"Microsoft Research","productIdentifiers":[1046525691]}}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrgbledbar10v01","name":"JM RGB LED Bar 10 v0.1","company":"Microsoft Research","productIdentifiers":[1046525691]}}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","63159454"]}

@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-e9c8639d6ffbb3ea6d62.js"
+    "url": "webpack-runtime-b3878316a5dc04053751.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "bd41f7919ad515235e7cbf0c0599428c"
+    "revision": "ecec6ab17ffb4411c5f1725628cb08ea"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "69e94fc0e59aab41cf1ac7c47d5b1312"
+    "revision": "dfde6669e2a61de69ee871a0845a743c"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "3613401f3da1ad9b75ae86756d6bc48c"
+    "revision": "b4ddf8ddd97154308707fcde574351b7"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "ef4b42bf709a1310bc37c88e3836cee8"
+    "revision": "1e141b60153630f7f4bc0191f4eb8099"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "5e9ed5046774caf800ae1959569dfc34"
+    "revision": "c10ffe06de25fe7d8a1dfeef0f73178b"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "20152ca5aaace6d7908bac4c2b34f66b"
+    "revision": "fa464ab13671e6b4c2491e5fe8de885c"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -918,7 +918,7 @@ self.__precacheManifest = [
     "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-b48721bb2d8044c12f15.js"
   },
   {
-    "url": "component---src-templates-device-tsx-3c51e5b4a1857ae2a325.js"
+    "url": "component---src-templates-device-tsx-13759ce8cef2736fc63e.js"
   },
   {
     "url": "page-data/devices/microbit/foundation/microbitv2/page-data.json",
@@ -929,16 +929,20 @@ self.__precacheManifest = [
     "revision": "dc3393009160ec8944b8d101aa4cf852"
   },
   {
+    "url": "page-data/devices/microsoft/research/g0button/page-data.json",
+    "revision": "26181a6762cdbd7cb2f3a2d052c163fe"
+  },
+  {
     "url": "page-data/devices/microsoft/research/jmaccelerometer30v02/page-data.json",
-    "revision": "854099eb2f88ea4e50007e1f2cd5e823"
+    "revision": "2bc0c4a810c53bd7d6dc934920da06ba"
   },
   {
-    "url": "page-data/devices/microsoft/research/jmaccessswitchoutput11/page-data.json",
-    "revision": "4995bed1cb2025e5c8333da45fdecc06"
+    "url": "page-data/devices/microsoft/research/jmaccelerometerv20/page-data.json",
+    "revision": "22ae89b792006c416d3cb6e965ac69a9"
   },
   {
-    "url": "page-data/devices/microsoft/research/jmaccv2/page-data.json",
-    "revision": "cfd6690069b79a3682ff43d108066cd1"
+    "url": "page-data/devices/microsoft/research/jmaccessswitchoutputv11/page-data.json",
+    "revision": "508d61262339b4ee2dfe0a62d505b47b"
   },
   {
     "url": "page-data/devices/microsoft/research/jmambientlight55v01/page-data.json",
@@ -953,8 +957,8 @@ self.__precacheManifest = [
     "revision": "7af079e60d28a9bac40f35cbbedd6832"
   },
   {
-    "url": "page-data/devices/microsoft/research/jmarcadecontrolsv2/page-data.json",
-    "revision": "cb3aab4ab35edb9ac3f4943a3ad77780"
+    "url": "page-data/devices/microsoft/research/jmarcadecontrolsv20/page-data.json",
+    "revision": "3b35522322a5160a4472cf80f687ea5f"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbutton10v13/page-data.json",
@@ -965,6 +969,10 @@ self.__precacheManifest = [
     "revision": "fc3c3d351c4eee644fd2f8cdac064daa"
   },
   {
+    "url": "page-data/devices/microsoft/research/jmbuzzerv20/page-data.json",
+    "revision": "5485576daa964daa1e5516ffe8b7efa7"
+  },
+  {
     "url": "page-data/devices/microsoft/research/jmclickairquality4v32/page-data.json",
     "revision": "69adb586ba16eb65fdba6f7bd990a738"
   },
@@ -973,20 +981,20 @@ self.__precacheManifest = [
     "revision": "5c8eac7f3e176717d3cf493182b9203c"
   },
   {
-    "url": "page-data/devices/microsoft/research/jmcrankbtnv2/page-data.json",
-    "revision": "78013d2579b9bffffa71dcb74ea767bb"
+    "url": "page-data/devices/microsoft/research/jmcrankbuttonv20/page-data.json",
+    "revision": "f05656dd45de891765d5eb0fc9ce6580"
   },
   {
-    "url": "page-data/devices/microsoft/research/jmcrankv2/page-data.json",
-    "revision": "1fbcd66bce8036aac6704ac5dc405d6c"
+    "url": "page-data/devices/microsoft/research/jmcrankv20/page-data.json",
+    "revision": "4d9eb618851a4bcc6548131bbbe183f4"
   },
   {
     "url": "page-data/devices/microsoft/research/jmflexv10/page-data.json",
     "revision": "4eb44a5fff3e4d249b7df71d6ee357a7"
   },
   {
-    "url": "page-data/devices/microsoft/research/jmgamepadv2/page-data.json",
-    "revision": "bb4ecd826d2e18241802e373913dc934"
+    "url": "page-data/devices/microsoft/research/jmgamepadv20/page-data.json",
+    "revision": "45cbd1852016a4860a2e5bbd8af43c44"
   },
   {
     "url": "page-data/devices/microsoft/research/jmhidserversf441v02/page-data.json",
@@ -1034,19 +1042,19 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/devices/microsoft/research/jmrgbledbar10v01/page-data.json",
-    "revision": "b99bddd55ff934b9d0b0bb69969278ae"
+    "revision": "763cf919905deb703890bdb2c26795c9"
   },
   {
     "url": "page-data/devices/microsoft/research/jmrgbledgenericv01/page-data.json",
-    "revision": "b1e83c22d4114dfb9c2fed9b17eda852"
+    "revision": "85ed5c77e87eea32d0c8188994d5457f"
   },
   {
     "url": "page-data/devices/microsoft/research/jmrgbledringv21/page-data.json",
-    "revision": "efedfa961670f17d7da1d630451bf73d"
+    "revision": "d01becb06ae6990fd53b61d93332d90c"
   },
   {
-    "url": "page-data/devices/microsoft/research/jmrotaryctrlbtnv10/page-data.json",
-    "revision": "cc960b796979e61f2a0403eb1663c096"
+    "url": "page-data/devices/microsoft/research/jmrotarycontrolbuttonv10/page-data.json",
+    "revision": "3ee3545a08cc067e9a4ba284f2930f51"
   },
   {
     "url": "page-data/devices/microsoft/research/jmsinglergbled42v01/page-data.json",
@@ -1061,16 +1069,12 @@ self.__precacheManifest = [
     "revision": "602a394dea8d9a26aa5917d2c50e92eb"
   },
   {
-    "url": "page-data/devices/microsoft/research/jmsndv20/page-data.json",
-    "revision": "c78d4899cd4dd864f070dc846205fa7d"
+    "url": "page-data/devices/microsoft/research/jmtemperaturehumidity18v10a/page-data.json",
+    "revision": "fdd058e685d488e353feb071cc98db12"
   },
   {
-    "url": "page-data/devices/microsoft/research/jmtemphumidity18v10a/page-data.json",
-    "revision": "ceaf9a1c520282704468945ed96139f0"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jmtemphumidity18v11/page-data.json",
-    "revision": "1e6636bf2eab22ab3c98f4ae8d01c890"
+    "url": "page-data/devices/microsoft/research/jmtemperaturehumidity18v11/page-data.json",
+    "revision": "d28dcb5f9cae664896b8fa34f3ee7749"
   },
   {
     "url": "page-data/devices/microsoft/research/jmtouchprotov20/page-data.json",
@@ -1339,7 +1343,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-36f0b5b6230d0e2d6c9a.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-7b19404a516493bb7cb3.js`))) {
     return await fetch(event.request)
   }
 

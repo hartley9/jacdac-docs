@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmrgbledgenericv01/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrgbledgenericv01","name":"JM RGB LED GENERIC v0.1","company":"Microsoft Research","productIdentifiers":[967723905]}}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrgbledgenericv01","name":"JM RGB LED Generic v0.1","company":"Microsoft Research","productIdentifiers":[967723905]}}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","63159454"]}
