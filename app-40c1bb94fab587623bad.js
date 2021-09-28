@@ -68967,7 +68967,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "788fb560136be461c8333da70df733e8d9c9a9f8";
+var sha = "2d4ee45a8efd1ab61885b75272100710a7f6247d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69764,7 +69764,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "788fb560136be461c8333da70df733e8d9c9a9f8";
+  var sha = "2d4ee45a8efd1ab61885b75272100710a7f6247d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71937,7 +71937,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "788fb560136be461c8333da70df733e8d9c9a9f8";
+    var sha = "2d4ee45a8efd1ab61885b75272100710a7f6247d";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -76899,7 +76899,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     }).map(dev => {
       var _deviceSpecificationF, _dev$productIdentifie;
 
-      return "device: \n  id: " + dev.shortId + " (" + dev.id + ")\n  product: " + (dev.productIdentifier ? (((_deviceSpecificationF = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(dev.productIdentifier)) === null || _deviceSpecificationF === void 0 ? void 0 : _deviceSpecificationF.id) || "?") + " (" + ((_dev$productIdentifie = dev.productIdentifier) === null || _dev$productIdentifie === void 0 ? void 0 : _dev$productIdentifie.toString(16)) + ")" : "") + "\n  firmware_version: " + (dev.firmwareVersion || "") + "\n  services:\n" + dev.services().slice(1).map(srv => "    " + srv.name + " (" + srv.serviceClass.toString(16) + ")").join("\n") + "\n";
+      return "device: \n  id: " + dev.shortId + " (0x" + dev.deviceId + ")\n  product: " + (dev.productIdentifier ? (((_deviceSpecificationF = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(dev.productIdentifier)) === null || _deviceSpecificationF === void 0 ? void 0 : _deviceSpecificationF.id) || "?") + " (0x" + ((_dev$productIdentifie = dev.productIdentifier) === null || _dev$productIdentifie === void 0 ? void 0 : _dev$productIdentifie.toString(16)) + ")" : "") + "\n  firmware_version: " + (dev.firmwareVersion || "") + "\n  services:\n" + dev.services().slice(1).map(srv => "    " + srv.name + " (0x" + srv.serviceClass.toString(16) + ")").join("\n") + "\n";
     }).join("\n");
   }
   /**
@@ -87795,4 +87795,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-28f10629deebc9bb1a26.js.map
+//# sourceMappingURL=app-40c1bb94fab587623bad.js.map
