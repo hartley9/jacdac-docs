@@ -111,7 +111,7 @@ function MDXContent(_ref) {
   }, "<script src=\"./p5.jacdac.js\"></script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-p5js"
-  }, "<html>\n  <head>\n    <script src=\"https://unpkg.com/p5@1.4.0/lib/p5.js\"></script>\n    <script src=\"https://unpkg.com/jacdac-ts/dist/p5.jacdac.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </head>\n  <body>\n    <main>\n    </main>\n  </body>\n</html>\n-----\nfunction setup() {\n    createCanvas(400, 400)\n}\nfunction draw() {\n    // grabs sensor data\n    const potentiometers = jacdac.sensors\n    // add your code here!\n}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "That's it! ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "<html>\n  <head>\n    <script src=\"https://unpkg.com/p5@1.4.0/lib/p5.js\"></script>\n    <script src=\"https://unpkg.com/jacdac-ts/dist/p5.jacdac.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </head>\n  <body>\n    <main>\n    </main>\n  </body>\n</html>\n-----\nfunction setup() {\n    createCanvas(400, 400)\n}\nfunction draw() {\n    const { potentiometer } = jacdac.sensors\n    const [r = 0, g = 0, b = 0] = potentiometer\n    background(r * 255, g * 255, b * 255)\n}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "That's it! ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
   }, "p5.jacdac"), " will automatically show a button to connect to your\ndevice and hide it when connected."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "whats-next",
@@ -173,8 +173,8 @@ function MDXContent(_ref) {
     parentName: "p"
   }, "Debug"), " button that will open the Jacdac developer tools.\nDeveloper tools allow you to inspect devices, launch simulator or inspect packets."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
-    "className": "language-javascript"
-  }, "funtion setup() {\n    ...\n    jacdac.debug()\n}\n")));
+    "className": "language-p5js"
+  }, "funtion setup() {\n    ...\n    jacdac.debug()\n}\n-----\nfunction setup() {\n    createCanvas(400, 400)\n    jacdac.debug()\n}\nfunction draw() {\n    const { potentiometer } = jacdac.sensors\n    const [r = 0, g = 0, b = 0] = potentiometer\n    background(r * 255, g * 255, b * 255)\n}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -200,4 +200,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-12412524f05f05c78cd4.js.map
+//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-36c40b6e8a2c0e6c7a36.js.map
