@@ -13,7 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _mdx_js_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(64983);
 /* harmony import */ var _home_runner_work_jacdac_docs_jacdac_docs_src_components_Page_tsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(64425);
-/* harmony import */ var _components_home_Hardware__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(83354);
+/* harmony import */ var _components_home_Hardware__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(27005);
 
 var _excluded = ["components"];
 
@@ -68,4 +68,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-hardware-mdx-88f4228aaa4dd6f38e3e.js.map
+//# sourceMappingURL=component---src-pages-hardware-mdx-d4564cb054822428fef4.js.map
