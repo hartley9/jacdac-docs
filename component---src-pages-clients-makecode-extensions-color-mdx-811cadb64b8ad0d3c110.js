@@ -60,7 +60,16 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Color detection"));
+  }))), "Color detection"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The color detection extension provides three methods\n(", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "red"), ", ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "green"), ", and ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "blue"), "), each of which returns a value\nin the range of 0.0 to 100.0"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-blocks"
+  }, "{\"source\":\"basic.forever(() => {\\n    let red = modules.color1.red()\\n    let blue = modules.color1.blue()\\n    let green = modules.color1.green()\\n    if (green > 50 && red + blue < 20) {\\n        basic.showString(\\\"G\\\")\\n    } else {\\n        basic.clearScreen()\\n    }\\n})\",\"rendered\":{\"req\":{\"code\":\"basic.forever(() => {\\n    let red = modules.color1.red()\\n    let blue = modules.color1.blue()\\n    let green = modules.color1.green()\\n    if (green > 50 && red + blue < 20) {\\n        basic.showString(\\\"G\\\")\\n    } else {\\n        basic.clearScreen()\\n    }\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.43,jacdac-color=github:microsoft/pxt-jacdac/color#v0.6.43\"},\"type\":\"renderblocks\",\"id\":\"73a945ec286280252a77d13bac8830b7\"},\"url\":\"/images/makecode/73a945ec286280252a77d13bac8830b7.png\",\"width\":894,\"height\":472}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -86,4 +95,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-color-mdx-05c2a1466b8df670df68.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-color-mdx-811cadb64b8ad0d3c110.js.map
