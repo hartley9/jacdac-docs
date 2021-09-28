@@ -66,7 +66,7 @@ var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] 
     borderWidth: "1px",
     borderStyle: "solid",
     borderColor: "transparent",
-    cursor: "pointer",
+    userSelect: "none",
     "&:hover": {
       borderColor: theme.palette.primary.main
     },
@@ -212,7 +212,10 @@ function DashboardHIDMouse(props) {
     fontSize: "large"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
     item: true,
-    xs: true
+    xs: true,
+    style: {
+      userSelect: "none"
+    }
   }, "focus and type l(eft), r(ight), m(iddle) for buttons, arrow keys to move, w(heel up), d(wheel down) for the wheel")))), server && preview && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
     item: true,
     xs: 12
@@ -225,4 +228,4 @@ function DashboardHIDMouse(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5233-58d0180291a68e93a8b3.js.map
+//# sourceMappingURL=5233-da04ca91f377cba52268.js.map
