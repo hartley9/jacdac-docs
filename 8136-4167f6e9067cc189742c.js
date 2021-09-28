@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[9819],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[8136],{
 
-/***/ 99819:
+/***/ 78136:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 
@@ -24,71 +24,8 @@ __webpack_require__.d(__webpack_exports__, {
 var defineProperty = __webpack_require__(4942);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
 var asyncToGenerator = __webpack_require__(15861);
-;// CONCATENATED MODULE: ./src/components/semver.ts
-function cmp(a, b) {
-  if (!a) {
-    if (!b) return 0;else return 1;
-  } else if (!b) return -1;else {
-    var d = a.major - b.major || a.minor - b.minor || a.patch - b.patch;
-    if (d) return d;
-    if (a.pre.length == 0 && b.pre.length > 0) return 1;
-    if (a.pre.length > 0 && b.pre.length == 0) return -1;
-
-    for (var i = 0; i < a.pre.length + 1; ++i) {
-      var aa = a.pre[i];
-      var bb = b.pre[i];
-      if (!aa) {
-        if (!bb) return 0;else return -1;
-      } else if (!bb) return 1;else if (/^\d+$/.test(aa)) {
-        if (/^\d+$/.test(bb)) {
-          d = parseInt(aa) - parseInt(bb);
-          if (d) return d;
-        } else return -1;
-      } else if (/^\d+$/.test(bb)) return 1;else {
-        d = strcmp(aa, bb);
-        if (d) return d;
-      }
-    }
-
-    return 0;
-  }
-}
-
-function tryParse(v) {
-  if (!v) return null;
-
-  if ("*" === v) {
-    return {
-      major: Number.MAX_SAFE_INTEGER,
-      minor: Number.MAX_SAFE_INTEGER,
-      patch: Number.MAX_SAFE_INTEGER,
-      pre: [],
-      build: []
-    };
-  }
-
-  if (/^v\d/i.test(v)) v = v.slice(1);
-  var m = /^(\d+)\.(\d+)\.(\d+)(-([0-9a-zA-Z\-\.]+))?(\+([0-9a-zA-Z\-\.]+))?$/.exec(v);
-  if (m) return {
-    major: parseInt(m[1]),
-    minor: parseInt(m[2]),
-    patch: parseInt(m[3]),
-    pre: m[5] ? m[5].split(".") : [],
-    build: m[7] ? m[7].split(".") : []
-  };
-  return null;
-}
-
-function strcmp(a, b) {
-  if (a === b) return 0;
-  if (a < b) return -1;else return 1;
-}
-
-function semverCmp(a, b) {
-  var aa = tryParse(a);
-  var bb = tryParse(b);
-  if (!aa && !bb) return strcmp(a, b);else return cmp(aa, bb);
-}
+// EXTERNAL MODULE: ./src/components/semver.ts
+var semver = __webpack_require__(14914);
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(67294);
 // EXTERNAL MODULE: ./src/components/useEffectAsync.ts
@@ -184,7 +121,7 @@ function contentToFirmwareRelease(content) {
 }
 
 function contentsToFirmwareReleases(contents) {
-  return contents === null || contents === void 0 ? void 0 : contents.map(contentToFirmwareRelease).filter(r => !!r).sort((l, r) => -semverCmp(l.version, r.version));
+  return contents === null || contents === void 0 ? void 0 : contents.map(contentToFirmwareRelease).filter(r => !!r).sort((l, r) => -(0,semver/* semverCmp */.k)(l.version, r.version));
 }
 
 function normalizeSlug(slug) {
@@ -372,7 +309,80 @@ function useLatestReleases(slug, options) {
   });
 }
 
+/***/ }),
+
+/***/ 14914:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "k": function() { return /* binding */ semverCmp; }
+/* harmony export */ });
+function cmp(a, b) {
+  if (!a) {
+    if (!b) return 0;else return 1;
+  } else if (!b) return -1;else {
+    var d = a.major - b.major || a.minor - b.minor || a.patch - b.patch;
+    if (d) return d;
+    if (a.pre.length == 0 && b.pre.length > 0) return 1;
+    if (a.pre.length > 0 && b.pre.length == 0) return -1;
+
+    for (var i = 0; i < a.pre.length + 1; ++i) {
+      var aa = a.pre[i];
+      var bb = b.pre[i];
+      if (!aa) {
+        if (!bb) return 0;else return -1;
+      } else if (!bb) return 1;else if (/^\d+$/.test(aa)) {
+        if (/^\d+$/.test(bb)) {
+          d = parseInt(aa) - parseInt(bb);
+          if (d) return d;
+        } else return -1;
+      } else if (/^\d+$/.test(bb)) return 1;else {
+        d = strcmp(aa, bb);
+        if (d) return d;
+      }
+    }
+
+    return 0;
+  }
+}
+
+function tryParse(v) {
+  if (!v) return null;
+
+  if ("*" === v) {
+    return {
+      major: Number.MAX_SAFE_INTEGER,
+      minor: Number.MAX_SAFE_INTEGER,
+      patch: Number.MAX_SAFE_INTEGER,
+      pre: [],
+      build: []
+    };
+  }
+
+  if (/^v\d/i.test(v)) v = v.slice(1);
+  var m = /^(\d+)\.(\d+)\.(\d+)(-([0-9a-zA-Z\-\.]+))?(\+([0-9a-zA-Z\-\.]+))?$/.exec(v);
+  if (m) return {
+    major: parseInt(m[1]),
+    minor: parseInt(m[2]),
+    patch: parseInt(m[3]),
+    pre: m[5] ? m[5].split(".") : [],
+    build: m[7] ? m[7].split(".") : []
+  };
+  return null;
+}
+
+function strcmp(a, b) {
+  if (a === b) return 0;
+  if (a < b) return -1;else return 1;
+}
+
+function semverCmp(a, b) {
+  var aa = tryParse(a);
+  var bb = tryParse(b);
+  if (!aa && !bb) return strcmp(a, b);else return cmp(aa, bb);
+}
+
 /***/ })
 
 }]);
-//# sourceMappingURL=9819-9c05be96c19d283f66b0.js.map
+//# sourceMappingURL=8136-4167f6e9067cc189742c.js.map

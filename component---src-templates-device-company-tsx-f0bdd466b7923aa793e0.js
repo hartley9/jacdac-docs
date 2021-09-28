@@ -473,6 +473,108 @@ function DeviceSpecificationList(props) {
 
 /***/ }),
 
+/***/ 82530:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ FilteredDeviceSpecificationList; }
+/* harmony export */ });
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(91448);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _DeviceSpecificationList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(46684);
+/* harmony import */ var _ServiceSpecificationSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(65831);
+
+
+
+
+function FilteredDeviceSpecificationList(props) {
+  var others = Object.assign({}, props);
+  var {
+    0: serviceClass,
+    1: setServiceClass
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(NaN);
+
+  var handleServiceChanged = value => setServiceClass(value);
+
+  var requiredServiceClasses = !isNaN(serviceClass) && [serviceClass];
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    mb: 1
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ServiceSpecificationSelect__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    label: "Filter by Service",
+    serviceClass: serviceClass,
+    setServiceClass: handleServiceChanged,
+    hasRegisteredDevice: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DeviceSpecificationList__WEBPACK_IMPORTED_MODULE_1__["default"], Object.assign({}, others, {
+    requiredServiceClasses: requiredServiceClasses
+  })));
+}
+
+/***/ }),
+
+/***/ 65831:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ ServiceSpecificationSelect; }
+/* harmony export */ });
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10920);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(70274);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(1059);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(65541);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45656);
+
+
+
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(() => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)({
+  root: {
+    minWidth: "18rem"
+  }
+}));
+function ServiceSpecificationSelect(props) {
+  var {
+    label,
+    serviceClass,
+    setServiceClass,
+    variant,
+    fullWidth,
+    error,
+    hasRegisteredDevice
+  } = props;
+  var {
+    0: labelId
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("select-" + Math.random());
+  var classes = useStyles();
+  var specs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .serviceSpecifications */ .Le)().filter(spec => !/^_/.test(spec.shortId)).filter(spec => {
+    var _deviceSpecifications;
+
+    return !hasRegisteredDevice || !!((_deviceSpecifications = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .deviceSpecificationsForService */ .zn)(spec.classIdentifier)) !== null && _deviceSpecifications !== void 0 && _deviceSpecifications.length);
+  }), [hasRegisteredDevice]);
+
+  var handleChange = event => setServiceClass(parseInt(event.target.value));
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+    id: labelId,
+    className: classes.root,
+    label: label,
+    error: !!error,
+    helperText: error,
+    value: serviceClass,
+    select: true,
+    variant: variant,
+    fullWidth: fullWidth,
+    onChange: handleChange
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+    key: "none",
+    value: "NaN"
+  }, "No service selected"), specs.map(spec => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+    key: spec.classIdentifier,
+    value: spec.classIdentifier
+  }, spec.name)));
+}
+
+/***/ }),
+
 /***/ 98784:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -507,12 +609,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36176);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
-/* harmony import */ var _components_specification_DeviceSpecificationList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(46684);
+/* harmony import */ var _components_specification_FilteredDeviceSpecificationList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(82530);
 
 
 
 function Page(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, props.pageContext.company), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_specification_DeviceSpecificationList__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, props.pageContext.company), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_specification_FilteredDeviceSpecificationList__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     company: props.pageContext.company
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h2", null, "See Also"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_0__.Link, {
     to: "/reference/device-registration/"
@@ -522,4 +624,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-company-tsx-1ab1a65c2ce616a2b898.js.map
+//# sourceMappingURL=component---src-templates-device-company-tsx-f0bdd466b7923aa793e0.js.map

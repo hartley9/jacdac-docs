@@ -103479,8 +103479,8 @@ var DialogContent = __webpack_require__(65733);
 var DialogContentText = __webpack_require__(32253);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js
 var DialogActions = __webpack_require__(89952);
-// EXTERNAL MODULE: ./src/components/github.ts + 2 modules
-var github = __webpack_require__(99819);
+// EXTERNAL MODULE: ./src/components/github.ts + 1 modules
+var github = __webpack_require__(78136);
 // EXTERNAL MODULE: ./src/components/AppContext.tsx
 var AppContext = __webpack_require__(84377);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/GitHub.js
@@ -107440,4 +107440,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-69e15da488587b04758f.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-f3f1a737b2bbc4302edd.js.map

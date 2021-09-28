@@ -1017,6 +1017,40 @@ function useDebouncedCallback(func, wait, options) {
 
 /***/ }),
 
+/***/ 88460:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ ChipList; }
+/* harmony export */ });
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10920);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(70274);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+
+
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)({
+  root: {
+    display: "flex",
+    justifyContent: "flex-start",
+    flexWrap: "wrap",
+    "& > *": {
+      margin: theme.spacing(0.5)
+    }
+  }
+}));
+function ChipList(props) {
+  var {
+    children
+  } = props;
+  var classes = useStyles();
+  if (!children) return null;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: classes.root
+  }, children);
+}
+
+/***/ }),
+
 /***/ 95393:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -1112,7 +1146,7 @@ function Markdown(props) {
 
 /***/ }),
 
-/***/ 19430:
+/***/ 67713:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -1161,33 +1195,8 @@ var constants = __webpack_require__(71815);
 var servers = __webpack_require__(70767);
 // EXTERNAL MODULE: ./src/components/KindIcon.tsx
 var KindIcon = __webpack_require__(50048);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/makeStyles.js
-var makeStyles = __webpack_require__(10920);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createStyles.js
-var createStyles = __webpack_require__(70274);
-;// CONCATENATED MODULE: ./src/components/ui/ChipList.tsx
-
-
-var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default */.Z)({
-  root: {
-    display: "flex",
-    justifyContent: "flex-start",
-    flexWrap: "wrap",
-    "& > *": {
-      margin: theme.spacing(0.5)
-    }
-  }
-}));
-function ChipList(props) {
-  var {
-    children
-  } = props;
-  var classes = useStyles();
-  if (!children) return null;
-  return /*#__PURE__*/react.createElement("span", {
-    className: classes.root
-  }, children);
-}
+// EXTERNAL MODULE: ./src/components/ui/ChipList.tsx
+var ChipList = __webpack_require__(88460);
 // EXTERNAL MODULE: ./src/components/icons/JacdacIcon.tsx
 var JacdacIcon = __webpack_require__(36656);
 // EXTERNAL MODULE: ./src/components/ui/Markdown.tsx
@@ -1238,7 +1247,7 @@ function ServiceSpecificatinListItem(props) {
   }, /*#__PURE__*/react.createElement(ListItemText/* default */.Z, {
     key: classIdentifier,
     primary: name,
-    secondary: /*#__PURE__*/react.createElement(ChipList, null, /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
+    secondary: /*#__PURE__*/react.createElement(ChipList/* default */.Z, null, /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
       source: notes["short"]
     }), tags === null || tags === void 0 ? void 0 : tags.map(tag => /*#__PURE__*/react.createElement(Chip/* default */.Z, {
       key: tag,
@@ -1464,7 +1473,7 @@ function ServiceCatalog() {
   })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react.createElement(ChipList, null, allTags.map(t => /*#__PURE__*/react.createElement(FilterChip, {
+  }, /*#__PURE__*/react.createElement(ChipList/* default */.Z, null, allTags.map(t => /*#__PURE__*/react.createElement(FilterChip, {
     key: t,
     label: t,
     onClick: handleTagClick(t),
@@ -1553,4 +1562,4 @@ function ServiceCatalog() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-services-tsx-622009526e1da815e5f6.js.map
+//# sourceMappingURL=component---src-pages-services-tsx-9dc425bdc03d054152b2.js.map
