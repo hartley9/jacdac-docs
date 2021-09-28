@@ -92,7 +92,7 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
 
   _proto.mount = function mount(workspace) {
     this._workspace = workspace;
-    window.addEventListener("message", this.handleMessage);
+    window.addEventListener("message", this.handleMessage, false);
     this.post("mount");
     return () => {
       this.post("unmount");
@@ -169,7 +169,6 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
   ;
 
   _proto.createBlocks = function createBlocks(options) {
-    console.debug("iframedsl: query blocks");
     return new Promise(resolve => {
       var {
         id
@@ -177,15 +176,18 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
       setTimeout(() => {
         if (this.pendings[id]) {
           delete this.pendings[id];
-          console.warn("iframedsl: no blocks returned, giving up");
+          console.warn("iframedsl " + this.id + ": no blocks returned, giving up");
           resolve(this.blocks);
         }
-      }, 1000);
+      }, 3000);
 
       this.pendings[id] = data => {
+        var _this$blocks, _this$category;
+
         var bdata = data;
         this.blocks = bdata.blocks;
         this.category = bdata.category;
+        console.debug("iframedsl " + this.id + ": loaded " + ((_this$blocks = this.blocks) === null || _this$blocks === void 0 ? void 0 : _this$blocks.length) + " blocks, " + ((_this$category = this.category) === null || _this$category === void 0 ? void 0 : _this$category.length) + " categories");
         var transformData = this.createTransformData();
         this.blocks.forEach(block => block.transformData = transformData);
         resolve(this.blocks);
@@ -277,4 +279,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-tsx-c5ddfdf1aaf896c24ae8.js.map
+//# sourceMappingURL=component---src-pages-editors-data-tsx-1536e979596989909c6f.js.map

@@ -3881,8 +3881,7 @@ function _loadBlocks() {
 
         blocks.push(b);
       }
-    } //console.log({ blocks })
-    // register field editors
+    } // register field editors
 
 
     (0,fields/* registerFields */.k)(); // re-register blocks with blocklys
@@ -4147,8 +4146,19 @@ function BlockProvider(props) {
       var _cev = event;
       handleBlockChange(_cev.blockId);
     }
-  }; // plugins
+  }; // mounting dsts
 
+
+  (0,react.useEffect)(() => {
+    var unmounnts = dsls.map(dsl => {
+      var _dsl$mount;
+
+      return (_dsl$mount = dsl.mount) === null || _dsl$mount === void 0 ? void 0 : _dsl$mount.call(dsl, workspace);
+    }).filter(u => !!u);
+    return () => {
+      unmounnts.forEach(u => u());
+    };
+  }, [workspace]); // plugins
 
   useBlocklyPlugins(workspace);
   useBlocklyEvents(workspace);
@@ -4246,17 +4256,7 @@ function BlockProvider(props) {
 
   (0,react.useEffect)(() => {
     providerbus/* default.backgroundRefreshRegisters */.Z.backgroundRefreshRegisters = !dragging;
-  }, [dragging]); // mounting dsts
-
-  (0,react.useEffect)(() => {
-    console.debug("mounting dsls");
-    var unmounnts = dsls.map(dsl => {
-      var _dsl$mount;
-
-      return workspace && ((_dsl$mount = dsl.mount) === null || _dsl$mount === void 0 ? void 0 : _dsl$mount.call(dsl, workspace));
-    }).filter(u => !!u);
-    return () => unmounnts.forEach(u => u());
-  }, [workspace]);
+  }, [dragging]);
   return /*#__PURE__*/react.createElement(BlockContext.Provider, {
     value: {
       editorId,
@@ -12813,4 +12813,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-c535cab43b4cc1cd7c71.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-159081d47cddda86e97f.js.map

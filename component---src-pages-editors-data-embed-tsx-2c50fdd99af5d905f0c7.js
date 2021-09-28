@@ -207,11 +207,12 @@ function Page() {
 
   var handleBlocks = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)(function* (data) {
-      console.debug("hostdsl: sending blocks");
-      post(_objectSpread(_objectSpread({}, data), {}, {
+      var msg = _objectSpread(_objectSpread({}, data), {}, {
         blocks,
         category
-      }));
+      });
+
+      post(msg);
     });
 
     return function handleBlocks(_x3) {
@@ -302,4 +303,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-embed-tsx-aa1ba72bfb9f2413c7e3.js.map
+//# sourceMappingURL=component---src-pages-editors-data-embed-tsx-2c50fdd99af5d905f0c7.js.map
