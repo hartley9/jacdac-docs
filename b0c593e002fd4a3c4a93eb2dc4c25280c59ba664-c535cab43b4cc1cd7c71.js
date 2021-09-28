@@ -11607,6 +11607,7 @@ function workspaceToJSON(workspace, dsls, top) {
   var builtins = {
     logic_null: () => null,
     text: block => block.getFieldValue("TEXT"),
+    text_input: block => block.getFieldValue("TEXT"),
     math_number: block => Number(block.getFieldValue("NUM") || "0"),
     logic_boolean: block => block.getFieldValue("BOOL") === "TRUE"
   };
@@ -12812,4 +12813,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-44caa90e220e72ef6582.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-c535cab43b4cc1cd7c71.js.map
