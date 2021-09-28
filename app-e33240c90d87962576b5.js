@@ -53726,6 +53726,8 @@ function Hardware() {
 
 
 var DeviceSpecificationList = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 6684).then(__webpack_require__.bind(__webpack_require__, 46684)));
+var ModelViewer = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(3737), __webpack_require__.e(1136)]).then(__webpack_require__.bind(__webpack_require__, 91136)));
+var GLBModel = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(3737), __webpack_require__.e(8010)]).then(__webpack_require__.bind(__webpack_require__, 78010)));
 function Home() {
   var {
     mobile,
@@ -53867,11 +53869,13 @@ function Home() {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     subtitle: "Enabling a cheaper ecosystem.",
     description: "A PCB edge connector was chosen for Jacdac primarily because it essentially adds no cost to a product. A module is a small PCB that includes an MCU connected to an on-board sensor or actuator.",
-    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_7__.S, {
-      src: "./rhtempvertical.png",
-      alt: "Humidity temperature module vertial",
-      __imageData: __webpack_require__(92859)
-    }),
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
+      fallback: null
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ModelViewer, {
+      responsive: true
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GLBModel, {
+      name: "jmhidserversf441v03"
+    }))),
     buttonText: "Hardware overview",
     buttonVariant: "link",
     buttonUrl: "/hardware/"
@@ -68690,7 +68694,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "1b76a6401ae5860e5ea9fe68bf7eaaf8b63e1319";
+var sha = "3bcf5237a317ef83167036be18875753c4554c37";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69487,7 +69491,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "1b76a6401ae5860e5ea9fe68bf7eaaf8b63e1319";
+  var sha = "3bcf5237a317ef83167036be18875753c4554c37";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71660,7 +71664,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "1b76a6401ae5860e5ea9fe68bf7eaaf8b63e1319";
+    var sha = "3bcf5237a317ef83167036be18875753c4554c37";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87518,4 +87522,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-75f5af0dffdc5e9d7b96.js.map
+//# sourceMappingURL=app-e33240c90d87962576b5.js.map

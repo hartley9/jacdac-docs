@@ -10343,11 +10343,16 @@ var OrbitControls = __webpack_require__(97667);
 function ModelViewer(props) {
   // eslint-disable-next-line react/prop-types
   var {
-    children
+    children,
+    responsive
   } = props;
   var ref = (0,react.useRef)();
   return /*#__PURE__*/react.createElement("div", {
-    style: {
+    style: responsive ? {
+      position: "relative",
+      width: "35vw",
+      height: "35vw"
+    } : {
       position: "relative",
       width: "clamp(50vw, 640px, 96vw)",
       height: "clamp(480px, 60vh, 96vh)"
@@ -10375,4 +10380,4 @@ function ModelViewer(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1136-db9233a23ff2ac8a7e7c.js.map
+//# sourceMappingURL=1136-abc02e715b0063ff1ca8.js.map
