@@ -89,7 +89,7 @@ function MDXContent(_ref) {
   }))), "Coordinates"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.joystick1.x()\\nmodules.joystick1.y()\\n\",\"rendered\":{\"req\":{\"code\":\"modules.joystick1.x()\\nmodules.joystick1.y()\\n\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.43,jacdac-joystick=github:microsoft/pxt-jacdac/joystick#v0.6.43\"},\"type\":\"renderblocks\",\"id\":\"443752f29714161d931bb176c0f65d6c\"},\"url\":\"/images/makecode/443752f29714161d931bb176c0f65d6c.png\",\"width\":286,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"basic.forever(() => {\\n    plot(modules.joystick1.x(), modules.joystick1.y())\\n})\\n\\nfunction plot(x: number, y: number) {\\n        basic.clearScreen();\\n        let dispX = 2;\\n        let dispY = 2;\\n        if (x < -30)\\n            dispX--;\\n        if (x < -60)\\n            dispX--;\\n        if (x > 30)\\n            dispX++;\\n        if (x > 60)\\n            dispX++;\\n        if (y < -30)\\n            dispY--;\\n        if (y < -60)\\n            dispY--;\\n        if (y > 30)\\n            dispY++;\\n        if (y > 60)\\n            dispY++;\\n        led.plot(dispX, dispY);\\n}\\n\",\"rendered\":{\"req\":{\"code\":\"basic.forever(() => {\\n    plot(modules.joystick1.x(), modules.joystick1.y())\\n})\\n\\nfunction plot(x: number, y: number) {\\n        basic.clearScreen();\\n        let dispX = 2;\\n        let dispY = 2;\\n        if (x < -30)\\n            dispX--;\\n        if (x < -60)\\n            dispX--;\\n        if (x > 30)\\n            dispX++;\\n        if (x > 60)\\n            dispX++;\\n        if (y < -30)\\n            dispY--;\\n        if (y < -60)\\n            dispY--;\\n        if (y > 30)\\n            dispY++;\\n        if (y > 60)\\n            dispY++;\\n        led.plot(dispX, dispY);\\n}\\n\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.43,jacdac-joystick=github:microsoft/pxt-jacdac/joystick#v0.6.43\"},\"type\":\"renderblocks\",\"id\":\"f4f38718e678cd53aff09a1a566630ea\"},\"url\":\"/images/makecode/f4f38718e678cd53aff09a1a566630ea.png\",\"width\":937,\"height\":1382}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "events",
     "style": {
       "position": "relative"
@@ -167,4 +167,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-joystick-mdx-69516901a306520ef335.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-joystick-mdx-17fd0831bc9ab367d5b5.js.map
