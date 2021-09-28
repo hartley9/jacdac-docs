@@ -111,7 +111,7 @@ function MDXContent(_ref) {
   }, "<script src=\"./p5.jacdac.js\"></script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-p5js"
-  }, "<html>\n  <head>\n    <script src=\"https://unpkg.com/p5@1.4.0/lib/p5.js\"></script>\n    <script src=\"https://unpkg.com/jacdac-ts/dist/p5.jacdac.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </head>\n  <body>\n    <main>\n    </main>\n  </body>\n</html>\n-----\nfunction setup() {\n    createCanvas(400, 400)\n}\nfunction draw() {\n    // grabs sensor data\n    const { sensors } = jacdac\n    // add your code here!\n\n}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "That's it! ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "<html>\n  <head>\n    <script src=\"https://unpkg.com/p5@1.4.0/lib/p5.js\"></script>\n    <script src=\"https://unpkg.com/jacdac-ts/dist/p5.jacdac.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </head>\n  <body>\n    <main>\n    </main>\n  </body>\n</html>\n-----\nfunction setup() {\n    createCanvas(400, 400)\n}\nfunction draw() {\n    // grabs sensor data\n    const potentiometers = jacdac.sensors\n    // add your code here!\n}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "That's it! ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
   }, "p5.jacdac"), " will automatically show a button to connect to your\ndevice and hide it when connected."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "whats-next",
@@ -145,7 +145,36 @@ function MDXContent(_ref) {
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
     "href": "/jacdac-docs/clients/p5js/events"
-  }, "events"), ", register handlers for events")));
+  }, "events"), ", register handlers for events")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "debugging",
+    "style": {
+      "position": "relative"
+    }
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "h2",
+    "href": "#debugging",
+    "aria-label": "debugging permalink",
+    "className": "anchor before"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
+    parentName: "a",
+    "aria-hidden": "true",
+    "focusable": "false",
+    "height": "16",
+    "version": "1.1",
+    "viewBox": "0 0 16 16",
+    "width": "16"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("path", {
+    parentName: "svg",
+    "fillRule": "evenodd",
+    "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+  }))), "Debugging"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Add ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "jacdac.debug"), " to display a ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+    parentName: "p"
+  }, "Debug"), " button that will open the Jacdac developer tools.\nDeveloper tools allow you to inspect devices, launch simulator or inspect packets."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-javascript"
+  }, "funtion setup() {\n    ...\n    jacdac.debug()\n}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -171,4 +200,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-c9a44853b24c715124eb.js.map
+//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-12412524f05f05c78cd4.js.map
