@@ -4175,11 +4175,13 @@ var getServiceInfo = () => {
   };
 };
 var ServicesBaseDSL = /*#__PURE__*/function () {
-  function ServicesBaseDSL() {}
+  function ServicesBaseDSL() {
+    this._serviceBlocks = [];
+    this._eventFieldBlocks = [];
+  }
 
   var _proto = ServicesBaseDSL.prototype;
 
-  // only state required across methods of class
   _proto.makeRegisterSimpleGetBlocks = function makeRegisterSimpleGetBlocks(registers, client) {
     if (client === void 0) {
       client = true;
@@ -6878,4 +6880,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-vm-tsx-4fcd5d33a007c92a903d.js.map
+//# sourceMappingURL=component---src-pages-editors-vm-tsx-7e4555a81146aa5fec64.js.map
