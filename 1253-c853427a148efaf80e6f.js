@@ -39,14 +39,14 @@ function DashboardColor(props) {
     background
   } = (0,_widgets_useWidgetTheme__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(color);
   if (r === undefined) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_LoadingProgress__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null);
-  var value = "rgb(" + (r * 0xff >> 0) + ", " + (g * 0xff >> 0) + ", " + (b * 0xff >> 0) + ")";
+  var value = "rgb(" + (r * 0xff | 0) + ", " + (g * 0xff | 0) + ", " + (b * 0xff | 0) + ")";
 
   var handleChange = color => {
-    var hex = color.slice(0);
+    var hex = color.replace(/^#/, "");
     var rgb = parseInt(hex, 16);
     var r = rgb >> 16 & 0xff;
     var g = rgb >> 8 & 0xff;
-    var b = rgb >> 0 & 0xff;
+    var b = (rgb | 0) & 0xff;
     server.reading.setValues([r / 0xff, g / 0xff, b / 0xff]);
     register.refresh();
   };
@@ -77,4 +77,4 @@ function DashboardColor(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1253-240aaa169302e194a33d.js.map
+//# sourceMappingURL=1253-c853427a148efaf80e6f.js.map
