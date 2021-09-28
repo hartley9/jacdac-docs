@@ -63,6 +63,9 @@ __webpack_require__.r(__webpack_exports__);
 var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)({
   capture: {
     whiteSpace: "pre-wrap",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "transparent",
     cursor: "pointer",
     "&:hover": {
       borderColor: theme.palette.primary.main
@@ -188,15 +191,10 @@ function DashboardHIDMouse(props) {
   }();
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
-    container: true,
-    spacing: 1
+    container: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
-    item: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_MouseOutlined__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
-    fontSize: "large"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
     item: true,
-    xs: true
+    xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("pre", {
     ref: preRef,
     className: classes.capture,
@@ -204,7 +202,18 @@ function DashboardHIDMouse(props) {
     onMouseDown: handleMouseDown,
     onMouseUp: handleMouseUp,
     onKeyDown: handleKeyDown
-  }, "focus and type l(eft), r(ight), m(iddle) for buttons, arrow keys to move, w(heel up), d(wheel down) for the wheel")), server && preview && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+    container: true,
+    spacing: 1,
+    direction: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+    item: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_MouseOutlined__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
+    fontSize: "large"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+    item: true,
+    xs: true
+  }, "focus and type l(eft), r(ight), m(iddle) for buttons, arrow keys to move, w(heel up), d(wheel down) for the wheel")))), server && preview && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
@@ -216,4 +225,4 @@ function DashboardHIDMouse(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5233-8f520a702bf836c62df3.js.map
+//# sourceMappingURL=5233-58d0180291a68e93a8b3.js.map
