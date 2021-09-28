@@ -51491,7 +51491,7 @@ var serviceViews = {
   },
   [constants/* SRV_HID_MOUSE */.Eef]: {
     component: DashboardHIDMouse,
-    weight: () => 1
+    weight: () => 2
   },
 
   /*
@@ -68577,7 +68577,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "3c59059fcb77a6206ed2f83ce04fffb0d5cc9487";
+var sha = "0d203c1de97d0b500163dad0ba3629049baefebc";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69374,7 +69374,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3c59059fcb77a6206ed2f83ce04fffb0d5cc9487";
+  var sha = "0d203c1de97d0b500163dad0ba3629049baefebc";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71477,7 +71477,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "3c59059fcb77a6206ed2f83ce04fffb0d5cc9487";
+    var sha = "0d203c1de97d0b500163dad0ba3629049baefebc";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87336,4 +87336,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-e89e47db225e3d61fe46.js.map
+//# sourceMappingURL=app-e86868aa8d1330c6bc79.js.map
