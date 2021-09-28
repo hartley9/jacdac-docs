@@ -60,7 +60,12 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Flex"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "A bending or deflection sensor."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }))), "Flex"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The flex extension (for a flexible/bending sensor) reports the sensor\nvalue as a floating point value between 0.0 and 100.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "bending"), " method returns the current value of the sensor."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the sensor value whenever it changes by\n5:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-blocks"
+  }, "{\"source\":\"modules.flex1.onBendingChangedBy(5, function() {\\n    led.plotBarGraph(modules.flex1.bending(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.flex1.onBendingChangedBy(5, function() {\\n    led.plotBarGraph(modules.flex1.bending(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.43,jacdac-flex=github:microsoft/pxt-jacdac/flex#v0.6.43\"},\"type\":\"renderblocks\",\"id\":\"63d39a5d572b60309fd58882ef0a0444\"},\"url\":\"/images/makecode/63d39a5d572b60309fd58882ef0a0444.png\",\"width\":438,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -113,4 +118,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-flex-mdx-1e3d5c62afd26b5daa62.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-flex-mdx-a86ed6ba444a003b7acd.js.map
