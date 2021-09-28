@@ -60,7 +60,12 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Equivalent CO\u2082"));
+  }))), "Equivalent CO\u2082"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The CO\u2082 extension reports the equivalent CO\u2082 (eCO\u2082) in parts per million (ppm),\nwhere a typical minimum is 400 and the maximum is 8192.\nThe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "eCO2"), " method returns the eCO\u2082 reading."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the eCO\u2082 reading whenever it changes by 1 ppm"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-blocks"
+  }, "{\"source\":\"modules.eCO21.onECO2ChangedBy(1, function () {\\n    basic.showNumber(modules.eCO21.eCO2())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.eCO21.onECO2ChangedBy(1, function () {\\n    basic.showNumber(modules.eCO21.eCO2())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.6.43,jacdac-e-co2=github:microsoft/pxt-jacdac/e-co2#v0.6.43\"},\"type\":\"renderblocks\",\"id\":\"eb3cc0a68ac3871a7ee7684ab84d0245\"},\"url\":\"/images/makecode/eb3cc0a68ac3871a7ee7684ab84d0245.png\",\"width\":379,\"height\":128}}\n")));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -86,4 +91,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-eco-2-mdx-b7f5142f17f9c613ae72.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-eco-2-mdx-bf41ba606c8c1866947b.js.map
