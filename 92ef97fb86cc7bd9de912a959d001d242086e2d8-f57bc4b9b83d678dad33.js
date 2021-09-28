@@ -6860,7 +6860,7 @@ function visitToolbox(node, visitor) {
     });
   };
 
-  visitContents(node.contents);
+  visitContents(node === null || node === void 0 ? void 0 : node.contents);
 }
 
 /***/ }),
@@ -6885,4 +6885,4 @@ function useWorkspaceEvent(workspace, handler) {
 /***/ })
 
 }]);
-//# sourceMappingURL=92ef97fb86cc7bd9de912a959d001d242086e2d8-41e779f8166eaed5792f.js.map
+//# sourceMappingURL=92ef97fb86cc7bd9de912a959d001d242086e2d8-f57bc4b9b83d678dad33.js.map

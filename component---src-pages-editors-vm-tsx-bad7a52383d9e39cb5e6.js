@@ -4764,10 +4764,7 @@ var processErrors = (block, errors) => {
   });
 };
 function workspaceJSONToVMProgram(workspace, dsls) {
-  console.debug("compile vm", {
-    workspace,
-    dsls
-  });
+  //console.debug(`compile vm`, { workspace, dsls })
   if (!workspace) return undefined;
   var [roles, serverRoles] = (0,utils/* splitFilter */.ap)(workspace.variables.filter(v => toolbox/* BUILTIN_TYPES.indexOf */.Nd.indexOf(v.type) < 0).map(parseRoleType), r => r.client);
 
@@ -6880,4 +6877,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-vm-tsx-7e4555a81146aa5fec64.js.map
+//# sourceMappingURL=component---src-pages-editors-vm-tsx-bad7a52383d9e39cb5e6.js.map

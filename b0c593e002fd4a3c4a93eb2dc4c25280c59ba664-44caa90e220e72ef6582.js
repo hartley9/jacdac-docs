@@ -3927,8 +3927,12 @@ function useToolbox(dsls, source) {
     specification: true
   });
   var theme = (0,useTheme/* default */.Z)();
-  var blocks = useAsyncMemo(() => loadBlocks(dsls, theme), [theme, dsls]);
+  var blocks = useAsyncMemo( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)(function* () {
+    var r = yield loadBlocks(dsls, theme);
+    return r;
+  }), [theme, dsls]);
   var toolboxConfiguration = (0,react.useMemo)(() => {
+    if (!blocks) return undefined;
     var dslsCategories = (0,utils/* arrayConcatMany */.ue)(dsls.map(dsl => {
       var _dsl$createCategory;
 
@@ -4245,6 +4249,7 @@ function BlockProvider(props) {
   }, [dragging]); // mounting dsts
 
   (0,react.useEffect)(() => {
+    console.debug("mounting dsls");
     var unmounnts = dsls.map(dsl => {
       var _dsl$mount;
 
@@ -4971,7 +4976,8 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
     }
   }
 }));
-function BlockEditor(props) {
+
+function SuspendedBlockEditor(props) {
   var {
     editorId,
     className
@@ -5033,7 +5039,10 @@ function BlockEditor(props) {
       }
     },
     initialXml: workspaceXml,
-    onImportXmlError: () => setError("Error loading blocks...")
+    onImportXmlError: () => {
+      console.error("error loading blocks");
+      setError("Error loading blocks...");
+    }
   }); // store ref
 
   (0,react.useEffect)(() => setWorkspace(workspace), [workspace]);
@@ -5056,6 +5065,14 @@ function BlockEditor(props) {
     className: (0,clsx_m/* default */.Z)(classes.editor, className),
     ref: blocklyRef
   }), /*#__PURE__*/react.createElement(BlocklyModalDialogs, null));
+}
+
+function BlockEditor(props) {
+  var {
+    toolboxConfiguration
+  } = (0,react.useContext)(BlockContext/* default */.C);
+  if (!toolboxConfiguration) return null;
+  return /*#__PURE__*/react.createElement(SuspendedBlockEditor, props);
 }
 
 /***/ }),
@@ -12795,4 +12812,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-7d1ee813ab7dc1a082a8.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-44caa90e220e72ef6582.js.map
