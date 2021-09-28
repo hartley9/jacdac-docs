@@ -984,8 +984,6 @@ var Typography = __webpack_require__(80453);
 var jdom_spec = __webpack_require__(45656);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Info.js
 var Info = __webpack_require__(12531);
-// EXTERNAL MODULE: ./src/components/ui/Markdown.tsx
-var Markdown = __webpack_require__(98784);
 // EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
 var gatsby_theme_material_ui = __webpack_require__(36176);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
@@ -998,7 +996,6 @@ var useMediaQueries = __webpack_require__(20509);
 
 
  // tslint:disable-next-line: match-default-export-name no-submodule-imports
-
 
 
 
@@ -1057,11 +1054,7 @@ function DeviceSpecificationList(props) {
       alt: spec.name,
       loading: "lazy"
     }), /*#__PURE__*/react.createElement(ImageListItemBar_ImageListItemBar, {
-      title: spec.name,
-      subtitle: !!spec.description && /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
-        className: classes.ellipsis,
-        source: spec.description.split(".", 1)[0]
-      }),
+      title: spec.name + " " + (spec.version ? "v" + spec.version : ""),
       actionIcon: /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.IconButton, {
         to: "/devices/" + (0,jdom_spec/* identifierToUrlPath */.uM)(spec.id),
         "aria-label": "info about " + spec.name,
@@ -1439,13 +1432,9 @@ function DeviceSpecification(props) {
   var others = designIdentifier && ((_deviceSpecifications = (0,spec/* deviceSpecifications */.qx)().filter(spec => spec.id !== device.id && spec.designIdentifier === designIdentifier && spec.version !== undefined)) === null || _deviceSpecifications === void 0 ? void 0 : _deviceSpecifications.sort((l, r) => (0,semver/* semverCmp */.k)(l.version, r.version)));
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h2", {
     key: "title"
-  }, name), /*#__PURE__*/react.createElement(ChipList/* default */.Z, null, /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+  }, name, !!version && " v" + version), /*#__PURE__*/react.createElement(ChipList/* default */.Z, null, /*#__PURE__*/react.createElement(Chip/* default */.Z, {
     size: "small",
     label: company
-  }), version && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
-    "aria-label": "version " + version,
-    size: "small",
-    label: "v" + version
   }), designIdentifier && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
     "aria-label": "design identifier: " + designIdentifier,
     icon: /*#__PURE__*/react.createElement(Memory/* default */.Z, null),
@@ -1508,4 +1497,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-8c48ab8b0f660a054ed1.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-8f47d003d14a513e2753.js.map

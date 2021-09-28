@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmbutton40v02/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmbutton40v02","name":"JM Button 40 v0.2","company":"Microsoft Research","productIdentifiers":[946173966]}}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmbutton40v02","name":"JM Button","company":"Microsoft Research","productIdentifiers":[946173966]}}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","4292774041","63159454"]}

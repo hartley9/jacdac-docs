@@ -380,8 +380,6 @@ var Typography = __webpack_require__(80453);
 var jdom_spec = __webpack_require__(45656);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Info.js
 var Info = __webpack_require__(12531);
-// EXTERNAL MODULE: ./src/components/ui/Markdown.tsx
-var Markdown = __webpack_require__(98784);
 // EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
 var gatsby_theme_material_ui = __webpack_require__(36176);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
@@ -394,7 +392,6 @@ var useMediaQueries = __webpack_require__(20509);
 
 
  // tslint:disable-next-line: match-default-export-name no-submodule-imports
-
 
 
 
@@ -453,11 +450,7 @@ function DeviceSpecificationList(props) {
       alt: spec.name,
       loading: "lazy"
     }), /*#__PURE__*/react.createElement(ImageListItemBar_ImageListItemBar, {
-      title: spec.name,
-      subtitle: !!spec.description && /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
-        className: classes.ellipsis,
-        source: spec.description.split(".", 1)[0]
-      }),
+      title: spec.name + " " + (spec.version ? "v" + spec.version : ""),
       actionIcon: /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.IconButton, {
         to: "/devices/" + (0,jdom_spec/* identifierToUrlPath */.uM)(spec.id),
         "aria-label": "info about " + spec.name,
@@ -575,31 +568,6 @@ function ServiceSpecificationSelect(props) {
 
 /***/ }),
 
-/***/ 98784:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ Markdown; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45987);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _Suspense__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(69672);
-
-var _excluded = ["source"];
-
-
-var ReactMarkdown = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 1616).then(__webpack_require__.bind(__webpack_require__, 91616)));
-function Markdown(props) {
-  var {
-    source
-  } = props,
-      others = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(props, _excluded);
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Suspense__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ReactMarkdown, others, source));
-}
-
-/***/ }),
-
 /***/ 96557:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -624,4 +592,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-company-tsx-f0bdd466b7923aa793e0.js.map
+//# sourceMappingURL=component---src-templates-device-company-tsx-2b097d1f80d3dd8234a8.js.map

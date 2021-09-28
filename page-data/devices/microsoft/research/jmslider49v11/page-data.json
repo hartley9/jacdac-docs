@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmslider49v11/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmslider49v11","name":"JM Slider 49 v1.1","company":"Microsoft Research","productIdentifiers":[966423091]}}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmslider49v11","name":"JM Slider","company":"Microsoft Research","productIdentifiers":[966423091]}}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","4292774041","63159454"]}

@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmtemperaturehumidity18v11/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmtemperaturehumidity18v11","name":"JM Temperature + Humidity 18 v1.1","company":"Microsoft Research","productIdentifiers":[827772887]}}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmtemperaturehumidity18v11","name":"JM Temperature + Humidity","company":"Microsoft Research","productIdentifiers":[827772887]}}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","4292774041","63159454"]}

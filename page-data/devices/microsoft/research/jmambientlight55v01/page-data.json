@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmambientlight55v01/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmambientlight55v01","name":"JM Ambient Light 55 v0.1","company":"Microsoft Research","productIdentifiers":[896864987]}}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmambientlight55v01","name":"JM Ambient Light","company":"Microsoft Research","productIdentifiers":[896864987]}}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","4292774041","63159454"]}

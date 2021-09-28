@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[3133],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[3133,6684],{
 
 /***/ 12531:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
@@ -452,8 +452,6 @@ var Typography = __webpack_require__(80453);
 var jdom_spec = __webpack_require__(45656);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Info.js
 var Info = __webpack_require__(12531);
-// EXTERNAL MODULE: ./src/components/ui/Markdown.tsx
-var Markdown = __webpack_require__(98784);
 // EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
 var gatsby_theme_material_ui = __webpack_require__(36176);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
@@ -466,7 +464,6 @@ var useMediaQueries = __webpack_require__(20509);
 
 
  // tslint:disable-next-line: match-default-export-name no-submodule-imports
-
 
 
 
@@ -525,11 +522,7 @@ function DeviceSpecificationList(props) {
       alt: spec.name,
       loading: "lazy"
     }), /*#__PURE__*/react.createElement(ImageListItemBar_ImageListItemBar, {
-      title: spec.name,
-      subtitle: !!spec.description && /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
-        className: classes.ellipsis,
-        source: spec.description.split(".", 1)[0]
-      }),
+      title: spec.name + " " + (spec.version ? "v" + spec.version : ""),
       actionIcon: /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.IconButton, {
         to: "/devices/" + (0,jdom_spec/* identifierToUrlPath */.uM)(spec.id),
         "aria-label": "info about " + spec.name,
@@ -938,4 +931,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-service-tsx-aa4ace7d7d0068d9395c.js.map
+//# sourceMappingURL=component---src-templates-service-tsx-a42e2c2508f7d51281a5.js.map
