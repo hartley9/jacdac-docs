@@ -51758,16 +51758,12 @@ __webpack_require__.d(__webpack_exports__, {
 var asyncToGenerator = __webpack_require__(15861);
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts + 1 modules
-var useDeviceSpecification = __webpack_require__(34246);
 // EXTERNAL MODULE: ./src/components/CmdButton.tsx
 var CmdButton = __webpack_require__(50092);
 // EXTERNAL MODULE: ./src/components/hooks/useServiceProvider.ts
 var useServiceProvider = __webpack_require__(63793);
 // EXTERNAL MODULE: ./src/components/devices/useDeviceName.ts
 var useDeviceName = __webpack_require__(5738);
-// EXTERNAL MODULE: ./src/components/devices/useDeviceImage.ts
-var useDeviceImage = __webpack_require__(81546);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
 var utils = __webpack_require__(81794);
 // EXTERNAL MODULE: ./src/jacdac/useChange.ts
@@ -51786,6 +51782,10 @@ var DialogActions = __webpack_require__(89952);
 var Button = __webpack_require__(83332);
 // EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/dist/specconstants.ts
 var specconstants = __webpack_require__(73512);
+// EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts + 1 modules
+var useDeviceSpecification = __webpack_require__(34246);
+// EXTERNAL MODULE: ./src/components/devices/useDeviceImage.ts
+var useDeviceImage = __webpack_require__(81546);
 // EXTERNAL MODULE: ./src/components/hooks/useInterval.ts
 var useInterval = __webpack_require__(63944);
 // EXTERNAL MODULE: ./src/components/ui/Alert.tsx
@@ -51875,7 +51875,7 @@ function IdentifyDialog(props) {
     xs: true
   }, /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "info"
-  }, "Look for four blinks in around 2 seconds with the", blue ? "blue" : " ", " LED.")))), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(Button/* default */.Z, {
+  }, "Look for four blinks in around 2 seconds with the", blue ? " blue" : " ", " LED.")))), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(Button/* default */.Z, {
     variant: "outlined",
     onClick: handleCloseIdentify
   }, "Dismiss")));
@@ -52129,8 +52129,6 @@ function DeviceIcon(props) {
 
 
 
-
-
 function DeviceAvatar(props) {
   var {
     device,
@@ -52141,8 +52139,6 @@ function DeviceAvatar(props) {
     0: identifyDialog,
     1: setIdentifyDialog
   } = (0,react.useState)(false);
-  var specification = (0,useDeviceSpecification/* default */.Z)(device);
-  var imageUrl = (0,useDeviceImage/* default */.Z)(specification, "avatar");
   var name = (0,useDeviceName/* default */.Z)(device);
   var server = (0,useServiceProvider/* default */.Z)(device);
   var ctrl = server === null || server === void 0 ? void 0 : server.controlService;
@@ -52151,23 +52147,13 @@ function DeviceAvatar(props) {
     color: (0,utils/* rgbToHtmlColor */.b)(color)
   } : undefined;
 
-  var handleSendIdentify = /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
-      return yield device.identify();
-    });
-
-    return function handleSendIdentify() {
-      return _ref.apply(this, arguments);
-    };
-  }();
-
   var handleOpenIdentify = /*#__PURE__*/function () {
-    var _ref2 = (0,asyncToGenerator/* default */.Z)(function* () {
+    var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
       return setIdentifyDialog(true);
     });
 
     return function handleOpenIdentify() {
-      return _ref2.apply(this, arguments);
+      return _ref.apply(this, arguments);
     };
   }();
 
@@ -52178,13 +52164,13 @@ function DeviceAvatar(props) {
     style: style,
     size: "small",
     title: "identify " + (server ? "simulator" : "device") + " " + name,
-    onClick: imageUrl ? handleOpenIdentify : handleSendIdentify,
+    onClick: handleOpenIdentify,
     icon: /*#__PURE__*/react.createElement(DeviceIcon, {
       device: device,
       size: size,
       avatar: center !== false
     })
-  }), imageUrl && /*#__PURE__*/react.createElement(IdentifyDialog, {
+  }), identifyDialog && /*#__PURE__*/react.createElement(IdentifyDialog, {
     device: device,
     open: identifyDialog,
     onClose: handleCloseIdentify
@@ -68704,7 +68690,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "e26c002622206becab3153a13283a18b7b26b800";
+var sha = "1b76a6401ae5860e5ea9fe68bf7eaaf8b63e1319";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69501,7 +69487,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "e26c002622206becab3153a13283a18b7b26b800";
+  var sha = "1b76a6401ae5860e5ea9fe68bf7eaaf8b63e1319";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71674,7 +71660,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "e26c002622206becab3153a13283a18b7b26b800";
+    var sha = "1b76a6401ae5860e5ea9fe68bf7eaaf8b63e1319";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87532,4 +87518,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-6a5160735b93abbda834.js.map
+//# sourceMappingURL=app-75f5af0dffdc5e9d7b96.js.map
