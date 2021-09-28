@@ -92,7 +92,7 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
     parentName: "li"
-  }, "Plug the micro:bit into the Jacdaptor (make sure the front of the micro:bit and raise numbers on plastic edge connector of Jacdaptor are both visible)")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Plug the micro:bit into the Jacdaptor (make sure the front of the micro:bit and raised numbers on the plastic edge connector of Jacdaptor are both visible)")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
     parentName: "li"
@@ -174,4 +174,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-hardware-kit-oob-mdx-4d4f1de0b48cce54ed7f.js.map
+//# sourceMappingURL=component---src-pages-hardware-kit-oob-mdx-95413bf45f44eac62de4.js.map
