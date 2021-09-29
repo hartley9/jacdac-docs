@@ -42909,7 +42909,7 @@ var JoystickServer = /*#__PURE__*/function (_SensorServer) {
     var _down = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(function* (buttons) {
       var [currentButtons, x, y] = this.reading.values();
       var newButtons = currentButtons | buttons;
-      this.updateDirection(newButtons, x, y);
+      yield this.updateReading(newButtons, x, y);
     });
 
     function down(_x) {
@@ -42923,7 +42923,7 @@ var JoystickServer = /*#__PURE__*/function (_SensorServer) {
     var _up = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(function* (buttons) {
       var [currentButtons, x, y] = this.reading.values();
       var newButtons = currentButtons & ~buttons;
-      this.updateDirection(newButtons, x, y);
+      yield this.updateReading(newButtons, x, y);
     });
 
     function up(_x2) {
@@ -42933,55 +42933,86 @@ var JoystickServer = /*#__PURE__*/function (_SensorServer) {
     return up;
   }();
 
-  _proto.updateDirection = function updateDirection(buttons, x, y) {
-    var [oldButtons] = this.reading.values();
+  _proto.updateDirection = /*#__PURE__*/function () {
+    var _updateDirection = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(function* (x, y) {
+      var [button] = this.reading.values();
+      yield this.updateReading(button, x, y);
+    });
 
-    if (this.isDigital) {
-      x = buttons & _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Left */ .xC.Left ? -1 : buttons & _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Right */ .xC.Right ? 1 : 0;
-      y = buttons & _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Up */ .xC.Up ? -1 : buttons & _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Down */ .xC.Down ? 1 : 0;
-    } else {
-      var threshold = -1;
-      if (x < -threshold) buttons |= _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Left */ .xC.Left;else if (x > threshold) buttons |= _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Right */ .xC.Right;else buttons &= ~(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Left */ .xC.Left | _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Right */ .xC.Right);
-      if (y < -threshold) buttons |= _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Up */ .xC.Up;else if (y > threshold) buttons |= _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Down */ .xC.Down;else buttons &= ~(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Up */ .xC.Up | _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Down */ .xC.Down);
+    function updateDirection(_x3, _x4) {
+      return _updateDirection.apply(this, arguments);
     }
 
-    this.reading.setValues([buttons, x, y]);
-
-    if (buttons !== oldButtons) {
-      this.sendEvent(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickEvent.ButtonsChanged */ .$42.ButtonsChanged, (0,_jdom_pack__WEBPACK_IMPORTED_MODULE_1__/* .jdpack */ .AV)("u32", [buttons]));
-    }
-  }
+    return updateDirection;
+  }()
   /**
    * Read the state of a browser gamepad and apply it to the sensor
    * @param gamepad
    */
   ;
 
-  _proto.update = function update(gamepad) {
-    var {
-      buttons,
-      axes
-    } = gamepad;
-    var [buttonsAvailable] = this.buttonsAvailable.values();
-    var newButtons = 0;
+  _proto.update =
+  /*#__PURE__*/
+  function () {
+    var _update = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(function* (gamepad) {
+      var {
+        buttons,
+        axes
+      } = gamepad;
+      var [buttonsAvailable] = this.buttonsAvailable.values();
+      var newButtons = 0;
 
-    for (var [b, id] of standardGamepadMapping) {
-      if ((b & buttonsAvailable) == b && !!buttons[id].pressed) {
-        newButtons |= b;
+      for (var [b, id] of standardGamepadMapping) {
+        if ((b & buttonsAvailable) == b && !!buttons[id].pressed) {
+          newButtons |= b;
+        }
       }
+
+      var newX = 0,
+          newY = 0;
+
+      if (!this.isDigital) {
+        var [axeLeftRight, axeUpDown] = axes;
+        newX = axeLeftRight;
+        newY = axeUpDown;
+      }
+
+      yield this.updateReading(newButtons, newX, newY);
+    });
+
+    function update(_x5) {
+      return _update.apply(this, arguments);
     }
 
-    var newX = 0,
-        newY = 0;
+    return update;
+  }();
 
-    if (!this.isDigital) {
-      var [axeLeftRight, axeUpDown] = axes;
-      newX = axeLeftRight;
-      newY = axeUpDown;
+  _proto.updateReading = /*#__PURE__*/function () {
+    var _updateReading = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(function* (buttons, x, y) {
+      var [oldButtons] = this.reading.values();
+
+      if (this.isDigital) {
+        x = buttons & _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Left */ .xC.Left ? -1 : buttons & _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Right */ .xC.Right ? 1 : 0;
+        y = buttons & _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Up */ .xC.Up ? -1 : buttons & _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Down */ .xC.Down ? 1 : 0;
+      } else {
+        var threshold = -1;
+        if (x < -threshold) buttons |= _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Left */ .xC.Left;else if (x > threshold) buttons |= _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Right */ .xC.Right;else buttons &= ~(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Left */ .xC.Left | _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Right */ .xC.Right);
+        if (y < -threshold) buttons |= _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Up */ .xC.Up;else if (y > threshold) buttons |= _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Down */ .xC.Down;else buttons &= ~(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Up */ .xC.Up | _jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickButtons.Down */ .xC.Down);
+      }
+
+      this.reading.setValues([buttons, x, y]);
+
+      if (buttons !== oldButtons) {
+        yield this.sendEvent(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickEvent.ButtonsChanged */ .$42.ButtonsChanged, (0,_jdom_pack__WEBPACK_IMPORTED_MODULE_1__/* .jdpack */ .AV)("u32", [buttons]));
+      }
+    });
+
+    function updateReading(_x6, _x7, _x8) {
+      return _updateReading.apply(this, arguments);
     }
 
-    this.updateDirection(newButtons, newX, newY);
-  };
+    return updateReading;
+  }();
 
   (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(JoystickServer, [{
     key: "isDigital",
@@ -68594,7 +68625,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "ce45c588f3205a4293a5e2a7d2aa2024c4617903";
+var sha = "adf6b59f7585c7f38f61715c3e2c4dc1e9a54e4c";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69391,7 +69422,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "ce45c588f3205a4293a5e2a7d2aa2024c4617903";
+  var sha = "adf6b59f7585c7f38f61715c3e2c4dc1e9a54e4c";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71490,7 +71521,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "ce45c588f3205a4293a5e2a7d2aa2024c4617903";
+    var sha = "adf6b59f7585c7f38f61715c3e2c4dc1e9a54e4c";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -79798,7 +79829,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.18.2"};
+var package_namespaceObject = {"i8":"1.18.3"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
 ;// CONCATENATED MODULE: ./src/jacdac/providerbus.ts
@@ -87387,4 +87418,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-d6fbb9a6cb6f3480c355.js.map
+//# sourceMappingURL=app-ed6170e7bfb6724f1c95.js.map

@@ -1373,7 +1373,7 @@ function DeviceRegistration() {
   var companyError = !device.company ? "select a company" : "";
   var nameError = ((_device$name = device.name) === null || _device$name === void 0 ? void 0 : _device$name.length) > 32 ? "name too long" : undefined;
   var parsedRepo = (0,github/* parseRepoUrl */.Jo)(device.repo);
-  var githubError = parsedRepo ? "" : "invalid GitHub repository";
+  var githubError = device.repo && !parsedRepo ? "invalid GitHub repository" : "";
   var linkError = !device.link || /^https:\/\//.test(device.link) ? "" : "Must be https://...";
   var idError = !device.id ? "missing identifier" : (0,spec/* deviceSpecifications */.qx)().find(dev => dev.id == device.id) ? "identifer already used" : "";
   var servicesError = (_device$services = device.services) !== null && _device$services !== void 0 && _device$services.length ? "" : "Select at least one service";
@@ -1697,4 +1697,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-396eb19ba06151d4a039.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-de44d3f180667b43d6eb.js.map

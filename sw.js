@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-8a7ded03bcd69873c092.js"
+    "url": "webpack-runtime-e458d2d683aeea4d3d85.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "12c830339b7daa82e06e338ffaaf9479"
+    "revision": "902bc86ad63f05a00e10538febeb1c32"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "31a221c0529c35cd2bd0133781cf3fd5"
+    "revision": "a2bce8761f653c2982bad52479e4202c"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "73258d77d0661969d7fe006a26c738e6"
+    "revision": "d6504d0efb92bc98d3b41863e17c84f4"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "4c0dd715bd7070edfcd0c1aaad20a97d"
+    "revision": "cd700b62ff86882dca34bc40a7019df7"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "680c4e58c5c263c6f8a944a667690736"
+    "revision": "3e9f9f04a68cf78fbc820701b61a4861"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "ede744b2d8f1be01ac4d025edd7e414d"
+    "revision": "b0f9cbbeb365f9855c7b283e2d54e45e"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "5492d1ea11f83c98cdbf27f422a814ef"
+    "revision": "4f2e292ee1fcce03312eb7df14a53663"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1129,7 +1129,7 @@ self.__precacheManifest = [
     "url": "baf0fd2d778787cec7104fdce75a778b8b7a3d97-3d027072348e610c46b8.js"
   },
   {
-    "url": "component---src-pages-tools-device-registration-tsx-396eb19ba06151d4a039.js"
+    "url": "component---src-pages-tools-device-registration-tsx-de44d3f180667b43d6eb.js"
   },
   {
     "url": "page-data/tools/device-registration/page-data.json",
@@ -1367,7 +1367,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-d6fbb9a6cb6f3480c355.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-ed6170e7bfb6724f1c95.js`))) {
     return await fetch(event.request)
   }
 
