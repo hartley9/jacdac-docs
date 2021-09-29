@@ -68577,7 +68577,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "0bf3ee8aaff03d2e425b370719bb3266a348d243";
+var sha = "5382d2104667b27bda6cb770d787dfc174238c33";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69374,7 +69374,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0bf3ee8aaff03d2e425b370719bb3266a348d243";
+  var sha = "5382d2104667b27bda6cb770d787dfc174238c33";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70998,29 +70998,27 @@ function LayoutWithContext(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ MakeCodeExtensions; }
 /* harmony export */ });
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(80791);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4381);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(38030);
 /* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(35313);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+/* harmony import */ var _ui_PageLinkList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(85748);
 
 
 
 function MakeCodeExtensions() {
   var query = (0,gatsby__WEBPACK_IMPORTED_MODULE_0__.useStaticQuery)("1530881449");
   var nodes = query.allMdx.edges.map(edge => edge.node).sort((l, r) => l.fields.slug.localeCompare(r.fields.slug));
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, null, nodes === null || nodes === void 0 ? void 0 : nodes.map(_ref => {
-    var {
-      fields,
-      frontmatter
-    } = _ref;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby__WEBPACK_IMPORTED_MODULE_0__.Link, {
-      to: fields.slug,
-      key: fields.slug
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
-      primary: frontmatter.title
-    })));
-  }));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_PageLinkList__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    nodes: nodes.map(_ref => {
+      var {
+        fields,
+        frontmatter
+      } = _ref;
+      return {
+        slug: fields.slug,
+        title: frontmatter.title
+      };
+    })
+  });
 }
 
 /***/ }),
@@ -71032,29 +71030,27 @@ function MakeCodeExtensions() {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ MakeCodeProjects; }
 /* harmony export */ });
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(80791);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4381);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(38030);
 /* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(35313);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+/* harmony import */ var _ui_PageLinkList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(85748);
 
 
 
 function MakeCodeProjects() {
   var query = (0,gatsby__WEBPACK_IMPORTED_MODULE_0__.useStaticQuery)("4292774041");
   var nodes = query.allMdx.edges.map(edge => edge.node).sort((l, r) => l.fields.slug.localeCompare(r.fields.slug));
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, null, nodes === null || nodes === void 0 ? void 0 : nodes.map(_ref => {
-    var {
-      fields,
-      frontmatter
-    } = _ref;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby__WEBPACK_IMPORTED_MODULE_0__.Link, {
-      to: fields.slug,
-      key: fields.slug
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
-      primary: frontmatter.title
-    })));
-  }));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_PageLinkList__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    nodes: nodes.map(_ref => {
+      var {
+        fields,
+        frontmatter
+      } = _ref;
+      return {
+        slug: fields.slug,
+        title: frontmatter.title
+      };
+    })
+  });
 }
 
 /***/ }),
@@ -71477,7 +71473,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "0bf3ee8aaff03d2e425b370719bb3266a348d243";
+    var sha = "5382d2104667b27bda6cb770d787dfc174238c33";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -72079,6 +72075,44 @@ function LoadingProgress(props) {
     size: size || "1em",
     "aria-label": "loading"
   });
+}
+
+/***/ }),
+
+/***/ 85748:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ PageLinkList; }
+/* harmony export */ });
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(80791);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4381);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(38030);
+/* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(35313);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+
+
+
+function PageLinkList(props) {
+  var {
+    nodes
+  } = props;
+  return !!(nodes !== null && nodes !== void 0 && nodes.length) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, null, nodes === null || nodes === void 0 ? void 0 : nodes.map(_ref => {
+    var {
+      slug,
+      title
+    } = _ref;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+      key: slug
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby__WEBPACK_IMPORTED_MODULE_0__.Link, {
+      color: "textPrimary",
+      rel: "noopener noreferrer",
+      to: slug
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+      primary: title
+    })));
+  }));
 }
 
 /***/ }),
@@ -87336,4 +87370,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-424c130dac93ec1cff31.js.map
+//# sourceMappingURL=app-4253c99e98c0bfd6d15f.js.map
