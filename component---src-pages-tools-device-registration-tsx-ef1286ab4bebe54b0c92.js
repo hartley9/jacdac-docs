@@ -1376,6 +1376,7 @@ function DeviceRegistration() {
   var idError = !device.id ? "missing identifier" : (0,spec/* deviceSpecifications */.qx)().find(dev => dev.id == device.id) ? "identifer already used" : "";
   var servicesError = (_device$services = device.services) !== null && _device$services !== void 0 && _device$services.length ? "" : "Select at least one service";
   var imageError = !imageBase64 ? "missing image" : "";
+  var versionError = !/^(v\d+\.\d+(\.\d+(\.\d+)?)?\w?)?$/.test(device === null || device === void 0 ? void 0 : device.version) ? "Preferred format is vN.N" : "";
   var ok = !nameError && parsedRepo && !linkError && !idError && !servicesError && !imageError && !companyError;
   var route = (_device$id = device.id) === null || _device$id === void 0 ? void 0 : _device$id.split("-").join("/");
   var modulePath = ok && "devices/" + route + ".json";
@@ -1422,12 +1423,16 @@ function DeviceRegistration() {
   };
 
   var handleHardwareDesign = ev => {
-    device.designIdentifier = ev.target.value;
+    var _ev$target$value;
+
+    device.designIdentifier = (_ev$target$value = ev.target.value) === null || _ev$target$value === void 0 ? void 0 : _ev$target$value.trim();
     updateDevice();
   };
 
   var handleVersion = ev => {
-    device.version = ev.target.value;
+    var _ev$target$value2;
+
+    device.version = (_ev$target$value2 = ev.target.value) === null || _ev$target$value2 === void 0 ? void 0 : _ev$target$value2.trim();
     updateDevice();
   };
 
@@ -1540,7 +1545,7 @@ function DeviceRegistration() {
     fullWidth: true,
     helperText: "A unique identifier for this hardware design.",
     label: "Hardware design",
-    value: "",
+    value: device === null || device === void 0 ? void 0 : device.designIdentifier,
     onChange: handleHardwareDesign,
     variant: variant
   })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
@@ -1550,9 +1555,10 @@ function DeviceRegistration() {
     id: hardwareVersionId,
     required: true,
     fullWidth: true,
-    helperText: "Revision identifier for this hardware design.",
+    error: !!versionError,
+    helperText: versionError || "Revision identifier for this hardware design using semver format (v1.0, v1.1, ...)",
     label: "Version",
-    value: "",
+    value: device === null || device === void 0 ? void 0 : device.version,
     onChange: handleVersion,
     variant: variant
   })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
@@ -1687,4 +1693,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-3f175ab960cf44cb796a.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-ef1286ab4bebe54b0c92.js.map
