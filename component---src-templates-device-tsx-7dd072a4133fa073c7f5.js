@@ -1428,7 +1428,7 @@ function DeviceSpecification(props) {
     services
   } = device;
   var gridBreakpoints = (0,useGridBreakpoints/* default */.Z)();
-  var imageUrl = (0,useDeviceImage/* default */.Z)(device);
+  var imageUrl = (0,useDeviceImage/* default */.Z)(device, "catalog");
   var others = designIdentifier && ((_deviceSpecifications = (0,spec/* deviceSpecifications */.qx)().filter(spec => spec.id !== device.id && spec.designIdentifier === designIdentifier && spec.version !== undefined)) === null || _deviceSpecifications === void 0 ? void 0 : _deviceSpecifications.sort((l, r) => (0,semver/* semverCmp */.k)(l.version, r.version)));
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h2", {
     key: "title"
@@ -1497,4 +1497,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-8f47d003d14a513e2753.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-7dd072a4133fa073c7f5.js.map

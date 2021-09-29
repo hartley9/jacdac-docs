@@ -52125,7 +52125,7 @@ function DeviceName(props) {
 
 
 function useDeviceImage(specification, suffix) {
-  return specification && (0,gatsby_link__WEBPACK_IMPORTED_MODULE_0__/* .withPrefix */ .dq)("images/devices/" + (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .identifierToUrlPath */ .uM)(specification.id) + (suffix ? "." + suffix : '') + ".jpg");
+  return specification && (0,gatsby_link__WEBPACK_IMPORTED_MODULE_0__/* .withPrefix */ .dq)("images/devices/" + (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .identifierToUrlPath */ .uM)(specification.id) + (suffix ? "." + suffix : "") + ".jpg");
 }
 
 /***/ }),
@@ -53680,9 +53680,7 @@ function Home() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
-    fallback: null
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DeviceSpecificationList, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DeviceSpecificationList, {
     count: cols,
     shuffle: true
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
@@ -53728,11 +53726,7 @@ function Home() {
     buttonText: "Add Jacdac to your apps",
     buttonVariant: "link",
     buttonUrl: "/software/",
-    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_9__.S, {
-      src: "./html5.png",
-      alt: "HTML5 logo",
-      __error: "No data found for image \"./html5.png\"\n              undefinedCould not read image data file \"/home/runner/work/jacdac-docs/jacdac-docs/.cache/caches/gatsby-plugin-image/1805304530.json\". \nThis may mean that the images in \"/home/runner/work/jacdac-docs/jacdac-docs/src/components/home/Home.tsx\" were not processed.\nPlease ensure that your gatsby version is at least 2.24.78."
-    })
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HTML5Image__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: false,
     subtitle: "Tools",
@@ -68597,7 +68591,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "6a6a55468e15373971cf800b91536f6f4d279cf7";
+var sha = "0c0e7267bbd46eec32c518c935e7973be02e0a53";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69394,7 +69388,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "6a6a55468e15373971cf800b91536f6f4d279cf7";
+  var sha = "0c0e7267bbd46eec32c518c935e7973be02e0a53";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71493,7 +71487,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "6a6a55468e15373971cf800b91536f6f4d279cf7";
+    var sha = "0c0e7267bbd46eec32c518c935e7973be02e0a53";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87390,4 +87384,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-166004852288e5a88ee2.js.map
+//# sourceMappingURL=app-2a7598b5fd7f3619fbd7.js.map
