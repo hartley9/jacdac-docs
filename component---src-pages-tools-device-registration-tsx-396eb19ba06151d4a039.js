@@ -1253,6 +1253,8 @@ var Alert = __webpack_require__(95453);
 ;// CONCATENATED MODULE: ./src/pages/tools/device-registration.tsx
 
 
+/* eslint-disable jsx-a11y/img-redundant-alt */
+
 
 
 
@@ -1345,8 +1347,8 @@ function DeviceRegistration() {
 
   var [firmwaresAnchorEl, setFirmwaresAnchorEl] = react.useState(null);
   var {
-    0: imageBase64,
-    1: setImageBase64
+    0: imageDataURI,
+    1: setImageDataURI
   } = (0,react.useState)(undefined);
   var nameId = (0,react_use_id_hook_esm/* useId */.Me)();
   var firmwareMenuId = (0,react_use_id_hook_esm/* useId */.Me)();
@@ -1375,7 +1377,7 @@ function DeviceRegistration() {
   var linkError = !device.link || /^https:\/\//.test(device.link) ? "" : "Must be https://...";
   var idError = !device.id ? "missing identifier" : (0,spec/* deviceSpecifications */.qx)().find(dev => dev.id == device.id) ? "identifer already used" : "";
   var servicesError = (_device$services = device.services) !== null && _device$services !== void 0 && _device$services.length ? "" : "Select at least one service";
-  var imageError = !imageBase64 ? "missing image" : "";
+  var imageError = !imageDataURI ? "missing image" : "";
   var versionError = !/^(v\d+\.\d+(\.\d+(\.\d+)?)?\w?)?$/.test(device === null || device === void 0 ? void 0 : device.version) ? "Preferred format is vN.N" : "";
   var ok = !nameError && parsedRepo && !linkError && !idError && !servicesError && !imageError && !companyError;
   var route = (_device$id = device.id) === null || _device$id === void 0 ? void 0 : _device$id.split("-").join("/");
@@ -1460,8 +1462,8 @@ function DeviceRegistration() {
   };
 
   var handleImageImported = cvs => {
-    var url = cvs.toDataURL("image/jpeg", 99);
-    setImageBase64(url.slice(url.indexOf(",")));
+    var url = cvs.toDataURL("image/jpeg", 100);
+    setImageDataURI(url);
   };
 
   var handleCompanyChanged = value => {
@@ -1487,8 +1489,16 @@ function DeviceRegistration() {
     device.services = dev.serviceClasses.slice(1);
     device.description = descrReg.stringValue;
     updateDevice();
-  });
+  }); // eslint-disable-next-line @typescript-eslint/ban-types
 
+
+  var files = (0,react.useMemo)(() => modulePath && {
+    [modulePath]: JSON.stringify((0,jdspec/* normalizeDeviceSpecification */.dj)(device), null, 2),
+    [imagePath]: {
+      content: imageDataURI === null || imageDataURI === void 0 ? void 0 : imageDataURI.slice(imageDataURI === null || imageDataURI === void 0 ? void 0 : imageDataURI.indexOf(",")),
+      encoding: "base64"
+    }
+  }, [modulePath, imagePath, imageDataURI, JSON.stringify(device)]);
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h1", null, "Device Registration"), /*#__PURE__*/react.createElement("p", null, "Compose a device from various services, prepare the metadata and register it to the ", /*#__PURE__*/react.createElement(Link/* default */.Z, {
     href: "/devices/"
   }, "Devices catalog"), "."), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
@@ -1680,17 +1690,11 @@ function DeviceRegistration() {
     title: "Device: " + device.name,
     head: "devices/" + device.id,
     description: "This pull request registers a new device for Jacdac.",
-    files: modulePath && {
-      [modulePath]: JSON.stringify((0,jdspec/* normalizeDeviceSpecification */.dj)(device), null, 2),
-      [imagePath]: {
-        content: imageBase64,
-        encoding: "base64"
-      }
-    }
+    files: files
   })))));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-ef1286ab4bebe54b0c92.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-396eb19ba06151d4a039.js.map
