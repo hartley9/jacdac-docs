@@ -911,14 +911,10 @@ function ServiceMarkdown(props) {
   }), /*#__PURE__*/react.createElement("h2", null, "Sources"), /*#__PURE__*/react.createElement(ServiceSpecificationSource, {
     serviceSpecification: service
   }), /*#__PURE__*/react.createElement("h2", null, " See Also"), /*#__PURE__*/react.createElement("ul", null, /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("a", {
-    href: "https://github.com/microsoft/jacdac/edit/main/services/" + shortId + ".md"
-  }, "Edit specification source"), "."), /*#__PURE__*/react.createElement("li", null, "Read", " ", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+    href: "https://github.com/microsoft/jacdac/blob/main/services/" + shortId + ".md"
+  }, "View source")), /*#__PURE__*/react.createElement("li", null, "Read", " ", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     to: "/reference/service-specification/"
-  }, "Service Specification Language"), " ", "reference"), /*#__PURE__*/react.createElement("li", null, "Create a new service specification using the", " ", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
-    to: "/tools/service-editor/"
-  }, "Service Editor")), /*#__PURE__*/react.createElement("li", null, "Using services in JavaScript with the", " ", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
-    to: "/clients/javascript/jdom/"
-  }, "Jacdac Object Model (JDOM)"))));
+  }, "Service Specification Language"), " ", "reference")));
 }
 ;// CONCATENATED MODULE: ./src/templates/service.tsx
 
@@ -931,4 +927,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-service-tsx-a42e2c2508f7d51281a5.js.map
+//# sourceMappingURL=component---src-templates-service-tsx-9ad26723d748075ec897.js.map
