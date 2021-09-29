@@ -42946,7 +42946,10 @@ var JoystickServer = /*#__PURE__*/function (_SensorServer) {
     }
 
     this.reading.setValues([buttons, x, y]);
-    if (buttons !== oldButtons) this.sendEvent(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickEvent.ButtonsChanged */ .$42.ButtonsChanged, (0,_jdom_pack__WEBPACK_IMPORTED_MODULE_1__/* .jdpack */ .AV)("u32", [buttons]));
+
+    if (buttons !== oldButtons) {
+      this.sendEvent(_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .JoystickEvent.ButtonsChanged */ .$42.ButtonsChanged, (0,_jdom_pack__WEBPACK_IMPORTED_MODULE_1__/* .jdpack */ .AV)("u32", [buttons]));
+    }
   }
   /**
    * Read the state of a browser gamepad and apply it to the sensor
@@ -68591,7 +68594,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "0c0e7267bbd46eec32c518c935e7973be02e0a53";
+var sha = "ce45c588f3205a4293a5e2a7d2aa2024c4617903";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69388,7 +69391,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0c0e7267bbd46eec32c518c935e7973be02e0a53";
+  var sha = "ce45c588f3205a4293a5e2a7d2aa2024c4617903";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71487,7 +71490,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "0c0e7267bbd46eec32c518c935e7973be02e0a53";
+    var sha = "ce45c588f3205a4293a5e2a7d2aa2024c4617903";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87384,4 +87387,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-2a7598b5fd7f3619fbd7.js.map
+//# sourceMappingURL=app-d6fbb9a6cb6f3480c355.js.map

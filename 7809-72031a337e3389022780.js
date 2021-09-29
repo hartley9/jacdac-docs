@@ -61,7 +61,7 @@ function JoystickWidget(props) {
 
   var onUpdate = (newx, newy) => {
     var [buttons] = server.reading.values();
-    server.reading.setValues([buttons, newx, newy]);
+    server.updateDirection(buttons, newx, newy);
     register.refresh();
   };
 
@@ -416,4 +416,4 @@ function DashboardJoystick(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7809-2c1b18604ed05e96a3e5.js.map
+//# sourceMappingURL=7809-72031a337e3389022780.js.map
