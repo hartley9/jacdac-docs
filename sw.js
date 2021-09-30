@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-39717414822ea4742d16.js"
+    "url": "webpack-runtime-ed90617891ed8d136ceb.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "0ed3f7a1e42bc57ce31dbf4abf7f2d95"
+    "revision": "8bfa722b7da5e55c75248d87cc0d9ea1"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "254a8dbb1d17705e3aad54a7a2318acb"
+    "revision": "125d6620e5678a5763660b62534f1b8f"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "6e516900df4cd5cdf0a09ef212a071ce"
+    "revision": "791fd145eb75719c007dab10e31c4a83"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "c28b7cb55beba6d50b7b4deb04dc2fc7"
+    "revision": "c44c5a1a6734480fb33b33bd7fe41e6a"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "b155f769726ce06dc44e75062d6d2c36"
+    "revision": "9e982cd7adb506bca728dc9f6ef22425"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "b0f9cbbeb365f9855c7b283e2d54e45e"
+    "revision": "ede744b2d8f1be01ac4d025edd7e414d"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "baa67672f7fa7ee2928cbd0274e21e30"
+    "revision": "1c16f159f77ee911a1f67999385113da"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -119,7 +119,7 @@ self.__precacheManifest = [
     "revision": "ff29ff36bc66230bf4b219492701bf7f"
   },
   {
-    "url": "component---src-pages-devices-tsx-f04c2b13c979d3f8903f.js"
+    "url": "component---src-pages-devices-tsx-46013485dd894d2f47d1.js"
   },
   {
     "url": "page-data/devices/page-data.json",
@@ -230,7 +230,7 @@ self.__precacheManifest = [
     "revision": "2fe810a09e8df9e49980520edeb6a0e6"
   },
   {
-    "url": "301eb992595a5c36dc4f85b7198eba5aa8d9b219-35531e03bd8134275b1d.js"
+    "url": "301eb992595a5c36dc4f85b7198eba5aa8d9b219-26210db6e27c4605dec0.js"
   },
   {
     "url": "8f8350e8e5a1ed189588272f29a5455a64d2ce8f-142fd9d82c7380bda3c2.js"
@@ -242,7 +242,7 @@ self.__precacheManifest = [
     "url": "149f11818c122b40ce2932f15d148eda4aaa5f90-a26c7758a2fba9dafe97.js"
   },
   {
-    "url": "component---src-templates-service-tsx-9ad26723d748075ec897.js"
+    "url": "component---src-templates-service-tsx-5b37b8541a23e9861824.js"
   },
   {
     "url": "page-data/services/_base/page-data.json",
@@ -912,7 +912,7 @@ self.__precacheManifest = [
     "revision": "55b8f698a2ebfcb73dc2aac99d7bca21"
   },
   {
-    "url": "component---src-templates-device-company-tsx-2b097d1f80d3dd8234a8.js"
+    "url": "component---src-templates-device-company-tsx-17291a64a4a2cb9718c8.js"
   },
   {
     "url": "page-data/devices/microbit/foundation/page-data.json",
@@ -922,7 +922,7 @@ self.__precacheManifest = [
     "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-6cb7cf1f7680b27b6547.js"
   },
   {
-    "url": "component---src-templates-device-tsx-7e3287b741a782351dbb.js"
+    "url": "component---src-templates-device-tsx-6f3dfb4dcc89933e25ed.js"
   },
   {
     "url": "page-data/devices/microbit/foundation/microbitv2/page-data.json",
@@ -1379,7 +1379,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-974234f765f4cf9c36bc.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-94b46415b1a0f09de012.js`))) {
     return await fetch(event.request)
   }
 
