@@ -33484,13 +33484,12 @@ var WindSpeedReg;
 /* harmony export */   "_A": function() { return /* binding */ camelize; },
 /* harmony export */   "lW": function() { return /* binding */ humanify; },
 /* harmony export */   "p6": function() { return /* binding */ packInfo; },
+/* harmony export */   "vc": function() { return /* binding */ generateDeviceSpecificationId; },
 /* harmony export */   "dj": function() { return /* binding */ normalizeDeviceSpecification; },
-/* harmony export */   "o9": function() { return /* binding */ escapeDeviceIdentifier; },
-/* harmony export */   "qh": function() { return /* binding */ escapeDeviceNameIdentifier; },
 /* harmony export */   "R1": function() { return /* binding */ converters; },
 /* harmony export */   "FV": function() { return /* binding */ isNumericType; }
 /* harmony export */ });
-/* unused harmony exports unitDescription, secondaryUnitConverters, encodings, capitalize, snakify, dashify, TYPESCRIPT_STATIC_NAMESPACE, packFormat */
+/* unused harmony exports unitDescription, secondaryUnitConverters, encodings, capitalize, snakify, dashify, TYPESCRIPT_STATIC_NAMESPACE, packFormat, escapeDeviceIdentifier, escapeDeviceNameIdentifier */
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(93433);
 /* harmony import */ var _jdutils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30055);
 
@@ -35357,10 +35356,13 @@ function toTypescript(info, language) {
   return r.replace(/ *$/gm, "");
 }
 
+function generateDeviceSpecificationId(dev) {
+  return escapeDeviceIdentifier(dev.company) + "-" + escapeDeviceNameIdentifier(dev.name) + (dev.designIdentifier || "") + (dev.version ? "v" + dev.version.toLowerCase().replace(/^v/, "").replace(/\./g, "") : "").toLowerCase();
+}
 function normalizeDeviceSpecification(dev) {
   // reorder fields
   var clone = {
-    id: (dev.id = escapeDeviceIdentifier(dev.company) + "-" + escapeDeviceNameIdentifier(dev.name)) + (dev.designIdentifier || "") + (dev.version ? "v" + dev.version.toLowerCase().replace(/\./g, "") : "").toLowerCase(),
+    id: generateDeviceSpecificationId(dev),
     name: dev.name,
     company: dev.company,
     description: dev.description,
@@ -68625,7 +68627,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "0ffca313629e80b86f45b9dd54d0bd52f7bd35fc";
+var sha = "3cb6a47be05bc756004e2e3cb627e12c5dba5c6e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69422,7 +69424,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0ffca313629e80b86f45b9dd54d0bd52f7bd35fc";
+  var sha = "3cb6a47be05bc756004e2e3cb627e12c5dba5c6e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71521,7 +71523,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "0ffca313629e80b86f45b9dd54d0bd52f7bd35fc";
+    var sha = "3cb6a47be05bc756004e2e3cb627e12c5dba5c6e";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87418,4 +87420,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-3716cce9d9e18c34b183.js.map
+//# sourceMappingURL=app-30e24a06337490653a97.js.map

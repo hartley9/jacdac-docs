@@ -1324,7 +1324,7 @@ function CompanySelect(props) {
 }
 
 function DeviceRegistration() {
-  var _device$name, _device$services, _device$id, _device$productIdenti, _device$services2;
+  var _device$name, _device$id, _device$productIdenti, _device$services;
 
   var [device, setDevice] = (0,useLocalStorage/* default */.Z)("jacdac:devicedesigner;2", {
     id: "my-device",
@@ -1342,7 +1342,9 @@ function DeviceRegistration() {
   });
 
   var updateDevice = () => {
-    setDevice((0,utils/* clone */.d9)(device));
+    var dev = (0,utils/* clone */.d9)(device);
+    dev.id = (0,jdspec/* generateDeviceSpecificationId */.vc)(dev);
+    setDevice(dev);
   };
 
   var [firmwaresAnchorEl, setFirmwaresAnchorEl] = react.useState(null);
@@ -1376,23 +1378,15 @@ function DeviceRegistration() {
   var githubError = device.repo && !parsedRepo ? "invalid GitHub repository" : "";
   var linkError = !device.link || /^https:\/\//.test(device.link) ? "" : "Must be https://...";
   var idError = !device.id ? "missing identifier" : (0,spec/* deviceSpecifications */.qx)().find(dev => dev.id == device.id) ? "identifer already used" : "";
-  var servicesError = (_device$services = device.services) !== null && _device$services !== void 0 && _device$services.length ? "" : "Select at least one service";
   var imageError = !imageDataURI ? "missing image" : "";
-  var versionError = !/^(v\d+\.\d+(\.\d+(\.\d+)?)?\w?)?$/.test(device === null || device === void 0 ? void 0 : device.version) ? "Preferred format is vN.N" : "";
-  var ok = !nameError && parsedRepo && !linkError && !idError && !servicesError && !imageError && !companyError;
+  var versionError = device !== null && device !== void 0 && device.version && !/^(v\d+\.\d+(\.\d+(\.\d+)?)?\w?)?$/.test(device === null || device === void 0 ? void 0 : device.version) ? "Preferred format is vN.N" : "";
+  var ok = !nameError && parsedRepo && !linkError && !idError && !imageError && !companyError;
   var route = (_device$id = device.id) === null || _device$id === void 0 ? void 0 : _device$id.split("-").join("/");
   var modulePath = ok && "devices/" + route + ".json";
   var imagePath = ok && "devices/" + route + ".jpg";
 
-  var updateDeviceId = () => {
-    var companyid = (0,jdspec/* escapeDeviceIdentifier */.o9)(device.company);
-    var nameid = (0,jdspec/* escapeDeviceNameIdentifier */.qh)(device.name);
-    device.id = companyid + "-" + nameid;
-  };
-
   var handleNameChange = ev => {
     device.name = ev.target.value;
-    updateDeviceId();
     updateDevice();
   };
 
@@ -1456,7 +1450,6 @@ function DeviceRegistration() {
     if (id !== undefined) {
       device.productIdentifiers.push(id);
       device.name = blob.name;
-      updateDeviceId();
       updateDevice();
     }
   };
@@ -1468,14 +1461,13 @@ function DeviceRegistration() {
 
   var handleCompanyChanged = value => {
     device.company = value;
-    updateDeviceId();
     updateDevice();
   };
 
   var renderRepoInput = params => /*#__PURE__*/react.createElement(TextField/* default */.Z, Object.assign({}, params, {
     error: !!githubError,
     type: "url",
-    label: "Firmware repository *",
+    label: "Firmware repository",
     helperText: githubError || "GitHub Repository hosting the firmware binaries.",
     variant: "outlined"
   }));
@@ -1486,7 +1478,7 @@ function DeviceRegistration() {
     yield descrReg.refresh(true);
     var fw = yield dev.resolveProductIdentifier();
     if (fw) device.productIdentifiers = [fw];
-    device.services = dev.serviceClasses.slice(1);
+    device.services = dev.services().filter(srv => !(0,spec/* isInfrastructure */.lz)(srv.specification)).map(srv => srv.serviceClass);
     device.description = descrReg.stringValue;
     updateDevice();
   }); // eslint-disable-next-line @typescript-eslint/ban-types
@@ -1551,7 +1543,6 @@ function DeviceRegistration() {
     xs: 12
   }, /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: hardwareDesignId,
-    required: true,
     fullWidth: true,
     helperText: "A unique identifier for this hardware design.",
     label: "Hardware design",
@@ -1563,7 +1554,6 @@ function DeviceRegistration() {
     xs: 12
   }, /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: hardwareVersionId,
-    required: true,
     fullWidth: true,
     error: !!versionError,
     helperText: versionError || "Revision identifier for this hardware design using semver format (v1.0, v1.1, ...)",
@@ -1617,8 +1607,8 @@ function DeviceRegistration() {
   }, /*#__PURE__*/react.createElement(PaperBox/* default */.Z, {
     elevation: 1
   }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
-    color: servicesError ? "error" : "inherit"
-  }, "Services *"), (_device$services2 = device.services) === null || _device$services2 === void 0 ? void 0 : _device$services2.map((id, i) => {
+    color: "inherit"
+  }, "Services"), (_device$services = device.services) === null || _device$services === void 0 ? void 0 : _device$services.map((id, i) => {
     var _serviceSpecification;
 
     return /*#__PURE__*/react.createElement(Box/* default */.Z, {
@@ -1697,4 +1687,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-de44d3f180667b43d6eb.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-856621d651f3c2a711c1.js.map
