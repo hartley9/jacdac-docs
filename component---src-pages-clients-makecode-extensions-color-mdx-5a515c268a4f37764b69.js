@@ -69,7 +69,7 @@ function MDXContent(_ref) {
   }, "blue"), "), each of which returns a value\nin the range of 0.0 to 100.0"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"basic.forever(() => {\\n    let red = modules.color1.red()\\n    let blue = modules.color1.blue()\\n    let green = modules.color1.green()\\n    if (green > 50 && red + blue < 20) {\\n        basic.showString(\\\"G\\\")\\n    } else {\\n        basic.clearScreen()\\n    }\\n})\",\"rendered\":{\"req\":{\"code\":\"basic.forever(() => {\\n    let red = modules.color1.red()\\n    let blue = modules.color1.blue()\\n    let green = modules.color1.green()\\n    if (green > 50 && red + blue < 20) {\\n        basic.showString(\\\"G\\\")\\n    } else {\\n        basic.clearScreen()\\n    }\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.1,jacdac-color=github:microsoft/pxt-jacdac/color#v0.7.1\"},\"type\":\"renderblocks\",\"id\":\"bf7938332f7ccf3101b66bad38cfd28b\"},\"url\":\"/images/makecode/bf7938332f7ccf3101b66bad38cfd28b.png\",\"width\":894,\"height\":472}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"basic.forever(() => {\\n    let red = modules.color1.red()\\n    let blue = modules.color1.blue()\\n    let green = modules.color1.green()\\n    if (green > 50 && red + blue < 20) {\\n        led.stopAnimation()\\n        basic.showString(\\\"G\\\")\\n    } else {\\n        basic.clearScreen()\\n    }\\n})\",\"rendered\":{\"req\":{\"code\":\"basic.forever(() => {\\n    let red = modules.color1.red()\\n    let blue = modules.color1.blue()\\n    let green = modules.color1.green()\\n    if (green > 50 && red + blue < 20) {\\n        led.stopAnimation()\\n        basic.showString(\\\"G\\\")\\n    } else {\\n        basic.clearScreen()\\n    }\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.1,jacdac-color=github:microsoft/pxt-jacdac/color#v0.7.1\"},\"type\":\"renderblocks\",\"id\":\"983dc2e4514bb6f3b3255df0b386578a\"},\"url\":\"/images/makecode/983dc2e4514bb6f3b3255df0b386578a.png\",\"width\":894,\"height\":520}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -122,4 +122,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-color-mdx-82d7cd40ec4c54efbb31.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-color-mdx-5a515c268a4f37764b69.js.map

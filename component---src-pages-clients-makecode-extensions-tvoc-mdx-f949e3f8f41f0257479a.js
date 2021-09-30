@@ -65,7 +65,7 @@ function MDXContent(_ref) {
   }, "tVOC"), " method returns the current TVOC level."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the current TVOC whenever it changes by 10 ppb:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.tvoc1.onTVOCChangedBy(10, function() {\\n    basic.showNumber(modules.tvoc1.tVOC())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.tvoc1.onTVOCChangedBy(10, function() {\\n    basic.showNumber(modules.tvoc1.tVOC())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.1,jacdac-tvoc=github:microsoft/pxt-jacdac/tvoc#v0.7.1\"},\"type\":\"renderblocks\",\"id\":\"a41240eafa15bd8d9d5d319d7b2f0a3d\"},\"url\":\"/images/makecode/a41240eafa15bd8d9d5d319d7b2f0a3d.png\",\"width\":350,\"height\":128}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"modules.tvoc1.onTVOCChangedBy(10, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.tvoc1.tVOC())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.tvoc1.onTVOCChangedBy(10, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.tvoc1.tVOC())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.1,jacdac-tvoc=github:microsoft/pxt-jacdac/tvoc#v0.7.1\"},\"type\":\"renderblocks\",\"id\":\"87bc10221b74824deb622d87369cccb4\"},\"url\":\"/images/makecode/87bc10221b74824deb622d87369cccb4.png\",\"width\":350,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -118,4 +118,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-tvoc-mdx-67c9dab2ae35ca073f10.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-tvoc-mdx-f949e3f8f41f0257479a.js.map
