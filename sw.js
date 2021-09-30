@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "908ad438a6726103f0f0f7a6a27a3dc6"
+    "revision": "f311cb64ab75a5cf9f4d106b577201c5"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "33426b260ec608a27c94df2471adce3d"
+    "revision": "f2164970cb7ee166ac91ed313ffaafeb"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "9e887ff564b44b55c979dff8bf00e513"
+    "revision": "d92077ab57e6e69987b2f3310eef510d"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "62795d091c4f7444db011d16a1f09b92"
+    "revision": "211dea55f286f6a27f6630ac02129ba7"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "57058ffc54d5d4cab5169fb844a6a98b"
+    "revision": "760cfb7de34c53b8828b6e26a0acbc78"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "b0f9cbbeb365f9855c7b283e2d54e45e"
+    "revision": "ede744b2d8f1be01ac4d025edd7e414d"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "51ca97fead26d21286d35ac09d7d6f5a"
+    "revision": "55a8cb0961d5c481c49351039bda823d"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -969,6 +969,14 @@ self.__precacheManifest = [
     "revision": "515d94ee23c9e2988005a7eb7c59fd31"
   },
   {
+    "url": "page-data/devices/microsoft/research/jmbrainesp3248v02/page-data.json",
+    "revision": "1d31cb77fe5c0daccf507815928f3029"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jmbrainesp3248v03/page-data.json",
+    "revision": "a6307896fda79a19d7985990e4faec01"
+  },
+  {
     "url": "page-data/devices/microsoft/research/jmbrainf441v02/page-data.json",
     "revision": "efecdfafbe12a31d3f851a27438dacaf"
   },
@@ -1247,7 +1255,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/tools/qr-silk/page-data.json",
-    "revision": "c32a65111737d86a080747a4eec90f23"
+    "revision": "aad82f44aff74649b6fcc8947902cb06"
   },
   {
     "url": "component---src-pages-tools-release-assets-tsx-02ae50b0f93cd395f188.js"
@@ -1371,7 +1379,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-7d488f924178fcd3202c.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-3716cce9d9e18c34b183.js`))) {
     return await fetch(event.request)
   }
 
