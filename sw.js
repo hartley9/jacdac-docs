@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-52c217e5ec7a172e89c8.js"
+    "url": "webpack-runtime-39717414822ea4742d16.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "7e9459350c2c930de1e2e4aa04ed8ee9"
+    "revision": "0ed3f7a1e42bc57ce31dbf4abf7f2d95"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "75f05b5f3d127186bed84005b0c5a652"
+    "revision": "254a8dbb1d17705e3aad54a7a2318acb"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "3074517b0aa05eb4638e24b8626217ee"
+    "revision": "6e516900df4cd5cdf0a09ef212a071ce"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "07654c2b5b50eea2fd8e416fcf53b021"
+    "revision": "c28b7cb55beba6d50b7b4deb04dc2fc7"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "762b5fea781831ffb4fc819cefe7c9e8"
+    "revision": "b155f769726ce06dc44e75062d6d2c36"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "ede744b2d8f1be01ac4d025edd7e414d"
+    "revision": "b0f9cbbeb365f9855c7b283e2d54e45e"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "9f603cc925ebd71051ad17f27ad83af3"
+    "revision": "baa67672f7fa7ee2928cbd0274e21e30"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -922,7 +922,7 @@ self.__precacheManifest = [
     "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-6cb7cf1f7680b27b6547.js"
   },
   {
-    "url": "component---src-templates-device-tsx-7dd072a4133fa073c7f5.js"
+    "url": "component---src-templates-device-tsx-7e3287b741a782351dbb.js"
   },
   {
     "url": "page-data/devices/microbit/foundation/microbitv2/page-data.json",
@@ -1379,7 +1379,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-30e24a06337490653a97.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-974234f765f4cf9c36bc.js`))) {
     return await fetch(event.request)
   }
 
