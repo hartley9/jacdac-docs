@@ -1380,7 +1380,7 @@ function DeviceRegistration() {
   var idError = !device.id ? "missing identifier" : (0,spec/* deviceSpecifications */.qx)().find(dev => dev.id == device.id) ? "identifer already used" : "";
   var imageError = !imageDataURI ? "missing image" : "";
   var versionError = device !== null && device !== void 0 && device.version && !/^(v\d+\.\d+(\.\d+(\.\d+)?)?\w?)?$/.test(device === null || device === void 0 ? void 0 : device.version) ? "Preferred format is vN.N" : "";
-  var ok = !nameError && parsedRepo && !linkError && !idError && !imageError && !companyError;
+  var ok = !nameError && !linkError && !idError && !imageError && !companyError;
   var route = (_device$id = device.id) === null || _device$id === void 0 ? void 0 : _device$id.split("-").join("/");
   var modulePath = ok && "devices/" + route + ".json";
   var imagePath = ok && "devices/" + route + ".jpg";
@@ -1687,4 +1687,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-5e52695e0154dfafff0c.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-b2dfac221de08318a8d7.js.map
