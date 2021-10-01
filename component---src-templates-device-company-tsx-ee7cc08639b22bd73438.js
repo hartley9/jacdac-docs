@@ -539,9 +539,9 @@ function ServiceSpecificationSelect(props) {
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("select-" + Math.random());
   var classes = useStyles();
   var specs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .serviceSpecifications */ .Le)().filter(spec => !/^_/.test(spec.shortId)).filter(spec => {
-    var _deviceSpecifications;
+    var _deviceSpecifications, _deviceSpecifications2;
 
-    return !hasRegisteredDevice || !!((_deviceSpecifications = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .deviceSpecificationsForService */ .zn)(spec.classIdentifier)) !== null && _deviceSpecifications !== void 0 && _deviceSpecifications.length);
+    return !hasRegisteredDevice || !!((_deviceSpecifications = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .deviceSpecificationsForService */ .zn)(spec.classIdentifier)) !== null && _deviceSpecifications !== void 0 && (_deviceSpecifications2 = _deviceSpecifications.filter(spec => spec.status !== "deprecated")) !== null && _deviceSpecifications2 !== void 0 && _deviceSpecifications2.length);
   }), [hasRegisteredDevice]);
 
   var handleChange = event => setServiceClass(parseInt(event.target.value));
@@ -592,4 +592,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-company-tsx-17291a64a4a2cb9718c8.js.map
+//# sourceMappingURL=component---src-templates-device-company-tsx-ee7cc08639b22bd73438.js.map

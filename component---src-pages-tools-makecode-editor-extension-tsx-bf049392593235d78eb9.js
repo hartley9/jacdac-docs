@@ -160,9 +160,9 @@ function ServiceSpecificationSelect(props) {
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("select-" + Math.random());
   var classes = useStyles();
   var specs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .serviceSpecifications */ .Le)().filter(spec => !/^_/.test(spec.shortId)).filter(spec => {
-    var _deviceSpecifications;
+    var _deviceSpecifications, _deviceSpecifications2;
 
-    return !hasRegisteredDevice || !!((_deviceSpecifications = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .deviceSpecificationsForService */ .zn)(spec.classIdentifier)) !== null && _deviceSpecifications !== void 0 && _deviceSpecifications.length);
+    return !hasRegisteredDevice || !!((_deviceSpecifications = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .deviceSpecificationsForService */ .zn)(spec.classIdentifier)) !== null && _deviceSpecifications !== void 0 && (_deviceSpecifications2 = _deviceSpecifications.filter(spec => spec.status !== "deprecated")) !== null && _deviceSpecifications2 !== void 0 && _deviceSpecifications2.length);
   }), [hasRegisteredDevice]);
 
   var handleChange = event => setServiceClass(parseInt(event.target.value));
@@ -903,4 +903,4 @@ function MakeCodeEditorExtensionPage() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-makecode-editor-extension-tsx-9236bc6551162a2b0605.js.map
+//# sourceMappingURL=component---src-pages-tools-makecode-editor-extension-tsx-bf049392593235d78eb9.js.map
