@@ -67,11 +67,7 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Accelerometer"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This extension supports 3-axis accelerometers.\nThe current forces acting on the accelerometer are\nread via the methods 'x', 'y', and 'z', which return\nvalues in earth gravities (g)."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(DeviceImage, {
-    id: "microsoft-research-jmaccelerometer30v10",
-    size: "catalog",
-    mdxType: "DeviceImage"
-  }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "A Jacdac accelerometer module translate acceleration values as follows:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("thead", {
+  }))), "Accelerometer"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This extension supports 3-axis accelerometers.\nThe current forces acting on the accelerometer are\nread via the methods 'x', 'y', and 'z', which return\nvalues in earth gravities (g)."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "A Jacdac accelerometer module translate acceleration values as follows:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("thead", {
     parentName: "table"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "thead"
@@ -180,6 +176,45 @@ function MDXContent(_ref) {
     parentName: "pre",
     "className": "language-blocks"
   }, "{\"source\":\"modules.accelerometer1.onTiltUp(() => {\\n    basic.showArrow(ArrowNames.North)\\n})\\n\\nmodules.accelerometer1.onTiltDown(() => {\\n    basic.showArrow(ArrowNames.South)\\n})\\n\\nmodules.accelerometer1.onTiltLeft(() => {\\n    basic.showArrow(ArrowNames.West)\\n})\\n\\nmodules.accelerometer1.onTiltRight(() => {\\n    basic.showArrow(ArrowNames.East)\\n})\\n\\nmodules.accelerometer1.onShake(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.accelerometer1.onTiltUp(() => {\\n    basic.showArrow(ArrowNames.North)\\n})\\n\\nmodules.accelerometer1.onTiltDown(() => {\\n    basic.showArrow(ArrowNames.South)\\n})\\n\\nmodules.accelerometer1.onTiltLeft(() => {\\n    basic.showArrow(ArrowNames.West)\\n})\\n\\nmodules.accelerometer1.onTiltRight(() => {\\n    basic.showArrow(ArrowNames.East)\\n})\\n\\nmodules.accelerometer1.onShake(function () {\\n    basic.showIcon(IconNames.Heart)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.1,jacdac-accelerometer=github:microsoft/pxt-jacdac/accelerometer#v0.7.1\"},\"type\":\"renderblocks\",\"id\":\"efea4e2ba7167261a72b31e4dfcadfcd\"},\"url\":\"/images/makecode/efea4e2ba7167261a72b31e4dfcadfcd.png\",\"width\":976,\"height\":315}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "jm-accelerometer-v10",
+    "style": {
+      "position": "relative"
+    }
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "h2",
+    "href": "#jm-accelerometer-v10",
+    "aria-label": "jm accelerometer v10 permalink",
+    "className": "anchor before"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
+    parentName: "a",
+    "aria-hidden": "true",
+    "focusable": "false",
+    "height": "16",
+    "version": "1.1",
+    "viewBox": "0 0 16 16",
+    "width": "16"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("path", {
+    parentName: "svg",
+    "fillRule": "evenodd",
+    "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+  }))), "JM Accelerometer v1.0"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "/jacdac-docs/devices/microsoft/research/jmaccelerometer30v10"
+  }, "JM Accelerometer v1.0"), " module\nhas silk screen of (X,Y,Z) axis (arrows are positive vectors) where "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, "the X-axis indicates the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+    parentName: "li"
+  }, "bottom edge"), " of the module"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, "the Y-axis indicates the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+    parentName: "li"
+  }, "left edge"), " of the module"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, "the Z-axis is oriented towards the sky when the module is lying flat, as shown in the picture below")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(DeviceImage, {
+    id: "microsoft-research-jmaccelerometer30v10",
+    size: "catalog",
+    mdxType: "DeviceImage"
+  }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -232,4 +267,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-accelerometer-mdx-211a04a8a9c61efdafb4.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-accelerometer-mdx-2e1117d69b16708a8143.js.map
