@@ -507,7 +507,7 @@ function Carousel() {
   var {
     bus
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z);
-  var iframeBridge = bus.nodeData[_components_makecode_iframebridgeclient__WEBPACK_IMPORTED_MODULE_8__/* ["default"].DATA_ID */ .Z.DATA_ID];
+  var iframeBridge = bus.nodeData[_components_makecode_iframebridgeclient__WEBPACK_IMPORTED_MODULE_8__/* ["default"].DATA_ID */ .ZP.DATA_ID];
   var deviceFilter = iframeBridge.deviceFilter.bind(iframeBridge);
   var serviceFilter = iframeBridge.serviceFilter.bind(iframeBridge);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
@@ -551,4 +551,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-makecode-sim-tsx-0dfdf84bbb6309ab8eb3.js.map
+//# sourceMappingURL=component---src-pages-tools-makecode-sim-tsx-0cc368b103272037eab0.js.map

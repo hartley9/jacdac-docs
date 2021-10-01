@@ -48275,25 +48275,54 @@ function FileSystemProvider(props) {
 
 /***/ }),
 
-/***/ 43830:
+/***/ 62779:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "JF": function() { return /* binding */ hostedSimulatorDefinitions; },
-/* harmony export */   "sr": function() { return /* binding */ HostedSimulatorsProvider; }
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(43144);
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(94578);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(10920);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(70274);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19640);
-/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(71815);
-/* harmony import */ var _jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(45484);
-/* harmony import */ var _jacdac_ts_src_jdom_random__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(80303);
-/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(20392);
-/* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(54774);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "sr": function() { return /* binding */ HostedSimulatorsProvider; },
+  "ZP": function() { return /* binding */ components_HostedSimulatorsContext; },
+  "JF": function() { return /* binding */ hostedSimulatorDefinitions; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
+var createClass = __webpack_require__(43144);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
+var assertThisInitialized = __webpack_require__(97326);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
+var inheritsLoose = __webpack_require__(94578);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/makeStyles.js
+var makeStyles = __webpack_require__(10920);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createStyles.js
+var createStyles = __webpack_require__(70274);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
+var react_use_id_hook_esm = __webpack_require__(19640);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/client.ts
+var client = __webpack_require__(47235);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
+var constants = __webpack_require__(71815);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
+var iframeclient = __webpack_require__(9809);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/random.ts
+var random = __webpack_require__(80303);
+// EXTERNAL MODULE: ./src/jacdac/Context.tsx
+var Context = __webpack_require__(20392);
+// EXTERNAL MODULE: ./src/jacdac/useChange.ts
+var useChange = __webpack_require__(54774);
+;// CONCATENATED MODULE: ./src/components/hooks/useClient.ts
+
+function useClient(factory, deps) {
+  var client = (0,react.useMemo)(factory, deps || []);
+  (0,react.useEffect)(() => () => client === null || client === void 0 ? void 0 : client.unmount(), [client]);
+  return client;
+}
+// EXTERNAL MODULE: ./src/components/makecode/iframebridgeclient.ts
+var iframebridgeclient = __webpack_require__(43380);
+;// CONCATENATED MODULE: ./src/components/HostedSimulatorsContext.tsx
 
 
 
@@ -48304,21 +48333,27 @@ function FileSystemProvider(props) {
 
 
 
-var HostedSimulatorsContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
+
+
+
+
+var HostedSimulatorsContext = /*#__PURE__*/(0,react.createContext)({
   simulators: [],
   addHostedSimulator: () => {},
   removeHostedSimulator: () => {},
   clearHostedSimulators: () => {}
 });
 HostedSimulatorsContext.displayName = "hostedSims";
-/* harmony default export */ __webpack_exports__["ZP"] = (HostedSimulatorsContext);
+/* harmony default export */ var components_HostedSimulatorsContext = (HostedSimulatorsContext);
 function hostedSimulatorDefinitions() {
+  // TODO: support in iframe as well
+  if ((0,iframeclient/* inIFrame */.H)()) return [];
   return [{
     name: "Azure IoT Uploader",
     url: "https://microsoft.github.io/pxt-jacdac/"
   }];
 }
-var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(() => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z)({
+var useStyles = (0,makeStyles/* default */.Z)(() => (0,createStyles/* default */.Z)({
   hostedSimulators: {
     zIndex: -1000,
     "& iframe": {
@@ -48332,22 +48367,32 @@ var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] 
   }
 }));
 
-var HostedSimulatorManager = /*#__PURE__*/function (_JDEventSource) {
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z)(HostedSimulatorManager, _JDEventSource);
+var HostedSimulatorManager = /*#__PURE__*/function (_JDClient) {
+  (0,inheritsLoose/* default */.Z)(HostedSimulatorManager, _JDClient);
 
   function HostedSimulatorManager(bus) {
     var _this;
 
-    _this = _JDEventSource.call(this) || this;
+    _this = _JDClient.call(this) || this;
     _this._simulators = {};
     _this.bus = bus;
+    _this.handleMessage = _this.handleMessage.bind((0,assertThisInitialized/* default */.Z)(_this)); // receiving packets
+
+    window.addEventListener("message", _this.handleMessage, false);
+
+    _this.mount(() => window.removeEventListener("message", _this.handleMessage)); // always clear on exist
+
+
+    _this.mount(() => _this.clear());
+
     return _this;
   }
 
   var _proto = HostedSimulatorManager.prototype;
 
   _proto.addSimulator = function addSimulator(definition) {
-    var id = (0,_jacdac_ts_src_jdom_random__WEBPACK_IMPORTED_MODULE_4__/* .randomDeviceId */ .b_)();
+    // must be a device identifier since we're passing this down to the iframe
+    var id = (0,random/* randomDeviceId */.b_)();
     this._simulators[id] = {
       id,
       definition
@@ -48375,6 +48420,30 @@ var HostedSimulatorManager = /*#__PURE__*/function (_JDEventSource) {
     });
     this._simulators = {};
     this.syncDOM();
+  };
+
+  _proto.handleMessage = function handleMessage(event) {
+    var {
+      data
+    } = event;
+    var msg = data;
+    var {
+      channel,
+      type,
+      sender
+    } = msg;
+
+    if (channel === "jacdac" && type === "messagepacket" && this._simulators[sender]) {
+      var pkts = (0,iframebridgeclient/* decodePacketMessage */.Iy)(this.bus, msg);
+      if (!pkts) return;
+
+      for (var pkt of pkts) {
+        // send to native bus
+        this.bus.sendPacketAsync(pkt); // send to javascript bus
+
+        this.bus.processPacket(pkt);
+      }
+    }
   };
 
   _proto.syncDOM = function syncDOM() {
@@ -48408,14 +48477,10 @@ var HostedSimulatorManager = /*#__PURE__*/function (_JDEventSource) {
         this._container.append(iframe); // route packets
 
 
-        var unsub = this.bus.subscribe([_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .PACKET_SEND */ .RaS, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .PACKET_PROCESS */ .wY8], pkt => {
+        var unsub = this.bus.subscribe([constants/* PACKET_SEND */.RaS, constants/* PACKET_PROCESS */.wY8], pkt => {
           var _iframe$contentWindow;
 
-          /*                        console.debug(`hosted sim: sending ${pkt} to ${id}`, {
-              iframe,
-              domain,
-              sender: pkt.sender,
-          })*/
+          if (pkt.sender === id) return;
           var msg = {
             type: "messagepacket",
             channel: "jacdac",
@@ -48429,10 +48494,10 @@ var HostedSimulatorManager = /*#__PURE__*/function (_JDEventSource) {
       });
     }
 
-    this.emit(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__/* .CHANGE */ .Ver);
+    this.emit(constants/* CHANGE */.Ver);
   };
 
-  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z)(HostedSimulatorManager, [{
+  (0,createClass/* default */.Z)(HostedSimulatorManager, [{
     key: "container",
     get: function get() {
       return this._container;
@@ -48452,7 +48517,7 @@ var HostedSimulatorManager = /*#__PURE__*/function (_JDEventSource) {
   }]);
 
   return HostedSimulatorManager;
-}(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .ZP); // eslint-disable-next-line react/prop-types
+}(client/* default */.Z); // eslint-disable-next-line react/prop-types
 
 
 var HostedSimulatorsProvider = _ref => {
@@ -48461,12 +48526,12 @@ var HostedSimulatorsProvider = _ref => {
   } = _ref;
   var {
     bus
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z);
-  var containerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-  var containerId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__/* .useId */ .Me)();
-  var manager = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => new HostedSimulatorManager(bus), []);
+  } = (0,react.useContext)(Context/* default */.Z);
+  var containerRef = (0,react.useRef)();
+  var containerId = (0,react_use_id_hook_esm/* useId */.Me)();
+  var manager = useClient(() => new HostedSimulatorManager(bus));
   var classes = useStyles();
-  var simulators = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(manager, _ => _.simulators);
+  var simulators = (0,useChange/* default */.Z)(manager, _ => _.simulators);
 
   var addHostedSimulator = definition => manager.addSimulator(definition);
 
@@ -48475,20 +48540,20 @@ var HostedSimulatorsProvider = _ref => {
   var clearHostedSimulators = () => manager.clear(); // new container
 
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+  (0,react.useEffect)(() => {
     manager.container = containerRef.current;
     return () => manager.container = undefined;
   }, []); // final cleanup
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => () => manager.clear(), []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(HostedSimulatorsContext.Provider, {
+  (0,react.useEffect)(() => () => manager.clear(), []);
+  return /*#__PURE__*/react.createElement(HostedSimulatorsContext.Provider, {
     value: {
       simulators,
       addHostedSimulator,
       removeHostedSimulator,
       clearHostedSimulators
     }
-  }, children, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, children, /*#__PURE__*/react.createElement("div", {
     id: containerId,
     className: classes.hostedSimulators,
     ref: containerRef
@@ -68849,7 +68914,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "026091fec55e747b91150f075fe19ffd94c7555b";
+var sha = "f7b9945014dd6d0778d7fa01c5c4eef2973923d2";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69646,7 +69711,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "026091fec55e747b91150f075fe19ffd94c7555b";
+  var sha = "f7b9945014dd6d0778d7fa01c5c4eef2973923d2";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71375,6 +71440,9 @@ function MakeCodeSnippetProvider(props) {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Iy": function() { return /* binding */ decodePacketMessage; }
+/* harmony export */ });
 /* unused harmony export IFrameBridgeClient */
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(43144);
 /* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(97326);
@@ -71395,6 +71463,18 @@ function MakeCodeSnippetProvider(props) {
 
 
 
+function decodePacketMessage(bus, msg) {
+  // try frame format (sent by hardware, hosts)
+  var pkts = _jacdac_ts_src_jdom_packet__WEBPACK_IMPORTED_MODULE_3__/* ["default"].fromFrame */ .Z.fromFrame(msg.data, bus.timestamp);
+
+  if (!pkts.length) {
+    // try as a single packet (send by the MakeCode simulator)
+    var pkt = _jacdac_ts_src_jdom_packet__WEBPACK_IMPORTED_MODULE_3__/* ["default"].fromBinary */ .Z.fromBinary(msg.data, bus.timestamp);
+    pkts = pkt && [pkt];
+  }
+
+  return pkts;
+}
 var ignoredServices = [_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .SRV_CONTROL */ .gm9, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .SRV_LOGGER */ .w9j, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .SRV_SETTINGS */ .B9b, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .SRV_ROLE_MANAGER */ .igi, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_0__/* .SRV_PROTO_TEST */ .$Bn];
 /**
  * A client that bridges received and sent packets to a parent iframe
@@ -71515,27 +71595,19 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
 
   _proto.handleMessageJacdac = function handleMessageJacdac(msg) {
     if (msg.sender === this.bridgeId) // returning packet
-      return; // try frame format (sent by hardware, hosts)
-
-    var pkts = _jacdac_ts_src_jdom_packet__WEBPACK_IMPORTED_MODULE_3__/* ["default"].fromFrame */ .Z.fromFrame(msg.data, this.bus.timestamp);
-
-    if (!pkts.length) {
-      // try as a single packet (send by the MakeCode simulator)
-      var pkt = _jacdac_ts_src_jdom_packet__WEBPACK_IMPORTED_MODULE_3__/* ["default"].fromBinary */ .Z.fromBinary(msg.data, this.bus.timestamp);
-      pkts = pkt && [pkt];
-    } // bail out if unknown packet
-
+      return;
+    var pkts = decodePacketMessage(this.bus, msg); // bail out if unknown packet
 
     if (!pkts) return;
     this.packetProcessed += pkts.length;
 
-    for (var _pkt of pkts) {
+    for (var pkt of pkts) {
       // we're adding a little trace to avoid resending our own packets
-      _pkt.sender = this.bridgeId; // send to native bus
+      pkt.sender = this.bridgeId; // send to native bus
 
-      this.bus.sendPacketAsync(_pkt); // send to javascript bus
+      this.bus.sendPacketAsync(pkt); // send to javascript bus
 
-      this.bus.processPacket(_pkt);
+      this.bus.processPacket(pkt);
     }
   };
 
@@ -71622,7 +71694,7 @@ var IFrameBridgeClient = /*#__PURE__*/function (_JDClient) {
   return IFrameBridgeClient;
 }(_jacdac_ts_src_jdom_client__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z);
 IFrameBridgeClient.DATA_ID = "makecodeiframeclient";
-/* harmony default export */ __webpack_exports__["Z"] = (IFrameBridgeClient);
+/* harmony default export */ __webpack_exports__["ZP"] = (IFrameBridgeClient);
 
 /***/ }),
 
@@ -71745,7 +71817,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "026091fec55e747b91150f075fe19ffd94c7555b";
+    var sha = "f7b9945014dd6d0778d7fa01c5c4eef2973923d2";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -72421,7 +72493,7 @@ function Suspense(props) {
 /* harmony import */ var _WebAudioContext__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(94564);
 /* harmony import */ var _FileSystemContext__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(48202);
 /* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(72513);
-/* harmony import */ var _HostedSimulatorsContext__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(43830);
+/* harmony import */ var _HostedSimulatorsContext__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(62779);
 
 
 
@@ -80100,7 +80172,7 @@ function createBus() {
   // always start bridge
 
   if (typeof window !== "undefined") {
-    if ((0,iframeclient/* inIFrame */.H)()) new iframebridgeclient/* default */.Z(b, args.frameId) // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if ((0,iframeclient/* inIFrame */.H)()) new iframebridgeclient/* default */.ZP(b, args.frameId) // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ;
     window.__jacdacBus = b;
   }
@@ -87622,4 +87694,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-0d2faf3e2c150753f240.js.map
+//# sourceMappingURL=app-30707f8284617e5370e0.js.map

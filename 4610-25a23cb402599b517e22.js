@@ -26,7 +26,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _KindIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(50048);
 /* harmony import */ var _ui_SelectWithLabel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(15789);
 /* harmony import */ var _hooks_useMediaQueries__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(20509);
-/* harmony import */ var _HostedSimulatorsContext__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(43830);
+/* harmony import */ var _HostedSimulatorsContext__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(62779);
 
 
 
@@ -225,4 +225,4 @@ function SelectWithLabel(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=4610-e3312041935efa2c70d5.js.map
+//# sourceMappingURL=4610-25a23cb402599b517e22.js.map

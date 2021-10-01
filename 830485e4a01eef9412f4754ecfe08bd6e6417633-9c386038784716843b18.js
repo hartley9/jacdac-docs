@@ -328,7 +328,7 @@ function MakeCodeAddBlocksButton() {
   var {
     bus
   } = (0,react.useContext)(Context/* default */.Z);
-  var iframeBridge = bus.nodeData[iframebridgeclient/* default.DATA_ID */.Z.DATA_ID];
+  var iframeBridge = bus.nodeData[iframebridgeclient/* default.DATA_ID */.ZP.DATA_ID];
   var extensions = (0,useChange/* default */.Z)(iframeBridge, _ => _ === null || _ === void 0 ? void 0 : _.candidateExtensions);
 
   var handleAdd = () => iframeBridge === null || iframeBridge === void 0 ? void 0 : iframeBridge.postAddExtensions();
@@ -613,4 +613,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-562a875f261337a76ecd.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-9c386038784716843b18.js.map
