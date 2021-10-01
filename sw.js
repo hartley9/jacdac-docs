@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-d5e08ad1dfe9e96d5d97.js"
+    "url": "webpack-runtime-862a73199f83ec29576f.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "b69d0f61fedb61e0cbcf304445b56eb4"
+    "revision": "bef772abdaa2d3839e8655bb3daa9580"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "bcb6ed603cd11a88e0a8b2450ef63aa4"
+    "revision": "e83026c53b64a7e0718b0025a2b833af"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "4ca8bf7de78f475c938e224b621febfd"
+    "revision": "da0da711b7bf5220c5f36a67b0a9df68"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "85b471edc0f777b003b404aa715d7cbd"
+    "revision": "87c66a2e5bf68721608ad1c66b988c8b"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "3d40c827209be5a88164dab553585c4d"
+    "revision": "4741181fb447fd95c063df12a8f173b6"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "882568ff0842901c314f40c2a72b648b"
+    "revision": "4e1ed2c146edf78f49b618d0e525bd7b"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1387,7 +1387,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-ac4e0abdbe57071b5df1.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-d0243ce3754d39413abf.js`))) {
     return await fetch(event.request)
   }
 
