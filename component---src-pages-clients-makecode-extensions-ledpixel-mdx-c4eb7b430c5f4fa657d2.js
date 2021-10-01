@@ -152,7 +152,7 @@ function MDXContent(_ref) {
   }, "LED pixel service"), " has\na small command language that can be used to create your own animations\nand effects."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"function runEncoded(prog: string, args?: number[]) {\\n    const encoded = jacdac.lightEncode(prog, args)\\n    modules.ledPixel1.runProgram(encoded)\\n}\\n\\ninput.onButtonPressed(Button.A, () => {\\n     runEncoded(\\\"rotfwd 1\\\")\\n     modules.ledPixel1.setPixel(0, 0x00ff00)\\n})\",\"rendered\":{\"req\":{\"code\":\"function runEncoded(prog: string, args?: number[]) {\\n    const encoded = jacdac.lightEncode(prog, args)\\n    modules.ledPixel1.runProgram(encoded)\\n}\\n\\ninput.onButtonPressed(Button.A, () => {\\n     runEncoded(\\\"rotfwd 1\\\")\\n     modules.ledPixel1.setPixel(0, 0x00ff00)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.1,jacdac-led=github:microsoft/pxt-jacdac/led#v0.7.1,jacdac-led-pixel=github:microsoft/pxt-jacdac/led-pixel#v0.7.1\"},\"type\":\"renderblocks\",\"id\":\"bb49ca82bd925978663134e3c3730f47\"},\"url\":\"/images/makecode/bb49ca82bd925978663134e3c3730f47.png\",\"width\":1092,\"height\":198}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"function runEncoded(prog: string, args?: number[]) {\\n    let encoded = jacdac.lightEncode(prog, args)\\n    modules.ledPixel1.runProgram(encoded)\\n}\\n\\ninput.onButtonPressed(Button.A, () => {\\n     runEncoded(\\\"rotfwd 1\\\")\\n     modules.ledPixel1.setPixel(0, 0x00ff00)\\n})\",\"rendered\":{\"req\":{\"code\":\"function runEncoded(prog: string, args?: number[]) {\\n    let encoded = jacdac.lightEncode(prog, args)\\n    modules.ledPixel1.runProgram(encoded)\\n}\\n\\ninput.onButtonPressed(Button.A, () => {\\n     runEncoded(\\\"rotfwd 1\\\")\\n     modules.ledPixel1.setPixel(0, 0x00ff00)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.1,jacdac-led=github:microsoft/pxt-jacdac/led#v0.7.1,jacdac-led-pixel=github:microsoft/pxt-jacdac/led-pixel#v0.7.1\"},\"type\":\"renderblocks\",\"id\":\"60a207b5c20868de1b42d5e099d9793d\"},\"url\":\"/images/makecode/60a207b5c20868de1b42d5e099d9793d.png\",\"width\":1073,\"height\":198}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -205,4 +205,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-ledpixel-mdx-f464194e8e1915f45bd1.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-ledpixel-mdx-c4eb7b430c5f4fa657d2.js.map
