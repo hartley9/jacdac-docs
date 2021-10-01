@@ -48307,22 +48307,24 @@ function FileSystemProvider(props) {
 /* harmony export */   "JF": function() { return /* binding */ hostedSimulatorDefinitions; },
 /* harmony export */   "sr": function() { return /* binding */ HostedSimulatorsProvider; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(93433);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(10920);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(70274);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(85420);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(95823);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(29114);
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(93433);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(10920);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(70274);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(85420);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(95823);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(29114);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(71815);
-/* harmony import */ var _jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(9809);
+/* harmony import */ var _jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(9809);
 /* harmony import */ var _jacdac_ts_src_jdom_random__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(80303);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(20392);
 /* harmony import */ var _hooks_useWindowEvent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(72144);
-/* harmony import */ var _material_ui_icons_Close__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(29181);
+/* harmony import */ var _material_ui_icons_Close__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(29181);
 /* harmony import */ var _makecode_iframebridgeclient__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(43380);
 /* harmony import */ var _ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(79885);
 /* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(69672);
+/* harmony import */ var _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(47751);
+
 
 
 
@@ -48346,7 +48348,7 @@ HostedSimulatorsContext.displayName = "hostedSims";
 /* harmony default export */ __webpack_exports__["ZP"] = (HostedSimulatorsContext);
 function hostedSimulatorDefinitions() {
   // TODO: support in iframe as well
-  if ((0,_jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_8__/* .inIFrame */ .H)()) return [];
+  if ((0,_jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_9__/* .inIFrame */ .H)()) return [];
   return [{
     name: "micro:bit V2 Out-of-the-Box",
     url: "https://microsoft.github.io/pxt-jacdac/?tool=microbit-oob",
@@ -48357,9 +48359,14 @@ function hostedSimulatorDefinitions() {
     url: "https://microsoft.github.io/pxt-jacdac/",
     width: "20rem",
     height: "12rem"
-  }];
+  }, _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_8__/* .UIFlags.localhost */ .A.localhost && {
+    name: "Azure IoT Uploader (localhost)",
+    url: "http://localhost:3232/index.html",
+    width: "20rem",
+    height: "12rem"
+  }].filter(d => !!d);
 }
-var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z)(() => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z)({
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z)(() => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z)({
   cardContainer: {
     zIndex: 1100,
     position: "absolute",
@@ -48430,15 +48437,15 @@ function HostedSimulatorCard(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Draggable, draggableProps, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     ref: nodeRef,
     className: classes.cardContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
-    className: classes.card
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
+    className: classes.card
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
     subheader: name,
     action: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
       title: "stop simulator",
       onClick: handleStop
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Close__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, null))
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Close__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, null))
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "hostedcontainer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("iframe", {
     id: sim.id,
@@ -48465,12 +48472,12 @@ var HostedSimulatorsProvider = _ref => {
     1: setSimulators
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
 
-  var addHostedSimulator = definition => setSimulators([].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z)(simulators), [{
+  var addHostedSimulator = definition => setSimulators([].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z)(simulators), [{
     id: (0,_jacdac_ts_src_jdom_random__WEBPACK_IMPORTED_MODULE_2__/* .randomDeviceId */ .b_)(),
     definition
   }]));
 
-  var removeHostedSimulator = deviceId => setSimulators((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z)(simulators.filter(sim => sim.devideId !== deviceId)));
+  var removeHostedSimulator = deviceId => setSimulators((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z)(simulators.filter(sim => sim.devideId !== deviceId)));
 
   var isHostedSimulator = deviceId => simulators.some(sim => sim.devideId === deviceId);
 
@@ -68897,7 +68904,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "f31f3b621857a8db3ba721eaf260cfb1fff7617b";
+var sha = "dd5bea328af5a358d6aa1a2c7bf72784e62d9222";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69722,7 +69729,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "f31f3b621857a8db3ba721eaf260cfb1fff7617b";
+  var sha = "dd5bea328af5a358d6aa1a2c7bf72784e62d9222";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71831,7 +71838,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "f31f3b621857a8db3ba721eaf260cfb1fff7617b";
+    var sha = "dd5bea328af5a358d6aa1a2c7bf72784e62d9222";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -80125,7 +80132,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.18.5"};
+var package_namespaceObject = {"i8":"1.18.6"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
@@ -80169,7 +80176,8 @@ function sniffQueryArguments() {
     parentOrigin: params.get("parentOrigin"),
     frameId: (_window$location$hash = window.location.hash) === null || _window$location$hash === void 0 ? void 0 : _window$location$hash.slice(1),
     widget: params.get("widget") === "1",
-    trace: params.get("trace") === "1"
+    trace: params.get("trace") === "1",
+    localhost: params.get("localhost") === "1"
   };
 }
 
@@ -80183,6 +80191,7 @@ var UIFlags = function UIFlags() {}; // defeat react fast-refresh
 
 UIFlags.widget = args.widget;
 UIFlags.peers = args.peers;
+UIFlags.localhost = args.localhost;
 
 function createBus() {
   var worker = typeof window !== "undefined" && new Worker((0,gatsby_browser_entry.withPrefix)("/jacdac-worker-" + package_namespaceObject.i8 + ".js"));
@@ -87717,4 +87726,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-3198487226fc6056be6a.js.map
+//# sourceMappingURL=app-72db5d732b0696209c5f.js.map
