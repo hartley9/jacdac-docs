@@ -53,7 +53,7 @@ function StartSimulatorDialog(props) {
     enqueueSnackbar
   } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .ZP);
   var {
-    addHostedSimulator
+    hostedSimulators
   } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_HostedSimulatorsContext__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .ZP);
   var deviceHostDialogId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_2__/* .useId */ .Me)();
   var deviceHostLabelId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_2__/* .useId */ .Me)();
@@ -79,7 +79,7 @@ function StartSimulatorDialog(props) {
     var provider = providerDefinitions.find(h => h.name === selected);
     if (provider) (0,_jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_3__/* .addServiceProvider */ .Q6)(bus, provider);
     var simulator = simulatorDefinitions.find(h => h.name === selected);
-    if (simulator) addHostedSimulator(simulator);
+    if (simulator) hostedSimulators.addSimulator(simulator);
     onClose();
   };
 
@@ -225,4 +225,4 @@ function SelectWithLabel(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=4610-25a23cb402599b517e22.js.map
+//# sourceMappingURL=4610-031264d1179525bd1c8d.js.map

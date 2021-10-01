@@ -48287,6 +48287,8 @@ __webpack_require__.d(__webpack_exports__, {
   "JF": function() { return /* binding */ hostedSimulatorDefinitions; }
 });
 
+// UNUSED EXPORTS: HostedSimulatorManager
+
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
 var createClass = __webpack_require__(43144);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
@@ -48311,8 +48313,6 @@ var iframeclient = __webpack_require__(9809);
 var random = __webpack_require__(80303);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
 var Context = __webpack_require__(20392);
-// EXTERNAL MODULE: ./src/jacdac/useChange.ts
-var useChange = __webpack_require__(54774);
 ;// CONCATENATED MODULE: ./src/components/hooks/useClient.ts
 
 function useClient(factory, deps) {
@@ -48336,12 +48336,8 @@ var iframebridgeclient = __webpack_require__(43380);
 
 
 
-
 var HostedSimulatorsContext = /*#__PURE__*/(0,react.createContext)({
-  simulators: [],
-  addHostedSimulator: () => {},
-  removeHostedSimulator: () => {},
-  clearHostedSimulators: () => {}
+  hostedSimulators: undefined
 });
 HostedSimulatorsContext.displayName = "hostedSims";
 /* harmony default export */ var components_HostedSimulatorsContext = (HostedSimulatorsContext);
@@ -48353,6 +48349,7 @@ function hostedSimulatorDefinitions() {
     url: "https://microsoft.github.io/pxt-jacdac/"
   }];
 }
+var CLASS_NAME = "jacdachostedsimulator";
 var useStyles = (0,makeStyles/* default */.Z)(() => (0,createStyles/* default */.Z)({
   hostedSimulators: {
     zIndex: -1000,
@@ -48366,7 +48363,7 @@ var useStyles = (0,makeStyles/* default */.Z)(() => (0,createStyles/* default */
     }
   }
 }));
-
+var ID_PREFIX = "hostedsimulator";
 var HostedSimulatorManager = /*#__PURE__*/function (_JDClient) {
   (0,inheritsLoose/* default */.Z)(HostedSimulatorManager, _JDClient);
 
@@ -48393,6 +48390,7 @@ var HostedSimulatorManager = /*#__PURE__*/function (_JDClient) {
   _proto.addSimulator = function addSimulator(definition) {
     // must be a device identifier since we're passing this down to the iframe
     var id = (0,random/* randomDeviceId */.b_)();
+    console.debug("hostedsims: add " + id + " -> " + definition.name);
     this._simulators[id] = {
       id,
       definition
@@ -48400,16 +48398,26 @@ var HostedSimulatorManager = /*#__PURE__*/function (_JDClient) {
     this.syncDOM();
   };
 
-  _proto.removeSimulator = function removeSimulator(id) {
-    var sim = this._simulators[id];
+  _proto.removeSimulator = function removeSimulator(deviceId) {
+    var sim = this.resolveSimulator(deviceId);
 
     if (sim) {
       var _sim$unsub;
 
+      console.debug("hostedsims: remove " + deviceId);
       (_sim$unsub = sim.unsub) === null || _sim$unsub === void 0 ? void 0 : _sim$unsub.call(sim);
-      delete this._simulators[id];
+      delete this._simulators[sim.id];
       this.syncDOM();
     }
+  };
+
+  _proto.resolveSimulator = function resolveSimulator(deviceId) {
+    var sim = Object.values(this._simulators).find(sim => sim.devideId === deviceId);
+    return sim;
+  };
+
+  _proto.isSimulator = function isSimulator(deviceId) {
+    return !!this.resolveSimulator(deviceId);
   };
 
   _proto.clear = function clear() {
@@ -48432,68 +48440,77 @@ var HostedSimulatorManager = /*#__PURE__*/function (_JDClient) {
       type,
       sender
     } = msg;
+    var sim;
 
-    if (channel === "jacdac" && type === "messagepacket" && this._simulators[sender]) {
+    if (channel === "jacdac" && type === "messagepacket" && (sim = this._simulators[sender])) {
       var pkts = (0,iframebridgeclient/* decodePacketMessage */.Iy)(this.bus, msg);
       if (!pkts) return;
+      var changed = false;
 
       for (var pkt of pkts) {
-        // send to native bus
+        // sniff the device id from annouce packets
+        if (pkt.isAnnounce && sim.devideId !== pkt.deviceIdentifier) {
+          if (sim.devideId) console.warn("hostedsim: device id changed from " + sim.devideId + " to " + pkt.deviceIdentifier);
+          sim.devideId = pkt.deviceIdentifier;
+          changed = true;
+        } // send to native bus
+
+
         this.bus.sendPacketAsync(pkt); // send to javascript bus
 
         this.bus.processPacket(pkt);
       }
+
+      if (changed) this.emit(constants/* CHANGE */.Ver);
     }
   };
 
   _proto.syncDOM = function syncDOM() {
-    if (this._container) {
-      // go through iframe and pop out the one that are not longer needed
-      var iframes = this._container.getElementsByTagName("iframe");
+    // go through iframe and pop out the one that are not longer needed
+    // iframe might have been relocated somewhere else in the tree
+    var iframes = document.getElementsByClassName(CLASS_NAME);
 
-      var iframeids = {};
-
-      for (var iframe of iframes) {
-        iframeids[iframe.id] = true;
-        if (this._simulators[iframe.id]) continue;
-        console.debug("hosted sim: removing iframe " + iframe.id);
-        iframe.remove();
-      } // go through simulator and ensure they are all started
+    for (var iframe of iframes) {
+      var id = iframe.id.slice(ID_PREFIX.length);
+      if (this._simulators[id]) continue;
+      console.debug("hostedsims: removing " + id);
+      iframe.remove();
+    } // go through simulator and ensure they are all started
 
 
-      Object.values(this._simulators).forEach(sim => {
-        var {
-          id,
-          definition
-        } = sim;
-        if (iframeids[id]) return;
-        console.debug("hosted sim: starting iframe " + id + " " + definition.url);
-        var iframe = document.createElement("iframe");
-        iframe.id = id;
-        iframe.src = definition.url + "#" + id;
-        iframe.title = definition.name;
-        var origin = new URL(definition.url).origin;
+    Object.values(this._simulators).forEach(sim => {
+      var {
+        id,
+        definition
+      } = sim;
+      var domid = ID_PREFIX + id;
+      if (document.getElementById(domid)) return;
+      console.debug("hostedsims: starting iframe " + id + " " + definition.url);
+      var iframe = document.createElement("iframe");
+      iframe.classList.add(CLASS_NAME);
+      iframe.id = domid;
+      iframe.src = definition.url + "#" + id;
+      iframe.title = definition.name;
+      var origin = new URL(definition.url).origin;
 
-        this._container.append(iframe); // route packets
+      this._container.append(iframe); // route packets
 
 
-        var unsub = this.bus.subscribe([constants/* PACKET_SEND */.RaS, constants/* PACKET_PROCESS */.wY8], pkt => {
-          var _iframe$contentWindow;
+      var unsub = this.bus.subscribe([constants/* PACKET_SEND */.RaS, constants/* PACKET_PROCESS */.wY8], pkt => {
+        var _iframe$contentWindow;
 
-          if (pkt.sender === id) return;
-          var msg = {
-            type: "messagepacket",
-            channel: "jacdac",
-            broadcast: false,
-            data: pkt.toBuffer(),
-            sender: pkt.sender
-          };
-          (_iframe$contentWindow = iframe.contentWindow) === null || _iframe$contentWindow === void 0 ? void 0 : _iframe$contentWindow.postMessage(msg, origin);
-        });
-        sim.unsub = unsub;
+        if (pkt.sender === id) return;
+        var msg = {
+          type: "messagepacket",
+          channel: "jacdac",
+          broadcast: false,
+          data: pkt.toBuffer(),
+          sender: pkt.sender
+        };
+        (_iframe$contentWindow = iframe.contentWindow) === null || _iframe$contentWindow === void 0 ? void 0 : _iframe$contentWindow.postMessage(msg, origin);
       });
-    }
-
+      sim.unsub = unsub;
+    });
     this.emit(constants/* CHANGE */.Ver);
   };
 
@@ -48506,7 +48523,7 @@ var HostedSimulatorManager = /*#__PURE__*/function (_JDClient) {
       var _this$_container;
 
       this._container = value;
-      console.debug("hosted sim: container " + ((_this$_container = this._container) === null || _this$_container === void 0 ? void 0 : _this$_container.id));
+      console.debug("hostedsims: container " + ((_this$_container = this._container) === null || _this$_container === void 0 ? void 0 : _this$_container.id));
       this.syncDOM();
     }
   }, {
@@ -48519,7 +48536,6 @@ var HostedSimulatorManager = /*#__PURE__*/function (_JDClient) {
   return HostedSimulatorManager;
 }(client/* default */.Z); // eslint-disable-next-line react/prop-types
 
-
 var HostedSimulatorsProvider = _ref => {
   var {
     children
@@ -48529,29 +48545,16 @@ var HostedSimulatorsProvider = _ref => {
   } = (0,react.useContext)(Context/* default */.Z);
   var containerRef = (0,react.useRef)();
   var containerId = (0,react_use_id_hook_esm/* useId */.Me)();
-  var manager = useClient(() => new HostedSimulatorManager(bus));
-  var classes = useStyles();
-  var simulators = (0,useChange/* default */.Z)(manager, _ => _.simulators);
-
-  var addHostedSimulator = definition => manager.addSimulator(definition);
-
-  var removeHostedSimulator = id => manager.removeSimulator(id);
-
-  var clearHostedSimulators = () => manager.clear(); // new container
-
+  var hostedSimulators = useClient(() => new HostedSimulatorManager(bus));
+  var classes = useStyles(); // new container
 
   (0,react.useEffect)(() => {
-    manager.container = containerRef.current;
-    return () => manager.container = undefined;
-  }, []); // final cleanup
-
-  (0,react.useEffect)(() => () => manager.clear(), []);
+    hostedSimulators.container = containerRef.current;
+    return () => hostedSimulators.container = undefined;
+  }, []);
   return /*#__PURE__*/react.createElement(HostedSimulatorsContext.Provider, {
     value: {
-      simulators,
-      addHostedSimulator,
-      removeHostedSimulator,
-      clearHostedSimulators
+      hostedSimulators
     }
   }, children, /*#__PURE__*/react.createElement("div", {
     id: containerId,
@@ -51853,22 +51856,24 @@ function dashboardServiceWeight(service) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ DeviceActions; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(15861);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(15861);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _material_ui_icons_Fingerprint__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(52995);
-/* harmony import */ var _material_ui_icons_Refresh__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(89713);
+/* harmony import */ var _material_ui_icons_Fingerprint__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(52995);
+/* harmony import */ var _material_ui_icons_Refresh__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(89713);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20392);
 /* harmony import */ var _CmdButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(50092);
 /* harmony import */ var _hooks_useServiceProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(63793);
-/* harmony import */ var _material_ui_icons_Close__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(29181);
-/* harmony import */ var _material_ui_icons_Settings__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(88237);
+/* harmony import */ var _material_ui_icons_Close__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(29181);
+/* harmony import */ var _material_ui_icons_Settings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(88237);
 /* harmony import */ var _jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(73512);
 /* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(54774);
 /* harmony import */ var gatsby_link__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(38037);
+/* harmony import */ var _HostedSimulatorsContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(62779);
 
 
 // tslint:disable-next-line: no-submodule-imports match-default-export-name
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
 
 
@@ -51891,7 +51896,14 @@ function DeviceActions(props) {
   var {
     bus
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z);
+  var {
+    hostedSimulators
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_HostedSimulatorsContext__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .ZP);
+  var {
+    deviceId
+  } = device;
   var provider = (0,_hooks_useServiceProvider__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)(device);
+  var isHostedSimulator = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(hostedSimulators, _ => _ === null || _ === void 0 ? void 0 : _.isSimulator(deviceId));
   var settings = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(device, _ => {
     var _$services;
 
@@ -51901,7 +51913,7 @@ function DeviceActions(props) {
   });
 
   var handleIdentify = /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* () {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z)(function* () {
       yield device.identify();
     });
 
@@ -51911,7 +51923,7 @@ function DeviceActions(props) {
   }();
 
   var handleReset = /*#__PURE__*/function () {
-    var _ref2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* () {
+    var _ref2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z)(function* () {
       yield device.reset();
     });
 
@@ -51921,8 +51933,10 @@ function DeviceActions(props) {
   }();
 
   var handleStop = /*#__PURE__*/function () {
-    var _ref3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* () {
+    var _ref3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z)(function* () {
+      hostedSimulators.removeSimulator(deviceId);
       bus.removeServiceProvider(provider);
+      bus.removeDevice(deviceId);
     });
 
     return function handleStop() {
@@ -51931,7 +51945,7 @@ function DeviceActions(props) {
   }();
 
   var handleSettings = /*#__PURE__*/function () {
-    var _ref4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(function* () {
+    var _ref4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z)(function* () {
       (0,gatsby_link__WEBPACK_IMPORTED_MODULE_6__/* .navigate */ .c4)("/tools/settings");
     });
 
@@ -51940,30 +51954,30 @@ function DeviceActions(props) {
     };
   }();
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, showStop && provider && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CmdButton__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, showStop && (provider || isHostedSimulator) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CmdButton__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     trackName: "device.stop",
     size: "small",
     title: "stop simulator",
     onClick: handleStop,
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Close__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Close__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null)
   }), !hideIdentity && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CmdButton__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     trackName: "device.identify",
     size: "small",
     title: "identify",
     onClick: handleIdentify,
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Fingerprint__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Fingerprint__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, null)
   }), showSettings && settings && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CmdButton__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     trackName: "device.settings",
     size: "small",
     title: "settings",
     onClick: handleSettings,
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Settings__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, null)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Settings__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, null)
   }), showReset && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CmdButton__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     trackName: "device.reset",
     size: "small",
     title: "reset",
     onClick: handleReset,
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Refresh__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, null)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Refresh__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, null)
   }), children);
 }
 
@@ -68914,7 +68928,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "f7b9945014dd6d0778d7fa01c5c4eef2973923d2";
+var sha = "ca8155f10ae3d2d030e5dd894076ee119427f51a";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69711,7 +69725,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "f7b9945014dd6d0778d7fa01c5c4eef2973923d2";
+  var sha = "ca8155f10ae3d2d030e5dd894076ee119427f51a";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71817,7 +71831,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "f7b9945014dd6d0778d7fa01c5c4eef2973923d2";
+    var sha = "ca8155f10ae3d2d030e5dd894076ee119427f51a";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -76996,19 +77010,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     var i = this._serviceProviders.indexOf(provider);
 
     if (i > -1) {
-      // remove device as well
-      var devi = this._devices.findIndex(d => d.deviceId === provider.deviceId);
-
-      if (devi > -1) {
-        var dev = this._devices[devi];
-
-        this._devices.splice(devi, 1);
-
-        dev.disconnect();
-        this.emit(constants/* DEVICE_DISCONNECT */.O55, dev);
-        this.emit(constants/* DEVICE_CHANGE */.RoP, dev);
-      } // remove host
-
+      this.removeDevice(provider.deviceId); // remove host
 
       this._serviceProviders.splice(i, 1);
 
@@ -77016,6 +77018,27 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
       this.emit(constants/* SERVICE_PROVIDER_REMOVED */.$dk, provider); // removed host
 
       this.emit(constants/* CHANGE */.Ver);
+    }
+  }
+  /**
+   * Remove a device client by identifier
+   * @param deviceId
+   * @category Devices
+   */
+  ;
+
+  _proto.removeDevice = function removeDevice(deviceId) {
+    // remove device as well
+    var devi = this._devices.findIndex(d => d.deviceId === deviceId);
+
+    if (devi > -1) {
+      var dev = this._devices[devi];
+
+      this._devices.splice(devi, 1);
+
+      dev.disconnect();
+      this.emit(constants/* DEVICE_DISCONNECT */.O55, dev);
+      this.emit(constants/* DEVICE_CHANGE */.RoP, dev);
     }
   }
   /**
@@ -87694,4 +87717,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-30707f8284617e5370e0.js.map
+//# sourceMappingURL=app-71d40bcf922c43d1834f.js.map

@@ -347,6 +347,8 @@ function MakeCodeAddBlocksButton() {
 }
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
 var flags = __webpack_require__(21258);
+// EXTERNAL MODULE: ./src/components/HostedSimulatorsContext.tsx + 1 modules
+var HostedSimulatorsContext = __webpack_require__(62779);
 ;// CONCATENATED MODULE: ./src/components/dashboard/Dashboard.tsx
 
 var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators", "showStartRoleSimulators", "deviceSort", "deviceFilter"];
@@ -362,6 +364,7 @@ var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators"
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
 
 
@@ -402,16 +405,20 @@ function Dashboard(props) {
     bus
   } = (0,react.useContext)(Context/* default */.Z);
   var {
+    hostedSimulators
+  } = (0,react.useContext)(HostedSimulatorsContext/* default */.ZP);
+  var {
     toggleShowDeviceHostsDialog
   } = (0,react.useContext)(AppContext/* default */.ZP);
   var devices = (0,useDevices/* default */.Z)({
     announced: true,
     ignoreInfrastructure: !flags/* default.diagnostics */.Z.diagnostics
   }).filter(deviceFilter).sort(deviceSort);
-  var [simulators, physicals] = (0,utils/* splitFilter */.ap)(devices, d => !!bus.findServiceProvider(d.deviceId));
+  var [simulators, physicals] = (0,utils/* splitFilter */.ap)(devices, d => !!bus.findServiceProvider(d.deviceId) || hostedSimulators.isSimulator(d.deviceId));
   var roleManager = (0,useRoleManagerClient/* default */.Z)();
 
   var handleClearSimulators = () => {
+    hostedSimulators === null || hostedSimulators === void 0 ? void 0 : hostedSimulators.clear();
     bus.serviceProviders().forEach(dev => bus.removeServiceProvider(dev));
   };
 
@@ -613,4 +620,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-9c386038784716843b18.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-83f3887edff334b3c2ac.js.map
