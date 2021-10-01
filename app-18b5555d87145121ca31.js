@@ -48337,6 +48337,11 @@ function hostedSimulatorDefinitions() {
   // TODO: support in iframe as well
   if ((0,_jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_8__/* .inIFrame */ .H)()) return [];
   return [{
+    name: "micro:bit V2 Out-of-the-Box",
+    url: "https://microsoft.github.io/pxt-jacdac/?tool=microbit-oob",
+    width: "20rem",
+    height: "14rem"
+  }, {
     name: "Azure IoT Uploader",
     url: "https://microsoft.github.io/pxt-jacdac/",
     width: "20rem",
@@ -68870,7 +68875,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "be886028c348db2c5d2af69048ad90ae882d9488";
+var sha = "01ff74207a7d0e21d011b1fe8dd7e7012d91a9ed";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69695,7 +69700,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "be886028c348db2c5d2af69048ad90ae882d9488";
+  var sha = "01ff74207a7d0e21d011b1fe8dd7e7012d91a9ed";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71801,7 +71806,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "be886028c348db2c5d2af69048ad90ae882d9488";
+    var sha = "01ff74207a7d0e21d011b1fe8dd7e7012d91a9ed";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87687,4 +87692,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-1d5e47c90124c553d2a8.js.map
+//# sourceMappingURL=app-18b5555d87145121ca31.js.map
