@@ -448,7 +448,7 @@ function Dashboard(props) {
   }, /*#__PURE__*/react.createElement(SimulateDeviceAlert, null))), /*#__PURE__*/react.createElement(DeviceGroup, Object.assign({
     title: "Devices",
     action: showConnect && /*#__PURE__*/react.createElement(ConnectButtons/* default */.Z, {
-      full: false,
+      full: "disconnected",
       transparent: true
     }),
     devices: physicals
@@ -621,4 +621,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-4fef460ed1f396e2b934.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-41f6634edca8f4582a7a.js.map

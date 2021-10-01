@@ -50664,6 +50664,7 @@ function ConnectButton(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ ConnectButtons; }
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(45987);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _ConnectButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2092);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20392);
@@ -50673,6 +50674,8 @@ function ConnectButton(props) {
 /* harmony import */ var _ui_Button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2636);
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(84377);
 /* harmony import */ var _icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(36656);
+
+var _excluded = ["full"];
 
 
 
@@ -50695,7 +50698,7 @@ function DisconnectedButton(props) {
     transparent,
     className
   } = props;
-  var small = full !== true && (!full || mobile);
+  var small = !full || mobile;
   var trackName = "transport.connect.start";
   if (small) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     title: "Connect to a physical device",
@@ -50718,6 +50721,12 @@ function ConnectButtons(props) {
   var {
     bus
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z);
+
+  var {
+    full
+  } = props,
+      rest = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z)(props, _excluded);
+
   var {
     transports
   } = bus;
@@ -50726,7 +50735,9 @@ function ConnectButtons(props) {
   return disconnected ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DisconnectedButton, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, transports.filter(tr => !tr.disconnected).map(transport => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ConnectButton__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, Object.assign({
     key: transport.type,
     transport: transport
-  }, props))));
+  }, rest, {
+    full: full === "always"
+  }))));
 }
 
 /***/ }),
@@ -68875,7 +68886,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "e333f8d0c0db1daacd6015b37cad7751ef467cd0";
+var sha = "455db6fc8565cef310efb665a2e23117af9f0d02";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69700,7 +69711,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "e333f8d0c0db1daacd6015b37cad7751ef467cd0";
+  var sha = "455db6fc8565cef310efb665a2e23117af9f0d02";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71806,7 +71817,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "e333f8d0c0db1daacd6015b37cad7751ef467cd0";
+    var sha = "455db6fc8565cef310efb665a2e23117af9f0d02";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87692,4 +87703,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-e9b3f810527491a0c0bd.js.map
+//# sourceMappingURL=app-7a1c57b2cb6df0f31e2c.js.map
