@@ -48340,7 +48340,7 @@ function hostedSimulatorDefinitions() {
     name: "micro:bit V2 Out-of-the-Box",
     url: "https://microsoft.github.io/pxt-jacdac/?tool=microbit-oob",
     width: "20rem",
-    height: "14rem"
+    height: "17.5rem"
   }, {
     name: "Azure IoT Uploader",
     url: "https://microsoft.github.io/pxt-jacdac/",
@@ -68875,7 +68875,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "01ff74207a7d0e21d011b1fe8dd7e7012d91a9ed";
+var sha = "e333f8d0c0db1daacd6015b37cad7751ef467cd0";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69700,7 +69700,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "01ff74207a7d0e21d011b1fe8dd7e7012d91a9ed";
+  var sha = "e333f8d0c0db1daacd6015b37cad7751ef467cd0";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71806,7 +71806,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "01ff74207a7d0e21d011b1fe8dd7e7012d91a9ed";
+    var sha = "e333f8d0c0db1daacd6015b37cad7751ef467cd0";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87692,4 +87692,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-18b5555d87145121ca31.js.map
+//# sourceMappingURL=app-e9b3f810527491a0c0bd.js.map
