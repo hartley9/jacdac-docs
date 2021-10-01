@@ -25,6 +25,13 @@ var _excluded = ["components"];
 
 
 var _frontmatter = {};
+
+var makeShortcode = name => function MDXDefaultShortcode(props) {
+  console.warn("Component " + name + " was not imported, exported, or provided by MDXProvider as global scope");
+  return (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("div", props);
+};
+
+var DeviceImage = makeShortcode("DeviceImage");
 var layoutProps = {
   _frontmatter
 };
@@ -60,7 +67,11 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Accelerometer"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This extension supports 3-axis accelerometers.\nThe current forces acting on the accelerometer are\nread via the methods 'x', 'y', and 'z', which return\nvalues in earth gravities (g)."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "A Jacdac accelerometer module translate acceleration values as follows:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("thead", {
+  }))), "Accelerometer"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This extension supports 3-axis accelerometers.\nThe current forces acting on the accelerometer are\nread via the methods 'x', 'y', and 'z', which return\nvalues in earth gravities (g)."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(DeviceImage, {
+    id: "microsoft-research-jmaccelerometer30v10",
+    size: "catalog",
+    mdxType: "DeviceImage"
+  }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "A Jacdac accelerometer module translate acceleration values as follows:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("thead", {
     parentName: "table"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "thead"
@@ -123,7 +134,7 @@ function MDXContent(_ref) {
   }, "0")))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program uses the 'x' and 'y' forces to implement a simple\nusing the micro:bit (show a happy face if near level; otherwise,\nshow sad or angry face):"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"basic.forever(function() {\\n    let x = modules.accelerometer1.x() * 100\\n    let y = modules.accelerometer1.y() * 100\\n    if (Math.abs(x) > 32) {\\n        basic.showIcon(IconNames.Sad)        \\n    } else if (Math.abs(y) > 32) {\\n        basic.showIcon(IconNames.Angry)        \\n    } else {\\n        basic.showIcon(IconNames.Happy)        \\n    }\\n})\",\"rendered\":{\"req\":{\"code\":\"basic.forever(function() {\\n    let x = modules.accelerometer1.x() * 100\\n    let y = modules.accelerometer1.y() * 100\\n    if (Math.abs(x) > 32) {\\n        basic.showIcon(IconNames.Sad)        \\n    } else if (Math.abs(y) > 32) {\\n        basic.showIcon(IconNames.Angry)        \\n    } else {\\n        basic.showIcon(IconNames.Happy)        \\n    }\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.1,jacdac-accelerometer=github:microsoft/pxt-jacdac/accelerometer#v0.7.1\"},\"type\":\"renderblocks\",\"id\":\"583679754970ecdd96cba10b79469d25\"},\"url\":\"/images/makecode/583679754970ecdd96cba10b79469d25.png\",\"width\":580,\"height\":586}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"basic.forever(function() {\\n    let x = modules.accelerometer1.x() * 100\\n    let y = modules.accelerometer1.y() * 100\\n    if (Math.abs(x) > 32) {\\n        basic.showIcon(IconNames.Sad)\\n    } else if (Math.abs(y) > 32) {\\n        basic.showIcon(IconNames.Angry)\\n    } else {\\n        basic.showIcon(IconNames.Happy)\\n    }\\n})\",\"rendered\":{\"req\":{\"code\":\"basic.forever(function() {\\n    let x = modules.accelerometer1.x() * 100\\n    let y = modules.accelerometer1.y() * 100\\n    if (Math.abs(x) > 32) {\\n        basic.showIcon(IconNames.Sad)\\n    } else if (Math.abs(y) > 32) {\\n        basic.showIcon(IconNames.Angry)\\n    } else {\\n        basic.showIcon(IconNames.Happy)\\n    }\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.1,jacdac-accelerometer=github:microsoft/pxt-jacdac/accelerometer#v0.7.1\"},\"type\":\"renderblocks\",\"id\":\"2869bdf0cc36dcc5567920a55c64a4c4\"},\"url\":\"/images/makecode/2869bdf0cc36dcc5567920a55c64a4c4.png\",\"width\":580,\"height\":586}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "events",
     "style": {
       "position": "relative"
@@ -149,7 +160,7 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("em", {
     parentName: "li"
-  }, "tilt_up, tilt_down, tilt_left, tilt_right"), ":  emitted when accelerometer is tilted in the given direction."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "tilt_up, tilt_down, tilt_left, tilt_right"), ": emitted when accelerometer is tilted in the given direction."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("em", {
     parentName: "li"
@@ -221,4 +232,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-accelerometer-mdx-34ff7c64b9ce083f24cf.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-accelerometer-mdx-211a04a8a9c61efdafb4.js.map

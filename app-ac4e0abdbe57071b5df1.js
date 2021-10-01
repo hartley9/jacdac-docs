@@ -52419,8 +52419,8 @@ function DeviceName(props) {
 /* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45656);
 
 
-function useDeviceImage(specification, suffix) {
-  return specification && (0,gatsby_link__WEBPACK_IMPORTED_MODULE_0__/* .withPrefix */ .dq)("images/devices/" + (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .identifierToUrlPath */ .uM)(specification.id) + (suffix ? "." + suffix : "") + ".jpg");
+function useDeviceImage(specification, size) {
+  return specification && (0,gatsby_link__WEBPACK_IMPORTED_MODULE_0__/* .withPrefix */ .dq)("images/devices/" + (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .identifierToUrlPath */ .uM)(specification.id) + (size ? "." + size : "") + ".jpg");
 }
 
 /***/ }),
@@ -68886,7 +68886,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "a3c8aba4ed094e3133003a0dc35be1b779969fbf";
+var sha = "47b2ebc06adb611cb048c2c7b9afb7812d0f23a2";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69711,7 +69711,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a3c8aba4ed094e3133003a0dc35be1b779969fbf";
+  var sha = "47b2ebc06adb611cb048c2c7b9afb7812d0f23a2";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -69781,6 +69781,8 @@ var _TraceList = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* impo
 
 var _SpecificationUnitList = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 4181).then(__webpack_require__.bind(__webpack_require__, 54181)));
 
+var _DeviceImage = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 8058).then(__webpack_require__.bind(__webpack_require__, 98058)));
+
 function useMdxComponents() {
   var theme = (0,useTheme/* default */.Z)(); // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
@@ -69813,7 +69815,8 @@ function useMdxComponents() {
       displayPrint: "none"
     }, /*#__PURE__*/react.createElement(_RandomGenerator, props))),
     TraceList: props => /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(_TraceList, props)),
-    SpecificationUnitList: props => /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(_SpecificationUnitList, props))
+    SpecificationUnitList: props => /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(_SpecificationUnitList, props)),
+    DeviceImage: props => /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(_DeviceImage, props))
   }), []);
   return mdxComponents;
 }
@@ -71817,7 +71820,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "a3c8aba4ed094e3133003a0dc35be1b779969fbf";
+    var sha = "47b2ebc06adb611cb048c2c7b9afb7812d0f23a2";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87703,4 +87706,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-1fdce90a04c544ee837b.js.map
+//# sourceMappingURL=app-ac4e0abdbe57071b5df1.js.map
