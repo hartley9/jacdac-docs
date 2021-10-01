@@ -37965,6 +37965,20 @@ var Packet = /*#__PURE__*/function () {
     return pkt;
   };
 
+  _proto.cloneForDevice = function cloneForDevice(deviceId, serviceIndex) {
+    var idb = (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .fromHex */ .H_)(deviceId);
+    if (idb.length != 8) (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .throwError */ ._y)("Invalid id");
+    if (!this.isMultiCommand) (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .throwError */ ._y)("Must be multi command");
+    var pkt = Packet.fromBinary(this.toBuffer(), this.timestamp);
+    pkt.frameFlags &= ~_constants__WEBPACK_IMPORTED_MODULE_1__/* .JD_FRAME_FLAG_IDENTIFIER_IS_SERVICE_CLASS */ .Amr;
+
+    pkt._header.set(idb, 4);
+
+    pkt._decoded = undefined;
+    pkt.serviceIndex = serviceIndex;
+    return pkt;
+  };
+
   _proto.compress = function compress(stripped) {
     if (stripped.length == 0) return;
     var sz = -4;
@@ -40094,9 +40108,7 @@ var JDServerServiceProvider = /*#__PURE__*/function (_JDServiceProvider) {
       for (var h of this._services) {
         if (h.serviceClass == multiCommandClass) {
           // pretend it's directly addressed to us
-          var npkt = pkt.clone();
-          npkt.deviceIdentifier = this.deviceId;
-          npkt.serviceIndex = h.serviceIndex;
+          var npkt = pkt.cloneForDevice(this.deviceId, h.serviceIndex);
           h.handlePacket(npkt);
         }
       }
@@ -68928,7 +68940,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "ca8155f10ae3d2d030e5dd894076ee119427f51a";
+var sha = "afcb9f0bb25e8aab60cb7c6d8f03b8a9fa5c73c9";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69725,7 +69737,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "ca8155f10ae3d2d030e5dd894076ee119427f51a";
+  var sha = "afcb9f0bb25e8aab60cb7c6d8f03b8a9fa5c73c9";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71831,7 +71843,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "ca8155f10ae3d2d030e5dd894076ee119427f51a";
+    var sha = "afcb9f0bb25e8aab60cb7c6d8f03b8a9fa5c73c9";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -80125,7 +80137,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.18.3"};
+var package_namespaceObject = {"i8":"1.18.5"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
@@ -87717,4 +87729,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-71d40bcf922c43d1834f.js.map
+//# sourceMappingURL=app-2692058cacd9f401175a.js.map
