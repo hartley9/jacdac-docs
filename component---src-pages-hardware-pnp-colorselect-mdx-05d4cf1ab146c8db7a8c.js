@@ -110,15 +110,89 @@ function MDXContent(_ref) {
     },
     "loading": "lazy",
     "decoding": "async"
-  }), "\n    ")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "In the above network, the cable with the white end points provides the interface to the\nrest of the system (including the brain module, with the logic to compute the RGB color\nfrom the positions of the sliders, and set the RGB LED appropriately whenever the slider\npositions change).  So we have a total of five cables for this module. "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To make the above network into a module, we use some cardboard and masking tape,\nwith the hub taped on the backside:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+  }), "\n    ")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "In the above network, the cable with the white end points provides the interface to the\nrest of the system (including the brain module, with the logic to compute the RGB color\nfrom the positions of the sliders, and set the RGB LED appropriately whenever the slider\npositions change).  So we have a total of five cables for this module. "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To make the above network into a module, we use some cardboard and masking tape,\nwith the hub taped on the backside:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
     parentName: "p",
-    "src": "./cardboard.jpg",
-    "alt": "color selector on cardboard"
-  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Other wirings are possible, as shown in the linear arrangement below, which only\nrequires four cables:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+    "className": "gatsby-resp-image-wrapper",
+    "style": {
+      "position": "relative",
+      "display": "block",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "maxWidth": "800px"
+    }
+  }, "\n      ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+    parentName: "span",
+    "className": "gatsby-resp-image-background-image",
+    "style": {
+      "paddingBottom": "140.5%",
+      "position": "relative",
+      "bottom": "0",
+      "left": "0",
+      "backgroundImage": "url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAcABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAIBAwQF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAHalFGb1xCzM8PDoELP/8QAHhAAAgEEAwEAAAAAAAAAAAAAAQIAAwQRExASIjP/2gAIAQEAAQUCqsANspt3W4b0pEt/jjJ1RPKmJnj/xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAwEBPwEp/8QAGREBAAIDAAAAAAAAAAAAAAAAAQADEBEh/9oACAECAQE/AXeGsYcJ/8QAHRAAAgICAwEAAAAAAAAAAAAAABEBEAIhMkFRkf/aAAgBAQAGPwKH6ay+jMYqGdaOMUxua//EAB0QAAMAAgMBAQAAAAAAAAAAAAABESFBMVFxYaH/2gAIAQEAAT8hU7YfaCZLkEeZRD5mf0w37L2I+0i4xtKaas8koUnwTEONFI/lop//2gAMAwEAAgADAAAAEBzfcf/EABgRAQEAAwAAAAAAAAAAAAAAAAEAEBEh/9oACAEDAQE/EDWBk9v/xAAYEQEBAQEBAAAAAAAAAAAAAAABABEhMf/aAAgBAgEBPxAt0cjzs0rDAv/EAB8QAQEAAQMFAQAAAAAAAAAAAAERACExQVFhgaHwkf/aAAgBAQABPxBhRMyjB5O8yQKdiFfJHzgDs8HXILQIE+dM52WIW/DGmICe8OlL5I6j79YVYg4Ab9s1Fa1rjEEwW5ydHBUek1h+Jirvn//Z')",
+      "backgroundSize": "cover",
+      "display": "block"
+    }
+  }), "\n  ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+    parentName: "span",
+    "className": "gatsby-resp-image-image",
+    "alt": "color selector on cardboard",
+    "title": "color selector on cardboard",
+    "src": "/jacdac-docs/static/b86ee29bdb077e22fae83bbd58ff1186/4b190/cardboard.jpg",
+    "srcSet": ["/jacdac-docs/static/b86ee29bdb077e22fae83bbd58ff1186/e07e9/cardboard.jpg 200w", "/jacdac-docs/static/b86ee29bdb077e22fae83bbd58ff1186/066f9/cardboard.jpg 400w", "/jacdac-docs/static/b86ee29bdb077e22fae83bbd58ff1186/4b190/cardboard.jpg 800w", "/jacdac-docs/static/b86ee29bdb077e22fae83bbd58ff1186/e5166/cardboard.jpg 1200w", "/jacdac-docs/static/b86ee29bdb077e22fae83bbd58ff1186/b17f8/cardboard.jpg 1600w", "/jacdac-docs/static/b86ee29bdb077e22fae83bbd58ff1186/9e3cd/cardboard.jpg 2039w"],
+    "sizes": "(max-width: 800px) 100vw, 800px",
+    "style": {
+      "width": "100%",
+      "height": "100%",
+      "margin": "0",
+      "verticalAlign": "middle",
+      "position": "absolute",
+      "top": "0",
+      "left": "0"
+    },
+    "loading": "lazy",
+    "decoding": "async"
+  }), "\n    ")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Other wirings are possible, as shown in the linear arrangement below, which only\nrequires four cables:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
     parentName: "p",
-    "src": "./alternate",
-    "alt": "color selector on cardboard"
-  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "It's important to note that no code changes are needed between the different\nways to wire up the color selector."));
+    "className": "gatsby-resp-image-wrapper",
+    "style": {
+      "position": "relative",
+      "display": "block",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "maxWidth": "800px"
+    }
+  }, "\n      ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+    parentName: "span",
+    "className": "gatsby-resp-image-background-image",
+    "style": {
+      "paddingBottom": "143.49999999999997%",
+      "position": "relative",
+      "bottom": "0",
+      "left": "0",
+      "backgroundImage": "url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAdABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEAv/EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAAGrc7SoMAwvSQ8wT//EABsQAAICAwEAAAAAAAAAAAAAAAABAiEQESIx/9oACAEBAAEFAr3birSl1vFI0RfJZ4f/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAeEAABBAIDAQAAAAAAAAAAAAABAAIQEVFyITFBYf/aAAgBAQAGPwIAerBCtM2TtuYaMdI/Zq4//8QAHBABAAIDAQEBAAAAAAAAAAAAAQARITFBUWFx/9oACAEBAAE/IdGz14QtF2qx6Sgepa2QxPoErfi0XBRMKu2mAov7iovfYZ3MKG3ekMKJ/9oADAMBAAIAAwAAABDn6c7/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAgEAEAAgICAQUAAAAAAAAAAAABABEhQVGxcTFhgZHx/9oACAEBAAE/EDIS2aWEZXoljWBPI6cfc1NQa4joqnQ1YHcL0aVz2T8mGDUcO1TYvfNMXvK/MromocryMPUoaAnDDKqehZDzuEAKCf/Z')",
+      "backgroundSize": "cover",
+      "display": "block"
+    }
+  }), "\n  ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+    parentName: "span",
+    "className": "gatsby-resp-image-image",
+    "alt": "color selector on cardboard",
+    "title": "color selector on cardboard",
+    "src": "/jacdac-docs/static/7c130fb897d52f00bfa89b0f44f1bcc0/4b190/alternate.jpg",
+    "srcSet": ["/jacdac-docs/static/7c130fb897d52f00bfa89b0f44f1bcc0/e07e9/alternate.jpg 200w", "/jacdac-docs/static/7c130fb897d52f00bfa89b0f44f1bcc0/066f9/alternate.jpg 400w", "/jacdac-docs/static/7c130fb897d52f00bfa89b0f44f1bcc0/4b190/alternate.jpg 800w", "/jacdac-docs/static/7c130fb897d52f00bfa89b0f44f1bcc0/e5166/alternate.jpg 1200w", "/jacdac-docs/static/7c130fb897d52f00bfa89b0f44f1bcc0/b17f8/alternate.jpg 1600w", "/jacdac-docs/static/7c130fb897d52f00bfa89b0f44f1bcc0/cee9d/alternate.jpg 2522w"],
+    "sizes": "(max-width: 800px) 100vw, 800px",
+    "style": {
+      "width": "100%",
+      "height": "100%",
+      "margin": "0",
+      "verticalAlign": "middle",
+      "position": "absolute",
+      "top": "0",
+      "left": "0"
+    },
+    "loading": "lazy",
+    "decoding": "async"
+  }), "\n    ")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "It's important to note that no code changes are needed between the different\nways to wire up the color selector."));
 }
 ;
 MDXContent.isMDXComponent = true;
@@ -144,4 +218,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-hardware-pnp-colorselect-mdx-a20cc601f13aba502577.js.map
+//# sourceMappingURL=component---src-pages-hardware-pnp-colorselect-mdx-05d4cf1ab146c8db7a8c.js.map
