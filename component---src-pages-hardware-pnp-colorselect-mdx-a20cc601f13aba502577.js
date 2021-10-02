@@ -39,14 +39,14 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
-    "id": "color-selector-composite-module",
+    "id": "color-selector-module",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h1",
-    "href": "#color-selector-composite-module",
-    "aria-label": "color selector composite module permalink",
+    "href": "#color-selector-module",
+    "aria-label": "color selector module permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -60,7 +60,7 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Color Selector (Composite) Module"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following pictures show the power of the plug-and-play paradigm\nfor microcontrollers.  Our scenario is to allow the\nend-user to create a RGB color."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "For this scenario, we will use three ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }))), "Color Selector Module"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following pictures show the power of the plug-and-play paradigm\nfor microcontrollers.  Our scenario is to allow the\nend-user to create a RGB color."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "For this scenario, we will use three ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "/jacdac-docs/devices/microsoft/research/jmslider49v11"
   }, "JM Slider v1.1"), "\nmodules, which implement the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
@@ -144,4 +144,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-hardware-pnp-colorselect-mdx-3ba72f7a011cc69f0e81.js.map
+//# sourceMappingURL=component---src-pages-hardware-pnp-colorselect-mdx-a20cc601f13aba502577.js.map
