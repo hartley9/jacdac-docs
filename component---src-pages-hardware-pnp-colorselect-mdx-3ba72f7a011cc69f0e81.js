@@ -1,7 +1,7 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[9912],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[2731],{
 
-/***/ 60074:
+/***/ 15178:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -69,17 +69,54 @@ function MDXContent(_ref) {
   }, "potentiometer service"), ", to adjust\nthe R, G, and B values and\none ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "/jacdac-docs/devices/microsoft/research/jmsinglergbled42v01"
-  }, "JM Single RGB LED v0.1"), " module\nto display the resulting color."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Because Jacdac is a true bus, there are multiple ways to wire this composite module from\nthe atomic components. Our first version of the module uses a passive Jacdac hub as shown\nbelow:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+  }, "JM Single RGB LED v0.1"), " module\nto display the resulting color."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Because Jacdac is a true bus, there are multiple ways to wire this composite module from\nthe atomic components. Our first version of the module uses a passive Jacdac hub as shown\nbelow:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
     parentName: "p",
-    "src": "/jacdac-docs/static/hubModule-0503fdaf35a712386982828541870d3c.jpg",
-    "alt": "wiring color selector with hub"
-  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "In the above network, the cable with the white end points provides the interface to the\nrest of the system (including the brain module, with the logic to compute the RGB color\nfrom the positions of the sliders, and set the RGB LED appropriately whenever the slider\npositions change).  So we have a total of five cables for this module. "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To make the above network into a module, we use some cardboard and masking tape,\nwith the hub taped on the backside:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+    "className": "gatsby-resp-image-wrapper",
+    "style": {
+      "position": "relative",
+      "display": "block",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "maxWidth": "800px"
+    }
+  }, "\n      ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+    parentName: "span",
+    "className": "gatsby-resp-image-background-image",
+    "style": {
+      "paddingBottom": "84.5%",
+      "position": "relative",
+      "bottom": "0",
+      "left": "0",
+      "backgroundImage": "url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDAf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAdNualrEahQP/8QAGhABAAIDAQAAAAAAAAAAAAAAAQACEBESIf/aAAgBAQABBQJ1VKzmeVRetMrn/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAHBAAAgICAwAAAAAAAAAAAAAAATEAEQIhEBIg/9oACAEBAAY/AtiLXDbEHXGhHXj/xAAeEAACAgICAwAAAAAAAAAAAAAAARExIUEQUWGRwf/aAAgBAQABPyG0HPoW8yXkRWizDsbHkRmW3TF8hFjfH//aAAwDAQACAAMAAAAQgwAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAIRABAAIBBAEFAAAAAAAAAAAAAQARMSFBUWEQcYGRobH/2gAIAQEAAT8QQBvBCh73UcoxscdjxAtQ4PNX2xw/sLEpHo6SjvWJtRZ3UPmYvSGXj//Z')",
+      "backgroundSize": "cover",
+      "display": "block"
+    }
+  }), "\n  ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+    parentName: "span",
+    "className": "gatsby-resp-image-image",
+    "alt": "wiring color selector with hub",
+    "title": "wiring color selector with hub",
+    "src": "/jacdac-docs/static/0503fdaf35a712386982828541870d3c/4b190/hub.jpg",
+    "srcSet": ["/jacdac-docs/static/0503fdaf35a712386982828541870d3c/e07e9/hub.jpg 200w", "/jacdac-docs/static/0503fdaf35a712386982828541870d3c/066f9/hub.jpg 400w", "/jacdac-docs/static/0503fdaf35a712386982828541870d3c/4b190/hub.jpg 800w", "/jacdac-docs/static/0503fdaf35a712386982828541870d3c/e5166/hub.jpg 1200w", "/jacdac-docs/static/0503fdaf35a712386982828541870d3c/b17f8/hub.jpg 1600w", "/jacdac-docs/static/0503fdaf35a712386982828541870d3c/0234b/hub.jpg 3063w"],
+    "sizes": "(max-width: 800px) 100vw, 800px",
+    "style": {
+      "width": "100%",
+      "height": "100%",
+      "margin": "0",
+      "verticalAlign": "middle",
+      "position": "absolute",
+      "top": "0",
+      "left": "0"
+    },
+    "loading": "lazy",
+    "decoding": "async"
+  }), "\n    ")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "In the above network, the cable with the white end points provides the interface to the\nrest of the system (including the brain module, with the logic to compute the RGB color\nfrom the positions of the sliders, and set the RGB LED appropriately whenever the slider\npositions change).  So we have a total of five cables for this module. "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To make the above network into a module, we use some cardboard and masking tape,\nwith the hub taped on the backside:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
     parentName: "p",
-    "src": "/jacdac-docs/static/hubCardboard-b86ee29bdb077e22fae83bbd58ff1186.jpg",
+    "src": "./cardboard.jpg",
     "alt": "color selector on cardboard"
   })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Other wirings are possible, as shown in the linear arrangement below, which only\nrequires four cables:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
     parentName: "p",
-    "src": "/jacdac-docs/static/linear-7c130fb897d52f00bfa89b0f44f1bcc0.jpg",
+    "src": "./alternate",
     "alt": "color selector on cardboard"
   })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "It's important to note that no code changes are needed between the different\nways to wire up the color selector."));
 }
@@ -107,4 +144,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-hardware-pnp-color-selector-mdx-41e793c7f1e4ec4e6bf6.js.map
+//# sourceMappingURL=component---src-pages-hardware-pnp-colorselect-mdx-3ba72f7a011cc69f0e81.js.map
