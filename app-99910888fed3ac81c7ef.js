@@ -31743,12 +31743,15 @@ function useScrollRestoration(identifier) {
 /* harmony export */   "sdM": function() { return /* binding */ WaterLevelReg; },
 /* harmony export */   "Mf9": function() { return /* binding */ SRV_WEIGHT_SCALE; },
 /* harmony export */   "eBe": function() { return /* binding */ WeightScaleVariant; },
+/* harmony export */   "zti": function() { return /* binding */ SRV_WIFI; },
+/* harmony export */   "kBD": function() { return /* binding */ WifiCmd; },
+/* harmony export */   "eFM": function() { return /* binding */ WifiReg; },
 /* harmony export */   "M$m": function() { return /* binding */ SRV_WIND_DIRECTION; },
 /* harmony export */   "wrj": function() { return /* binding */ WindDirectionReg; },
 /* harmony export */   "qvJ": function() { return /* binding */ SRV_WIND_SPEED; },
 /* harmony export */   "EPs": function() { return /* binding */ WindSpeedReg; }
 /* harmony export */ });
-/* unused harmony exports ANNOUNCE_INTERVAL, AccelerometerEvent, SRV_ARCADE_GAMEPAD, ArcadeGamepadButton, ArcadeGamepadReg, ArcadeGamepadEvent, SRV_ARCADE_SOUND, ArcadeSoundCmd, ArcadeSoundReg, SRV_BARCODE_READER, BarcodeReaderFormat, BarcodeReaderReg, BarcodeReaderEvent, BarometerReg, CapacitiveButtonCmd, CompassCmd, DistanceReg, DmxReg, ECO2Reg, FlexReg, HeartRateReg, SRV_HID_ADAPTER, HidAdapterReg, HidAdapterCmd, HidAdapterEvent, HumidityReg, IlluminanceReg, SRV_INDEXED_SCREEN, IndexedScreenCmd, IndexedScreenReg, LightLevelReg, SRV_MAGNETOMETER, MagnetometerReg, MagnetometerCmd, MatrixKeypadVariant, MatrixKeypadEvent, SRV_MICROPHONE, MicrophoneCmd, MicrophoneReg, SRV_MIDI_OUTPUT, MidiOutputReg, MidiOutputCmd, ModelRunnerModelFormat, MotionVariant, MotionEvent, SRV_MULTITOUCH, MultitouchReg, MultitouchEvent, PotentiometerReg, PowerCmd, PowerEvent, SRV_PRESSURE_BUTTON, PressureButtonReg, PulseOximeterReg, ReflectedLightEvent, RelayEvent, RoleManagerEvent, SRV_ROVER, RoverReg, SevenSegmentDisplayCmd, SoilMoistureVariant, SolenoidVariant, SoundLevelEvent, SRV_TCP, TcpTcpError, TcpCmd, TcpPipeCmd, ThermocoupleReg, ThermometerReg, TvocReg, UvIndexVariant, UvIndexReg, SRV_VERIFIED_TELEMETRY, VerifiedTelemetryStatus, VerifiedTelemetryFingerprintType, VerifiedTelemetryReg, VerifiedTelemetryCmd, VerifiedTelemetryEvent, WaterLevelVariant, WeightScaleReg, WeightScaleCmd, SRV_WIFI, WifiAPFlags, WifiCmd, WifiReg, WifiEvent */
+/* unused harmony exports ANNOUNCE_INTERVAL, AccelerometerEvent, SRV_ARCADE_GAMEPAD, ArcadeGamepadButton, ArcadeGamepadReg, ArcadeGamepadEvent, SRV_ARCADE_SOUND, ArcadeSoundCmd, ArcadeSoundReg, SRV_BARCODE_READER, BarcodeReaderFormat, BarcodeReaderReg, BarcodeReaderEvent, BarometerReg, CapacitiveButtonCmd, CompassCmd, DistanceReg, DmxReg, ECO2Reg, FlexReg, HeartRateReg, SRV_HID_ADAPTER, HidAdapterReg, HidAdapterCmd, HidAdapterEvent, HumidityReg, IlluminanceReg, SRV_INDEXED_SCREEN, IndexedScreenCmd, IndexedScreenReg, LightLevelReg, SRV_MAGNETOMETER, MagnetometerReg, MagnetometerCmd, MatrixKeypadVariant, MatrixKeypadEvent, SRV_MICROPHONE, MicrophoneCmd, MicrophoneReg, SRV_MIDI_OUTPUT, MidiOutputReg, MidiOutputCmd, ModelRunnerModelFormat, MotionVariant, MotionEvent, SRV_MULTITOUCH, MultitouchReg, MultitouchEvent, PotentiometerReg, PowerCmd, PowerEvent, SRV_PRESSURE_BUTTON, PressureButtonReg, PulseOximeterReg, ReflectedLightEvent, RelayEvent, RoleManagerEvent, SRV_ROVER, RoverReg, SevenSegmentDisplayCmd, SoilMoistureVariant, SolenoidVariant, SoundLevelEvent, SRV_TCP, TcpTcpError, TcpCmd, TcpPipeCmd, ThermocoupleReg, ThermometerReg, TvocReg, UvIndexVariant, UvIndexReg, SRV_VERIFIED_TELEMETRY, VerifiedTelemetryStatus, VerifiedTelemetryFingerprintType, VerifiedTelemetryReg, VerifiedTelemetryCmd, VerifiedTelemetryEvent, WaterLevelVariant, WeightScaleReg, WeightScaleCmd, WifiAPFlags, WifiEvent */
 // Service: Common registers and commands
 var ANNOUNCE_INTERVAL = 0x1f4;
 var SystemReadingThreshold;
@@ -36144,6 +36147,7 @@ var JDClient = /*#__PURE__*/function (_JDEventSource) {
 /* harmony export */   "X8d": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.X8d; },
 /* harmony export */   "Szz": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.Szz; },
 /* harmony export */   "Mf9": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.Mf9; },
+/* harmony export */   "zti": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.zti; },
 /* harmony export */   "M$m": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.M$m; },
 /* harmony export */   "qvJ": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.qvJ; },
 /* harmony export */   "q9t": function() { return /* reexport safe */ _jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__.q9t; },
@@ -51546,6 +51550,7 @@ var DashboardHIDKeyboard = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* impo
 var DashboardHIDMouse = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 5233).then(__webpack_require__.bind(__webpack_require__, 45233))); //const DashboardAzureIoTHub = lazy(() => import("./DashboardAzureIoTHub"))
 
 var DashboardAzureIoTHubHealth = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 1931).then(__webpack_require__.bind(__webpack_require__, 31931)));
+var DashboardWifi = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 141).then(__webpack_require__.bind(__webpack_require__, 60141)));
 var serviceViews = {
   [constants/* SRV_ROLE_MANAGER */.igi]: {
     component: DashboardRoleManager,
@@ -51681,7 +51686,11 @@ var serviceViews = {
   */
   [constants/* SRV_AZURE_IOT_HUB_HEALTH */.tOR]: {
     component: DashboardAzureIoTHubHealth,
-    weight: () => 3
+    weight: () => 2
+  },
+  [constants/* SRV_WIFI */.zti]: {
+    component: DashboardWifi,
+    weight: () => 2
   }
 };
 var collapsedRegisters = [constants/* SystemReg.Reading */.ZJq.Reading, constants/* SystemReg.Value */.ZJq.Value, constants/* SystemReg.Intensity */.ZJq.Intensity];
@@ -68904,7 +68913,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "8772914bf0070959e72afe88d59a9e79079827fc";
+var sha = "66b902479fc0ed4ec1eafbc6c9bbfd178794c45e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69729,7 +69738,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "8772914bf0070959e72afe88d59a9e79079827fc";
+  var sha = "66b902479fc0ed4ec1eafbc6c9bbfd178794c45e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71838,7 +71847,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "8772914bf0070959e72afe88d59a9e79079827fc";
+    var sha = "66b902479fc0ed4ec1eafbc6c9bbfd178794c45e";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87727,4 +87736,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-b7277f1668f845905aa9.js.map
+//# sourceMappingURL=app-99910888fed3ac81c7ef.js.map
