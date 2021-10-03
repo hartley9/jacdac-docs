@@ -512,11 +512,12 @@ function CommandInput(props) {
   var reportSpec = command.hasReport && specification.packets.find(p => (0,jdom_spec/* isReportOf */.Dm)(command, p));
 
   var handleClick = /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
+    var _ref = (0,asyncToGenerator/* default */.Z)(function* (mounted) {
       var pkt = !(args !== null && args !== void 0 && args.length) ? packet/* default.onlyHeader */.Z.onlyHeader(command.identifier) : packArguments(command, args);
 
       if (setReports && reportSpec) {
         var reportPacket = yield service.sendCmdAwaitResponseAsync(pkt);
+        if (!mounted()) return;
         var decoded = reportPacket === null || reportPacket === void 0 ? void 0 : reportPacket.decoded;
         setReports([decoded]);
       } else if (setReports && hasPipeReport(command)) {
@@ -538,6 +539,7 @@ function CommandInput(props) {
             return !!((_ot$data = ot.data) !== null && _ot$data !== void 0 && _ot$data.length);
           }).map(ot => ot === null || ot === void 0 ? void 0 : ot.decoded);
 
+          if (!mounted()) return;
           setReports(_reports);
         } finally {
           var _inp;
@@ -547,7 +549,7 @@ function CommandInput(props) {
       } else yield service.sendPacketAsync(pkt, true);
     });
 
-    return function handleClick() {
+    return function handleClick(_x) {
       return _ref.apply(this, arguments);
     };
   }();
@@ -1212,4 +1214,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-ae8259a4a8f375291c74.js.map
+//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-010cd71494c4a30bef94.js.map

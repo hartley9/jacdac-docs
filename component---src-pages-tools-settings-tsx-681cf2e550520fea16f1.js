@@ -543,14 +543,15 @@ function AddSettingRow(props) {
   };
 
   var handleAdd = /*#__PURE__*/function () {
-    var _ref2 = (0,asyncToGenerator/* default */.Z)(function* () {
+    var _ref2 = (0,asyncToGenerator/* default */.Z)(function* (mounted) {
       yield client.setStringValue("" + (secret ? "$" : "") + name, value);
+      if (!mounted()) return;
       setName("");
       setValue("");
       setSecret(true);
     });
 
-    return function handleAdd() {
+    return function handleAdd(_x) {
       return _ref2.apply(this, arguments);
     };
   }();
@@ -713,4 +714,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-settings-tsx-41414f0c7610f0ae818e.js.map
+//# sourceMappingURL=component---src-pages-tools-settings-tsx-681cf2e550520fea16f1.js.map

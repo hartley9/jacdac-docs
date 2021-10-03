@@ -260,13 +260,14 @@ function ConnectionStringDialog(props) {
   };
 
   var handleOk = /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
+    var _ref = (0,asyncToGenerator/* default */.Z)(function* (mounted) {
       yield client.setConnectionString(value || "");
+      if (!mounted()) return;
       setValue("");
       setOpen(false);
     });
 
-    return function handleOk() {
+    return function handleOk(_x) {
       return _ref.apply(this, arguments);
     };
   }();
@@ -369,4 +370,4 @@ function DashboardAzureIoTHubHealth(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1931-25e0d3d445a4032e068e.js.map
+//# sourceMappingURL=1931-6539ac25e675824c9004.js.map

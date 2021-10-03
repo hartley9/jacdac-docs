@@ -91,12 +91,13 @@ function DashboardCharacterScreen(props) {
   } = (0,_widgets_useWidgetTheme__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)("primary");
 
   var handleClear = /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z)(function* () {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z)(function* (mounted) {
+      yield service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .CharacterScreenCmd.Clear */ .nWR.Clear, undefined, true);
+      if (!mounted()) return;
       setFieldMessage("");
-      yield service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .CharacterScreenCmd.Clear */ .nWR.Clear);
     });
 
-    return function handleClear() {
+    return function handleClear(_x) {
       return _ref.apply(this, arguments);
     };
   }();
@@ -107,7 +108,7 @@ function DashboardCharacterScreen(props) {
       yield messageRegister.sendSetStringAsync(ev.target.value, true);
     });
 
-    return function handleFieldMessageChange(_x) {
+    return function handleFieldMessageChange(_x2) {
       return _ref2.apply(this, arguments);
     };
   }(); // set first value of message
@@ -205,4 +206,4 @@ function DashboardCharacterScreen(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7787-6705bf87919960141028.js.map
+//# sourceMappingURL=7787-8bd7723cff47261d4194.js.map
