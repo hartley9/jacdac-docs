@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-f1afc579970e11a80f42.js"
+    "url": "webpack-runtime-230eaf6889c6584ef058.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "96cd88b1dfb9eec5169056f14b3011bf"
+    "revision": "b1e29fc4702c7a432e15bb8106934eb8"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "88a68734b096116aad73635c6a3a7b6b"
+    "revision": "cdec9d5243d43573344662ddb12e3bb8"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "11f7e94017bab9d155f83047229ac950"
+    "revision": "3527748efebbcfbd9f02f7e690139791"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "f60917584a86da622ffde22675eda033"
+    "revision": "283d3bab871f9f777ef94ff7c6b15eea"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "c455bd51466a8f6e81a5e72c77cc6e4c"
+    "revision": "26cc245f14178ee736ded671a79ac6a5"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "5261543dd0e2154619cee0cf29ccb0f6"
+    "revision": "c689e9e4f16947c1204592229d817a57"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -109,7 +109,7 @@ self.__precacheManifest = [
     "revision": "35186b7d84ef6e92bd1dd640b7386d90"
   },
   {
-    "url": "830485e4a01eef9412f4754ecfe08bd6e6417633-41f6634edca8f4582a7a.js"
+    "url": "830485e4a01eef9412f4754ecfe08bd6e6417633-667da784c479c03e200d.js"
   },
   {
     "url": "component---src-pages-dashboard-tsx-5f248b0431cbb627ce32.js"
@@ -182,7 +182,7 @@ self.__precacheManifest = [
     "revision": "a3efbe523a759f595f63f058652804cb"
   },
   {
-    "url": "component---src-pages-services-tsx-298731507ac792d34d51.js"
+    "url": "component---src-pages-services-tsx-9c300af9ad3a4b360c28.js"
   },
   {
     "url": "page-data/services/page-data.json",
@@ -922,7 +922,7 @@ self.__precacheManifest = [
     "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-781245e4a2d56404da93.js"
   },
   {
-    "url": "component---src-templates-device-tsx-b12a950f53eda5b9baa2.js"
+    "url": "component---src-templates-device-tsx-c1b22ea808a3acd0a593.js"
   },
   {
     "url": "page-data/devices/microbit/foundation/microbitv2/page-data.json",
@@ -1137,7 +1137,7 @@ self.__precacheManifest = [
     "revision": "494bf001266c7064c3f040307712280c"
   },
   {
-    "url": "component---src-pages-tools-accelerometer-theremin-tsx-4743afb6aca408b9a471.js"
+    "url": "component---src-pages-tools-accelerometer-theremin-tsx-31345abb60f945e6b783.js"
   },
   {
     "url": "page-data/tools/accelerometer-theremin/page-data.json",
@@ -1202,7 +1202,7 @@ self.__precacheManifest = [
     "revision": "b9bd523f25b378953241b04d2ca60f8c"
   },
   {
-    "url": "component---src-pages-tools-lightsensor-accessible-tsx-cad17cdb7da6594b515f.js"
+    "url": "component---src-pages-tools-lightsensor-accessible-tsx-2c2f10bff566345f3ec7.js"
   },
   {
     "url": "page-data/tools/lightsensor-accessible/page-data.json",
@@ -1243,7 +1243,7 @@ self.__precacheManifest = [
     "revision": "42942d63c27c6e9f89c03dd182c95da4"
   },
   {
-    "url": "component---src-pages-tools-packet-inspector-tsx-bc07c30674021f6162f7.js"
+    "url": "component---src-pages-tools-packet-inspector-tsx-ffae0f23db55241b55b1.js"
   },
   {
     "url": "page-data/tools/packet-inspector/page-data.json",
@@ -1278,7 +1278,7 @@ self.__precacheManifest = [
     "revision": "aad82f44aff74649b6fcc8947902cb06"
   },
   {
-    "url": "component---src-pages-tools-release-assets-tsx-02ae50b0f93cd395f188.js"
+    "url": "component---src-pages-tools-release-assets-tsx-eb74536dd7e7cf74c9f1.js"
   },
   {
     "url": "page-data/tools/release-assets/page-data.json",
@@ -1399,7 +1399,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-bcc016ac02ca581dd4db.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-73d33d6e17b8bfecd7e7.js`))) {
     return await fetch(event.request)
   }
 

@@ -224,8 +224,8 @@ var ConnectButtons = __webpack_require__(45608);
 var useRoleManagerClient = __webpack_require__(39922);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
 var constants = __webpack_require__(71815);
-// EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 27 modules
-var servers = __webpack_require__(70767);
+// EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 26 modules
+var servers = __webpack_require__(18374);
 // EXTERNAL MODULE: ./src/components/ui/Alert.tsx
 var Alert = __webpack_require__(95453);
 ;// CONCATENATED MODULE: ./src/components/alert/SimulateDeviceAlert.tsx
@@ -621,4 +621,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-41f6634edca8f4582a7a.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-667da784c479c03e200d.js.map

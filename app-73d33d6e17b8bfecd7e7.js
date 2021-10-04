@@ -40227,6 +40227,7 @@ var JDServiceServer = /*#__PURE__*/function (_JDEventSource) {
     _this.serviceIndex = -1;
     _this._registers = [];
     _this.commands = {};
+    _this._locked = false;
     _this.serviceClass = serviceClass;
     var {
       instanceName,
@@ -40293,7 +40294,7 @@ var JDServiceServer = /*#__PURE__*/function (_JDEventSource) {
   _proto.addRegister = function addRegister(identifier, defaultValue) {
     var reg = this._registers.find(r => r.identifier === identifier);
 
-    if (!reg) {
+    if (!reg && !this._locked) {
       // make sure this register is supported
       if (!this.specification.packets.find(pkt => (0,_spec__WEBPACK_IMPORTED_MODULE_5__/* .isRegister */ .x5)(pkt) && pkt.identifier === identifier)) return undefined;
       reg = new _registerserver__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z(this, identifier, defaultValue);
@@ -40306,9 +40307,18 @@ var JDServiceServer = /*#__PURE__*/function (_JDEventSource) {
 
   _proto.reset = function reset() {
     this.registers.forEach(reg => reg.reset());
+  }
+  /**
+   * Locks the current set of registers
+   */
+  ;
+
+  _proto.lock = function lock() {
+    this._locked = true;
   };
 
   _proto.addCommand = function addCommand(identifier, handler) {
+    if (this._locked) console.error("adding command to locked service");
     this.commands[identifier] = handler;
   };
 
@@ -43824,12 +43834,13 @@ var SensorServer = /*#__PURE__*/function (_JDServiceServer) {
     var {
       readingValues,
       streamingInterval,
+      preferredStreamingInterval,
       readingError
     } = options || {};
     _this.reading = _this.addRegister(_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemReg.Reading */ .ZJq.Reading, readingValues);
     _this.streamingSamples = _this.addRegister(_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .SensorReg.StreamingSamples */ .q9t.StreamingSamples);
-    _this.streamingInterval = _this.addRegister(_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .SensorReg.StreamingInterval */ .q9t.StreamingInterval, [streamingInterval || 50]);
-    if (streamingInterval !== undefined) _this.addRegister(_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .SensorReg.StreamingPreferredInterval */ .q9t.StreamingPreferredInterval, [streamingInterval]);
+    _this.streamingInterval = _this.addRegister(_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .SensorReg.StreamingInterval */ .q9t.StreamingInterval, [streamingInterval || preferredStreamingInterval || _this.reading.specification.preferredInterval || _jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .STREAMING_DEFAULT_INTERVAL */ .cXd]);
+    if (preferredStreamingInterval !== undefined) _this.preferredStreamingInterval = _this.addRegister(_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .SensorReg.StreamingPreferredInterval */ .q9t.StreamingPreferredInterval, [preferredStreamingInterval]);
 
     if (readingError !== undefined) {
       _this.readingError = _this.addRegister(_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemReg.ReadingError */ .ZJq.ReadingError, readingError);
@@ -43846,12 +43857,15 @@ var SensorServer = /*#__PURE__*/function (_JDServiceServer) {
   var _proto = SensorServer.prototype;
 
   _proto.refreshRegisters = function refreshRegisters() {
+    var _this$streamingInterv, _this$streamingInterv2, _this$preferredStream, _this$preferredStream2;
+
     var [samples] = this.streamingSamples.values();
     if (samples <= 0 || !this.reading.data) return; // is it time to stream?
 
-    var [interval] = this.streamingInterval.values();
-    if (interval === undefined) // use spec info is needed
-      interval = this.streamingInterval.specification.preferredInterval;
+    var interval = (_this$streamingInterv = this.streamingInterval) === null || _this$streamingInterv === void 0 ? void 0 : (_this$streamingInterv2 = _this$streamingInterv.values()) === null || _this$streamingInterv2 === void 0 ? void 0 : _this$streamingInterv2[0];
+    if (interval === undefined) interval = (_this$preferredStream = this.preferredStreamingInterval) === null || _this$preferredStream === void 0 ? void 0 : (_this$preferredStream2 = _this$preferredStream.values()) === null || _this$preferredStream2 === void 0 ? void 0 : _this$preferredStream2[0];
+    if (interval === undefined) interval = this.reading.specification.preferredInterval;
+    if (interval === undefined) interval = _jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .STREAMING_DEFAULT_INTERVAL */ .cXd;
     var now = this.device.bus.timestamp;
 
     if (now - this.lastStream > interval) {
@@ -43877,7 +43891,7 @@ var SensorServer = /*#__PURE__*/function (_JDServiceServer) {
 
 /***/ }),
 
-/***/ 70767:
+/***/ 18374:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44093,32 +44107,6 @@ var CharacterScreenServer = /*#__PURE__*/function (_JDServiceServer) {
 
   return CharacterScreenServer;
 }(serviceserver/* default */.Z);
-
-
-;// CONCATENATED MODULE: ./jacdac-ts/src/servers/humidityserver.ts
-
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-
-
-
-var HumidityServer = /*#__PURE__*/function (_SensorServer) {
-  (0,inheritsLoose/* default */.Z)(HumidityServer, _SensorServer);
-
-  function HumidityServer(options) {
-    return _SensorServer.call(this, constants/* SRV_HUMIDITY */.JbI, _objectSpread(_objectSpread({}, {
-      readingValues: [40],
-      readingError: [0.1],
-      streamingInterval: 1000
-    }), options)) || this;
-  }
-
-  return HumidityServer;
-}(sensorserver/* default */.Z);
 
 
 // EXTERNAL MODULE: ./jacdac-ts/src/servers/joystickserver.ts
@@ -45708,10 +45696,9 @@ var VibrationMotor = /*#__PURE__*/function (_JDServiceServer) {
 ;// CONCATENATED MODULE: ./jacdac-ts/src/servers/servers.ts
 
 
-function servers_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function servers_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { servers_ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { servers_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 
@@ -45761,13 +45748,19 @@ var indoorThermometerOptions = {
   variant: constants/* ThermometerVariant.Indoor */._bR.Indoor
 };
 var outdoorThermometerOptions = {
-  instanceName: "outdoor",
+  instanceName: "temperature",
   readingValues: [21.5],
-  streamingInterval: 1000,
+  streamingInterval: 60000,
   minReading: -40,
   maxReading: 120,
   readingError: [0.25],
   variant: constants/* ThermometerVariant.Outdoor */._bR.Outdoor
+};
+var outdoorHumidityOptions = {
+  instanceName: "humidity",
+  streamingInterval: 60000,
+  readingValues: [40],
+  readingError: [0.1]
 };
 var medicalThermometerOptions = {
   instanceName: "medical",
@@ -45780,7 +45773,8 @@ var medicalThermometerOptions = {
 };
 var barometerOptions = {
   instanceName: "pressure",
-  readingValues: [1013]
+  readingValues: [1013],
+  readingError: [0.4]
 };
 var sonarOptions = {
   variant: constants/* DistanceVariant.Ultrasonic */.NA1.Ultrasonic,
@@ -45915,7 +45909,8 @@ var _providerDefinitions = [{
   name: "accelerometer",
   serviceClasses: [constants/* SRV_ACCELEROMETER */.QF7],
   services: () => [new sensorserver/* default */.Z(constants/* SRV_ACCELEROMETER */.QF7, {
-    readingValues: [0.5, 0.5, -(1 - (0.5 * 0.5 + 0.5 * 0.5))]
+    readingValues: [0.5, 0.5, -(1 - (0.5 * 0.5 + 0.5 * 0.5))],
+    preferredStreamingInterval: 20
   })]
 }, {
   name: "barometer",
@@ -45978,7 +45973,8 @@ var _providerDefinitions = [{
   name: "color",
   serviceClasses: [constants/* SRV_COLOR */.Coy],
   services: () => [new sensorserver/* default */.Z(constants/* SRV_COLOR */.Coy, {
-    readingValues: [0.5, 0, 0.5]
+    readingValues: [0.5, 0, 0.5],
+    preferredStreamingInterval: 1000
   })]
 }, {
   name: "compass",
@@ -46015,9 +46011,7 @@ var _providerDefinitions = [{
 }, {
   name: "eCO₂ + humidity + thermometer",
   serviceClasses: [constants/* SRV_E_CO2 */.bpX, constants/* SRV_HUMIDITY */.JbI, constants/* SRV_THERMOMETER */.O$i],
-  services: () => [new AnalogSensorServer(constants/* SRV_E_CO2 */.bpX, CO2Options), new HumidityServer({
-    instanceName: "humidity"
-  }), new AnalogSensorServer(constants/* SRV_THERMOMETER */.O$i, indoorThermometerOptions)]
+  services: () => [new AnalogSensorServer(constants/* SRV_E_CO2 */.bpX, CO2Options), new AnalogSensorServer(constants/* SRV_HUMIDITY */.JbI, outdoorHumidityOptions), new AnalogSensorServer(constants/* SRV_THERMOMETER */.O$i, indoorThermometerOptions)]
 }, {
   name: "flex sensor (2.2 inch)",
   serviceClasses: [constants/* SRV_FLEX */.YYl],
@@ -46042,19 +46036,15 @@ var _providerDefinitions = [{
 }, {
   name: "humidity",
   serviceClasses: [constants/* SRV_HUMIDITY */.JbI],
-  services: () => [new HumidityServer()]
+  services: () => [new AnalogSensorServer(constants/* SRV_HUMIDITY */.JbI, outdoorHumidityOptions)]
 }, {
   name: "humidity + temperature",
   serviceClasses: [constants/* SRV_HUMIDITY */.JbI, constants/* SRV_THERMOMETER */.O$i],
-  services: () => [new AnalogSensorServer(constants/* SRV_THERMOMETER */.O$i, outdoorThermometerOptions), new HumidityServer({
-    instanceName: "humidity"
-  })]
+  services: () => [new AnalogSensorServer(constants/* SRV_THERMOMETER */.O$i, outdoorThermometerOptions), new AnalogSensorServer(constants/* SRV_HUMIDITY */.JbI, outdoorHumidityOptions)]
 }, {
   name: "humidity + temperature + barometer",
   serviceClasses: [constants/* SRV_HUMIDITY */.JbI, constants/* SRV_THERMOMETER */.O$i, constants/* SRV_BAROMETER */.bDe],
-  services: () => [new AnalogSensorServer(constants/* SRV_THERMOMETER */.O$i, outdoorThermometerOptions), new HumidityServer({
-    instanceName: "humidity"
-  }), new AnalogSensorServer(constants/* SRV_BAROMETER */.bDe, barometerOptions)]
+  services: () => [new AnalogSensorServer(constants/* SRV_THERMOMETER */.O$i, outdoorThermometerOptions), new AnalogSensorServer(constants/* SRV_HUMIDITY */.JbI, outdoorHumidityOptions), new AnalogSensorServer(constants/* SRV_BAROMETER */.bDe, barometerOptions)]
 }, {
   name: "illuminance",
   serviceClasses: [constants/* SRV_ILLUMINANCE */.Mvm],
@@ -46376,28 +46366,28 @@ var _providerDefinitions = [{
   name: "servo x 2",
   serviceClasses: [constants/* SRV_SERVO */.$X_],
   resetIn: true,
-  services: () => Array(2).fill(0).map((_, i) => new ServoServer(servers_objectSpread(servers_objectSpread({}, microServoOptions), {}, {
+  services: () => Array(2).fill(0).map((_, i) => new ServoServer(_objectSpread(_objectSpread({}, microServoOptions), {}, {
     instanceName: "S" + i
   })))
 }, {
   name: "servo x 4",
   serviceClasses: [constants/* SRV_SERVO */.$X_],
   resetIn: true,
-  services: () => Array(4).fill(0).map((_, i) => new ServoServer(servers_objectSpread(servers_objectSpread({}, microServoOptions), {}, {
+  services: () => Array(4).fill(0).map((_, i) => new ServoServer(_objectSpread(_objectSpread({}, microServoOptions), {}, {
     instanceName: "S" + i
   })))
 }, {
   name: "servo x 6",
   serviceClasses: [constants/* SRV_SERVO */.$X_],
   resetIn: true,
-  services: () => Array(6).fill(0).map((_, i) => new ServoServer(servers_objectSpread(servers_objectSpread({}, microServoOptions), {}, {
+  services: () => Array(6).fill(0).map((_, i) => new ServoServer(_objectSpread(_objectSpread({}, microServoOptions), {}, {
     instanceName: "S" + i
   })))
 }, {
   name: "servo x 16",
   serviceClasses: [constants/* SRV_SERVO */.$X_],
   resetIn: true,
-  services: () => Array(16).fill(0).map((_, i) => new ServoServer(servers_objectSpread(servers_objectSpread({}, microServoOptions), {}, {
+  services: () => Array(16).fill(0).map((_, i) => new ServoServer(_objectSpread(_objectSpread({}, microServoOptions), {}, {
     instanceName: "S" + i
   })))
 }, {
@@ -46601,7 +46591,7 @@ var _providerDefinitions = [{
 }, {
   name: "power + humidity",
   serviceClasses: [constants/* SRV_POWER */.mQG, constants/* SRV_HUMIDITY */.JbI],
-  services: () => [new PowerServer(), new HumidityServer()],
+  services: () => [new PowerServer(), new AnalogSensorServer(constants/* SRV_HUMIDITY */.JbI, outdoorHumidityOptions)],
   factory: services => {
     var dev = new serverserviceprovider/* default */.Z("power+humidity", [services[0]]);
     var pwr = dev.service(1);
@@ -46661,6 +46651,7 @@ function addServiceProvider(bus, definition) {
   var _definition$factory;
 
   var services = definition.services();
+  services.forEach(srv => srv.lock());
   var deviceId = stableSimulatorDeviceId(bus, definition.name);
   var options = {
     resetIn: definition.resetIn,
@@ -51285,8 +51276,8 @@ function AnalogButton(props) {
 }
 // EXTERNAL MODULE: ./src/components/hooks/useThrottledValue.ts
 var useThrottledValue = __webpack_require__(72901);
-// EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 27 modules
-var servers = __webpack_require__(70767);
+// EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 26 modules
+var servers = __webpack_require__(18374);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
 var Grid = __webpack_require__(80838);
 // EXTERNAL MODULE: ./src/components/widgets/ServoWidget.tsx
@@ -68941,7 +68932,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "e2c5d987a4b48b0223d1bbd9761dbc7ddfba02bd";
+var sha = "b3547b270d52a6a1ef93f58546c0a5837678f123";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69308,7 +69299,7 @@ function useServiceProvider(device) {
 /* harmony export */   "Z": function() { return /* binding */ useServiceProviderFromServiceClass; }
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(70767);
+/* harmony import */ var _jacdac_ts_src_servers_servers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18374);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20392);
 
 
@@ -69766,7 +69757,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "e2c5d987a4b48b0223d1bbd9761dbc7ddfba02bd";
+  var sha = "b3547b270d52a6a1ef93f58546c0a5837678f123";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71875,7 +71866,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "e2c5d987a4b48b0223d1bbd9761dbc7ddfba02bd";
+    var sha = "b3547b270d52a6a1ef93f58546c0a5837678f123";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -76077,8 +76068,8 @@ var BusStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
 
   return BusStatsMonitor;
 }(eventsource/* default */.ZP);
-// EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 27 modules
-var servers = __webpack_require__(70767);
+// EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 26 modules
+var servers = __webpack_require__(18374);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/serviceclient.ts
 var serviceclient = __webpack_require__(56763);
 ;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/clients/rolemanagerclient.ts
@@ -80172,7 +80163,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.18.7"};
+var package_namespaceObject = {"i8":"1.18.8"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
@@ -87783,4 +87774,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-bcc016ac02ca581dd4db.js.map
+//# sourceMappingURL=app-73d33d6e17b8bfecd7e7.js.map
