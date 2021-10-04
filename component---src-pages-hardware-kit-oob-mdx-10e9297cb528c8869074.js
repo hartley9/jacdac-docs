@@ -120,7 +120,11 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
     parentName: "li"
-  }, "When a Jacdac actuator (LED pixel strip, single LED) is attached, the micro:bit will send a command to it based\non which button of micro:bit is pressed (A, B, A+B)"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "When a Jacdac actuator (LED pixel strip, single LED) is attached, the micro:bit will send a command to it based\non which button of micro:bit is pressed (A, B, A+B)")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
+    parentName: "li"
+  }, "When a Jacdac mouse is connected, a Jacdac joystick will move the mouse and any Jacdac button will generate clicks."))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "download-again",
     "style": {
       "position": "relative"
@@ -173,4 +177,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-hardware-kit-oob-mdx-603d06740ea626880818.js.map
+//# sourceMappingURL=component---src-pages-hardware-kit-oob-mdx-10e9297cb528c8869074.js.map

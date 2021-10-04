@@ -8,7 +8,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ DashboardJoystick; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(15861);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(15861);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _hooks_useServiceServer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(49013);
 /* harmony import */ var _jacdac_useRegisterValue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(89196);
@@ -16,10 +16,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(71815);
 /* harmony import */ var _widgets_SvgWidget__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(48059);
 /* harmony import */ var _widgets_useWidgetTheme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(60650);
-/* harmony import */ var _hooks_useSvgButtonProps__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(30833);
+/* harmony import */ var _hooks_useSvgButtonProps__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(30833);
 /* harmony import */ var _ui_LoadingProgress__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2285);
 /* harmony import */ var _hooks_useAnimationFrame__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(17368);
 /* harmony import */ var _hooks_useRegister__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(82677);
+/* harmony import */ var _widgets_OptionalTooltip__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(40062);
+
 
 
 
@@ -99,7 +101,7 @@ function JoystickWidget(props) {
   };
 
   var handlePointerDown = /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z)(function* (ev) {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z)(function* (ev) {
       ev.preventDefault();
       setGrabbing(true);
       updateJoystickDrag(ev.clientX, ev.clientY);
@@ -116,7 +118,7 @@ function JoystickWidget(props) {
   };
 
   var handlePointerMove = /*#__PURE__*/function () {
-    var _ref2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z)(function* (ev) {
+    var _ref2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z)(function* (ev) {
       ev.preventDefault();
       if (grabbing) updateJoystickDrag(ev.clientX, ev.clientY);
     });
@@ -243,7 +245,7 @@ function ArcadeButton(props) {
     server.up(button);
     onRefresh();
   } : undefined;
-  var buttonProps = (0,_hooks_useSvgButtonProps__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z)(title, handleDown, handleUp);
+  var buttonProps = (0,_hooks_useSvgButtonProps__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z)(title, handleDown, handleUp);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("g", {
     transform: "translate(" + cx + "," + cy + ")",
     "aria-label": "button " + title + " " + (checked ? "down" : "up")
@@ -349,7 +351,7 @@ function DashboardJoystick(props) {
   }].filter(p => !!(p.id & buttonsAvailable)), [buttonsAvailable]);
 
   var handleRefresh = /*#__PURE__*/function () {
-    var _ref3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z)(function* () {
+    var _ref3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z)(function* () {
       return yield directionRegister.refresh();
     });
 
@@ -367,7 +369,9 @@ function DashboardJoystick(props) {
   var padr = 2.6 * cw; // need button info
 
   if (buttonsAvailable === undefined) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_LoadingProgress__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_SvgWidget__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_OptionalTooltip__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
+    title: !server ? "Use the physical joystick!" : undefined
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_SvgWidget__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
     width: w,
     height: h
   }, !analog && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("circle", {
@@ -409,10 +413,10 @@ function DashboardJoystick(props) {
       pressure: buttons & id ? 1 : 0,
       color: color
     });
-  }));
+  })));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=7809-9d3781dc7e9c1f629502.js.map
+//# sourceMappingURL=7809-e576dee2be34ac025281.js.map

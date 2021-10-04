@@ -50806,8 +50806,8 @@ var useDeviceSpecification = __webpack_require__(34246);
 var DeviceAvatar = __webpack_require__(37172);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(45987);
-// EXTERNAL MODULE: ./src/components/dashboard/DashboardServiceWidget.tsx + 6 modules
-var DashboardServiceWidget = __webpack_require__(3922);
+// EXTERNAL MODULE: ./src/components/dashboard/DashboardServiceWidget.tsx + 5 modules
+var DashboardServiceWidget = __webpack_require__(23069);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/styled.js
 var styled = __webpack_require__(62041);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Button/Button.js
@@ -51044,7 +51044,7 @@ function DashboardDevice(props) {
 
 /***/ }),
 
-/***/ 3922:
+/***/ 23069:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51102,21 +51102,8 @@ function useEvent(service, identifier) {
 }
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
 var utils = __webpack_require__(81794);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Tooltip/Tooltip.js
-var Tooltip = __webpack_require__(14685);
-;// CONCATENATED MODULE: ./src/components/widgets/OptionalTooltip.tsx
-
-
-function OptionalTooltip(props) {
-  var {
-    children,
-    title
-  } = props;
-  if (!title) return children;
-  return /*#__PURE__*/react.createElement(Tooltip/* default */.ZP, {
-    title: title
-  }, /*#__PURE__*/react.createElement("div", null, children));
-}
+// EXTERNAL MODULE: ./src/components/widgets/OptionalTooltip.tsx
+var OptionalTooltip = __webpack_require__(40062);
 ;// CONCATENATED MODULE: ./src/components/dashboard/DashboardButton.tsx
 
 
@@ -51168,8 +51155,8 @@ function BinaryButton(props) {
   var handleUp = () => server === null || server === void 0 ? void 0 : server.up();
 
   var widgetSize = "clamp(3rem, 10vw, 10vh)";
-  return /*#__PURE__*/react.createElement(OptionalTooltip, {
-    title: !server ? "Press the physical button!" : undefined
+  return /*#__PURE__*/react.createElement(OptionalTooltip/* default */.Z, {
+    title: !server ? "Use the physical button!" : undefined
   }, /*#__PURE__*/react.createElement(ButtonWidget/* default */.Z, {
     checked: !!pressed,
     color: color,
@@ -68979,7 +68966,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "0154ce897bb94dd5af1aa2da0dfe9e6d69353472";
+var sha = "843700ac1e4b2a93b80f4dbf188c37f73beca6fa";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69804,7 +69791,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0154ce897bb94dd5af1aa2da0dfe9e6d69353472";
+  var sha = "843700ac1e4b2a93b80f4dbf188c37f73beca6fa";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71913,7 +71900,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "0154ce897bb94dd5af1aa2da0dfe9e6d69353472";
+    var sha = "843700ac1e4b2a93b80f4dbf188c37f73beca6fa";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -73131,6 +73118,30 @@ function GaugeWidget(props) {
     value: value,
     onChange: handleSliderChange
   })));
+}
+
+/***/ }),
+
+/***/ 40062:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ OptionalTooltip; }
+/* harmony export */ });
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14685);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+
+
+function OptionalTooltip(props) {
+  var {
+    children,
+    title
+  } = props;
+  if (!title) return children;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .ZP, {
+    title: title
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, children));
 }
 
 /***/ }),
@@ -80262,7 +80273,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.18.8"};
+var package_namespaceObject = {"i8":"1.18.9"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
@@ -87875,4 +87886,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-ef3204ab08e29ec16cad.js.map
+//# sourceMappingURL=app-2410ee23440971e4279f.js.map
