@@ -52603,7 +52603,7 @@ function ValueWithUnitWidget(props) {
     item: true
   }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     style: unitStyle,
-    variant: labelVariant
+    variant: "caption"
   }, unitName)), secondaryLabel && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
   }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
@@ -68941,7 +68941,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "72772d7378b48dbb46f74c9e7fe123cfc9a43773";
+var sha = "e2c5d987a4b48b0223d1bbd9761dbc7ddfba02bd";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69766,7 +69766,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "72772d7378b48dbb46f74c9e7fe123cfc9a43773";
+  var sha = "e2c5d987a4b48b0223d1bbd9761dbc7ddfba02bd";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71875,7 +71875,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "72772d7378b48dbb46f74c9e7fe123cfc9a43773";
+    var sha = "e2c5d987a4b48b0223d1bbd9761dbc7ddfba02bd";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -72755,7 +72755,8 @@ function WebAudioProvider(props) {
 /* harmony export */   "Z": function() { return /* binding */ useUnitConverter; }
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4942);
-/* harmony import */ var _hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(34093);
+/* harmony import */ var _jacdac_ts_src_jdom_pretty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10913);
+/* harmony import */ var _hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(34093);
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -72765,6 +72766,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../jacdac-ts/jacdac-spec/spectool/jdspec.d.ts" />
 
+
 var adapters = {
   "°C": {
     "°C": v => v,
@@ -72772,7 +72774,7 @@ var adapters = {
   }
 };
 function useUnitConverters() {
-  var [settings, setSettings] = (0,_hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)("jacdac:unitconverters", {});
+  var [settings, setSettings] = (0,_hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)("jacdac:unitconverters", {});
   return {
     converters: Object.keys(adapters).map(unit => ({
       unit,
@@ -72794,14 +72796,15 @@ function useUnitConverter(unit) {
   if (!unit) return {
     converter: v => v
   };
-  var [settings] = (0,_hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)("jacdac:unitconverters", {});
+  var [settings] = (0,_hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)("jacdac:unitconverters", {});
   var adapter = adapters[unit];
   if (!adapter) return {
+    name: (0,_jacdac_ts_src_jdom_pretty__WEBPACK_IMPORTED_MODULE_1__/* .prettyUnit */ .QP)(unit),
     converter: v => v
   };
-  var name = settings[unit];
-  var converter = adapter[name] || identity;
   var names = Object.keys(adapter);
+  var name = settings[unit] || names[0];
+  var converter = adapter[name] || identity;
   return {
     name,
     converter,
@@ -87780,4 +87783,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-3fa8e28b746661ebe19b.js.map
+//# sourceMappingURL=app-bcc016ac02ca581dd4db.js.map
