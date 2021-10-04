@@ -114,7 +114,73 @@ function MDXContent(_ref) {
   }))), "Events"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.joystick1.onButtonsChanged(function () {\\n    if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Left)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.West)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Right)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.East)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Up)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.North)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Down)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.South)\\n    }\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.joystick1.onButtonsChanged(function () {\\n    if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Left)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.West)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Right)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.East)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Up)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.North)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Down)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.South)\\n    }\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.1,jacdac-joystick=github:microsoft/pxt-jacdac/joystick#v0.7.1\"},\"type\":\"renderblocks\",\"id\":\"9518162120a96a42f7859460bd1d5c97\"},\"url\":\"/images/makecode/9518162120a96a42f7859460bd1d5c97.png\",\"width\":633,\"height\":688}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"modules.joystick1.onButtonsChanged(function () {\\n    if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Left)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.West)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Right)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.East)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Up)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.North)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Down)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.South)\\n    }\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.joystick1.onButtonsChanged(function () {\\n    if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Left)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.West)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Right)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.East)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Up)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.North)\\n    } else if (modules.joystick1.isButtonDown(jacdac.JoystickButtons.Down)) {\\n        led.stopAnimation()\\n        basic.showArrow(ArrowNames.South)\\n    }\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.1,jacdac-joystick=github:microsoft/pxt-jacdac/joystick#v0.7.1\"},\"type\":\"renderblocks\",\"id\":\"9518162120a96a42f7859460bd1d5c97\"},\"url\":\"/images/makecode/9518162120a96a42f7859460bd1d5c97.png\",\"width\":633,\"height\":688}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
+    "id": "jm-analog-joystick-v02",
+    "style": {
+      "position": "relative"
+    }
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "h1",
+    "href": "#jm-analog-joystick-v02",
+    "aria-label": "jm analog joystick v02 permalink",
+    "className": "anchor before"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
+    parentName: "a",
+    "aria-hidden": "true",
+    "focusable": "false",
+    "height": "16",
+    "version": "1.1",
+    "viewBox": "0 0 16 16",
+    "width": "16"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("path", {
+    parentName: "svg",
+    "fillRule": "evenodd",
+    "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+  }))), "JM Analog Joystick v0.2"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "/jacdac-docs/devices/microsoft/research/jmanalogjoystick44v02"
+  }, "JM Analog Joystick v0.2"), " module has a silkscreen\nwith the X and Y axes, as shown in the picture below (annotated with the Left, Right, Up, and Down\ndirections, corresponding to the events mentioned\npreviously):"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+    parentName: "p",
+    "className": "gatsby-resp-image-wrapper",
+    "style": {
+      "position": "relative",
+      "display": "block",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "maxWidth": "571px"
+    }
+  }, "\n      ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+    parentName: "span",
+    "className": "gatsby-resp-image-background-image",
+    "style": {
+      "paddingBottom": "122.49999999999999%",
+      "position": "relative",
+      "bottom": "0",
+      "left": "0",
+      "backgroundImage": "url('data:image/png;base64,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')",
+      "backgroundSize": "cover",
+      "display": "block"
+    }
+  }), "\n  ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+    parentName: "span",
+    "className": "gatsby-resp-image-image",
+    "alt": "joystick",
+    "title": "joystick",
+    "src": "/jacdac-docs/static/435050da92cd8c74641115a389557b53/17d73/joystick.png",
+    "srcSet": ["/jacdac-docs/static/435050da92cd8c74641115a389557b53/772e8/joystick.png 200w", "/jacdac-docs/static/435050da92cd8c74641115a389557b53/e17e5/joystick.png 400w", "/jacdac-docs/static/435050da92cd8c74641115a389557b53/17d73/joystick.png 571w"],
+    "sizes": "(max-width: 571px) 100vw, 571px",
+    "style": {
+      "width": "100%",
+      "height": "100%",
+      "margin": "0",
+      "verticalAlign": "middle",
+      "position": "absolute",
+      "top": "0",
+      "left": "0"
+    },
+    "loading": "lazy",
+    "decoding": "async"
+  }), "\n    ")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -167,4 +233,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-joystick-mdx-2f693513582bf9e527ca.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-joystick-mdx-f3d6384508434f32ec8c.js.map
