@@ -68964,7 +68964,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "c0def441d4fc40e67c288e8d9efbed872065587b";
+var sha = "694b0c5d03181de8bc59462adb87ce7e3299f92f";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69792,7 +69792,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "c0def441d4fc40e67c288e8d9efbed872065587b";
+  var sha = "694b0c5d03181de8bc59462adb87ce7e3299f92f";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71901,7 +71901,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "c0def441d4fc40e67c288e8d9efbed872065587b";
+    var sha = "694b0c5d03181de8bc59462adb87ce7e3299f92f";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -77075,7 +77075,10 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     var _sendPacketAsync = (0,asyncToGenerator/* default */.Z)(function* (packet) {
       packet.timestamp = this.timestamp;
       if (flags/* default.trace */.Z.trace) packet.meta[constants/* META_TRACE */.EEP] = (0,trace/* stack */.kn)();
-      this.emit(constants/* PACKET_SEND */.RaS, packet);
+      this.emit(constants/* PACKET_SEND */.RaS, packet); // special debug mode to avoid dashboard interfere with packets
+      // will generate fails for acks
+
+      if (this.passive) return;
       yield Promise.all(this._transports.map(transport => transport.sendPacketAsync(packet)));
     });
 
@@ -80319,7 +80322,8 @@ function sniffQueryArguments() {
     frameId: (_window$location$hash = window.location.hash) === null || _window$location$hash === void 0 ? void 0 : _window$location$hash.slice(1),
     widget: params.get("widget") === "1",
     trace: params.get("trace") === "1",
-    localhost: params.get("localhost") === "1"
+    localhost: params.get("localhost") === "1",
+    passive: params.get("passive") === "1"
   };
 }
 
@@ -80334,12 +80338,14 @@ var UIFlags = function UIFlags() {}; // defeat react fast-refresh
 UIFlags.widget = args.widget;
 UIFlags.peers = args.peers;
 UIFlags.localhost = args.localhost;
+UIFlags.passive = args.passive;
 
 function createBus() {
   var worker = typeof window !== "undefined" && new Worker((0,gatsby_browser_entry.withPrefix)("/jacdac-worker-" + package_namespaceObject.i8 + ".js"));
   var b = new bus([flags/* default.webUSB */.Z.webUSB && worker && createUSBWorkerTransport(worker), flags/* default.webSerial */.Z.webSerial && createWebSerialTransport(), flags/* default.webBluetooth */.Z.webBluetooth && createBluetoothTransport(), args.webSocket && createWebSocketTransport(args.webSocket)], {
     parentOrigin: args.parentOrigin
-  }); // parentOrigin: args.parentOrigin,
+  });
+  b.passive = args.passive; // parentOrigin: args.parentOrigin,
   //if (Flags.webUSB) b.setBackgroundFirmwareScans(true)
 
   GamepadHostManager.start(b); // tslint:disable-next-line: no-unused-expression
@@ -87887,4 +87893,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-744902668e9df1f589fc.js.map
+//# sourceMappingURL=app-a43c379deb18225f1dda.js.map
