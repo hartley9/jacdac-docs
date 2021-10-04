@@ -68979,7 +68979,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "f297e4c14178f5b27326dfcc57adafa670de236e";
+var sha = "2156bc3bf7b0baaa400c43e6d19c47c18555df1d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69804,7 +69804,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "f297e4c14178f5b27326dfcc57adafa670de236e";
+  var sha = "2156bc3bf7b0baaa400c43e6d19c47c18555df1d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71913,7 +71913,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "f297e4c14178f5b27326dfcc57adafa670de236e";
+    var sha = "2156bc3bf7b0baaa400c43e6d19c47c18555df1d";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -76655,7 +76655,10 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       channel.removeEventListener("message", handleBroadcastMessage);
       channel.close();
-    };
+    }; // notify other pages
+
+
+    handleVisibilityChange();
   }
   /**
    * Gets the list of transports registers with the bus
@@ -87870,4 +87873,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-e6b8afaeb56ca602229d.js.map
+//# sourceMappingURL=app-793fdf2f770b0fb51b9b.js.map
