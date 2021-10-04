@@ -508,8 +508,8 @@ function Carousel() {
     bus
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z);
   var iframeBridge = bus.nodeData[_components_makecode_iframebridgeclient__WEBPACK_IMPORTED_MODULE_8__/* ["default"].DATA_ID */ .ZP.DATA_ID];
-  var deviceFilter = iframeBridge.deviceFilter.bind(iframeBridge);
-  var serviceFilter = iframeBridge.serviceFilter.bind(iframeBridge);
+  var deviceFilter = iframeBridge === null || iframeBridge === void 0 ? void 0 : iframeBridge.deviceFilter.bind(iframeBridge);
+  var serviceFilter = iframeBridge === null || iframeBridge === void 0 ? void 0 : iframeBridge.serviceFilter.bind(iframeBridge);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
     showHeader: false,
     deviceSort: deviceSort,
@@ -551,4 +551,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-makecode-sim-tsx-ab2b1e84cc916562d965.js.map
+//# sourceMappingURL=component---src-pages-tools-makecode-sim-tsx-e5674d2aed3c4b59bb32.js.map

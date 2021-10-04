@@ -41462,7 +41462,10 @@ var Transport = /*#__PURE__*/function (_JDEventSource) {
             var _this$bus2;
 
             yield (0,_utils__WEBPACK_IMPORTED_MODULE_4__/* .delay */ .gw)(_constants__WEBPACK_IMPORTED_MODULE_1__/* .TRANSPORT_CONNECT_RETRY_DELAY */ .Wdl);
-            if ((_this$bus2 = _this.bus) !== null && _this$bus2 !== void 0 && _this$bus2.disconnected) _this.connect(true);
+
+            if ((_this$bus2 = _this.bus) !== null && _this$bus2 !== void 0 && _this$bus2.disconnected) {
+              if (typeof document !== "undefined" && document.visibilityState === "visible") _this.connect(true);
+            }
           }
         });
 
@@ -68976,7 +68979,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "c3019047529819cae22a073a80d64dabddc028b7";
+var sha = "f297e4c14178f5b27326dfcc57adafa670de236e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69801,7 +69804,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "c3019047529819cae22a073a80d64dabddc028b7";
+  var sha = "f297e4c14178f5b27326dfcc57adafa670de236e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71910,7 +71913,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "c3019047529819cae22a073a80d64dabddc028b7";
+    var sha = "f297e4c14178f5b27326dfcc57adafa670de236e";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -73529,7 +73532,7 @@ function JacdacProvider(props) {
     // bus live accross hot-reloads
     if (!firstConnect && connectOnStart) {
       setFirstConnect(true);
-      _providerbus__WEBPACK_IMPORTED_MODULE_2__/* ["default"].connect */ .Z.connect(true);
+      if (typeof document !== "undefined" && document.visibilityState === "visible") _providerbus__WEBPACK_IMPORTED_MODULE_2__/* ["default"].connect */ .Z.connect(true);
     }
 
     return () => {};
@@ -76562,10 +76565,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     _this.on(constants/* DEVICE_ANNOUNCE */.Hob, _this.handleRealTimeClockSync.bind((0,assertThisInitialized/* default */.Z)(_this))); // grab the default role manager
 
 
-    _this.on(constants/* DEVICE_CHANGE */.RoP, _this.handleRoleManager.bind((0,assertThisInitialized/* default */.Z)(_this))); // handle multiple windows
-
-
-    _this.configureBroadcastChannel(); // start all timers
+    _this.on(constants/* DEVICE_CHANGE */.RoP, _this.handleRoleManager.bind((0,assertThisInitialized/* default */.Z)(_this))); // start all timers
 
 
     _this.start();
@@ -76576,12 +76576,14 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   var _proto = JDBus.prototype;
 
   _proto.configureBroadcastChannel = function configureBroadcastChannel() {
+    var _this2 = this;
+
     if (typeof BroadcastChannel === "undefined") return; // the purpose of this code is to orchestrate
     // interactions with multiple tabs and windows
 
-    var channel = new BroadcastChannel("jacdac"); // update other windows with connection status
+    var channel = new BroadcastChannel("jacdac");
 
-    this.on(constants/* CONNECTION_STATE */.pzj, () => {
+    var postConnectionState = () => {
       channel.postMessage({
         id: this.selfDevice.shortId,
         event: constants/* CONNECTION_STATE */.pzj,
@@ -76590,29 +76592,70 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
           connectionState: tr.connectionState
         }))
       });
-    }); // handle connection from other tabs
+    }; // update other windows with connection status
 
-    channel.addEventListener("message", msg => {
-      var {
-        data
-      } = msg;
-      var {
-        id,
-        event,
-        transports
-      } = data;
 
-      switch (event) {
-        case constants/* CONNECTION_STATE */.pzj:
-          {
-            console.debug("bus " + id + ": " + event); // if any other window is trying to connect, disconnect
+    var unsubConnectionState = this.subscribe(constants/* CONNECTION_STATE */.pzj, postConnectionState);
 
-            transports.filter(tr => tr.connectionState === transport_transport/* ConnectionState.Connecting */.em.Connecting).forEach(ctr => {
-              this.transports.filter(tr => tr.type === ctr.type).forEach(tr => tr.disconnect());
-            });
-          }
-      }
-    });
+    var handleVisibilityChange = () => {
+      // tell other windows, we are visible or not
+      channel.postMessage({
+        id: this.selfDevice.shortId,
+        event: "visibilitychange",
+        visibilityState: document.visibilityState
+      });
+    };
+
+    var handleBroadcastMessage = /*#__PURE__*/function () {
+      var _ref = (0,asyncToGenerator/* default */.Z)(function* (msg) {
+        var {
+          data
+        } = msg;
+        var {
+          id,
+          event,
+          transports,
+          visibilityState
+        } = data;
+
+        switch (event) {
+          case "visibilitychange":
+            {
+              // automatically disconnect if another pane becomes live
+              console.debug("broadcast " + id + ": " + event + " " + visibilityState);
+              if (visibilityState === "visible") yield _this2.disconnect();else {
+                // let other window disconnect
+                yield _this2.delay(2000);
+                yield _this2.connect(true);
+              }
+              break;
+            }
+
+          case constants/* CONNECTION_STATE */.pzj:
+            {
+              console.debug("broadcast " + id + ": " + event, transports); // if any other window is trying to connect, disconnect
+
+              transports.filter(tr => tr.connectionState === transport_transport/* ConnectionState.Connecting */.em.Connecting).forEach(ctr => {
+                _this2.transports.filter(tr => tr.type === ctr.type).forEach(tr => tr.disconnect());
+              });
+            }
+        }
+      });
+
+      return function handleBroadcastMessage(_x) {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    channel.addEventListener("message", handleBroadcastMessage, false);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    this._unsubscribeBroadcastChannel = () => {
+      unsubConnectionState();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      channel.removeEventListener("message", handleBroadcastMessage);
+      channel.close();
+    };
   }
   /**
    * Gets the list of transports registers with the bus
@@ -76702,7 +76745,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
       this.emit(constants/* CHANGE */.Ver);
     });
 
-    function connect(_x) {
+    function connect(_x2) {
       return _connect.apply(this, arguments);
     }
 
@@ -76738,6 +76781,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   ;
 
   _proto.start = function start() {
+    this.configureBroadcastChannel();
     if (!this._announceInterval) this._announceInterval = this.scheduler.setInterval(() => this.emit(constants/* SELF_ANNOUNCE */.Pbc), 499);
     this.backgroundRefreshRegisters = true;
     if (!this._gcInterval) this._gcInterval = this.scheduler.setInterval(() => this.gcDevices(), constants/* JD_DEVICE_DISCONNECTED_DELAY */.SkZ);
@@ -76753,6 +76797,12 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   function () {
     var _stop = (0,asyncToGenerator/* default */.Z)(function* () {
       yield this.disconnect();
+
+      if (this._unsubscribeBroadcastChannel) {
+        this._unsubscribeBroadcastChannel();
+
+        this._unsubscribeBroadcastChannel = undefined;
+      }
 
       if (this._announceInterval) {
         this.scheduler.clearInterval(this._announceInterval);
@@ -76981,7 +77031,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
       if (device.hasService(constants/* SRV_REAL_TIME_CLOCK */.XXX)) yield realtimeclockserver/* default.syncTime */.Z.syncTime(this);
     });
 
-    function handleRealTimeClockSync(_x2) {
+    function handleRealTimeClockSync(_x3) {
       return _handleRealTimeClockSync.apply(this, arguments);
     }
 
@@ -77012,7 +77062,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
       yield Promise.all(this._transports.map(transport => transport.sendPacketAsync(packet)));
     });
 
-    function sendPacketAsync(_x3) {
+    function sendPacketAsync(_x4) {
       return _sendPacketAsync.apply(this, arguments);
     }
 
@@ -77181,7 +77231,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
    * @category Firmware
    */
   _proto.setBackgroundFirmwareScans = function setBackgroundFirmwareScans(enabled) {
-    var _this2 = this;
+    var _this3 = this;
 
     var isSSR = typeof window === "undefined";
     if (isSSR) enabled = false;
@@ -77189,9 +77239,9 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     if (enabled) {
       if (!this._debouncedScanFirmwares) {
         this._debouncedScanFirmwares = (0,utils/* debounceAsync */.kl)( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)(function* () {
-          if (_this2._transports.some(tr => tr.connected)) {
+          if (_this3._transports.some(tr => tr.connected)) {
             console.info("scanning firmwares");
-            yield (0,flashing/* scanFirmwares */.CQ)(_this2);
+            yield (0,flashing/* scanFirmwares */.CQ)(_this3);
           }
         }), SCAN_FIRMWARE_INTERVAL);
         this.on(constants/* DEVICE_ANNOUNCE */.Hob, this._debouncedScanFirmwares);
@@ -87820,4 +87870,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-6b8208c472e066d62be4.js.map
+//# sourceMappingURL=app-e6b8afaeb56ca602229d.js.map
