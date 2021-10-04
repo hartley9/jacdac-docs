@@ -68979,7 +68979,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "2156bc3bf7b0baaa400c43e6d19c47c18555df1d";
+var sha = "0154ce897bb94dd5af1aa2da0dfe9e6d69353472";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69804,7 +69804,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2156bc3bf7b0baaa400c43e6d19c47c18555df1d";
+  var sha = "0154ce897bb94dd5af1aa2da0dfe9e6d69353472";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71913,7 +71913,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "2156bc3bf7b0baaa400c43e6d19c47c18555df1d";
+    var sha = "0154ce897bb94dd5af1aa2da0dfe9e6d69353472";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -76622,7 +76622,9 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
           case "visibilitychange":
             {
               // automatically disconnect if another pane becomes live
-              console.debug("broadcast " + id + ": " + event + " " + visibilityState);
+              //console.debug(
+              //   `broadcast ${id}: ${event} ${visibilityState}`
+              //)
               if (visibilityState === "visible") yield _this2.disconnect();else {
                 // let other window disconnect
                 yield _this2.delay(2000);
@@ -76633,8 +76635,8 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
 
           case constants/* CONNECTION_STATE */.pzj:
             {
-              console.debug("broadcast " + id + ": " + event, transports); // if any other window is trying to connect, disconnect
-
+              //console.debug(`broadcast ${id}: ${event}`, transports)
+              // if any other window is trying to connect, disconnect
               transports.filter(tr => tr.connectionState === transport_transport/* ConnectionState.Connecting */.em.Connecting).forEach(ctr => {
                 _this2.transports.filter(tr => tr.type === ctr.type).forEach(tr => tr.disconnect());
               });
@@ -87873,4 +87875,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-793fdf2f770b0fb51b9b.js.map
+//# sourceMappingURL=app-ef3204ab08e29ec16cad.js.map
