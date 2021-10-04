@@ -65,7 +65,32 @@ function MDXContent(_ref) {
   }, "bending"), " method returns the current value of the sensor."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following program outputs the sensor value whenever it changes by\n5:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.flex1.onBendingChangedBy(5, function() {\\n    led.plotBarGraph(modules.flex1.bending(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.flex1.onBendingChangedBy(5, function() {\\n    led.plotBarGraph(modules.flex1.bending(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.2,jacdac-flex=github:microsoft/pxt-jacdac/flex#v0.7.2\"},\"type\":\"renderblocks\",\"id\":\"98fbaf1f2264ffaacd0d14cac272f911\"},\"url\":\"/images/makecode/98fbaf1f2264ffaacd0d14cac272f911.png\",\"width\":438,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"modules.flex1.onBendingChangedBy(5, function() {\\n    led.plotBarGraph(modules.flex1.bending(), 100)\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.flex1.onBendingChangedBy(5, function() {\\n    led.plotBarGraph(modules.flex1.bending(), 100)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.2,jacdac-flex=github:microsoft/pxt-jacdac/flex#v0.7.2\"},\"type\":\"renderblocks\",\"id\":\"98fbaf1f2264ffaacd0d14cac272f911\"},\"url\":\"/images/makecode/98fbaf1f2264ffaacd0d14cac272f911.png\",\"width\":438,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
+    "id": "jm-flex-v10",
+    "style": {
+      "position": "relative"
+    }
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "h1",
+    "href": "#jm-flex-v10",
+    "aria-label": "jm flex v10 permalink",
+    "className": "anchor before"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
+    parentName: "a",
+    "aria-hidden": "true",
+    "focusable": "false",
+    "height": "16",
+    "version": "1.1",
+    "viewBox": "0 0 16 16",
+    "width": "16"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("path", {
+    parentName: "svg",
+    "fillRule": "evenodd",
+    "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+  }))), "JM Flex v1.0"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "/jacdac-docs/devices/microsoft/research/jmflexv10"
+  }, "JM Flex v1.0"), " module has a flexible\nsensor that changes in value when bent away from the top of the board (which contains\nthe blue pre-set resistor - square box)."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -118,4 +143,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-flex-mdx-50ab0e52d02c8c5d9869.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-flex-mdx-25ae0ffaeba87b7469b5.js.map
