@@ -41680,8 +41680,6 @@ var Transport = /*#__PURE__*/function (_JDEventSource) {
   ;
 
   _proto.errorHandler = function errorHandler(context, exception) {
-    var receivedAnything = this._lastReceivedTime !== undefined; //const code = errorCode(exception)
-
     this.emit(_constants__WEBPACK_IMPORTED_MODULE_1__/* .ERROR */ .pnR, {
       context,
       exception
@@ -41691,14 +41689,10 @@ var Transport = /*#__PURE__*/function (_JDEventSource) {
       context,
       exception
     });
-    this.emit(_constants__WEBPACK_IMPORTED_MODULE_1__/* .CHANGE */ .Ver);
-    this.disconnect(true) // retry connect
-    .then(() => {
-      if (receivedAnything) {
-        console.debug(this.type + ": reconnect after error");
-        this.connect(true);
-      }
-    });
+    this.emit(_constants__WEBPACK_IMPORTED_MODULE_1__/* .CHANGE */ .Ver); // when a microbit flash is initiated via file download, the device will
+    // stop responding. we should not try to reconnect while this is the case
+
+    this.disconnect(true);
   };
 
   _proto.dispose = function dispose() {
@@ -46694,6 +46688,7 @@ function startServiceProviderFromServiceClass(bus, serviceClass) {
 /* harmony export */   "jw": function() { return /* binding */ DrawerType; },
 /* harmony export */   "wI": function() { return /* binding */ AppProvider; }
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(15861);
 /* harmony import */ var notistack__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(70076);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(71815);
@@ -46703,6 +46698,7 @@ function startServiceProviderFromServiceClass(bus, serviceClass) {
 /* harmony import */ var _hooks_useAnalytics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(72513);
 /* harmony import */ var _PacketsContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(43226);
 /* harmony import */ var _ui_Suspense__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(69672);
+
 
 
 
@@ -46830,11 +46826,17 @@ var AppProvider = _ref => {
     if (!b) setToolsMenu(false);
   };
 
-  var toggleShowConnectTransportDialog = () => {
-    var b = !showConnectTransportDialog;
-    setShowConnectTransportDialog(b);
-    if (!b) setToolsMenu(false);
-  };
+  var toggleShowConnectTransportDialog = /*#__PURE__*/function () {
+    var _ref2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z)(function* () {
+      var b = !showConnectTransportDialog;
+      setShowConnectTransportDialog(b);
+      if (!b) setToolsMenu(false);
+    });
+
+    return function toggleShowConnectTransportDialog() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
 
   var handleCloseRoleDialog = () => setShowSelectRoleDialogService(undefined);
 
@@ -50690,7 +50692,8 @@ function ConnectButton(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ ConnectButtons; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(45987);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(45987);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(15861);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _ConnectButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2092);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20392);
@@ -50700,6 +50703,7 @@ function ConnectButton(props) {
 /* harmony import */ var _ui_Button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2636);
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(84377);
 /* harmony import */ var _icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(36656);
+
 
 var _excluded = ["full"];
 
@@ -50714,6 +50718,9 @@ var _excluded = ["full"];
 
 function DisconnectedButton(props) {
   var {
+    bus
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z);
+  var {
     mobile
   } = (0,_hooks_useMediaQueries__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)();
   var {
@@ -50724,13 +50731,35 @@ function DisconnectedButton(props) {
     transparent,
     className
   } = props;
+  var {
+    0: working,
+    1: setWorking
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   var small = !full || mobile;
   var trackName = "transport.connect.start";
+
+  var handleConnect = /*#__PURE__*/function () {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z)(function* () {
+      try {
+        setWorking(true);
+        yield bus.connect(true);
+        if (!bus.connected) toggleShowConnectTransportDialog();
+      } finally {
+        setWorking(false);
+      }
+    });
+
+    return function handleConnect() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
   if (small) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     title: "Connect to a physical device",
     color: transparent ? "inherit" : "primary",
     className: className,
-    onClick: toggleShowConnectTransportDialog
+    onClick: handleConnect,
+    disabled: working
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null)));else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Button__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
     trackName: trackName,
     title: "Connect to a physical device",
@@ -50739,7 +50768,8 @@ function DisconnectedButton(props) {
     color: transparent ? "inherit" : "primary",
     className: className,
     startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null),
-    onClick: toggleShowConnectTransportDialog
+    onClick: handleConnect,
+    disabled: working
   }, "Connect");
 }
 
@@ -50751,7 +50781,7 @@ function ConnectButtons(props) {
   var {
     full
   } = props,
-      rest = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z)(props, _excluded);
+      rest = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z)(props, _excluded);
 
   var {
     transports
@@ -68964,7 +68994,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "a2166b1bae6e5eca6fd6c0fd6a511eca8f54e20d";
+var sha = "b2228fbc05840660748d72b46576e64ca4e0e46a";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69792,7 +69822,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a2166b1bae6e5eca6fd6c0fd6a511eca8f54e20d";
+  var sha = "b2228fbc05840660748d72b46576e64ca4e0e46a";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71901,7 +71931,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "a2166b1bae6e5eca6fd6c0fd6a511eca8f54e20d";
+    var sha = "b2228fbc05840660748d72b46576e64ca4e0e46a";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87896,4 +87926,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-9fc158002eb0466a00af.js.map
+//# sourceMappingURL=app-42146fdb692e42b82073.js.map
