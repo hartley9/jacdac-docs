@@ -70,7 +70,7 @@ function DeviceQRCodeGenerator(props) {
 
   var mirrorid = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__/* .useId */ .Me)();
   var switchid = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__/* .useId */ .Me)();
-  var url = !!vanity && "HTTP://AKA.MS/" + vanity;
+  var url = vanity ? "HTTP://AKA.MS/" + vanity : undefined;
   var known = knowns[vanity];
   var {
     modulename,
@@ -173,4 +173,4 @@ function DeviceQRCodeGenerator(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-qr-silk-tsx-45eac74a0042ba311a3f.js.map
+//# sourceMappingURL=component---src-pages-tools-qr-silk-tsx-668d42e140ad1da7e11b.js.map

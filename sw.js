@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-95ca330cf6c0dc25d620.js"
+    "url": "webpack-runtime-7e36cc4872f2c1e327f0.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "83ee0633d92fdfbb56005f672ab0fad6"
+    "revision": "f26b2028fe3690e34e7752714e5c78f0"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "02bc11f5e61121de99300670d00cef3f"
+    "revision": "7c0135945b1ab26db6651870dbbab059"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "56f58df68311a9ec124370d5040072a9"
+    "revision": "99df6d5bb48d7ad1148ac25144816605"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "f807007fc5947167e04afba833d2c266"
+    "revision": "4c9bc19053bc33f071ff0182239ba8d6"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "912a984ed98cf03d0d3a580bd8068e43"
+    "revision": "259cbec14b39567b85dcad84558bcfdd"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "d48b39c94996b6203ea74174630bcea0"
+    "revision": "6ced918f080aa790547c945a1f130615"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "475a270c6ff3921ba72e87e2d44a3102"
+    "revision": "79ef611a7a2fecf2fb7eaed518c1ae46"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1334,7 +1334,7 @@ self.__precacheManifest = [
     "revision": "4c6462e083cac7aca8f6407a550ffbbf"
   },
   {
-    "url": "component---src-pages-tools-qr-silk-tsx-45eac74a0042ba311a3f.js"
+    "url": "component---src-pages-tools-qr-silk-tsx-668d42e140ad1da7e11b.js"
   },
   {
     "url": "page-data/tools/qr-silk/page-data.json",
@@ -1462,7 +1462,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-8dc810c5d5a05b3f90e2.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-9fc158002eb0466a00af.js`))) {
     return await fetch(event.request)
   }
 
