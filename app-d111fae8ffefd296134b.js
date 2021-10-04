@@ -53734,11 +53734,26 @@ function FeatureItem(props) {
 
 
 
-function HTML5Image() {
+function HTML5Image(props) {
   var {
     darkMode
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_ui_DarkModeContext__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z);
-  if (darkMode === "dark") return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_2__.S, {
+  var {
+    icon
+  } = props;
+  if (icon) {
+    if (darkMode === "dark") return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_2__.S, {
+      width: 64,
+      src: "./html5-white.png",
+      alt: "A Jacdac humidity module plugging into a Jacdac cable",
+      __imageData: __webpack_require__(28924)
+    });else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_2__.S, {
+      width: 64,
+      src: "./html5-dark.png",
+      alt: "A Jacdac humidity module plugging into a Jacdac cable",
+      __imageData: __webpack_require__(1572)
+    });
+  } else if (darkMode === "dark") return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_2__.S, {
     src: "./html5-white.png",
     alt: "A Jacdac humidity module plugging into a Jacdac cable",
     __imageData: __webpack_require__(27103)
@@ -54183,7 +54198,9 @@ function Home() {
     xs: 12,
     sm: 4
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FeatureItem__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
-    startImage: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HTML5Image__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null),
+    startImage: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HTML5Image__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+      icon: true
+    }),
     description: "JavaScript package",
     caption: "Integrate Jacdac into your web site or node.js application using our TypeScript/JavaScript npm package.",
     buttonText: "Learn more",
@@ -68923,7 +68940,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "f3f80b73f77d2c5c7f94412df17207f4746b7cbb";
+var sha = "a81ea3dfa2e14fab30b185e725cec0c436dee5bb";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69748,7 +69765,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "f3f80b73f77d2c5c7f94412df17207f4746b7cbb";
+  var sha = "a81ea3dfa2e14fab30b185e725cec0c436dee5bb";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71857,7 +71874,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "f3f80b73f77d2c5c7f94412df17207f4746b7cbb";
+    var sha = "a81ea3dfa2e14fab30b185e725cec0c436dee5bb";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87467,6 +87484,14 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 
 /***/ }),
 
+/***/ 1572:
+/***/ (function(module) {
+
+"use strict";
+module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8","images":{"fallback":{"src":"/jacdac-docs/static/0ec94d29956d4aec50f64cf5adf48d5c/1c9ce/html5-dark.png","srcSet":"/jacdac-docs/static/0ec94d29956d4aec50f64cf5adf48d5c/fbc98/html5-dark.png 16w,\\n/jacdac-docs/static/0ec94d29956d4aec50f64cf5adf48d5c/914ee/html5-dark.png 32w,\\n/jacdac-docs/static/0ec94d29956d4aec50f64cf5adf48d5c/1c9ce/html5-dark.png 64w,\\n/jacdac-docs/static/0ec94d29956d4aec50f64cf5adf48d5c/bf8e1/html5-dark.png 128w","sizes":"(min-width: 64px) 64px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/0ec94d29956d4aec50f64cf5adf48d5c/e789a/html5-dark.webp 16w,\\n/jacdac-docs/static/0ec94d29956d4aec50f64cf5adf48d5c/ef6ff/html5-dark.webp 32w,\\n/jacdac-docs/static/0ec94d29956d4aec50f64cf5adf48d5c/8257c/html5-dark.webp 64w,\\n/jacdac-docs/static/0ec94d29956d4aec50f64cf5adf48d5c/6766a/html5-dark.webp 128w","type":"image/webp","sizes":"(min-width: 64px) 64px, 100vw"}]},"width":64,"height":64}');
+
+/***/ }),
+
 /***/ 43281:
 /***/ (function(module) {
 
@@ -87737,6 +87762,14 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 "use strict";
 module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8","images":{"fallback":{"src":"/jacdac-docs/static/fcf893bc36e6a850dd3edc1fcc717608/a724b/rotarycable.png","srcSet":"/jacdac-docs/static/fcf893bc36e6a850dd3edc1fcc717608/a9ff1/rotarycable.png 226w,\\n/jacdac-docs/static/fcf893bc36e6a850dd3edc1fcc717608/a3548/rotarycable.png 453w,\\n/jacdac-docs/static/fcf893bc36e6a850dd3edc1fcc717608/a724b/rotarycable.png 905w","sizes":"(min-width: 905px) 905px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/fcf893bc36e6a850dd3edc1fcc717608/6aec2/rotarycable.webp 226w,\\n/jacdac-docs/static/fcf893bc36e6a850dd3edc1fcc717608/8a207/rotarycable.webp 453w,\\n/jacdac-docs/static/fcf893bc36e6a850dd3edc1fcc717608/6e400/rotarycable.webp 905w","type":"image/webp","sizes":"(min-width: 905px) 905px, 100vw"}]},"width":905,"height":511}');
 
+/***/ }),
+
+/***/ 28924:
+/***/ (function(module) {
+
+"use strict";
+module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8","images":{"fallback":{"src":"/jacdac-docs/static/8f231b44015993a7a582926e2c64b477/1c9ce/html5-white.png","srcSet":"/jacdac-docs/static/8f231b44015993a7a582926e2c64b477/fbc98/html5-white.png 16w,\\n/jacdac-docs/static/8f231b44015993a7a582926e2c64b477/914ee/html5-white.png 32w,\\n/jacdac-docs/static/8f231b44015993a7a582926e2c64b477/1c9ce/html5-white.png 64w,\\n/jacdac-docs/static/8f231b44015993a7a582926e2c64b477/bf8e1/html5-white.png 128w","sizes":"(min-width: 64px) 64px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/8f231b44015993a7a582926e2c64b477/e789a/html5-white.webp 16w,\\n/jacdac-docs/static/8f231b44015993a7a582926e2c64b477/ef6ff/html5-white.webp 32w,\\n/jacdac-docs/static/8f231b44015993a7a582926e2c64b477/8257c/html5-white.webp 64w,\\n/jacdac-docs/static/8f231b44015993a7a582926e2c64b477/6766a/html5-white.webp 128w","type":"image/webp","sizes":"(min-width: 64px) 64px, 100vw"}]},"width":64,"height":64}');
+
 /***/ })
 
 },
@@ -87746,4 +87779,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-2eafbfe4e9f3760dc39d.js.map
+//# sourceMappingURL=app-d111fae8ffefd296134b.js.map
