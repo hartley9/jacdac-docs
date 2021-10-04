@@ -52027,6 +52027,8 @@ var Button = __webpack_require__(83332);
 var specconstants = __webpack_require__(73512);
 // EXTERNAL MODULE: ./src/jacdac/useDeviceSpecification.ts + 1 modules
 var useDeviceSpecification = __webpack_require__(34246);
+// EXTERNAL MODULE: ./src/components/devices/DeviceName.tsx
+var DeviceName = __webpack_require__(26390);
 // EXTERNAL MODULE: ./src/components/devices/useDeviceImage.ts
 var useDeviceImage = __webpack_require__(81546);
 // EXTERNAL MODULE: ./src/components/hooks/useInterval.ts
@@ -52034,6 +52036,7 @@ var useInterval = __webpack_require__(63944);
 // EXTERNAL MODULE: ./src/components/ui/Alert.tsx
 var Alert = __webpack_require__(95453);
 ;// CONCATENATED MODULE: ./src/components/dialogs/IdentifyDialog.tsx
+
 
 
 
@@ -52104,7 +52107,10 @@ function IdentifyDialog(props) {
   return /*#__PURE__*/react.createElement(Dialog/* default */.Z, {
     open: open,
     onClose: handleCloseIdentify
-  }, /*#__PURE__*/react.createElement(DialogTitle/* default */.Z, null, "Identifying ", device.friendlyName, "..."), /*#__PURE__*/react.createElement(DialogContent/* default */.Z, null, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, /*#__PURE__*/react.createElement(DialogTitle/* default */.Z, null, "Identifying", " ", /*#__PURE__*/react.createElement(DeviceName/* default */.Z, {
+    device: device,
+    linkToSpecification: true
+  }), "..."), /*#__PURE__*/react.createElement(DialogContent/* default */.Z, null, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
     alignItems: "center",
     alignContent: "center"
@@ -52429,9 +52435,16 @@ function DeviceAvatar(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ DeviceName; }
 /* harmony export */ });
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(80453);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _useDeviceName__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5738);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(80453);
+/* harmony import */ var gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(71481);
+/* harmony import */ var gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+/* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45656);
+/* harmony import */ var _jacdac_useDeviceSpecification__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(34246);
+/* harmony import */ var _useDeviceName__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5738);
+
+
+
 
 
 
@@ -52439,17 +52452,25 @@ function DeviceName(props) {
   var {
     device,
     serviceIndex,
-    showShortId
+    showShortId,
+    linkToSpecification
   } = props;
-  var name = (0,_useDeviceName__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(device) || "";
+  var specification = (0,_jacdac_useDeviceSpecification__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)(device);
+  var name = (0,_useDeviceName__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(device) || "";
   var {
     shortId
   } = device;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, name), !name && showShortId && shortId, showShortId && name && name !== shortId && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+
+  var Name = () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, name), !name && showShortId && shortId, showShortId && name && name !== shortId && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
     component: "span",
     variant: "body2",
     spellCheck: false
   }, " ", shortId), serviceIndex !== undefined && "[" + serviceIndex + "]");
+
+  if (linkToSpecification && specification) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_0__.Link, {
+    color: "textPrimary",
+    to: "/devices/" + (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__/* .identifierToUrlPath */ .uM)(specification.id)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(Name, null));else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(Name, null);
 }
 
 /***/ }),
@@ -68950,7 +68971,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "53b750e7eaf73241cb2a766a75a16ee84f748616";
+var sha = "0ee53e85a54fe11afe73ca0e0fd09728b48ab631";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69775,7 +69796,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "53b750e7eaf73241cb2a766a75a16ee84f748616";
+  var sha = "0ee53e85a54fe11afe73ca0e0fd09728b48ab631";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71884,7 +71905,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "53b750e7eaf73241cb2a766a75a16ee84f748616";
+    var sha = "0ee53e85a54fe11afe73ca0e0fd09728b48ab631";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87792,4 +87813,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-db6454a339b5203539b3.js.map
+//# sourceMappingURL=app-83e87412f0bf3e1c2622.js.map
