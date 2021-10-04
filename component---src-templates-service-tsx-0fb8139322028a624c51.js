@@ -878,6 +878,32 @@ var MakeCodeIcon = __webpack_require__(70654);
 
 
 
+
+function ServiceButtons(props) {
+  var {
+    service,
+    makecodeSlug
+  } = props;
+  var {
+    shortId
+  } = service;
+  return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    container: true,
+    spacing: 1
+  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
+    variant: "contained",
+    to: "/services/" + shortId + "/playground/"
+  }, "Playground")), makecodeSlug && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
+    variant: "contained",
+    to: makecodeSlug,
+    startIcon: /*#__PURE__*/react.createElement(MakeCodeIcon/* default */.Z, null)
+  }, "MakeCode")));
+}
+
 function ServiceMarkdown(props) {
   var {
     classIdentifier,
@@ -892,21 +918,10 @@ function ServiceMarkdown(props) {
     specification: service
   }), /*#__PURE__*/react.createElement(Markdown/* default */.Z, {
     source: source
-  }), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    container: true,
-    spacing: 1
-  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true
-  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
-    variant: "contained",
-    to: "/services/" + shortId + "/playground/"
-  }, "Playground")), makecodeSlug && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true
-  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
-    variant: "contained",
-    to: makecodeSlug,
-    startIcon: /*#__PURE__*/react.createElement(MakeCodeIcon/* default */.Z, null)
-  }, "MakeCode"))), /*#__PURE__*/react.createElement("h2", null, "Registered Devices"), /*#__PURE__*/react.createElement(DeviceSpecificationList["default"], {
+  }), service && /*#__PURE__*/react.createElement(ServiceButtons, {
+    service: service,
+    makecodeSlug: makecodeSlug
+  }), /*#__PURE__*/react.createElement("h2", null, "Registered Devices"), /*#__PURE__*/react.createElement(DeviceSpecificationList["default"], {
     requiredServiceClasses: [classIdentifier]
   }), /*#__PURE__*/react.createElement("h2", null, "Sources"), /*#__PURE__*/react.createElement(ServiceSpecificationSource, {
     serviceSpecification: service
@@ -927,4 +942,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-service-tsx-519713a57992193b10a5.js.map
+//# sourceMappingURL=component---src-templates-service-tsx-0fb8139322028a624c51.js.map
