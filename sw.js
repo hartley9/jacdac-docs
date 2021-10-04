@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-230eaf6889c6584ef058.js"
+    "url": "webpack-runtime-5d356e6f18f9e8292124.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "b1e29fc4702c7a432e15bb8106934eb8"
+    "revision": "f7e8ac8acd663bb9fff986e2b77c71b4"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "cdec9d5243d43573344662ddb12e3bb8"
+    "revision": "f39f7f5703423e43923d4d9420f0fc8e"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "3527748efebbcfbd9f02f7e690139791"
+    "revision": "ac7e9dbc4c84cb3225e5a674e6143436"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "283d3bab871f9f777ef94ff7c6b15eea"
+    "revision": "10bde31ea6e5ac6e102983dba34f1368"
   },
   {
     "url": "page-data/sq/d/2898794040.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "26cc245f14178ee736ded671a79ac6a5"
+    "revision": "308cf57817811c483e2662b8612ee3f4"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "c689e9e4f16947c1204592229d817a57"
+    "revision": "5dee2fe9cdc498546cc5dbd55d45c946"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -933,6 +933,34 @@ self.__precacheManifest = [
     "revision": "dc7b2a333fa2ade72b84c008e6aa20d3"
   },
   {
+    "url": "page-data/devices/microsoft/research/jacdaccableextender38v10/page-data.json",
+    "revision": "c1012e6b512d71744addd11ba95afa73"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jacdacjoystick440344v03/page-data.json",
+    "revision": "4ef5fff2c73f43f336e347ddb88609e8"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jacdacmicrobitshieldlp29v03/page-data.json",
+    "revision": "a82889ccfca588df5a730d5797ce0c87"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jacdacmotiondetection54v01/page-data.json",
+    "revision": "2fa9b4decf31dffbf716461f772d8444"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jacdacpinheaders45v02/page-data.json",
+    "revision": "ad24e1f9cb7d2e93d2770a8c5eb00864"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jacdactouchtest35v10/page-data.json",
+    "revision": "070d3179f87363664a030ed845bf34b9"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jacdactouchtestelectrode36v10/page-data.json",
+    "revision": "570cb58e62fa52346bb35a6bf75461b4"
+  },
+  {
     "url": "page-data/devices/microsoft/research/jmaccelerometer30v02/page-data.json",
     "revision": "88f80f33d59d485da22fd0a33004a39f"
   },
@@ -1161,7 +1189,7 @@ self.__precacheManifest = [
     "url": "baf0fd2d778787cec7104fdce75a778b8b7a3d97-2faf92415d7e3f1d6535.js"
   },
   {
-    "url": "component---src-pages-tools-device-registration-tsx-758c08e3a4458de78706.js"
+    "url": "component---src-pages-tools-device-registration-tsx-9c0a13a41ec3719a8dfc.js"
   },
   {
     "url": "page-data/tools/device-registration/page-data.json",
@@ -1275,7 +1303,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/tools/qr-silk/page-data.json",
-    "revision": "aad82f44aff74649b6fcc8947902cb06"
+    "revision": "3d6a0ba2aeab37d22406f65888ff8e6b"
   },
   {
     "url": "component---src-pages-tools-release-assets-tsx-eb74536dd7e7cf74c9f1.js"
@@ -1399,7 +1427,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-73d33d6e17b8bfecd7e7.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-4341f97223d10a206d35.js`))) {
     return await fetch(event.request)
   }
 

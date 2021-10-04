@@ -1380,7 +1380,8 @@ function DeviceRegistration() {
   var githubError = device.repo && !parsedRepo ? "invalid GitHub repository" : "";
   var linkError = !device.link || /^https:\/\//.test(device.link) ? "" : "Must be https://...";
   var idError = !device.id ? "missing identifier" : (0,spec/* deviceSpecifications */.qx)({
-    includeDeprecated: true
+    includeDeprecated: true,
+    includeExperimental: true
   }).find(dev => dev.id == device.id) ? "identifer already used" : "";
   var imageError = !imageDataURI ? "missing image" : "";
   var versionError = device !== null && device !== void 0 && device.version && !/^(v\d+\.\d+(\.\d+(\.\d+)?)?\w?)?$/.test(device === null || device === void 0 ? void 0 : device.version) ? "Preferred format is vN.N" : "";
@@ -1691,4 +1692,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-758c08e3a4458de78706.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-9c0a13a41ec3719a8dfc.js.map
