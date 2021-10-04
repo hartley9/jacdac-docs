@@ -50803,8 +50803,8 @@ var useDeviceSpecification = __webpack_require__(34246);
 var DeviceAvatar = __webpack_require__(37172);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(45987);
-// EXTERNAL MODULE: ./src/components/dashboard/DashboardServiceWidget.tsx + 5 modules
-var DashboardServiceWidget = __webpack_require__(23069);
+// EXTERNAL MODULE: ./src/components/dashboard/DashboardServiceWidget.tsx + 6 modules
+var DashboardServiceWidget = __webpack_require__(3922);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/styled.js
 var styled = __webpack_require__(62041);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Button/Button.js
@@ -51041,7 +51041,7 @@ function DashboardDevice(props) {
 
 /***/ }),
 
-/***/ 23069:
+/***/ 3922:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51099,7 +51099,23 @@ function useEvent(service, identifier) {
 }
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
 var utils = __webpack_require__(81794);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Tooltip/Tooltip.js
+var Tooltip = __webpack_require__(14685);
+;// CONCATENATED MODULE: ./src/components/widgets/OptionalTooltip.tsx
+
+
+function OptionalTooltip(props) {
+  var {
+    children,
+    title
+  } = props;
+  if (!title) return children;
+  return /*#__PURE__*/react.createElement(Tooltip/* default */.ZP, {
+    title: title
+  }, /*#__PURE__*/react.createElement("div", null, children));
+}
 ;// CONCATENATED MODULE: ./src/components/dashboard/DashboardButton.tsx
+
 
 
 
@@ -51149,14 +51165,16 @@ function BinaryButton(props) {
   var handleUp = () => server === null || server === void 0 ? void 0 : server.up();
 
   var widgetSize = "clamp(3rem, 10vw, 10vh)";
-  return /*#__PURE__*/react.createElement(ButtonWidget/* default */.Z, {
+  return /*#__PURE__*/react.createElement(OptionalTooltip, {
+    title: !server ? "Press the physical button!" : undefined
+  }, /*#__PURE__*/react.createElement(ButtonWidget/* default */.Z, {
     checked: !!pressed,
     color: color,
     onDown: server ? handleDown : undefined,
     onUp: server ? handleUp : undefined,
     label: label,
     size: widgetSize
-  });
+  }));
 }
 
 var ACTIVE_SPEED = 0.05;
@@ -68934,7 +68952,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "d8faf3ee44681c89c12453c1b6a78e3ad5af73b1";
+var sha = "37a1f0f706f402173b7953487f0e44cc92a44dbb";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69759,7 +69777,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "d8faf3ee44681c89c12453c1b6a78e3ad5af73b1";
+  var sha = "37a1f0f706f402173b7953487f0e44cc92a44dbb";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71868,7 +71886,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "d8faf3ee44681c89c12453c1b6a78e3ad5af73b1";
+    var sha = "37a1f0f706f402173b7953487f0e44cc92a44dbb";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87776,4 +87794,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-4341f97223d10a206d35.js.map
+//# sourceMappingURL=app-7e8d98d5f0256e1ba6ce.js.map
