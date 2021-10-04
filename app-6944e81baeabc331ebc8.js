@@ -53839,14 +53839,14 @@ function Hardware() {
     subtitle3: "Integrate Jacdac into your devices.",
     imageColumns: 6,
     buttonText: "Device Development Kit",
-    buttonUrl: "https://github.com/microsoft/jacdac-ddk",
+    buttonUrl: "/hardware/ddk",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
       src: "./pcbfootprint.png",
       alt: "PCB connector footprint",
       __imageData: __webpack_require__(49895)
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-    subtitle: "Plug-and-play.",
+    subtitle: "Plug-and-play",
     description: "Every Jacdac device has a tiny micro-controller that runs the Jacdac protocol and communicates with the bus.",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
       src: "./rhtempvertical.png",
@@ -53855,7 +53855,7 @@ function Hardware() {
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: false,
-    subtitle: "3-wire serial.",
+    subtitle: "3-wire serial",
     description: "Jacdac packets are sent serially among physical devices over a single data line along with a regulated power line.",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
       src: "./bustopology.png",
@@ -53867,7 +53867,7 @@ function Hardware() {
     buttonUrl: "/protocol/"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: true,
-    subtitle: "8-bit and up.",
+    subtitle: "8-bit and up",
     description: "Firmware fits on 8-bit micro-controllers to minimize costs",
     imageColumns: 8,
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
@@ -53880,7 +53880,7 @@ function Hardware() {
     buttonUrl: "https://github.com/microsoft/jacdac-ddk"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: false,
-    subtitle: "PCB Connector.",
+    subtitle: "PCB Connector",
     description: "A PCB edge connector was chosen for Jacdac primarily because it essentially adds no cost to a product.",
     buttonText: "Physical connector",
     buttonVariant: "link",
@@ -53893,7 +53893,7 @@ function Hardware() {
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: true,
-    subtitle: "Power... negociated.",
+    subtitle: "Power... negociated",
     description: "Power is regulated and negociated on the bus to minimize brown-outs, burn-outs and other inconviences.",
     imageColumns: 8,
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
@@ -53903,7 +53903,7 @@ function Hardware() {
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: false,
-    subtitle: "Firmware Updates.",
+    subtitle: "Firmware Updates",
     description: "Jacdac scans for registered devices and can upgrade firmware over the bus.",
     imageColumns: 4,
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
@@ -53952,12 +53952,12 @@ function Hardware() {
     caption: "Specify your own services and deploy them on your devices."
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: true,
-    subtitle: "Time to join.",
-    description: "The Jacdac Device Development Kit (DDK) is for 3rd party hardware designers, firmware developers and manufacturers who wish to create their own Jacdac devices.",
+    subtitle: "Device Dev Kit",
+    description: "Manufacture your own Jacdac devices.",
     imageColumns: 8,
     centered: true,
     buttonText: "Device Development Kit",
-    buttonUrl: "https://github.com/microsoft/jacdac-ddk",
+    buttonUrl: "/hardware/ddk",
     buttonVariant: "link",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
       src: "./beautifysimple.png",
@@ -54056,7 +54056,7 @@ function Home() {
     shuffle: true
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: false,
-    subtitle: "Hardware.",
+    subtitle: "Hardware",
     description: "Jacdac relies on a 3-wire bus for power delivery and data transfer. A purpose-built connector is used to interface with the Jacdac PCB edge connector.",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_9__.S, {
       src: "./rotarycable.png",
@@ -54068,7 +54068,7 @@ function Home() {
     buttonUrl: "/hardware/"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: true,
-    subtitle: "Protocol.",
+    subtitle: "Protocol",
     description: "Bus topology, dynamic discovery, services designed for micro-controllers.",
     buttonText: "Learn more",
     buttonVariant: "link",
@@ -54080,7 +54080,7 @@ function Home() {
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: false,
-    subtitle: "'Nano' Services.",
+    subtitle: "'Nano' Services",
     description: "Jacdac services are specified to abstract the hardware device from the software implementation. The services are comprised of registers, commands and events, along with precise data layout information for each packet.",
     buttonText: "Explore services",
     buttonVariant: "link",
@@ -54169,12 +54169,12 @@ function Home() {
     buttonUrl: "/hardware/"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: true,
-    subtitle: "Time to join.",
-    description: "The Jacdac Device Development Kit (DDK) is for 3rd party hardware designers, firmware developers and manufacturers who wish to create their own Jacdac devices.",
+    subtitle: "Device Dev Kit",
+    description: "Manufacture your own Jacdac devices.",
     imageColumns: 8,
     centered: true,
     buttonText: "Device Development Kit",
-    buttonUrl: "https://github.com/microsoft/jacdac-ddk",
+    buttonUrl: "/hardware/ddk",
     buttonVariant: "link",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_9__.S, {
       src: "./beautifysimple.png",
@@ -68964,7 +68964,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "275eeddfb8fd8d73f46355e2cb39c71e399af2a2";
+var sha = "77a953875fbed5c989d8c9a7feaa996f21ab332e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69792,7 +69792,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "275eeddfb8fd8d73f46355e2cb39c71e399af2a2";
+  var sha = "77a953875fbed5c989d8c9a7feaa996f21ab332e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71901,7 +71901,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "275eeddfb8fd8d73f46355e2cb39c71e399af2a2";
+    var sha = "77a953875fbed5c989d8c9a7feaa996f21ab332e";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -82739,6 +82739,8 @@ exports.components = {
   "component---src-pages-experiments-razor-chroma-tsx": () => __webpack_require__.e(/* import() | component---src-pages-experiments-razor-chroma-tsx */ 1674).then(__webpack_require__.bind(__webpack_require__, 74692)),
   "component---src-pages-github-tsx": () => __webpack_require__.e(/* import() | component---src-pages-github-tsx */ 2566).then(__webpack_require__.bind(__webpack_require__, 82017)),
   "component---src-pages-hardware-connector-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-connector-mdx */ 2124).then(__webpack_require__.bind(__webpack_require__, 80427)),
+  "component---src-pages-hardware-ddk-firmware-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-ddk-firmware-mdx */ 1773).then(__webpack_require__.bind(__webpack_require__, 72973)),
+  "component---src-pages-hardware-ddk-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-ddk-mdx */ 5518).then(__webpack_require__.bind(__webpack_require__, 36406)),
   "component---src-pages-hardware-kit-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-kit-mdx */ 9306).then(__webpack_require__.bind(__webpack_require__, 25420)),
   "component---src-pages-hardware-kit-oob-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-kit-oob-mdx */ 915).then(__webpack_require__.bind(__webpack_require__, 51697)),
   "component---src-pages-hardware-kit-unbox-mdx": () => __webpack_require__.e(/* import() | component---src-pages-hardware-kit-unbox-mdx */ 6575).then(__webpack_require__.bind(__webpack_require__, 69114)),
@@ -87894,4 +87896,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-f0e8f5be499056c23e54.js.map
+//# sourceMappingURL=app-6944e81baeabc331ebc8.js.map
