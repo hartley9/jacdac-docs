@@ -428,7 +428,7 @@ function DeviceSpecificationList(props) {
   } = (0,useMediaQueries/* default */.Z)();
   var cols = mobile ? 1 : medium ? 3 : 4;
   var specs = (0,react.useMemo)(() => {
-    var r = (devices || (0,jdom_spec/* deviceSpecifications */.qx)()).filter(spec => spec.status !== "deprecated");
+    var r = devices || (0,jdom_spec/* deviceSpecifications */.qx)();
     if (company) r = r.filter(spec => spec.company === company);
     if (requiredServiceClasses) r = r.filter(spec => spec.services.length && requiredServiceClasses.every(srv => spec.services.indexOf(srv) > -1));
     if (shuffle) (0,utils/* arrayShuffle */.r)(r);
@@ -602,4 +602,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-devices-tsx-77d122001e4f806a4ef3.js.map
+//# sourceMappingURL=component---src-pages-devices-tsx-5fadba66b230dd9719a0.js.map

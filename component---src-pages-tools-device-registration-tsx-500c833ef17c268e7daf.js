@@ -1377,7 +1377,9 @@ function DeviceRegistration() {
   var parsedRepo = (0,github/* parseRepoUrl */.Jo)(device.repo);
   var githubError = device.repo && !parsedRepo ? "invalid GitHub repository" : "";
   var linkError = !device.link || /^https:\/\//.test(device.link) ? "" : "Must be https://...";
-  var idError = !device.id ? "missing identifier" : (0,spec/* deviceSpecifications */.qx)().find(dev => dev.id == device.id) ? "identifer already used" : "";
+  var idError = !device.id ? "missing identifier" : (0,spec/* deviceSpecifications */.qx)({
+    includeDeprecated: true
+  }).find(dev => dev.id == device.id) ? "identifer already used" : "";
   var imageError = !imageDataURI ? "missing image" : "";
   var versionError = device !== null && device !== void 0 && device.version && !/^(v\d+\.\d+(\.\d+(\.\d+)?)?\w?)?$/.test(device === null || device === void 0 ? void 0 : device.version) ? "Preferred format is vN.N" : "";
   var ok = !nameError && !linkError && !idError && !imageError && !companyError;
@@ -1687,4 +1689,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-b2dfac221de08318a8d7.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-500c833ef17c268e7daf.js.map
