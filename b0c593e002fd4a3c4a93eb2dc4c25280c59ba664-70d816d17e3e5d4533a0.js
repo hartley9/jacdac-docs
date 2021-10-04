@@ -5049,9 +5049,11 @@ function SuspendedBlockEditor(props) {
   (0,react.useEffect)(() => setWorkspaceXml(xml), [xml]); // resize blockly
 
   (0,react.useEffect)(() => {
-    var observer = new ResizeObserver(() => workspace === null || workspace === void 0 ? void 0 : workspace.resize());
-    observer.observe(blocklyRef.current);
-    return () => observer.disconnect();
+    if (typeof ResizeObserver !== "undefined") {
+      var observer = new ResizeObserver(() => workspace === null || workspace === void 0 ? void 0 : workspace.resize());
+      observer.observe(blocklyRef.current);
+      return () => observer.disconnect();
+    }
   }, [workspace, blocklyRef.current]);
   useBlockMinimap(workspace);
   return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(BrowserCompatibilityAlert, {
@@ -12813,4 +12815,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-506b2e839ae239a51e6a.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-70d816d17e3e5d4533a0.js.map
