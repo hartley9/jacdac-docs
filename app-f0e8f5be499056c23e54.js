@@ -68964,7 +68964,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "694b0c5d03181de8bc59462adb87ce7e3299f92f";
+var sha = "275eeddfb8fd8d73f46355e2cb39c71e399af2a2";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69792,7 +69792,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "694b0c5d03181de8bc59462adb87ce7e3299f92f";
+  var sha = "275eeddfb8fd8d73f46355e2cb39c71e399af2a2";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71901,7 +71901,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "694b0c5d03181de8bc59462adb87ce7e3299f92f";
+    var sha = "275eeddfb8fd8d73f46355e2cb39c71e399af2a2";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -82718,6 +82718,7 @@ exports.components = {
   "component---src-pages-clients-makecode-extensions-tvoc-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-tvoc-mdx */ 395).then(__webpack_require__.bind(__webpack_require__, 93741)),
   "component---src-pages-clients-makecode-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-mdx */ 5348).then(__webpack_require__.bind(__webpack_require__, 82733)),
   "component---src-pages-clients-makecode-projects-heartbeat-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-heartbeat-mdx */ 9089).then(__webpack_require__.bind(__webpack_require__, 28258)),
+  "component---src-pages-clients-makecode-projects-joystick-2-mouse-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-joystick-2-mouse-mdx */ 3375).then(__webpack_require__.bind(__webpack_require__, 42760)),
   "component---src-pages-clients-makecode-projects-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-mdx */ 2235).then(__webpack_require__.bind(__webpack_require__, 39091)),
   "component---src-pages-clients-makecode-projects-rotary-2-mouse-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-projects-rotary-2-mouse-mdx */ 1720).then(__webpack_require__.bind(__webpack_require__, 1626)),
   "component---src-pages-clients-makecode-servers-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-servers-mdx */ 2913).then(__webpack_require__.bind(__webpack_require__, 1979)),
@@ -87893,4 +87894,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-a43c379deb18225f1dda.js.map
+//# sourceMappingURL=app-f0e8f5be499056c23e54.js.map
