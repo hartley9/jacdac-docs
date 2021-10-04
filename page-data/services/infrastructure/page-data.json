@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-service-tsx",
     "path": "/services/infrastructure/",
     "result": {"pageContext":{"classIdentifier":504728043,"source":"# Infrastructure\n\nA service that tags a device as purely infrastructure device.\n\n    identifier: 0x1e1589eb\n\nA Jacdac user interface can ignore any device that hosts this service. \n"}},
-    "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","4292774041","63159454"]}
+    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

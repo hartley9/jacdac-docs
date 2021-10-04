@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/bootloader/playground/",
     "result": {"pageContext":{"node":{"name":"Bootloader","shortName":"bootloader","shortId":"bootloader","classIdentifier":536516936}}},
-    "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","4292774041","63159454"]}
+    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/infrastructure/playground/",
     "result": {"pageContext":{"node":{"name":"Infrastructure","shortName":"infrastructure","shortId":"infrastructure","classIdentifier":504728043}}},
-    "staticQueryHashes": ["1530881449","249313281","2744294623","2898794040","413816803","4292774041","63159454"]}
+    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
