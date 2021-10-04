@@ -226,25 +226,13 @@ function ConnectTransportDialog(props) {
 var _excluded = ["image", "src", "className"];
 
 
-var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)({
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(() => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)({
   media: {
     height: 0,
-    paddingTop: '75%' // 4:3
+    paddingTop: "75%" // 4:3
 
   }
 }));
-/*
-        [theme.breakpoints.down('lg')]: {
-            paddingTop: '56.72%', // 16:9
-        },
-        [theme.breakpoints.down('xs')]: {
-            paddingTop: '18%',
-        },
-        [theme.breakpoints.down('md')]: { // 6:3
-            paddingTop: '50%',
-        }
-*/
-
 function CardMediaWithSkeleton(props) {
   var {
     image,
@@ -255,15 +243,16 @@ function CardMediaWithSkeleton(props) {
 
   var classes = useStyles();
   var hasImage = !!image || !!src;
-  return hasImage ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, Object.assign({
+  if (!hasImage) return null;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, Object.assign({
     className: className || classes.media
   }, others, {
     image: image,
     src: src
-  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
+  }));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=9474-332032c28dfaa4542685.js.map
+//# sourceMappingURL=9474-a38ddc6d44103c3f9470.js.map

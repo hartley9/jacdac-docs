@@ -52457,7 +52457,8 @@ function DeviceName(props) {
 
 
 function useDeviceImage(specification, size) {
-  return specification && (0,gatsby_link__WEBPACK_IMPORTED_MODULE_0__/* .withPrefix */ .dq)("images/devices/" + (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .identifierToUrlPath */ .uM)(specification.id) + (size ? "." + size : "") + ".jpg");
+  var sz = size || "full";
+  return specification && (0,gatsby_link__WEBPACK_IMPORTED_MODULE_0__/* .withPrefix */ .dq)("images/devices/" + (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_1__/* .identifierToUrlPath */ .uM)(specification.id) + "." + sz + ".jpg");
 }
 
 /***/ }),
@@ -68940,7 +68941,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "a81ea3dfa2e14fab30b185e725cec0c436dee5bb";
+var sha = "1df04142b7384b5b1e531e9cf4545e882d547513";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69765,7 +69766,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a81ea3dfa2e14fab30b185e725cec0c436dee5bb";
+  var sha = "1df04142b7384b5b1e531e9cf4545e882d547513";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71874,7 +71875,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "a81ea3dfa2e14fab30b185e725cec0c436dee5bb";
+    var sha = "1df04142b7384b5b1e531e9cf4545e882d547513";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87779,4 +87780,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-d111fae8ffefd296134b.js.map
+//# sourceMappingURL=app-9cbb924af180c069d7f0.js.map
