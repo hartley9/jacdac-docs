@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-143c6e514491a81b0ae6.js"
+    "url": "webpack-runtime-98b2b550a0fa2961128b.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "2b6e5a95c8c8e6a394c8bcdedc612040"
+    "revision": "d887a44bcaa75a4ce9f60f71b790c89e"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "0c6035f36994ab8d8c503abd0e39e394"
+    "revision": "fccbb0aaf47c59b4ae2dbf7c0e70248c"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "2ff24d74e08679c167de5d73bfb45141"
+    "revision": "1bc39bdc7f82e1fa77c0759325236541"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "6a529fa136e090baff2e722ed5e58998"
+    "revision": "b0733f2384d36f8caaa0fa0c809857f9"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "ca9cc9cca675c4123ce64415206614a3"
+    "revision": "9575a6c882e588bad617e8364bfabf09"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "6ced918f080aa790547c945a1f130615"
+    "revision": "d48b39c94996b6203ea74174630bcea0"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "8ba9489b7a280ef7281f8e8730d8cc78"
+    "revision": "34399db4dba8fd25f29b0ba68983c28f"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -976,34 +976,6 @@ self.__precacheManifest = [
     "revision": "c0a28d5ef735bdbb8e0dfbe0db770934"
   },
   {
-    "url": "page-data/devices/microsoft/research/jacdaccableextender38v10/page-data.json",
-    "revision": "1c0f01029aed9fd81cd77747882ef01b"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jacdacjoystick440344v03/page-data.json",
-    "revision": "1e8643431d38d5cac1dee86002225f0d"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jacdacmicrobitshieldlp29v03/page-data.json",
-    "revision": "163f8248bf35ead9e4d0b14f64208260"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jacdacmotiondetection54v01/page-data.json",
-    "revision": "62e308d928d2f3933a98245f1f46823c"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jacdacpinheaders45v02/page-data.json",
-    "revision": "8208445765c1b0f6ec188daa32e4bdf8"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jacdactouchtest35v10/page-data.json",
-    "revision": "51cfbf2d90ae216ca0b33ecc6de79bf4"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jacdactouchtestelectrode36v10/page-data.json",
-    "revision": "1bea77d408075f765b18bfdaa3744398"
-  },
-  {
     "url": "page-data/devices/microsoft/research/jmaccelerometer30v02/page-data.json",
     "revision": "b839bfd3bb2b289a8bf46f5cc1d89756"
   },
@@ -1038,14 +1010,6 @@ self.__precacheManifest = [
   {
     "url": "page-data/devices/microsoft/research/jmarcadecontrolsv20/page-data.json",
     "revision": "85e75e4f9baf4b503328bee42f007a2a"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jmbrainesp3248v02/page-data.json",
-    "revision": "e29f937cda1c5c4fe21b08d49ba82a4f"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jmbrainesp3248v03/page-data.json",
-    "revision": "ed4040ccf15910e2dc6af825440b8579"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbrainf441v02/page-data.json",
@@ -1096,10 +1060,6 @@ self.__precacheManifest = [
     "revision": "aa428977368fdb0eb1e218352711f4a0"
   },
   {
-    "url": "page-data/devices/microsoft/research/jmhub39v03/page-data.json",
-    "revision": "01f43dda4d2b1a7d3deb2eb1c2705c8f"
-  },
-  {
     "url": "page-data/devices/microsoft/research/jmkeyboardkey46v10/page-data.json",
     "revision": "d3ac838e9135fa9521544798a8d7528a"
   },
@@ -1112,14 +1072,6 @@ self.__precacheManifest = [
     "revision": "6dbff212a53ee02a0d742297400fa5a4"
   },
   {
-    "url": "page-data/devices/microsoft/research/jmmachinelearning/page-data.json",
-    "revision": "4099aa3d1aae4a895677efaa08d3d9fb"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jmmicrobitshieldlp29v05/page-data.json",
-    "revision": "003244a7bc13afbbaff01074e3d9a597"
-  },
-  {
     "url": "page-data/devices/microsoft/research/jmmotorv21/page-data.json",
     "revision": "f4530019756c0bf688e85caaa6c59670"
   },
@@ -1130,10 +1082,6 @@ self.__precacheManifest = [
   {
     "url": "page-data/devices/microsoft/research/jmpinheader45v02/page-data.json",
     "revision": "879105494aa45d6172a44726482929ba"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jmpower/page-data.json",
-    "revision": "db96f98497a9c9b86d796500cff552d8"
   },
   {
     "url": "page-data/devices/microsoft/research/jmprotov20/page-data.json",
@@ -1198,14 +1146,6 @@ self.__precacheManifest = [
   {
     "url": "page-data/devices/microsoft/research/jmtemperaturehumidity18v11/page-data.json",
     "revision": "6e95d929f9ed5e88768ce6ba2db24a9e"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/jmtouchprotov20/page-data.json",
-    "revision": "b42b464e785fbc4e5a8a36b845b1a918"
-  },
-  {
-    "url": "page-data/devices/microsoft/research/mikrobuscarrierboard53v01/page-data.json",
-    "revision": "c3875a2addcfad9013383856cafd0dd6"
   },
   {
     "url": "component---src-pages-tools-accelerometer-theremin-tsx-31345abb60f945e6b783.js"
@@ -1470,7 +1410,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-4348e1f463e1ea01c2f2.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-4a27a0b8ddaacf609cd7.js`))) {
     return await fetch(event.request)
   }
 
