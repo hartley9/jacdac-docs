@@ -65,7 +65,7 @@ function MDXContent(_ref) {
   }, "humidity"), " method returns the current humidity."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The program below outputs the humidity whenever the humidity\nchanges by 5 percent:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"modules.humidity1.onHumidityChangedBy(5, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.humidity1.humidity())\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.humidity1.onHumidityChangedBy(5, function() {\\n    led.stopAnimation()\\n    basic.showNumber(modules.humidity1.humidity())\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.6,jacdac-humidity=github:microsoft/pxt-jacdac/humidity#v0.7.6\"},\"type\":\"renderblocks\",\"id\":\"94df541b0c8712f09f135f52ca411616\"},\"url\":\"/images/makecode/94df541b0c8712f09f135f52ca411616.png\",\"width\":427,\"height\":176}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"modules.humidity1.onHumidityChangedBy(5, function () {\\n    led.stopAnimation()\\n    basic.showNumber(Math.round(modules.humidity1.humidity()))\\n})\",\"rendered\":{\"req\":{\"code\":\"modules.humidity1.onHumidityChangedBy(5, function () {\\n    led.stopAnimation()\\n    basic.showNumber(Math.round(modules.humidity1.humidity()))\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.6,jacdac-humidity=github:microsoft/pxt-jacdac/humidity#v0.7.6\"},\"type\":\"renderblocks\",\"id\":\"5da43cbda2c64307effb966571cef161\"},\"url\":\"/images/makecode/5da43cbda2c64307effb966571cef161.png\",\"width\":535,\"height\":184}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -118,4 +118,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-humidity-mdx-8a80109617850314a337.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-humidity-mdx-b607b734a5e7e7f815fd.js.map
