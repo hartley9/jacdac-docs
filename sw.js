@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-4b626b02a091a1e3779c.js"
+    "url": "webpack-runtime-3f1258dda19305e9b120.js"
   },
   {
     "url": "styles.545775ca4d150d94f93d.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "3436de0ac1d97d1777d7adad60b49152"
+    "revision": "f1ca21336e6001b20278b4663ecc9c2a"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "b4f448535d25efcaba1014f803dda38e"
+    "revision": "12fe1c5eb23a0766acc06d391af59799"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "1f6797a4f4e38c5295ab017924de76b9"
+    "revision": "ec79517b53413f8cb6a1050929dd358a"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "be9f0acc8f03c95ce7104263c4f6d0c1"
+    "revision": "cf3984d08251c88bb2d679c9eaa1d882"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "cb9f6339e9ff8a273a3f98f7222a3a64"
+    "revision": "4f85827d62fb170753189d67f9258174"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "6ced918f080aa790547c945a1f130615"
+    "revision": "fb76e425d3db6e194394ed90052d3511"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "9286666a4fda086750d391e2a608deed"
+    "revision": "18126dbbcc7ec8fd7dae28c3817480a6"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -119,7 +119,7 @@ self.__precacheManifest = [
     "revision": "ae5cbacb799bfee4dbba19a5a624a048"
   },
   {
-    "url": "component---src-pages-devices-tsx-5fadba66b230dd9719a0.js"
+    "url": "component---src-pages-devices-tsx-45b1a87a30cac2542731.js"
   },
   {
     "url": "page-data/devices/page-data.json",
@@ -277,7 +277,7 @@ self.__precacheManifest = [
     "url": "149f11818c122b40ce2932f15d148eda4aaa5f90-010cd71494c4a30bef94.js"
   },
   {
-    "url": "component---src-templates-service-tsx-0fb8139322028a624c51.js"
+    "url": "component---src-templates-service-tsx-d4be2b18dedc8ae73bf2.js"
   },
   {
     "url": "page-data/services/_base/page-data.json",
@@ -947,25 +947,33 @@ self.__precacheManifest = [
     "revision": "daed5a5d0e03c0c80268c40d4d506427"
   },
   {
-    "url": "component---src-templates-device-company-tsx-1d00520badc8294380a3.js"
+    "url": "component---src-templates-device-company-tsx-c1811dee909e8da6474f.js"
+  },
+  {
+    "url": "page-data/devices/microbit/page-data.json",
+    "revision": "cfd97372ad85b4255188dff05ecf7554"
   },
   {
     "url": "page-data/devices/microbit/foundation/page-data.json",
-    "revision": "6acf49241d776a2b400a0e0dd3d145ba"
+    "revision": "33a774e4afadf1d2a3c734bcb1f117ec"
   },
   {
     "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-781245e4a2d56404da93.js"
   },
   {
-    "url": "component---src-templates-device-tsx-c1b22ea808a3acd0a593.js"
+    "url": "component---src-templates-device-tsx-1f74cfe19f337717b18d.js"
   },
   {
     "url": "page-data/devices/microbit/foundation/microbitv2/page-data.json",
     "revision": "80306d14b708e7aa353668e9677e20d3"
   },
   {
+    "url": "page-data/devices/microsoft/page-data.json",
+    "revision": "4db55ca53778b5e03029d996f575ea1c"
+  },
+  {
     "url": "page-data/devices/microsoft/research/page-data.json",
-    "revision": "4feda82059bac928ff71a9a9b95458b5"
+    "revision": "c0a28d5ef735bdbb8e0dfbe0db770934"
   },
   {
     "url": "page-data/devices/microsoft/research/jacdaccableextender38v10/page-data.json",
@@ -1462,7 +1470,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-1563946d21c5e622f493.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-a51a643795e4f32131ff.js`))) {
     return await fetch(event.request)
   }
 

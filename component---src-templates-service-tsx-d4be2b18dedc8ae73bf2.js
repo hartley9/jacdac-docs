@@ -460,10 +460,13 @@ var utils = __webpack_require__(81794);
 var useDeviceImage = __webpack_require__(81546);
 // EXTERNAL MODULE: ./src/components/hooks/useMediaQueries.tsx
 var useMediaQueries = __webpack_require__(20509);
+// EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/spectool/jdspec.ts
+var jdspec = __webpack_require__(13996);
 ;// CONCATENATED MODULE: ./src/components/specification/DeviceSpecificationList.tsx
 
 
  // tslint:disable-next-line: match-default-export-name no-submodule-imports
+
 
 
 
@@ -501,12 +504,17 @@ function DeviceSpecificationList(props) {
   var cols = mobile ? 1 : medium ? 3 : 4;
   var specs = (0,react.useMemo)(() => {
     var r = devices || (0,jdom_spec/* deviceSpecifications */.qx)();
-    if (company) r = r.filter(spec => spec.company === company);
+
+    if (company) {
+      var lc = (0,jdspec/* escapeDeviceIdentifier */.o9)(company);
+      r = r.filter(spec => (0,jdspec/* escapeDeviceIdentifier */.o9)(spec.company).startsWith(lc));
+    }
+
     if (requiredServiceClasses) r = r.filter(spec => spec.services.length && requiredServiceClasses.every(srv => spec.services.indexOf(srv) > -1));
     if (shuffle) (0,utils/* arrayShuffle */.r)(r);
     if (count !== undefined) r = r.slice(0, count);
     return r;
-  }, [requiredServiceClasses, shuffle, count, JSON.stringify(devices === null || devices === void 0 ? void 0 : devices.map(d => d.id))]);
+  }, [requiredServiceClasses, shuffle, count, company, JSON.stringify(devices === null || devices === void 0 ? void 0 : devices.map(d => d.id))]);
   if (!specs.length) return /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     variant: "body1"
   }, "No device registered yet.");
@@ -942,4 +950,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-service-tsx-0fb8139322028a624c51.js.map
+//# sourceMappingURL=component---src-templates-service-tsx-d4be2b18dedc8ae73bf2.js.map

@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[20,6684],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[8524,6684],{
 
 /***/ 12531:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
@@ -388,10 +388,13 @@ var utils = __webpack_require__(81794);
 var useDeviceImage = __webpack_require__(81546);
 // EXTERNAL MODULE: ./src/components/hooks/useMediaQueries.tsx
 var useMediaQueries = __webpack_require__(20509);
+// EXTERNAL MODULE: ./jacdac-ts/jacdac-spec/spectool/jdspec.ts
+var jdspec = __webpack_require__(13996);
 ;// CONCATENATED MODULE: ./src/components/specification/DeviceSpecificationList.tsx
 
 
  // tslint:disable-next-line: match-default-export-name no-submodule-imports
+
 
 
 
@@ -429,12 +432,17 @@ function DeviceSpecificationList(props) {
   var cols = mobile ? 1 : medium ? 3 : 4;
   var specs = (0,react.useMemo)(() => {
     var r = devices || (0,jdom_spec/* deviceSpecifications */.qx)();
-    if (company) r = r.filter(spec => spec.company === company);
+
+    if (company) {
+      var lc = (0,jdspec/* escapeDeviceIdentifier */.o9)(company);
+      r = r.filter(spec => (0,jdspec/* escapeDeviceIdentifier */.o9)(spec.company).startsWith(lc));
+    }
+
     if (requiredServiceClasses) r = r.filter(spec => spec.services.length && requiredServiceClasses.every(srv => spec.services.indexOf(srv) > -1));
     if (shuffle) (0,utils/* arrayShuffle */.r)(r);
     if (count !== undefined) r = r.slice(0, count);
     return r;
-  }, [requiredServiceClasses, shuffle, count, JSON.stringify(devices === null || devices === void 0 ? void 0 : devices.map(d => d.id))]);
+  }, [requiredServiceClasses, shuffle, count, company, JSON.stringify(devices === null || devices === void 0 ? void 0 : devices.map(d => d.id))]);
   if (!specs.length) return /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     variant: "body1"
   }, "No device registered yet.");
@@ -568,28 +576,38 @@ function ServiceSpecificationSelect(props) {
 
 /***/ }),
 
-/***/ 96557:
+/***/ 82306:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ Page; }
 /* harmony export */ });
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(91448);
+/* harmony import */ var _material_ui_lab__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(99330);
 /* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36176);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
 /* harmony import */ var _components_specification_FilteredDeviceSpecificationList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(82530);
+/* harmony import */ var _components_ui_Alert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(95453);
 
 
 
-function Page(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h1", null, props.pageContext.company), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_specification_FilteredDeviceSpecificationList__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-    company: props.pageContext.company
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h2", null, "See Also"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_0__.Link, {
-    to: "/reference/device-registration/"
-  }, "device registration"))));
+
+
+
+function Page() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_specification_FilteredDeviceSpecificationList__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+    mt: 2
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_ui_Alert__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    severity: "info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_lab__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, null, "Register your device"), "Known devices are specified in the", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_0__.Link, {
+    to: "/reference/device-definition/"
+  }, "device catalog repository"), ". New devices can be submitted with the", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_0__.Link, {
+    to: "/tools/device-registration/"
+  }, "device registration"), ".")));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-company-tsx-1d00520badc8294380a3.js.map
+//# sourceMappingURL=component---src-pages-devices-tsx-45b1a87a30cac2542731.js.map
