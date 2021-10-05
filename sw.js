@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "443f941db7e8a63e39fe75d7ac6e9167"
+    "revision": "6dd8e7f3adff072129595bea8b29e81e"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "44755f9cb748fd43fe16c8f778660206"
+    "revision": "b68b809cd738fafe9a1bfbb3fa875117"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "6990637843fcb825d26a4e9b9a8a94e4"
+    "revision": "1ca160f4f887f8c19751c181772e3857"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "2d68d444358a3c0f2662e6167eb7c908"
+    "revision": "5431559343575281ebff0965aa7c90bd"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "68762af59de0c40e2f56181fb51272c5"
+    "revision": "efd0b004fb4e7372ab240c7c7dd5d165"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "d48b39c94996b6203ea74174630bcea0"
+    "revision": "6ced918f080aa790547c945a1f130615"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "645b72a5a3d24b8edbdc1ab312becd31"
+    "revision": "244f3534b7e0062ae8fa7bae13d378e1"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1060,6 +1060,10 @@ self.__precacheManifest = [
     "revision": "aa428977368fdb0eb1e218352711f4a0"
   },
   {
+    "url": "page-data/devices/microsoft/research/jmhub39v03/page-data.json",
+    "revision": "01f43dda4d2b1a7d3deb2eb1c2705c8f"
+  },
+  {
     "url": "page-data/devices/microsoft/research/jmkeyboardkey46v10/page-data.json",
     "revision": "d3ac838e9135fa9521544798a8d7528a"
   },
@@ -1070,6 +1074,10 @@ self.__precacheManifest = [
   {
     "url": "page-data/devices/microsoft/research/jmkeyboardkey46v12/page-data.json",
     "revision": "6dbff212a53ee02a0d742297400fa5a4"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jmmicrobitshieldlp29v05/page-data.json",
+    "revision": "003244a7bc13afbbaff01074e3d9a597"
   },
   {
     "url": "page-data/devices/microsoft/research/jmmotorv21/page-data.json",
@@ -1146,6 +1154,10 @@ self.__precacheManifest = [
   {
     "url": "page-data/devices/microsoft/research/jmtemperaturehumidity18v11/page-data.json",
     "revision": "6e95d929f9ed5e88768ce6ba2db24a9e"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/mikrobuscarrierboard53v01/page-data.json",
+    "revision": "5531452d65f10717f7c9178a502a110d"
   },
   {
     "url": "component---src-pages-tools-accelerometer-theremin-tsx-31345abb60f945e6b783.js"
@@ -1410,7 +1422,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-6f051eb85904b9462367.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-0a74263f9aa3a4a28da8.js`))) {
     return await fetch(event.request)
   }
 
