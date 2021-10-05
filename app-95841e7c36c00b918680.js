@@ -54077,7 +54077,7 @@ function Home() {
       __imageData: __webpack_require__(96726)
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-    subtitle3: "A protocol designed for easier physical connectivity. It is an entire stack that bridges the world of the low cost microcontroller to the web browser and beyond.",
+    subtitle3: "A hardware/software stack that bridges the world of low-cost microcontrollers to the web browser and beyond.",
     description: "Cheap, flexible and extensible."
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
     item: true,
@@ -54200,8 +54200,8 @@ function Home() {
     buttonUrl: "/hardware/"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: true,
-    subtitle: "Device Dev Kit",
-    description: "Manufacture your own Jacdac devices.",
+    subtitle: "For Manufacturers",
+    description: "Create Jacdac devices.",
     imageColumns: 8,
     centered: true,
     buttonText: "Device Development Kit",
@@ -68995,7 +68995,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "6da9494fe0430f75dcbae244c5633d3725477da5";
+var sha = "c175814e5a301ddc1c5d7ef7770d5d0163adfb25";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69823,7 +69823,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "6da9494fe0430f75dcbae244c5633d3725477da5";
+  var sha = "c175814e5a301ddc1c5d7ef7770d5d0163adfb25";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71932,7 +71932,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "6da9494fe0430f75dcbae244c5633d3725477da5";
+    var sha = "c175814e5a301ddc1c5d7ef7770d5d0163adfb25";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87943,4 +87943,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-d8143243d28b963ff714.js.map
+//# sourceMappingURL=app-95841e7c36c00b918680.js.map
