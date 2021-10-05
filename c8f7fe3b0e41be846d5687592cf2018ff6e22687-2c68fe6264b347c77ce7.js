@@ -109833,8 +109833,10 @@ function CanvasWidget(props) {
   var {
     showAxes
   } = props,
-      others = (0,objectWithoutProperties/* default */.Z)(props, CanvasWidget_excluded);
+      others = (0,objectWithoutProperties/* default */.Z)(props, CanvasWidget_excluded); // probably a bot or old browser
 
+
+  if (typeof ResizeObserver === "undefined") return null;
   return /*#__PURE__*/react.createElement(react_three_fiber_esm/* Canvas */.Xz, {
     shadowMap: true,
     camera: {
@@ -111468,4 +111470,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-36d494f6b5fe998a6aed.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-2c68fe6264b347c77ce7.js.map
