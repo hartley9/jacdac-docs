@@ -65,7 +65,10 @@ function MDXContent(_ref) {
     "href": "https://github.com/microsoft/pxt-jacdac",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "pxt-jacdac"), " extension contains MakeCode support for many Jacdac services.\nEach Jacdac service is represented by a separate MakeCode extension within the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "pxt-jacdac"), " extension contains MakeCode support for many Jacdac services.\nEach Jacdac service is represented by a separate MakeCode ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "./makecode/extensions"
+  }, "extension"), " within\nthe ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://github.com/microsoft/pxt-jacdac",
     "target": "_blank",
@@ -271,4 +274,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-mdx-154adbb2aba1f0c330ff.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-mdx-2d03f01f39037711943c.js.map
