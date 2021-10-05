@@ -66,17 +66,23 @@ function MDXContent(_ref) {
   }, "JM Brain F4 v0.2"), " or ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "/jacdac-docs/devices/microsoft/research/jmbrainrp204059v01"
-  }, "JM Brain RP2040 v0.1"), " module,\nloaded with the HID Keyboard + Mouse firmware that is available via the same links.  "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The method ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "JM Brain RP2040 v0.1"), " module,\nloaded with the HID Keyboard + Mouse firmware that is available via the same links.  "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "As shown in the example below,\nthe method ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "key"), " sends a keyboard action (press, up, down), specified by the first argument,\nwith a modifier (second argument), and a selected key (third argument): "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "key"), " sends a keyboard action ('press'), specified by the first argument,\nwith a modifier (second argument, 'none'), and a selected key (third argument, 'a'): "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"input.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Press, jacdac.HidKeyboardModifiers.LeftControl, jacdac.HidKeyboardKey.Enter)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Press, jacdac.HidKeyboardModifiers.LeftControl, jacdac.HidKeyboardKey.Enter)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.6,jacdac-hid-keyboard=github:microsoft/pxt-jacdac/hid-keyboard#v0.7.6\"},\"type\":\"renderblocks\",\"id\":\"074d80176cb461d1b9194453be30a4ec\"},\"url\":\"/images/makecode/074d80176cb461d1b9194453be30a4ec.png\",\"width\":706,\"height\":128}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The method ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "{\"source\":\"input.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Press, \\n      jacdac.HidKeyboardModifiers.None, \\n      jacdac.HidKeyboardKey.A)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Press, \\n      jacdac.HidKeyboardModifiers.None, \\n      jacdac.HidKeyboardKey.A)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.6,jacdac-hid-keyboard=github:microsoft/pxt-jacdac/hid-keyboard#v0.7.6\"},\"type\":\"renderblocks\",\"id\":\"fd5937cb98f9b1c857a73f14f8b5af19\"},\"url\":\"/images/makecode/fd5937cb98f9b1c857a73f14f8b5af19.png\",\"width\":591,\"height\":128}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The method ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "clear"), " clears all currently pressed keys:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "clear"), " clears all currently pressed keys. In the program below, pressing the A button of the\nmicro:bit will send a ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "Down"), " event on the key ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "a"), " to the HID keyboard, causing the letter ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "a"), " to be repeated\nuntil the B button of the micro:bit is pressed:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"input.onButtonPressed(Button.B, function() {\\n    modules.hidKeyboard1.clear()\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.B, function() {\\n    modules.hidKeyboard1.clear()\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.6,jacdac-hid-keyboard=github:microsoft/pxt-jacdac/hid-keyboard#v0.7.6\"},\"type\":\"renderblocks\",\"id\":\"580014488337dc03b7e06f1779aab549\"},\"url\":\"/images/makecode/580014488337dc03b7e06f1779aab549.png\",\"width\":350,\"height\":128}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"input.onButtonPressed(Button.B, function() {\\n    modules.hidKeyboard1.clear()\\n})\\n\\ninput.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Down, \\n        jacdac.HidKeyboardModifiers.None, \\n        jacdac.HidKeyboardKey.A)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.B, function() {\\n    modules.hidKeyboard1.clear()\\n})\\n\\ninput.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Down, \\n        jacdac.HidKeyboardModifiers.None, \\n        jacdac.HidKeyboardKey.A)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.6,jacdac-hid-keyboard=github:microsoft/pxt-jacdac/hid-keyboard#v0.7.6\"},\"type\":\"renderblocks\",\"id\":\"7f5a83cc04f69dbe1d0397aa5aa62f6f\"},\"url\":\"/images/makecode/7f5a83cc04f69dbe1d0397aa5aa62f6f.png\",\"width\":977,\"height\":128}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -129,4 +135,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-hidkeyboard-mdx-08228bda40db80646af2.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-hidkeyboard-mdx-d16b74d25d1ae52cb1e2.js.map
