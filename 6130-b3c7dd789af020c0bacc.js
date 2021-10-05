@@ -2968,24 +2968,28 @@ function DrawerSearchResults() {
     dense: true
   }, !results.length && /*#__PURE__*/react.createElement(ListItem/* default */.Z, null, /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "info"
-  }, "no results found")), results.map(result => /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
-    key: "search" + result.url,
-    to: result.url,
-    "aria-label": result.title
-  }, /*#__PURE__*/react.createElement(ListItem/* default */.Z, null, /*#__PURE__*/react.createElement(ListItemText/* default */.Z, {
-    primaryTypographyProps: {
-      color: "textPrimary"
-    },
-    secondaryTypographyProps: {
-      color: "textPrimary"
-    },
-    "aria-label": result.title,
-    primary: result.title,
-    secondary: result.url
-  })))));
+  }, "no results found")), results.map(result => {
+    var _result$url;
+
+    return /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+      key: "search" + result.url,
+      to: result.url,
+      "aria-label": result.title
+    }, /*#__PURE__*/react.createElement(ListItem/* default */.Z, null, /*#__PURE__*/react.createElement(ListItemText/* default */.Z, {
+      primaryTypographyProps: {
+        color: "textPrimary"
+      },
+      secondaryTypographyProps: {
+        color: "textSecondary"
+      },
+      "aria-label": result.title,
+      primary: result.title,
+      secondary: (_result$url = result.url) === null || _result$url === void 0 ? void 0 : _result$url.slice(0)
+    })));
+  }));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=6130-a5fbe646a69e73e22acc.js.map
+//# sourceMappingURL=6130-b3c7dd789af020c0bacc.js.map
