@@ -68995,7 +68995,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "e9fa54178cde30af8cf278159ef603d687e0921d";
+var sha = "f32d84b7f77a5d3c038276cb73b40580c64b5604";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69823,7 +69823,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "e9fa54178cde30af8cf278159ef603d687e0921d";
+  var sha = "f32d84b7f77a5d3c038276cb73b40580c64b5604";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71932,7 +71932,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "e9fa54178cde30af8cf278159ef603d687e0921d";
+    var sha = "f32d84b7f77a5d3c038276cb73b40580c64b5604";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -75635,7 +75635,8 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   ;
 
   _proto2.sendPktWithAck = function sendPktWithAck(pkt) {
-    pkt.requiresAck = true;
+    // no acks possible when bus is passive
+    pkt.requiresAck = !this.bus.passive;
     this.initAcks();
     return new Promise((resolve, reject) => {
       var ack = {
@@ -76223,10 +76224,7 @@ var RoleManagerClient = /*#__PURE__*/function (_JDServiceClient) {
   var _proto = RoleManagerClient.prototype;
 
   _proto.handleSelfAnnounce = function handleSelfAnnounce() {
-    if (this._needRefresh && this.bus.timestamp - this._lastRefreshAttempt > constants/* ROLE_MANAGER_POLL */.k0Y) {
-      console.debug("self announce refresh");
-      this.startRefreshRoles();
-    }
+    if (this._needRefresh && this.bus.timestamp - this._lastRefreshAttempt > constants/* ROLE_MANAGER_POLL */.k0Y) this.startRefreshRoles();
   };
 
   _proto.handleChange = /*#__PURE__*/function () {
@@ -76596,6 +76594,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     _this._gcDevicesFrozen = 0;
     _this._serviceProviders = [];
     _this._streaming = false;
+    _this._passive = false;
     _this.selfDeviceId = (options === null || options === void 0 ? void 0 : options.deviceId) || (0,random/* randomDeviceId */.b_)();
     _this.scheduler = (options === null || options === void 0 ? void 0 : options.scheduler) || new WallClockScheduler();
     _this.parentOrigin = (options === null || options === void 0 ? void 0 : options.parentOrigin) || "*";
@@ -76764,12 +76763,14 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
 
       this.emit(constants/* CHANGE */.Ver);
     }
-  };
+  }
+  /**
+   * Do not send any packet on the bus
+   */
+  ;
 
   _proto.preConnect = function preConnect(transport) {
-    console.debug("preconnect " + transport.type, {
-      transport
-    });
+    //console.debug(`preconnect ${transport.type}`, { transport })
     return Promise.all(this._transports.filter(t => t !== transport).map(t => t.disconnect()));
   }
   /**
@@ -76832,7 +76833,9 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
 
   _proto.start = function start() {
     this.configureBroadcastChannel();
-    if (!this._announceInterval) this._announceInterval = this.scheduler.setInterval(() => this.emit(constants/* SELF_ANNOUNCE */.Pbc), 499);
+    if (!this._announceInterval) this._announceInterval = this.scheduler.setInterval(() => {
+      if (!this.passive) this.emit(constants/* SELF_ANNOUNCE */.Pbc);
+    }, 499);
     this.backgroundRefreshRegisters = true;
     if (!this._gcInterval) this._gcInterval = this.scheduler.setInterval(() => this.gcDevices(), constants/* JD_DEVICE_DISCONNECTED_DELAY */.SkZ);
   }
@@ -77107,11 +77110,11 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   function () {
     var _sendPacketAsync = (0,asyncToGenerator/* default */.Z)(function* (packet) {
       packet.timestamp = this.timestamp;
-      if (flags/* default.trace */.Z.trace) packet.meta[constants/* META_TRACE */.EEP] = (0,trace/* stack */.kn)();
-      this.emit(constants/* PACKET_SEND */.RaS, packet); // special debug mode to avoid dashboard interfere with packets
+      if (flags/* default.trace */.Z.trace) packet.meta[constants/* META_TRACE */.EEP] = (0,trace/* stack */.kn)(); // special debug mode to avoid dashboard interfere with packets
       // will generate fails for acks
 
       if (this.passive) return;
+      this.emit(constants/* PACKET_SEND */.RaS, packet);
       yield Promise.all(this._transports.map(transport => transport.sendPacketAsync(packet)));
     });
 
@@ -77647,6 +77650,17 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     key: "bridges",
     get: function get() {
       return this._bridges.slice(0);
+    }
+  }, {
+    key: "passive",
+    get: function get() {
+      return this._passive;
+    },
+    set: function set(value) {
+      if (value !== this._passive) {
+        this._passive = value;
+        this.emit(constants/* CHANGE */.Ver);
+      }
     }
   }, {
     key: "safeBoot",
@@ -87929,4 +87943,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-dc65184453ac0270c452.js.map
+//# sourceMappingURL=app-c93ba788a44a0058f141.js.map

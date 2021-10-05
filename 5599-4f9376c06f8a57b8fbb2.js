@@ -662,7 +662,7 @@ function TraceView(props) {
     packets
   } = trace;
   return /*#__PURE__*/react.createElement(List/* default */.Z, null, packets.map(packet => /*#__PURE__*/react.createElement(PacketListItem/* default */.Z, {
-    key: "pkt" + packet.key,
+    key: packet.key,
     packet: packet,
     count: 1,
     showTime: true
@@ -685,4 +685,4 @@ function TraceSnippet(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5599-842942eadd34379cf22f.js.map
+//# sourceMappingURL=5599-4f9376c06f8a57b8fbb2.js.map
