@@ -53878,7 +53878,7 @@ function Hardware() {
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     subtitle: "Plug-and-play",
-    description: "Every Jacdac device has a tiny micro-controller that runs the Jacdac protocol and communicates with the bus.",
+    description: "Every Jacdac device has a tiny micro-controller that runs the Jacdac protocol and communicates over the bus.",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
       src: "./rhtempvertical.png",
       alt: "A Jacdac humidity module plugging into a Jacdac cable",
@@ -53924,8 +53924,8 @@ function Hardware() {
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: true,
-    subtitle: "Power... negociated",
-    description: "Power is regulated and negociated on the bus to minimize brown-outs, burn-outs and other inconviences.",
+    subtitle: "Power... negotiated",
+    description: "Power is regulated and negotiated on the bus to minimize brown-outs, burn-outs and other inconviences.",
     imageColumns: 8,
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
       src: "./rotary.png",
@@ -53983,8 +53983,8 @@ function Hardware() {
     caption: "Specify your own services and deploy them on your devices."
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: true,
-    subtitle: "Device Dev Kit",
-    description: "Manufacture your own Jacdac devices.",
+    subtitle: "For Manufacturers",
+    description: "Create Jacdac devices.",
     imageColumns: 8,
     centered: true,
     buttonText: "Device Development Kit",
@@ -54143,7 +54143,7 @@ function Home() {
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     subtitle: "Discover the benefits of Jacdac protocol",
-    description: "Jacdac devices communicate using packets over a bus, where each device can advertise itself and the set of services it provides. A service provides registers, events and commands to communicate with other devices.",
+    description: "Jacdac devices communicate using packets over a bus, where each device can advertise itself and the set of services it provides.",
     buttonText: "Protocol specification",
     buttonVariant: "link",
     buttonUrl: "/protocol/"
@@ -54586,7 +54586,7 @@ function Protocol() {
     buttonUrl: "/services"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     subtitle: "How does it work?",
-    description: "Every Jacdac device has a micro-controller to run the Jacdac protocol and communicate with the bus.",
+    description: "Every Jacdac device has a micro-controller to run the Jacdac protocol and communicate over the bus.",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_8__.S, {
       src: "./rhtempvertical.png",
       alt: "A Jacdac humidity module plugging into a Jacdac cable",
@@ -68995,7 +68995,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "c175814e5a301ddc1c5d7ef7770d5d0163adfb25";
+var sha = "a8f4310420a87f3f6c545703c651c312879a5713";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69823,7 +69823,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "c175814e5a301ddc1c5d7ef7770d5d0163adfb25";
+  var sha = "a8f4310420a87f3f6c545703c651c312879a5713";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71932,7 +71932,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "c175814e5a301ddc1c5d7ef7770d5d0163adfb25";
+    var sha = "a8f4310420a87f3f6c545703c651c312879a5713";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87943,4 +87943,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-95841e7c36c00b918680.js.map
+//# sourceMappingURL=app-28ba7013ab943811432f.js.map
