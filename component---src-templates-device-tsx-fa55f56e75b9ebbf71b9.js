@@ -1435,24 +1435,34 @@ function DeviceStructuredData(props) {
   var {
     device
   } = props;
-  var {
-    name,
-    images,
-    description,
-    company
-  } = device;
-  var payload = (0,react.useMemo)(() => ({
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    name,
-    image: images,
-    description,
-    sku: device.id,
-    brand: {
-      "@type": "Brand",
-      name: company
-    }
-  }), [device]);
+  var payload = (0,react.useMemo)(() => {
+    var {
+      name,
+      images,
+      description,
+      company,
+      status
+    } = device;
+    var availability = {
+      deprecated: "Discontinued",
+      experimental: "LimitedAvailability"
+    }[status]; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+    var r = {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      name,
+      image: images,
+      description,
+      sku: device.id,
+      brand: {
+        "@type": "Brand",
+        name: company
+      }
+    };
+    if (availability) r.availability = availability;
+    return r;
+  }, [device]);
   return /*#__PURE__*/react.createElement(StructuredData, {
     payload: payload
   });
@@ -1550,4 +1560,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-eaad9e4d76090ea8bce9.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-fa55f56e75b9ebbf71b9.js.map

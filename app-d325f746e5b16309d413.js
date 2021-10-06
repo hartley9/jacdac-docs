@@ -68995,7 +68995,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "3f2778f626427020b79dacd3e8bdd637aecf45c5";
+var sha = "a2caedca0bc7a29bd6cfff29b15cb10d98c4f229";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69823,7 +69823,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3f2778f626427020b79dacd3e8bdd637aecf45c5";
+  var sha = "a2caedca0bc7a29bd6cfff29b15cb10d98c4f229";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71932,7 +71932,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "3f2778f626427020b79dacd3e8bdd637aecf45c5";
+    var sha = "a2caedca0bc7a29bd6cfff29b15cb10d98c4f229";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -87943,4 +87943,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-96722f86d6f5775d6da0.js.map
+//# sourceMappingURL=app-d325f746e5b16309d413.js.map
