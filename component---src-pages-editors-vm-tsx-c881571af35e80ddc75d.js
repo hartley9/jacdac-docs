@@ -3621,8 +3621,8 @@ var BlockContext = __webpack_require__(26212);
 var Context = __webpack_require__(20392);
 // EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 4 modules
 var DeviceAvatar = __webpack_require__(37172);
-// EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 26 modules
-var servers = __webpack_require__(18374);
+// EXTERNAL MODULE: ./jacdac-ts/src/servers/servers.ts + 27 modules
+var servers = __webpack_require__(7441);
 // EXTERNAL MODULE: ./src/components/hooks/useServiceServer.ts
 var useServiceServer = __webpack_require__(49013);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Cancel.js
@@ -6931,4 +6931,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-vm-tsx-f08a629009cc1cbbd8e8.js.map
+//# sourceMappingURL=component---src-pages-editors-vm-tsx-c881571af35e80ddc75d.js.map
