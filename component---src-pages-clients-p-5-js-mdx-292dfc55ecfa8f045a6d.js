@@ -71,7 +71,14 @@ function MDXContent(_ref) {
     parentName: "ul"
   }, "no driver or installation needed"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, "just works from your browser")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+  }, "just works from your browser"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+    parentName: "ul"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
+    "href": "https://editor.p5js.org/pelikhan/sketches/ad1hCFqFF",
+    "target": "_blank",
+    "rel": "nofollow noopener noreferrer"
+  }, "Try it in the p5js editor!"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
     parentName: "p",
     "src": "/jacdac-docs/static/sliders-372260f950ffb19786bb59ebc1e1b8ca.gif",
     "alt": "A program using slider to control the background color"
@@ -200,4 +207,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-296f974712ddca1458e7.js.map
+//# sourceMappingURL=component---src-pages-clients-p-5-js-mdx-292dfc55ecfa8f045a6d.js.map
