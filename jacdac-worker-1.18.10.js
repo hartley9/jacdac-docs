@@ -4353,6 +4353,10 @@ var WifiEvent;
      * ```
      */
     WifiEvent[WifiEvent["ScanComplete"] = 128] = "ScanComplete";
+    /**
+     * Emitted whenever the list of known networks is updated.
+     */
+    WifiEvent[WifiEvent["NetworksChanged"] = 129] = "NetworksChanged";
 })(WifiEvent || (WifiEvent = {}));
 var WindDirectionReg;
 (function (WindDirectionReg) {

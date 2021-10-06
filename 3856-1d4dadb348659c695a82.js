@@ -1,6 +1,54 @@
 "use strict";
 (self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[3856],{
 
+/***/ 31186:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* unused harmony export styles */
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(87462);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45987);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(85505);
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(34621);
+
+
+
+
+
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: 8
+  },
+
+  /* Styles applied to the root element if `disableSpacing={false}`. */
+  spacing: {
+    '& > :not(:first-child)': {
+      marginLeft: 8
+    }
+  }
+};
+var CardActions = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function CardActions(props, ref) {
+  var _props$disableSpacing = props.disableSpacing,
+      disableSpacing = _props$disableSpacing === void 0 ? false : _props$disableSpacing,
+      classes = props.classes,
+      className = props.className,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(props, ["disableSpacing", "classes", "className"]);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)({
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])(classes.root, className, !disableSpacing && classes.spacing),
+    ref: ref
+  }, other));
+});
+ false ? 0 : void 0;
+/* harmony default export */ __webpack_exports__["Z"] = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(styles, {
+  name: 'MuiCardActions'
+})(CardActions));
+
+/***/ }),
+
 /***/ 4998:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -547,36 +595,42 @@ ListItemSecondaryAction.muiName = 'ListItemSecondaryAction';
 /* harmony default export */ var ListItemSecondaryAction_ListItemSecondaryAction = ((0,withStyles/* default */.Z)(styles, {
   name: 'MuiListItemSecondaryAction'
 })(ListItemSecondaryAction));
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ListItem/ListItem.js
-var ListItem = __webpack_require__(4381);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ListItemText/ListItemText.js
-var ListItemText = __webpack_require__(38030);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Card/Card.js
+var Card = __webpack_require__(85420);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardHeader/CardHeader.js
+var CardHeader = __webpack_require__(95823);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardContent/CardContent.js
+var CardContent = __webpack_require__(29114);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/TextField/TextField.js
 var TextField = __webpack_require__(1059);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardActions/CardActions.js
+var CardActions = __webpack_require__(31186);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Dialog/Dialog.js
 var Dialog = __webpack_require__(52468);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogContent/DialogContent.js
 var DialogContent = __webpack_require__(65733);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogTitle/DialogTitle.js
 var DialogTitle = __webpack_require__(96422);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/List/List.js
-var List = __webpack_require__(80791);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js
-var DialogActions = __webpack_require__(89952);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
 var Grid = __webpack_require__(80838);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js
+var DialogActions = __webpack_require__(89952);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ListItem/ListItem.js
+var ListItem = __webpack_require__(4381);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ListItemText/ListItemText.js
+var ListItemText = __webpack_require__(38030);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(80453);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Chip/Chip.js + 1 modules
 var Chip = __webpack_require__(4998);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/List/List.js
+var List = __webpack_require__(80791);
 // EXTERNAL MODULE: ./src/components/widgets/useWidgetTheme.ts
 var useWidgetTheme = __webpack_require__(60650);
 // EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
 var react_use_id_hook_esm = __webpack_require__(19640);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Settings.js
 var Settings = __webpack_require__(88237);
-// EXTERNAL MODULE: ./src/components/ui/IconButtonWithTooltip.tsx + 1 modules
-var IconButtonWithTooltip = __webpack_require__(79885);
 // EXTERNAL MODULE: ./src/components/CmdButton.tsx
 var CmdButton = __webpack_require__(50092);
 // EXTERNAL MODULE: ./src/jacdac/useRegisterValue.ts
@@ -587,14 +641,14 @@ var specconstants = __webpack_require__(73512);
 var utils = __webpack_require__(81794);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Refresh.js
 var Refresh = __webpack_require__(89713);
-// EXTERNAL MODULE: ./src/components/ui/SwitchWithLabel.tsx
-var SwitchWithLabel = __webpack_require__(64973);
 // EXTERNAL MODULE: ./src/components/hooks/useInterval.ts
 var useInterval = __webpack_require__(63944);
 // EXTERNAL MODULE: ./src/components/hooks/useEvent.ts
 var useEvent = __webpack_require__(59626);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
 var toConsumableArray = __webpack_require__(93433);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
+var constants = __webpack_require__(71815);
 // EXTERNAL MODULE: ./src/jacdac/useChange.ts
 var useChange = __webpack_require__(54774);
 // EXTERNAL MODULE: ./src/components/hooks/useMounted.ts
@@ -605,27 +659,46 @@ var useMounted = __webpack_require__(72179);
 
 
 
-function useCommandPipeResults(service, cmd, packFormat, deps) {
+
+function useCommandPipeResults(service, cmd, packFormat, changeEvent, deps) {
   var {
     0: results,
     1: setResults
   } = (0,react.useState)([]);
   var mounted = (0,useMounted/* default */.Z)();
-  (0,useChange/* default */.Z)(service, /*#__PURE__*/function () {
-    var _ref = (0,asyncToGenerator/* default */.Z)(function* (_) {
-      var newResults = yield _ === null || _ === void 0 ? void 0 : _.receiveWithInPipe(cmd, packFormat);
+
+  var update = /*#__PURE__*/function () {
+    var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
+      var newResults = yield service.receiveWithInPipe(cmd, packFormat);
       if (mounted()) setResults(newResults || []);
     });
 
-    return function (_x) {
+    return function update() {
       return _ref.apply(this, arguments);
     };
-  }(), [cmd, packFormat].concat((0,toConsumableArray/* default */.Z)(deps || [])));
+  }(); // listen to change event if any
+
+
+  (0,react.useEffect)(() => changeEvent === null || changeEvent === void 0 ? void 0 : changeEvent.subscribe(constants/* EVENT */.Ks0, update), [changeEvent]);
+  (0,useChange/* default */.Z)(service, update, [cmd, packFormat].concat((0,toConsumableArray/* default */.Z)(deps || [])));
   return results;
 }
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Delete.js
 var Delete = __webpack_require__(94500);
+// EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
+var gatsby_theme_material_ui = __webpack_require__(36176);
+// EXTERNAL MODULE: ./src/components/ui/ChipList.tsx
+var ChipList = __webpack_require__(88460);
+// EXTERNAL MODULE: ./src/components/hooks/useServiceServer.ts
+var useServiceServer = __webpack_require__(49013);
+// EXTERNAL MODULE: ./node_modules/@material-ui/lab/esm/Alert/Alert.js + 4 modules
+var Alert = __webpack_require__(6809);
+// EXTERNAL MODULE: ./node_modules/@material-ui/lab/esm/AlertTitle/AlertTitle.js
+var AlertTitle = __webpack_require__(99330);
 ;// CONCATENATED MODULE: ./src/components/dashboard/DashboardWifi.tsx
+
+
+
 
 
 
@@ -654,11 +727,6 @@ function ConnectAp(props) {
     0: password,
     1: setPassword
   } = (0,react.useState)("");
-  var {
-    0: selected,
-    1: setSelected
-  } = (0,react.useState)(false);
-  var selectId = (0,react_use_id_hook_esm/* useId */.Me)();
   var passwordId = (0,react_use_id_hook_esm/* useId */.Me)();
 
   var handlePasswordChange = event => {
@@ -675,18 +743,11 @@ function ConnectAp(props) {
     };
   }();
 
-  var toggleSelected = () => setSelected(!selected);
-
   var hasPassword = !!(flags & specconstants/* WifiAPFlags.HasPassword */.GHo.HasPassword);
-  var connectError = !password && !hasPassword ? "password required" : undefined;
-  return /*#__PURE__*/react.createElement(ListItem/* default */.Z, {
-    id: selectId,
-    button: true,
-    onClick: toggleSelected
-  }, /*#__PURE__*/react.createElement(ListItemText/* default */.Z, {
-    primary: ssid,
-    secondary: "rssi: " + rssi
-  }), selected && /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+  var connectError = !hasPassword ? "password required" : undefined;
+  return /*#__PURE__*/react.createElement(Card/* default */.Z, null, /*#__PURE__*/react.createElement(CardHeader/* default */.Z, {
+    title: ssid
+  }), /*#__PURE__*/react.createElement(CardContent/* default */.Z, null, !hasPassword && /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: passwordId,
     value: password,
     label: "Password",
@@ -695,10 +756,10 @@ function ConnectAp(props) {
     required: !hasPassword,
     helperText: connectError,
     onChange: handlePasswordChange
-  }), /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
+  })), /*#__PURE__*/react.createElement(CardActions/* default */.Z, null, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
     variant: "contained",
     color: "primary",
-    disabled: !!connectError,
+    disabled: !connectError,
     onClick: handleAddNetwork
   }, "Connect")));
 }
@@ -716,39 +777,31 @@ function ConnectDialog(props) {
 
 
   var scanCompleteEvent = (0,useEvent/* default */.Z)(service, specconstants/* WifiEvent.ScanComplete */.Xoc.ScanComplete);
-  var aps = useCommandPipeResults(service, specconstants/* WifiCmd.LastScanResults */.kBD.LastScanResults, "u32 x[4] i8 u8 b[6] s[33]", [scanCompleteEvent.changeId]); // keep scanning
+  var aps = useCommandPipeResults(service, specconstants/* WifiCmd.LastScanResults */.kBD.LastScanResults, "u32 x[4] i8 u8 b[6] s[33]", scanCompleteEvent); // keep scanning
 
   (0,useInterval/* default */.Z)(open, scan, 30000, [service]);
-
-  var handleForgetAll = /*#__PURE__*/function () {
-    var _ref2 = (0,asyncToGenerator/* default */.Z)(function* () {
-      return yield service.sendCmdAsync(specconstants/* WifiCmd.ForgetAllNetworks */.kBD.ForgetAllNetworks, undefined, true);
-    });
-
-    return function handleForgetAll() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-
   return /*#__PURE__*/react.createElement(Dialog/* default */.Z, {
     open: open,
     fullWidth: true,
     maxWidth: "lg",
     onClose: handleClose
-  }, /*#__PURE__*/react.createElement(DialogContent/* default */.Z, null, /*#__PURE__*/react.createElement(DialogTitle/* default */.Z, null, "Connect to Wifi", /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
+  }, /*#__PURE__*/react.createElement(DialogContent/* default */.Z, null, /*#__PURE__*/react.createElement(DialogTitle/* default */.Z, null, "Connect to Wifi"), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    container: true,
+    spacing: 1
+  }, aps.map(ap => /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true,
+    xs: 12,
+    key: ap[4]
+  }, /*#__PURE__*/react.createElement(ConnectAp, {
+    service: service,
+    info: ap
+  }))))), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
     trackName: "dashboard.wifi.scan",
     onClick: scan,
     title: "scan",
-    autoRun: true
-  }, /*#__PURE__*/react.createElement(Refresh/* default */.Z, null))), /*#__PURE__*/react.createElement(List/* default */.Z, null, aps.map(ap => /*#__PURE__*/react.createElement(ConnectAp, {
-    key: ap[4],
-    service: service,
-    info: ap
-  })))), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
-    title: "forget all networks",
-    icon: /*#__PURE__*/react.createElement(Delete/* default */.Z, null),
-    onClick: handleForgetAll
-  }, "Forget all")));
+    autoRun: true,
+    icon: /*#__PURE__*/react.createElement(Refresh/* default */.Z, null)
+  }, "Scan")));
 }
 
 function NetworkItem(props) {
@@ -761,12 +814,12 @@ function NetworkItem(props) {
   } = props;
 
   var handleDelete = /*#__PURE__*/function () {
-    var _ref3 = (0,asyncToGenerator/* default */.Z)(function* () {
+    var _ref2 = (0,asyncToGenerator/* default */.Z)(function* () {
       return yield service.sendCmdPackedAsync(specconstants/* WifiCmd.ForgetNetwork */.kBD.ForgetNetwork, [ssid]);
     });
 
     return function handleDelete() {
-      return _ref3.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
 
@@ -790,12 +843,12 @@ function DashboardWifi(props) {
     0: open,
     1: setOpen
   } = (0,react.useState)(false);
-  var color = "primary";
+  var server = (0,useServiceServer/* default */.Z)(service);
+  var color = server ? "primary" : "secondary";
   var {
     textPrimary
   } = (0,useWidgetTheme/* default */.Z)(color);
   var enabledRegister = service.register(specconstants/* WifiReg.Enabled */.eFM.Enabled);
-  var enabled = (0,useRegisterValue/* useRegisterBoolValue */.I8)(enabledRegister, props);
   var connectedRegister = service.register(specconstants/* WifiReg.Connected */.eFM.Connected);
   var connected = (0,useRegisterValue/* useRegisterBoolValue */.I8)(connectedRegister, props);
   var ssidRegister = service.register(specconstants/* WifiReg.Ssid */.eFM.Ssid);
@@ -804,25 +857,42 @@ function DashboardWifi(props) {
   var [ip] = (0,useRegisterValue/* useRegisterUnpackedValue */.Pf)(ipAddressRegister);
   var macRegister = service.register(specconstants/* WifiReg.Eui48 */.eFM.Eui48);
   var [mac] = (0,useRegisterValue/* useRegisterUnpackedValue */.Pf)(macRegister);
-  var knownNetworks = useCommandPipeResults(service, specconstants/* WifiCmd.ListKnownNetworks */.kBD.ListKnownNetworks, "i16 i16 s");
+  var lostIpEvent = (0,useEvent/* default */.Z)(service, specconstants/* WifiEvent.LostIp */.Xoc.LostIp);
+  var gotIpEvent = (0,useEvent/* default */.Z)(service, specconstants/* WifiEvent.GotIp */.Xoc.GotIp);
+  var knownNetworksChangedEvent = (0,useEvent/* default */.Z)(service, specconstants/* WifiEvent.NetworksChanged */.Xoc.NetworksChanged);
+  var knownNetworks = useCommandPipeResults(service, specconstants/* WifiCmd.ListKnownNetworks */.kBD.ListKnownNetworks, "i16 i16 s", knownNetworksChangedEvent);
 
-  var handleEnabledChecked = /*#__PURE__*/function () {
-    var _ref4 = (0,asyncToGenerator/* default */.Z)(function* (ev, checked) {
-      if (checked) {
-        if (!enabled) yield enabledRegister.sendSetBoolAsync(true);
-        yield service.sendCmdAsync(specconstants/* WifiCmd.Reconnect */.kBD.Reconnect, undefined, true);
-      } else {
-        yield enabledRegister.sendSetBoolAsync(false, true);
-      }
+  var handleConnect = /*#__PURE__*/function () {
+    var _ref3 = (0,asyncToGenerator/* default */.Z)(function* () {
+      if (connected) yield enabledRegister.sendSetBoolAsync(false);else yield service.sendCmdAsync(specconstants/* WifiCmd.Reconnect */.kBD.Reconnect, undefined, true);
     });
 
-    return function handleEnabledChecked(_x, _x2) {
-      return _ref4.apply(this, arguments);
+    return function handleConnect() {
+      return _ref3.apply(this, arguments);
     };
   }();
 
   var handleConfigure = () => setOpen(true);
 
+  var handleForgetAll = /*#__PURE__*/function () {
+    var _ref4 = (0,asyncToGenerator/* default */.Z)(function* () {
+      return yield service.sendCmdAsync(specconstants/* WifiCmd.ForgetAllNetworks */.kBD.ForgetAllNetworks, undefined, true);
+    });
+
+    return function handleForgetAll() {
+      return _ref4.apply(this, arguments);
+    };
+  }(); // force register refreshs on various events
+
+
+  var refreshRegisters = () => {
+    connectedRegister.clearGetTimestamp();
+    ssidRegister.clearGetTimestamp();
+    ipAddressRegister.clearGetTimestamp();
+  };
+
+  (0,react.useEffect)(() => gotIpEvent === null || gotIpEvent === void 0 ? void 0 : gotIpEvent.subscribe(constants/* EVENT */.Ks0, refreshRegisters), [gotIpEvent]);
+  (0,react.useEffect)(() => lostIpEvent === null || lostIpEvent === void 0 ? void 0 : lostIpEvent.subscribe(constants/* EVENT */.Ks0, refreshRegisters), [lostIpEvent]);
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
     spacing: 1,
@@ -830,31 +900,24 @@ function DashboardWifi(props) {
       color: textPrimary,
       minWidth: "16rem"
     }
-  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, server && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true,
+    xs: 12
+  }, /*#__PURE__*/react.createElement(Alert/* default */.Z, {
+    severity: "warning"
+  }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Test WiFi"), "This WiFi does not exist; it is purely for testing purposes.")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     component: "span",
     variant: "subtitle2"
-  }, "Wifi")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: 12
-  }, /*#__PURE__*/react.createElement(SwitchWithLabel/* default */.Z, {
-    checked: !!enabled && !!connected,
-    onChange: handleEnabledChecked,
-    disabled: enabled === undefined,
-    label: connected ? ssid || "connected" : enabled ? "idle" : "..."
-  }), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
-    title: "Configure wifi",
-    onClick: handleConfigure
-  }, /*#__PURE__*/react.createElement(Settings/* default */.Z, null))), ip || mac && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: 12
-  }, ip && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
-    label: (0,utils/* toHex */.NC)(ip)
-  }), mac && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+  }, "WiFi"), (ssid || ip || mac) && /*#__PURE__*/react.createElement(ChipList/* default */.Z, null, !!ssid && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+    label: ssid
+  }), !!ip && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+    label: "IP: " + (0,utils/* toHex */.NC)(ip)
+  }), !!mac && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
     label: "MAC: " + (0,utils/* toHex */.NC)(mac)
-  })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react.createElement(List/* default */.Z, {
@@ -869,7 +932,36 @@ function DashboardWifi(props) {
       flags: flags,
       ssid: ssid
     });
-  })))), /*#__PURE__*/react.createElement(ConnectDialog, {
+  }))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true,
+    xs: 12
+  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    container: true,
+    spacing: 1,
+    direction: "row"
+  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
+    trackName: "dashboard.wifi.connect",
+    variant: "contained",
+    color: "primary",
+    onClick: handleConnect
+  }, connected ? "Disconnect" : "Connect")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
+    variant: "outlined",
+    startIcon: /*#__PURE__*/react.createElement(Settings/* default */.Z, null),
+    onClick: handleConfigure,
+    title: "configure"
+  }, "Configure")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
+    variant: "outlined",
+    trackName: "dashboard.wifi.forgetall",
+    title: "forget all networks",
+    icon: /*#__PURE__*/react.createElement(Delete/* default */.Z, null),
+    onClick: handleForgetAll
+  }, "Forget all"))))), /*#__PURE__*/react.createElement(ConnectDialog, {
     open: open,
     setOpen: setOpen,
     service: service
@@ -878,33 +970,39 @@ function DashboardWifi(props) {
 
 /***/ }),
 
-/***/ 64973:
+/***/ 88460:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ SwitchWithLabel; }
+/* harmony export */   "Z": function() { return /* binding */ ChipList; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45987);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(48086);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6210);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10920);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(70274);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 
-var _excluded = ["label"];
 
-
-function SwitchWithLabel(props) {
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)({
+  root: {
+    display: "flex",
+    justifyContent: "flex-start",
+    flexWrap: "wrap",
+    "& > *": {
+      margin: theme.spacing(0.5)
+    }
+  }
+}));
+function ChipList(props) {
   var {
-    label
-  } = props,
-      rest = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(props, _excluded);
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-    control: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, rest),
-    label: label
-  });
+    children
+  } = props;
+  var classes = useStyles();
+  if (!children) return null;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: classes.root
+  }, children);
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=3856-8de60dd50fa69f4aaf51.js.map
+//# sourceMappingURL=3856-1d4dadb348659c695a82.js.map
