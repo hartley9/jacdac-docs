@@ -1426,7 +1426,6 @@ function DeviceStructuredData(props) {
   var payload = (0,react.useMemo)(() => {
     var {
       name,
-      images,
       description,
       company,
       status
@@ -1440,7 +1439,7 @@ function DeviceStructuredData(props) {
       "@context": "https://schema.org/",
       "@type": "Product",
       name,
-      image: images,
+      image: [(0,useDeviceImage/* default */.Z)(device, "preview"), (0,useDeviceImage/* default */.Z)(device, "catalog"), (0,useDeviceImage/* default */.Z)(device, "full")],
       description,
       sku: device.id,
       brand: {
@@ -1548,4 +1547,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-a11fbc8efa907da37525.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-18406a187fe056e58998.js.map
