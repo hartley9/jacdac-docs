@@ -4219,63 +4219,25 @@ var WifiAPFlags;
 var WifiCmd;
 (function (WifiCmd) {
     /**
-     * Argument: results pipe (bytes). Return list of WiFi network from the last scan.
-     * Scans are performed periodically while not connected (in particular, on startup and after current connection drops),
-     * as well as upon `reconnect` and `scan` commands.
+     * Argument: results pipe (bytes). Initiate search for WiFi networks. Results are returned via pipe, one entry per packet.
      *
      * ```
      * const [results] = jdunpack<[Uint8Array]>(buf, "b[12]")
      * ```
      */
-    WifiCmd[WifiCmd["LastScanResults"] = 128] = "LastScanResults";
+    WifiCmd[WifiCmd["Scan"] = 128] = "Scan";
     /**
-     * Automatically connect to named network if available. Also set password if network is not open.
+     * Connect to named network.
      *
      * ```
      * const [ssid, password] = jdunpack<[string, string]>(buf, "z z")
      * ```
      */
-    WifiCmd[WifiCmd["AddNetwork"] = 129] = "AddNetwork";
+    WifiCmd[WifiCmd["Connect"] = 129] = "Connect";
     /**
-     * No args. Initiate a scan, wait for results, disconnect from current WiFi network if any,
-     * and then reconnect (using regular algorithm, see `set_network_priority`).
+     * No args. Disconnect from current WiFi network if any.
      */
-    WifiCmd[WifiCmd["Reconnect"] = 130] = "Reconnect";
-    /**
-     * Argument: ssid string (bytes). Prevent from automatically connecting to named network in future.
-     * Forgetting a network resets its priority to `0`.
-     *
-     * ```
-     * const [ssid] = jdunpack<[string]>(buf, "s")
-     * ```
-     */
-    WifiCmd[WifiCmd["ForgetNetwork"] = 131] = "ForgetNetwork";
-    /**
-     * No args. Clear the list of known networks.
-     */
-    WifiCmd[WifiCmd["ForgetAllNetworks"] = 132] = "ForgetAllNetworks";
-    /**
-     * Set connection priority for a network.
-     * By default, all known networks have priority of `0`.
-     *
-     * ```
-     * const [priority, ssid] = jdunpack<[number, string]>(buf, "i16 s")
-     * ```
-     */
-    WifiCmd[WifiCmd["SetNetworkPriority"] = 133] = "SetNetworkPriority";
-    /**
-     * No args. Initiate search for WiFi networks. Generates `scan_complete` event.
-     */
-    WifiCmd[WifiCmd["Scan"] = 134] = "Scan";
-    /**
-     * Argument: results pipe (bytes). Return list of known WiFi networks.
-     * `flags` is currently always 0.
-     *
-     * ```
-     * const [results] = jdunpack<[Uint8Array]>(buf, "b[12]")
-     * ```
-     */
-    WifiCmd[WifiCmd["ListKnownNetworks"] = 135] = "ListKnownNetworks";
+    WifiCmd[WifiCmd["Disconnect"] = 130] = "Disconnect";
 })(WifiCmd || (WifiCmd = {}));
 /**
  * pipe_report Results
@@ -4283,22 +4245,8 @@ var WifiCmd;
  * const [flags, rssi, channel, bssid, ssid] = jdunpack<[WifiAPFlags, number, number, Uint8Array, string]>(buf, "u32 x[4] i8 u8 b[6] s[33]")
  * ```
  */
-/**
- * pipe_report NetworkResults
- * ```
- * const [priority, flags, ssid] = jdunpack<[number, number, string]>(buf, "i16 i16 s")
- * ```
- */
 var WifiReg;
 (function (WifiReg) {
-    /**
-     * Read-write bool (uint8_t). Determines whether the WiFi radio is enabled. It starts enabled upon reset.
-     *
-     * ```
-     * const [enabled] = jdunpack<[number]>(buf, "u8")
-     * ```
-     */
-    WifiReg[WifiReg["Enabled"] = 1] = "Enabled";
     /**
      * Read-only bool (uint8_t). Indicates whether or not we currently have an IP address assigned.
      *
@@ -4307,31 +4255,6 @@ var WifiReg;
      * ```
      */
     WifiReg[WifiReg["Connected"] = 384] = "Connected";
-    /**
-     * Read-only bytes. 0, 4 or 16 byte buffer with the IPv4 or IPv6 address assigned to device if any.
-     *
-     * ```
-     * const [ipAddress] = jdunpack<[Uint8Array]>(buf, "b[16]")
-     * ```
-     */
-    WifiReg[WifiReg["IpAddress"] = 385] = "IpAddress";
-    /**
-     * Read-only bytes. The 6-byte MAC address of the device.
-     *
-     * ```
-     * const [eui48] = jdunpack<[Uint8Array]>(buf, "b[6]")
-     * ```
-     */
-    WifiReg[WifiReg["Eui48"] = 386] = "Eui48";
-    /**
-     * Read-only string (bytes). SSID of the access-point to which device is currently connected.
-     * Empty string if not connected.
-     *
-     * ```
-     * const [ssid] = jdunpack<[string]>(buf, "s[32]")
-     * ```
-     */
-    WifiReg[WifiReg["Ssid"] = 387] = "Ssid";
 })(WifiReg || (WifiReg = {}));
 var WifiEvent;
 (function (WifiEvent) {
@@ -4343,16 +4266,6 @@ var WifiEvent;
      * Emitted when disconnected from network.
      */
     WifiEvent[WifiEvent["LostIp"] = 2] = "LostIp";
-    /**
-     * A WiFi network scan has completed. Results can be read with the `last_scan_results` command.
-     * The event indicates how many networks where found, and how many are considered
-     * as candidates for connection.
-     *
-     * ```
-     * const [numNetworks, numKnownNetworks] = jdunpack<[number, number]>(buf, "u16 u16")
-     * ```
-     */
-    WifiEvent[WifiEvent["ScanComplete"] = 128] = "ScanComplete";
 })(WifiEvent || (WifiEvent = {}));
 var WindDirectionReg;
 (function (WindDirectionReg) {

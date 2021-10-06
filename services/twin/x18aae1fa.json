@@ -3,34 +3,10 @@
   "name": "wifi",
   "registers": [
     {
-      "code": 1,
-      "name": "enabled",
-      "flags": 0,
-      "packf": "u8"
-    },
-    {
       "code": 384,
       "name": "connected",
       "flags": 0,
       "packf": "u8"
-    },
-    {
-      "code": 385,
-      "name": "ip_address",
-      "flags": 0,
-      "packf": "b[16]"
-    },
-    {
-      "code": 386,
-      "name": "eui_48",
-      "flags": 0,
-      "packf": "b[6]"
-    },
-    {
-      "code": 387,
-      "name": "ssid",
-      "flags": 0,
-      "packf": "s[32]"
     }
   ]
 }
