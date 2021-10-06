@@ -1295,7 +1295,7 @@ function Snippet(props) {
 
 /***/ }),
 
-/***/ 93561:
+/***/ 77110:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -1399,20 +1399,8 @@ var ChipList = __webpack_require__(88460);
 var semver = __webpack_require__(14914);
 // EXTERNAL MODULE: ./src/components/specification/DeviceSpecificationList.tsx + 3 modules
 var DeviceSpecificationList = __webpack_require__(46684);
-// EXTERNAL MODULE: ./node_modules/react-helmet/es/Helmet.js
-var Helmet = __webpack_require__(35414);
-;// CONCATENATED MODULE: ./src/components/ui/StructuredData.tsx
-
-
-function StructuredData(props) {
-  var {
-    payload
-  } = props;
-  var rendered = (0,react.useMemo)(() => JSON.stringify(payload), [payload]);
-  return /*#__PURE__*/react.createElement(Helmet/* Helmet */.q, null, /*#__PURE__*/react.createElement("script", {
-    type: "application/ld+json"
-  }, rendered));
-}
+// EXTERNAL MODULE: ./src/components/ui/StructuredData.tsx
+var StructuredData = __webpack_require__(97357);
 ;// CONCATENATED MODULE: ./src/components/specification/DeviceSpecification.tsx
 
 
@@ -1463,7 +1451,7 @@ function DeviceStructuredData(props) {
     if (availability) r.availability = availability;
     return r;
   }, [device]);
-  return /*#__PURE__*/react.createElement(StructuredData, {
+  return /*#__PURE__*/react.createElement(StructuredData/* default */.Z, {
     payload: payload
   });
 }
@@ -1560,4 +1548,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-fa55f56e75b9ebbf71b9.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-a11fbc8efa907da37525.js.map

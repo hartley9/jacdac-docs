@@ -68995,7 +68995,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "a2caedca0bc7a29bd6cfff29b15cb10d98c4f229";
+var sha = "ad5de84f5a9dce8c7a05ddafbd125a5b55fd8944";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69823,7 +69823,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a2caedca0bc7a29bd6cfff29b15cb10d98c4f229";
+  var sha = "ad5de84f5a9dce8c7a05ddafbd125a5b55fd8944";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70148,9 +70148,35 @@ var Breadcrumbs = /*#__PURE__*/react.forwardRef(function Breadcrumbs(props, ref)
 /* harmony default export */ var Breadcrumbs_Breadcrumbs = ((0,withStyles/* default */.Z)(Breadcrumbs_styles, {
   name: 'MuiBreadcrumbs'
 })(Breadcrumbs));
+// EXTERNAL MODULE: ./node_modules/gatsby-link/index.js
+var gatsby_link = __webpack_require__(38037);
+// EXTERNAL MODULE: ./src/components/ui/StructuredData.tsx
+var StructuredData = __webpack_require__(97357);
 ;// CONCATENATED MODULE: ./src/components/ui/Breadcrumbs.tsx
 
 
+
+
+
+
+function BreadcrumbsStructuredData(props) {
+  var {
+    parts
+  } = props;
+  var payload = (0,react.useMemo)(() => ({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: parts.map((part, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: part,
+      item: (0,gatsby_link/* withPrefix */.dq)("/" + parts.slice(0, i + 1).join("/"))
+    }))
+  }), [parts]);
+  return /*#__PURE__*/react.createElement(StructuredData/* default */.Z, {
+    payload: payload
+  });
+}
 
 function ui_Breadcrumbs_Breadcrumbs(props) {
   var {
@@ -70158,13 +70184,14 @@ function ui_Breadcrumbs_Breadcrumbs(props) {
   } = props;
   var {
     pathname
-  } = location; // TODO update path in future
-
-  var parts = pathname.split(/\//g).filter(p => !!p && p !== "jacdac-docs");
+  } = location;
+  var parts = (0,react.useMemo)(() => pathname.split(/\//g).filter(p => !!p && p !== "jacdac-docs"), [pathname]);
   if (!parts.length) return null;
   return /*#__PURE__*/react.createElement(Breadcrumbs_Breadcrumbs, {
     "aria-label": "breadcrumb"
-  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+  }, /*#__PURE__*/react.createElement(BreadcrumbsStructuredData, {
+    parts: parts
+  }), /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     to: "/"
   }, "Home"), parts.map((part, i) => /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     key: i,
@@ -71932,7 +71959,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "a2caedca0bc7a29bd6cfff29b15cb10d98c4f229";
+    var sha = "ad5de84f5a9dce8c7a05ddafbd125a5b55fd8944";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -72549,6 +72576,29 @@ function PageLinkList(props) {
       primary: title
     })));
   }));
+}
+
+/***/ }),
+
+/***/ 97357:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ StructuredData; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(35414);
+
+
+function StructuredData(props) {
+  var {
+    payload
+  } = props;
+  var rendered = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => JSON.stringify(payload), [payload]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_1__/* .Helmet */ .q, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("script", {
+    type: "application/ld+json"
+  }, rendered));
 }
 
 /***/ }),
@@ -82833,7 +82883,7 @@ exports.components = {
   "component---src-pages-tools-updater-tsx": () => Promise.all(/* import() | component---src-pages-tools-updater-tsx */[__webpack_require__.e(6004), __webpack_require__.e(9569), __webpack_require__.e(5092), __webpack_require__.e(6366)]).then(__webpack_require__.bind(__webpack_require__, 5179)),
   "component---src-pages-traces-mdx": () => __webpack_require__.e(/* import() | component---src-pages-traces-mdx */ 1356).then(__webpack_require__.bind(__webpack_require__, 23478)),
   "component---src-templates-device-company-tsx": () => __webpack_require__.e(/* import() | component---src-templates-device-company-tsx */ 20).then(__webpack_require__.bind(__webpack_require__, 96557)),
-  "component---src-templates-device-tsx": () => Promise.all(/* import() | component---src-templates-device-tsx */[__webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(5092), __webpack_require__.e(8323)]).then(__webpack_require__.bind(__webpack_require__, 93561)),
+  "component---src-templates-device-tsx": () => Promise.all(/* import() | component---src-templates-device-tsx */[__webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(5092), __webpack_require__.e(8323)]).then(__webpack_require__.bind(__webpack_require__, 77110)),
   "component---src-templates-service-playground-tsx": () => Promise.all(/* import() | component---src-templates-service-playground-tsx */[__webpack_require__.e(6004), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(5577), __webpack_require__.e(6540)]).then(__webpack_require__.bind(__webpack_require__, 97230)),
   "component---src-templates-service-tsx": () => Promise.all(/* import() | component---src-templates-service-tsx */[__webpack_require__.e(6004), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(5577), __webpack_require__.e(3133)]).then(__webpack_require__.bind(__webpack_require__, 59377))
 };
@@ -87943,4 +87993,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-d325f746e5b16309d413.js.map
+//# sourceMappingURL=app-c9bd85add7ac20afd701.js.map
