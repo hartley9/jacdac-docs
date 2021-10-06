@@ -54098,7 +54098,7 @@ function Home() {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: false,
     subtitle: "Hardware",
-    description: "Jacdac relies on a 3-wire bus for power delivery and data transfer. A purpose-built connector is used to interface with the Jacdac PCB edge connector.",
+    description: "Jacdac uses a 3-wire bus for power delivery and data transfer. A purpose-built connector is used to interface with the Jacdac PCB edge connector.",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_9__.S, {
       src: "./rotarycable.png",
       alt: "A rotary encoder module with a Jacdac cable attached.",
@@ -54122,7 +54122,7 @@ function Home() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: false,
     subtitle: "'Nano' Services",
-    description: "Jacdac services are specified to abstract the hardware device from the software implementation. The services are comprised of registers, commands and events, along with precise data layout information for each packet.",
+    description: "Jacdac services provide software an abstract view of the hardware. Services are defined in terms of registers, commands and events.",
     buttonText: "Explore services",
     buttonVariant: "link",
     buttonUrl: "/services/",
@@ -54153,7 +54153,7 @@ function Home() {
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     subtitle: "Discover the benefits of Jacdac protocol",
-    description: "Jacdac devices communicate using packets over a bus, where each device can advertise itself and the set of services it provides.",
+    description: "Jacdac devices communicate using packets over a bus, where each device advertises itself and its set of services.",
     buttonText: "Protocol specification",
     buttonVariant: "link",
     buttonUrl: "/protocol/"
@@ -54166,7 +54166,7 @@ function Home() {
       fontSize: "large"
     }),
     description: "Bus topology",
-    caption: "Jacdac packets are sent serially among physical devices on the Jacdac bus and may also be sent over WebUSB/WebBLE, providing connectivity to web-based tooling and services running in the web browser."
+    caption: "Jacdac packets are sent among devices on the Jacdac bus and may also be sent over WebUSB/WebBLE, providing connectivity to web-based tooling and services."
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
     item: true,
     xs: 12,
@@ -54176,7 +54176,7 @@ function Home() {
       fontSize: "large"
     }),
     description: "Device discovery and service advertisement",
-    caption: "Any device that hosts a service must also run the control service. The control service is responsible for advertising any services a device is running every 500 milliseconds."
+    caption: "Any device that hosts a service must also run the control service, which is responsible for advertising any services a device is running every 500 milliseconds."
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
     item: true,
     xs: 12,
@@ -54186,7 +54186,7 @@ function Home() {
       fontSize: "large"
     }),
     description: "Standardized service abstraction",
-    caption: "This abstraction brings plug-and-play dynamism to Jacdac so that devices with different hardware, but the same overall functionality, can replace one another without having to recompile user applications."
+    caption: "Services allow devices with different hardware, but the same functionality, to replace one another - no need to recompile user applications."
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
     item: true,
     xs: 12,
@@ -54196,10 +54196,10 @@ function Home() {
       fontSize: "large"
     }),
     description: "Full stack from 8bit MCU to web development",
-    caption: "The responsibility of the physical layer is to send/receive a byte buffer (representing a Jacdac frame from the transport layer over a particular media): Single Wire Serial connects MCUs to each other using UART, WebUSB connects MCU to web browser"
+    caption: "The physical protocol layer sends/receives a byte buffer (representing a Jacdac frame): Single Wire Serial connects MCUs to each other using UART."
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     subtitle: "Enabling a cheaper ecosystem.",
-    description: "A PCB edge connector was chosen for Jacdac primarily because it essentially adds no cost to a product.  A module is a small PCB that includes an MCU connected to an on-board sensor or actuator.",
+    description: "A PCB edge connector was chosen for Jacdac as it adds no cost to a product.  A module is a small PCB that includes an MCU connected to an on-board sensor or actuator.",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ModelViewer, {
       responsive: true
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GLBModel, {
@@ -54244,7 +54244,7 @@ function Home() {
       __imageData: __webpack_require__(27580)
     }),
     description: "Hot plug discovery",
-    caption: "The device catalog lists the registered Jacdac devices that can be automatically detected on the bus. The catalog information provides vendor information, the service."
+    caption: "The device catalog lists the registered Jacdac devices that can be automatically detected on the bus, and their services. The catalog information also provides vendor information."
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
     item: true,
     xs: 12,
@@ -54257,7 +54257,7 @@ function Home() {
       __imageData: __webpack_require__(60094)
     }),
     description: "Firmware updates",
-    caption: "The device catalog is automatically detect, download and flash firmware onto devices."
+    caption: "The device catalog enables the automatic detecttion, download and flashing of firmware onto devices."
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
     item: true,
     xs: 12,
@@ -69005,7 +69005,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "1dec9cc55008549b922bc9ccb202c07c109b03d2";
+var sha = "a612c26e4722a1af9e2a7d0f7b29bee65acc7e92";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69853,7 +69853,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "1dec9cc55008549b922bc9ccb202c07c109b03d2";
+  var sha = "a612c26e4722a1af9e2a7d0f7b29bee65acc7e92";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71989,7 +71989,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "1dec9cc55008549b922bc9ccb202c07c109b03d2";
+    var sha = "a612c26e4722a1af9e2a7d0f7b29bee65acc7e92";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88025,4 +88025,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-dfc613eca5c31b1b386a.js.map
+//# sourceMappingURL=app-0bdf7fece6c35300775d.js.map
