@@ -1295,7 +1295,7 @@ function Snippet(props) {
 
 /***/ }),
 
-/***/ 77110:
+/***/ 93561:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -1399,6 +1399,20 @@ var ChipList = __webpack_require__(88460);
 var semver = __webpack_require__(14914);
 // EXTERNAL MODULE: ./src/components/specification/DeviceSpecificationList.tsx + 3 modules
 var DeviceSpecificationList = __webpack_require__(46684);
+// EXTERNAL MODULE: ./node_modules/react-helmet/es/Helmet.js
+var Helmet = __webpack_require__(35414);
+;// CONCATENATED MODULE: ./src/components/ui/StructuredData.tsx
+
+
+function StructuredData(props) {
+  var {
+    payload
+  } = props;
+  var rendered = (0,react.useMemo)(() => JSON.stringify(payload), [payload]);
+  return /*#__PURE__*/react.createElement(Helmet/* Helmet */.q, null, /*#__PURE__*/react.createElement("script", {
+    type: "application/ld+json"
+  }, rendered));
+}
 ;// CONCATENATED MODULE: ./src/components/specification/DeviceSpecification.tsx
 
 
@@ -1414,6 +1428,35 @@ var DeviceSpecificationList = __webpack_require__(46684);
 
 
 
+
+
+
+function DeviceStructuredData(props) {
+  var {
+    device
+  } = props;
+  var {
+    name,
+    images,
+    description,
+    company
+  } = device;
+  var payload = (0,react.useMemo)(() => ({
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name,
+    image: images,
+    description,
+    sku: device.id,
+    brand: {
+      "@type": "Brand",
+      name: company
+    }
+  }), [device]);
+  return /*#__PURE__*/react.createElement(StructuredData, {
+    payload: payload
+  });
+}
 
 function DeviceSpecification(props) {
   var _deviceSpecifications;
@@ -1438,7 +1481,9 @@ function DeviceSpecification(props) {
   var gridBreakpoints = (0,useGridBreakpoints/* default */.Z)();
   var imageUrl = (0,useDeviceImage/* default */.Z)(device, "catalog");
   var others = designIdentifier && ((_deviceSpecifications = (0,spec/* deviceSpecifications */.qx)().filter(spec => spec.id !== device.id && spec.designIdentifier === designIdentifier && spec.version !== undefined)) === null || _deviceSpecifications === void 0 ? void 0 : _deviceSpecifications.sort((l, r) => (0,semver/* semverCmp */.k)(l.version, r.version)));
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h2", {
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(DeviceStructuredData, {
+    device: device
+  }), /*#__PURE__*/react.createElement("h2", {
     key: "title"
   }, name, !!version && " v" + version), /*#__PURE__*/react.createElement(ChipList/* default */.Z, null, /*#__PURE__*/react.createElement(Chip/* default */.Z, {
     size: "small",
@@ -1505,4 +1550,4 @@ function Page(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-templates-device-tsx-383d22803c3a0e7f0cc2.js.map
+//# sourceMappingURL=component---src-templates-device-tsx-eaad9e4d76090ea8bce9.js.map

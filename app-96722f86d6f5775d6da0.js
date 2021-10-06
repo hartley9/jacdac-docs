@@ -68995,7 +68995,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "7d8360fae488fe4cab95c3037cf3a3c6a31886d2";
+var sha = "3f2778f626427020b79dacd3e8bdd637aecf45c5";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69823,7 +69823,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "7d8360fae488fe4cab95c3037cf3a3c6a31886d2";
+  var sha = "3f2778f626427020b79dacd3e8bdd637aecf45c5";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71932,7 +71932,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "7d8360fae488fe4cab95c3037cf3a3c6a31886d2";
+    var sha = "3f2778f626427020b79dacd3e8bdd637aecf45c5";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -82833,7 +82833,7 @@ exports.components = {
   "component---src-pages-tools-updater-tsx": () => Promise.all(/* import() | component---src-pages-tools-updater-tsx */[__webpack_require__.e(6004), __webpack_require__.e(9569), __webpack_require__.e(5092), __webpack_require__.e(6366)]).then(__webpack_require__.bind(__webpack_require__, 5179)),
   "component---src-pages-traces-mdx": () => __webpack_require__.e(/* import() | component---src-pages-traces-mdx */ 1356).then(__webpack_require__.bind(__webpack_require__, 23478)),
   "component---src-templates-device-company-tsx": () => __webpack_require__.e(/* import() | component---src-templates-device-company-tsx */ 20).then(__webpack_require__.bind(__webpack_require__, 96557)),
-  "component---src-templates-device-tsx": () => Promise.all(/* import() | component---src-templates-device-tsx */[__webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(5092), __webpack_require__.e(8323)]).then(__webpack_require__.bind(__webpack_require__, 77110)),
+  "component---src-templates-device-tsx": () => Promise.all(/* import() | component---src-templates-device-tsx */[__webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(5092), __webpack_require__.e(8323)]).then(__webpack_require__.bind(__webpack_require__, 93561)),
   "component---src-templates-service-playground-tsx": () => Promise.all(/* import() | component---src-templates-service-playground-tsx */[__webpack_require__.e(6004), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(5577), __webpack_require__.e(6540)]).then(__webpack_require__.bind(__webpack_require__, 97230)),
   "component---src-templates-service-tsx": () => Promise.all(/* import() | component---src-templates-service-tsx */[__webpack_require__.e(6004), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(5577), __webpack_require__.e(3133)]).then(__webpack_require__.bind(__webpack_require__, 59377))
 };
@@ -87943,4 +87943,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-5e1737a41fd44a4f0c35.js.map
+//# sourceMappingURL=app-96722f86d6f5775d6da0.js.map
