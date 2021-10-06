@@ -35,24 +35,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ DashboardHIDKeyboard; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(15861);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(15861);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(80838);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(80838);
 /* harmony import */ var _jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(73512);
 /* harmony import */ var _jacdac_ts_src_jdom_pack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(91635);
 /* harmony import */ var _CmdButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(50092);
 /* harmony import */ var _ui_KeyboardKeyInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(82860);
-/* harmony import */ var _material_ui_icons_Keyboard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(86481);
-/* harmony import */ var _select_SelectEvent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16354);
-/* harmony import */ var _hooks_useEvents__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(50010);
-/* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(54774);
-/* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(71815);
-/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(20392);
-
-
-
-
-
+/* harmony import */ var _material_ui_icons_Keyboard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(86481);
 
 
 
@@ -66,9 +56,6 @@ function DashboardHIDKeyboard(props) {
     service
   } = props;
   var {
-    bus
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z);
-  var {
     0: selector,
     1: setSelector
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
@@ -76,152 +63,39 @@ function DashboardHIDKeyboard(props) {
     0: modifiers,
     1: setModifiers
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_1__/* .HidKeyboardModifiers.None */ .Q2Q.None);
-  var {
-    0: triggerEventId,
-    1: setTriggerEventId
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
-  var events = (0,_hooks_useEvents__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)({
-    ignoreChange: true
-  });
 
   var handleKeyChange = (newSelector, newModifiers) => {
     setSelector(newSelector);
     setModifiers(newModifiers);
   };
 
-  var handleClick = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z)(function* () {
+  var handleClick = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(function* () {
     var unpacked = [[[selector, modifiers, _jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_1__/* .HidKeyboardAction.Press */ .gBd.Press]]];
     var data = (0,_jacdac_ts_src_jdom_pack__WEBPACK_IMPORTED_MODULE_2__/* .jdpack */ .AV)("r: u16 u8 u8", unpacked);
     yield service.sendCmdAsync(_jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_1__/* .HidKeyboardCmd.Key */ .Fnq.Key, data);
   }), [selector, modifiers, service]);
-  (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z)(bus, () => {
-    var triggerEvent = bus.node(triggerEventId);
-    var un = triggerEvent === null || triggerEvent === void 0 ? void 0 : triggerEvent.subscribe(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_8__/* .EVENT */ .Ks0, handleClick);
-    return () => un === null || un === void 0 ? void 0 : un();
-  }, [triggerEventId, handleClick]);
   var disabled = !selector && !modifiers;
-
-  var handleTriggerChange = eventId => setTriggerEventId(eventId);
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
     container: true,
     direction: "column",
     spacing: 1
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_KeyboardKeyInput__WEBPACK_IMPORTED_MODULE_4__["default"], {
     selector: selector,
     modifiers: modifiers,
     onChange: handleKeyChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
-    container: true,
-    spacing: 1
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
-    item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CmdButton__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     variant: "outlined",
     title: "send keys",
     disabled: disabled,
     onClick: handleClick,
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Keyboard__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, null)
-  }, "Send keys")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
-    item: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_select_SelectEvent__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-    events: events,
-    eventId: triggerEventId,
-    onChange: handleTriggerChange,
-    label: "Choose Send Key event",
-    friendlyName: true
-  })))));
-}
-
-/***/ }),
-
-/***/ 50010:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ useEvents; }
-/* harmony export */ });
-/* harmony import */ var _jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(73512);
-/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(81794);
-/* harmony import */ var _useServices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2928);
-
-
-
-function useEvents(options) {
-  var {
-    ignoreChange
-  } = options || {};
-  var services = (0,_useServices__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(options);
-  var events = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_1__/* .arrayConcatMany */ .ue)(services.map(srv => srv.events));
-  if (ignoreChange) events = events.filter(ev => ev.code !== _jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemEvent.StatusCodeChanged */ .nSK.StatusCodeChanged && ev.code !== _jacdac_ts_jacdac_spec_dist_specconstants__WEBPACK_IMPORTED_MODULE_0__/* .SystemEvent.Change */ .nSK.Change);
-  return events;
-}
-
-/***/ }),
-
-/***/ 2928:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ useServices; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20392);
-/* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(54774);
-
-
-
-function useServices(options) {
-  var {
-    bus
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z);
-  var services = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(bus, _ => (_ === null || _ === void 0 ? void 0 : _.services(options)) || [], [JSON.stringify(options)]);
-  return services;
-}
-
-/***/ }),
-
-/***/ 16354:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ SelectEvent; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(65541);
-/* harmony import */ var _ui_SelectWithLabel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15789);
-
-
-
-function SelectEvent(props) {
-  var {
-    events,
-    eventId,
-    onChange,
-    friendlyName,
-    label
-  } = props;
-
-  var handleChange = ev => {
-    onChange(ev.target.value);
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_SelectWithLabel__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
-    helperText: label || "choose an event",
-    value: eventId,
-    onChange: handleChange,
-    disabled: !(events !== null && events !== void 0 && events.length),
-    none: "None"
-  }, events === null || events === void 0 ? void 0 : events.map(ev => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-    key: ev.id,
-    value: ev.id
-  }, friendlyName ? ev.friendlyName : ev.name)));
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Keyboard__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, null)
+  }, "Send keys")));
 }
 
 /***/ }),
@@ -389,72 +263,7 @@ function KeyboardKeyInput(props) {
   });
 }
 
-/***/ }),
-
-/***/ 15789:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": function() { return /* binding */ SelectWithLabel; }
-/* harmony export */ });
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(31690);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(89711);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(706);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(65541);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(78942);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19640);
-
-
-
-function SelectWithLabel(props) {
-  var {
-    label,
-    fullWidth,
-    required,
-    disabled,
-    value,
-    error,
-    placeholder,
-    onChange,
-    onClose,
-    children,
-    helperText,
-    type,
-    none
-  } = props;
-  var labelId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__/* .useId */ .Me)();
-  var descrId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__/* .useId */ .Me)();
-  var id = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__/* .useId */ .Me)();
-  var hasDescr = !!helperText || !!error;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-    fullWidth: fullWidth,
-    variant: "outlined"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
-    id: labelId,
-    key: "label"
-  }, required ? label + " *" : label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
-    id: id,
-    disabled: disabled,
-    label: label,
-    value: value,
-    error: !!error,
-    fullWidth: true,
-    placeholder: placeholder,
-    type: type,
-    labelId: labelId,
-    "aria-describedby": hasDescr ? descrId : undefined,
-    onChange: onChange,
-    onClose: onClose
-  }, none !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-    key: "none",
-    value: ""
-  }, none), children), hasDescr && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
-    id: descrId
-  }, error || helperText));
-}
-
 /***/ })
 
 }]);
-//# sourceMappingURL=5969-c00e8b2935d4cdc200cc.js.map
+//# sourceMappingURL=5969-ef2281f4268d6868f381.js.map
