@@ -935,7 +935,7 @@ function DashboardWifi(props) {
       key: nssid,
       priority: priority,
       flags: flags,
-      ssid: ssid
+      ssid: nssid
     });
   }))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
@@ -1010,4 +1010,4 @@ function ChipList(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=3856-569bb16672fb7e3477e5.js.map
+//# sourceMappingURL=3856-7429953f9e2f5efc3a3a.js.map
