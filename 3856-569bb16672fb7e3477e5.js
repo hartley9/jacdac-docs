@@ -920,6 +920,11 @@ function DashboardWifi(props) {
   }))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
+  }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
+    variant: "caption"
+  }, "Known networks (", (knownNetworks === null || knownNetworks === void 0 ? void 0 : knownNetworks.length) || 0, ")")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true,
+    xs: 12
   }, /*#__PURE__*/react.createElement(List/* default */.Z, {
     dense: true
   }, knownNetworks === null || knownNetworks === void 0 ? void 0 : knownNetworks.map(_ref5 => {
@@ -1005,4 +1010,4 @@ function ChipList(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=3856-1d4dadb348659c695a82.js.map
+//# sourceMappingURL=3856-569bb16672fb7e3477e5.js.map
