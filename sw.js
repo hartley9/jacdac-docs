@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "f27d5980010062b50df67092ea1691a0"
+    "revision": "eb79e703c231a472d11451f1d1f85ffb"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "02bc11f5e61121de99300670d00cef3f"
+    "revision": "d9162f9944b0d4e86316e973accce383"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "6c5568b64867bfdea2daed0e0066b17b"
+    "revision": "ecb6724940965e8e43a37ca4857721f6"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "58ed5e9d58ddc6255a6e347d563ab407"
+    "revision": "7cbadad060a06c9641974964526c9457"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "4d0745edc335fc0079ee500b930d918b"
+    "revision": "929697fac6753f3ed202e432dee80b24"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "6ced918f080aa790547c945a1f130615"
+    "revision": "fb76e425d3db6e194394ed90052d3511"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "d280d9b1ae47f30280e1c66fe20409a0"
+    "revision": "84d1ed866db114f30307852fdc8096dd"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1422,7 +1422,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-69fc39fde90fba287149.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-3a158e5d8163ed2cefee.js`))) {
     return await fetch(event.request)
   }
 

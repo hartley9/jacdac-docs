@@ -68995,7 +68995,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "ad88ac9a87e3b2737ca0fb7d34408f119675b4a8";
+var sha = "94d4f62149cf6c28baa8d64886837f5264353176";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69823,7 +69823,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "ad88ac9a87e3b2737ca0fb7d34408f119675b4a8";
+  var sha = "94d4f62149cf6c28baa8d64886837f5264353176";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71959,7 +71959,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "ad88ac9a87e3b2737ca0fb7d34408f119675b4a8";
+    var sha = "94d4f62149cf6c28baa8d64886837f5264353176";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -80463,6 +80463,7 @@ function createBus() {
       var _deviceSpecificationF, _d$source, _d$source$split$;
 
       var productId = d.isPhysical ? d.productIdentifier : undefined;
+      var firmware = d.isPhysical ? d.firmwareVersion : undefined;
       var product = (_deviceSpecificationF = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(productId)) === null || _deviceSpecificationF === void 0 ? void 0 : _deviceSpecificationF.id;
       var services = {};
 
@@ -80479,6 +80480,7 @@ function createBus() {
         physical: d.isPhysical,
         productId: productId === null || productId === void 0 ? void 0 : productId.toString(16),
         product,
+        firmware,
         services: JSON.stringify(services),
         serviceClasses: JSON.stringify(d.serviceClasses.slice(1))
       };
@@ -87993,4 +87995,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-69fc39fde90fba287149.js.map
+//# sourceMappingURL=app-3a158e5d8163ed2cefee.js.map
