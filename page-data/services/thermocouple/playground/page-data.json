@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/thermocouple/playground/",
-    "result": {"pageContext":{"node":{"name":"Thermocouple","shortName":"thermocouple","shortId":"thermocouple","classIdentifier":339394657}}},
+    "result": {"pageContext":{"node":{"name":"Thermocouple","shortName":"thermocouple","shortId":"thermocouple","classIdentifier":339394657},"title":"Thermocouple playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

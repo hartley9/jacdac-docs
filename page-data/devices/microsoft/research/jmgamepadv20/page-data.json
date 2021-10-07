@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmgamepadv20/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmgamepadv20","name":"JM GamePad","company":"Microsoft Research","productIdentifiers":[919754666]}}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmgamepadv20","name":"JM GamePad","company":"Microsoft Research","productIdentifiers":[919754666]},"title":"JM GamePad"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

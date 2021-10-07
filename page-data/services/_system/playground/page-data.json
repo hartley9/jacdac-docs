@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/_system/playground/",
-    "result": {"pageContext":{"node":{"name":"Common registers and commands","shortName":"system","shortId":"_system","classIdentifier":536870897}}},
+    "result": {"pageContext":{"node":{"name":"Common registers and commands","shortName":"system","shortId":"_system","classIdentifier":536870897},"title":"Common registers and commands playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

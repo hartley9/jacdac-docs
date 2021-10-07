@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/modelrunner/playground/",
-    "result": {"pageContext":{"node":{"name":"Model Runner","shortName":"modelRunner","shortId":"modelrunner","classIdentifier":336566904}}},
+    "result": {"pageContext":{"node":{"name":"Model Runner","shortName":"modelRunner","shortId":"modelrunner","classIdentifier":336566904},"title":"Model Runner playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/_base/playground/",
-    "result": {"pageContext":{"node":{"name":"Base service","shortName":"base","shortId":"_base","classIdentifier":536870899}}},
+    "result": {"pageContext":{"node":{"name":"Base service","shortName":"base","shortId":"_base","classIdentifier":536870899},"title":"Base service playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

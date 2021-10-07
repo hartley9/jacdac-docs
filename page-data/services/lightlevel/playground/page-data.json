@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/lightlevel/playground/",
-    "result": {"pageContext":{"node":{"name":"Light level","shortName":"lightLevel","shortId":"lightlevel","classIdentifier":400333340}}},
+    "result": {"pageContext":{"node":{"name":"Light level","shortName":"lightLevel","shortId":"lightlevel","classIdentifier":400333340},"title":"Light level playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

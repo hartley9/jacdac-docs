@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/bitradio/playground/",
-    "result": {"pageContext":{"node":{"name":"bit:radio","shortName":"bitRadio","shortId":"bitradio","classIdentifier":449414863}}},
+    "result": {"pageContext":{"node":{"name":"bit:radio","shortName":"bitRadio","shortId":"bitradio","classIdentifier":449414863},"title":"bit:radio playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

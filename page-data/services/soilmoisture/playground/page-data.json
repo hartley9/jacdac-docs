@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/soilmoisture/playground/",
-    "result": {"pageContext":{"node":{"name":"Soil moisture","shortName":"soilMoisture","shortId":"soilmoisture","classIdentifier":491430835}}},
+    "result": {"pageContext":{"node":{"name":"Soil moisture","shortName":"soilMoisture","shortId":"soilmoisture","classIdentifier":491430835},"title":"Soil moisture playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

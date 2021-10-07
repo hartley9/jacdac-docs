@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/windspeed/playground/",
-    "result": {"pageContext":{"node":{"name":"Wind speed","shortName":"windSpeed","shortId":"windspeed","classIdentifier":458824639}}},
+    "result": {"pageContext":{"node":{"name":"Wind speed","shortName":"windSpeed","shortId":"windspeed","classIdentifier":458824639},"title":"Wind speed playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

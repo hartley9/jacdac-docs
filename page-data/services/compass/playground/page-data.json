@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/compass/playground/",
-    "result": {"pageContext":{"node":{"name":"Compass","shortName":"compass","shortId":"compass","classIdentifier":364362175}}},
+    "result": {"pageContext":{"node":{"name":"Compass","shortName":"compass","shortId":"compass","classIdentifier":364362175},"title":"Compass playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

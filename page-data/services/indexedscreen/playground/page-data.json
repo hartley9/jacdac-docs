@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/indexedscreen/playground/",
-    "result": {"pageContext":{"node":{"name":"Indexed screen","shortName":"indexedScreen","shortId":"indexedscreen","classIdentifier":385496805}}},
+    "result": {"pageContext":{"node":{"name":"Indexed screen","shortName":"indexedScreen","shortId":"indexedscreen","classIdentifier":385496805},"title":"Indexed screen playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

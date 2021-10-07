@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmspeechsynthesis61v33/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmspeechsynthesis61v33","name":"JM Speech Synthesis","company":"Microsoft Research","productIdentifiers":[934541191]}}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmspeechsynthesis61v33","name":"JM Speech Synthesis","company":"Microsoft Research","productIdentifiers":[934541191]},"title":"JM Speech Synthesis"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

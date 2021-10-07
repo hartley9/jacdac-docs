@@ -69262,7 +69262,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "b1e6e2230a9aac78c9ac094b98c29a862039b78c";
+var sha = "32400f38dfb5390432af864ea011ff958c214566";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70110,7 +70110,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "b1e6e2230a9aac78c9ac094b98c29a862039b78c";
+  var sha = "32400f38dfb5390432af864ea011ff958c214566";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71701,7 +71701,7 @@ function LayoutWithContext(props) {
   };
   var isDataEditor = /^\/editors\/data/.test(path);
   var appBar = hideMainMenu ? undefined : isDataEditor ? /*#__PURE__*/react.createElement(DataEditorAppBar, null) : /*#__PURE__*/react.createElement(MainAppBar, null);
-  var title = isDataEditor ? "Data Science Editor (Experimental)" : frontmatter.title || undefined;
+  var title = isDataEditor ? "Data Science Editor (Experimental)" : (pageContext === null || pageContext === void 0 ? void 0 : pageContext.title) || (frontmatter === null || frontmatter === void 0 ? void 0 : frontmatter.title) || undefined;
   var classes = layout_useStyles();
   var {
     darkMode
@@ -72246,7 +72246,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "b1e6e2230a9aac78c9ac094b98c29a862039b78c";
+    var sha = "32400f38dfb5390432af864ea011ff958c214566";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88282,4 +88282,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-30492cf22a0c63dbb81f.js.map
+//# sourceMappingURL=app-619d8973c4bc8874fdc2.js.map

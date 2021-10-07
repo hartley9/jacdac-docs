@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/barcodereader/playground/",
-    "result": {"pageContext":{"node":{"name":"Barcode reader","shortName":"barcodeReader","shortId":"barcodereader","classIdentifier":477339244}}},
+    "result": {"pageContext":{"node":{"name":"Barcode reader","shortName":"barcodeReader","shortId":"barcodereader","classIdentifier":477339244},"title":"Barcode reader playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

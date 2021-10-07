@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/prototest/playground/",
-    "result": {"pageContext":{"node":{"name":"Protocol Test","shortName":"protoTest","shortId":"prototest","classIdentifier":382158442}}},
+    "result": {"pageContext":{"node":{"name":"Protocol Test","shortName":"protoTest","shortId":"prototest","classIdentifier":382158442},"title":"Protocol Test playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

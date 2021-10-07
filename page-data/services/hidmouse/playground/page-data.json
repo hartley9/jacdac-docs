@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/hidmouse/playground/",
-    "result": {"pageContext":{"node":{"name":"HID Mouse","shortName":"hidMouse","shortId":"hidmouse","classIdentifier":411425820}}},
+    "result": {"pageContext":{"node":{"name":"HID Mouse","shortName":"hidMouse","shortId":"hidmouse","classIdentifier":411425820},"title":"HID Mouse playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

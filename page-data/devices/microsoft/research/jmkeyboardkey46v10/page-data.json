@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmkeyboardkey46v10/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmkeyboardkey46v10","name":"JM Keyboard Key","company":"Microsoft Research","productIdentifiers":[1067229774]}}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmkeyboardkey46v10","name":"JM Keyboard Key","company":"Microsoft Research","productIdentifiers":[1067229774]},"title":"JM Keyboard Key"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

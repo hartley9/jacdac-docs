@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/capacitivebutton/playground/",
-    "result": {"pageContext":{"node":{"name":"Capacitive Button","shortName":"capacitiveButton","shortId":"capacitivebutton","classIdentifier":677752265}}},
+    "result": {"pageContext":{"node":{"name":"Capacitive Button","shortName":"capacitiveButton","shortId":"capacitivebutton","classIdentifier":677752265},"title":"Capacitive Button playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

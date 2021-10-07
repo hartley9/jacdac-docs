@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-playground-tsx",
     "path": "/services/azureiothubhealth/playground/",
-    "result": {"pageContext":{"node":{"name":"Azure IoT Hub Health","shortName":"azureIotHubHealth","shortId":"azureiothubhealth","classIdentifier":342028028}}},
+    "result": {"pageContext":{"node":{"name":"Azure IoT Hub Health","shortName":"azureIotHubHealth","shortId":"azureiothubhealth","classIdentifier":342028028},"title":"Azure IoT Hub Health playground"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
