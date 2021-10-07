@@ -69179,8 +69179,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var repo = "microsoft/jacdac-docs";
-var sha = "d5ba2dc522654a6fda3129df384f98c4cdebb6d5";
+var sha = "a2452f570082864b0445f0f44a9adf7e0fd9b53b";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69217,8 +69216,7 @@ var appInsights = typeof window !== "undefined" && INSTRUMENTATION_KEY && // ign
 if (appInsights) {
   appInsights.loadAppInsights();
   appInsights.addTelemetryInitializer(envelope => {
-    envelope.tags["repo"] = repo;
-    envelope.tags["sha"] = sha;
+    if (envelope.data) envelope.data.sha = sha;
   });
   appInsights.trackPageView({
     name: window.location.href
@@ -70024,7 +70022,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "d5ba2dc522654a6fda3129df384f98c4cdebb6d5";
+  var sha = "a2452f570082864b0445f0f44a9adf7e0fd9b53b";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72160,7 +72158,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "d5ba2dc522654a6fda3129df384f98c4cdebb6d5";
+    var sha = "a2452f570082864b0445f0f44a9adf7e0fd9b53b";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88292,4 +88290,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-b2301a08587f33e0b522.js.map
+//# sourceMappingURL=app-8bfbb87bcedb3972641e.js.map
