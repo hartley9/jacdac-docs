@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-1cc4c2aea08fd3842d57.js"
+    "url": "webpack-runtime-8cced977c98fbc9e5e15.js"
   },
   {
     "url": "styles.74eb5aed1bb14cdb4c8b.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "b86259443f7bd907adfb7f1bfb04fd06"
+    "revision": "735b3689ca692f1ca86d3100400e0f12"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "27747e2d67f694c02a95972bfcf32a5c"
+    "revision": "dc7f500f25c801c394f385232b73a142"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "21e4c841ae9493de2608e4c7a517d379"
+    "revision": "b4c48ff966c9f188db00eaede3425129"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "030b946b76b485a9d7c481eebdf72eaf"
+    "revision": "184021a16d3de3728b2a1c29a73e1a62"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "5b5f91fc9304a21088b6bca4919d4a48"
+    "revision": "36e97c99978ef39d0c0c23321ab5e44e"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "318900587b1e8aaf1814170c5cb6d755"
+    "revision": "08b23547dcadc8110e30e39a8ab90bab"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -396,7 +396,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/characterscreen/page-data.json",
-    "revision": "a17535b62da46dcd9e9ec4075b8b2727"
+    "revision": "413cd16bde4627c09429744aac658290"
   },
   {
     "url": "page-data/services/characterscreen/playground/page-data.json",
@@ -596,7 +596,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/matrixkeypad/page-data.json",
-    "revision": "04658524fe75797b3ea30c51f04784a2"
+    "revision": "71a9eaf6e4a9991d814d1d1ac7e24c22"
   },
   {
     "url": "page-data/services/matrixkeypad/playground/page-data.json",
@@ -924,7 +924,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/wifi/page-data.json",
-    "revision": "8567758669c3f025eab5571cb5eed588"
+    "revision": "e266deed2e9507b5eb590ccecf3d06aa"
   },
   {
     "url": "page-data/services/wifi/playground/page-data.json",
@@ -1415,7 +1415,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-69217b601234cab58e4c.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-04b4df189a22b7e78100.js`))) {
     return await fetch(event.request)
   }
 

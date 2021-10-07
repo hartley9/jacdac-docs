@@ -99311,8 +99311,6 @@ function StyledTreeItem(props) {
     }
   }, other));
 }
-// EXTERNAL MODULE: ./src/components/hooks/useMediaQueries.tsx
-var useMediaQueries = __webpack_require__(20509);
 // EXTERNAL MODULE: ./src/components/services/useInstanceName.ts
 var useInstanceName = __webpack_require__(20563);
 // EXTERNAL MODULE: ./src/components/hooks/useBestRegister.ts
@@ -99349,7 +99347,6 @@ var JDomTreeViewItems_excluded = ["device", "serviceFilter"],
 
 
 
-
 function DeviceTreeItem(props) {
   var {
     device,
@@ -99367,10 +99364,6 @@ function DeviceTreeItem(props) {
   var services = (0,useEventRaised/* default */.Z)(constants/* ANNOUNCE */.oNX, device, _ => _.services({
     mixins: false
   }).filter(srv => !serviceFilter || serviceFilter(srv)));
-  var {
-    mobile
-  } = (0,useMediaQueries/* default */.Z)();
-  var showActions = !mobile;
   var {
     dropped,
     restarts
@@ -108676,4 +108669,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-84e20cd7d058c148aa40.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-78902bdae929a4bcc484.js.map

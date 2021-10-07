@@ -31,6 +31,12 @@
       "name": "ssid",
       "flags": 0,
       "packf": "s[32]"
+    },
+    {
+      "code": 388,
+      "name": "rssi",
+      "flags": 2,
+      "packf": "i8"
     }
   ]
 }

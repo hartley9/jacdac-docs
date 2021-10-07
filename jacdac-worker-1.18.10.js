@@ -885,7 +885,7 @@ var CharacterScreenReg;
      */
     CharacterScreenReg[CharacterScreenReg["TextDirection"] = 130] = "TextDirection";
     /**
-     * Constant uint8_t. Gets the number of rows.
+     * Constant # uint8_t. Gets the number of rows.
      *
      * ```
      * const [rows] = jdunpack<[number]>(buf, "u8")
@@ -893,7 +893,7 @@ var CharacterScreenReg;
      */
     CharacterScreenReg[CharacterScreenReg["Rows"] = 384] = "Rows";
     /**
-     * Constant uint8_t. Gets the number of columns.
+     * Constant # uint8_t. Gets the number of columns.
      *
      * ```
      * const [columns] = jdunpack<[number]>(buf, "u8")
@@ -2065,7 +2065,7 @@ var MatrixKeypadReg;
      */
     MatrixKeypadReg[MatrixKeypadReg["Pressed"] = 257] = "Pressed";
     /**
-     * Constant uint8_t. Number of rows in the matrix
+     * Constant # uint8_t. Number of rows in the matrix
      *
      * ```
      * const [rows] = jdunpack<[number]>(buf, "u8")
@@ -2073,7 +2073,7 @@ var MatrixKeypadReg;
      */
     MatrixKeypadReg[MatrixKeypadReg["Rows"] = 384] = "Rows";
     /**
-     * Constant uint8_t. Number of columns in the matrix
+     * Constant # uint8_t. Number of columns in the matrix
      *
      * ```
      * const [columns] = jdunpack<[number]>(buf, "u8")
@@ -4333,6 +4333,14 @@ var WifiReg;
      * ```
      */
     WifiReg[WifiReg["Ssid"] = 387] = "Ssid";
+    /**
+     * Read-only dB int8_t. Current signal strength. Returns -128 when not connected.
+     *
+     * ```
+     * const [rssi] = jdunpack<[number]>(buf, "i8")
+     * ```
+     */
+    WifiReg[WifiReg["Rssi"] = 388] = "Rssi";
 })(WifiReg || (WifiReg = {}));
 var WifiEvent;
 (function (WifiEvent) {
