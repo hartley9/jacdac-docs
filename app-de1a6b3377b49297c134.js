@@ -54215,13 +54215,7 @@ function Hardware() {
     }),
     buttonText: "Unbox",
     buttonUrl: "/hardware/kit/"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
-    item: true,
-    xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DeviceSpecificationList, {
-    count: cols,
-    shuffle: true
-  }))));
+  }));
 }
 
 /***/ }),
@@ -69186,7 +69180,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "dfa965c1043e869ff94588d7d0465212b3ec2cc9";
+var sha = "1e760bed92d72e5564abba6d336f34dcbe0cadce";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70030,7 +70024,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "dfa965c1043e869ff94588d7d0465212b3ec2cc9";
+  var sha = "1e760bed92d72e5564abba6d336f34dcbe0cadce";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72166,7 +72160,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "dfa965c1043e869ff94588d7d0465212b3ec2cc9";
+    var sha = "1e760bed92d72e5564abba6d336f34dcbe0cadce";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88298,4 +88292,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-0790398a92935fbc0149.js.map
+//# sourceMappingURL=app-de1a6b3377b49297c134.js.map
