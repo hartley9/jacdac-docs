@@ -69266,7 +69266,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "a51002301a7a66950fc63e051815101636a6f01e";
+var sha = "cb3bebd39bbbf3f1000bb4a454fecdd0a3ee3896";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69323,7 +69323,8 @@ var trackError = appInsights ? (exception, properties) => appInsights.trackExcep
 var analytics = {
   page,
   trackEvent,
-  trackError
+  trackError,
+  sha
 }; // store instance
 
 if (typeof window !== "undefined") {
@@ -70114,7 +70115,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "a51002301a7a66950fc63e051815101636a6f01e";
+  var sha = "cb3bebd39bbbf3f1000bb4a454fecdd0a3ee3896";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72250,7 +72251,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "a51002301a7a66950fc63e051815101636a6f01e";
+    var sha = "cb3bebd39bbbf3f1000bb4a454fecdd0a3ee3896";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -85640,28 +85641,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "onServiceWorkerUpdateReady": function() { return /* binding */ onServiceWorkerUpdateReady; },
 /* harmony export */   "wrapPageElement": function() { return /* binding */ wrapPageElement; }
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(15861);
 /* harmony import */ var _src_components_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(48534);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(73935);
 
 
 
-var UPDATE_DEBOUNCE = 5000;
+
+var UPDATE_DEBOUNCE = 30000;
 var lastUpdate = Date.now();
 
 function tryUpdate(force) {
   var now = Date.now();
   if (now - lastUpdate < UPDATE_DEBOUNCE) return;
   lastUpdate = now;
-  setTimeout(() => navigator.serviceWorker.getRegistration().then(reg => {
-    if (reg) reg.update();else if (force) window.location.reload();
+  setTimeout( /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)(function* () {
+    var reg = yield navigator.serviceWorker.getRegistration();
+    if (reg) reg.update();else if (force && window.navigator.onLine && !/http:\/\/localhost/.test(window.location.href)) {
+      console.debug("jacdac: check for updates");
+
+      try {
+        var req = yield fetch("/jacdac-docs/version.json");
+
+        if (!req.ok) {
+          console.debug("fetch version.json failed, probably offline");
+          return;
+        }
+
+        var version = yield req.json();
+        console.log("version info", {
+          version,
+          sha: window.analytics.sha
+        });
+
+        if (version && version.sha && window.analytics && version.sha !== window.analytics.sha) {
+          console.warn("web app updated " + version.sha + " !== " + window.analytics.sha);
+          window.location.reload();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
   }), UPDATE_DEBOUNCE - 1000);
 }
 
-var onRouteUpdate = (_ref, options) => {
+var onRouteUpdate = (_ref2, options) => {
   var {
     location
-  } = _ref;
+  } = _ref2;
   if (window.analytics && window.analytics.page) window.analytics.page();
   tryUpdate();
 };
@@ -88369,4 +88397,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-00e6a32930ce56e1e273.js.map
+//# sourceMappingURL=app-8b07164aa85f57ccbe2c.js.map
