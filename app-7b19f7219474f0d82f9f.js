@@ -35951,6 +35951,7 @@ var JDClient = /*#__PURE__*/function (_JDEventSource) {
 /* harmony export */   "EGX": function() { return /* binding */ DEVICE_FIRMWARE_INFO; },
 /* harmony export */   "vl4": function() { return /* binding */ DEVICE_CLEAN; },
 /* harmony export */   "dY6": function() { return /* binding */ DEVICE_PRODUCT_IDENTIFY; },
+/* harmony export */   "dRq": function() { return /* binding */ DEVICE_FIRMWARE_IDENTIFY; },
 /* harmony export */   "Pbc": function() { return /* binding */ SELF_ANNOUNCE; },
 /* harmony export */   "RaS": function() { return /* binding */ PACKET_SEND; },
 /* harmony export */   "FrK": function() { return /* binding */ PACKET_SEND_DISCONNECT; },
@@ -36302,6 +36303,7 @@ var DEVICE_CHANGE = "deviceChange";
 var DEVICE_FIRMWARE_INFO = "firmwareInfo";
 var DEVICE_CLEAN = "deviceClean";
 var DEVICE_PRODUCT_IDENTIFY = "deviceProductIdentify";
+var DEVICE_FIRMWARE_IDENTIFY = "deviceFirmwareIdentify";
 var SELF_ANNOUNCE = "selfAnnounce";
 var PACKET_SEND = "packetSend";
 var PACKET_SEND_DISCONNECT = "packetSendDisconnect";
@@ -69262,7 +69264,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "32400f38dfb5390432af864ea011ff958c214566";
+var sha = "51bf2a0e05326466ea59d2e5be1df6a40ba148ba";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70110,7 +70112,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "32400f38dfb5390432af864ea011ff958c214566";
+  var sha = "51bf2a0e05326466ea59d2e5be1df6a40ba148ba";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72246,7 +72248,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "32400f38dfb5390432af864ea011ff958c214566";
+    var sha = "51bf2a0e05326466ea59d2e5be1df6a40ba148ba";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -75695,7 +75697,10 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
         this.emitPropagated(constants/* DEVICE_PRODUCT_IDENTIFY */.dY6);
         this.emitPropagated(constants/* CHANGE */.Ver);
       });
-      ctrl.register(constants/* ControlReg.FirmwareVersion */.toU.FirmwareVersion).once(constants/* REPORT_UPDATE */.rGZ, () => {});
+      ctrl.register(constants/* ControlReg.FirmwareVersion */.toU.FirmwareVersion).once(constants/* REPORT_UPDATE */.rGZ, () => {
+        this.emitPropagated(constants/* DEVICE_FIRMWARE_IDENTIFY */.dRq);
+        this.emitPropagated(constants/* CHANGE */.Ver);
+      });
     }
   }
   /**
@@ -80778,12 +80783,16 @@ function createBus() {
     b.on(constants/* CONNECTION_STATE */.pzj, transport => transport.connectionState === transport_transport/* ConnectionState.Connected */.em.Connected || transport.connectionState === transport_transport/* ConnectionState.Disconnected */.em.Disconnected && trackEvent("jd.transport." + transport.connectionState, {
       type: transport.type,
       connectionState: transport.connectionState
-    })); // track services
+    })); // track services on announce
 
     b.on(constants/* DEVICE_ANNOUNCE */.Hob, d => {
       trackEvent("jd.announce", createPayload(d)); // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
       trackEvent("jd.stats", b.stats.current);
+    }); // track product id
+
+    b.on([constants/* DEVICE_PRODUCT_IDENTIFY */.dY6, constants/* DEVICE_FIRMWARE_IDENTIFY */.dRq], d => {
+      trackEvent("jd.product", createPayload(d));
     }); // general stats
 
     b.on(constants/* DEVICE_CLEAN */.vl4, () => {
@@ -88282,4 +88291,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-619d8973c4bc8874fdc2.js.map
+//# sourceMappingURL=app-7b19f7219474f0d82f9f.js.map
