@@ -69264,7 +69264,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "51bf2a0e05326466ea59d2e5be1df6a40ba148ba";
+var sha = "6e783b60fa9a20e3181edd0ad56dfcf0f42fc048";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70112,7 +70112,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "51bf2a0e05326466ea59d2e5be1df6a40ba148ba";
+  var sha = "6e783b60fa9a20e3181edd0ad56dfcf0f42fc048";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72248,7 +72248,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "51bf2a0e05326466ea59d2e5be1df6a40ba148ba";
+    var sha = "6e783b60fa9a20e3181edd0ad56dfcf0f42fc048";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -76353,10 +76353,32 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     get: function get() {
       var _this$service3;
 
-      var fwIdRegister = (_this$service3 = this.service(0)) === null || _this$service3 === void 0 ? void 0 : _this$service3.register(constants/* ControlReg.ProductIdentifier */.toU.ProductIdentifier);
-      var v = fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.uintValue;
-      if (fwIdRegister && v === undefined) fwIdRegister === null || fwIdRegister === void 0 ? void 0 : fwIdRegister.refresh(true);
+      var reg = (_this$service3 = this.service(0)) === null || _this$service3 === void 0 ? void 0 : _this$service3.register(constants/* ControlReg.ProductIdentifier */.toU.ProductIdentifier);
+      var v = reg === null || reg === void 0 ? void 0 : reg.uintValue;
+      if (reg && v === undefined) reg === null || reg === void 0 ? void 0 : reg.refresh(true);
       return v;
+    }
+    /**
+     * Gets the elapsed time since boot in milli-seconds
+     * @category Control
+     */
+
+  }, {
+    key: "uptime",
+    get: function get() {
+      var _this$service4, _reg$unpackedValue;
+
+      var reg = (_this$service4 = this.service(0)) === null || _this$service4 === void 0 ? void 0 : _this$service4.register(constants/* ControlReg.Uptime */.toU.Uptime);
+      var v = reg === null || reg === void 0 ? void 0 : (_reg$unpackedValue = reg.unpackedValue) === null || _reg$unpackedValue === void 0 ? void 0 : _reg$unpackedValue[0];
+      if (reg && v === undefined) reg === null || reg === void 0 ? void 0 : reg.refresh(true);
+      var uptime = undefined;
+
+      if (v !== undefined) {
+        // compute offset
+        uptime = v / 1000 + this.bus.timestamp - reg.lastDataTimestamp;
+      }
+
+      return uptime;
     }
     /**
      * Returns the firmware version synchronously. If needed, tries to refresh the value in the background.
@@ -76366,9 +76388,9 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
   }, {
     key: "firmwareVersion",
     get: function get() {
-      var _this$service4;
+      var _this$service5;
 
-      var reg = (_this$service4 = this.service(0)) === null || _this$service4 === void 0 ? void 0 : _this$service4.register(constants/* ControlReg.FirmwareVersion */.toU.FirmwareVersion);
+      var reg = (_this$service5 = this.service(0)) === null || _this$service5 === void 0 ? void 0 : _this$service5.register(constants/* ControlReg.FirmwareVersion */.toU.FirmwareVersion);
       var v = reg === null || reg === void 0 ? void 0 : reg.stringValue;
       if (reg && v === undefined) reg === null || reg === void 0 ? void 0 : reg.refresh(true);
       return v;
@@ -80754,8 +80776,10 @@ function createBus() {
     var createPayload = d => {
       var _deviceSpecificationF, _d$source, _d$source$split$;
 
-      var productId = d.isPhysical ? d.productIdentifier : undefined;
-      var firmware = d.isPhysical ? d.firmwareVersion : undefined;
+      var physical = d.isPhysical;
+      var productId = physical ? d.productIdentifier : undefined;
+      var firmware = physical ? d.firmwareVersion : undefined;
+      var uptime = d.uptime || undefined;
       var product = (_deviceSpecificationF = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(productId)) === null || _deviceSpecificationF === void 0 ? void 0 : _deviceSpecificationF.id;
       var services = {};
 
@@ -80769,12 +80793,13 @@ function createBus() {
       return {
         deviceId: d.anonymizedDeviceId,
         source: (_d$source = d.source) === null || _d$source === void 0 ? void 0 : (_d$source$split$ = _d$source.split("-", 1)[0]) === null || _d$source$split$ === void 0 ? void 0 : _d$source$split$.toLowerCase(),
-        physical: d.isPhysical,
+        physical,
         productId: productId === null || productId === void 0 ? void 0 : productId.toString(16),
         product,
         firmware,
         services: JSON.stringify(services),
-        serviceClasses: JSON.stringify(d.serviceClasses.slice(1))
+        serviceClasses: JSON.stringify(d.serviceClasses.slice(1)),
+        uptime
       };
     };
 
@@ -88291,4 +88316,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-7b19f7219474f0d82f9f.js.map
+//# sourceMappingURL=app-2601fc48815d035f5881.js.map
