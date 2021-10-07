@@ -722,7 +722,7 @@ function FlashDeviceButton(props) {
 
   return unsupported ? /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "info"
-  }, "No registred firmware") : missing ? /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
+  }, "No registered firmware") : missing ? /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "info"
   }, "No firmware available") : flashing ? /*#__PURE__*/react.createElement(CircularProgressWithLabel/* default */.Z, {
     value: progress
@@ -1177,4 +1177,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-4aa1fb8af49ce2264b9b.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-79ad1624cac3f772fd66.js.map
