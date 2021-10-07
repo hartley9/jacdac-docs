@@ -66,7 +66,88 @@ var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_8__/* ["default"] 
     fontWeight: 100
   },
   box: {}
-}));
+})); // https://en.wikipedia.org/wiki/Braille_ASCII
+
+var BRAILE_CHARACTERS = {
+  " ": "⠀",
+  // space bar to dot-0
+  "-": "⠤",
+  ",": "⠠",
+  ";": "⠰",
+  ":": "⠱",
+  "!": "⠮",
+  "?": "⠹",
+  ".": "⠨",
+  "(": "⠷",
+  "[": "⠪",
+  "@": "⠈",
+  "*": "⠡",
+  "/": "⠌",
+  "'": "⠄",
+  '"': "⠐",
+  "\\": "⠳",
+  "&": "⠯",
+  "%": "⠩",
+  "^": "⠘",
+  "+": "⠬",
+  "<": "⠣",
+  ">": "⠜",
+  $: "⠫",
+  "0": "⠴",
+  "1": "⠂",
+  "2": "⠆",
+  "3": "⠒",
+  "4": "⠲",
+  "5": "⠢",
+  "6": "⠖",
+  "7": "⠶",
+  "8": "⠦",
+  "9": "⠔",
+  A: "⠁",
+  B: "⠃",
+  C: "⠉",
+  D: "⠙",
+  E: "⠑",
+  F: "⠋",
+  G: "⠛",
+  H: "⠓",
+  I: "⠊",
+  J: "⠚",
+  K: "⠅",
+  L: "⠇",
+  M: "⠍",
+  N: "⠝",
+  O: "⠕",
+  P: "⠏",
+  Q: "⠟",
+  R: "⠗",
+  S: "⠎",
+  T: "⠞",
+  U: "⠥",
+  V: "⠧",
+  W: "⠺",
+  X: "⠭",
+  Z: "⠵",
+  "]": "⠻",
+  "#": "⠼",
+  Y: "⠽",
+  ")": "⠾",
+  "=": "⠿",
+  _: "⠸"
+};
+
+function brailify(s) {
+  if (!s) return s;
+  var r = "";
+  var su = s.toLocaleUpperCase();
+
+  for (var i = 0; i < su.length; ++i) {
+    r += BRAILE_CHARACTERS[su.charAt(i)] || "?";
+  }
+
+  return r;
+}
+
 function DashboardCharacterScreen(props) {
   var {
     service
@@ -76,10 +157,12 @@ function DashboardCharacterScreen(props) {
   var rowsRegister = (0,_hooks_useRegister__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(service, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .CharacterScreenReg.Rows */ .OEJ.Rows);
   var columnsRegister = (0,_hooks_useRegister__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(service, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .CharacterScreenReg.Columns */ .OEJ.Columns);
   var textDirectionRegister = (0,_hooks_useRegister__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(service, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .CharacterScreenReg.TextDirection */ .OEJ.TextDirection);
+  var variantRegister = (0,_hooks_useRegister__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(service, _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .CharacterScreenReg.Variant */ .OEJ.Variant);
   var [message] = (0,_jacdac_useRegisterValue__WEBPACK_IMPORTED_MODULE_2__/* .useRegisterUnpackedValue */ .Pf)(messageRegister, props);
   var [rows] = (0,_jacdac_useRegisterValue__WEBPACK_IMPORTED_MODULE_2__/* .useRegisterUnpackedValue */ .Pf)(rowsRegister, props);
   var [columns] = (0,_jacdac_useRegisterValue__WEBPACK_IMPORTED_MODULE_2__/* .useRegisterUnpackedValue */ .Pf)(columnsRegister, props);
   var [textDirection] = (0,_jacdac_useRegisterValue__WEBPACK_IMPORTED_MODULE_2__/* .useRegisterUnpackedValue */ .Pf)(textDirectionRegister, props);
+  var [variant] = (0,_jacdac_useRegisterValue__WEBPACK_IMPORTED_MODULE_2__/* .useRegisterUnpackedValue */ .Pf)(variantRegister, props);
   var {
     0: fieldMessage,
     1: setFieldMessage
@@ -128,6 +211,7 @@ function DashboardCharacterScreen(props) {
   var w = columns * (cw + m) - m + 2 * mo;
   var h = rows * (ch + m) - m + 2 * mo;
   var lines = (message || "").split(/\n/g);
+  var converter = variant === _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__/* .CharacterScreenVariant.Braille */ .GLh.Braille ? brailify : s => s;
   var els = [];
   var y = mo;
 
@@ -137,6 +221,7 @@ function DashboardCharacterScreen(props) {
 
     for (var column = 0; column < columns; ++column) {
       var char = line === null || line === void 0 ? void 0 : line[rtl ? columns - 1 - column : column];
+      var dchar = converter(char);
       els.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("g", {
         key: row + "-" + column
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("rect", {
@@ -154,7 +239,7 @@ function DashboardCharacterScreen(props) {
         className: classes.text,
         fill: textPrimary,
         "aria-label": char
-      }, char)));
+      }, dchar)));
       x += cw + m;
     }
 
@@ -206,4 +291,4 @@ function DashboardCharacterScreen(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7787-8bd7723cff47261d4194.js.map
+//# sourceMappingURL=7787-1bfa209a40c9a0c5127a.js.map
