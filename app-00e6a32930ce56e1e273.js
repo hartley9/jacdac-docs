@@ -69266,7 +69266,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "0ebd70b36e7292c1a3374108521650ceac82f0d1";
+var sha = "a51002301a7a66950fc63e051815101636a6f01e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70114,7 +70114,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0ebd70b36e7292c1a3374108521650ceac82f0d1";
+  var sha = "a51002301a7a66950fc63e051815101636a6f01e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72250,7 +72250,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "0ebd70b36e7292c1a3374108521650ceac82f0d1";
+    var sha = "a51002301a7a66950fc63e051815101636a6f01e";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -85646,22 +85646,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var UPDATE_DEBOUNCE = 5000;
+var lastUpdate = Date.now();
+
+function tryUpdate(force) {
+  var now = Date.now();
+  if (now - lastUpdate < UPDATE_DEBOUNCE) return;
+  lastUpdate = now;
+  setTimeout(() => navigator.serviceWorker.getRegistration().then(reg => {
+    if (reg) reg.update();else if (force) window.location.reload();
+  }), UPDATE_DEBOUNCE - 1000);
+}
+
 var onRouteUpdate = (_ref, options) => {
   var {
     location
   } = _ref;
-  if (window.analytics && window.analytics.page) window.analytics.page(); // try update on every internal navigation
-
-  navigator.serviceWorker.getRegistration().then(reg => {
-    if (reg) reg.update();
-  });
+  if (window.analytics && window.analytics.page) window.analytics.page();
+  tryUpdate();
 };
 var onServiceWorkerUpdateReady = () => {
   // force reload
   console.debug("offline: update ready, reloading...");
   window.location.reload(true);
 };
-var wrapPageElement = _src_components_layout__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .ZP; // inject React Axe into DOM tree at development time
+var wrapPageElement = _src_components_layout__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .ZP;
+window.addEventListener("unhandledrejection", event => {
+  if (/loading chunk \d* failed/i.test(event.reason)) {
+    console.log("loading chunk failed, trying to update...");
+    tryUpdate(true);
+  }
+}); // inject React Axe into DOM tree at development time
 
 /* blocked by crypto import issue
 export const onInitialClientRender = () => {
@@ -88354,4 +88369,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-74bfa7b66136fbd167ca.js.map
+//# sourceMappingURL=app-00e6a32930ce56e1e273.js.map
