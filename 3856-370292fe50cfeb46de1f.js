@@ -741,25 +741,26 @@ function ConnectAp(props) {
     return function handleAddNetwork() {
       return _ref.apply(this, arguments);
     };
-  }();
+  }(); // hasPassword == requires password
+
 
   var hasPassword = !!(flags & specconstants/* WifiAPFlags.HasPassword */.GHo.HasPassword);
-  var connectError = !hasPassword ? "password required" : undefined;
+  var connectError = hasPassword && !password ? "password required" : undefined;
   return /*#__PURE__*/react.createElement(Card/* default */.Z, null, /*#__PURE__*/react.createElement(CardHeader/* default */.Z, {
     title: ssid
-  }), /*#__PURE__*/react.createElement(CardContent/* default */.Z, null, !hasPassword && /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+  }), /*#__PURE__*/react.createElement(CardContent/* default */.Z, null, hasPassword && /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: passwordId,
     value: password,
     label: "Password",
     fullWidth: true,
     type: "password",
-    required: !hasPassword,
+    required: hasPassword,
     helperText: connectError,
     onChange: handlePasswordChange
   })), /*#__PURE__*/react.createElement(CardActions/* default */.Z, null, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
     variant: "contained",
     color: "primary",
-    disabled: !connectError,
+    disabled: !!connectError,
     onClick: handleAddNetwork
   }, "Connect")));
 }
@@ -1010,4 +1011,4 @@ function ChipList(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=3856-7429953f9e2f5efc3a3a.js.map
+//# sourceMappingURL=3856-370292fe50cfeb46de1f.js.map

@@ -684,6 +684,7 @@ function FlashDeviceButton(props) {
   var unsupported = specification && !specification.repo;
   var missing = !device || !blob;
   var disabled = flashing;
+  var color = update && !upToDate ? "primary" : "inherit";
   var mounted = (0,useMounted/* default */.Z)();
 
   var handleFlashing = /*#__PURE__*/function () {
@@ -734,7 +735,7 @@ function FlashDeviceButton(props) {
     title: "Flash " + blob.version,
     disabled: disabled,
     variant: "contained",
-    color: "primary",
+    color: color,
     onClick: handleFlashing
   }, "Flash")) : /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "info"
@@ -776,7 +777,7 @@ function UpdateDeviceList() {
   var {
     bus
   } = (0,react.useContext)(Context/* default */.Z);
-  var gridBreakpoints = (0,useGridBreakpoints/* default */.Z)();
+  var gridBreakpoints = (0,useGridBreakpoints/* default */.Z)(3);
   var safeBoot = (0,useChange/* default */.Z)(bus, b => b.safeBoot);
   var devices = (0,useDevices/* default */.Z)({
     announced: true,
@@ -1130,6 +1131,9 @@ function Flash() {
   var {
     throttled
   } = (0,useFirmwareBlobs/* default */.Z)();
+  var devices = (0,useChange/* default */.Z)(bus, _ => _.devices({
+    physical: true
+  }));
 
   var handleTabChange = (event, newValue) => {
     setTab(newValue);
@@ -1151,7 +1155,9 @@ function Flash() {
     mb: 2
   }, throttled && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "error"
-  }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Try again later..."), "Oops, it looks like we have been polling firmware too much from GitHub. Please try again later."), /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, null), /*#__PURE__*/react.createElement(Tabs/* default */.Z, {
+  }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Try again later..."), "Oops, it looks like we have been polling firmware too much from GitHub. Please try again later."), (devices === null || devices === void 0 ? void 0 : devices.length) > constants/* FLASH_MAX_DEVICES */.XpI && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
+    severity: "error"
+  }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Too many connected devices"), "Please unplug some of your devices before updating."), /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, null), /*#__PURE__*/react.createElement(Tabs/* default */.Z, {
     value: tab,
     onChange: handleTabChange,
     "aria-label": "Update firmware of modules"
@@ -1177,4 +1183,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-79ad1624cac3f772fd66.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-ff89fe5435ab33fd80c3.js.map
