@@ -54134,12 +54134,10 @@ function HTML5Image(props) {
 
 
 
+var DeviceSpecificationList = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 6684).then(__webpack_require__.bind(__webpack_require__, 46684)));
 /*
 const ModelViewer = lazy(() => import("./models/ModelViewer"))
 const GLBModel = lazy(() => import("./models/GLBModel"))
-const DeviceSpecificationList = lazy(
-    () => import("../specification/DeviceSpecificationList")
-)
 <Grid item xs={12}>
 <Suspense>
     <ModelViewer responsive={true}>
@@ -69279,7 +69277,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "f675661810e82fde98cb599dd4c363b479de439c";
+var sha = "0227054308c021d4a5e48a95c474e1b72086c3b9";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70123,7 +70121,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "f675661810e82fde98cb599dd4c363b479de439c";
+  var sha = "0227054308c021d4a5e48a95c474e1b72086c3b9";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72259,7 +72257,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "f675661810e82fde98cb599dd4c363b479de439c";
+    var sha = "0227054308c021d4a5e48a95c474e1b72086c3b9";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88406,4 +88404,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-9874725608e9e221e7e7.js.map
+//# sourceMappingURL=app-69df232dd92e2edb2b91.js.map
