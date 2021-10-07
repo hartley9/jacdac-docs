@@ -35999,6 +35999,7 @@ var JDClient = /*#__PURE__*/function (_JDEventSource) {
 /* harmony export */   "MCW": function() { return /* binding */ REGISTER_POLL_REPORT_VOLATILE_MAX_INTERVAL; },
 /* harmony export */   "Go2": function() { return /* binding */ REGISTER_OPTIONAL_POLL_COUNT; },
 /* harmony export */   "cXd": function() { return /* binding */ STREAMING_DEFAULT_INTERVAL; },
+/* harmony export */   "XpI": function() { return /* binding */ FLASH_MAX_DEVICES; },
 /* harmony export */   "Cot": function() { return /* binding */ PING_LOGGERS_POLL; },
 /* harmony export */   "k0Y": function() { return /* binding */ ROLE_MANAGER_POLL; },
 /* harmony export */   "vnD": function() { return /* binding */ REFRESH_REGISTER_POLL; },
@@ -36352,6 +36353,7 @@ var REGISTER_POLL_REPORT_VOLATILE_INTERVAL = 1000;
 var REGISTER_POLL_REPORT_VOLATILE_MAX_INTERVAL = 5000;
 var REGISTER_OPTIONAL_POLL_COUNT = 3;
 var STREAMING_DEFAULT_INTERVAL = 50;
+var FLASH_MAX_DEVICES = 6;
 var PING_LOGGERS_POLL = 2400;
 var ROLE_MANAGER_POLL = 1500;
 var REFRESH_REGISTER_POLL = 50;
@@ -69179,7 +69181,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "ce86ff4a2eab767abb576ea7b7435663526d7d20";
+var sha = "459696f167c141b39fadd31b734f2e11a7fba23d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70022,7 +70024,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "ce86ff4a2eab767abb576ea7b7435663526d7d20";
+  var sha = "459696f167c141b39fadd31b734f2e11a7fba23d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72158,7 +72160,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "ce86ff4a2eab767abb576ea7b7435663526d7d20";
+    var sha = "459696f167c141b39fadd31b734f2e11a7fba23d";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88291,4 +88293,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-4571d8cfa138373ec61a.js.map
+//# sourceMappingURL=app-69217b601234cab58e4c.js.map

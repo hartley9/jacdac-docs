@@ -731,7 +731,7 @@ function FlashDeviceButton(props) {
     severity: "success"
   }, "Up to date!") : /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "warning"
-  }, blob.version, " available"), /*#__PURE__*/react.createElement(Button/* default */.Z, {
+  }, blob.version, " available"), !upToDate || ignoreFirmwareCheck && /*#__PURE__*/react.createElement(Button/* default */.Z, {
     title: "Flash " + blob.version,
     disabled: disabled,
     variant: "contained",
@@ -1155,7 +1155,7 @@ function Flash() {
     mb: 2
   }, throttled && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "error"
-  }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Try again later..."), "Oops, it looks like we have been polling firmware too much from GitHub. Please try again later."), (devices === null || devices === void 0 ? void 0 : devices.length) > constants.FLASH_MAX_DEVICES && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
+  }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Try again later..."), "Oops, it looks like we have been polling firmware too much from GitHub. Please try again later."), (devices === null || devices === void 0 ? void 0 : devices.length) > constants/* FLASH_MAX_DEVICES */.XpI && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "error"
   }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Too many connected devices"), "Please unplug some of your devices before updating."), /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, null), /*#__PURE__*/react.createElement(Tabs/* default */.Z, {
     value: tab,
@@ -1183,4 +1183,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-3062751738d71ebbeb16.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-e2ba782e24dd2cf18425.js.map
