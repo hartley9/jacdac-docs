@@ -69277,7 +69277,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "b88adf93ec0ddfdd941a348caff5eb718be0a58c";
+var sha = "59f56465128fc5c4854e968fe06a0b0d13633b83";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70121,7 +70121,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "b88adf93ec0ddfdd941a348caff5eb718be0a58c";
+  var sha = "59f56465128fc5c4854e968fe06a0b0d13633b83";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72257,7 +72257,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "b88adf93ec0ddfdd941a348caff5eb718be0a58c";
+    var sha = "59f56465128fc5c4854e968fe06a0b0d13633b83";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -85657,7 +85657,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var UPDATE_DEBOUNCE = 30000;
+var UPDATE_DEBOUNCE = 5000;
 var lastUpdate = Date.now();
 
 function tryUpdate(force) {
@@ -85694,13 +85694,20 @@ function tryUpdate(force) {
   }), UPDATE_DEBOUNCE - 1000);
 }
 
-var onRouteUpdate = (_ref2, options) => {
-  var {
-    location
-  } = _ref2;
-  if (window.analytics && window.analytics.page) window.analytics.page();
-  tryUpdate();
-};
+var onRouteUpdate = /*#__PURE__*/function () {
+  var _ref3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)(function* (_ref2, options) {
+    var {
+      location
+    } = _ref2;
+    if (window.analytics && window.analytics.page) window.analytics.page();
+    var reg = yield navigator.serviceWorker.getRegistration();
+    if (reg) reg.update();else tryUpdate();
+  });
+
+  return function onRouteUpdate(_x, _x2) {
+    return _ref3.apply(this, arguments);
+  };
+}();
 var onServiceWorkerUpdateReady = () => {
   // force reload
   console.debug("offline: update ready, reloading...");
@@ -88405,4 +88412,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-30b3b31481ad45c99188.js.map
+//# sourceMappingURL=app-170d2c55f01f74f1af95.js.map
