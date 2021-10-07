@@ -18,7 +18,7 @@ export default function useReadingAuxilliaryValue(
     const { visible } = options || { visible: true }
     const reading = code === SystemReg.Reading || code === SystemReg.Value
     const auxilliaryRegister =
-        reading && identifier ? service.register(identifier) : undefined
+        reading && identifier ? service?.register(identifier) : undefined
     const [value, setValue] = useState<number[]>(
         auxilliaryRegister?.unpackedValue
     )
@@ -33,5 +33,5 @@ export default function useReadingAuxilliaryValue(
         )
     }, [register, auxilliaryRegister, visible])
 
-    return value
+    return value || []
 }
