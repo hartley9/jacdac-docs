@@ -23,7 +23,7 @@
     {
       "code": 386,
       "name": "eui_48",
-      "flags": 0,
+      "flags": 1,
       "packf": "b[6]"
     },
     {
