@@ -843,6 +843,7 @@ var CharacterScreenVariant;
 (function (CharacterScreenVariant) {
     CharacterScreenVariant[CharacterScreenVariant["LCD"] = 1] = "LCD";
     CharacterScreenVariant[CharacterScreenVariant["OLED"] = 2] = "OLED";
+    CharacterScreenVariant[CharacterScreenVariant["Braille"] = 3] = "Braille";
 })(CharacterScreenVariant || (CharacterScreenVariant = {}));
 var CharacterScreenTextDirection;
 (function (CharacterScreenTextDirection) {
