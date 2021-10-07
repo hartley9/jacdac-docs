@@ -54134,9 +54134,21 @@ function HTML5Image(props) {
 
 
 
-var ModelViewer = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(3737), __webpack_require__.e(1136)]).then(__webpack_require__.bind(__webpack_require__, 91136)));
-var GLBModel = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(3737), __webpack_require__.e(8010)]).then(__webpack_require__.bind(__webpack_require__, 78010)));
-var DeviceSpecificationList = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/* import() */ 6684).then(__webpack_require__.bind(__webpack_require__, 46684)));
+/*
+const ModelViewer = lazy(() => import("./models/ModelViewer"))
+const GLBModel = lazy(() => import("./models/GLBModel"))
+const DeviceSpecificationList = lazy(
+    () => import("../specification/DeviceSpecificationList")
+)
+<Grid item xs={12}>
+<Suspense>
+    <ModelViewer responsive={true}>
+        <GLBModel name={"jmhidserversf441v03"} />
+    </ModelViewer>
+</Suspense>
+</Grid>
+*/
+
 function Hardware() {
   var {
     mobile,
@@ -54265,14 +54277,7 @@ function Hardware() {
     }),
     description: "Extensible.",
     caption: "Specify your own services and deploy them on your devices."
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
-    item: true,
-    xs: 12
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ModelViewer, {
-    responsive: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GLBModel, {
-    name: "jmhidserversf441v03"
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SplitGrid__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     right: true,
     subtitle: "For Manufacturers",
     description: "Create Jacdac devices.",
@@ -69274,7 +69279,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "18bdca41441c586ff8007e6e2011b1bb56ec8a3d";
+var sha = "f675661810e82fde98cb599dd4c363b479de439c";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70118,7 +70123,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "18bdca41441c586ff8007e6e2011b1bb56ec8a3d";
+  var sha = "f675661810e82fde98cb599dd4c363b479de439c";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72254,7 +72259,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "18bdca41441c586ff8007e6e2011b1bb56ec8a3d";
+    var sha = "f675661810e82fde98cb599dd4c363b479de439c";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88401,4 +88406,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-0e43883f3b9c3720fb6e.js.map
+//# sourceMappingURL=app-9874725608e9e221e7e7.js.map

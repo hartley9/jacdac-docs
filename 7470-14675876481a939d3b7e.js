@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var CanvasWidget = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(3737), __webpack_require__.e(317)]).then(__webpack_require__.bind(__webpack_require__, 40899)));
+var CanvasWidget = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(3737), __webpack_require__.e(317)]).then(__webpack_require__.bind(__webpack_require__, 51761)));
 
 var valueDisplay = v => (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_5__/* .roundWithPrecision */ .JI)(v, 1);
 
@@ -253,4 +253,4 @@ function SliderWithLabel(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7470-04a2ed6726f4afe45c07.js.map
+//# sourceMappingURL=7470-14675876481a939d3b7e.js.map
