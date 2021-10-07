@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-c93de9e50f4484fdc424.js"
+    "url": "webpack-runtime-3dc90bf298cff0e5d0de.js"
   },
   {
     "url": "styles.74eb5aed1bb14cdb4c8b.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "b0ed723c32a68e32c2d1294334bbf44e"
+    "revision": "9eccca64a8cc87846cecd1ef1f1cb0dc"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "0a7a3f1c776a3071c85e85901116fe84"
+    "revision": "dd35da05c4b8bb5af9d558e9d915a2b4"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "549cc63f8f1bba4953ff6554a44ebfbb"
+    "revision": "517e66c289e83cdbee5b53fae94be4ed"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "0866836f16ff5c026f6b7d4b80d19be1"
+    "revision": "0bda9374249943e95dcc4c10532ce66f"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "20bac0acd623807aa25c02790f09ebb0"
+    "revision": "c334cdcda394372b145cbf011479999f"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "d48b39c94996b6203ea74174630bcea0"
+    "revision": "6ced918f080aa790547c945a1f130615"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "577d4e62c78614a7dd5ac8803109177f"
+    "revision": "526df5c3a93844613f0ecb324f3f2251"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -112,7 +112,7 @@ self.__precacheManifest = [
     "url": "830485e4a01eef9412f4754ecfe08bd6e6417633-9d3155477ba1720de2ee.js"
   },
   {
-    "url": "component---src-pages-dashboard-tsx-5f248b0431cbb627ce32.js"
+    "url": "component---src-pages-dashboard-tsx-8e057217a28d3d11e332.js"
   },
   {
     "url": "page-data/dashboard/page-data.json",
@@ -133,7 +133,7 @@ self.__precacheManifest = [
     "revision": "ea85ac61391e72c1b0cece8db081cb74"
   },
   {
-    "url": "component---src-pages-github-tsx-2316d90f8dd41afe4693.js"
+    "url": "component---src-pages-github-tsx-3bc1e70bd15d58dff377.js"
   },
   {
     "url": "page-data/github/page-data.json",
@@ -196,7 +196,7 @@ self.__precacheManifest = [
     "revision": "4bf252f9426a35c4d3eae225c1d23994"
   },
   {
-    "url": "component---src-pages-tools-mdx-793af33003bbbe8e9bdd.js"
+    "url": "component---src-pages-tools-mdx-2fa9676b3fdb92b71df0.js"
   },
   {
     "url": "page-data/tools/page-data.json",
@@ -265,7 +265,7 @@ self.__precacheManifest = [
     "revision": "41a647cea93e373581e82392c2e3a669"
   },
   {
-    "url": "301eb992595a5c36dc4f85b7198eba5aa8d9b219-e8e1e890e94cd9104e15.js"
+    "url": "d1948eb05bd2c0157ef8d2cfb6e0fd22d9ca4185-18b47140dc28a239b284.js"
   },
   {
     "url": "8f8350e8e5a1ed189588272f29a5455a64d2ce8f-76acc6d97f4d1055c812.js"
@@ -958,7 +958,7 @@ self.__precacheManifest = [
     "revision": "db80fc544d9459695196cb267da159bb"
   },
   {
-    "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-781245e4a2d56404da93.js"
+    "url": "913832d59ba65bf5a995efa1c4e48fc9101c7c83-68228d41ca3cbe391499.js"
   },
   {
     "url": "component---src-templates-device-tsx-247f44245364c771f726.js"
@@ -1184,21 +1184,11 @@ self.__precacheManifest = [
     "url": "baf0fd2d778787cec7104fdce75a778b8b7a3d97-2faf92415d7e3f1d6535.js"
   },
   {
-    "url": "component---src-pages-tools-device-registration-tsx-9c0a13a41ec3719a8dfc.js"
+    "url": "component---src-pages-tools-device-registration-tsx-7917b359e2c18a2e39e0.js"
   },
   {
     "url": "page-data/tools/device-registration/page-data.json",
     "revision": "d163adbbb3def19604fff6fa87072ebe"
-  },
-  {
-    "url": "a77c613bd0faa103b953c0d40475a17f2d569635-e8eae8d07521ee262576.js"
-  },
-  {
-    "url": "component---src-pages-tools-edge-impulse-tsx-8433e4da92487f8dfb57.js"
-  },
-  {
-    "url": "page-data/tools/edge-impulse/page-data.json",
-    "revision": "735e49b76c9097c35b86beab502e8f99"
   },
   {
     "url": "component---src-pages-tools-flood-test-tsx-dfbba3ff75b1880c3ae1.js"
@@ -1255,11 +1245,14 @@ self.__precacheManifest = [
     "url": "41a69591c06d74ab821d0a6f985f09ba8c9c9577-bbc7ef6b265739a8b741.js"
   },
   {
-    "url": "component---src-pages-tools-model-editor-tsx-8bec7ac6d212b351b67a.js"
+    "url": "component---src-pages-tools-model-editor-tsx-16912cb525bfd6f9b78b.js"
   },
   {
     "url": "page-data/tools/model-editor/page-data.json",
     "revision": "31e9a95a5b64d781ab4988c627edf95f"
+  },
+  {
+    "url": "component---src-pages-tools-model-uploader-tsx-26f754f349b951ae29fb.js"
   },
   {
     "url": "page-data/tools/model-uploader/page-data.json",
@@ -1308,7 +1301,7 @@ self.__precacheManifest = [
     "revision": "55d46e546f89c7b8ad2fc59a7710d663"
   },
   {
-    "url": "component---src-pages-tools-service-editor-tsx-aa1cb567f0729045c4d2.js"
+    "url": "component---src-pages-tools-service-editor-tsx-4719027e1dc536fbeaa7.js"
   },
   {
     "url": "page-data/tools/service-editor/page-data.json",
@@ -1322,7 +1315,7 @@ self.__precacheManifest = [
     "revision": "ad264406887eb90068ebf40082fa4944"
   },
   {
-    "url": "component---src-pages-tools-updater-tsx-1f09f4611c1816ac47a7.js"
+    "url": "component---src-pages-tools-updater-tsx-4aa1fb8af49ce2264b9b.js"
   },
   {
     "url": "page-data/tools/updater/page-data.json",
@@ -1422,7 +1415,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-170d2c55f01f74f1af95.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-0790398a92935fbc0149.js`))) {
     return await fetch(event.request)
   }
 

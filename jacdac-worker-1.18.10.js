@@ -4460,10 +4460,6 @@ Flags.webSerial = true;
  * Enables/disables WebBLE
  */
 Flags.webBluetooth = false;
-/**
- * Use local storage and indexeddb to store data
- */
-Flags.storage = false;
 
 function throwError(msg, cancel) {
     const e = new Error(msg);
