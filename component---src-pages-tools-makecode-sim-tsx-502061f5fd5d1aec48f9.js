@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[7378],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[6450],{
 
 /***/ 4998:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
@@ -463,77 +463,92 @@ var Chip = /*#__PURE__*/react.forwardRef(function Chip(props, ref) {
 
 /***/ }),
 
-/***/ 5503:
+/***/ 98874:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "default": function() { return /* binding */ Page; }
-});
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./src/components/dashboard/Dashboard.tsx + 3 modules
-var Dashboard = __webpack_require__(7576);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
-var iframeclient = __webpack_require__(9809);
-// EXTERNAL MODULE: ./src/jacdac/Context.tsx
-var Context = __webpack_require__(20392);
-// EXTERNAL MODULE: ./src/jacdac/useChange.ts
-var useChange = __webpack_require__(54774);
-;// CONCATENATED MODULE: ./src/components/ui/DelayedOnDevices.tsx
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Page; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(70079);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(23581);
+/* harmony import */ var _components_ui_ThemedLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(56251);
+/* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45656);
+/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81794);
+/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(35414);
+/* harmony import */ var _components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(82972);
+/* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(20392);
+/* harmony import */ var _components_ui_DarkModeContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(91350);
+/* harmony import */ var _components_makecode_iframebridgeclient__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(43380);
 
 
 
 
-function DelayedOnDevices(props) {
+
+
+
+
+
+
+
+function deviceSort(l, r) {
+  var srvScore = srv => srv.packets.reduce((prev, pkt) => prev + ((0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__/* .isReading */ .vz)(pkt) ? 10 : (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__/* .isValueOrIntensity */ .sX)(pkt) ? 1 : 0), 0) || 0;
+
+  var score = srvs => srvs.reduce((prev, srv) => srvScore(srv), 0);
+
+  var ls = score(l.services().slice(1).map(srv => srv.specification).filter(spec => !!spec));
+  var rs = score(r.services().slice(1).map(srv => srv.specification).filter(spec => !!spec));
+  if (ls !== rs) return -ls + rs;
+  return (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_3__/* .strcmp */ .eT)(l.deviceId, r.deviceId);
+}
+
+function Carousel() {
   var {
     bus
-  } = (0,react.useContext)(Context/* default */.Z);
-  var {
-    timeout,
-    children
-  } = props;
-  var {
-    0: show,
-    1: setShow
-  } = (0,react.useState)(false);
-  var devices = (0,useChange/* default */.Z)(bus, _ => _ === null || _ === void 0 ? void 0 : _.devices({
-    physical: true,
-    announced: true
-  }));
-  var hasDevices = !!(devices !== null && devices !== void 0 && devices.length);
-  (0,react.useEffect)(() => {
-    if (hasDevices && !(0,iframeclient/* inIFrame */.H)()) {
-      var id = setTimeout(() => setShow(true), timeout);
-      return () => clearTimeout(id);
-    }
-  }, [timeout, hasDevices]);
-  return show ? /*#__PURE__*/react.createElement(react.Fragment, null, children) : null;
-}
-;// CONCATENATED MODULE: ./src/pages/dashboard.tsx
-
-
-
-var FirmwareLoader = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 3432).then(__webpack_require__.bind(__webpack_require__, 73432)));
-function Page() {
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(DelayedOnDevices, {
-    timeout: 120000
-  }, /*#__PURE__*/react.createElement(react.Suspense, {
-    fallback: null
-  }, /*#__PURE__*/react.createElement(FirmwareLoader, null))), /*#__PURE__*/react.createElement(Dashboard/* default */.Z, {
-    showAvatar: true,
-    showHeader: true,
-    showConnect: true,
-    showStartSimulators: true,
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z);
+  var iframeBridge = bus.nodeData[_components_makecode_iframebridgeclient__WEBPACK_IMPORTED_MODULE_8__/* ["default"].DATA_ID */ .ZP.DATA_ID];
+  var deviceFilter = iframeBridge === null || iframeBridge === void 0 ? void 0 : iframeBridge.deviceFilter.bind(iframeBridge);
+  var serviceFilter = iframeBridge === null || iframeBridge === void 0 ? void 0 : iframeBridge.serviceFilter.bind(iframeBridge);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+    showHeader: false,
+    deviceSort: deviceSort,
+    deviceFilter: deviceFilter,
+    serviceFilter: serviceFilter,
     showStartRoleSimulators: true
-  }));
+  });
+}
+
+function Page() {
+  var {
+    toggleDarkMode,
+    darkModeMounted
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_components_ui_DarkModeContext__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z);
+  var rawTheme = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z)({
+    palette: {
+      primary: {
+        main: "#63c"
+      },
+      secondary: {
+        main: "#ffc400"
+      },
+      background: {
+        default: "#fff"
+      },
+      type: "light",
+      contrastThreshold: 3.1
+    }
+  });
+  var theme = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z)(rawTheme);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (darkModeMounted) toggleDarkMode("light");
+  }, [darkModeMounted]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_ui_ThemedLayout__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
+    theme: theme
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("style", null, "\nhtml {\n    margin-right: 4px;\n}\nhtml, body {\n    background: transparent !important;\n    overflow: hidden !important;\n}\n")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Carousel, null));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-dashboard-tsx-8e057217a28d3d11e332.js.map
+//# sourceMappingURL=component---src-pages-tools-makecode-sim-tsx-502061f5fd5d1aec48f9.js.map

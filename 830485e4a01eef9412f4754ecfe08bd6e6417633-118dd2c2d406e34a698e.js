@@ -145,7 +145,7 @@ function ConnectAlert(props) {
 
 /***/ }),
 
-/***/ 7576:
+/***/ 82972:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 
@@ -205,10 +205,10 @@ function DeviceGroup(props) {
   }, /*#__PURE__*/react.createElement(GridHeader/* default */.Z, {
     title: title,
     action: action
-  }), devices === null || devices === void 0 ? void 0 : devices.map(device => /*#__PURE__*/react.createElement(DashboardDeviceItem/* default */.Z, Object.assign({
+  }), children, devices === null || devices === void 0 ? void 0 : devices.map(device => /*#__PURE__*/react.createElement(DashboardDeviceItem/* default */.Z, Object.assign({
     key: device.id,
     device: device
-  }, other))), children));
+  }, other)))));
 }
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Add.js
 var Add = __webpack_require__(88880);
@@ -349,6 +349,53 @@ function MakeCodeAddBlocksButton() {
 var flags = __webpack_require__(21258);
 // EXTERNAL MODULE: ./src/components/HostedSimulatorsContext.tsx
 var HostedSimulatorsContext = __webpack_require__(43830);
+// EXTERNAL MODULE: ./node_modules/@material-ui/lab/esm/AlertTitle/AlertTitle.js
+var AlertTitle = __webpack_require__(99330);
+// EXTERNAL MODULE: ./node_modules/gatsby-material-ui-components/lib/index.js
+var lib = __webpack_require__(71481);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/flashing.ts
+var flashing = __webpack_require__(91758);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
+var iframeclient = __webpack_require__(9809);
+;// CONCATENATED MODULE: ./src/components/firmware/FirmwareAlert.tsx
+
+
+
+
+
+
+
+
+
+function FirmwareAlert() {
+  var {
+    bus
+  } = (0,react.useContext)(Context/* default */.Z);
+  var updates = (0,useChange/* default */.Z)(bus, _ => {
+    if ((0,iframeclient/* inIFrame */.H)()) return false;
+    var blobs = _.firmwareBlobs;
+
+    var infos = _.devices({
+      physical: true
+    }).map(d => d.firmwareInfo);
+
+    return blobs && infos && infos.some(info => blobs.some(blob => (0,flashing/* updateApplicable */.Kl)(info, blob)));
+  });
+  if (!updates) return null;
+  return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true,
+    xs: 12
+  }, /*#__PURE__*/react.createElement(Alert/* default */.Z, {
+    severity: "success",
+    closeable: true
+  }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Updates available"), "Update your devices to benefit from bug fixes and improvements.", /*#__PURE__*/react.createElement(Box/* default */.Z, {
+    component: "span",
+    ml: 1
+  }, /*#__PURE__*/react.createElement(lib.Button, {
+    variant: "outlined",
+    to: "/tools/updater/"
+  }, "Review updates"))));
+}
 ;// CONCATENATED MODULE: ./src/components/dashboard/Dashboard.tsx
 
 var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators", "showStartRoleSimulators", "deviceSort", "deviceFilter"];
@@ -364,6 +411,7 @@ var Dashboard_excluded = ["hideSimulators", "showConnect", "showStartSimulators"
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
 
 
@@ -452,7 +500,7 @@ function Dashboard(props) {
       transparent: true
     }),
     devices: physicals
-  }, other), showConnect && !physicals.length && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, other), /*#__PURE__*/react.createElement(FirmwareAlert, null), showConnect && !physicals.length && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, {
@@ -621,4 +669,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-9d3155477ba1720de2ee.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-118dd2c2d406e34a698e.js.map
