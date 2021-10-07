@@ -35946,6 +35946,7 @@ var JDClient = /*#__PURE__*/function (_JDEventSource) {
 /* harmony export */   "Bun": function() { return /* binding */ DEVICE_FOUND; },
 /* harmony export */   "O55": function() { return /* binding */ DEVICE_DISCONNECT; },
 /* harmony export */   "Hob": function() { return /* binding */ DEVICE_ANNOUNCE; },
+/* harmony export */   "Jgq": function() { return /* binding */ DEVICE_PACKET_ANNOUNCE; },
 /* harmony export */   "eLF": function() { return /* binding */ DEVICE_RESTART; },
 /* harmony export */   "RoP": function() { return /* binding */ DEVICE_CHANGE; },
 /* harmony export */   "EGX": function() { return /* binding */ DEVICE_FIRMWARE_INFO; },
@@ -36298,6 +36299,7 @@ var DEVICE_LOST = "deviceLost";
 var DEVICE_FOUND = "deviceFound";
 var DEVICE_DISCONNECT = "deviceDisconnect";
 var DEVICE_ANNOUNCE = "deviceAnnounce";
+var DEVICE_PACKET_ANNOUNCE = "devicePacketAnnounce";
 var DEVICE_RESTART = "deviceRestart";
 var DEVICE_CHANGE = "deviceChange";
 var DEVICE_FIRMWARE_INFO = "firmwareInfo";
@@ -69264,7 +69266,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var repo = "microsoft/jacdac-docs";
-var sha = "33e9e888ffcfd20ed1abfaff6b839da94ae80790";
+var sha = "0ebd70b36e7292c1a3374108521650ceac82f0d1";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70112,7 +70114,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "33e9e888ffcfd20ed1abfaff6b839da94ae80790";
+  var sha = "0ebd70b36e7292c1a3374108521650ceac82f0d1";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72248,7 +72250,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "33e9e888ffcfd20ed1abfaff6b839da94ae80790";
+    var sha = "0ebd70b36e7292c1a3374108521650ceac82f0d1";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -75469,6 +75471,7 @@ var DeviceStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
     _this = _JDEventSource.call(this) || this;
     _this._receivedPackets = 0;
     _this._restarts = 0;
+    _this._announce = 0;
     _this._data = Array(0xf << 2).fill(0).map(() => ({
       received: 0,
       total: 0,
@@ -75478,9 +75481,8 @@ var DeviceStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
     return _this;
   }
   /**
-   * Average packet dropped per announce period
-   * @category Statistics
-   */
+   * Number of announce packets received by the device
+   **/
 
 
   var _proto = DeviceStatsMonitor.prototype;
@@ -75489,6 +75491,7 @@ var DeviceStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
    * @internal
    */
   _proto.processAnnouncement = function processAnnouncement(pkt) {
+    this._announce++;
     var {
       current: oldCurrent
     } = this; // collect metrics
@@ -75526,9 +75529,20 @@ var DeviceStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
 
   _proto.processRestart = function processRestart() {
     this._restarts++;
+    this._announce = 0;
   };
 
   (0,createClass/* default */.Z)(DeviceStatsMonitor, [{
+    key: "announce",
+    get: function get() {
+      return this._announce;
+    }
+    /**
+     * Average packet dropped per announce period
+     * @category Statistics
+     */
+
+  }, {
     key: "dropped",
     get: function get() {
       var r = this._data.filter(e => !!e.total) // ignore total 0
@@ -75555,11 +75569,13 @@ var DeviceStatsMonitor = /*#__PURE__*/function (_JDEventSource) {
     get: function get() {
       var {
         dropped,
-        restarts
+        restarts,
+        announce
       } = this;
       return {
         dropped,
-        restarts
+        restarts,
+        announce
       };
     }
   }]);
@@ -75791,6 +75807,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     } // notify that we've received an announce packet
 
 
+    this.bus.emit(constants/* DEVICE_PACKET_ANNOUNCE */.Jgq, this);
     this.emit(constants/* PACKET_ANNOUNCE */.T9O); // notify of any changes
 
     if (changed) {
@@ -80773,13 +80790,12 @@ function createBus() {
   } = useAnalytics/* analytics */.co;
 
   if (trackEvent) {
-    var createPayload = d => {
+    var createServicePayload = d => {
       var _deviceSpecificationF, _d$source, _d$source$split$;
 
       var physical = d.isPhysical;
       var productId = physical ? d.productIdentifier : undefined;
       var firmware = physical ? d.firmwareVersion : undefined;
-      var uptime = d.uptime || undefined;
       var product = (_deviceSpecificationF = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(productId)) === null || _deviceSpecificationF === void 0 ? void 0 : _deviceSpecificationF.id;
       var services = {};
 
@@ -80798,12 +80814,35 @@ function createBus() {
         product,
         firmware,
         services: JSON.stringify(services),
-        serviceClasses: JSON.stringify(d.serviceClasses.slice(1)),
-        uptime
+        serviceClasses: JSON.stringify(d.serviceClasses.slice(1))
       };
     };
 
-    var cleanCount = 0; // track connections
+    var createDevicePayload = d => {
+      var _deviceSpecificationF2, _d$source2, _d$source2$split$;
+
+      var physical = d.isPhysical;
+      var productId = physical ? d.productIdentifier : undefined;
+      var firmware = physical ? d.firmwareVersion : undefined;
+      var product = (_deviceSpecificationF2 = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(productId)) === null || _deviceSpecificationF2 === void 0 ? void 0 : _deviceSpecificationF2.id;
+      var uptime = d.uptime;
+      var {
+        restarts,
+        announce
+      } = d.stats.current;
+      return {
+        deviceId: d.anonymizedDeviceId,
+        source: (_d$source2 = d.source) === null || _d$source2 === void 0 ? void 0 : (_d$source2$split$ = _d$source2.split("-", 1)[0]) === null || _d$source2$split$ === void 0 ? void 0 : _d$source2$split$.toLowerCase(),
+        physical,
+        productId: productId === null || productId === void 0 ? void 0 : productId.toString(16),
+        product,
+        firmware,
+        uptime,
+        restarts,
+        announce
+      };
+    }; // track connections
+
 
     b.on(constants/* CONNECTION_STATE */.pzj, transport => transport.connectionState === transport_transport/* ConnectionState.Connected */.em.Connected || transport.connectionState === transport_transport/* ConnectionState.Disconnected */.em.Disconnected && trackEvent("jd.transport." + transport.connectionState, {
       type: transport.type,
@@ -80811,30 +80850,29 @@ function createBus() {
     })); // track services on announce
 
     b.on(constants/* DEVICE_ANNOUNCE */.Hob, d => {
-      trackEvent("jd.announce", createPayload(d)); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      trackEvent("jd.announce", createServicePayload(d)); // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
       trackEvent("jd.stats", b.stats.current);
+    }); // track uptime
+
+    b.on(constants/* DEVICE_PACKET_ANNOUNCE */.Jgq, d => {
+      if (!(d.stats.announce % 20)) trackEvent("jd.uptime", createDevicePayload(d));
     }); // track product id
 
     b.on([constants/* DEVICE_PRODUCT_IDENTIFY */.dY6, constants/* DEVICE_FIRMWARE_IDENTIFY */.dRq], d => {
-      trackEvent("jd.product", createPayload(d));
+      if (d.isPhysical) trackEvent("jd.product", createServicePayload(d));
     }); // general stats
 
     b.on(constants/* DEVICE_CLEAN */.vl4, () => {
-      // log roughly every minute
-      if (!(cleanCount++ % 30)) // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        trackEvent("jd.stats", b.stats.current);
-    }); // product info
-
-    b.on(constants/* DEVICE_PRODUCT_IDENTIFY */.dY6, d => {
-      if (d.isPhysical) trackEvent("jd.product", createPayload(d));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      trackEvent("jd.stats", b.stats.current);
     }); // track restarts
 
     b.on(constants/* DEVICE_RESTART */.eLF, /*#__PURE__*/function () {
       var _ref = (0,asyncToGenerator/* default */.Z)(function* (d) {
         if (d.isPhysical) {
           yield d.resolveProductIdentifier();
-          trackEvent("jd.restart", createPayload(d));
+          trackEvent("jd.restart", createServicePayload(d));
         }
       });
 
@@ -88316,4 +88354,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-d8c097fd1544c83e70d7.js.map
+//# sourceMappingURL=app-74bfa7b66136fbd167ca.js.map
