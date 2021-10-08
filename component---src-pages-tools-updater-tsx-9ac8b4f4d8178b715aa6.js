@@ -731,7 +731,7 @@ function FlashDeviceButton(props) {
     severity: "success"
   }, "Up to date!") : /*#__PURE__*/react.createElement(Alert_Alert/* default */.Z, {
     severity: "warning"
-  }, blob.version, " available"), !upToDate || ignoreFirmwareCheck && /*#__PURE__*/react.createElement(Button/* default */.Z, {
+  }, blob.version, " available"), (!upToDate || ignoreFirmwareCheck) && /*#__PURE__*/react.createElement(Button/* default */.Z, {
     title: "Flash " + blob.version,
     disabled: disabled,
     variant: "contained",
@@ -1183,4 +1183,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-e2ba782e24dd2cf18425.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-9ac8b4f4d8178b715aa6.js.map
