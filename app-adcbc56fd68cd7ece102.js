@@ -69182,7 +69182,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "b0c3dd18b503c0cb1e18b1749a6ecab6cc77e138";
+var sha = "f4106ae2783235090cdae5c72e512bc85339ac08";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70025,7 +70025,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "b0c3dd18b503c0cb1e18b1749a6ecab6cc77e138";
+  var sha = "f4106ae2783235090cdae5c72e512bc85339ac08";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72161,7 +72161,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "b0c3dd18b503c0cb1e18b1749a6ecab6cc77e138";
+    var sha = "f4106ae2783235090cdae5c72e512bc85339ac08";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -76846,12 +76846,10 @@ function _wrapRegExp() { _wrapRegExp = function _wrapRegExp(re, groups) { return
  * @category JDOM
  */
 
-var SCAN_FIRMWARE_INTERVAL = 30000;
 /**
  * A Jacdac bus manager. This instance maintains the list of devices on the bus.
  * @category JDOM
  */
-
 var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   (0,inheritsLoose/* default */.Z)(JDBus, _JDNode);
 
@@ -88294,4 +88292,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-6db91184f8b7e1ef9432.js.map
+//# sourceMappingURL=app-adcbc56fd68cd7ece102.js.map
