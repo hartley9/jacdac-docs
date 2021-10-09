@@ -62,7 +62,48 @@ function MDXContent(_ref) {
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
   }))), "MakeCode in Visual Studio Code"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This guide is for developers wanting to edit MakeCode programs in their favorite text editor.\nThis guide is centered around Visual Studio Code (Code); but it applies to many other editors."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "MakeCode program can be authored in ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "p"
-  }, "Static TypeScript"), ", a subset of TypeScript suitable for micro-controllers.\nThose programs can be authored with excellent support in Code."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "Static TypeScript"), ", a subset of TypeScript suitable for micro-controllers.\nThose programs can be authored with excellent support in Code."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+    parentName: "p",
+    "className": "gatsby-resp-image-wrapper",
+    "style": {
+      "position": "relative",
+      "display": "block",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "maxWidth": "457px"
+    }
+  }, "\n      ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+    parentName: "span",
+    "className": "gatsby-resp-image-background-image",
+    "style": {
+      "paddingBottom": "50.5%",
+      "position": "relative",
+      "bottom": "0",
+      "left": "0",
+      "backgroundImage": "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABWklEQVQoz4WQXY7bMAyEfY1YIkVJpGRL/o0TO+lmu5tNev8rFXIRFH3ZfpgHcgCS4FRN08SUU8pdLohIu7N33feqDFkM+XRZH8/ntq51XefcpdQ655nle1VkjPHsOIQgwuK9xx1r3X9VhimmphuXeZ7GKeXEwqa4hMYgmlIb3GWo+AZfVGStViqnFgDIIkfKSxy2tjvF/hw52Jh9tzb91vjovdhha9MxIpRdFREBoIgQohu7eH+TbeFlkGn1lzudHzhep7n/+treb/P1ug7DQJJS7pm5cs4DQAhxf96hMK/HeL/ydp627eP58/3xdrudfj1/3D8vc27P0+AlkrVEVIlErXUI0RgUlkYCeufGzjTSNnI65mlo2jaclmEcOwMg7Kwl0Lr8bK0FAPaMWO73fa/rGmoFSiulDwd1qP8UtVIKEQEAAV6BkS3W3gCA1hpf4ZZM/gUR/2aN+BtgtVgtl3MVUAAAAABJRU5ErkJggg==')",
+      "backgroundSize": "cover",
+      "display": "block"
+    }
+  }), "\n  ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+    parentName: "span",
+    "className": "gatsby-resp-image-image",
+    "alt": "Screenshot of a code snippet in Code",
+    "title": "Screenshot of a code snippet in Code",
+    "src": "/jacdac-docs/static/162b7d2d155d20182354b8753b5f1b2b/34f1d/code.png",
+    "srcSet": ["/jacdac-docs/static/162b7d2d155d20182354b8753b5f1b2b/772e8/code.png 200w", "/jacdac-docs/static/162b7d2d155d20182354b8753b5f1b2b/e17e5/code.png 400w", "/jacdac-docs/static/162b7d2d155d20182354b8753b5f1b2b/34f1d/code.png 457w"],
+    "sizes": "(max-width: 457px) 100vw, 457px",
+    "style": {
+      "width": "100%",
+      "height": "100%",
+      "margin": "0",
+      "verticalAlign": "middle",
+      "position": "absolute",
+      "top": "0",
+      "left": "0"
+    },
+    "loading": "lazy",
+    "decoding": "async"
+  }), "\n    ")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "setup",
     "style": {
       "position": "relative"
@@ -86,12 +127,12 @@ function MDXContent(_ref) {
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
   }))), "Setup"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, "install ", "[Code]", ")(", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "install ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
     "href": "https://code.visualstudio.com/",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "https://code.visualstudio.com/"), ")"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Code")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, "install ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "li",
@@ -158,7 +199,7 @@ function MDXContent(_ref) {
     parentName: "p"
   }, "mkc add"), "."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre"
-  }, "mkc add jacdac-button\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "mkc add jacdac-button jacdac-led\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "building",
     "style": {
       "position": "relative"
@@ -244,4 +285,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-code-mdx-82cf80f51fb9e06b3556.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-code-mdx-dfb6cef5b37ff6b1ca18.js.map
