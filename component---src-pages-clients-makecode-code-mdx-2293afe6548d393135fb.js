@@ -60,9 +60,9 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "MakeCode in Visual Studio Code"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This guide is for developers wanting to edit MakeCode programs in their favorite text editor.\nThis guide is centered around Visual Studio Code (Code); but it applies to many other editors."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "MakeCode program can be authored in ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+  }))), "MakeCode in Visual Studio Code"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This guide is for developers wanting to edit MakeCode programs in their usual text-based code editor,\nin particular Visual Studio Code (Code)."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "MakeCode program can be authored in ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "p"
-  }, "Static TypeScript"), ", a subset of TypeScript suitable for micro-controllers.\nThose programs can be authored with excellent support in Code."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+  }, "Static TypeScript"), ",\na subset of TypeScript suitable for micro-controllers.\nThose programs can be authored and compiled with excellent tooling support in Visual Studio Code."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
     parentName: "p",
     "className": "gatsby-resp-image-wrapper",
     "style": {
@@ -141,7 +141,12 @@ function MDXContent(_ref) {
     "rel": "nofollow noopener noreferrer"
   }, "Node.JS")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, "install the MakeCode CLI")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "install the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "li",
+    "href": "https://github.com/microsoft/pxt-mkc",
+    "target": "_blank",
+    "rel": "nofollow noopener noreferrer"
+  }, "MKC"), ", the MakeCode command line tool")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre"
   }, "npm install -g MakeCode\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "new-project",
@@ -285,4 +290,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-code-mdx-dfb6cef5b37ff6b1ca18.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-code-mdx-2293afe6548d393135fb.js.map
