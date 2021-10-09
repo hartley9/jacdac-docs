@@ -69182,7 +69182,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "3872480eb92abc81fba2eb1bae10070264140f29";
+var sha = "40a9d0d4d8def34e89b7891e38a749654c7a86c4";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70025,7 +70025,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "3872480eb92abc81fba2eb1bae10070264140f29";
+  var sha = "40a9d0d4d8def34e89b7891e38a749654c7a86c4";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72161,7 +72161,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "3872480eb92abc81fba2eb1bae10070264140f29";
+    var sha = "40a9d0d4d8def34e89b7891e38a749654c7a86c4";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -83044,6 +83044,7 @@ exports.components = {
   "component---src-pages-clients-javascript-jdom-service-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-jdom-service-mdx */ 2557).then(__webpack_require__.bind(__webpack_require__, 47107)),
   "component---src-pages-clients-javascript-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-mdx */ 3290).then(__webpack_require__.bind(__webpack_require__, 79835)),
   "component---src-pages-clients-javascript-react-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-javascript-react-mdx */ 9640).then(__webpack_require__.bind(__webpack_require__, 69823)),
+  "component---src-pages-clients-makecode-code-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-code-mdx */ 7018).then(__webpack_require__.bind(__webpack_require__, 16643)),
   "component---src-pages-clients-makecode-extensions-accelerometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-accelerometer-mdx */ 5168).then(__webpack_require__.bind(__webpack_require__, 73275)),
   "component---src-pages-clients-makecode-extensions-barometer-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-barometer-mdx */ 5804).then(__webpack_require__.bind(__webpack_require__, 96240)),
   "component---src-pages-clients-makecode-extensions-button-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-button-mdx */ 3838).then(__webpack_require__.bind(__webpack_require__, 37808)),
@@ -88292,4 +88293,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-c824c5fb78457c33d585.js.map
+//# sourceMappingURL=app-f374dca8ba7fba477c84.js.map
