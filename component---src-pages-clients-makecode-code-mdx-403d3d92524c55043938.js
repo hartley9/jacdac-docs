@@ -148,7 +148,7 @@ function MDXContent(_ref) {
     "rel": "nofollow noopener noreferrer"
   }, "MKC"), ", the MakeCode command line tool")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre"
-  }, "npm install -g MakeCode\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "npm install -g makecode\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "new-project",
     "style": {
       "position": "relative"
@@ -290,4 +290,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-code-mdx-2293afe6548d393135fb.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-code-mdx-403d3d92524c55043938.js.map
