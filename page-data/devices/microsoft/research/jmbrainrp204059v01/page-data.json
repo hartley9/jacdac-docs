@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmbrainrp204059v01/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmbrainrp204059v01","name":"JM Brain RP2040","company":"Microsoft Research","productIdentifiers":[884301483,999933064]},"title":"JM Brain RP2040"}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmbrainrp204059v01","name":"JM Brain RP2040","company":"Microsoft Research","description":"","link":"https://github.com/microsoft/pxt-jacdac","services":[414210922,411425820],"productIdentifiers":[884301483,999933064],"tags":["kit"],"firmwares":[{"name":"HID Keyboard + Mouse","url":"https://github.com/microsoft/pxt-jacdac/releases/latest/download/hid-servers-rp2040.uf2"}],"version":"0.1","designIdentifier":"59"},"title":"JM Brain RP2040"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

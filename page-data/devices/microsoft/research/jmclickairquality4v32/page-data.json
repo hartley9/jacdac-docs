@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmclickairquality4v32/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmclickairquality4v32","name":"JM-Click Airquality4","company":"Microsoft Research","productIdentifiers":[878106432]},"title":"JM-Click Airquality4"}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmclickairquality4v32","name":"JM-Click Airquality4","company":"Microsoft Research","description":"","repo":"https://github.com/microsoft/jacdac-msr-modules","link":"https://github.com/microsoft/jacdac-msr-modules","services":[379362758,312849815],"productIdentifiers":[878106432],"tags":["kit"],"version":"3.2"},"title":"JM-Click Airquality4"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

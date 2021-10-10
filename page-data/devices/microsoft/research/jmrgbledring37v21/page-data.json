@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmrgbledring37v21/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrgbledring37v21","name":"JM RGB LED Ring","company":"Microsoft Research","productIdentifiers":[807926135]},"title":"JM RGB LED Ring"}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrgbledring37v21","name":"JM RGB LED Ring","company":"Microsoft Research","description":"","repo":"https://github.com/microsoft/jacdac-msr-modules","link":"https://github.com/microsoft/jacdac-msr-modules","services":[309264608],"productIdentifiers":[807926135],"tags":["kit"],"version":"2.1","designIdentifier":"37"},"title":"JM RGB LED Ring"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

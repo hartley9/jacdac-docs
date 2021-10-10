@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmrotarycontrolbuttonv10/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrotarycontrolbuttonv10","name":"JM Rotary Control + Button","company":"Microsoft Research","productIdentifiers":[1060754715]},"title":"JM Rotary Control + Button"}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrotarycontrolbuttonv10","name":"JM Rotary Control + Button","company":"Microsoft Research","description":"","repo":"https://github.com/microsoft/jacdac-msr-modules","link":"https://github.com/microsoft/jacdac-msr-modules","services":[284830153,343122531],"productIdentifiers":[1060754715],"tags":["kit"],"version":"1.0"},"title":"JM Rotary Control + Button"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
