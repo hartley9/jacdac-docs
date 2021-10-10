@@ -40569,6 +40569,7 @@ var constants = __webpack_require__(71815);
  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 var _serviceSpecifications = services_namespaceObject;
+var _serviceSpecificationMap = undefined;
 var _customServiceSpecifications = {}; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 var _deviceRegistry = devices_namespaceObject;
@@ -40580,6 +40581,7 @@ var _deviceRegistry = devices_namespaceObject;
 
 function loadServiceSpecifications(specs) {
   _serviceSpecifications = (specs === null || specs === void 0 ? void 0 : specs.slice(0)) || [];
+  _serviceSpecificationMap = undefined;
 }
 /**
  * Adds a custom service specification
@@ -40588,7 +40590,10 @@ function loadServiceSpecifications(specs) {
  */
 
 function addCustomServiceSpecification(service) {
-  if (service && service.classIdentifier) _customServiceSpecifications[service.classIdentifier] = service;
+  if (service && service.classIdentifier) {
+    _customServiceSpecifications[service.classIdentifier] = service;
+    _serviceSpecificationMap = undefined;
+  }
 }
 /**
  * Clears any custom service specification
@@ -40597,6 +40602,7 @@ function addCustomServiceSpecification(service) {
 
 function clearCustomServiceSpecifications() {
   _customServiceSpecifications = {};
+  _serviceSpecificationMap = undefined;
 }
 /**
  * Returns a map from service short ids to service specifications
@@ -40731,8 +40737,21 @@ function serviceSpecificationFromName(shortId) {
  */
 
 function serviceSpecificationFromClassIdentifier(classIdentifier) {
-  if (isNaN(classIdentifier)) return undefined;
-  return _serviceSpecifications.find(s => s.classIdentifier === classIdentifier) || _customServiceSpecifications[classIdentifier];
+  var _serviceSpecification;
+
+  if (isNaN(classIdentifier)) return undefined; // try lookup cache
+
+  var srv = (_serviceSpecification = _serviceSpecificationMap) === null || _serviceSpecification === void 0 ? void 0 : _serviceSpecification[classIdentifier];
+  if (srv) return srv; // resolve
+
+  srv = _serviceSpecifications.find(s => s.classIdentifier === classIdentifier) || _customServiceSpecifications[classIdentifier];
+
+  if (srv) {
+    if (!_serviceSpecificationMap) _serviceSpecificationMap = {};
+    _serviceSpecificationMap[classIdentifier] = srv;
+  }
+
+  return srv;
 }
 /**
  * Indicates if the specified service is a sensor
@@ -69258,7 +69277,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "c9be61a1ce227a0c846dcecf8cddd9db9dabfbf3";
+var sha = "bc04a860a77192957e14017e9013149c880d538c";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70101,7 +70120,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "c9be61a1ce227a0c846dcecf8cddd9db9dabfbf3";
+  var sha = "bc04a860a77192957e14017e9013149c880d538c";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72237,7 +72256,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "c9be61a1ce227a0c846dcecf8cddd9db9dabfbf3";
+    var sha = "bc04a860a77192957e14017e9013149c880d538c";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -80660,7 +80679,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.18.11"};
+var package_namespaceObject = {"i8":"1.18.12"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
@@ -88369,4 +88388,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-083f363789762431bfa9.js.map
+//# sourceMappingURL=app-bdd7bdea0a301055b2ab.js.map
