@@ -1,12 +1,13 @@
-import React, { useContext } from "react"
+import React, { lazy, useContext } from "react"
 import WorkspaceContext from "../../WorkspaceContext"
 import { ReactFieldJSON } from "../ReactField"
 import ReactInlineField from "../ReactInlineField"
 import useBlockData from "../../useBlockData"
 import type { VisualizationSpec } from "react-vega"
-import VegaLiteWidget from "./VegaLiteWidget"
 import { tidyResolveHeader } from "../tidy"
 import { BAR_CORNER_RADIUS } from "../../toolbox"
+import Suspense from "../../../ui/Suspense"
+const VegaLiteWidget = lazy(() => import("./VegaLiteWidget"))
 
 function BoxPlotWidget() {
     const { sourceBlock } = useContext(WorkspaceContext)
@@ -33,7 +34,11 @@ function BoxPlotWidget() {
         data: { name: "values" },
     }
 
-    return <VegaLiteWidget spec={spec} />
+    return (
+        <Suspense>
+            <VegaLiteWidget spec={spec} />
+        </Suspense>
+    )
 }
 
 export default class BoxPlotField extends ReactInlineField {

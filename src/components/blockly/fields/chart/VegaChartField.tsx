@@ -1,19 +1,21 @@
-import React, { useContext, useState } from "react"
+import React, { lazy, useContext, useState } from "react"
 import WorkspaceContext, {
-    BlocklyWorkspaceWithServices,
     WorkspaceServices,
+    WorkspaceWithServices,
 } from "../../WorkspaceContext"
 import { ReactFieldJSON } from "../ReactField"
 import ReactInlineField from "../ReactInlineField"
 import useBlockData from "../../useBlockData"
-import VegaLiteWidget from "./VegaLiteWidget"
 import { blockToVisualizationSpec } from "../../dsl/chartdsl"
 import { useEffect } from "react"
+import Suspense from "../../../ui/Suspense"
+const VegaLiteWidget = lazy(() => import("./VegaLiteWidget"))
 
 function VegaChartWidget() {
     const { sourceBlock, workspace } = useContext(WorkspaceContext)
     const { data } = useBlockData(sourceBlock)
-    const services = (workspace as BlocklyWorkspaceWithServices)?.jacdacServices
+    const services = (workspace as unknown as WorkspaceWithServices)
+        ?.jacdacServices
 
     // track workspace changes and re-render
     const [, setWorkspaceJSON] = useState(services?.workspaceJSON)
@@ -27,7 +29,11 @@ function VegaChartWidget() {
 
     const spec = blockToVisualizationSpec(sourceBlock, data)
 
-    return <VegaLiteWidget spec={spec} />
+    return (
+        <Suspense>
+            <VegaLiteWidget spec={spec} />
+        </Suspense>
+    )
 }
 
 export default class VegaChartField extends ReactInlineField {

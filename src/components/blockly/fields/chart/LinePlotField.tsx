@@ -1,12 +1,13 @@
-import React, { useContext } from "react"
+import React, { lazy, useContext } from "react"
 import WorkspaceContext from "../../WorkspaceContext"
 import { ReactFieldJSON } from "../ReactField"
 import ReactInlineField from "../ReactInlineField"
 import useBlockData from "../../useBlockData"
 import type { VisualizationSpec } from "react-vega"
-import VegaLiteWidget from "./VegaLiteWidget"
 import { tidyResolveHeader } from "../tidy"
 import { LINE_MAX_ITEMS } from "../../toolbox"
+import Suspense from "../../../ui/Suspense"
+const VegaLiteWidget = lazy(() => import("./VegaLiteWidget"))
 
 function LinePlotWidget() {
     const { sourceBlock } = useContext(WorkspaceContext)
@@ -26,7 +27,11 @@ function LinePlotWidget() {
         },
         data: { name: "values" },
     }
-    return <VegaLiteWidget spec={spec} slice={sliceOptions} />
+    return (
+        <Suspense>
+            <VegaLiteWidget spec={spec} slice={sliceOptions} />
+        </Suspense>
+    )
 }
 
 export default class LinePlotField extends ReactInlineField {

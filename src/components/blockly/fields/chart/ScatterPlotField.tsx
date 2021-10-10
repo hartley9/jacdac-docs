@@ -1,12 +1,13 @@
-import React, { useContext } from "react"
+import React, { lazy, useContext } from "react"
 import WorkspaceContext from "../../WorkspaceContext"
 import { ReactFieldJSON } from "../ReactField"
 import ReactInlineField from "../ReactInlineField"
 import useBlockData from "../../useBlockData"
-import VegaLiteWidget from "./VegaLiteWidget"
 import { tidyResolveHeader } from "../tidy"
 import { SCATTER_MAX_ITEMS } from "../../toolbox"
 import { humanify } from "../../../../../jacdac-ts/jacdac-spec/spectool/jdspec"
+import Suspense from "../../../ui/Suspense"
+const VegaLiteWidget = lazy(() => import("./VegaLiteWidget"))
 
 function ScatterPlotWidget(props: { linearRegression?: boolean }) {
     const { linearRegression } = props
@@ -86,7 +87,11 @@ function ScatterPlotWidget(props: { linearRegression?: boolean }) {
     }
     spec.data = { name: "values" }
 
-    return <VegaLiteWidget spec={spec} slice={sliceOptions} />
+    return (
+        <Suspense>
+            <VegaLiteWidget spec={spec} slice={sliceOptions} />
+        </Suspense>
+    )
 }
 
 export interface ScatterPlotFieldProps {
