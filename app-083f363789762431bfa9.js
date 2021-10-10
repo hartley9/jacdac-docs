@@ -69258,7 +69258,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "237ad3d85ff961951a94f1abf431b481f169a3d6";
+var sha = "c9be61a1ce227a0c846dcecf8cddd9db9dabfbf3";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70101,7 +70101,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "237ad3d85ff961951a94f1abf431b481f169a3d6";
+  var sha = "c9be61a1ce227a0c846dcecf8cddd9db9dabfbf3";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72237,7 +72237,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "237ad3d85ff961951a94f1abf431b481f169a3d6";
+    var sha = "c9be61a1ce227a0c846dcecf8cddd9db9dabfbf3";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -80660,7 +80660,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.18.10"};
+var package_namespaceObject = {"i8":"1.18.11"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
@@ -88369,4 +88369,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-c171878b7f7a5e1cef76.js.map
+//# sourceMappingURL=app-083f363789762431bfa9.js.map

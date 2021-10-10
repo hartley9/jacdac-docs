@@ -343,13 +343,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ DashboardVibrationMotor; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(15861);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(15861);
 /* harmony import */ var core_js_modules_es_array_flat_map_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(86535);
 /* harmony import */ var core_js_modules_es_array_flat_map_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_flat_map_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_array_unscopables_flat_map_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(99244);
 /* harmony import */ var core_js_modules_es_array_unscopables_flat_map_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_unscopables_flat_map_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(80838);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(1059);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(80838);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(1059);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(67294);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(71815);
 /* harmony import */ var _jacdac_ts_src_jdom_pack__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(91635);
@@ -360,6 +360,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jacdac_ts_src_servers_vibrationmotorserver__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(91697);
 /* harmony import */ var _ui_SwitchWithLabel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(64973);
 /* harmony import */ var _CmdButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(50092);
+/* harmony import */ var _ui_SliderWithLabel__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(23461);
+
 
 
 
@@ -378,12 +380,12 @@ var patterns = {
   ".": {
     name: "dit",
     duration: 1,
-    speed: 0.5
+    speed: 0.6
   },
   "-": {
     name: "dat",
     duration: 3,
-    speed: 0.5
+    speed: 0.6
   },
   " ": {
     name: "space",
@@ -395,10 +397,15 @@ var patterns = {
     duration: 3,
     speed: 0.2
   },
+  "=": {
+    name: "hight dat",
+    duration: 3,
+    speed: 1
+  },
   "'": {
     name: "high dit",
     duration: 1,
-    speed: 0.7
+    speed: 1
   },
   ",": {
     name: "low dit",
@@ -409,12 +416,13 @@ var patterns = {
 
 function PatternInput(props) {
   var {
-    onClickActivateAudioContext
-  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_ui_WebAudioContext__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .ZP);
-  var {
+    speedScale,
     disabled,
     service
   } = props;
+  var {
+    onClickActivateAudioContext
+  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_ui_WebAudioContext__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .ZP);
   var {
     0: text,
     1: setText
@@ -425,12 +433,13 @@ function PatternInput(props) {
   }).join(", "), []);
 
   var handleSend = /*#__PURE__*/function () {
-    var _ref2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z)(function* () {
+    var _ref2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z)(function* () {
       onClickActivateAudioContext(); // enable audio context within click handler
 
-      var tdit = 100;
-      var vscale = 0.25;
-      var pattern = text.split("").map(c => patterns[c]).filter(p => !!p).flatMap(p => [[p.duration * tdit >> 3, p.speed * vscale], [tdit >> 3, 0]]);
+      var seq = text.split("").map(c => patterns[c]).filter(p => !!p);
+      if (navigator.vibrate) navigator.vibrate(seq.flatMap(p => [p.duration, tdit >> 3]));
+      var tdit = 120;
+      var pattern = seq.flatMap(p => [[p.duration * tdit >> 3, p.speed * speedScale], [tdit >> 3, 0]]);
       var data = (0,_jacdac_ts_src_jdom_pack__WEBPACK_IMPORTED_MODULE_4__/* .jdpack */ .AV)("r: u8 u0.8", [pattern]);
       yield service.sendCmdAsync(_jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_3__/* .VibrationMotorCmd.Vibrate */ .EmZ.Vibrate, data);
     });
@@ -445,19 +454,19 @@ function PatternInput(props) {
     setText(newValue.split("").filter(s => !!patterns[s]).join(""));
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
     container: true,
     spacing: 1,
     direction: "row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
     item: true,
     xs: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, {
     title: "vibration pattern",
     helperText: helperText,
     value: text,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
     item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_CmdButton__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
     variant: "outlined",
@@ -476,7 +485,11 @@ function DashboardVibrationMotor(props) {
   var enabled = (0,_jacdac_useRegisterValue__WEBPACK_IMPORTED_MODULE_5__/* .useRegisterBoolValue */ .I8)(enabledRegister, props);
   var {
     playTone
-  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_ui_WebAudioContext__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .ZP); // listen for playTone commands from the buzzer
+  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_ui_WebAudioContext__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .ZP);
+  var {
+    0: speed,
+    1: setSpeed
+  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(20); // listen for playTone commands from the buzzer
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => enabled && (server === null || server === void 0 ? void 0 : server.subscribe(_jacdac_ts_src_servers_vibrationmotorserver__WEBPACK_IMPORTED_MODULE_9__/* ["default"].VIBRATE_PATTERN */ .Z.VIBRATE_PATTERN, _ref3 => {
     var {
@@ -488,29 +501,114 @@ function DashboardVibrationMotor(props) {
   })), [server, enabled]);
 
   var handleEnabled = /*#__PURE__*/function () {
-    var _ref4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z)(function* (ev, checked) {
+    var _ref4 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z)(function* (ev, checked) {
       yield enabledRegister.sendSetBoolAsync(checked, true);
     });
 
     return function handleEnabled(_x, _x2) {
       return _ref4.apply(this, arguments);
     };
-  }();
+  }(); // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(react__WEBPACK_IMPORTED_MODULE_2__.Fragment, null, enabled !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
+
+  var handleSpeed = (event, value) => setSpeed(value);
+
+  var percentValueFormat = newValue => (newValue | 0) + "%";
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(react__WEBPACK_IMPORTED_MODULE_2__.Fragment, null, enabled !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ui_SwitchWithLabel__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
     checked: enabled,
     label: enabled ? "vibration on" : "vibration off",
     onChange: handleEnabled
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(PatternInput, {
     disabled: !enabled,
-    service: service
+    service: service,
+    speedScale: speed / 100
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
+    item: true,
+    xs: 12
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ui_SliderWithLabel__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
+    label: "speed",
+    min: 0,
+    max: 100,
+    value: speed,
+    onChange: handleSpeed,
+    valueLabelDisplay: "auto",
+    valueLabelFormat: percentValueFormat
   })));
+}
+
+/***/ }),
+
+/***/ 23461:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ SliderWithLabel; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(45987);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10920);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(14685);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(80453);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(50514);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19640);
+
+var _excluded = ["label"];
+
+
+
+var useStyle = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(theme => ({
+  arrow: {
+    color: theme.palette.primary.main
+  },
+  tooltip: {
+    backgroundColor: theme.palette.primary.main
+  }
+}));
+
+function ValueLabelComponent(props) {
+  var {
+    children,
+    open,
+    value
+  } = props;
+  var classes = useStyle();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .ZP, {
+    classes: classes,
+    open: open,
+    arrow: true,
+    color: "primary",
+    enterTouchDelay: 0,
+    placement: "top",
+    title: value
+  }, children);
+}
+
+function SliderWithLabel(props) {
+  var {
+    label
+  } = props,
+      others = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(props, _excluded);
+
+  var labelId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__/* .useId */ .Me)();
+  var sliderId = (0,react_use_id_hook__WEBPACK_IMPORTED_MODULE_1__/* .useId */ .Me)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+    id: labelId,
+    variant: "caption",
+    gutterBottom: true
+  }, label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, Object.assign({
+    id: sliderId,
+    "aria-labelledby": labelId,
+    "aria-label": label,
+    ValueLabelComponent: ValueLabelComponent
+  }, others)));
 }
 
 /***/ }),
@@ -545,4 +643,4 @@ function SwitchWithLabel(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=2439-be6bbbcd63d83b053046.js.map
+//# sourceMappingURL=2439-b742653dad3707067c5f.js.map
