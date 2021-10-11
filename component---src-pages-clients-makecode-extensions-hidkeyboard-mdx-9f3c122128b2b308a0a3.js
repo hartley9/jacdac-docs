@@ -83,6 +83,72 @@ function MDXContent(_ref) {
     parentName: "pre",
     "className": "language-blocks"
   }, "{\"source\":\"input.onButtonPressed(Button.B, function() {\\n    modules.hidKeyboard1.clear()\\n})\\n\\ninput.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Down, \\n        jacdac.HidKeyboardModifiers.None, \\n        jacdac.HidKeyboardKey.A)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.B, function() {\\n    modules.hidKeyboard1.clear()\\n})\\n\\ninput.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Down, \\n        jacdac.HidKeyboardModifiers.None, \\n        jacdac.HidKeyboardKey.A)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.11,jacdac-hid-keyboard=github:microsoft/pxt-jacdac/hid-keyboard#v0.7.11\"},\"type\":\"renderblocks\",\"id\":\"15627302aafe44b39db050d309cc6b28\"},\"url\":\"/images/makecode/15627302aafe44b39db050d309cc6b28.png\"}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "connecting-the-keyboard-module",
+    "style": {
+      "position": "relative"
+    }
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "h2",
+    "href": "#connecting-the-keyboard-module",
+    "aria-label": "connecting the keyboard module permalink",
+    "className": "anchor before"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
+    parentName: "a",
+    "aria-hidden": "true",
+    "focusable": "false",
+    "height": "16",
+    "version": "1.1",
+    "viewBox": "0 0 16 16",
+    "width": "16"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("path", {
+    parentName: "svg",
+    "fillRule": "evenodd",
+    "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+  }))), "Connecting the Keyboard module"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The module that implements the HID keyboard server, like the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "/jacdac-docs/devices/microsoft/research/jmbrainf441v02"
+  }, "JD BRAIN F4"), "\nmust also be connected with a USB-C cable to your computer."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+    parentName: "p",
+    "className": "gatsby-resp-image-wrapper",
+    "style": {
+      "position": "relative",
+      "display": "block",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "maxWidth": "800px"
+    }
+  }, "\n      ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+    parentName: "span",
+    "className": "gatsby-resp-image-background-image",
+    "style": {
+      "paddingBottom": "55.99999999999999%",
+      "position": "relative",
+      "bottom": "0",
+      "left": "0",
+      "backgroundImage": "url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAwACBP/EABcBAAMBAAAAAAAAAAAAAAAAAAABAwT/2gAMAwEAAhADEAAAAc9Bvlu8sL//xAAaEAADAAMBAAAAAAAAAAAAAAAAAQIDESIz/9oACAEBAAEFAqfGKm1ogj0P/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQMBAT8BZ//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAECAQE/ASf/xAAaEAAABwAAAAAAAAAAAAAAAAAAAhEgITFx/9oACAEBAAY/AtBVuW//xAAbEAACAwADAAAAAAAAAAAAAAAAAREhMVFxgf/aAAgBAQABPyFmE7XHAvrtbwgzAluhYf/aAAwDAQACAAMAAAAQrw//xAAWEQEBAQAAAAAAAAAAAAAAAAAAEVH/2gAIAQMBAT8QrVf/xAAXEQADAQAAAAAAAAAAAAAAAAAAAREx/9oACAECAQE/EGWQh//EABwQAQACAgMBAAAAAAAAAAAAAAEAESFBMXGBsf/aAAgBAQABPxDGNBKrTaoY9i1w+DsnMpPJpgcO761fwhxn/9k=')",
+      "backgroundSize": "cover",
+      "display": "block"
+    }
+  }), "\n  ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+    parentName: "span",
+    "className": "gatsby-resp-image-image",
+    "alt": "A microbit and HID keyboard module connected with 2 cables",
+    "title": "A microbit and HID keyboard module connected with 2 cables",
+    "src": "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4b190/cables.jpg",
+    "srcSet": ["/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/e07e9/cables.jpg 200w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/066f9/cables.jpg 400w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4b190/cables.jpg 800w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4e3e1/cables.jpg 857w"],
+    "sizes": "(max-width: 800px) 100vw, 800px",
+    "style": {
+      "width": "100%",
+      "height": "100%",
+      "margin": "0",
+      "verticalAlign": "middle",
+      "position": "absolute",
+      "top": "0",
+      "left": "0"
+    },
+    "loading": "lazy",
+    "decoding": "async"
+  }), "\n    ")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "see-also",
     "style": {
       "position": "relative"
@@ -135,4 +201,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-hidkeyboard-mdx-c357eb12273fe7153814.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-hidkeyboard-mdx-9f3c122128b2b308a0a3.js.map
