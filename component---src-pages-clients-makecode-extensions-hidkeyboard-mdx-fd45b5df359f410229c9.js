@@ -66,12 +66,12 @@ function MDXContent(_ref) {
   }, "JM Brain F4 v0.2"), " or ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "/jacdac-docs/devices/microsoft/research/jmbrainrp204059v01"
-  }, "JM Brain RP2040 v0.1"), " module,\nloaded with the HID Keyboard + Mouse firmware that is available via the same links.  "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "As shown in the example below,\nthe method ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "JM Brain RP2040 v0.1"), " module,\nloaded with the HID Keyboard + Mouse firmware that is available via the same links."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "As shown in the example below,\nthe method ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "key"), " sends a keyboard action ('press'), specified by the first argument,\nwith a modifier (second argument, 'none'), and a selected key (third argument, 'a'): "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "key"), " sends a keyboard action ('press'), specified by the first argument,\nwith a modifier (second argument, 'none'), and a selected key (third argument, 'a'):"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"input.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Press, \\n      jacdac.HidKeyboardModifiers.None, \\n      jacdac.HidKeyboardKey.A)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Press, \\n      jacdac.HidKeyboardModifiers.None, \\n      jacdac.HidKeyboardKey.A)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.11,jacdac-hid-keyboard=github:microsoft/pxt-jacdac/hid-keyboard#v0.7.11\"},\"type\":\"renderblocks\",\"id\":\"bbba1edb2189fc30cc3deca99b39515f\"},\"url\":\"/images/makecode/bbba1edb2189fc30cc3deca99b39515f.png\"}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The method ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "{\"source\":\"input.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Press,\\n      jacdac.HidKeyboardModifiers.None,\\n      jacdac.HidKeyboardKey.A)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Press,\\n      jacdac.HidKeyboardModifiers.None,\\n      jacdac.HidKeyboardKey.A)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.11,jacdac-hid-keyboard=github:microsoft/pxt-jacdac/hid-keyboard#v0.7.11\"},\"type\":\"renderblocks\",\"id\":\"003b81412e9180fa87140d0d4da3c686\"},\"url\":\"/images/makecode/003b81412e9180fa87140d0d4da3c686.png\"}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The method ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
   }, "clear"), " clears all currently pressed keys. In the program below, pressing the A button of the\nmicro:bit will send a ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
@@ -82,7 +82,7 @@ function MDXContent(_ref) {
   }, "a"), " to be repeated\nuntil the B button of the micro:bit is pressed:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-blocks"
-  }, "{\"source\":\"input.onButtonPressed(Button.B, function() {\\n    modules.hidKeyboard1.clear()\\n})\\n\\ninput.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Down, \\n        jacdac.HidKeyboardModifiers.None, \\n        jacdac.HidKeyboardKey.A)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.B, function() {\\n    modules.hidKeyboard1.clear()\\n})\\n\\ninput.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Down, \\n        jacdac.HidKeyboardModifiers.None, \\n        jacdac.HidKeyboardKey.A)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.11,jacdac-hid-keyboard=github:microsoft/pxt-jacdac/hid-keyboard#v0.7.11\"},\"type\":\"renderblocks\",\"id\":\"15627302aafe44b39db050d309cc6b28\"},\"url\":\"/images/makecode/15627302aafe44b39db050d309cc6b28.png\"}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "{\"source\":\"input.onButtonPressed(Button.B, function() {\\n    modules.hidKeyboard1.clear()\\n})\\n\\ninput.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Down,\\n        jacdac.HidKeyboardModifiers.None,\\n        jacdac.HidKeyboardKey.A)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.B, function() {\\n    modules.hidKeyboard1.clear()\\n})\\n\\ninput.onButtonPressed(Button.A, function() {\\n    modules.hidKeyboard1.key(jacdac.HidKeyboardAction.Down,\\n        jacdac.HidKeyboardModifiers.None,\\n        jacdac.HidKeyboardKey.A)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.11,jacdac-hid-keyboard=github:microsoft/pxt-jacdac/hid-keyboard#v0.7.11\"},\"type\":\"renderblocks\",\"id\":\"d873aa99457d23e0b467718ebdabd7f4\"},\"url\":\"/images/makecode/d873aa99457d23e0b467718ebdabd7f4.png\"}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "connecting-the-keyboard-module",
     "style": {
       "position": "relative"
@@ -104,10 +104,10 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Connecting the Keyboard module"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The module that implements the HID keyboard server, like the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }))), "Connecting the Keyboard module"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The module that implements the HID keyboard server (like the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "/jacdac-docs/devices/microsoft/research/jmbrainf441v02"
-  }, "JD BRAIN F4"), "\nmust also be connected with a USB-C cable to your computer."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
+  }, "JD BRAIN F4"), " below)\nmust also be connected with a USB-C cable to your computer."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
     parentName: "p",
     "className": "gatsby-resp-image-wrapper",
     "style": {
@@ -134,8 +134,8 @@ function MDXContent(_ref) {
     "className": "gatsby-resp-image-image",
     "alt": "A microbit and HID keyboard module connected with 2 cables",
     "title": "A microbit and HID keyboard module connected with 2 cables",
-    "src": "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4b190/cables.jpg",
-    "srcSet": ["/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/e07e9/cables.jpg 200w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/066f9/cables.jpg 400w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4b190/cables.jpg 800w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4e3e1/cables.jpg 857w"],
+    "src": "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4b190/hidcables.jpg",
+    "srcSet": ["/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/e07e9/hidcables.jpg 200w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/066f9/hidcables.jpg 400w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4b190/hidcables.jpg 800w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4e3e1/hidcables.jpg 857w"],
     "sizes": "(max-width: 800px) 100vw, 800px",
     "style": {
       "width": "100%",
@@ -201,4 +201,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-hidkeyboard-mdx-9f3c122128b2b308a0a3.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-hidkeyboard-mdx-fd45b5df359f410229c9.js.map
