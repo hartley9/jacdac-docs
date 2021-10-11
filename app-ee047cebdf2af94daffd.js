@@ -69277,7 +69277,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "b6d17fdb39c985b816fe9280fc64fb69191a6e13";
+var sha = "b1c64d91a4252a262344ca6f43386dffefb4157a";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70130,7 +70130,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "b6d17fdb39c985b816fe9280fc64fb69191a6e13";
+  var sha = "b1c64d91a4252a262344ca6f43386dffefb4157a";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72266,7 +72266,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "b6d17fdb39c985b816fe9280fc64fb69191a6e13";
+    var sha = "b1c64d91a4252a262344ca6f43386dffefb4157a";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -73979,6 +73979,8 @@ function _inherits(subClass, superClass) {
   });
   if (superClass) (0,setPrototypeOf/* default */.Z)(subClass, superClass);
 }
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
+var toConsumableArray = __webpack_require__(93433);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
 var createClass = __webpack_require__(43144);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
@@ -73993,8 +73995,6 @@ var constants = __webpack_require__(71815);
 var utils = __webpack_require__(81794);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/buffer.ts
 var buffer = __webpack_require__(3482);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
-var toConsumableArray = __webpack_require__(93433);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/pretty.ts
 var pretty = __webpack_require__(10913);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
@@ -76925,6 +76925,7 @@ var trace = __webpack_require__(61649);
 
 
 
+
 function _wrapRegExp() { _wrapRegExp = function _wrapRegExp(re, groups) { return new BabelRegExp(re, undefined, groups); }; var _super = RegExp.prototype; var _groups = new WeakMap(); function BabelRegExp(re, flags, groups) { var _this = new RegExp(re, flags); _groups.set(_this, groups || _groups.get(re)); return (0,setPrototypeOf/* default */.Z)(_this, BabelRegExp.prototype); } _inherits(BabelRegExp, RegExp); BabelRegExp.prototype.exec = function (str) { var result = _super.exec.call(this, str); if (result) result.groups = buildGroups(result, this); return result; }; BabelRegExp.prototype[Symbol.replace] = function (str, substitution) { if (typeof substitution === "string") { var groups = _groups.get(this); return _super[Symbol.replace].call(this, str, substitution.replace(/\$<([^>]+)>/g, function (_, name) { return "$" + groups[name]; })); } else if (typeof substitution === "function") { var _this = this; return _super[Symbol.replace].call(this, str, function () { var args = arguments; if (typeof args[args.length - 1] !== "object") { args = [].slice.call(args); args.push(buildGroups(args, _this)); } return substitution.apply(this, args); }); } else { return _super[Symbol.replace].call(this, str, substitution); } }; function buildGroups(result, re) { var g = _groups.get(re); return Object.keys(g).reduce(function (groups, name) { groups[name] = result[g[name]]; return groups; }, Object.create(null)); } return _wrapRegExp.apply(this, arguments); }
 
 
@@ -77052,7 +77053,6 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
           data
         } = msg;
         var {
-          id,
           event,
           transports,
           visibilityState
@@ -77389,7 +77389,15 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     }).map(dev => {
       var _deviceSpecificationF, _dev$productIdentifie;
 
-      return "device: \n  id: " + dev.shortId + " (0x" + dev.deviceId + ")\n  product: " + (dev.productIdentifier ? (((_deviceSpecificationF = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(dev.productIdentifier)) === null || _deviceSpecificationF === void 0 ? void 0 : _deviceSpecificationF.id) || "?") + " (0x" + ((_dev$productIdentifie = dev.productIdentifier) === null || _dev$productIdentifie === void 0 ? void 0 : _dev$productIdentifie.toString(16)) + ")" : "") + "\n  firmware_version: " + (dev.firmwareVersion || "") + "\n  services:\n" + dev.services().slice(1).map(srv => "    " + srv.name + " (0x" + srv.serviceClass.toString(16) + ")").join("\n") + "\n";
+      return "device: \n  id: " + dev.shortId + " (0x" + dev.deviceId + ")\n  product: " + (dev.productIdentifier ? (((_deviceSpecificationF = (0,jdom_spec/* deviceSpecificationFromProductIdentifier */.Ht)(dev.productIdentifier)) === null || _deviceSpecificationF === void 0 ? void 0 : _deviceSpecificationF.id) || "?") + " (0x" + ((_dev$productIdentifie = dev.productIdentifier) === null || _dev$productIdentifie === void 0 ? void 0 : _dev$productIdentifie.toString(16)) + ")" : "") + "\n  firmware_version: " + (dev.firmwareVersion || "") + "\n  services:\n" + dev.services().slice(1).map(srv => {
+        var _srv$specification;
+
+        return ["    " + (((_srv$specification = srv.specification) === null || _srv$specification === void 0 ? void 0 : _srv$specification.shortName) || srv.name) + " (0x" + srv.serviceClass.toString(16) + ")"].concat((0,toConsumableArray/* default */.Z)(srv.registers().filter(reg => !!reg.data).map(reg => {
+          var _reg$specification;
+
+          return "        " + (((_reg$specification = reg.specification) === null || _reg$specification === void 0 ? void 0 : _reg$specification.kind) || "reg") + " " + reg.name + ": " + reg.humanValue + " (" + (0,utils/* toHex */.NC)(reg.data) + ")";
+        })), (0,toConsumableArray/* default */.Z)(srv.events.map(ev => "        event " + ev.name + ": " + ev.count))).join("\n");
+      }).join("\n") + "\n";
     }).join("\n");
   }
   /**
@@ -77898,9 +77906,9 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     reg.listenerCount(constants/* REPORT_RECEIVE */.Gb8) > 0 || reg.listenerCount(constants/* REPORT_UPDATE */.rGZ) > 0) // ask if data is missing or non-const/status code
     .filter(reg => !reg.data || !((0,jdom_spec/* isConstRegister */.n6)(reg.specification) || reg.code === constants/* SystemReg.StatusCode */.ZJq.StatusCode || reg.code === constants/* SystemReg.ReadingError */.ZJq.ReadingError)) // stop asking optional registers
     .filter(reg => {
-      var _reg$specification;
+      var _reg$specification2;
 
-      return !((_reg$specification = reg.specification) !== null && _reg$specification !== void 0 && _reg$specification.optional) || reg.lastGetAttempts < constants/* REGISTER_OPTIONAL_POLL_COUNT */.Go2;
+      return !((_reg$specification2 = reg.specification) !== null && _reg$specification2 !== void 0 && _reg$specification2.optional) || reg.lastGetAttempts < constants/* REGISTER_OPTIONAL_POLL_COUNT */.Go2;
     }))))); // refresh values
 
     for (var register of registers) {
@@ -80689,7 +80697,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.18.12"};
+var package_namespaceObject = {"i8":"1.18.13"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
@@ -88398,4 +88406,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-507973c3f15c74368bb9.js.map
+//# sourceMappingURL=app-ee047cebdf2af94daffd.js.map
