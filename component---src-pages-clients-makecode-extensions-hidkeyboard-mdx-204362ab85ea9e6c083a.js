@@ -121,11 +121,11 @@ function MDXContent(_ref) {
     parentName: "span",
     "className": "gatsby-resp-image-background-image",
     "style": {
-      "paddingBottom": "55.99999999999999%",
+      "paddingBottom": "75%",
       "position": "relative",
       "bottom": "0",
       "left": "0",
-      "backgroundImage": "url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAwACBP/EABcBAAMBAAAAAAAAAAAAAAAAAAABAwT/2gAMAwEAAhADEAAAAc9Bvlu8sL//xAAaEAADAAMBAAAAAAAAAAAAAAAAAQIDESIz/9oACAEBAAEFAqfGKm1ogj0P/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQMBAT8BZ//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAECAQE/ASf/xAAaEAAABwAAAAAAAAAAAAAAAAAAAhEgITFx/9oACAEBAAY/AtBVuW//xAAbEAACAwADAAAAAAAAAAAAAAAAAREhMVFxgf/aAAgBAQABPyFmE7XHAvrtbwgzAluhYf/aAAwDAQACAAMAAAAQrw//xAAWEQEBAQAAAAAAAAAAAAAAAAAAEVH/2gAIAQMBAT8QrVf/xAAXEQADAQAAAAAAAAAAAAAAAAAAAREx/9oACAECAQE/EGWQh//EABwQAQACAgMBAAAAAAAAAAAAAAEAESFBMXGBsf/aAAgBAQABPxDGNBKrTaoY9i1w+DsnMpPJpgcO761fwhxn/9k=')",
+      "backgroundImage": "url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBP/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAABTuc3YQH/xAAZEAEBAAMBAAAAAAAAAAAAAAACAQAREgP/2gAIAQEAAQUCSsR9rWV1nO6jDhmj/8QAFhEAAwAAAAAAAAAAAAAAAAAAARAR/9oACAEDAQE/ATV//8QAFhEAAwAAAAAAAAAAAAAAAAAAARAR/9oACAECAQE/ARF//8QAGxAAAgIDAQAAAAAAAAAAAAAAAAERIRAxYYH/2gAIAQEABj8CSS9FVE6J4J4//8QAGhAAAwEAAwAAAAAAAAAAAAAAAAERIUFhcf/aAAgBAQABPyHlDaxkyHEQOmliG7axx4O0ZjIC6P/aAAwDAQACAAMAAAAQ0+//xAAXEQEBAQEAAAAAAAAAAAAAAAABAEFR/9oACAEDAQE/EBiDt//EABYRAQEBAAAAAAAAAAAAAAAAAAEAQf/aAAgBAgEBPxBRTL//xAAdEAEBAAICAwEAAAAAAAAAAAABEQAhMaFBUWGR/9oACAEBAAE/EEVVhGg5ejKfQEO0dV/MTdBEjQ85G0V91ymHBG27sNduWtqCvtz/2Q==')",
       "backgroundSize": "cover",
       "display": "block"
     }
@@ -134,8 +134,8 @@ function MDXContent(_ref) {
     "className": "gatsby-resp-image-image",
     "alt": "A microbit and HID keyboard module connected with 2 cables",
     "title": "A microbit and HID keyboard module connected with 2 cables",
-    "src": "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4b190/hidcables.jpg",
-    "srcSet": ["/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/e07e9/hidcables.jpg 200w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/066f9/hidcables.jpg 400w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4b190/hidcables.jpg 800w", "/jacdac-docs/static/ef4123ec26323730178cb2796f9eb5d1/4e3e1/hidcables.jpg 857w"],
+    "src": "/jacdac-docs/static/56e6960c65b63ec41957cbc24a88ef65/4b190/hidcables.jpg",
+    "srcSet": ["/jacdac-docs/static/56e6960c65b63ec41957cbc24a88ef65/e07e9/hidcables.jpg 200w", "/jacdac-docs/static/56e6960c65b63ec41957cbc24a88ef65/066f9/hidcables.jpg 400w", "/jacdac-docs/static/56e6960c65b63ec41957cbc24a88ef65/4b190/hidcables.jpg 800w", "/jacdac-docs/static/56e6960c65b63ec41957cbc24a88ef65/e5166/hidcables.jpg 1200w", "/jacdac-docs/static/56e6960c65b63ec41957cbc24a88ef65/b17f8/hidcables.jpg 1600w"],
     "sizes": "(max-width: 800px) 100vw, 800px",
     "style": {
       "width": "100%",
@@ -201,4 +201,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-hidkeyboard-mdx-333a3c934b6a17ba9b3a.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-hidkeyboard-mdx-204362ab85ea9e6c083a.js.map
