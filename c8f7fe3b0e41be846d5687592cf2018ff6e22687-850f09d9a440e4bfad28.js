@@ -102641,11 +102641,16 @@ function TracePlayButton(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ CodeSandboxButton; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(15861);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(15861);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(84377);
-/* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16002);
+/* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16002);
 /* harmony import */ var _IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(79885);
+/* harmony import */ var _hooks_useMediaQueries__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(20509);
+/* harmony import */ var gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(71481);
+/* harmony import */ var gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_4__);
+
+
 
 
 
@@ -102659,12 +102664,15 @@ function CodeSandboxButton(props) {
     setError
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .ZP);
   var {
+    mobile
+  } = (0,_hooks_useMediaQueries__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)();
+  var {
     0: importing,
     1: setImporting
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
 
   var handleClick = /*#__PURE__*/function () {
-    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)(function* () {
+    var _ref = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(function* () {
       var f = files();
       var file = Object.keys(f).filter(fn => /\.js$/.test(fn))[0] || "index.js";
 
@@ -102695,12 +102703,18 @@ function CodeSandboxButton(props) {
     };
   }();
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+  return mobile ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     color: "primary",
     onClick: handleClick,
     disabled: importing,
     title: "Try in CodeSandbox"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, null));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_material_ui_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
+    color: "primary",
+    variant: "outlined",
+    onClick: handleClick,
+    startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, null),
+    disabled: importing
+  }, "Try in CodeSandbox");
 }
 
 /***/ }),
@@ -108669,4 +108683,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-78902bdae929a4bcc484.js.map
+//# sourceMappingURL=c8f7fe3b0e41be846d5687592cf2018ff6e22687-850f09d9a440e4bfad28.js.map
