@@ -3683,10 +3683,12 @@ function MakeCodeButton(props) {
 
   return mobile ? /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     onClick: handleClick,
+    color: "primary",
     disabled: importing,
     title: "Try in MakeCode"
   }, /*#__PURE__*/react.createElement(MakeCodeIcon/* default */.Z, null)) : /*#__PURE__*/react.createElement(Button/* default */.Z, {
     variant: "outlined",
+    color: "primary",
     onClick: handleClick,
     disabled: importing,
     startIcon: /*#__PURE__*/react.createElement(MakeCodeIcon/* default */.Z, null)
@@ -3966,4 +3968,4 @@ function PaperBox(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-42f66f8f81483ccf1ac6.js.map
+//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-c6209c8a7a29895fbd68.js.map
