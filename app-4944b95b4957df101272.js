@@ -69277,7 +69277,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "60d912c9112843a8a84aef74833fbb5d3b66e17f";
+var sha = "3b0d125101ee8d9f5ef432d478a3398f957cb84a";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70130,7 +70130,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "60d912c9112843a8a84aef74833fbb5d3b66e17f";
+  var sha = "3b0d125101ee8d9f5ef432d478a3398f957cb84a";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72266,7 +72266,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "60d912c9112843a8a84aef74833fbb5d3b66e17f";
+    var sha = "3b0d125101ee8d9f5ef432d478a3398f957cb84a";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -83163,6 +83163,7 @@ exports.components = {
   "component---src-pages-clients-makecode-extensions-button-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-button-mdx */ 3838).then(__webpack_require__.bind(__webpack_require__, 37808)),
   "component---src-pages-clients-makecode-extensions-characterscreen-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-characterscreen-mdx */ 9032).then(__webpack_require__.bind(__webpack_require__, 38542)),
   "component---src-pages-clients-makecode-extensions-color-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-color-mdx */ 219).then(__webpack_require__.bind(__webpack_require__, 34565)),
+  "component---src-pages-clients-makecode-extensions-dotmatrix-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-dotmatrix-mdx */ 4450).then(__webpack_require__.bind(__webpack_require__, 75743)),
   "component---src-pages-clients-makecode-extensions-eco-2-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-eco-2-mdx */ 8785).then(__webpack_require__.bind(__webpack_require__, 40248)),
   "component---src-pages-clients-makecode-extensions-flex-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-flex-mdx */ 7968).then(__webpack_require__.bind(__webpack_require__, 29459)),
   "component---src-pages-clients-makecode-extensions-hidkeyboard-mdx": () => __webpack_require__.e(/* import() | component---src-pages-clients-makecode-extensions-hidkeyboard-mdx */ 197).then(__webpack_require__.bind(__webpack_require__, 99420)),
@@ -88406,4 +88407,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-1c41d239e70537dde294.js.map
+//# sourceMappingURL=app-4944b95b4957df101272.js.map
