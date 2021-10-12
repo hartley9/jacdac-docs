@@ -333,7 +333,8 @@ function MakeCodeAddBlocksButton() {
 
   var handleAdd = () => iframeBridge === null || iframeBridge === void 0 ? void 0 : iframeBridge.postAddExtensions();
 
-  if (!(extensions !== null && extensions !== void 0 && extensions.length)) return null;
+  var isMakeCodeTool = (0,react.useMemo)(() => typeof window !== "undefined" && /makecode/.test(window.location.href), []);
+  if (isMakeCodeTool && !(extensions !== null && extensions !== void 0 && extensions.length)) return null;
   return /*#__PURE__*/react.createElement(Box/* default */.Z, {
     m: 1
   }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
@@ -669,4 +670,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-0c3d04dc81e2fc771940.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-7b91718bf2244e02043e.js.map
