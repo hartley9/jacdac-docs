@@ -3587,6 +3587,8 @@ var AppContext = __webpack_require__(84377);
 var MakeCodeIcon = __webpack_require__(70654);
 // EXTERNAL MODULE: ./src/components/ui/IconButtonWithTooltip.tsx + 1 modules
 var IconButtonWithTooltip = __webpack_require__(79885);
+// EXTERNAL MODULE: ./src/components/hooks/useMediaQueries.tsx
+var useMediaQueries = __webpack_require__(20509);
 ;// CONCATENATED MODULE: ./src/components/makecode/MakeCodeSnippet.tsx
 
 
@@ -3594,6 +3596,7 @@ var IconButtonWithTooltip = __webpack_require__(79885);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -3619,7 +3622,7 @@ function MakeCodeButton(props) {
   } = (0,react.useContext)(AppContext/* default */.ZP);
   var {
     mobile
-  } = useMediaQueries();
+  } = (0,useMediaQueries/* default */.Z)();
   var {
     0: importing,
     1: setImporting
@@ -3968,4 +3971,4 @@ function PaperBox(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-c6209c8a7a29895fbd68.js.map
+//# sourceMappingURL=7135060e554842f570a07250da4cced35e9b785f-9c44fdb773aaf5b2afde.js.map
