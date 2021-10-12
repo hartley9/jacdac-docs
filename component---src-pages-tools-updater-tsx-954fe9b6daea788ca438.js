@@ -146,12 +146,15 @@ var DeviceCardHeader = __webpack_require__(33292);
 var useRegisterValue = __webpack_require__(89196);
 // EXTERNAL MODULE: ./src/components/alert/DeviceLostAlert.tsx
 var DeviceLostAlert = __webpack_require__(60145);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
+var spec = __webpack_require__(45656);
 ;// CONCATENATED MODULE: ./src/components/devices/DeviceCard.tsx
  // tslint:disable-next-line: no-submodule-imports
 
  // tslint:disable-next-line: no-submodule-imports
 
  // tslint:disable-next-line: no-submodule-imports
+
 
 
 
@@ -208,7 +211,7 @@ function DeviceCard(props) {
     showServices
   } = props;
   var classes = useStyles();
-  var services = (0,useChange/* default */.Z)(device, () => device.services().filter(service => service.serviceClass != constants/* SRV_CONTROL */.gm9 && service.serviceClass != constants/* SRV_LOGGER */.w9j));
+  var services = (0,useChange/* default */.Z)(device, () => device.services().filter(srv => !(0,spec/* isInfrastructure */.lz)(srv.specification)));
   return /*#__PURE__*/react.createElement(Card/* default */.Z, {
     className: classes.root
   }, /*#__PURE__*/react.createElement(DeviceCardHeader/* default */.Z, {
@@ -1183,4 +1186,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-updater-tsx-9ac8b4f4d8178b715aa6.js.map
+//# sourceMappingURL=component---src-pages-tools-updater-tsx-954fe9b6daea788ca438.js.map

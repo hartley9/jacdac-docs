@@ -156,12 +156,15 @@ var DeviceCardHeader = __webpack_require__(33292);
 var useRegisterValue = __webpack_require__(89196);
 // EXTERNAL MODULE: ./src/components/alert/DeviceLostAlert.tsx
 var DeviceLostAlert = __webpack_require__(60145);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
+var spec = __webpack_require__(45656);
 ;// CONCATENATED MODULE: ./src/components/devices/DeviceCard.tsx
  // tslint:disable-next-line: no-submodule-imports
 
  // tslint:disable-next-line: no-submodule-imports
 
  // tslint:disable-next-line: no-submodule-imports
+
 
 
 
@@ -218,7 +221,7 @@ function DeviceCard(props) {
     showServices
   } = props;
   var classes = useStyles();
-  var services = (0,useChange/* default */.Z)(device, () => device.services().filter(service => service.serviceClass != constants/* SRV_CONTROL */.gm9 && service.serviceClass != constants/* SRV_LOGGER */.w9j));
+  var services = (0,useChange/* default */.Z)(device, () => device.services().filter(srv => !(0,spec/* isInfrastructure */.lz)(srv.specification)));
   return /*#__PURE__*/react.createElement(Card/* default */.Z, {
     className: classes.root
   }, /*#__PURE__*/react.createElement(DeviceCardHeader/* default */.Z, {
@@ -1214,4 +1217,4 @@ function useEventCount(event) {
 /***/ })
 
 }]);
-//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-010cd71494c4a30bef94.js.map
+//# sourceMappingURL=149f11818c122b40ce2932f15d148eda4aaa5f90-ec2c26b2428050a531f3.js.map
