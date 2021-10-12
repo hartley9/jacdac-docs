@@ -72,7 +72,10 @@ function useIdleCallback(cb, timeout, deps) {
 var useMounted = __webpack_require__(72179);
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/pretty.ts
+var pretty = __webpack_require__(10913);
 ;// CONCATENATED MODULE: ./src/components/firmware/useFirmwareBlobs.ts
+
 
 
 
@@ -105,15 +108,27 @@ function useFirmwareBlobs() {
     console.log("firmware: load");
     var names = yield firmwares === null || firmwares === void 0 ? void 0 : firmwares.list();
     if (!names) return;
-    var missingSlugs = (0,utils/* unique */.Tw)((0,spec/* deviceSpecifications */.qx)().filter(spec => {
+    var slugs = (0,utils/* unique */.Tw)((0,spec/* deviceSpecifications */.qx)().filter(spec => {
       var _spec$productIdentifi;
 
       return !!(spec !== null && spec !== void 0 && (_spec$productIdentifi = spec.productIdentifiers) !== null && _spec$productIdentifi !== void 0 && _spec$productIdentifi.length);
     }) // needs some product identifiers
-    .map(spec => spec.repo).filter(repo => /^https:\/\/github.com\//.test(repo)).map(repo => repo.substr("https://github.com/".length)).filter(slug => names.indexOf(slug) < 0));
+    .map(spec => spec.repo).filter(repo => /^https:\/\/github.com\//.test(repo)).map(repo => repo.substr("https://github.com/".length)) //.filter(slug => names.indexOf(slug) < 0)
+    );
 
-    for (var slug of missingSlugs) {
-      console.log("db: fetch latest release of " + slug);
+    for (var slug of slugs) {
+      var {
+        time
+      } = yield firmwares.get(slug);
+      var age = Date.now() - time;
+      console.debug("firmware " + slug + " age " + (0,pretty/* prettyDuration */.Xh)(age));
+
+      if (age < 3600000) {
+        console.debug("db: skipping fresh firmware " + slug);
+        continue;
+      }
+
+      console.debug("db: fetch latest release of " + slug);
       var {
         status,
         release
@@ -126,28 +141,39 @@ function useFirmwareBlobs() {
       });
 
       if (status === 403) {
+        trackEvent("github.fetch.throttled", {
+          repo: slug
+        });
         if (mounted()) setThrottled(true);
       }
 
       if (!(release !== null && release !== void 0 && release.version)) {
+        trackEvent("github.fetch.notfound", {
+          repo: slug
+        });
         console.warn("release not found");
         return;
       }
 
       setThrottled(false);
       console.log("db: fetch binary release " + slug + " " + release.version);
-      var fw = yield (0,github/* fetchReleaseBinary */.dW)(slug, release.version);
+      var firmware = yield (0,github/* fetchReleaseBinary */.dW)(slug, release.version);
 
-      if (fw) {
-        console.log("db: binary release " + slug + " " + release.version + " downloaded");
-        firmwares.set(slug, fw);
+      if (firmware) {
+        console.debug("db: binary release " + slug + " " + release.version + " downloaded");
+        firmwares.set(slug, {
+          time: Date.now(),
+          firmware
+        });
       } // throttle github queries
 
 
       yield bus.delay(5000);
     }
-  }), [db, firmwares, throttled]);
-  useIdleCallback(loadFirmwares, 5000, [db, firmwares]);
+  }), [db, firmwares, throttled]); // reload firmwares
+
+  useIdleCallback(loadFirmwares, 5000, [db, firmwares]); // update bus with info on changes
+
   (0,useChange/* useChangeAsync */.R)(firmwares, /*#__PURE__*/function () {
     var _ref2 = (0,asyncToGenerator/* default */.Z)(function* (fw) {
       console.log("firmwares: change");
@@ -157,11 +183,16 @@ function useFirmwareBlobs() {
 
       if (names !== null && names !== void 0 && names.length) {
         for (var name of names) {
-          var blob = yield fw.get(name);
-          var uf2Blobs = yield (0,flashing/* parseFirmwareFile */.Ub)(blob, name);
-          uf2Blobs === null || uf2Blobs === void 0 ? void 0 : uf2Blobs.forEach(uf2Blob => {
-            uf2s.push(uf2Blob);
-          });
+          var {
+            firmware
+          } = (yield fw.get(name)) || {};
+
+          if (firmware) {
+            var uf2Blobs = yield (0,flashing/* parseFirmwareFile */.Ub)(firmware, name);
+            uf2Blobs === null || uf2Blobs === void 0 ? void 0 : uf2Blobs.forEach(uf2Blob => {
+              uf2s.push(uf2Blob);
+            });
+          }
         }
       }
 
@@ -186,19 +217,24 @@ function useFirmwareBlob(repoSlug) {
   var firmwares = db === null || db === void 0 ? void 0 : db.firmwares;
   var blobs = (0,useChange/* useChangeAsync */.R)(firmwares, /*#__PURE__*/(0,asyncToGenerator/* default */.Z)(function* () {
     if (!repoSlug) return undefined;
-    var blob = yield firmwares === null || firmwares === void 0 ? void 0 : firmwares.get(repoSlug);
+    var {
+      firmware
+    } = (yield firmwares === null || firmwares === void 0 ? void 0 : firmwares.get(repoSlug)) || {};
 
-    if (!blob) {
+    if (!firmware) {
       return undefined;
     } else {
-      var uf2Blobs = yield (0,flashing/* parseFirmwareFile */.Ub)(blob, repoSlug);
+      var uf2Blobs = yield (0,flashing/* parseFirmwareFile */.Ub)(firmware, repoSlug);
       return uf2Blobs;
     }
   }), [repoSlug]);
 
   var setFirmwareFile = /*#__PURE__*/function () {
     var _ref4 = (0,asyncToGenerator/* default */.Z)(function* (tag, f) {
-      yield firmwares === null || firmwares === void 0 ? void 0 : firmwares.set(repoSlug, f);
+      if (!f) yield firmwares === null || firmwares === void 0 ? void 0 : firmwares.set(repoSlug, undefined);else yield firmwares === null || firmwares === void 0 ? void 0 : firmwares.set(repoSlug, {
+        time: Date.now(),
+        firmware: f
+      });
     });
 
     return function setFirmwareFile(_x2, _x3) {
@@ -608,4 +644,4 @@ function semverCmp(a, b) {
 /***/ })
 
 }]);
-//# sourceMappingURL=3432-765030c1ace15632d8d5.js.map
+//# sourceMappingURL=3432-bd2ac8c8350e05311a43.js.map

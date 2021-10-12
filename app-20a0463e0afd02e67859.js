@@ -42224,7 +42224,7 @@ function signal() {
   };
 }
 function readBlobToUint8Array(blob) {
-  if (blob.arrayBuffer) {
+  if (blob !== null && blob !== void 0 && blob.arrayBuffer) {
     return blob.arrayBuffer().then(data => new Uint8Array(data));
   }
 
@@ -47590,7 +47590,7 @@ var IDBDb = /*#__PURE__*/function (_JDEventSource2) {
   return IDBDb;
 }(_jacdac_ts_src_jdom_eventsource__WEBPACK_IMPORTED_MODULE_2__/* .JDEventSource */ .aE);
 
-IDBDb.DB_VERSION = 18;
+IDBDb.DB_VERSION = 19;
 IDBDb.DB_NAME = "JACDAC";
 IDBDb.STORE_BLOBS = "BLOBS";
 IDBDb.STORE_FIRMWARE_BLOBS = "STORE_FIRMWARE_BLOBS";
@@ -69277,7 +69277,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "5e535a255cc825b3e0124f0de7eb838250a31a06";
+var sha = "cf415cba672c6e72c2c3e4cd74e09fe3fad34540";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70130,7 +70130,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "5e535a255cc825b3e0124f0de7eb838250a31a06";
+  var sha = "cf415cba672c6e72c2c3e4cd74e09fe3fad34540";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72266,7 +72266,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "5e535a255cc825b3e0124f0de7eb838250a31a06";
+    var sha = "cf415cba672c6e72c2c3e4cd74e09fe3fad34540";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88407,4 +88407,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-5a8ccdf032af4cc1b5db.js.map
+//# sourceMappingURL=app-20a0463e0afd02e67859.js.map
