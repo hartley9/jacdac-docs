@@ -160,14 +160,14 @@ function MDXContent(_ref) {
     parentName: "pre",
     "className": "language-blocks"
   }, "{\"source\":\"input.onButtonPressed(Button.AB, function() {\\n    modules.hidMouse1.wheel(10, 0)\\n})\",\"rendered\":{\"req\":{\"code\":\"input.onButtonPressed(Button.AB, function() {\\n    modules.hidMouse1.wheel(10, 0)\\n})\",\"options\":{\"pixelDensity\":1,\"package\":\"jacdac=github:microsoft/pxt-jacdac#v0.7.12,jacdac-hid-mouse=github:microsoft/pxt-jacdac/hid-mouse#v0.7.12\"},\"type\":\"renderblocks\",\"id\":\"74b521fc3b571fa8164ae96b725ef2f8\"},\"url\":\"/images/makecode/74b521fc3b571fa8164ae96b725ef2f8.png\"}}\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
-    "id": "connecting-the-keyboard-module",
+    "id": "connecting-the-mouse-module",
     "style": {
       "position": "relative"
     }
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "h2",
-    "href": "#connecting-the-keyboard-module",
-    "aria-label": "connecting the keyboard module permalink",
+    "href": "#connecting-the-mouse-module",
+    "aria-label": "connecting the mouse module permalink",
     "className": "anchor before"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("svg", {
     parentName: "a",
@@ -181,7 +181,7 @@ function MDXContent(_ref) {
     parentName: "svg",
     "fillRule": "evenodd",
     "d": "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
-  }))), "Connecting the Keyboard module"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The module that implements the HID mouse server (like the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }))), "Connecting the Mouse module"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The module that implements the HID mouse server (like the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "/jacdac-docs/devices/microsoft/research/jmbrainf441v02"
   }, "JD BRAIN F4"), " below)\nmust also be connected with a USB-C cable to your computer."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("span", {
@@ -278,4 +278,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-makecode-extensions-hidmouse-mdx-f4c158078c293cb9f2ef.js.map
+//# sourceMappingURL=component---src-pages-clients-makecode-extensions-hidmouse-mdx-b035de1abb7da4d9ee27.js.map
