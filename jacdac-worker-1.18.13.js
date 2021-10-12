@@ -916,6 +916,28 @@ var CharacterScreenCmd;
      */
     CharacterScreenCmd[CharacterScreenCmd["Clear"] = 129] = "Clear";
 })(CharacterScreenCmd || (CharacterScreenCmd = {}));
+var CodalMessageBusCmd;
+(function (CodalMessageBusCmd) {
+    /**
+     * Send a message on the CODAL bus. If `source` is `0`, it is treated as wildcard.
+     *
+     * ```
+     * const [source, value] = jdunpack<[number, number]>(buf, "u16 u16")
+     * ```
+     */
+    CodalMessageBusCmd[CodalMessageBusCmd["Send"] = 128] = "Send";
+})(CodalMessageBusCmd || (CodalMessageBusCmd = {}));
+var CodalMessageBusEvent;
+(function (CodalMessageBusEvent) {
+    /**
+     * Raised by the server is triggered by the server. The filtering logic of which event to send over JACDAC is up to the server implementation.
+     *
+     * ```
+     * const [source, value] = jdunpack<[number, number]>(buf, "u16 u16")
+     * ```
+     */
+    CodalMessageBusEvent[CodalMessageBusEvent["Message"] = 128] = "Message";
+})(CodalMessageBusEvent || (CodalMessageBusEvent = {}));
 var ColorReg;
 (function (ColorReg) {
     /**
