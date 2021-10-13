@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-324020ffd9b8dd946a7f.js"
+    "url": "webpack-runtime-6a8464c55fa47703ffce.js"
   },
   {
     "url": "styles.74eb5aed1bb14cdb4c8b.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "9f674c6b4791f1771e7d96773a2f7013"
+    "revision": "590ef566f6dd55ce25d4903bfbf1be98"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "51b08486f3274b3f17cd926d69935905"
+    "revision": "1ceb0df24bb65ce5117408fc856178c3"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "509d975011ee82edb3d791798a0bda75"
+    "revision": "824a70f8324e9f3a0d352e834e3216f0"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "82106d2b3bc9118c6dc1f5b6a7e68580"
+    "revision": "284cf4322775667b8b7b09c976c9d79a"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "01a9299bc94f2a7f6bbb83f5c7c7128e"
+    "revision": "16cecdf0946c85ffdfdce7bd67d48c6e"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "d48b39c94996b6203ea74174630bcea0"
+    "revision": "6ced918f080aa790547c945a1f130615"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "f9faa130859d6c8c559bf77b07d7babe"
+    "revision": "cf75b04a66eb50a2129b01a347e2fa87"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1239,7 +1239,7 @@ self.__precacheManifest = [
     "revision": "ad264406887eb90068ebf40082fa4944"
   },
   {
-    "url": "component---src-pages-tools-speech-strings-tsx-6c17ab09f0b82e3d046e.js"
+    "url": "component---src-pages-tools-speech-strings-tsx-27a64f6b0841350fb368.js"
   },
   {
     "url": "page-data/tools/speech-strings/page-data.json",
@@ -1346,7 +1346,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-43cda0f8508388e48d68.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-3ba7284f61841cd09cd8.js`))) {
     return await fetch(event.request)
   }
 
