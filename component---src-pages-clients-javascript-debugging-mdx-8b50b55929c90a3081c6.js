@@ -9,10 +9,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "_frontmatter": function() { return /* binding */ _frontmatter; },
 /* harmony export */   "default": function() { return /* binding */ MDXContent; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(45987);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(45987);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _mdx_js_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(64983);
 /* harmony import */ var _home_runner_work_jacdac_docs_jacdac_docs_src_components_Page_tsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(64425);
+/* harmony import */ var _components_tools_DevToolsLauncher__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(46977);
 
 var _excluded = ["components"];
 
@@ -24,6 +25,7 @@ var _excluded = ["components"];
 /* @jsx mdx */
 
 
+
 var _frontmatter = {};
 var layoutProps = {
   _frontmatter
@@ -33,7 +35,7 @@ function MDXContent(_ref) {
   var {
     components
   } = _ref,
-      props = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)(_ref, _excluded);
+      props = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(_ref, _excluded);
 
   return (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(MDXLayout, Object.assign({}, layoutProps, props, {
     components: components,
@@ -89,7 +91,9 @@ function MDXContent(_ref) {
     parentName: "pre"
   }, "https://microsoft.github.io/jacdac-docs/clients/javascript/devtools#URL\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "where ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, "URL"), " is your web page url."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "URL"), " is your web page url."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_components_tools_DevToolsLauncher__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    mdxType: "DevToolsLauncher"
+  }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "device-tree",
     "style": {
       "position": "relative"
@@ -165,4 +169,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-javascript-debugging-mdx-ae6cd2a08cdc2389ded1.js.map
+//# sourceMappingURL=component---src-pages-clients-javascript-debugging-mdx-8b50b55929c90a3081c6.js.map
