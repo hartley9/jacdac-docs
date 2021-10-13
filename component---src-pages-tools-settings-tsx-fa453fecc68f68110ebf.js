@@ -434,6 +434,10 @@ var SwitchWithLabel = __webpack_require__(64973);
 var utils = __webpack_require__(81794);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/random.ts
 var random = __webpack_require__(80303);
+// EXTERNAL MODULE: ./node_modules/gatsby-material-ui-components/lib/index.js
+var lib = __webpack_require__(71481);
+// EXTERNAL MODULE: ./src/components/ServiceManagerContext.tsx + 3 modules
+var ServiceManagerContext = __webpack_require__(99808);
 ;// CONCATENATED MODULE: ./src/components/SettingsCard.tsx
 
 
@@ -444,6 +448,8 @@ var random = __webpack_require__(80303);
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
  // tslint:disable-next-line: match-default-export-name no-submodule-imports
+
+
 
 
 
@@ -622,6 +628,9 @@ function SettingsCard(props) {
     showSecrets,
     autoKey
   } = props;
+  var {
+    fileStorage
+  } = (0,react.useContext)(ServiceManagerContext/* default */.ZP);
   var factory = (0,react.useCallback)(srv => new settingsclient/* default */.Z(srv), []);
   var client = (0,useServiceClient/* default */.Z)(service, factory);
   var values = (0,useChange/* useChangeAsync */.R)(client, /*#__PURE__*/function () {
@@ -632,6 +641,15 @@ function SettingsCard(props) {
           key
         } = _ref4;
         return !keyPrefix || key.startsWith(keyPrefix);
+      }).map(_ref5 => {
+        var {
+          key,
+          value
+        } = _ref5;
+        return {
+          key,
+          value: (0,utils/* bufferToString */.zT)(value)
+        };
       });
     });
 
@@ -641,14 +659,16 @@ function SettingsCard(props) {
   }(), [keyPrefix]);
 
   var handleClear = /*#__PURE__*/function () {
-    var _ref5 = (0,asyncToGenerator/* default */.Z)(function* () {
+    var _ref6 = (0,asyncToGenerator/* default */.Z)(function* () {
       return yield client === null || client === void 0 ? void 0 : client.clear();
     });
 
     return function handleClear() {
-      return _ref5.apply(this, arguments);
+      return _ref6.apply(this, arguments);
     };
   }();
+
+  var handleExport = () => fileStorage.saveText("settings.json", JSON.stringify(values || {}, null, 2));
 
   var secrets = values === null || values === void 0 ? void 0 : values.filter(value => showSecrets && value.key[0] === "$");
   var publics = values === null || values === void 0 ? void 0 : values.filter(value => value.key[0] !== "$");
@@ -666,15 +686,15 @@ function SettingsCard(props) {
     showSecrets: showSecrets,
     autoKey: autoKey,
     key: "add"
-  }), publics === null || publics === void 0 ? void 0 : publics.map(_ref6 => {
+  }), publics === null || publics === void 0 ? void 0 : publics.map(_ref7 => {
     var {
       key,
       value
-    } = _ref6;
+    } = _ref7;
     return /*#__PURE__*/react.createElement(SettingRow, {
       key: key,
       name: key,
-      value: (0,utils/* bufferToString */.zT)(value),
+      value: value,
       client: client,
       mutable: mutable,
       showSecrets: showSecrets,
@@ -683,26 +703,40 @@ function SettingsCard(props) {
   }), !!(secrets !== null && secrets !== void 0 && secrets.length) && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
-  }, "Secrets"), secrets === null || secrets === void 0 ? void 0 : secrets.map(_ref7 => {
+  }, "Secrets"), secrets === null || secrets === void 0 ? void 0 : secrets.map(_ref8 => {
     var {
       key,
       value
-    } = _ref7;
+    } = _ref8;
     return /*#__PURE__*/react.createElement(SettingRow, {
       key: key,
       name: key,
-      value: (0,utils/* bufferToString */.zT)(value),
+      value: value,
       client: client,
       mutable: mutable,
       showSecrets: showSecrets,
       autoKey: autoKey
     });
-  }))), mutable && /*#__PURE__*/react.createElement(CardActions/* default */.Z, null, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
+  }))), /*#__PURE__*/react.createElement(CardActions/* default */.Z, null, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    container: true,
+    spacing: 1,
+    direction: "row"
+  }, mutable && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
+    variant: "outlined",
     trackName: "settings.clearall",
     title: "Clear all settings",
     icon: /*#__PURE__*/react.createElement(Delete/* default */.Z, null),
     onClick: handleClear
-  }, "Clear")));
+  }, "Clear")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(lib.Button, {
+    variant: "outlined",
+    title: "export",
+    disabled: !values,
+    onClick: handleExport
+  }, "Export")))));
 }
 // EXTERNAL MODULE: ./src/components/hooks/useServices.ts
 var useServices = __webpack_require__(2928);
@@ -776,4 +810,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-settings-tsx-6c636c5261be6fe47b90.js.map
+//# sourceMappingURL=component---src-pages-tools-settings-tsx-fa453fecc68f68110ebf.js.map
