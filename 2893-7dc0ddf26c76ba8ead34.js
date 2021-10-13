@@ -206,8 +206,8 @@ function replayLogicLog(bus, frames, speed) {
 /* harmony import */ var _jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45656);
 /* harmony import */ var _jacdac_Context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(20392);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(42862);
-/* harmony import */ var _jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(54774);
-/* harmony import */ var _buttons_ConnectButtons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(45608);
+/* harmony import */ var _buttons_ConnectButtons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(45608);
+/* harmony import */ var _hooks_useDevices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(53074);
 // tslint:disable-next-line: no-submodule-imports
  // tslint:disable-next-line: no-submodule-imports
 
@@ -230,10 +230,10 @@ function NoSsrConnectAlert(props) {
   var {
     transports
   } = bus;
-  var devices = (0,_jacdac_useChange__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(bus, b => b.devices({
+  var devices = (0,_hooks_useDevices__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)({
     serviceClass,
     ignoreInfrastructure: true
-  }));
+  });
   var spec = (0,_jacdac_ts_src_jdom_spec__WEBPACK_IMPORTED_MODULE_2__/* .serviceSpecificationFromClassIdentifier */ .d5)(serviceClass); // don't show if no transport, some devices
 
   if (!transports.length || devices !== null && devices !== void 0 && devices.length) return null;
@@ -245,7 +245,7 @@ function NoSsrConnectAlert(props) {
   }, !spec && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, "Did you connect your device?"), spec && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, "Did you connect a ", spec.name, " device?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
     component: "span",
     ml: 2
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_buttons_ConnectButtons__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_buttons_ConnectButtons__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     full: "always",
     transparent: true
   }))));
@@ -582,4 +582,4 @@ function AppDrawer(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=2893-2eff3e5e987ffc1f75c2.js.map
+//# sourceMappingURL=2893-7dc0ddf26c76ba8ead34.js.map
