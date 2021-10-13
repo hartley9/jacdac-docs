@@ -211,7 +211,9 @@ function JoystickWidget(props) {
     fill: background,
     stroke: active,
     strokeWidth: jw,
-    "aria-label": "joystick handle"
+    role: "button",
+    "aria-label": "joystick handle",
+    "arial-live": "polite"
   }));
 }
 
@@ -248,6 +250,8 @@ function ArcadeButton(props) {
   var buttonProps = (0,_hooks_useSvgButtonProps__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z)(title, handleDown, handleUp);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("g", {
     transform: "translate(" + cx + "," + cy + ")",
+    role: "button",
+    "aria-live": "polite",
     "aria-label": "button " + title + " " + (checked ? "down" : "up")
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("circle", {
     cx: 0,
@@ -419,4 +423,4 @@ function DashboardJoystick(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7809-e576dee2be34ac025281.js.map
+//# sourceMappingURL=7809-ae874e17ec6466a639c1.js.map

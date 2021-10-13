@@ -296,6 +296,7 @@ function DashboardCharacterScreen(props) {
     item: true,
     xs: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
+    label: "text",
     value: fieldMessage,
     onChange: handleFieldMessageChange,
     multiline: true,
@@ -333,4 +334,4 @@ function DashboardCharacterScreen(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7787-2976f76f0e1b30de0a43.js.map
+//# sourceMappingURL=7787-ae24b0e02c021c15889f.js.map
