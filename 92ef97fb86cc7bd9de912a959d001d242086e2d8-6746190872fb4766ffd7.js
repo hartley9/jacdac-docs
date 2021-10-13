@@ -6760,6 +6760,7 @@ function tidySlice(data, options) {
 /* harmony export */   "jt": function() { return /* binding */ STRING_TYPE; },
 /* harmony export */   "lu": function() { return /* binding */ BOOLEAN_TYPE; },
 /* harmony export */   "sS": function() { return /* binding */ NUMBER_TYPE; },
+/* harmony export */   "zC": function() { return /* binding */ DATA_TABLE_TYPE; },
 /* harmony export */   "eg": function() { return /* binding */ PRIMITIVE_TYPES; },
 /* harmony export */   "Nd": function() { return /* binding */ BUILTIN_TYPES; },
 /* harmony export */   "lL": function() { return /* binding */ CODE_STATEMENT_TYPE; },
@@ -6812,6 +6813,7 @@ var JSON_TYPE = "JSON";
 var STRING_TYPE = "String";
 var BOOLEAN_TYPE = "Boolean";
 var NUMBER_TYPE = "Number";
+var DATA_TABLE_TYPE = "DataTable";
 var PRIMITIVE_TYPES = [STRING_TYPE, BOOLEAN_TYPE, NUMBER_TYPE];
 var BUILTIN_TYPES = [""].concat(PRIMITIVE_TYPES);
 var CODE_STATEMENT_TYPE = "Code";
@@ -6885,4 +6887,4 @@ function useWorkspaceEvent(workspace, handler) {
 /***/ })
 
 }]);
-//# sourceMappingURL=92ef97fb86cc7bd9de912a959d001d242086e2d8-7b9b4b123909376ff237.js.map
+//# sourceMappingURL=92ef97fb86cc7bd9de912a959d001d242086e2d8-6746190872fb4766ffd7.js.map

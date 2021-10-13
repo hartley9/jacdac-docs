@@ -326,6 +326,51 @@ function ConnectAlert(props) {
 
 /***/ }),
 
+/***/ 45244:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "D": function() { return /* binding */ useLocationSearchParamString; },
+/* harmony export */   "w": function() { return /* binding */ useLocationSearchParamBoolean; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+
+function useLocationSearchParamString(key) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    if (typeof window !== "undefined") {
+      var url = new URL(window.location.href);
+      return url.searchParams.get(key);
+    }
+
+    return undefined;
+  }, [key]);
+}
+function useLocationSearchParamBoolean(key, defaultValue) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    if (typeof window !== "undefined") {
+      var url = new URL(window.location.href);
+      var v = url.searchParams.get(key);
+      console.log({
+        key,
+        url,
+        v
+      });
+
+      if (v) {
+        if (v === "1" || v === "true" || v === "yes") return true;else if (v === "0" || v === "false" || v === "no") return false;else return defaultValue;
+      } // empty value means true
+
+
+      if (url.searchParams.has(key)) return true;
+      return defaultValue;
+    }
+
+    return undefined;
+  }, [key, defaultValue]);
+}
+
+/***/ }),
+
 /***/ 2928:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -406,7 +451,7 @@ function useServiceClient(service, factory, deps) {
 
 /***/ }),
 
-/***/ 74503:
+/***/ 360:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -827,32 +872,8 @@ function SettingsCard(props) {
 var useServices = __webpack_require__(2928);
 // EXTERNAL MODULE: ./src/components/hooks/useServiceProviderFromServiceClass.ts
 var useServiceProviderFromServiceClass = __webpack_require__(36134);
-;// CONCATENATED MODULE: ./src/components/hooks/useLocationSearchParam.ts
-
-function useLocationSearchParamString(key) {
-  return (0,react.useMemo)(() => {
-    if (typeof window !== "undefined") {
-      var url = new URL(window.location.href);
-      return url.searchParams.get(key);
-    }
-
-    return undefined;
-  }, [key]);
-}
-function useLocationSearchParamBoolean(key, defaultValue) {
-  return (0,react.useMemo)(() => {
-    if (typeof window !== "undefined") {
-      var url = new URL(window.location.href);
-      var v = url.searchParams.get(key);
-      if (v) return v === "1" || v === "true" || v === "yes"; // empty value
-
-      if (url.searchParams.has(key)) return true;
-      return defaultValue;
-    }
-
-    return undefined;
-  }, [key, defaultValue]);
-}
+// EXTERNAL MODULE: ./src/components/hooks/useLocationSearchParam.ts
+var useLocationSearchParam = __webpack_require__(45244);
 ;// CONCATENATED MODULE: ./src/pages/tools/settings.tsx
 
 
@@ -869,9 +890,9 @@ function Page() {
   var services = (0,useServices/* default */.Z)({
     serviceClass: constants/* SRV_SETTINGS */.B9b
   });
-  var keyPrefix = useLocationSearchParamString("prefix");
-  var autoKey = useLocationSearchParamBoolean("autokey", false);
-  var showSecrets = useLocationSearchParamBoolean("secrets", true);
+  var keyPrefix = (0,useLocationSearchParam/* useLocationSearchParamString */.D)("prefix");
+  var autoKey = (0,useLocationSearchParam/* useLocationSearchParamBoolean */.w)("autokey", false);
+  var showSecrets = (0,useLocationSearchParam/* useLocationSearchParamBoolean */.w)("secrets", true);
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h1", null, "Devices Settings"), /*#__PURE__*/react.createElement("p", null, "Configure &npsp;", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     to: "/services/settings/"
   }, "settings"), " ", "services."), /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, {
@@ -896,4 +917,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-settings-tsx-3ef547e9714994df93f5.js.map
+//# sourceMappingURL=component---src-pages-tools-settings-tsx-19809ad9218a9658e3f4.js.map
