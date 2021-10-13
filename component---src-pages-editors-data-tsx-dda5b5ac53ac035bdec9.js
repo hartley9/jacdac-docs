@@ -200,6 +200,12 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
     return this.category;
   };
 
+  _proto.visitWorkspaceJSON = function visitWorkspaceJSON(workspace, workspaceJSON) {
+    this.post("workspace", {
+      workspace: workspaceJSON
+    });
+  };
+
   return IFrameDomainSpecificLanguage;
 }();
 /**
@@ -279,4 +285,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-tsx-1536e979596989909c6f.js.map
+//# sourceMappingURL=component---src-pages-editors-data-tsx-dda5b5ac53ac035bdec9.js.map
