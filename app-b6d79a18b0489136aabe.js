@@ -69255,7 +69255,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "1e9849d42196e14c2c77476d19280421ebb33f1e";
+var sha = "54a6f9662898279f1ff853c672fec26e9acf7e8e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70108,7 +70108,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "1e9849d42196e14c2c77476d19280421ebb33f1e";
+  var sha = "54a6f9662898279f1ff853c672fec26e9acf7e8e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72293,7 +72293,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "1e9849d42196e14c2c77476d19280421ebb33f1e";
+    var sha = "54a6f9662898279f1ff853c672fec26e9acf7e8e";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -80651,7 +80651,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.18.14"};
+var package_namespaceObject = {"i8":"1.18.15"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
@@ -83200,7 +83200,7 @@ exports.components = {
   "component---src-pages-tools-qr-silk-tsx": () => __webpack_require__.e(/* import() | component---src-pages-tools-qr-silk-tsx */ 4602).then(__webpack_require__.bind(__webpack_require__, 93081)),
   "component---src-pages-tools-release-assets-tsx": () => __webpack_require__.e(/* import() | component---src-pages-tools-release-assets-tsx */ 9225).then(__webpack_require__.bind(__webpack_require__, 71044)),
   "component---src-pages-tools-service-editor-tsx": () => Promise.all(/* import() | component---src-pages-tools-service-editor-tsx */[__webpack_require__.e(2954), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(5577), __webpack_require__.e(2219)]).then(__webpack_require__.bind(__webpack_require__, 90922)),
-  "component---src-pages-tools-settings-tsx": () => Promise.all(/* import() | component---src-pages-tools-settings-tsx */[__webpack_require__.e(2954), __webpack_require__.e(5560)]).then(__webpack_require__.bind(__webpack_require__, 360)),
+  "component---src-pages-tools-settings-tsx": () => Promise.all(/* import() | component---src-pages-tools-settings-tsx */[__webpack_require__.e(2954), __webpack_require__.e(5560)]).then(__webpack_require__.bind(__webpack_require__, 74503)),
   "component---src-pages-tools-speech-strings-tsx": () => Promise.all(/* import() | component---src-pages-tools-speech-strings-tsx */[__webpack_require__.e(2954), __webpack_require__.e(7611)]).then(__webpack_require__.bind(__webpack_require__, 637)),
   "component---src-pages-tools-updater-tsx": () => Promise.all(/* import() | component---src-pages-tools-updater-tsx */[__webpack_require__.e(2954), __webpack_require__.e(9569), __webpack_require__.e(5092), __webpack_require__.e(6366)]).then(__webpack_require__.bind(__webpack_require__, 5179)),
   "component---src-pages-traces-mdx": () => __webpack_require__.e(/* import() | component---src-pages-traces-mdx */ 1356).then(__webpack_require__.bind(__webpack_require__, 23478)),
@@ -88382,4 +88382,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-9ea56546dd463092291d.js.map
+//# sourceMappingURL=app-b6d79a18b0489136aabe.js.map

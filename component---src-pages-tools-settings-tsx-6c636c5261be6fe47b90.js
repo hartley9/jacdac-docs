@@ -379,7 +379,7 @@ function useServiceClient(service, factory, deps) {
 
 /***/ }),
 
-/***/ 360:
+/***/ 74503:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -432,6 +432,8 @@ var LoadingProgress = __webpack_require__(2285);
 var SwitchWithLabel = __webpack_require__(64973);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
 var utils = __webpack_require__(81794);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/random.ts
+var random = __webpack_require__(80303);
 ;// CONCATENATED MODULE: ./src/components/SettingsCard.tsx
 
 
@@ -450,12 +452,14 @@ var utils = __webpack_require__(81794);
 
 
 
+
 function SettingRow(props) {
   var {
     client,
     name,
     value,
-    mutable
+    mutable,
+    autoKey
   } = props;
   var isSecret = name[0] == "$";
   var displayName = isSecret ? name.slice(1) : name;
@@ -480,7 +484,7 @@ function SettingRow(props) {
   }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
     spacing: 1
-  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, !autoKey && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
   }, /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: keyId,
@@ -513,7 +517,10 @@ function SettingRow(props) {
 
 function AddSettingRow(props) {
   var {
-    client
+    client,
+    keyPrefix,
+    showSecrets,
+    autoKey
   } = props;
   var {
     0: name,
@@ -526,7 +533,7 @@ function AddSettingRow(props) {
   var {
     0: secret,
     1: setSecret
-  } = (0,react.useState)(true);
+  } = (0,react.useState)(showSecrets);
   var keyId = (0,react_use_id_hook_esm/* useId */.Me)();
   var valueId = (0,react_use_id_hook_esm/* useId */.Me)();
 
@@ -544,11 +551,13 @@ function AddSettingRow(props) {
 
   var handleAdd = /*#__PURE__*/function () {
     var _ref2 = (0,asyncToGenerator/* default */.Z)(function* (mounted) {
-      yield client.setStringValue("" + (secret ? "$" : "") + name, value);
+      var keyName = autoKey ? (0,random/* randomDeviceId */.b_)() : name;
+      var key = "" + (secret ? "$" : "") + (keyPrefix || "") + keyName;
+      yield client.setStringValue(key, value);
       if (!mounted()) return;
       setName("");
       setValue("");
-      setSecret(true);
+      setSecret(showSecrets);
     });
 
     return function handleAdd(_x) {
@@ -565,7 +574,7 @@ function AddSettingRow(props) {
     container: true,
     spacing: 1,
     alignContent: "center"
-  }, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, !autoKey && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
   }, /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: keyId,
@@ -587,7 +596,7 @@ function AddSettingRow(props) {
     helperText: valueError,
     value: value,
     onChange: handleValueChange
-  })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  })), showSecrets && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
   }, /*#__PURE__*/react.createElement(SwitchWithLabel/* default */.Z, {
     checked: secret,
@@ -598,7 +607,7 @@ function AddSettingRow(props) {
   }, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
     trackName: "settings.add",
     variant: "contained",
-    disabled: !name || !!keyError || !!valueError,
+    disabled: !autoKey && !name || !!keyError || !!valueError,
     title: "Add setting",
     onClick: handleAdd,
     icon: /*#__PURE__*/react.createElement(Add/* default */.Z, null)
@@ -608,23 +617,40 @@ function AddSettingRow(props) {
 function SettingsCard(props) {
   var {
     service,
-    mutable
+    mutable,
+    keyPrefix = "",
+    showSecrets,
+    autoKey
   } = props;
   var factory = (0,react.useCallback)(srv => new settingsclient/* default */.Z(srv), []);
   var client = (0,useServiceClient/* default */.Z)(service, factory);
-  var values = (0,useChange/* useChangeAsync */.R)(client, c => c === null || c === void 0 ? void 0 : c.list());
+  var values = (0,useChange/* useChangeAsync */.R)(client, /*#__PURE__*/function () {
+    var _ref3 = (0,asyncToGenerator/* default */.Z)(function* (c) {
+      var keys = yield c === null || c === void 0 ? void 0 : c.list();
+      return keys === null || keys === void 0 ? void 0 : keys.filter(_ref4 => {
+        var {
+          key
+        } = _ref4;
+        return !keyPrefix || key.startsWith(keyPrefix);
+      });
+    });
+
+    return function (_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }(), [keyPrefix]);
 
   var handleClear = /*#__PURE__*/function () {
-    var _ref3 = (0,asyncToGenerator/* default */.Z)(function* () {
+    var _ref5 = (0,asyncToGenerator/* default */.Z)(function* () {
       return yield client === null || client === void 0 ? void 0 : client.clear();
     });
 
     return function handleClear() {
-      return _ref3.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
 
-  var secrets = values === null || values === void 0 ? void 0 : values.filter(value => value.key[0] === "$");
+  var secrets = values === null || values === void 0 ? void 0 : values.filter(value => showSecrets && value.key[0] === "$");
   var publics = values === null || values === void 0 ? void 0 : values.filter(value => value.key[0] !== "$");
   if (!client) return /*#__PURE__*/react.createElement(LoadingProgress/* default */.Z, null); // wait till loaded
 
@@ -636,36 +662,40 @@ function SettingsCard(props) {
     spacing: 2
   }, mutable && /*#__PURE__*/react.createElement(AddSettingRow, {
     client: client,
+    keyPrefix: keyPrefix,
+    showSecrets: showSecrets,
+    autoKey: autoKey,
     key: "add"
-  }), !!(publics !== null && publics !== void 0 && publics.length) && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: 12
-  }, "Settings"), publics === null || publics === void 0 ? void 0 : publics.map(_ref4 => {
+  }), publics === null || publics === void 0 ? void 0 : publics.map(_ref6 => {
     var {
       key,
       value
-    } = _ref4;
+    } = _ref6;
     return /*#__PURE__*/react.createElement(SettingRow, {
       key: key,
       name: key,
       value: (0,utils/* bufferToString */.zT)(value),
       client: client,
-      mutable: mutable
+      mutable: mutable,
+      showSecrets: showSecrets,
+      autoKey: autoKey
     });
   }), !!(secrets !== null && secrets !== void 0 && secrets.length) && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
-  }, "Secrets"), secrets === null || secrets === void 0 ? void 0 : secrets.map(_ref5 => {
+  }, "Secrets"), secrets === null || secrets === void 0 ? void 0 : secrets.map(_ref7 => {
     var {
       key,
       value
-    } = _ref5;
+    } = _ref7;
     return /*#__PURE__*/react.createElement(SettingRow, {
       key: key,
       name: key,
       value: (0,utils/* bufferToString */.zT)(value),
       client: client,
-      mutable: mutable
+      mutable: mutable,
+      showSecrets: showSecrets,
+      autoKey: autoKey
     });
   }))), mutable && /*#__PURE__*/react.createElement(CardActions/* default */.Z, null, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
     trackName: "settings.clearall",
@@ -678,7 +708,33 @@ function SettingsCard(props) {
 var useServices = __webpack_require__(2928);
 // EXTERNAL MODULE: ./src/components/hooks/useServiceProviderFromServiceClass.ts
 var useServiceProviderFromServiceClass = __webpack_require__(36134);
+;// CONCATENATED MODULE: ./src/components/hooks/useLocationSearchParam.ts
+
+function useLocationSearchParamString(key) {
+  return (0,react.useMemo)(() => {
+    if (typeof window !== "undefined") {
+      var url = new URL(window.location.href);
+      return url.searchParams.get(key);
+    }
+
+    return undefined;
+  }, [key]);
+}
+function useLocationSearchParamBoolean(key) {
+  return (0,react.useMemo)(() => {
+    if (typeof window !== "undefined") {
+      var url = new URL(window.location.href);
+      var v = url.searchParams.get(key);
+      if (v) return v === "1" || v === "true"; // empty value
+
+      return url.searchParams.has(key);
+    }
+
+    return undefined;
+  }, [key]);
+}
 ;// CONCATENATED MODULE: ./src/pages/tools/settings.tsx
+
 
 
 
@@ -693,13 +749,16 @@ function Page() {
   var services = (0,useServices/* default */.Z)({
     serviceClass: constants/* SRV_SETTINGS */.B9b
   });
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h1", null, "Device Settings"), /*#__PURE__*/react.createElement("p", null, "Configure settings in a", " ", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+  var keyPrefix = useLocationSearchParamString("prefix");
+  var autoKey = useLocationSearchParamBoolean("autokey");
+  var showSecrets = !keyPrefix;
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h1", null, "Devices Settings"), /*#__PURE__*/react.createElement("p", null, "Configure settings in", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     to: "/services/settings/"
-  }, "settings"), " service."), /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, {
+  }, "settings"), " services."), /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, {
     serviceClass: constants/* SRV_SETTINGS */.B9b
   }), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
-    spacing: 2
+    spacing: 1
   }, services.map(service => /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     key: service.id,
     item: true,
@@ -707,11 +766,14 @@ function Page() {
     lg: 6
   }, /*#__PURE__*/react.createElement(SettingsCard, {
     service: service,
-    mutable: true
-  })))));
+    mutable: true,
+    keyPrefix: keyPrefix,
+    showSecrets: showSecrets,
+    autoKey: autoKey
+  })))), /*#__PURE__*/react.createElement("h2", null, "Advanced"), /*#__PURE__*/react.createElement("p", null, "You can use various URL argument to modify the behavior of this page."), /*#__PURE__*/react.createElement("ul", null, /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "prefix=JD"), ", will prefix and filter keys with", " ", /*#__PURE__*/react.createElement("code", null, "JD"), ". In this mode, secrets are disabled."), /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "autokey"), ", will automatically generate random keys for entries")));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-settings-tsx-681cf2e550520fea16f1.js.map
+//# sourceMappingURL=component---src-pages-tools-settings-tsx-6c636c5261be6fe47b90.js.map
