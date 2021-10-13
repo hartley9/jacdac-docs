@@ -261,7 +261,7 @@ function NoSsrConnectAlert(props) {
     component: "span",
     ml: 2
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_buttons_ConnectButtons__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-    full: true,
+    full: "always",
     transparent: true
   }))));
 }
@@ -742,4 +742,4 @@ function HIDEvents() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-speech-strings-tsx-27a64f6b0841350fb368.js.map
+//# sourceMappingURL=component---src-pages-tools-speech-strings-tsx-4a61c5a0b3a8c17e7a54.js.map

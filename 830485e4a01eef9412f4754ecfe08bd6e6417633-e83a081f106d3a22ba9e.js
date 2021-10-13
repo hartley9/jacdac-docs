@@ -134,7 +134,7 @@ function NoSsrConnectAlert(props) {
     component: "span",
     ml: 2
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_buttons_ConnectButtons__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-    full: true,
+    full: "always",
     transparent: true
   }))));
 }
@@ -670,4 +670,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-88d9aa707d3a1e5d07fe.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-e83a081f106d3a22ba9e.js.map

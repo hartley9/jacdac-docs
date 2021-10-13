@@ -101,7 +101,7 @@ function NoSsrConnectAlert(props) {
     component: "span",
     ml: 2
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_buttons_ConnectButtons__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-    full: true,
+    full: "always",
     transparent: true
   }))));
 }
@@ -643,4 +643,4 @@ function ProtocolTest() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-prototest-tsx-6504d41908ab90192624.js.map
+//# sourceMappingURL=component---src-pages-tools-prototest-tsx-196d80043b96f7194408.js.map

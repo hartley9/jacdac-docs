@@ -231,7 +231,7 @@ function NoSsrConnectAlert(props) {
     component: "span",
     ml: 2
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_buttons_ConnectButtons__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-    full: true,
+    full: "always",
     transparent: true
   }))));
 }
@@ -1284,4 +1284,4 @@ function ModelUploader() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-model-uploader-tsx-26f754f349b951ae29fb.js.map
+//# sourceMappingURL=component---src-pages-tools-model-uploader-tsx-158a161f0b8c0d425239.js.map

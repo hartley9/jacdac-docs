@@ -53,7 +53,7 @@ function NoSsrConnectAlert(props) {
     component: "span",
     ml: 2
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_buttons_ConnectButtons__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-    full: true,
+    full: "always",
     transparent: true
   }))));
 }
@@ -275,4 +275,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-flood-test-tsx-dfbba3ff75b1880c3ae1.js.map
+//# sourceMappingURL=component---src-pages-tools-flood-test-tsx-1a3cbad73710744f0dab.js.map
