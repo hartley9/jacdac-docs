@@ -1,6 +1,33 @@
 "use strict";
 (self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[171],{
 
+/***/ 32525:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
+}), 'Send');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 30171:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -95,4 +122,4 @@ function DashboardCODALMessageBus(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=171-a1c38803abbea03aab95.js.map
+//# sourceMappingURL=171-72ca44dcf2fae189751e.js.map
