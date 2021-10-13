@@ -50,7 +50,8 @@ function VanillaCodeButton(props) {
           resolutions: {
             "@babel/preset-env": "^7.15.8"
           },
-          keyworkds: ["jacdac", "typescript", "javascript"]
+          keywords: ["jacdac", "typescript", "javascript"],
+          browserslist: ["defaults"]
         }
       },
       "index.ts": {
@@ -69,4 +70,4 @@ function VanillaCodeButton(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=6055-84ab5ea10a2815558f08.js.map
+//# sourceMappingURL=6055-09c2c806319e3c72820f.js.map
