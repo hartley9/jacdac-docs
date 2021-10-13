@@ -871,7 +871,7 @@ function Page() {
   });
   var keyPrefix = useLocationSearchParamString("prefix");
   var autoKey = useLocationSearchParamBoolean("autokey", false);
-  var showSecrets = !keyPrefix;
+  var showSecrets = useLocationSearchParamBoolean("secrets", true) && !keyPrefix;
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h1", null, "Devices Settings"), /*#__PURE__*/react.createElement("p", null, "Configure &npsp;", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     to: "/services/settings/"
   }, "settings"), " ", "services."), /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, {
@@ -890,10 +890,10 @@ function Page() {
     keyPrefix: keyPrefix,
     showSecrets: showSecrets,
     autoKey: autoKey
-  })))), /*#__PURE__*/react.createElement("h2", null, "Advanced"), /*#__PURE__*/react.createElement("p", null, "You can use various URL argument to modify the behavior of this page."), /*#__PURE__*/react.createElement("ul", null, /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "prefix=JD"), ", will prefix and filter keys with", " ", /*#__PURE__*/react.createElement("code", null, "JD"), ". In this mode, secrets are disabled."), /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "autokey"), ", will automatically generate random keys for entries. Default is false."), /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "import=false"), ", will hide the import button")));
+  })))), /*#__PURE__*/react.createElement("h2", null, "Advanced"), /*#__PURE__*/react.createElement("p", null, "You can use various URL argument to modify the behavior of this page."), /*#__PURE__*/react.createElement("ul", null, /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "prefix=JD"), ", will prefix and filter keys with", " ", /*#__PURE__*/react.createElement("code", null, "JD"), ". In this mode, secrets are disabled."), /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "autokey"), ", will automatically generate random keys for entries. Default is false."), /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "secrets=0"), ", disables secrets")));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-settings-tsx-68e83db29d66b87e87e4.js.map
+//# sourceMappingURL=component---src-pages-tools-settings-tsx-3d79d2d18051be49e128.js.map
