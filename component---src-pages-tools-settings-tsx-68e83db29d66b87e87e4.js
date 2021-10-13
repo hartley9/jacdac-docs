@@ -872,9 +872,9 @@ function Page() {
   var keyPrefix = useLocationSearchParamString("prefix");
   var autoKey = useLocationSearchParamBoolean("autokey", false);
   var showSecrets = !keyPrefix;
-  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h1", null, "Devices Settings"), /*#__PURE__*/react.createElement("p", null, "Configure settings in", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h1", null, "Devices Settings"), /*#__PURE__*/react.createElement("p", null, "Configure &npsp;", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     to: "/services/settings/"
-  }, "settings"), " services."), /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, {
+  }, "settings"), " ", "services."), /*#__PURE__*/react.createElement(ConnectAlert/* default */.Z, {
     serviceClass: constants/* SRV_SETTINGS */.B9b
   }), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
@@ -896,4 +896,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-settings-tsx-97d96033ec987085275c.js.map
+//# sourceMappingURL=component---src-pages-tools-settings-tsx-68e83db29d66b87e87e4.js.map
