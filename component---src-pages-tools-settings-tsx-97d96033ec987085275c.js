@@ -55,6 +55,33 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 96898:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M12 16.5l4-4h-3v-9h-2v9H8l4 4zm9-13h-6v1.99h6v14.03H3V5.49h6V3.5H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2z"
+}), 'SystemUpdateAlt');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 14308:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -438,6 +465,12 @@ var random = __webpack_require__(80303);
 var lib = __webpack_require__(71481);
 // EXTERNAL MODULE: ./src/components/ServiceManagerContext.tsx + 3 modules
 var ServiceManagerContext = __webpack_require__(99808);
+// EXTERNAL MODULE: ./src/components/ui/Suspense.tsx
+var Suspense = __webpack_require__(69672);
+// EXTERNAL MODULE: ./src/components/AppContext.tsx
+var AppContext = __webpack_require__(84377);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/SystemUpdateAlt.js
+var SystemUpdateAlt = __webpack_require__(96898);
 ;// CONCATENATED MODULE: ./src/components/SettingsCard.tsx
 
 
@@ -458,6 +491,10 @@ var ServiceManagerContext = __webpack_require__(99808);
 
 
 
+
+
+
+var ImportButton = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 119).then(__webpack_require__.bind(__webpack_require__, 20119)));
 
 function SettingRow(props) {
   var {
@@ -620,6 +657,50 @@ function AddSettingRow(props) {
   }))));
 }
 
+function ImportSettingsButton(props) {
+  var {
+    client
+  } = props;
+  var {
+    setError
+  } = (0,react.useContext)(AppContext/* default */.ZP);
+
+  var handleFilesUploaded = /*#__PURE__*/function () {
+    var _ref3 = (0,asyncToGenerator/* default */.Z)(function* (files) {
+      for (var file of files) {
+        try {
+          var text = yield file.text();
+          var json = JSON.parse(text);
+
+          if (Array.isArray(json)) {
+            for (var entry of json) {
+              var {
+                key,
+                value
+              } = entry;
+              if (key) yield client.setStringValue(key, value);
+            }
+          }
+        } catch (e) {
+          console.warn(e);
+          setError("invalid file " + file.name);
+        }
+      }
+    });
+
+    return function handleFilesUploaded(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/react.createElement(Suspense/* default */.Z, null, /*#__PURE__*/react.createElement(ImportButton, {
+    icon: false,
+    text: "Import",
+    onFilesUploaded: handleFilesUploaded,
+    acceptedFiles: ["application/json"]
+  }));
+}
+
 function SettingsCard(props) {
   var {
     service,
@@ -634,18 +715,18 @@ function SettingsCard(props) {
   var factory = (0,react.useCallback)(srv => new settingsclient/* default */.Z(srv), []);
   var client = (0,useServiceClient/* default */.Z)(service, factory);
   var values = (0,useChange/* useChangeAsync */.R)(client, /*#__PURE__*/function () {
-    var _ref3 = (0,asyncToGenerator/* default */.Z)(function* (c) {
+    var _ref4 = (0,asyncToGenerator/* default */.Z)(function* (c) {
       var keys = yield c === null || c === void 0 ? void 0 : c.list();
-      return keys === null || keys === void 0 ? void 0 : keys.filter(_ref4 => {
+      return keys === null || keys === void 0 ? void 0 : keys.filter(_ref5 => {
         var {
           key
-        } = _ref4;
+        } = _ref5;
         return !keyPrefix || key.startsWith(keyPrefix);
-      }).map(_ref5 => {
+      }).map(_ref6 => {
         var {
           key,
           value
-        } = _ref5;
+        } = _ref6;
         return {
           key,
           value: (0,utils/* bufferToString */.zT)(value)
@@ -653,25 +734,25 @@ function SettingsCard(props) {
       });
     });
 
-    return function (_x2) {
-      return _ref3.apply(this, arguments);
+    return function (_x3) {
+      return _ref4.apply(this, arguments);
     };
   }(), [keyPrefix]);
+  var secrets = values === null || values === void 0 ? void 0 : values.filter(value => showSecrets && value.key[0] === "$");
+  var publics = values === null || values === void 0 ? void 0 : values.filter(value => value.key[0] !== "$");
 
   var handleClear = /*#__PURE__*/function () {
-    var _ref6 = (0,asyncToGenerator/* default */.Z)(function* () {
+    var _ref7 = (0,asyncToGenerator/* default */.Z)(function* () {
       return yield client === null || client === void 0 ? void 0 : client.clear();
     });
 
     return function handleClear() {
-      return _ref6.apply(this, arguments);
+      return _ref7.apply(this, arguments);
     };
   }();
 
-  var handleExport = () => fileStorage.saveText("settings.json", JSON.stringify(values || {}, null, 2));
+  var handleExport = () => fileStorage.saveText("settings.json", JSON.stringify(publics || {}, null, 2));
 
-  var secrets = values === null || values === void 0 ? void 0 : values.filter(value => showSecrets && value.key[0] === "$");
-  var publics = values === null || values === void 0 ? void 0 : values.filter(value => value.key[0] !== "$");
   if (!client) return /*#__PURE__*/react.createElement(LoadingProgress/* default */.Z, null); // wait till loaded
 
   return /*#__PURE__*/react.createElement(Card/* default */.Z, null, /*#__PURE__*/react.createElement(DeviceCardHeader/* default */.Z, {
@@ -684,13 +765,12 @@ function SettingsCard(props) {
     client: client,
     keyPrefix: keyPrefix,
     showSecrets: showSecrets,
-    autoKey: autoKey,
-    key: "add"
-  }), publics === null || publics === void 0 ? void 0 : publics.map(_ref7 => {
+    autoKey: autoKey
+  }), publics === null || publics === void 0 ? void 0 : publics.map(_ref8 => {
     var {
       key,
       value
-    } = _ref7;
+    } = _ref8;
     return /*#__PURE__*/react.createElement(SettingRow, {
       key: key,
       name: key,
@@ -703,11 +783,11 @@ function SettingsCard(props) {
   }), !!(secrets !== null && secrets !== void 0 && secrets.length) && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
-  }, "Secrets"), secrets === null || secrets === void 0 ? void 0 : secrets.map(_ref8 => {
+  }, "Secrets"), secrets === null || secrets === void 0 ? void 0 : secrets.map(_ref9 => {
     var {
       key,
       value
-    } = _ref8;
+    } = _ref9;
     return /*#__PURE__*/react.createElement(SettingRow, {
       key: key,
       name: key,
@@ -735,8 +815,13 @@ function SettingsCard(props) {
     variant: "outlined",
     title: "export",
     disabled: !values,
-    onClick: handleExport
-  }, "Export")))));
+    onClick: handleExport,
+    startIcon: /*#__PURE__*/react.createElement(SystemUpdateAlt/* default */.Z, null)
+  }, "Export")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(ImportSettingsButton, {
+    client: client
+  })))));
 }
 // EXTERNAL MODULE: ./src/components/hooks/useServices.ts
 var useServices = __webpack_require__(2928);
@@ -754,18 +839,19 @@ function useLocationSearchParamString(key) {
     return undefined;
   }, [key]);
 }
-function useLocationSearchParamBoolean(key) {
+function useLocationSearchParamBoolean(key, defaultValue) {
   return (0,react.useMemo)(() => {
     if (typeof window !== "undefined") {
       var url = new URL(window.location.href);
       var v = url.searchParams.get(key);
-      if (v) return v === "1" || v === "true"; // empty value
+      if (v) return v === "1" || v === "true" || v === "yes"; // empty value
 
-      return url.searchParams.has(key);
+      if (url.searchParams.has(key)) return true;
+      return defaultValue;
     }
 
     return undefined;
-  }, [key]);
+  }, [key, defaultValue]);
 }
 ;// CONCATENATED MODULE: ./src/pages/tools/settings.tsx
 
@@ -784,7 +870,7 @@ function Page() {
     serviceClass: constants/* SRV_SETTINGS */.B9b
   });
   var keyPrefix = useLocationSearchParamString("prefix");
-  var autoKey = useLocationSearchParamBoolean("autokey");
+  var autoKey = useLocationSearchParamBoolean("autokey", false);
   var showSecrets = !keyPrefix;
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("h1", null, "Devices Settings"), /*#__PURE__*/react.createElement("p", null, "Configure settings in", /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
     to: "/services/settings/"
@@ -804,10 +890,10 @@ function Page() {
     keyPrefix: keyPrefix,
     showSecrets: showSecrets,
     autoKey: autoKey
-  })))), /*#__PURE__*/react.createElement("h2", null, "Advanced"), /*#__PURE__*/react.createElement("p", null, "You can use various URL argument to modify the behavior of this page."), /*#__PURE__*/react.createElement("ul", null, /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "prefix=JD"), ", will prefix and filter keys with", " ", /*#__PURE__*/react.createElement("code", null, "JD"), ". In this mode, secrets are disabled."), /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "autokey"), ", will automatically generate random keys for entries")));
+  })))), /*#__PURE__*/react.createElement("h2", null, "Advanced"), /*#__PURE__*/react.createElement("p", null, "You can use various URL argument to modify the behavior of this page."), /*#__PURE__*/react.createElement("ul", null, /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "prefix=JD"), ", will prefix and filter keys with", " ", /*#__PURE__*/react.createElement("code", null, "JD"), ". In this mode, secrets are disabled."), /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "autokey"), ", will automatically generate random keys for entries. Default is false."), /*#__PURE__*/react.createElement("li", null, /*#__PURE__*/react.createElement("code", null, "import=false"), ", will hide the import button")));
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-settings-tsx-fa453fecc68f68110ebf.js.map
+//# sourceMappingURL=component---src-pages-tools-settings-tsx-97d96033ec987085275c.js.map
