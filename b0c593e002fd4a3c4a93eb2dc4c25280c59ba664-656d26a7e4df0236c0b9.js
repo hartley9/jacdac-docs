@@ -2918,7 +2918,7 @@ var ReactFieldBase = __webpack_require__(34964);
 
 
 
-function workspaceToJSON(workspace, workspaceXml, dsls, top) {
+function workspaceToJSON(workspace, dsls, top) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   var clean = o => Object.keys(o).filter(k => o[k] === undefined || o[k] === null).forEach(k => delete o[k]);
 
@@ -3065,7 +3065,12 @@ function workspaceToJSON(workspace, workspaceXml, dsls, top) {
     dsls.forEach(dsl => {
       var _dsl$visitWorkspaceJS;
 
-      return (_dsl$visitWorkspaceJS = dsl.visitWorkspaceJSON) === null || _dsl$visitWorkspaceJS === void 0 ? void 0 : _dsl$visitWorkspaceJS.call(dsl, workspace, workspaceXml, json);
+      return (_dsl$visitWorkspaceJS = dsl.visitWorkspaceJSON) === null || _dsl$visitWorkspaceJS === void 0 ? void 0 : _dsl$visitWorkspaceJS.call(dsl, workspace, json);
+    });
+    dsls.forEach(dsl => {
+      var _dsl$onWorkspaceJSONC;
+
+      return (_dsl$onWorkspaceJSONC = dsl.onWorkspaceJSONChange) === null || _dsl$onWorkspaceJSONC === void 0 ? void 0 : _dsl$onWorkspaceJSONC.call(dsl, json);
     });
     return json;
   } catch (e) {
@@ -4346,7 +4351,7 @@ function BlockProvider(props) {
   }, [workspace, workspaceDirectory]);
   (0,react.useEffect)(() => {
     if (!workspace || dragging) return;
-    var newWorkspaceJSON = workspaceToJSON(workspace, workspaceXml, dsls);
+    var newWorkspaceJSON = workspaceToJSON(workspace, dsls);
     setWorkspaceJSON(newWorkspaceJSON);
     var newWarnings = collectWarnings(newWorkspaceJSON);
     setWarnings(toolbox/* JSON_WARNINGS_CATEGORY */.FD, newWarnings);
@@ -4380,22 +4385,28 @@ function BlockProvider(props) {
     };
   }(), [workspaceFile]);
   (0,useEffectAsync/* default */.Z)( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)(function* () {
-    if (!workspaceFile) return;
     var file = {
       editor: editorId,
       xml: workspaceXml,
       json: workspaceJSON
-    }; // allow dsls to add data
-
+    };
     dsls.forEach(dsl => {
       var _dsl$onBeforeSaveWork;
 
       return (_dsl$onBeforeSaveWork = dsl.onBeforeSaveWorkspaceFile) === null || _dsl$onBeforeSaveWork === void 0 ? void 0 : _dsl$onBeforeSaveWork.call(dsl, file);
     });
     onBeforeSaveWorkspaceFile === null || onBeforeSaveWorkspaceFile === void 0 ? void 0 : onBeforeSaveWorkspaceFile(file);
-    var fileContent = JSON.stringify(file);
-    workspaceFile === null || workspaceFile === void 0 ? void 0 : workspaceFile.write(fileContent);
-  }), [editorId, workspaceFile, workspaceJSON]);
+    dsls.forEach(dsl => {
+      var _dsl$onSave;
+
+      return (_dsl$onSave = dsl.onSave) === null || _dsl$onSave === void 0 ? void 0 : _dsl$onSave.call(dsl, file);
+    });
+
+    if (workspaceFile) {
+      var fileContent = JSON.stringify(file);
+      workspaceFile === null || workspaceFile === void 0 ? void 0 : workspaceFile.write(fileContent);
+    }
+  }), [editorId, workspaceFile, workspaceXml, workspaceJSON]);
   (0,react.useEffect)(() => {
     var services = (0,WorkspaceContext/* resolveWorkspaceServices */.O7)(workspace);
     if (services) services.workspaceJSON = workspaceJSON;
@@ -12802,4 +12813,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-8ef7533f07824c893e64.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-656d26a7e4df0236c0b9.js.map

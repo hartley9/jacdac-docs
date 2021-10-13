@@ -350,11 +350,6 @@ function useLocationSearchParamBoolean(key, defaultValue) {
     if (typeof window !== "undefined") {
       var url = new URL(window.location.href);
       var v = url.searchParams.get(key);
-      console.log({
-        key,
-        url,
-        v
-      });
 
       if (v) {
         if (v === "1" || v === "true" || v === "yes") return true;else if (v === "0" || v === "false" || v === "no") return false;else return defaultValue;
@@ -917,4 +912,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-settings-tsx-19809ad9218a9658e3f4.js.map
+//# sourceMappingURL=component---src-pages-tools-settings-tsx-33fab30ee4ff937d3c02.js.map

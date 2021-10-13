@@ -799,12 +799,14 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
     return this.category;
   };
 
-  _proto.visitWorkspaceJSON = function visitWorkspaceJSON(workspace, workspaceXml, workspaceJSON) {
-    // TODO store editor id
+  _proto.onWorkspaceJSONChange = function onWorkspaceJSONChange(json) {
     this.post("workspace", {
-      source: workspaceXml,
-      workspace: workspaceJSON
+      workspace: json
     });
+  };
+
+  _proto.onSave = function onSave(file) {
+    this.post("save", file);
   };
 
   return IFrameDomainSpecificLanguage;
@@ -827,4 +829,4 @@ function createIFrameDSL(id, targetOrigin) {
 /***/ })
 
 }]);
-//# sourceMappingURL=86bd1a670c99d16a75c30550d9a7c34f0739ff9c-dedf44f4a26a0947378e.js.map
+//# sourceMappingURL=86bd1a670c99d16a75c30550d9a7c34f0739ff9c-3a7dc2ef1e41c91ccb9a.js.map
