@@ -5111,7 +5111,10 @@ function BrowserCompatibilityAlert(props) {
     severity: "warning"
   }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Browser not compatible."), label);
 }
+// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 24 modules
+var providerbus = __webpack_require__(47751);
 ;// CONCATENATED MODULE: ./src/components/blockly/BlockEditor.tsx
+
 
 
 
@@ -5128,7 +5131,7 @@ function BrowserCompatibilityAlert(props) {
 
 var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default */.Z)({
   editor: {
-    height: "calc(100vh - " + (flags/* default.diagnostics */.Z.diagnostics ? 15 : 10) + "rem)",
+    height: "calc(100vh - " + (providerbus/* UIFlags.hosted */.A.hosted ? 3.5 : flags/* default.diagnostics */.Z.diagnostics ? 15 : 10) + "rem)",
     "& .blocklyTreeLabel": {
       fontFamily: theme.typography.fontFamily
     },
@@ -12813,4 +12816,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-656d26a7e4df0236c0b9.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-c1579bda0faec34f850d.js.map

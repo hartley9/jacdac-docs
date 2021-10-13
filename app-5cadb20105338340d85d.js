@@ -50512,8 +50512,8 @@ var IFrameTransport = /*#__PURE__*/function (_JDClient) {
 var DarkModeContext = __webpack_require__(91350);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
 var Context = __webpack_require__(20392);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
-var iframeclient = __webpack_require__(9809);
+// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 24 modules
+var providerbus = __webpack_require__(47751);
 ;// CONCATENATED MODULE: ./src/components/ServiceManagerContext.tsx
 
 
@@ -50595,7 +50595,7 @@ var ServiceManagerProvider = _ref => {
   }, children);
 
   function createProps() {
-    var isHosted = (0,iframeclient/* inIFrame */.H)() && /(hosted|embed)=1/.test(window.location.href);
+    var isHosted = providerbus/* UIFlags.hosted */.A.hosted;
     var fileStorage = new BrowserFileStorage();
     var modelStore = undefined;
 
@@ -53314,20 +53314,22 @@ function MembersInput(props) {
 /* harmony export */   "cr": function() { return /* binding */ importModelJSONIntoWorkspace; }
 /* harmony export */ });
 /* unused harmony exports listDirectories, listFiles, fileOpen, importFiles */
-/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15861);
-/* harmony import */ var _jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9809);
+/* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15861);
+/* harmony import */ var _jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9809);
+/* harmony import */ var _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(47751);
+
 
 
 
 function fileSystemHandleSupported() {
-  return typeof window !== "undefined" && !!window.showDirectoryPicker && !(0,_jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_0__/* .inIFrame */ .H)();
+  return typeof window !== "undefined" && !!window.showDirectoryPicker && !(0,_jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_1__/* .inIFrame */ .H)() && !_jacdac_providerbus__WEBPACK_IMPORTED_MODULE_0__/* .UIFlags.hosted */ .A.hosted;
 }
 function writeFileText(_x, _x2) {
   return _writeFileText.apply(this, arguments);
 }
 
 function _writeFileText() {
-  _writeFileText = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (fileHandle, content) {
+  _writeFileText = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(function* (fileHandle, content) {
     var file = yield fileHandle.createWritable({
       keepExistingData: false
     });
@@ -53352,7 +53354,7 @@ function readFileText(_x3) {
 }
 
 function _readFileText() {
-  _readFileText = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (fileHandle) {
+  _readFileText = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(function* (fileHandle) {
     var file = yield fileHandle.getFile();
 
     try {
@@ -53455,7 +53457,7 @@ function fileOpen(_x7) {
 }
 
 function _fileOpen() {
-  _fileOpen = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (options) {
+  _fileOpen = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(function* (options) {
     if (options === void 0) {
       options = {};
     }
@@ -53491,7 +53493,7 @@ function importFiles(_x8, _x9) {
 }
 
 function _importFiles() {
-  _importFiles = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (directory, files) {
+  _importFiles = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(function* (directory, files) {
     if (!directory || !(files !== null && files !== void 0 && files.length)) return;
 
     for (var file of files) {
@@ -53511,7 +53513,7 @@ function importCSVFilesIntoWorkspace(_x10) {
 }
 
 function _importCSVFilesIntoWorkspace() {
-  _importCSVFilesIntoWorkspace = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (directory) {
+  _importCSVFilesIntoWorkspace = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(function* (directory) {
     var files = yield fileOpen({
       multiple: true,
       mimeTypes: {
@@ -53528,7 +53530,7 @@ function importModelJSONIntoWorkspace(_x11) {
 }
 
 function _importModelJSONIntoWorkspace() {
-  _importModelJSONIntoWorkspace = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(function* (directory) {
+  _importModelJSONIntoWorkspace = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(function* (directory) {
     var files = yield fileOpen({
       multiple: true,
       mimeTypes: {
@@ -69255,7 +69257,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "0de3845d66d74fa3ec893ddcc33ff0a5af2477dc";
+var sha = "43e3842877129a5202d083db9d5aa4f40cde423f";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70108,7 +70110,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0de3845d66d74fa3ec893ddcc33ff0a5af2477dc";
+  var sha = "43e3842877129a5202d083db9d5aa4f40cde423f";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71550,6 +71552,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
 var TraceAlert = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(8809)]).then(__webpack_require__.bind(__webpack_require__, 88809)));
 var WebDiagnostics = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 3828).then(__webpack_require__.bind(__webpack_require__, 3828)));
 var AppDrawer = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(2893)]).then(__webpack_require__.bind(__webpack_require__, 52893)));
@@ -71684,7 +71687,7 @@ function LayoutWithContext(props) {
   var {
     frontmatter
   } = pageContext || {};
-  var isHosted = /(hosted|embed)=1/.test(window.location.href);
+  var isHosted = providerbus/* UIFlags.hosted */.A.hosted;
   var tools = /^\/tools\//.test(path);
   var makeCodeTool = /tools\/makecode-/.test(path);
   var fullWidthTools = /^\/editors\/\w+\/$/.test(path) || /^\/(tools\/makecode-|dashboard)/.test(path);
@@ -72293,7 +72296,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "0de3845d66d74fa3ec893ddcc33ff0a5af2477dc";
+    var sha = "43e3842877129a5202d083db9d5aa4f40cde423f";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -80714,6 +80717,7 @@ UIFlags.peers = args.peers;
 UIFlags.localhost = args.localhost;
 UIFlags.passive = args.passive;
 UIFlags.storage = true;
+UIFlags.hosted = typeof window !== "undefined" && /(hosted|embed)=1/.test(window.location.href);
 
 function createBus() {
   var worker = typeof window !== "undefined" && new Worker((0,gatsby_browser_entry.withPrefix)("/jacdac-worker-" + package_namespaceObject.i8 + ".js"));
@@ -88382,4 +88386,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-39f640b34a77b551ce78.js.map
+//# sourceMappingURL=app-5cadb20105338340d85d.js.map
