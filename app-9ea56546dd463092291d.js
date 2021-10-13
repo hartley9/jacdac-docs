@@ -36069,6 +36069,7 @@ var JDClient = /*#__PURE__*/function (_JDEventSource) {
 /* harmony export */   "CM_": function() { return /* binding */ ERROR_MICROBIT_UNKNOWN; },
 /* harmony export */   "kbU": function() { return /* binding */ ERROR_MICROBIT_JACDAC_MISSING; },
 /* harmony export */   "mZW": function() { return /* binding */ ERROR_MICROBIT_INVALID_MEMORY; },
+/* harmony export */   "jaw": function() { return /* binding */ ERROR_TRANSPORT_DEVICE_LOCKED; },
 /* harmony export */   "l9m": function() { return /* binding */ ROLE_BOUND; },
 /* harmony export */   "CCp": function() { return /* binding */ ROLE_UNBOUND; },
 /* harmony export */   "E5I": function() { return /* binding */ BOUND; },
@@ -36426,6 +36427,7 @@ var ERROR_MICROBIT_V1 = "microbit/v1-not-supported";
 var ERROR_MICROBIT_UNKNOWN = "microbit/unknown-hardware-revision";
 var ERROR_MICROBIT_JACDAC_MISSING = "microbit/jacdac-missing";
 var ERROR_MICROBIT_INVALID_MEMORY = "microbit/invalid-memory";
+var ERROR_TRANSPORT_DEVICE_LOCKED = "transport/device-locked";
 var ROLE_BOUND = "roleBound";
 var ROLE_UNBOUND = "roleUnbound";
 var ROLE_HAS_NO_SERVICE = "roleHasNoService";
@@ -36478,7 +36480,11 @@ var JDError = /*#__PURE__*/function (_Error) {
  */
 
 function errorCode(e) {
-  return e.name === _constants__WEBPACK_IMPORTED_MODULE_0__/* .JACDAC_ERROR */ .T9W ? e === null || e === void 0 ? void 0 : e.jacdacName : undefined;
+  var jacdacCode = e.name === _constants__WEBPACK_IMPORTED_MODULE_0__/* .JACDAC_ERROR */ .T9W ? e === null || e === void 0 ? void 0 : e.jacdacName : undefined;
+  if (jacdacCode) return jacdacCode;
+  var deviceLocked = e.name == "NetworkError" && /unable to claim interface/i.test(e.message);
+  if (deviceLocked) return _constants__WEBPACK_IMPORTED_MODULE_0__/* .ERROR_TRANSPORT_DEVICE_LOCKED */ .jaw;
+  return undefined;
 }
 
 /***/ }),
@@ -47129,6 +47135,10 @@ var AppProvider = _ref => {
     if (!e || (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_4__/* .isCancelError */ .G5)(e)) return;
     var msg = (e === null || e === void 0 ? void 0 : e.message) || e + "";
     var code = (0,_jacdac_ts_src_jdom_error__WEBPACK_IMPORTED_MODULE_3__/* .errorCode */ .uY)(e);
+    console.error(msg, {
+      code,
+      error: e
+    });
     trackError === null || trackError === void 0 ? void 0 : trackError(e, {
       code
     });
@@ -47846,22 +47856,11 @@ function DrawerToolsButtonGroup(props) {
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(35313);
-/* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(36176);
-/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81794);
+/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(81794);
+/* harmony import */ var _ui_PageLinkList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(85748);
 
 
 
-
-
-function ErrorListItem(props) {
-  var {
-    slug,
-    title
-  } = props;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_2__.Link, {
-    to: "/" + slug
-  }, title));
-}
 
 function ErrorList() {
   var _data$allMdx, _data$allMdx$nodes;
@@ -47875,16 +47874,14 @@ function ErrorList() {
     slug: node.slug,
     title: node.frontmatter.title
   }));
-  var groups = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_3__/* .groupBy */ .vM)(nodes, node => node.slug.split("/", 3)[2] || "");
+  var groups = (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_2__/* .groupBy */ .vM)(nodes, node => node.slug.split("/", 3)[2] || "");
   var groupNames = Object.keys(groups).filter(g => !!g);
   console.debug(groupNames);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, groupNames.map(group => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
     key: group
-  }, group), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-    key: group + "list"
-  }, groups[group].map(node => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ErrorListItem, Object.assign({
-    key: node.slug
-  }, node)))))));
+  }, group), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_PageLinkList__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
+    nodes: groups[group]
+  }))));
 }
 
 /***/ }),
@@ -69258,7 +69255,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "8b1e699096497ba2c77e7d429189da072de00d0d";
+var sha = "1e9849d42196e14c2c77476d19280421ebb33f1e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70111,7 +70108,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "8b1e699096497ba2c77e7d429189da072de00d0d";
+  var sha = "1e9849d42196e14c2c77476d19280421ebb33f1e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72296,7 +72293,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "8b1e699096497ba2c77e7d429189da072de00d0d";
+    var sha = "1e9849d42196e14c2c77476d19280421ebb33f1e";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -72908,7 +72905,7 @@ function PageLinkList(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby__WEBPACK_IMPORTED_MODULE_0__.Link, {
       color: "textPrimary",
       rel: "noopener noreferrer",
-      to: slug
+      to: "/" + slug
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
       primary: title
     })));
@@ -83177,6 +83174,7 @@ exports.components = {
   "component---src-pages-reference-errors-microbit-jacdac-missing-mdx": () => __webpack_require__.e(/* import() | component---src-pages-reference-errors-microbit-jacdac-missing-mdx */ 3801).then(__webpack_require__.bind(__webpack_require__, 34346)),
   "component---src-pages-reference-errors-microbit-unknown-hardware-revision-mdx": () => __webpack_require__.e(/* import() | component---src-pages-reference-errors-microbit-unknown-hardware-revision-mdx */ 2512).then(__webpack_require__.bind(__webpack_require__, 2736)),
   "component---src-pages-reference-errors-microbit-v-1-not-supported-mdx": () => __webpack_require__.e(/* import() | component---src-pages-reference-errors-microbit-v-1-not-supported-mdx */ 5451).then(__webpack_require__.bind(__webpack_require__, 11449)),
+  "component---src-pages-reference-errors-transport-device-locked-mdx": () => __webpack_require__.e(/* import() | component---src-pages-reference-errors-transport-device-locked-mdx */ 355).then(__webpack_require__.bind(__webpack_require__, 24119)),
   "component---src-pages-services-tsx": () => __webpack_require__.e(/* import() | component---src-pages-services-tsx */ 7858).then(__webpack_require__.bind(__webpack_require__, 67713)),
   "component---src-pages-software-device-tree-mdx": () => __webpack_require__.e(/* import() | component---src-pages-software-device-tree-mdx */ 8036).then(__webpack_require__.bind(__webpack_require__, 67749)),
   "component---src-pages-software-mdx": () => __webpack_require__.e(/* import() | component---src-pages-software-mdx */ 8307).then(__webpack_require__.bind(__webpack_require__, 46690)),
@@ -88384,4 +88382,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-3ba7284f61841cd09cd8.js.map
+//# sourceMappingURL=app-9ea56546dd463092291d.js.map

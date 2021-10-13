@@ -4441,6 +4441,7 @@ const ERROR_MICROBIT_V1 = "microbit/v1-not-supported";
 const ERROR_MICROBIT_UNKNOWN = "microbit/unknown-hardware-revision";
 const ERROR_MICROBIT_JACDAC_MISSING = "microbit/jacdac-missing";
 const ERROR_MICROBIT_INVALID_MEMORY = "microbit/invalid-memory";
+const ERROR_TRANSPORT_DEVICE_LOCKED = "transport/device-locked";
 const JACDAC_ERROR = "JacdacError";
 
 /**
@@ -4461,7 +4462,13 @@ class JDError extends Error {
  * @category Runtime
  */
 function errorCode(e) {
-    return e.name === JACDAC_ERROR ? e?.jacdacName : undefined;
+    const jacdacCode = e.name === JACDAC_ERROR ? e?.jacdacName : undefined;
+    if (jacdacCode)
+        return jacdacCode;
+    const deviceLocked = e.name == "NetworkError" && /unable to claim interface/i.test(e.message);
+    if (deviceLocked)
+        return ERROR_TRANSPORT_DEVICE_LOCKED;
+    return undefined;
 }
 
 /**
