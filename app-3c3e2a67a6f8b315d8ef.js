@@ -19858,6 +19858,34 @@ exports.Z = _default;
 
 /***/ }),
 
+/***/ 32525:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
+}), 'Send');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 88237:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -69230,7 +69258,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "403a9a48914fae84903753c87615a526dcb11ebf";
+var sha = "fac9002a3ca6771ccd02736e135b663724309736";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70083,7 +70111,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "403a9a48914fae84903753c87615a526dcb11ebf";
+  var sha = "fac9002a3ca6771ccd02736e135b663724309736";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72191,6 +72219,8 @@ function useRoleManagerClient() {
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(80838);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1059);
 /* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(36176);
+/* harmony import */ var _material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(32525);
+
 
 
 
@@ -72220,7 +72250,8 @@ function DevToolsLauncher() {
     item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_1__.Button, {
     variant: "outlined",
-    href: url
+    href: url,
+    startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, null)
   }, "Open")));
 }
 
@@ -72265,7 +72296,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "403a9a48914fae84903753c87615a526dcb11ebf";
+    var sha = "fac9002a3ca6771ccd02736e135b663724309736";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88353,4 +88384,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-5bf24231b5b48e7668d6.js.map
+//# sourceMappingURL=app-3c3e2a67a6f8b315d8ef.js.map
