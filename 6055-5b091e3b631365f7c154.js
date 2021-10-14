@@ -40,9 +40,9 @@ function VanillaCodeButton(props) {
             build: "parcel build index.html"
           },
           dependencies: {
-            "jacdac-ts": "^1.18.13",
+            "jacdac-ts": "^1.18.16",
             milligram: "^1.4.1",
-            "parcel-bundler": "^1.12.5"
+            "parcel-bundler": "^2.0.0"
           },
           devDependencies: {
             typescript: "^4.4.3"
@@ -70,4 +70,4 @@ function VanillaCodeButton(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=6055-09c2c806319e3c72820f.js.map
+//# sourceMappingURL=6055-5b091e3b631365f7c154.js.map
