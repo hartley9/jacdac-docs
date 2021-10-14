@@ -69281,7 +69281,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "c0179945583f1de9ad5d0367b7f55ad6e8d3d4f0";
+var sha = "e9e8cec831242d37f646cbd72f9ffe55a4dbd039";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70134,7 +70134,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "c0179945583f1de9ad5d0367b7f55ad6e8d3d4f0";
+  var sha = "e9e8cec831242d37f646cbd72f9ffe55a4dbd039";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72320,7 +72320,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "c0179945583f1de9ad5d0367b7f55ad6e8d3d4f0";
+    var sha = "e9e8cec831242d37f646cbd72f9ffe55a4dbd039";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -74824,7 +74824,6 @@ var jdutils = __webpack_require__(30055);
 
 
 
-
 /**
  * A Jacdac service client hosting registers, events.
  * @category JDOM
@@ -74859,10 +74858,8 @@ var JDService = /*#__PURE__*/function (_JDNode) {
       // todo update status code with event payload
       var {
         data
-      } = statusCodeChanged;
-      console.debug((0,assertThisInitialized/* default */.Z)(_this) + ": status code changed event", {
-        data
-      }); // schedule data update
+      } = statusCodeChanged; //console.debug(`${this}: status code changed event`, { data })
+      // schedule data update
 
       var statusCode = _this.register(specconstants/* BaseReg.StatusCode */.vCn.StatusCode);
 
@@ -88410,4 +88407,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-eccd8b18f02b38aa6c51.js.map
+//# sourceMappingURL=app-7abb3fdf6acabc50e23c.js.map
