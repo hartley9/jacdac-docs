@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-service-tsx",
+    "path": "/services/proxy/",
+    "result": {"pageContext":{"classIdentifier":384932169,"source":"# Proxy\n\nA service that tags a device as a packet proxy.\n\n    identifier: 0x16f19949\n\nA device in proxy mode will proxy Jacdac packets and typically has its core logic halted.\n","title":"Proxy"}},
+    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

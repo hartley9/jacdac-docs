@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-8329b98f91e5ce6c9bcd.js"
+    "url": "webpack-runtime-a39a1beffa158ce70307.js"
   },
   {
     "url": "styles.74eb5aed1bb14cdb4c8b.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "314a10ffce3ac62dddadb14817c6d17d"
+    "revision": "4afbb94165ac8d7fc34d535982b808f4"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "7103d801f6f67e1e850241a916821906"
+    "revision": "595f4d885c7f54e88c70a1b74b446654"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "7f15e003ed58e88c7bc76550b279b032"
+    "revision": "c54f18ca60bf5f5252e5678ba9c3d5fa"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "2e64a0f289b565f50b9684d7d30743f2"
+    "revision": "17b1cabe0def6acce16a16b145bf6e58"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "6da97c823e2a2eb07c90e4d5fb96bb0b"
+    "revision": "53198c0780d85d4d1f7ee2ff54becb73"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "937be66c808e5229d2e4facde11a9b2a"
+    "revision": "8186aaf3ab0dd8ff6e21043f92679bbe"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -109,7 +109,7 @@ self.__precacheManifest = [
     "revision": "6692e9bedbedc674756f87f52065ff68"
   },
   {
-    "url": "830485e4a01eef9412f4754ecfe08bd6e6417633-24f09f2c6df9ffc50b42.js"
+    "url": "830485e4a01eef9412f4754ecfe08bd6e6417633-12c9fbea7564c0a0bebd.js"
   },
   {
     "url": "component---src-pages-dashboard-tsx-e7970a4d277554c3e8ff.js"
@@ -284,14 +284,14 @@ self.__precacheManifest = [
     "url": "149f11818c122b40ce2932f15d148eda4aaa5f90-ec2c26b2428050a531f3.js"
   },
   {
-    "url": "component---src-templates-service-tsx-c129aa45db4a56a6684b.js"
+    "url": "component---src-templates-service-tsx-3e95aeec7764ebcbb1f7.js"
   },
   {
     "url": "page-data/services/_base/page-data.json",
     "revision": "118f49a65e0a883795adf9664f79cdcb"
   },
   {
-    "url": "component---src-templates-service-playground-tsx-9f19e4141342f0fd4a3b.js"
+    "url": "component---src-templates-service-playground-tsx-e9e358bae3df663d5a0d.js"
   },
   {
     "url": "page-data/services/_base/playground/page-data.json",
@@ -698,6 +698,14 @@ self.__precacheManifest = [
     "revision": "082c74751749c3d61ab51ff38085cbc2"
   },
   {
+    "url": "page-data/services/proxy/page-data.json",
+    "revision": "96b13156440673c819dd52c774eaab28"
+  },
+  {
+    "url": "page-data/services/proxy/playground/page-data.json",
+    "revision": "877bf45f4995a1423f3c6cf7e96351cf"
+  },
+  {
     "url": "page-data/services/pulseoximeter/page-data.json",
     "revision": "4d53fd9632cfe17ada5b7381226428df"
   },
@@ -1098,7 +1106,7 @@ self.__precacheManifest = [
     "revision": "da909e98d544747fa69db54af399cbf0"
   },
   {
-    "url": "component---src-pages-tools-collector-tsx-d859713d694c7a82ff1e.js"
+    "url": "component---src-pages-tools-collector-tsx-c082d61d594f2b8579f0.js"
   },
   {
     "url": "page-data/tools/collector/page-data.json",
@@ -1232,7 +1240,7 @@ self.__precacheManifest = [
     "revision": "55d46e546f89c7b8ad2fc59a7710d663"
   },
   {
-    "url": "component---src-pages-tools-service-editor-tsx-80de7a1ef00d0291328a.js"
+    "url": "component---src-pages-tools-service-editor-tsx-2232630a3c45f59df119.js"
   },
   {
     "url": "page-data/tools/service-editor/page-data.json",
@@ -1353,7 +1361,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-b3e3f09bbae031cf4696.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-ed0cb5d57ea63f136377.js`))) {
     return await fetch(event.request)
   }
 
