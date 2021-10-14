@@ -90,12 +90,8 @@ function DataStreamer() {
         sensors,
         headers,
         values
-      };
-      console.log({
-        sensors,
-        headers,
-        values
-      });
+      }; //console.log({ sensors, headers, values })
+
       if ((0,iframeclient/* inIFrame */.H)()) window.parent.postMessage(msg, "*");
     };
 
@@ -108,4 +104,4 @@ function DataStreamer() {
 /***/ })
 
 }]);
-//# sourceMappingURL=8737-aaeb8a4dda7695dba08d.js.map
+//# sourceMappingURL=8737-700caa9ada7d2cc488e5.js.map
