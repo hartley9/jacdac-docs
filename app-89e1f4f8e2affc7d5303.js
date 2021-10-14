@@ -38151,12 +38151,12 @@ var Packet = /*#__PURE__*/function () {
   }, {
     key: "isRegisterSet",
     get: function get() {
-      return this.serviceCommand >> 12 == _constants__WEBPACK_IMPORTED_MODULE_1__/* .CMD_SET_REG */ .YUL >> 12;
+      return this.serviceIndex <= _constants__WEBPACK_IMPORTED_MODULE_1__/* .JD_SERVICE_INDEX_MAX_NORMAL */ .Ms8 && this.serviceCommand >> 12 == _constants__WEBPACK_IMPORTED_MODULE_1__/* .CMD_SET_REG */ .YUL >> 12;
     }
   }, {
     key: "isRegisterGet",
     get: function get() {
-      return this.serviceCommand >> 12 == _constants__WEBPACK_IMPORTED_MODULE_1__/* .CMD_GET_REG */ .V4G >> 12;
+      return this.serviceIndex <= _constants__WEBPACK_IMPORTED_MODULE_1__/* .JD_SERVICE_INDEX_MAX_NORMAL */ .Ms8 && this.serviceCommand >> 12 == _constants__WEBPACK_IMPORTED_MODULE_1__/* .CMD_GET_REG */ .V4G >> 12;
     } // TODO rename to registerCode
 
   }, {
@@ -39076,7 +39076,7 @@ function syntheticPktInfo(kind, addr) {
 function decodeRegister(service, pkt) {
   var isSet = pkt.isRegisterSet;
   var isGet = pkt.isRegisterGet;
-  if (isSet == isGet) return null;
+  if (!isSet && !isGet) return null;
   var error = "";
   var addr = pkt.serviceCommand & _constants__WEBPACK_IMPORTED_MODULE_3__/* .CMD_REG_MASK */ .Pbb;
   var regInfo = service === null || service === void 0 ? void 0 : service.packets.find(p => (0,_spec__WEBPACK_IMPORTED_MODULE_2__/* .isRegister */ .x5)(p) && p.identifier == addr);
@@ -39139,8 +39139,18 @@ function decodeCommand(service, pkt) {
   };
 }
 
+function decodeCRCack(service, pkt) {
+  if (!pkt.isReport || !pkt.isCRCAck) return null;
+  return {
+    service,
+    info: syntheticPktInfo("report", pkt.serviceCommand),
+    decoded: [],
+    description: "CRC-ACK " + (0,_utils__WEBPACK_IMPORTED_MODULE_1__/* .hexNum */ .Rj)(pkt.serviceCommand)
+  };
+}
+
 function decodePacket(service, pkt) {
-  var decoded = decodeRegister(service, pkt) || decodeEvent(service, pkt) || decodeCommand(service, pkt);
+  var decoded = decodeCRCack(service, pkt) || decodeRegister(service, pkt) || decodeEvent(service, pkt) || decodeCommand(service, pkt);
   return decoded;
 }
 
@@ -41194,7 +41204,12 @@ var Trace = /*#__PURE__*/function () {
    * @param maxLength If positive, prunes older packets when the length reaches maxLength
    */
   _proto.addPacket = function addPacket(packet) {
-    this.packets.push(packet);
+    // packets are mutable (eg., timestamp is updated on each send), so we take a copy
+    var copy = packet.clone();
+    copy.sender = packet.sender;
+    copy.device = packet.device; // TODO need to copy 'meta' as well?
+
+    this.packets.push(copy); // limit trace size
 
     if (this.maxLength > 0 && this.packets.length > this.maxLength * TRACE_OVERSHOOT) {
       // 10% overshoot of max
@@ -69281,7 +69296,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "67fb642d5db92a3343ba900c25f11ba24adb8f0c";
+var sha = "42f21af2754c4a550fd27234daece0345cc7156e";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70134,7 +70149,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "67fb642d5db92a3343ba900c25f11ba24adb8f0c";
+  var sha = "42f21af2754c4a550fd27234daece0345cc7156e";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72320,7 +72335,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "67fb642d5db92a3343ba900c25f11ba24adb8f0c";
+    var sha = "42f21af2754c4a550fd27234daece0345cc7156e";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -75940,7 +75955,7 @@ var JDDevice = /*#__PURE__*/function (_JDNode) {
     var resends = 0;
     this._ackAwaiting = [];
     var cleanUp = this.subscribe(constants/* PACKET_REPORT */.deN, rep => {
-      if (rep.serviceIndex != constants/* JD_SERVICE_INDEX_CRC_ACK */.$rs) return;
+      if (!rep.isCRCAck) return;
       var numdone = 0;
 
       for (var aa of this._ackAwaiting) {
@@ -88450,4 +88465,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-b48c2caf9c406d23dd1b.js.map
+//# sourceMappingURL=app-89e1f4f8e2affc7d5303.js.map
