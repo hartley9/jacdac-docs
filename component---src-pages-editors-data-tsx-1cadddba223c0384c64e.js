@@ -397,8 +397,9 @@ function DSEditorWithContext() {
 function DSBlockEditor() {
   var dataSet = (0,useLocationSearchParam/* useLocationSearchParamBoolean */.w)("dataset", true);
   var dataVar = (0,useLocationSearchParam/* useLocationSearchParamBoolean */.w)("datavar", true);
+  var chart = (0,useLocationSearchParam/* useLocationSearchParamBoolean */.w)("chart", true);
   var dsls = (0,react.useMemo)(() => {
-    return [dataSet && datasetdsl, datadsl/* default */.Z, dataVar && datavardsl, chartdsl/* default */.Z, fieldsdsl/* default */.Z, (0,iframedsl/* createIFrameDSL */.g)("host", "*")].filter(dsl => !!dsl);
+    return [dataSet && datasetdsl, datadsl/* default */.Z, dataVar && datavardsl, chart && chartdsl/* default */.Z, fieldsdsl/* default */.Z, (0,iframedsl/* createIFrameDSL */.g)("host", "*")].filter(dsl => !!dsl);
   }, []);
   return /*#__PURE__*/react.createElement(NoSsr/* default */.Z, null, /*#__PURE__*/react.createElement(BlockContext/* BlockProvider */.Z, {
     storageKey: DS_SOURCE_STORAGE_KEY,
@@ -415,4 +416,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-tsx-f763af53f7f0182b688b.js.map
+//# sourceMappingURL=component---src-pages-editors-data-tsx-1cadddba223c0384c64e.js.map

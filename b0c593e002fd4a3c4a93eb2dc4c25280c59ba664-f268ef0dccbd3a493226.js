@@ -3987,7 +3987,10 @@ var useChange = __webpack_require__(54774);
 var FileSystemContext = __webpack_require__(48202);
 // EXTERNAL MODULE: ./src/components/hooks/useWindowEvent.ts
 var useWindowEvent = __webpack_require__(72144);
+// EXTERNAL MODULE: ./src/components/blockly/fields/IFrameDataChooserField.ts
+var IFrameDataChooserField = __webpack_require__(84152);
 ;// CONCATENATED MODULE: ./src/components/blockly/BlockContext.tsx
+
 
 
 
@@ -4275,14 +4278,33 @@ function BlockProvider(props) {
     var {
       data
     } = msg;
+    var {
+      type,
+      action
+    } = data;
 
-    if (data.type === "dsl" && data.action === "load") {
-      console.debug("dsl load", data);
+    if (type === "dsl") {
+      switch (action) {
+        case "load":
+          console.debug("dsl load", data);
 
-      try {
-        loadWorkspaceFile(data);
-      } catch (e) {
-        console.error(e);
+          try {
+            loadWorkspaceFile(data);
+          } catch (e) {
+            console.error(e);
+          }
+
+          break;
+
+        case "options":
+          {
+            var options = data.options;
+            console.debug("dsl: received options", options);
+            Object.entries(options || {}).forEach(_ref4 => {
+              var [key, value] = _ref4;
+              return IFrameDataChooserField/* AllOptions */.e[key] = value;
+            });
+          }
       }
     }
   });
@@ -6590,6 +6612,65 @@ var GaugeWidgetField = /*#__PURE__*/function (_ReactInlineField) {
 }(_ReactInlineField__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z);
 
 GaugeWidgetField.KEY = "jacdac_field_gauge_widget";
+
+
+/***/ }),
+
+/***/ 84152:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "e": function() { return /* binding */ AllOptions; },
+/* harmony export */   "Z": function() { return /* binding */ IFrameDataChooserField; }
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(94578);
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74640);
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var AllOptions = {};
+
+var IFrameDataChooserField = /*#__PURE__*/function (_FieldDropdown) {
+  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(IFrameDataChooserField, _FieldDropdown);
+
+  IFrameDataChooserField.fromJson = function fromJson(options) {
+    return new IFrameDataChooserField(options);
+  } // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // the first argument is a dummy and never used
+  ;
+
+  function IFrameDataChooserField(options) {
+    var _this;
+
+    _this = _FieldDropdown.call(this, () => [["", ""]], undefined, options) || this;
+    _this.SERIALIZABLE = true;
+    _this.dataId = options.dataId || "";
+    return _this;
+  }
+
+  var _proto = IFrameDataChooserField.prototype;
+
+  _proto.fromXml = function fromXml(fieldElement) {
+    this.setValue(fieldElement.textContent);
+  };
+
+  _proto.getOptions = function getOptions() {
+    var _AllOptions$this$data;
+
+    var options = (_AllOptions$this$data = AllOptions[this.dataId]) === null || _AllOptions$this$data === void 0 ? void 0 : _AllOptions$this$data.slice(0);
+    return !(options !== null && options !== void 0 && options.length) ? [["", ""]] : options;
+  };
+
+  _proto.doClassValidation_ = function doClassValidation_(newValue) {
+    // skip super class validationervices chan
+    return newValue;
+  };
+
+  return IFrameDataChooserField;
+}(blockly__WEBPACK_IMPORTED_MODULE_0__.FieldDropdown);
+
+IFrameDataChooserField.KEY = "jacdac_field_iframe_data_chooser";
 
 
 /***/ }),
@@ -9443,6 +9524,8 @@ actions {
 /* harmony import */ var _mb_DenseLayerBlockField__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(35121);
 /* harmony import */ var _mb_TrainedModelBlockField__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(90461);
 /* harmony import */ var _JSONSettingsField__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(68494);
+/* harmony import */ var _IFrameDataChooserField__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(84152);
+
 
 
 
@@ -9501,7 +9584,7 @@ function registerFields() {
     if (fieldType.SHADOW) reactFieldShadows.push(fieldType.SHADOW);
   };
 
-  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, _chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_18__/* ["default"] */ .Z, _chart_LinePlotField__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, _chart_BarField__WEBPACK_IMPORTED_MODULE_19__/* ["default"] */ .Z, _chart_HistogramField__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z, _chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z, _chart_HeatMapField__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z, _chart_VegaChartField__WEBPACK_IMPORTED_MODULE_23__/* ["default"] */ .Z, _mb_ExpandModelBlockField__WEBPACK_IMPORTED_MODULE_27__/* ["default"] */ .Z, _mb_DataSetBlockField__WEBPACK_IMPORTED_MODULE_28__/* ["default"] */ .Z, _mb_DataSetBlockButton__WEBPACK_IMPORTED_MODULE_29__/* ["default"] */ .Z, _mb_RecordingBlockField__WEBPACK_IMPORTED_MODULE_30__/* ["default"] */ .Z, _mb_NeuralNetworkBlockField__WEBPACK_IMPORTED_MODULE_31__/* ["default"] */ .Z, _mb_NeuralNetworkBlockButtons__WEBPACK_IMPORTED_MODULE_32__/* ["default"] */ .Z, _mb_ConvLayerBlockField__WEBPACK_IMPORTED_MODULE_33__/* ["default"] */ .Z, _mb_PoolingLayerBlockField__WEBPACK_IMPORTED_MODULE_34__/* ["default"] */ .Z, _mb_DropoutLayerBlockField__WEBPACK_IMPORTED_MODULE_35__/* ["default"] */ .Z, _mb_FlattenLayerBlockField__WEBPACK_IMPORTED_MODULE_36__/* ["default"] */ .Z, _mb_DenseLayerBlockField__WEBPACK_IMPORTED_MODULE_37__/* ["default"] */ .Z, _mb_TrainedModelBlockField__WEBPACK_IMPORTED_MODULE_38__/* ["default"] */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_24__/* ["default"] */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_25__/* ["default"] */ .Z, _UseModelField__WEBPACK_IMPORTED_MODULE_26__/* ["default"] */ .Z, _JSONSettingsField__WEBPACK_IMPORTED_MODULE_39__/* ["default"] */ .Z];
+  var fieldTypes = [_KeyboardKeyField__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, _NoteField__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, _LEDMatrixField__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, _ServoAngleField__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, _LEDColorField__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, _TwinField__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, _JDomTreeField__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, _GaugeWidgetField__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z, _WatchValueField__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, _LogViewField__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, _VariablesFields__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, _DataTableField__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, _DataPreviewField__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, _DataColumnChooserField__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, _BuiltinDataSetField__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, _chart_ScatterPlotField__WEBPACK_IMPORTED_MODULE_18__/* ["default"] */ .Z, _chart_LinePlotField__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, _chart_BarField__WEBPACK_IMPORTED_MODULE_19__/* ["default"] */ .Z, _chart_HistogramField__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z, _chart_BoxPlotField__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z, _chart_HeatMapField__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z, _chart_VegaChartField__WEBPACK_IMPORTED_MODULE_23__/* ["default"] */ .Z, _mb_ExpandModelBlockField__WEBPACK_IMPORTED_MODULE_27__/* ["default"] */ .Z, _mb_DataSetBlockField__WEBPACK_IMPORTED_MODULE_28__/* ["default"] */ .Z, _mb_DataSetBlockButton__WEBPACK_IMPORTED_MODULE_29__/* ["default"] */ .Z, _mb_RecordingBlockField__WEBPACK_IMPORTED_MODULE_30__/* ["default"] */ .Z, _mb_NeuralNetworkBlockField__WEBPACK_IMPORTED_MODULE_31__/* ["default"] */ .Z, _mb_NeuralNetworkBlockButtons__WEBPACK_IMPORTED_MODULE_32__/* ["default"] */ .Z, _mb_ConvLayerBlockField__WEBPACK_IMPORTED_MODULE_33__/* ["default"] */ .Z, _mb_PoolingLayerBlockField__WEBPACK_IMPORTED_MODULE_34__/* ["default"] */ .Z, _mb_DropoutLayerBlockField__WEBPACK_IMPORTED_MODULE_35__/* ["default"] */ .Z, _mb_FlattenLayerBlockField__WEBPACK_IMPORTED_MODULE_36__/* ["default"] */ .Z, _mb_DenseLayerBlockField__WEBPACK_IMPORTED_MODULE_37__/* ["default"] */ .Z, _mb_TrainedModelBlockField__WEBPACK_IMPORTED_MODULE_38__/* ["default"] */ .Z, _FileSaveField__WEBPACK_IMPORTED_MODULE_24__/* ["default"] */ .Z, _FileOpenField__WEBPACK_IMPORTED_MODULE_25__/* ["default"] */ .Z, _UseModelField__WEBPACK_IMPORTED_MODULE_26__/* ["default"] */ .Z, _JSONSettingsField__WEBPACK_IMPORTED_MODULE_39__/* ["default"] */ .Z, _IFrameDataChooserField__WEBPACK_IMPORTED_MODULE_40__/* ["default"] */ .Z];
   fieldTypes.forEach(registerType);
 }
 function fieldShadows() {
@@ -12852,4 +12935,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-6a5590e30414513ed3ee.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-f268ef0dccbd3a493226.js.map
