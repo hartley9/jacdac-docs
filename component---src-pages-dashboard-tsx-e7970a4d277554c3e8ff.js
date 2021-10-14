@@ -463,6 +463,46 @@ var Chip = /*#__PURE__*/react.forwardRef(function Chip(props, ref) {
 
 /***/ }),
 
+/***/ 45244:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "D": function() { return /* binding */ useLocationSearchParamString; },
+/* harmony export */   "w": function() { return /* binding */ useLocationSearchParamBoolean; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+
+function useLocationSearchParamString(key) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    if (typeof window !== "undefined") {
+      var url = new URL(window.location.href);
+      return url.searchParams.get(key);
+    }
+
+    return undefined;
+  }, [key]);
+}
+function useLocationSearchParamBoolean(key, defaultValue) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    if (typeof window !== "undefined") {
+      var url = new URL(window.location.href);
+      var v = url.searchParams.get(key);
+
+      if (v) {
+        if (v === "1" || v === "true" || v === "yes") return true;else if (v === "0" || v === "false" || v === "no") return false;else return defaultValue;
+      } // empty value means true
+
+
+      if (url.searchParams.has(key)) return true;
+      return defaultValue;
+    }
+
+    return undefined;
+  }, [key, defaultValue]);
+}
+
+/***/ }),
+
 /***/ 5503:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -478,6 +518,8 @@ __webpack_require__.d(__webpack_exports__, {
 var react = __webpack_require__(67294);
 // EXTERNAL MODULE: ./src/components/dashboard/Dashboard.tsx + 4 modules
 var Dashboard = __webpack_require__(82972);
+// EXTERNAL MODULE: ./src/components/hooks/useLocationSearchParam.ts
+var useLocationSearchParam = __webpack_require__(45244);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
 var iframeclient = __webpack_require__(9809);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
@@ -514,17 +556,25 @@ function DelayedOnDevices(props) {
   }, [timeout, hasDevices]);
   return show ? /*#__PURE__*/react.createElement(react.Fragment, null, children) : null;
 }
+// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 24 modules
+var providerbus = __webpack_require__(47751);
 ;// CONCATENATED MODULE: ./src/pages/dashboard.tsx
 
 
 
+
+
 var FirmwareLoader = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 3432).then(__webpack_require__.bind(__webpack_require__, 73432)));
+var DataStreamer = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 8737).then(__webpack_require__.bind(__webpack_require__, 98737)));
 function Page() {
+  var dataStreamer = (0,useLocationSearchParam/* useLocationSearchParamBoolean */.w)("datastreamer", false) && providerbus/* UIFlags.hosted */.A.hosted;
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(DelayedOnDevices, {
     timeout: 120000
   }, /*#__PURE__*/react.createElement(react.Suspense, {
     fallback: null
-  }, /*#__PURE__*/react.createElement(FirmwareLoader, null))), /*#__PURE__*/react.createElement(Dashboard/* default */.Z, {
+  }, /*#__PURE__*/react.createElement(FirmwareLoader, null))), dataStreamer && /*#__PURE__*/react.createElement(react.Suspense, {
+    fallback: null
+  }, /*#__PURE__*/react.createElement(DataStreamer, null)), /*#__PURE__*/react.createElement(Dashboard/* default */.Z, {
     showAvatar: true,
     showHeader: true,
     showConnect: true,
@@ -536,4 +586,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-dashboard-tsx-f78c8d0fae53b1204ce5.js.map
+//# sourceMappingURL=component---src-pages-dashboard-tsx-e7970a4d277554c3e8ff.js.map

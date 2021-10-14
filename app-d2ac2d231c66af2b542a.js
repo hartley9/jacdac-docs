@@ -42388,12 +42388,16 @@ function uniqueMap(values, id, converter) {
 
   return Object.values(r).map(converter);
 }
-function toMap(a, keyConverter, valueConverter) {
+function toMap(a, keyConverter, valueConverter, ignoreMissingValues) {
   var m = {};
   if (a) for (var i = 0; i < a.length; ++i) {
     var key = keyConverter(a[i], i);
     if (key === undefined || key === null) continue;
-    m[key] = valueConverter(a[i], i);
+
+    var _v2 = valueConverter(a[i], i);
+
+    if (ignoreMissingValues && (_v2 === undefined || _v2 === null)) continue;
+    m[key] = _v2;
   }
   return m;
 }
@@ -42463,8 +42467,8 @@ function splitFilter(values, condition) {
   var n = values.length;
 
   for (var i = 0; i < n; ++i) {
-    var _v2 = values[i];
-    if (condition(_v2)) yays.push(_v2);else nays.push(_v2);
+    var _v3 = values[i];
+    if (condition(_v3)) yays.push(_v3);else nays.push(_v3);
   }
 
   return [yays, nays];
@@ -69257,7 +69261,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "43e3842877129a5202d083db9d5aa4f40cde423f";
+var sha = "e14c545cd5ba2cbd475f40c252caa88e896697b7";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70110,7 +70114,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "43e3842877129a5202d083db9d5aa4f40cde423f";
+  var sha = "e14c545cd5ba2cbd475f40c252caa88e896697b7";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72296,7 +72300,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "43e3842877129a5202d083db9d5aa4f40cde423f";
+    var sha = "e14c545cd5ba2cbd475f40c252caa88e896697b7";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88386,4 +88390,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-5cadb20105338340d85d.js.map
+//# sourceMappingURL=app-d2ac2d231c66af2b542a.js.map

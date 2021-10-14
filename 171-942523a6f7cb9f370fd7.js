@@ -69,7 +69,7 @@ function DashboardCODALMessageBus(props) {
     label: "Source",
     value: source,
     onChange: handleSourceChange,
-    error: source && isNaN(nsource),
+    error: !!source && isNaN(nsource),
     helperText: isNaN(nsource) ? "source must be an unsigned number" : "source of the message"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
     item: true,
@@ -95,4 +95,4 @@ function DashboardCODALMessageBus(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=171-a1c38803abbea03aab95.js.map
+//# sourceMappingURL=171-942523a6f7cb9f370fd7.js.map
