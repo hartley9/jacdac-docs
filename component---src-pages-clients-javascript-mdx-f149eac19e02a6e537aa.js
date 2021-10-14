@@ -155,7 +155,7 @@ function MDXContent(_ref) {
   }, "yarn add jacdac-ts\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "then import components as needed using ES6 import syntax"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-vanilla"
-  }, "import { createWebBus } from \"jacdac-ts\"\nconst jd = createWebBus()\n-----\n\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The connection flow must be started from a user interaction, typically a button click."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "import { createWebBus } from \"jacdac-ts\"\nconst bus = createWebBus()\n-----\n\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The connection flow must be started from a user interaction, typically a button click."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-javascript"
   }, "// you have a button with id = connectbtn somewhere\nconst connectEl = document.getElementById(\"connectbtn\");\nconnectEl.onclick = () =>\n  bus.connected ? bus.disconnect() : bus.connect();\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
@@ -211,4 +211,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-clients-javascript-mdx-cd4f8db21935ab761c15.js.map
+//# sourceMappingURL=component---src-pages-clients-javascript-mdx-f149eac19e02a6e537aa.js.map
