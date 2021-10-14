@@ -69281,7 +69281,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "e9e8cec831242d37f646cbd72f9ffe55a4dbd039";
+var sha = "d5bd03602dc375ace6540537f0fb51da2b331110";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70134,7 +70134,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "e9e8cec831242d37f646cbd72f9ffe55a4dbd039";
+  var sha = "d5bd03602dc375ace6540537f0fb51da2b331110";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72320,7 +72320,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "e9e8cec831242d37f646cbd72f9ffe55a4dbd039";
+    var sha = "d5bd03602dc375ace6540537f0fb51da2b331110";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -80721,7 +80721,8 @@ function sniffQueryArguments() {
     widget: params.get("widget") === "1",
     trace: params.get("trace") === "1",
     localhost: params.get("localhost") === "1",
-    passive: params.get("passive") === "1"
+    passive: params.get("passive") === "1",
+    gamepad: params.get("gamepad") === "1"
   };
 }
 
@@ -80739,6 +80740,7 @@ UIFlags.localhost = args.localhost;
 UIFlags.passive = args.passive;
 UIFlags.storage = true;
 UIFlags.hosted = typeof window !== "undefined" && /(hosted|embed)=1/.test(window.location.href);
+UIFlags.gamepad = args.gamepad;
 
 function createBus() {
   var worker = typeof window !== "undefined" && new Worker((0,gatsby_browser_entry.withPrefix)("/jacdac-worker-" + package_namespaceObject.i8 + ".js"));
@@ -80748,7 +80750,7 @@ function createBus() {
   b.passive = args.passive; // parentOrigin: args.parentOrigin,
   //if (Flags.webUSB) b.setBackgroundFirmwareScans(true)
 
-  GamepadHostManager.start(b); // tslint:disable-next-line: no-unused-expression
+  if (UIFlags.gamepad) GamepadHostManager.start(b); // tslint:disable-next-line: no-unused-expression
   // always start bridge
 
   if (typeof window !== "undefined") {
@@ -88407,4 +88409,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-7abb3fdf6acabc50e23c.js.map
+//# sourceMappingURL=app-d267d54290592f102a21.js.map
