@@ -2453,7 +2453,7 @@ var VM_LOG_ENTRY = "vmLogEntry";
 
 /***/ }),
 
-/***/ 84935:
+/***/ 26212:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2906,178 +2906,8 @@ function registerDataSolver(block) {
 
   applyTransform().then(() => services.on(constants/* CHANGE */.Ver, applyTransform));
 }
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
-var flags = __webpack_require__(21258);
-// EXTERNAL MODULE: ./src/components/blockly/dsl/dsl.ts
-var dsl_dsl = __webpack_require__(94113);
-// EXTERNAL MODULE: ./src/components/blockly/fields/ReactFieldBase.ts
-var ReactFieldBase = __webpack_require__(34964);
-;// CONCATENATED MODULE: ./src/components/blockly/jsongenerator.ts
-
-
-
-
-
-function workspaceToJSON(workspace, dsls, top) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  var clean = o => Object.keys(o).filter(k => o[k] === undefined || o[k] === null).forEach(k => delete o[k]);
-
-  var builtins = {
-    logic_null: () => null,
-    text: block => block.getFieldValue("TEXT"),
-    text_input: block => block.getFieldValue("TEXT"),
-    math_number: block => Number(block.getFieldValue("NUM") || "0"),
-    logic_boolean: block => block.getFieldValue("BOOL") === "TRUE"
-  };
-
-  var variableToJSON = variable => ({
-    name: variable.name,
-    type: variable.type,
-    id: variable.getId()
-  });
-
-  var fieldsToJSON = fields => !fields.length ? undefined : (0,utils/* toMap */.qL)(fields, field => {
-    var _field$name;
-
-    return (_field$name = field.name) === null || _field$name === void 0 ? void 0 : _field$name.toLowerCase();
-  }, fieldToJSON); // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
-
-  var xmlToJSON = xml => {
-    var j = {};
-    if (flags/* default.diagnostics */.Z.diagnostics) j["xml"] = xml.outerHTML; // dump attributes
-
-    for (var name of xml.getAttributeNames().filter(n => n !== "preview")) {
-      var v = xml.getAttribute(name);
-      j[name.toLowerCase()] = v;
-    }
-
-    for (var child of xml.childNodes) {
-      if (child.nodeType === Node.TEXT_NODE) j["value"] = xml.textContent;else if (child.nodeType === Node.ELEMENT_NODE) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        var children = j["children"] || (j["children"] = []);
-        children.push(xmlToJSON(child));
-      }
-    }
-
-    return j;
-  };
-
-  var fieldToJSON = field => {
-    if (field.isSerializable()) {
-      // custom field can just return the value
-      if (field instanceof ReactFieldBase/* ReactFieldBase */.y) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        var value = field.value;
-        return {
-          value
-        };
-      } else {
-        var container = blockly_default().utils.xml.createElement("field");
-        var fieldXml = field.toXml(container);
-        return xmlToJSON(fieldXml);
-      }
-    }
-
-    return undefined;
-  };
-
-  var flattenNext = block => {
-    // flatten the linked list of next into an array
-    var children = [];
-    var current = block.next;
-
-    while (current) {
-      children.push(current);
-      current = current.next;
-    }
-
-    if (children.length) {
-      block.children = children;
-      block.next = undefined;
-    }
-  };
-
-  var blockToJSON = block => {
-    var blockToJSONHidden = block => {
-      var _builtins$block$type;
-
-      // skip disabled blocks
-      if (!(block !== null && block !== void 0 && block.isEnabled())) return undefined; // skip over insertion markers.
-
-      if (block.isInsertionMarker()) {
-        var child = block.getChildren(false)[0];
-        if (child) return blockToJSON(child);else return undefined;
-      }
-
-      var {
-        type
-      } = block; // allow DSL to handle conversion
-
-      var value = (_builtins$block$type = builtins[block.type]) === null || _builtins$block$type === void 0 ? void 0 : _builtins$block$type.call(builtins, block);
-
-      if (value === undefined) {
-        var _dsl$blockToValue;
-
-        var dsl = (0,dsl_dsl/* resolveDsl */.u)(dsls, type);
-        value = dsl === null || dsl === void 0 ? void 0 : (_dsl$blockToValue = dsl.blockToValue) === null || _dsl$blockToValue === void 0 ? void 0 : _dsl$blockToValue.call(dsl, block);
-      }
-
-      var element = {
-        type: block.type,
-        id: block.id,
-        value,
-        inputs: value === undefined ? block.inputList.map(input => {
-          var _input$connection;
-
-          var container = {
-            type: input.type,
-            name: input.name,
-            fields: fieldsToJSON(input.fieldRow),
-            child: blockToJSON((_input$connection = input.connection) === null || _input$connection === void 0 ? void 0 : _input$connection.targetBlock())
-          };
-          return container;
-        }) : undefined,
-        next: blockToJSONHidden(block.getNextBlock())
-      };
-      clean(element);
-      return element;
-    };
-
-    var top = blockToJSONHidden(block);
-
-    if (top) {
-      flattenNext(top);
-      clean(top);
-    }
-
-    return top;
-  };
-
-  try {
-    var variables = blockly_default().Variables.allUsedVarModels(workspace).sort((l, r) => l.name.localeCompare(r.name)); // stable sort name
-
-    var todo = top || workspace.getTopBlocks(true);
-    var json = {
-      variables: variables.map(variableToJSON),
-      blocks: todo.map(blockToJSON).filter(b => !!b)
-    };
-    dsls.forEach(dsl => {
-      var _dsl$visitWorkspaceJS;
-
-      return (_dsl$visitWorkspaceJS = dsl.visitWorkspaceJSON) === null || _dsl$visitWorkspaceJS === void 0 ? void 0 : _dsl$visitWorkspaceJS.call(dsl, workspace, json);
-    });
-    dsls.forEach(dsl => {
-      var _dsl$onWorkspaceJSONC;
-
-      return (_dsl$onWorkspaceJSONC = dsl.onWorkspaceJSONChange) === null || _dsl$onWorkspaceJSONC === void 0 ? void 0 : _dsl$onWorkspaceJSONC.call(dsl, json);
-    });
-    return json;
-  } catch (e) {
-    console.error(e);
-    return undefined;
-  }
-}
+// EXTERNAL MODULE: ./src/components/blockly/jsongenerator.ts
+var jsongenerator = __webpack_require__(97428);
 // EXTERNAL MODULE: ./src/components/blockly/useWorkspaceEvent.ts
 var useWorkspaceEvent = __webpack_require__(34148);
 ;// CONCATENATED MODULE: ./src/components/blockly/useBlocklyEvents.ts
@@ -3975,6 +3805,8 @@ function useBlocklyPlugins(workspace) {
 }
 // EXTERNAL MODULE: ./src/components/hooks/useServices.ts
 var useServices = __webpack_require__(2928);
+// EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
+var flags = __webpack_require__(21258);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/useTheme.js
 var useTheme = __webpack_require__(59355);
 // EXTERNAL MODULE: ./src/components/blockly/fields/fields.ts
@@ -4351,7 +4183,7 @@ function BlockProvider(props) {
   }, [workspace, workspaceDirectory]);
   (0,react.useEffect)(() => {
     if (!workspace || dragging) return;
-    var newWorkspaceJSON = workspaceToJSON(workspace, dsls);
+    var newWorkspaceJSON = (0,jsongenerator/* workspaceToJSON */.v)(workspace, dsls);
     setWorkspaceJSON(newWorkspaceJSON);
     var newWarnings = collectWarnings(newWorkspaceJSON);
     setWarnings(toolbox/* JSON_WARNINGS_CATEGORY */.FD, newWarnings);
@@ -4462,7 +4294,7 @@ function BlockProvider(props) {
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(80453);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
 /* harmony import */ var _CodeBlock__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9433);
-/* harmony import */ var _BlockContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(84935);
+/* harmony import */ var _BlockContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(26212);
 
 
 
@@ -4784,8 +4616,8 @@ var clsx_m = __webpack_require__(85505);
 var gatsby_browser_entry = __webpack_require__(35313);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
 var flags = __webpack_require__(21258);
-// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 17 modules
-var BlockContext = __webpack_require__(84935);
+// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 16 modules
+var BlockContext = __webpack_require__(26212);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
 var toConsumableArray = __webpack_require__(93433);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/useTheme.js
@@ -11761,6 +11593,187 @@ TrainedModelBlockField.KEY = "trained_model_block_field_key";
 
 /***/ }),
 
+/***/ 97428:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "v": function() { return /* binding */ workspaceToJSON; }
+/* harmony export */ });
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(74640);
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _jacdac_ts_src_jdom_flags__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21258);
+/* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(81794);
+/* harmony import */ var _dsl_dsl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(94113);
+/* harmony import */ var _fields_ReactFieldBase__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(34964);
+
+
+
+
+
+function workspaceToJSON(workspace, dsls, top) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  var clean = o => Object.keys(o).filter(k => o[k] === undefined || o[k] === null).forEach(k => delete o[k]);
+
+  var builtins = {
+    logic_null: () => null,
+    text: block => block.getFieldValue("TEXT"),
+    text_input: block => block.getFieldValue("TEXT"),
+    math_number: block => Number(block.getFieldValue("NUM") || "0"),
+    logic_boolean: block => block.getFieldValue("BOOL") === "TRUE"
+  };
+
+  var variableToJSON = variable => ({
+    name: variable.name,
+    type: variable.type,
+    id: variable.getId()
+  });
+
+  var fieldsToJSON = fields => !fields.length ? undefined : (0,_jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_2__/* .toMap */ .qL)(fields, field => {
+    var _field$name;
+
+    return (_field$name = field.name) === null || _field$name === void 0 ? void 0 : _field$name.toLowerCase();
+  }, fieldToJSON); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+  var xmlToJSON = xml => {
+    var j = {};
+    if (_jacdac_ts_src_jdom_flags__WEBPACK_IMPORTED_MODULE_1__/* ["default"].diagnostics */ .Z.diagnostics) j["xml"] = xml.outerHTML; // dump attributes
+
+    for (var name of xml.getAttributeNames().filter(n => n !== "preview")) {
+      var v = xml.getAttribute(name);
+      j[name.toLowerCase()] = v;
+    }
+
+    for (var child of xml.childNodes) {
+      if (child.nodeType === Node.TEXT_NODE) j["value"] = xml.textContent;else if (child.nodeType === Node.ELEMENT_NODE) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        var children = j["children"] || (j["children"] = []);
+        children.push(xmlToJSON(child));
+      }
+    }
+
+    return j;
+  };
+
+  var fieldToJSON = field => {
+    if (field.isSerializable()) {
+      // custom field can just return the value
+      if (field instanceof _fields_ReactFieldBase__WEBPACK_IMPORTED_MODULE_4__/* .ReactFieldBase */ .y) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        var value = field.value;
+        return {
+          value
+        };
+      } else {
+        var container = blockly__WEBPACK_IMPORTED_MODULE_0___default().utils.xml.createElement("field");
+        var fieldXml = field.toXml(container);
+        return xmlToJSON(fieldXml);
+      }
+    }
+
+    return undefined;
+  };
+
+  var flattenNext = block => {
+    // flatten the linked list of next into an array
+    var children = [];
+    var current = block.next;
+
+    while (current) {
+      children.push(current);
+      current = current.next;
+    }
+
+    if (children.length) {
+      block.children = children;
+      block.next = undefined;
+    }
+  };
+
+  var blockToJSON = block => {
+    var blockToJSONHidden = block => {
+      var _builtins$block$type;
+
+      // skip disabled blocks
+      if (!(block !== null && block !== void 0 && block.isEnabled())) return undefined; // skip over insertion markers.
+
+      if (block.isInsertionMarker()) {
+        var child = block.getChildren(false)[0];
+        if (child) return blockToJSON(child);else return undefined;
+      }
+
+      var {
+        type
+      } = block; // allow DSL to handle conversion
+
+      var value = (_builtins$block$type = builtins[block.type]) === null || _builtins$block$type === void 0 ? void 0 : _builtins$block$type.call(builtins, block);
+
+      if (value === undefined) {
+        var _dsl$blockToValue;
+
+        var dsl = (0,_dsl_dsl__WEBPACK_IMPORTED_MODULE_3__/* .resolveDsl */ .u)(dsls, type);
+        value = dsl === null || dsl === void 0 ? void 0 : (_dsl$blockToValue = dsl.blockToValue) === null || _dsl$blockToValue === void 0 ? void 0 : _dsl$blockToValue.call(dsl, block);
+      }
+
+      var element = {
+        type: block.type,
+        id: block.id,
+        value,
+        inputs: value === undefined ? block.inputList.map(input => {
+          var _input$connection;
+
+          var container = {
+            type: input.type,
+            name: input.name,
+            fields: fieldsToJSON(input.fieldRow),
+            child: blockToJSON((_input$connection = input.connection) === null || _input$connection === void 0 ? void 0 : _input$connection.targetBlock())
+          };
+          return container;
+        }) : undefined,
+        next: blockToJSONHidden(block.getNextBlock())
+      };
+      clean(element);
+      return element;
+    };
+
+    var top = blockToJSONHidden(block);
+
+    if (top) {
+      flattenNext(top);
+      clean(top);
+    }
+
+    return top;
+  };
+
+  try {
+    var variables = blockly__WEBPACK_IMPORTED_MODULE_0___default().Variables.allUsedVarModels(workspace).sort((l, r) => l.name.localeCompare(r.name)); // stable sort name
+
+    var todo = top || workspace.getTopBlocks(true);
+    var json = {
+      variables: variables.map(variableToJSON),
+      blocks: todo.map(blockToJSON).filter(b => !!b)
+    };
+    dsls.forEach(dsl => {
+      var _dsl$visitWorkspaceJS;
+
+      return (_dsl$visitWorkspaceJS = dsl.visitWorkspaceJSON) === null || _dsl$visitWorkspaceJS === void 0 ? void 0 : _dsl$visitWorkspaceJS.call(dsl, workspace, json);
+    });
+    dsls.forEach(dsl => {
+      var _dsl$onWorkspaceJSONC;
+
+      return (_dsl$onWorkspaceJSONC = dsl.onWorkspaceJSONChange) === null || _dsl$onWorkspaceJSONC === void 0 ? void 0 : _dsl$onWorkspaceJSONC.call(dsl, json);
+    });
+    return json;
+  } catch (e) {
+    console.error(e);
+    return undefined;
+  }
+}
+
+/***/ }),
+
 /***/ 53851:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -12816,4 +12829,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-c1579bda0faec34f850d.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-53061375e27cfdc8e900.js.map

@@ -3615,8 +3615,8 @@ function VMDiagnostics(props) {
 }
 // EXTERNAL MODULE: ./src/jacdac/useChange.ts
 var useChange = __webpack_require__(54774);
-// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 17 modules
-var BlockContext = __webpack_require__(84935);
+// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 16 modules
+var BlockContext = __webpack_require__(26212);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
 var Context = __webpack_require__(20392);
 // EXTERNAL MODULE: ./src/components/devices/DeviceAvatar.tsx + 4 modules
@@ -6934,4 +6934,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-vm-tsx-8d995d6bf1286f7b642d.js.map
+//# sourceMappingURL=component---src-pages-editors-vm-tsx-8a17dfd471224fa369d2.js.map

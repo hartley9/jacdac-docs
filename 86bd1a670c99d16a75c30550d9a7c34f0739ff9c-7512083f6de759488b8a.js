@@ -640,15 +640,17 @@ var dataDsl = {
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4942);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(71815);
-/* harmony import */ var _jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9809);
+/* harmony import */ var _jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9809);
 /* harmony import */ var _jacdac_ts_src_jdom_random__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(80303);
-/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16582);
-/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(89801);
+/* harmony import */ var _jsongenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(97428);
+/* harmony import */ var _toolbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16582);
+/* harmony import */ var _WorkspaceContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(89801);
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -719,7 +721,7 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
             this._workspace.getTopBlocks(false).filter(b => {
               var _resolveBlockDefiniti;
 
-              return ((_resolveBlockDefiniti = (0,_toolbox__WEBPACK_IMPORTED_MODULE_3__/* .resolveBlockDefinition */ .Pq)(b.type)) === null || _resolveBlockDefiniti === void 0 ? void 0 : _resolveBlockDefiniti.dsl) === this.id;
+              return ((_resolveBlockDefiniti = (0,_toolbox__WEBPACK_IMPORTED_MODULE_4__/* .resolveBlockDefinition */ .Pq)(b.type)) === null || _resolveBlockDefiniti === void 0 ? void 0 : _resolveBlockDefiniti.dsl) === this.id;
             }).forEach(b => {
               //console.log(`change ${b.id}`)
               var {
@@ -741,10 +743,14 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
 
   _proto.createTransformData = function createTransformData() {
     return (blockWithServices, dataset) => new Promise(resolve => {
+      // TODO fix event ordering
+      var workspace = (0,_jsongenerator__WEBPACK_IMPORTED_MODULE_3__/* .workspaceToJSON */ .v)(blockWithServices.workspace, [], // TODO pass dsls
+      [blockWithServices]);
       var {
         id
       } = this.post("transform", {
         blockId: blockWithServices.id,
+        workspace,
         dataset
       });
       setTimeout(() => {
@@ -760,7 +766,7 @@ var IFrameDomainSpecificLanguage = /*#__PURE__*/function () {
           dataset,
           warning
         } = data;
-        if (warning) (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_4__/* .setBlockDataWarning */ .Vm)(blockWithServices, warning);
+        if (warning) (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_5__/* .setBlockDataWarning */ .Vm)(blockWithServices, warning);
         resolve(dataset);
       };
     });
@@ -823,10 +829,10 @@ function createIFrameDSL(id, targetOrigin) {
     targetOrigin = "*";
   }
 
-  return (0,_jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_5__/* .inIFrame */ .H)() && new IFrameDomainSpecificLanguage(id, targetOrigin);
+  return (0,_jacdac_ts_src_jdom_iframeclient__WEBPACK_IMPORTED_MODULE_6__/* .inIFrame */ .H)() && new IFrameDomainSpecificLanguage(id, targetOrigin);
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=86bd1a670c99d16a75c30550d9a7c34f0739ff9c-3a7dc2ef1e41c91ccb9a.js.map
+//# sourceMappingURL=86bd1a670c99d16a75c30550d9a7c34f0739ff9c-7512083f6de759488b8a.js.map

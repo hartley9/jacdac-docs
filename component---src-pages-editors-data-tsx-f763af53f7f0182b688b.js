@@ -60,8 +60,8 @@ var Grid = __webpack_require__(80838);
 var NoSsr = __webpack_require__(42862);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/flags.ts
 var flags = __webpack_require__(21258);
-// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 17 modules
-var BlockContext = __webpack_require__(84935);
+// EXTERNAL MODULE: ./src/components/blockly/BlockContext.tsx + 16 modules
+var BlockContext = __webpack_require__(26212);
 // EXTERNAL MODULE: ./src/components/blockly/BlockDiagnostics.tsx
 var BlockDiagnostics = __webpack_require__(9370);
 // EXTERNAL MODULE: ./src/components/blockly/BlockEditor.tsx + 5 modules
@@ -415,4 +415,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-tsx-f74f3a257e2941a49be7.js.map
+//# sourceMappingURL=component---src-pages-editors-data-tsx-f763af53f7f0182b688b.js.map
