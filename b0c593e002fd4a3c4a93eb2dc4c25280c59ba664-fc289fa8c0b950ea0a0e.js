@@ -3928,6 +3928,7 @@ function useToolbox(dsls, source) {
   var theme = (0,useTheme/* default */.Z)();
   var blocks = useAsyncMemo( /*#__PURE__*/(0,asyncToGenerator/* default */.Z)(function* () {
     var r = yield loadBlocks(dsls, theme);
+    if (flags/* default.diagnostics */.Z.diagnostics) console.debug("blocks", r);
     return r;
   }), [theme, dsls]);
   var toolboxConfiguration = (0,react.useMemo)(() => {
@@ -12935,4 +12936,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-f268ef0dccbd3a493226.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-fc289fa8c0b950ea0a0e.js.map
