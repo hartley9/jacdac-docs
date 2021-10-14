@@ -69281,7 +69281,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "e7bcc5dc8e0dbd03cd3400635e97c95ccbaf5ac2";
+var sha = "1f15292f1c50d319ea10307002c7e6c61961710b";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70134,7 +70134,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "e7bcc5dc8e0dbd03cd3400635e97c95ccbaf5ac2";
+  var sha = "1f15292f1c50d319ea10307002c7e6c61961710b";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72320,7 +72320,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "e7bcc5dc8e0dbd03cd3400635e97c95ccbaf5ac2";
+    var sha = "1f15292f1c50d319ea10307002c7e6c61961710b";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -76972,18 +76972,21 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     _this._passive = false;
     _this._client = false;
     var {
-      deviceId = (0,random/* randomDeviceId */.b_)(),
-      scheduler = new WallClockScheduler(),
-      parentOrigin = "*",
-      client = false
+      deviceId,
+      scheduler,
+      parentOrigin,
+      client
     } = options || {};
-    _this.selfDeviceId = deviceId;
-    _this.scheduler = scheduler;
-    _this.parentOrigin = parentOrigin;
-    _this._client = client;
+    _this.selfDeviceId = deviceId || (0,random/* randomDeviceId */.b_)();
+    _this.scheduler = scheduler || new WallClockScheduler();
+    _this.parentOrigin = parentOrigin || "*";
+    _this._client = !!client;
     _this.stats = new BusStatsMonitor((0,assertThisInitialized/* default */.Z)(_this)); // some transport may be undefined
 
-    transports === null || transports === void 0 ? void 0 : transports.filter(tr => !!tr).map(tr => _this.addTransport(tr)); // tell loggers to send data, every now and then
+    transports === null || transports === void 0 ? void 0 : transports.filter(tr => !!tr).map(tr => _this.addTransport(tr));
+    console.debug("bus", {
+      bus: (0,assertThisInitialized/* default */.Z)(_this)
+    }); // tell loggers to send data, every now and then
     // send resetin packets
 
     _this.on(constants/* SELF_ANNOUNCE */.Pbc, _this.handleSelfAnnounce.bind((0,assertThisInitialized/* default */.Z)(_this))); // tell RTC clock the computer time
@@ -88448,4 +88451,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-93a732896f8039e3eea6.js.map
+//# sourceMappingURL=app-78bcf85694bb681385fd.js.map
