@@ -46212,6 +46212,26 @@ var _providerDefinitions = [{
     textDirection: constants/* CharacterScreenTextDirection.LeftToRight */.mbk.LeftToRight
   })]
 }, {
+  name: "character screen (Braille, 16x1)",
+  serviceClasses: [constants/* SRV_CHARACTER_SCREEN */.IB4],
+  services: () => [new CharacterScreenServer({
+    message: "hi",
+    columns: 16,
+    rows: 1,
+    variant: constants/* CharacterScreenVariant.Braille */.GLh.Braille,
+    textDirection: constants/* CharacterScreenTextDirection.LeftToRight */.mbk.LeftToRight
+  })]
+}, {
+  name: "character screen (Braille, 32x1)",
+  serviceClasses: [constants/* SRV_CHARACTER_SCREEN */.IB4],
+  services: () => [new CharacterScreenServer({
+    message: "hi",
+    columns: 32,
+    rows: 1,
+    variant: constants/* CharacterScreenVariant.Braille */.GLh.Braille,
+    textDirection: constants/* CharacterScreenTextDirection.LeftToRight */.mbk.LeftToRight
+  })]
+}, {
   name: "color",
   serviceClasses: [constants/* SRV_COLOR */.Coy],
   services: () => [new sensorserver/* default */.Z(constants/* SRV_COLOR */.Coy, {
@@ -69261,7 +69281,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "e14c545cd5ba2cbd475f40c252caa88e896697b7";
+var sha = "e9ce6622bd3e1727a488a0690d0713a726fa1271";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70114,7 +70134,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "e14c545cd5ba2cbd475f40c252caa88e896697b7";
+  var sha = "e9ce6622bd3e1727a488a0690d0713a726fa1271";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72300,7 +72320,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "e14c545cd5ba2cbd475f40c252caa88e896697b7";
+    var sha = "e9ce6622bd3e1727a488a0690d0713a726fa1271";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88390,4 +88410,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-d2ac2d231c66af2b542a.js.map
+//# sourceMappingURL=app-8632968a888c6d29d13d.js.map

@@ -81,7 +81,7 @@ function DashboardCODALMessageBus(props) {
     label: "Value",
     value: value,
     onChange: handleValueChange,
-    error: value && isNaN(nvalue),
+    error: !!value && isNaN(nvalue),
     helperText: isNaN(nvalue) ? "value must be an unsigned number" : "value of the message"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
     item: true
@@ -95,4 +95,4 @@ function DashboardCODALMessageBus(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=171-942523a6f7cb9f370fd7.js.map
+//# sourceMappingURL=171-894758e23ef0e49efbd4.js.map
