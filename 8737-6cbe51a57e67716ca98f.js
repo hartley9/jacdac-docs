@@ -77,6 +77,8 @@ function DataStreamer() {
     bus
   } = (0,react.useContext)(Context/* default */.Z);
   (0,useWindowEvent/* default */.Z)("message", () => {
+    console.debug("jacdac: start datastreamer upload loop");
+
     var upload = () => {
       var sensors = snapshotSensors(bus, true);
       var headers = (0,utils/* arrayConcatMany */.ue)(Object.entries(sensors).map(_ref => {
@@ -96,7 +98,10 @@ function DataStreamer() {
     };
 
     var id = setInterval(upload, 100);
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+      console.debug("jacdac: stop datastreamer upload loop");
+    };
   });
   return /*#__PURE__*/react.createElement("div", null, "data streamer");
 }
@@ -104,4 +109,4 @@ function DataStreamer() {
 /***/ })
 
 }]);
-//# sourceMappingURL=8737-700caa9ada7d2cc488e5.js.map
+//# sourceMappingURL=8737-6cbe51a57e67716ca98f.js.map
