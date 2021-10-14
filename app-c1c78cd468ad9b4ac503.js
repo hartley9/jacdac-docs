@@ -69281,7 +69281,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "2b245b82a899be36453cad27acefd0a2a48c177d";
+var sha = "951fca9bb6ae35f4f4064f445e120161fdddca89";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70134,7 +70134,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "2b245b82a899be36453cad27acefd0a2a48c177d";
+  var sha = "951fca9bb6ae35f4f4064f445e120161fdddca89";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72320,7 +72320,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "2b245b82a899be36453cad27acefd0a2a48c177d";
+    var sha = "951fca9bb6ae35f4f4064f445e120161fdddca89";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -80745,8 +80745,8 @@ UIFlags.gamepad = args.gamepad;
 function createBus() {
   var worker = typeof window !== "undefined" && new Worker((0,gatsby_browser_entry.withPrefix)("/jacdac-worker-" + package_namespaceObject.i8 + ".js"));
   var b = new bus([flags/* default.webUSB */.Z.webUSB && worker && createUSBWorkerTransport(worker), flags/* default.webSerial */.Z.webSerial && createWebSerialTransport(), flags/* default.webBluetooth */.Z.webBluetooth && createBluetoothTransport(), args.webSocket && createWebSocketTransport(args.webSocket)], {
-    parentOrigin: args.parentOrigin,
-    client: false
+    parentOrigin: args.parentOrigin //client: false,
+
   });
   b.passive = args.passive; // parentOrigin: args.parentOrigin,
   //if (Flags.webUSB) b.setBackgroundFirmwareScans(true)
@@ -88410,4 +88410,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-f84c4aa987a116ea2d67.js.map
+//# sourceMappingURL=app-c1c78cd468ad9b4ac503.js.map
