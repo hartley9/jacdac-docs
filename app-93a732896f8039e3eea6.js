@@ -69281,7 +69281,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "f04d940981315d16a277169c48ebe3a9d7230d92";
+var sha = "e7bcc5dc8e0dbd03cd3400635e97c95ccbaf5ac2";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69827,7 +69827,9 @@ function useThrottledValue(value, maxRate, maxCycles) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": function() { return /* binding */ useWindowEvent; }
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(93433);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+
 
 function useWindowEvent(type, listener, passive, deps) {
   if (passive === void 0) {
@@ -69840,10 +69842,8 @@ function useWindowEvent(type, listener, passive, deps) {
 
     window.addEventListener(type, listener, passive); // this will clean up the event every time the component is re-rendered
 
-    return () => {
-      window.removeEventListener(type, listener);
-    };
-  }, [type, listener, passive].concat(deps || []));
+    return () => window.removeEventListener(type, listener);
+  }, [type, listener, passive].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(deps || [])));
 }
 
 /***/ }),
@@ -70134,7 +70134,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "f04d940981315d16a277169c48ebe3a9d7230d92";
+  var sha = "e7bcc5dc8e0dbd03cd3400635e97c95ccbaf5ac2";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72320,7 +72320,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "f04d940981315d16a277169c48ebe3a9d7230d92";
+    var sha = "e7bcc5dc8e0dbd03cd3400635e97c95ccbaf5ac2";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88448,4 +88448,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-95c4888f7f07f8b887c0.js.map
+//# sourceMappingURL=app-93a732896f8039e3eea6.js.map

@@ -16,8 +16,6 @@ __webpack_require__.d(__webpack_exports__, {
 var react = __webpack_require__(67294);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
 var Context = __webpack_require__(20392);
-// EXTERNAL MODULE: ./src/components/hooks/useWindowEvent.ts
-var useWindowEvent = __webpack_require__(72144);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/spec.ts + 2 modules
 var spec = __webpack_require__(45656);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
@@ -71,13 +69,13 @@ var iframeclient = __webpack_require__(9809);
 
 
 
-
 function DataStreamer() {
   var {
     bus
   } = (0,react.useContext)(Context/* default */.Z);
-  (0,useWindowEvent/* default */.Z)("message", () => {
-    console.debug("jacdac: start datastreamer upload loop");
+  (0,react.useEffect)(() => {
+    if (!(0,iframeclient/* inIFrame */.H)()) return;
+    console.debug("datastreamer: start uploader");
 
     var upload = () => {
       var sensors = snapshotSensors(bus, true);
@@ -94,19 +92,19 @@ function DataStreamer() {
         values
       }; //console.log({ sensors, headers, values })
 
-      if ((0,iframeclient/* inIFrame */.H)()) window.parent.postMessage(msg, "*");
+      window.parent.postMessage(msg, "*");
     };
 
     var id = setInterval(upload, 100);
     return () => {
       clearInterval(id);
-      console.debug("jacdac: stop datastreamer upload loop");
+      console.debug("datastreamer: stop uploader");
     };
   });
-  return /*#__PURE__*/react.createElement("div", null, "data streamer");
+  return /*#__PURE__*/react.createElement("span", null);
 }
 
 /***/ })
 
 }]);
-//# sourceMappingURL=8737-6cbe51a57e67716ca98f.js.map
+//# sourceMappingURL=8737-b4b638de7daf0d0af0f6.js.map
