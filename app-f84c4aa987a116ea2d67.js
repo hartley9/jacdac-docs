@@ -69281,7 +69281,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "1f15292f1c50d319ea10307002c7e6c61961710b";
+var sha = "2b245b82a899be36453cad27acefd0a2a48c177d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70134,7 +70134,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "1f15292f1c50d319ea10307002c7e6c61961710b";
+  var sha = "2b245b82a899be36453cad27acefd0a2a48c177d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72320,7 +72320,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "1f15292f1c50d319ea10307002c7e6c61961710b";
+    var sha = "2b245b82a899be36453cad27acefd0a2a48c177d";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -76970,23 +76970,12 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     _this._serviceProviders = [];
     _this._streaming = false;
     _this._passive = false;
-    _this._client = false;
-    var {
-      deviceId,
-      scheduler,
-      parentOrigin,
-      client
-    } = options || {};
-    _this.selfDeviceId = deviceId || (0,random/* randomDeviceId */.b_)();
-    _this.scheduler = scheduler || new WallClockScheduler();
-    _this.parentOrigin = parentOrigin || "*";
-    _this._client = !!client;
+    _this.selfDeviceId = (options === null || options === void 0 ? void 0 : options.deviceId) || (0,random/* randomDeviceId */.b_)();
+    _this.scheduler = (options === null || options === void 0 ? void 0 : options.scheduler) || new WallClockScheduler();
+    _this.parentOrigin = (options === null || options === void 0 ? void 0 : options.parentOrigin) || "*";
     _this.stats = new BusStatsMonitor((0,assertThisInitialized/* default */.Z)(_this)); // some transport may be undefined
 
-    transports === null || transports === void 0 ? void 0 : transports.filter(tr => !!tr).map(tr => _this.addTransport(tr));
-    console.debug("bus", {
-      bus: (0,assertThisInitialized/* default */.Z)(_this)
-    }); // tell loggers to send data, every now and then
+    transports === null || transports === void 0 ? void 0 : transports.filter(tr => !!tr).map(tr => _this.addTransport(tr)); // tell loggers to send data, every now and then
     // send resetin packets
 
     _this.on(constants/* SELF_ANNOUNCE */.Pbc, _this.handleSelfAnnounce.bind((0,assertThisInitialized/* default */.Z)(_this))); // tell RTC clock the computer time
@@ -77092,8 +77081,8 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     handleVisibilityChange();
   }
   /**
-   * Indicates that this bus acts as a client device
-   * @category Lifecycle
+   * Gets the list of transports registers with the bus
+   * @category Transports and Bridges
    */
   ;
 
@@ -77151,7 +77140,6 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   }
   /**
    * Do not send any packet on the bus
-   * @category Lifecycle
    */
   ;
 
@@ -77370,7 +77358,6 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   /**
    * Gets a detailled description of the devices and services connected to the bus
    * @returns
-   * @internal
    */
   ;
 
@@ -77805,7 +77792,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     var _sendAnnounce = (0,asyncToGenerator/* default */.Z)(function* () {
       // we do not support any services (at least yet)
       if (this._restartCounter < 0xf) this._restartCounter++;
-      var pkt = packet/* default.jdpacked */.Z.jdpacked(constants/* CMD_ADVERTISEMENT_DATA */.zf$, "u32 r: u32", [this._restartCounter | (this._client ? specconstants/* ControlAnnounceFlags.IsClient */.P99.IsClient : 0) | specconstants/* ControlAnnounceFlags.SupportsACK */.P99.SupportsACK, [[constants/* SRV_INFRASTRUCTURE */.QWn]]]);
+      var pkt = packet/* default.jdpacked */.Z.jdpacked(constants/* CMD_ADVERTISEMENT_DATA */.zf$, "u32 r: u32", [this._restartCounter | 0x100, [[constants/* SRV_INFRASTRUCTURE */.QWn]]]);
       pkt.serviceIndex = constants/* JD_SERVICE_INDEX_CTRL */.fey;
       pkt.deviceIdentifier = this.selfDeviceId;
       yield pkt.sendReportAsync(this.selfDevice);
@@ -78006,27 +77993,6 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
   };
 
   (0,createClass/* default */.Z)(JDBus, [{
-    key: "client",
-    get: function get() {
-      return this._client;
-    }
-    /**
-     * Sets the client state
-     * @category Lifecycle
-     */
-    ,
-    set: function set(value) {
-      if (!!value !== this._client) {
-        this._client = !!value;
-        this.emit(constants/* CHANGE */.Ver);
-      }
-    }
-    /**
-     * Gets the list of transports registers with the bus
-     * @category Transports and Bridges
-     */
-
-  }, {
     key: "transports",
     get: function get() {
       return this._transports.slice(0);
@@ -78040,12 +78006,7 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     key: "passive",
     get: function get() {
       return this._passive;
-    }
-    /**
-     * Sets the passive state. A passive bus does not send any packets.
-     * @category Lifecycle
-     */
-    ,
+    },
     set: function set(value) {
       if (value !== this._passive) {
         this._passive = value;
@@ -78161,7 +78122,6 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     }
     /**
      * Indicates if the bus should force all sensors to stream
-     * @category Lifecycle
      */
 
   }, {
@@ -78171,7 +78131,6 @@ var bus_JDBus = /*#__PURE__*/function (_JDNode) {
     }
     /**
      * Sets automatic streaming on and off
-     * @category Lifecycle
      */
     ,
     set: function set(value) {
@@ -79694,8 +79653,8 @@ function createUSBTransport(options) {
   if (!options) options = defaultOptions();
   return options && new WebUSBTransport(options);
 }
-function createUSBBus(usbOptions, options) {
-  return new JDBus([createUSBTransport(usbOptions)], options);
+function createUSBBus(options) {
+  return new JDBus([createUSBTransport(options)]);
 }
 ;// CONCATENATED MODULE: ./jacdac-ts/src/jdom/transport/eventtargetobservable.ts
 /**
@@ -80581,8 +80540,8 @@ function createWebSerialTransport(mkTransport) {
  * @category
  */
 
-function createWebSerialBus(options) {
-  return new JDBus([createWebSerialTransport()], options);
+function createWebSerialBus() {
+  return new JDBus([createWebSerialTransport()]);
 }
 // EXTERNAL MODULE: ./src/components/makecode/iframebridgeclient.ts
 var iframebridgeclient = __webpack_require__(43380);
@@ -80716,7 +80675,7 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
 
 
 ;// CONCATENATED MODULE: ./jacdac-ts/package.json
-var package_namespaceObject = {"i8":"1.18.16"};
+var package_namespaceObject = {"i8":"1.18.15"};
 // EXTERNAL MODULE: ./src/components/hooks/useAnalytics.ts + 88 modules
 var useAnalytics = __webpack_require__(72513);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
@@ -88451,4 +88410,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-78bcf85694bb681385fd.js.map
+//# sourceMappingURL=app-f84c4aa987a116ea2d67.js.map
