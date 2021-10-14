@@ -69281,7 +69281,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "7784dbeaa31ae2b10a92abd32eb9ecc48ac2d8a1";
+var sha = "8ee8b145855323aa1e3d92e48bef2a5ffc45e04d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70134,7 +70134,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "7784dbeaa31ae2b10a92abd32eb9ecc48ac2d8a1";
+  var sha = "8ee8b145855323aa1e3d92e48bef2a5ffc45e04d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72320,7 +72320,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "7784dbeaa31ae2b10a92abd32eb9ecc48ac2d8a1";
+    var sha = "8ee8b145855323aa1e3d92e48bef2a5ffc45e04d";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -80747,6 +80747,7 @@ function sniffQueryArguments() {
   };
   var params = new URLSearchParams(window.location.search);
   var toolsMakecode = /\/tools\/makecode-/.test(window.location.href) || params.get("nestededitorsim") === "1";
+  var toolsMakeEditorExtension = /\/tools\/makecode-editor-extension/.test(window.location.href);
   return {
     diagnostics: params.get("dbg") === "1",
     webUSB: isWebUSBSupported() && params.get("webusb") !== "0" && !toolsMakecode,
@@ -80759,8 +80760,9 @@ function sniffQueryArguments() {
     widget: params.get("widget") === "1",
     trace: params.get("trace") === "1",
     localhost: params.get("localhost") === "1",
-    passive: params.get("passive") === "1",
-    gamepad: params.get("gamepad") === "1"
+    passive: params.get("passive") === "1" || toolsMakeEditorExtension,
+    gamepad: params.get("gamepad") === "1",
+    hosted: params.get("hosted") === "1" || params.get("embed") === "1"
   };
 }
 
@@ -80777,7 +80779,7 @@ UIFlags.peers = args.peers;
 UIFlags.localhost = args.localhost;
 UIFlags.passive = args.passive;
 UIFlags.storage = true;
-UIFlags.hosted = typeof window !== "undefined" && /(hosted|embed)=1/.test(window.location.href);
+UIFlags.hosted = args.hosted;
 UIFlags.gamepad = args.gamepad;
 
 function createBus() {
@@ -88448,4 +88450,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-41347c5fec22acc069a8.js.map
+//# sourceMappingURL=app-fd51d5921bd6f4947c5e.js.map
