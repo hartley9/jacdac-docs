@@ -90,10 +90,9 @@ function MDXContent(_ref) {
   }))), "Loading the Addin"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The Data Science Editor is a custom addin that needs to be loaded in your Excel online."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, "Download the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
-    parentName: "li",
-    "href": "https://green-rock-09efbc210.azurestaticapps.net/hosted_files/hosted_manifest.xml",
-    "target": "_blank",
-    "rel": "nofollow noopener noreferrer"
+    href: "https://green-rock-09efbc210.azurestaticapps.net/hosted_files/hosted_manifest.xml",
+    alt: "Add-In manifest file",
+    download: "data-science-editor-manifest.xml"
   }, "manifest file")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
   }, "Open Excel online"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
@@ -198,4 +197,4 @@ var Page = _ref => {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-excel-mdx-b40142cd8d8ed6f7cf59.js.map
+//# sourceMappingURL=component---src-pages-editors-data-excel-mdx-25e0934449013e51868f.js.map
