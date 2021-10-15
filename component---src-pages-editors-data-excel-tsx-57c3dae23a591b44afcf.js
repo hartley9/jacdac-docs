@@ -8,12 +8,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ Home; }
 /* harmony export */ });
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(80838);
-/* harmony import */ var gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2359);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
-/* harmony import */ var _components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(83580);
-/* harmony import */ var _components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(72587);
-/* harmony import */ var _components_shell_DataEditorAppBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3038);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(80838);
+/* harmony import */ var gatsby_link__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(38037);
+/* harmony import */ var gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2359);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
+/* harmony import */ var _components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(83580);
+/* harmony import */ var _components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(72587);
+/* harmony import */ var _components_shell_DataEditorAppBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3038);
+
 
 
 
@@ -22,78 +24,78 @@ __webpack_require__.r(__webpack_exports__);
 
 function Home() {
   var DATASET_URL = "https://green-rock-09efbc210.azurestaticapps.net/hosted_files/dataset.xlsx";
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
     container: true,
     spacing: 10,
     direction: "column",
     alignContent: "center",
     alignItems: "center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     hideJacdacIcon: true,
     title: "Data Science Editor",
     subtitle: "for Excel",
-    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: "/images/hero.gif",
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
+      src: (0,gatsby_link__WEBPACK_IMPORTED_MODULE_0__/* .withPrefix */ .dq)("/images/hero.gif"),
       alt: "Building a chart from various modules",
       loading: "lazy"
     }),
     buttonText: "Download Worksheet",
     buttonUrl: DATASET_URL
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     subtitle3: "Drag blocks to build a data analysis pipeline within Excel.",
     description: "Drag, Drop, Analyze."
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     right: true,
     imageColumns: 8,
     subtitle: "Tell a data story",
     description: "Follow the blocks to see how the data is analyzed.",
-    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_6__.S, {
       src: "./story.png",
       alt: "A sequence of blocks that charts sorted data.",
       __imageData: __webpack_require__(2558)
     })
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     right: false,
     imageColumns: 8,
     subtitle: "Visualize",
     description: "Drag a chart block to visualize your data.",
-    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_6__.S, {
       src: "./chart.png",
       alt: "A scatter plot of pinguins",
       __imageData: __webpack_require__(62732)
     })
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     right: true,
     subtitle: "\uD83D\uDC40 every step",
     description: "Inspect before and after data on every computation block.",
     imageColumns: 8,
-    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_6__.S, {
       src: "./preview.png",
       alt: "A preview of the data before and after a block",
       __imageData: __webpack_require__(74708)
     })
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     right: false,
     subtitle: "Discover",
     description: "Discover how to compute with data using an intuitive block-based editor.",
     imageColumns: 8,
-    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_6__.S, {
       src: "./discover.png",
       alt: "A drawer of statistics blocks",
       __imageData: __webpack_require__(5030)
     })
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     subtitle: "Where can I try this editor?",
     description: "Yes! Download the worksheet and follow the instructions to get started.",
     buttonVariant: "link",
     buttonText: "Download Worksheet",
     buttonUrl: DATASET_URL
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     subtitle: "Community",
     description: "Please tell us what you think of the editor on our forum.",
     buttonText: "Go to forum",
     buttonVariant: "link",
-    buttonUrl: _components_shell_DataEditorAppBar__WEBPACK_IMPORTED_MODULE_3__/* .FEEDBACK_URL */ .m
+    buttonUrl: _components_shell_DataEditorAppBar__WEBPACK_IMPORTED_MODULE_4__/* .FEEDBACK_URL */ .m
   }));
 }
 
@@ -128,4 +130,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-f80d24220021e2b32ef8.js.map
+//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-57c3dae23a591b44afcf.js.map
