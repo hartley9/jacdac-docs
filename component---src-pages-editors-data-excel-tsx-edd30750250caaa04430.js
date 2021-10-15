@@ -21,6 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Home() {
+  var DATASET_URL = "https://green-rock-09efbc210.azurestaticapps.net/hosted_files/dataset.xlsx";
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     container: true,
     spacing: 10,
@@ -38,9 +39,9 @@ function Home() {
       __imageData: __webpack_require__(71515)
     }),
     buttonText: "Download Worksheet",
-    buttonUrl: "https://green-rock-09efbc210.azurestaticapps.net/hosted_files/dataset.xlsx"
+    buttonUrl: DATASET_URL
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
-    subtitle3: "Drag blocks to build a data analysis pipeline without Excel.",
+    subtitle3: "Drag blocks to build a data analysis pipeline within Excel.",
     description: "Drag, Drop, Analyze."
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     right: true,
@@ -87,7 +88,7 @@ function Home() {
     description: "Yes! Download the worksheet and follow the instructions to get started.",
     buttonVariant: "link",
     buttonText: "Download Worksheet",
-    buttonUrl: "https://green-rock-09efbc210.azurestaticapps.net/hosted_files/dataset.xlsx"
+    buttonUrl: DATASET_URL
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
     subtitle: "Community",
     description: "Please tell us what you think of the editor on our forum.",
@@ -135,4 +136,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-1f8c34c866b360868436.js.map
+//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-edd30750250caaa04430.js.map
