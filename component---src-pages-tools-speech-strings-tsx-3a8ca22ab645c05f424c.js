@@ -638,17 +638,7 @@ function HIDEvents() {
         } = _ref4;
         return !!key;
       }).map(phrase => settings.deleteValue(phrase.key)));
-      var temp_phrases = phrases.slice();
-      phrases.filter(_ref5 => {
-        var {
-          key
-        } = _ref5;
-        return !key;
-      }).map(phrase => {
-        var idx = temp_phrases.indexOf(phrase);
-        temp_phrases = [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z)(temp_phrases.slice(0, idx)), (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z)(temp_phrases.slice(idx)));
-      });
-      setPhrases(temp_phrases);
+      setPhrases([]);
     });
 
     return function handleClearPhrases() {
@@ -679,7 +669,7 @@ function HIDEvents() {
   }, [exportRef.current]);
 
   var handleFilesUploaded = /*#__PURE__*/function () {
-    var _ref6 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z)(function* (files) {
+    var _ref5 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z)(function* (files) {
       for (var file of files) {
         try {
           var text = yield file.text();
@@ -699,7 +689,7 @@ function HIDEvents() {
     });
 
     return function handleFilesUploaded(_x) {
-      return _ref6.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
 
@@ -730,10 +720,10 @@ function HIDEvents() {
     xs: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_ui_Alert__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
     severity: "info"
-  }, "No phrases yet! Click", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, "Add phrase"), " to start building your phrase book.")), phrases === null || phrases === void 0 ? void 0 : phrases.map((_ref7, index) => {
+  }, "No phrases yet! Click", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, "Add phrase"), " to start building your phrase book.")), phrases === null || phrases === void 0 ? void 0 : phrases.map((_ref6, index) => {
     var {
       phrase
-    } = _ref7;
+    } = _ref6;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_23__/* ["default"] */ .Z, Object.assign({
       item: true
     }, gridBreakpoints, {
@@ -794,4 +784,4 @@ function HIDEvents() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-speech-strings-tsx-216b9e89d0f0830e6f95.js.map
+//# sourceMappingURL=component---src-pages-tools-speech-strings-tsx-3a8ca22ab645c05f424c.js.map
