@@ -54037,7 +54037,8 @@ function FeatureItem(props) {
     caption,
     image,
     centered,
-    onButtonClick
+    onButtonClick,
+    hideJacdacIcon
   } = props;
   var classes = useStyles();
   var centeredCls = centered && classes.centered;
@@ -54053,7 +54054,7 @@ function FeatureItem(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
     variant: "h1",
     className: cls
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+  }, !hideJacdacIcon && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     fontSize: "large",
     style: {
       fontSize: "4rem",
@@ -69331,7 +69332,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "fdd373a9b6ce6fa15e37eb73ec0c9520d086443b";
+var sha = "1621deecdcafc8fdf4b2140955ea3c00ee88e824";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70197,7 +70198,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "fdd373a9b6ce6fa15e37eb73ec0c9520d086443b";
+  var sha = "1621deecdcafc8fdf4b2140955ea3c00ee88e824";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -71778,16 +71779,16 @@ function LayoutWithContext(props) {
   var tools = /^\/tools\//.test(path);
   var makeCodeTool = /tools\/makecode-/.test(path);
   var fullWidthTools = /^\/editors\/\w+\/$/.test(path) || /^\/(tools\/makecode-|dashboard)/.test(path);
+  var isDataEditor = /^\/editors\/data/.test(path);
   var {
     hideMainMenu = false,
     hideUnderConstruction = false,
     hideBreadcrumbs = false
   } = frontmatter || {
     hideMainMenu: isHosted || makeCodeTool,
-    hideUnderConstruction: makeCodeTool || fullWidthTools,
-    hideBreadcrumbs: tools || fullWidthTools
+    hideUnderConstruction: isDataEditor || makeCodeTool || fullWidthTools,
+    hideBreadcrumbs: isDataEditor || tools || fullWidthTools
   };
-  var isDataEditor = /^\/editors\/data/.test(path);
   var appBar = hideMainMenu ? undefined : isDataEditor ? /*#__PURE__*/react.createElement(DataEditorAppBar, null) : /*#__PURE__*/react.createElement(MainAppBar, null);
   var title = isDataEditor ? "Data Science Editor (Experimental)" : (pageContext === null || pageContext === void 0 ? void 0 : pageContext.title) || (frontmatter === null || frontmatter === void 0 ? void 0 : frontmatter.title) || undefined;
   var classes = layout_useStyles();
@@ -72383,7 +72384,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "fdd373a9b6ce6fa15e37eb73ec0c9520d086443b";
+    var sha = "1621deecdcafc8fdf4b2140955ea3c00ee88e824";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -83293,7 +83294,7 @@ exports.components = {
   "component---src-pages-devices-tsx": () => __webpack_require__.e(/* import() | component---src-pages-devices-tsx */ 8524).then(__webpack_require__.bind(__webpack_require__, 82306)),
   "component---src-pages-editors-data-about-mdx": () => __webpack_require__.e(/* import() | component---src-pages-editors-data-about-mdx */ 1495).then(__webpack_require__.bind(__webpack_require__, 31586)),
   "component---src-pages-editors-data-embed-tsx": () => Promise.all(/* import() | component---src-pages-editors-data-embed-tsx */[__webpack_require__.e(9978), __webpack_require__.e(2790), __webpack_require__.e(9750)]).then(__webpack_require__.bind(__webpack_require__, 83532)),
-  "component---src-pages-editors-data-excel-mdx": () => __webpack_require__.e(/* import() | component---src-pages-editors-data-excel-mdx */ 4738).then(__webpack_require__.bind(__webpack_require__, 77008)),
+  "component---src-pages-editors-data-excel-tsx": () => __webpack_require__.e(/* import() | component---src-pages-editors-data-excel-tsx */ 1122).then(__webpack_require__.bind(__webpack_require__, 62788)),
   "component---src-pages-editors-data-tsx": () => Promise.all(/* import() | component---src-pages-editors-data-tsx */[__webpack_require__.e(9978), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(2790), __webpack_require__.e(8044), __webpack_require__.e(5901), __webpack_require__.e(4128), __webpack_require__.e(1621)]).then(__webpack_require__.bind(__webpack_require__, 90055)),
   "component---src-pages-editors-mdx": () => __webpack_require__.e(/* import() | component---src-pages-editors-mdx */ 7668).then(__webpack_require__.bind(__webpack_require__, 90088)),
   "component---src-pages-editors-ml-tsx": () => Promise.all(/* import() | component---src-pages-editors-ml-tsx */[__webpack_require__.e(9978), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(2790), __webpack_require__.e(8044), __webpack_require__.e(5901), __webpack_require__.e(6602), __webpack_require__.e(4230)]).then(__webpack_require__.bind(__webpack_require__, 66362)),
@@ -88526,4 +88527,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-2e679ad6afde64124892.js.map
+//# sourceMappingURL=app-cf13d71e78069d8c0a4e.js.map
