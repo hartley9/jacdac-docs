@@ -69331,7 +69331,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "b6cfd7c2d8f09ea38f5793048b2bd6c5fbd2ecc8";
+var sha = "766c02f44555d0807cd9b63ac54da1bc75ff3c98";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70197,7 +70197,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "b6cfd7c2d8f09ea38f5793048b2bd6c5fbd2ecc8";
+  var sha = "766c02f44555d0807cd9b63ac54da1bc75ff3c98";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72383,7 +72383,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "b6cfd7c2d8f09ea38f5793048b2bd6c5fbd2ecc8";
+    var sha = "766c02f44555d0807cd9b63ac54da1bc75ff3c98";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -83293,6 +83293,7 @@ exports.components = {
   "component---src-pages-devices-tsx": () => __webpack_require__.e(/* import() | component---src-pages-devices-tsx */ 8524).then(__webpack_require__.bind(__webpack_require__, 82306)),
   "component---src-pages-editors-data-about-mdx": () => __webpack_require__.e(/* import() | component---src-pages-editors-data-about-mdx */ 1495).then(__webpack_require__.bind(__webpack_require__, 31586)),
   "component---src-pages-editors-data-embed-tsx": () => Promise.all(/* import() | component---src-pages-editors-data-embed-tsx */[__webpack_require__.e(9978), __webpack_require__.e(2790), __webpack_require__.e(9750)]).then(__webpack_require__.bind(__webpack_require__, 83532)),
+  "component---src-pages-editors-data-excel-mdx": () => __webpack_require__.e(/* import() | component---src-pages-editors-data-excel-mdx */ 4738).then(__webpack_require__.bind(__webpack_require__, 77008)),
   "component---src-pages-editors-data-tsx": () => Promise.all(/* import() | component---src-pages-editors-data-tsx */[__webpack_require__.e(9978), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(2790), __webpack_require__.e(8044), __webpack_require__.e(5901), __webpack_require__.e(4128), __webpack_require__.e(1621)]).then(__webpack_require__.bind(__webpack_require__, 90055)),
   "component---src-pages-editors-mdx": () => __webpack_require__.e(/* import() | component---src-pages-editors-mdx */ 7668).then(__webpack_require__.bind(__webpack_require__, 90088)),
   "component---src-pages-editors-ml-tsx": () => Promise.all(/* import() | component---src-pages-editors-ml-tsx */[__webpack_require__.e(9978), __webpack_require__.e(9569), __webpack_require__.e(6275), __webpack_require__.e(2790), __webpack_require__.e(8044), __webpack_require__.e(5901), __webpack_require__.e(6602), __webpack_require__.e(4230)]).then(__webpack_require__.bind(__webpack_require__, 66362)),
@@ -88525,4 +88526,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-bf6074f023d8d43a59a6.js.map
+//# sourceMappingURL=app-c7213e0968c21fcc3fdc.js.map
