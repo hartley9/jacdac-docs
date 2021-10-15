@@ -739,6 +739,132 @@ exports.shallowCompare = shallowCompare;
 
 /***/ }),
 
+/***/ 19255:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export styles */
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(87462);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45987);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(85505);
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(34621);
+/* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(81664);
+/* harmony import */ var _Paper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(58063);
+
+
+
+
+
+
+
+var styles = function styles(theme) {
+  var backgroundColorDefault = theme.palette.type === 'light' ? theme.palette.grey[100] : theme.palette.grey[900];
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      boxSizing: 'border-box',
+      // Prevent padding issue with the Modal and fixed positioned AppBar.
+      zIndex: theme.zIndex.appBar,
+      flexShrink: 0
+    },
+
+    /* Styles applied to the root element if `position="fixed"`. */
+    positionFixed: {
+      position: 'fixed',
+      top: 0,
+      left: 'auto',
+      right: 0,
+      '@media print': {
+        // Prevent the app bar to be visible on each printed page.
+        position: 'absolute'
+      }
+    },
+
+    /* Styles applied to the root element if `position="absolute"`. */
+    positionAbsolute: {
+      position: 'absolute',
+      top: 0,
+      left: 'auto',
+      right: 0
+    },
+
+    /* Styles applied to the root element if `position="sticky"`. */
+    positionSticky: {
+      // ⚠️ sticky is not supported by IE 11.
+      position: 'sticky',
+      top: 0,
+      left: 'auto',
+      right: 0
+    },
+
+    /* Styles applied to the root element if `position="static"`. */
+    positionStatic: {
+      position: 'static'
+    },
+
+    /* Styles applied to the root element if `position="relative"`. */
+    positionRelative: {
+      position: 'relative'
+    },
+
+    /* Styles applied to the root element if `color="default"`. */
+    colorDefault: {
+      backgroundColor: backgroundColorDefault,
+      color: theme.palette.getContrastText(backgroundColorDefault)
+    },
+
+    /* Styles applied to the root element if `color="primary"`. */
+    colorPrimary: {
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.primary.contrastText
+    },
+
+    /* Styles applied to the root element if `color="secondary"`. */
+    colorSecondary: {
+      backgroundColor: theme.palette.secondary.main,
+      color: theme.palette.secondary.contrastText
+    },
+
+    /* Styles applied to the root element if `color="inherit"`. */
+    colorInherit: {
+      color: 'inherit'
+    },
+
+    /* Styles applied to the root element if `color="transparent"`. */
+    colorTransparent: {
+      backgroundColor: 'transparent',
+      color: 'inherit'
+    }
+  };
+};
+var AppBar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function AppBar(props, ref) {
+  var classes = props.classes,
+      className = props.className,
+      _props$color = props.color,
+      color = _props$color === void 0 ? 'primary' : _props$color,
+      _props$position = props.position,
+      position = _props$position === void 0 ? 'fixed' : _props$position,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(props, ["classes", "className", "color", "position"]);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Paper__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)({
+    square: true,
+    component: "header",
+    elevation: 4,
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__["default"])(classes.root, classes["position".concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(position))], classes["color".concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(color))], className, position === 'fixed' && 'mui-fixed'),
+    ref: ref
+  }, other));
+});
+ false ? 0 : void 0;
+/* harmony default export */ __webpack_exports__["Z"] = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z)(styles, {
+  name: 'MuiAppBar'
+})(AppBar));
+
+/***/ }),
+
 /***/ 21407:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -6129,6 +6255,433 @@ var Grow = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function G
  false ? 0 : void 0;
 Grow.muiSupportAuto = true;
 /* harmony default export */ __webpack_exports__["Z"] = (Grow);
+
+/***/ }),
+
+/***/ 89704:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Z": function() { return /* binding */ Hidden_Hidden; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
+var esm_extends = __webpack_require__(87462);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(45987);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(45697);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+// EXTERNAL MODULE: ./node_modules/@material-ui/styles/esm/getThemeProps/getThemeProps.js
+var getThemeProps = __webpack_require__(61652);
+// EXTERNAL MODULE: ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
+var hoist_non_react_statics_cjs = __webpack_require__(15706);
+var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/useTheme.js
+var useTheme = __webpack_require__(59355);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createBreakpoints.js
+var createBreakpoints = __webpack_require__(52507);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/useMediaQuery/useMediaQuery.js
+var useMediaQuery = __webpack_require__(8129);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/withWidth/withWidth.js
+
+
+
+
+
+
+
+
+ // By default, returns true if screen width is the same or greater than the given breakpoint.
+
+var isWidthUp = function isWidthUp(breakpoint, width) {
+  var inclusive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+  if (inclusive) {
+    return createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint) <= createBreakpoints/* keys.indexOf */.X.indexOf(width);
+  }
+
+  return createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint) < createBreakpoints/* keys.indexOf */.X.indexOf(width);
+}; // By default, returns true if screen width is the same or less than the given breakpoint.
+
+var isWidthDown = function isWidthDown(breakpoint, width) {
+  var inclusive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+  if (inclusive) {
+    return createBreakpoints/* keys.indexOf */.X.indexOf(width) <= createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint);
+  }
+
+  return createBreakpoints/* keys.indexOf */.X.indexOf(width) < createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint);
+};
+var useEnhancedEffect = typeof window === 'undefined' ? react.useEffect : react.useLayoutEffect;
+
+var withWidth = function withWidth() {
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return function (Component) {
+    var _options$withTheme = options.withTheme,
+        withThemeOption = _options$withTheme === void 0 ? false : _options$withTheme,
+        _options$noSSR = options.noSSR,
+        noSSR = _options$noSSR === void 0 ? false : _options$noSSR,
+        initialWidthOption = options.initialWidth;
+
+    function WithWidth(props) {
+      var contextTheme = (0,useTheme/* default */.Z)();
+      var theme = props.theme || contextTheme;
+
+      var _getThemeProps = (0,getThemeProps/* default */.Z)({
+        theme: theme,
+        name: 'MuiWithWidth',
+        props: (0,esm_extends/* default */.Z)({}, props)
+      }),
+          initialWidth = _getThemeProps.initialWidth,
+          width = _getThemeProps.width,
+          other = (0,objectWithoutProperties/* default */.Z)(_getThemeProps, ["initialWidth", "width"]);
+
+      var _React$useState = react.useState(false),
+          mountedState = _React$useState[0],
+          setMountedState = _React$useState[1];
+
+      useEnhancedEffect(function () {
+        setMountedState(true);
+      }, []);
+      /**
+       * innerWidth |xs      sm      md      lg      xl
+       *            |-------|-------|-------|-------|------>
+       * width      |  xs   |  sm   |  md   |  lg   |  xl
+       */
+
+      var keys = theme.breakpoints.keys.slice().reverse();
+      var widthComputed = keys.reduce(function (output, key) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        var matches = (0,useMediaQuery/* default */.Z)(theme.breakpoints.up(key));
+        return !output && matches ? key : output;
+      }, null);
+
+      var more = (0,esm_extends/* default */.Z)({
+        width: width || (mountedState || noSSR ? widthComputed : undefined) || initialWidth || initialWidthOption
+      }, withThemeOption ? {
+        theme: theme
+      } : {}, other); // When rendering the component on the server,
+      // we have no idea about the client browser screen width.
+      // In order to prevent blinks and help the reconciliation of the React tree
+      // we are not rendering the child component.
+      //
+      // An alternative is to use the `initialWidth` property.
+
+
+      if (more.width === undefined) {
+        return null;
+      }
+
+      return /*#__PURE__*/react.createElement(Component, more);
+    }
+
+     false ? 0 : void 0;
+
+    if (false) {}
+
+    hoist_non_react_statics_cjs_default()(WithWidth, Component);
+    return WithWidth;
+  };
+};
+
+/* harmony default export */ var withWidth_withWidth = (withWidth);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/HiddenJs.js
+
+
+
+
+/**
+ * @ignore - internal component.
+ */
+
+function HiddenJs(props) {
+  var children = props.children,
+      only = props.only,
+      width = props.width;
+  var theme = (0,useTheme/* default */.Z)();
+  var visible = true; // `only` check is faster to get out sooner if used.
+
+  if (only) {
+    if (Array.isArray(only)) {
+      for (var i = 0; i < only.length; i += 1) {
+        var breakpoint = only[i];
+
+        if (width === breakpoint) {
+          visible = false;
+          break;
+        }
+      }
+    } else if (only && width === only) {
+      visible = false;
+    }
+  } // Allow `only` to be combined with other props. If already hidden, no need to check others.
+
+
+  if (visible) {
+    // determine visibility based on the smallest size up
+    for (var _i = 0; _i < theme.breakpoints.keys.length; _i += 1) {
+      var _breakpoint = theme.breakpoints.keys[_i];
+      var breakpointUp = props["".concat(_breakpoint, "Up")];
+      var breakpointDown = props["".concat(_breakpoint, "Down")];
+
+      if (breakpointUp && isWidthUp(_breakpoint, width) || breakpointDown && isWidthDown(_breakpoint, width)) {
+        visible = false;
+        break;
+      }
+    }
+  }
+
+  if (!visible) {
+    return null;
+  }
+
+  return children;
+}
+
+HiddenJs.propTypes = {
+  /**
+   * The content of the component.
+   */
+  children: (prop_types_default()).node,
+
+  /**
+   * @ignore
+   */
+  className: (prop_types_default()).string,
+
+  /**
+   * Specify which implementation to use.  'js' is the default, 'css' works better for
+   * server-side rendering.
+   */
+  implementation: prop_types_default().oneOf(['js', 'css']),
+
+  /**
+   * You can use this prop when choosing the `js` implementation with server-side rendering.
+   *
+   * As `window.innerWidth` is unavailable on the server,
+   * we default to rendering an empty component during the first mount.
+   * You might want to use an heuristic to approximate
+   * the screen width of the client browser screen width.
+   *
+   * For instance, you could be using the user-agent or the client-hints.
+   * https://caniuse.com/#search=client%20hint
+   */
+  initialWidth: prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+
+  /**
+   * If `true`, screens this size and down will be hidden.
+   */
+  lgDown: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and up will be hidden.
+   */
+  lgUp: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and down will be hidden.
+   */
+  mdDown: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and up will be hidden.
+   */
+  mdUp: (prop_types_default()).bool,
+
+  /**
+   * Hide the given breakpoint(s).
+   */
+  only: prop_types_default().oneOfType([prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']), prop_types_default().arrayOf(prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']))]),
+
+  /**
+   * If `true`, screens this size and down will be hidden.
+   */
+  smDown: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and up will be hidden.
+   */
+  smUp: (prop_types_default()).bool,
+
+  /**
+   * @ignore
+   * width prop provided by withWidth decorator.
+   */
+  width: (prop_types_default()).string.isRequired,
+
+  /**
+   * If `true`, screens this size and down will be hidden.
+   */
+  xlDown: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and up will be hidden.
+   */
+  xlUp: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and down will be hidden.
+   */
+  xsDown: (prop_types_default()).bool,
+
+  /**
+   * If `true`, screens this size and up will be hidden.
+   */
+  xsUp: (prop_types_default()).bool
+};
+
+if (false) {}
+
+/* harmony default export */ var Hidden_HiddenJs = (withWidth_withWidth()(HiddenJs));
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__(4942);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/utils/capitalize.js
+var capitalize = __webpack_require__(81664);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/withStyles.js
+var withStyles = __webpack_require__(34621);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/HiddenCss.js
+
+
+
+
+
+
+
+var styles = function styles(theme) {
+  var hidden = {
+    display: 'none'
+  };
+  return theme.breakpoints.keys.reduce(function (acc, key) {
+    acc["only".concat((0,capitalize/* default */.Z)(key))] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.only(key), hidden);
+    acc["".concat(key, "Up")] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.up(key), hidden);
+    acc["".concat(key, "Down")] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.down(key), hidden);
+    return acc;
+  }, {});
+};
+/**
+ * @ignore - internal component.
+ */
+
+
+function HiddenCss(props) {
+  var children = props.children,
+      classes = props.classes,
+      className = props.className,
+      only = props.only,
+      other = (0,objectWithoutProperties/* default */.Z)(props, ["children", "classes", "className", "only"]);
+
+  var theme = (0,useTheme/* default */.Z)();
+
+  if (false) { var unknownProps; }
+
+  var clsx = [];
+
+  if (className) {
+    clsx.push(className);
+  }
+
+  for (var i = 0; i < theme.breakpoints.keys.length; i += 1) {
+    var breakpoint = theme.breakpoints.keys[i];
+    var breakpointUp = props["".concat(breakpoint, "Up")];
+    var breakpointDown = props["".concat(breakpoint, "Down")];
+
+    if (breakpointUp) {
+      clsx.push(classes["".concat(breakpoint, "Up")]);
+    }
+
+    if (breakpointDown) {
+      clsx.push(classes["".concat(breakpoint, "Down")]);
+    }
+  }
+
+  if (only) {
+    var onlyBreakpoints = Array.isArray(only) ? only : [only];
+    onlyBreakpoints.forEach(function (breakpoint) {
+      clsx.push(classes["only".concat((0,capitalize/* default */.Z)(breakpoint))]);
+    });
+  }
+
+  return /*#__PURE__*/react.createElement("div", {
+    className: clsx.join(' ')
+  }, children);
+}
+
+ false ? 0 : void 0;
+/* harmony default export */ var Hidden_HiddenCss = ((0,withStyles/* default */.Z)(styles, {
+  name: 'PrivateHiddenCss'
+})(HiddenCss));
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/Hidden.js
+
+
+
+
+
+/**
+ * Responsively hides children based on the selected implementation.
+ */
+
+function Hidden(props) {
+  var _props$implementation = props.implementation,
+      implementation = _props$implementation === void 0 ? 'js' : _props$implementation,
+      _props$lgDown = props.lgDown,
+      lgDown = _props$lgDown === void 0 ? false : _props$lgDown,
+      _props$lgUp = props.lgUp,
+      lgUp = _props$lgUp === void 0 ? false : _props$lgUp,
+      _props$mdDown = props.mdDown,
+      mdDown = _props$mdDown === void 0 ? false : _props$mdDown,
+      _props$mdUp = props.mdUp,
+      mdUp = _props$mdUp === void 0 ? false : _props$mdUp,
+      _props$smDown = props.smDown,
+      smDown = _props$smDown === void 0 ? false : _props$smDown,
+      _props$smUp = props.smUp,
+      smUp = _props$smUp === void 0 ? false : _props$smUp,
+      _props$xlDown = props.xlDown,
+      xlDown = _props$xlDown === void 0 ? false : _props$xlDown,
+      _props$xlUp = props.xlUp,
+      xlUp = _props$xlUp === void 0 ? false : _props$xlUp,
+      _props$xsDown = props.xsDown,
+      xsDown = _props$xsDown === void 0 ? false : _props$xsDown,
+      _props$xsUp = props.xsUp,
+      xsUp = _props$xsUp === void 0 ? false : _props$xsUp,
+      other = (0,objectWithoutProperties/* default */.Z)(props, ["implementation", "lgDown", "lgUp", "mdDown", "mdUp", "smDown", "smUp", "xlDown", "xlUp", "xsDown", "xsUp"]);
+
+  if (implementation === 'js') {
+    return /*#__PURE__*/react.createElement(Hidden_HiddenJs, (0,esm_extends/* default */.Z)({
+      lgDown: lgDown,
+      lgUp: lgUp,
+      mdDown: mdDown,
+      mdUp: mdUp,
+      smDown: smDown,
+      smUp: smUp,
+      xlDown: xlDown,
+      xlUp: xlUp,
+      xsDown: xsDown,
+      xsUp: xsUp
+    }, other));
+  }
+
+  return /*#__PURE__*/react.createElement(Hidden_HiddenCss, (0,esm_extends/* default */.Z)({
+    lgDown: lgDown,
+    lgUp: lgUp,
+    mdDown: mdDown,
+    mdUp: mdUp,
+    smDown: smDown,
+    smUp: smUp,
+    xlDown: xlDown,
+    xlUp: xlUp,
+    xsDown: xsDown,
+    xsUp: xsUp
+  }, other));
+}
+
+ false ? 0 : void 0;
+/* harmony default export */ var Hidden_Hidden = (Hidden);
 
 /***/ }),
 
@@ -15780,6 +16333,73 @@ var TextField = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(funct
 /* harmony default export */ __webpack_exports__["Z"] = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z)(styles, {
   name: 'MuiTextField'
 })(TextField));
+
+/***/ }),
+
+/***/ 34129:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export styles */
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(87462);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45987);
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4942);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(85505);
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(34621);
+
+
+
+
+
+
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center'
+    },
+
+    /* Styles applied to the root element if `disableGutters={false}`. */
+    gutters: (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)({
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2)
+    }, theme.breakpoints.up('sm'), {
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3)
+    }),
+
+    /* Styles applied to the root element if `variant="regular"`. */
+    regular: theme.mixins.toolbar,
+
+    /* Styles applied to the root element if `variant="dense"`. */
+    dense: {
+      minHeight: 48
+    }
+  };
+};
+var Toolbar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function Toolbar(props, ref) {
+  var classes = props.classes,
+      className = props.className,
+      _props$component = props.component,
+      Component = _props$component === void 0 ? 'div' : _props$component,
+      _props$disableGutters = props.disableGutters,
+      disableGutters = _props$disableGutters === void 0 ? false : _props$disableGutters,
+      _props$variant = props.variant,
+      variant = _props$variant === void 0 ? 'regular' : _props$variant,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)(props, ["classes", "className", "component", "disableGutters", "variant"]);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)({
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__["default"])(classes.root, classes[variant], className, !disableGutters && classes.gutters),
+    ref: ref
+  }, other));
+});
+ false ? 0 : void 0;
+/* harmony default export */ __webpack_exports__["Z"] = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)(styles, {
+  name: 'MuiToolbar'
+})(Toolbar));
 
 /***/ }),
 
@@ -69332,7 +69952,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "9af7e49584665d9611c1e3da1d59d6b5fd94aea5";
+var sha = "a12e2d30acfae7ec0872a81feac453b28d8d0dd7";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69651,7 +70271,7 @@ function useLocalStorage(key, initialValue) {
 /* harmony export */ });
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59355);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8129);
-/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(48534);
+/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(93907);
 
 
 function useMediaQueries() {
@@ -69962,7 +70582,7 @@ function useWindowEvent(type, listener, passive, deps) {
 
 /***/ }),
 
-/***/ 48534:
+/***/ 93907:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70198,7 +70818,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "9af7e49584665d9611c1e3da1d59d6b5fd94aea5";
+  var sha = "a12e2d30acfae7ec0872a81feac453b28d8d0dd7";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -70577,572 +71197,12 @@ function ui_Breadcrumbs_Breadcrumbs(props) {
 }
 // EXTERNAL MODULE: ./src/components/hooks/useMediaQueries.tsx
 var useMediaQueries = __webpack_require__(20509);
-// EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(45697);
-var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
-// EXTERNAL MODULE: ./node_modules/@material-ui/styles/esm/getThemeProps/getThemeProps.js
-var getThemeProps = __webpack_require__(61652);
-// EXTERNAL MODULE: ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
-var hoist_non_react_statics_cjs = __webpack_require__(15706);
-var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/createBreakpoints.js
-var createBreakpoints = __webpack_require__(52507);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/useMediaQuery/useMediaQuery.js
-var useMediaQuery = __webpack_require__(8129);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/withWidth/withWidth.js
-
-
-
-
-
-
-
-
- // By default, returns true if screen width is the same or greater than the given breakpoint.
-
-var isWidthUp = function isWidthUp(breakpoint, width) {
-  var inclusive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
-  if (inclusive) {
-    return createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint) <= createBreakpoints/* keys.indexOf */.X.indexOf(width);
-  }
-
-  return createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint) < createBreakpoints/* keys.indexOf */.X.indexOf(width);
-}; // By default, returns true if screen width is the same or less than the given breakpoint.
-
-var isWidthDown = function isWidthDown(breakpoint, width) {
-  var inclusive = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
-  if (inclusive) {
-    return createBreakpoints/* keys.indexOf */.X.indexOf(width) <= createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint);
-  }
-
-  return createBreakpoints/* keys.indexOf */.X.indexOf(width) < createBreakpoints/* keys.indexOf */.X.indexOf(breakpoint);
-};
-var useEnhancedEffect = typeof window === 'undefined' ? react.useEffect : react.useLayoutEffect;
-
-var withWidth = function withWidth() {
-  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return function (Component) {
-    var _options$withTheme = options.withTheme,
-        withThemeOption = _options$withTheme === void 0 ? false : _options$withTheme,
-        _options$noSSR = options.noSSR,
-        noSSR = _options$noSSR === void 0 ? false : _options$noSSR,
-        initialWidthOption = options.initialWidth;
-
-    function WithWidth(props) {
-      var contextTheme = (0,useTheme/* default */.Z)();
-      var theme = props.theme || contextTheme;
-
-      var _getThemeProps = (0,getThemeProps/* default */.Z)({
-        theme: theme,
-        name: 'MuiWithWidth',
-        props: (0,esm_extends/* default */.Z)({}, props)
-      }),
-          initialWidth = _getThemeProps.initialWidth,
-          width = _getThemeProps.width,
-          other = (0,objectWithoutProperties/* default */.Z)(_getThemeProps, ["initialWidth", "width"]);
-
-      var _React$useState = react.useState(false),
-          mountedState = _React$useState[0],
-          setMountedState = _React$useState[1];
-
-      useEnhancedEffect(function () {
-        setMountedState(true);
-      }, []);
-      /**
-       * innerWidth |xs      sm      md      lg      xl
-       *            |-------|-------|-------|-------|------>
-       * width      |  xs   |  sm   |  md   |  lg   |  xl
-       */
-
-      var keys = theme.breakpoints.keys.slice().reverse();
-      var widthComputed = keys.reduce(function (output, key) {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        var matches = (0,useMediaQuery/* default */.Z)(theme.breakpoints.up(key));
-        return !output && matches ? key : output;
-      }, null);
-
-      var more = (0,esm_extends/* default */.Z)({
-        width: width || (mountedState || noSSR ? widthComputed : undefined) || initialWidth || initialWidthOption
-      }, withThemeOption ? {
-        theme: theme
-      } : {}, other); // When rendering the component on the server,
-      // we have no idea about the client browser screen width.
-      // In order to prevent blinks and help the reconciliation of the React tree
-      // we are not rendering the child component.
-      //
-      // An alternative is to use the `initialWidth` property.
-
-
-      if (more.width === undefined) {
-        return null;
-      }
-
-      return /*#__PURE__*/react.createElement(Component, more);
-    }
-
-     false ? 0 : void 0;
-
-    if (false) {}
-
-    hoist_non_react_statics_cjs_default()(WithWidth, Component);
-    return WithWidth;
-  };
-};
-
-/* harmony default export */ var withWidth_withWidth = (withWidth);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/HiddenJs.js
-
-
-
-
-/**
- * @ignore - internal component.
- */
-
-function HiddenJs(props) {
-  var children = props.children,
-      only = props.only,
-      width = props.width;
-  var theme = (0,useTheme/* default */.Z)();
-  var visible = true; // `only` check is faster to get out sooner if used.
-
-  if (only) {
-    if (Array.isArray(only)) {
-      for (var i = 0; i < only.length; i += 1) {
-        var breakpoint = only[i];
-
-        if (width === breakpoint) {
-          visible = false;
-          break;
-        }
-      }
-    } else if (only && width === only) {
-      visible = false;
-    }
-  } // Allow `only` to be combined with other props. If already hidden, no need to check others.
-
-
-  if (visible) {
-    // determine visibility based on the smallest size up
-    for (var _i = 0; _i < theme.breakpoints.keys.length; _i += 1) {
-      var _breakpoint = theme.breakpoints.keys[_i];
-      var breakpointUp = props["".concat(_breakpoint, "Up")];
-      var breakpointDown = props["".concat(_breakpoint, "Down")];
-
-      if (breakpointUp && isWidthUp(_breakpoint, width) || breakpointDown && isWidthDown(_breakpoint, width)) {
-        visible = false;
-        break;
-      }
-    }
-  }
-
-  if (!visible) {
-    return null;
-  }
-
-  return children;
-}
-
-HiddenJs.propTypes = {
-  /**
-   * The content of the component.
-   */
-  children: (prop_types_default()).node,
-
-  /**
-   * @ignore
-   */
-  className: (prop_types_default()).string,
-
-  /**
-   * Specify which implementation to use.  'js' is the default, 'css' works better for
-   * server-side rendering.
-   */
-  implementation: prop_types_default().oneOf(['js', 'css']),
-
-  /**
-   * You can use this prop when choosing the `js` implementation with server-side rendering.
-   *
-   * As `window.innerWidth` is unavailable on the server,
-   * we default to rendering an empty component during the first mount.
-   * You might want to use an heuristic to approximate
-   * the screen width of the client browser screen width.
-   *
-   * For instance, you could be using the user-agent or the client-hints.
-   * https://caniuse.com/#search=client%20hint
-   */
-  initialWidth: prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
-
-  /**
-   * If `true`, screens this size and down will be hidden.
-   */
-  lgDown: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and up will be hidden.
-   */
-  lgUp: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and down will be hidden.
-   */
-  mdDown: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and up will be hidden.
-   */
-  mdUp: (prop_types_default()).bool,
-
-  /**
-   * Hide the given breakpoint(s).
-   */
-  only: prop_types_default().oneOfType([prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']), prop_types_default().arrayOf(prop_types_default().oneOf(['xs', 'sm', 'md', 'lg', 'xl']))]),
-
-  /**
-   * If `true`, screens this size and down will be hidden.
-   */
-  smDown: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and up will be hidden.
-   */
-  smUp: (prop_types_default()).bool,
-
-  /**
-   * @ignore
-   * width prop provided by withWidth decorator.
-   */
-  width: (prop_types_default()).string.isRequired,
-
-  /**
-   * If `true`, screens this size and down will be hidden.
-   */
-  xlDown: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and up will be hidden.
-   */
-  xlUp: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and down will be hidden.
-   */
-  xsDown: (prop_types_default()).bool,
-
-  /**
-   * If `true`, screens this size and up will be hidden.
-   */
-  xsUp: (prop_types_default()).bool
-};
-
-if (false) {}
-
-/* harmony default export */ var Hidden_HiddenJs = (withWidth_withWidth()(HiddenJs));
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/HiddenCss.js
-
-
-
-
-
-
-
-var HiddenCss_styles = function styles(theme) {
-  var hidden = {
-    display: 'none'
-  };
-  return theme.breakpoints.keys.reduce(function (acc, key) {
-    acc["only".concat((0,capitalize/* default */.Z)(key))] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.only(key), hidden);
-    acc["".concat(key, "Up")] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.up(key), hidden);
-    acc["".concat(key, "Down")] = (0,defineProperty/* default */.Z)({}, theme.breakpoints.down(key), hidden);
-    return acc;
-  }, {});
-};
-/**
- * @ignore - internal component.
- */
-
-
-function HiddenCss(props) {
-  var children = props.children,
-      classes = props.classes,
-      className = props.className,
-      only = props.only,
-      other = (0,objectWithoutProperties/* default */.Z)(props, ["children", "classes", "className", "only"]);
-
-  var theme = (0,useTheme/* default */.Z)();
-
-  if (false) { var unknownProps; }
-
-  var clsx = [];
-
-  if (className) {
-    clsx.push(className);
-  }
-
-  for (var i = 0; i < theme.breakpoints.keys.length; i += 1) {
-    var breakpoint = theme.breakpoints.keys[i];
-    var breakpointUp = props["".concat(breakpoint, "Up")];
-    var breakpointDown = props["".concat(breakpoint, "Down")];
-
-    if (breakpointUp) {
-      clsx.push(classes["".concat(breakpoint, "Up")]);
-    }
-
-    if (breakpointDown) {
-      clsx.push(classes["".concat(breakpoint, "Down")]);
-    }
-  }
-
-  if (only) {
-    var onlyBreakpoints = Array.isArray(only) ? only : [only];
-    onlyBreakpoints.forEach(function (breakpoint) {
-      clsx.push(classes["only".concat((0,capitalize/* default */.Z)(breakpoint))]);
-    });
-  }
-
-  return /*#__PURE__*/react.createElement("div", {
-    className: clsx.join(' ')
-  }, children);
-}
-
- false ? 0 : void 0;
-/* harmony default export */ var Hidden_HiddenCss = ((0,withStyles/* default */.Z)(HiddenCss_styles, {
-  name: 'PrivateHiddenCss'
-})(HiddenCss));
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Hidden/Hidden.js
-
-
-
-
-
-/**
- * Responsively hides children based on the selected implementation.
- */
-
-function Hidden(props) {
-  var _props$implementation = props.implementation,
-      implementation = _props$implementation === void 0 ? 'js' : _props$implementation,
-      _props$lgDown = props.lgDown,
-      lgDown = _props$lgDown === void 0 ? false : _props$lgDown,
-      _props$lgUp = props.lgUp,
-      lgUp = _props$lgUp === void 0 ? false : _props$lgUp,
-      _props$mdDown = props.mdDown,
-      mdDown = _props$mdDown === void 0 ? false : _props$mdDown,
-      _props$mdUp = props.mdUp,
-      mdUp = _props$mdUp === void 0 ? false : _props$mdUp,
-      _props$smDown = props.smDown,
-      smDown = _props$smDown === void 0 ? false : _props$smDown,
-      _props$smUp = props.smUp,
-      smUp = _props$smUp === void 0 ? false : _props$smUp,
-      _props$xlDown = props.xlDown,
-      xlDown = _props$xlDown === void 0 ? false : _props$xlDown,
-      _props$xlUp = props.xlUp,
-      xlUp = _props$xlUp === void 0 ? false : _props$xlUp,
-      _props$xsDown = props.xsDown,
-      xsDown = _props$xsDown === void 0 ? false : _props$xsDown,
-      _props$xsUp = props.xsUp,
-      xsUp = _props$xsUp === void 0 ? false : _props$xsUp,
-      other = (0,objectWithoutProperties/* default */.Z)(props, ["implementation", "lgDown", "lgUp", "mdDown", "mdUp", "smDown", "smUp", "xlDown", "xlUp", "xsDown", "xsUp"]);
-
-  if (implementation === 'js') {
-    return /*#__PURE__*/react.createElement(Hidden_HiddenJs, (0,esm_extends/* default */.Z)({
-      lgDown: lgDown,
-      lgUp: lgUp,
-      mdDown: mdDown,
-      mdUp: mdUp,
-      smDown: smDown,
-      smUp: smUp,
-      xlDown: xlDown,
-      xlUp: xlUp,
-      xsDown: xsDown,
-      xsUp: xsUp
-    }, other));
-  }
-
-  return /*#__PURE__*/react.createElement(Hidden_HiddenCss, (0,esm_extends/* default */.Z)({
-    lgDown: lgDown,
-    lgUp: lgUp,
-    mdDown: mdDown,
-    mdUp: mdUp,
-    smDown: smDown,
-    smUp: smUp,
-    xlDown: xlDown,
-    xlUp: xlUp,
-    xsDown: xsDown,
-    xsUp: xsUp
-  }, other));
-}
-
- false ? 0 : void 0;
-/* harmony default export */ var Hidden_Hidden = (Hidden);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/AppBar/AppBar.js
-
-
-
-
-
-
-
-var AppBar_styles = function styles(theme) {
-  var backgroundColorDefault = theme.palette.type === 'light' ? theme.palette.grey[100] : theme.palette.grey[900];
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%',
-      boxSizing: 'border-box',
-      // Prevent padding issue with the Modal and fixed positioned AppBar.
-      zIndex: theme.zIndex.appBar,
-      flexShrink: 0
-    },
-
-    /* Styles applied to the root element if `position="fixed"`. */
-    positionFixed: {
-      position: 'fixed',
-      top: 0,
-      left: 'auto',
-      right: 0,
-      '@media print': {
-        // Prevent the app bar to be visible on each printed page.
-        position: 'absolute'
-      }
-    },
-
-    /* Styles applied to the root element if `position="absolute"`. */
-    positionAbsolute: {
-      position: 'absolute',
-      top: 0,
-      left: 'auto',
-      right: 0
-    },
-
-    /* Styles applied to the root element if `position="sticky"`. */
-    positionSticky: {
-      // ⚠️ sticky is not supported by IE 11.
-      position: 'sticky',
-      top: 0,
-      left: 'auto',
-      right: 0
-    },
-
-    /* Styles applied to the root element if `position="static"`. */
-    positionStatic: {
-      position: 'static'
-    },
-
-    /* Styles applied to the root element if `position="relative"`. */
-    positionRelative: {
-      position: 'relative'
-    },
-
-    /* Styles applied to the root element if `color="default"`. */
-    colorDefault: {
-      backgroundColor: backgroundColorDefault,
-      color: theme.palette.getContrastText(backgroundColorDefault)
-    },
-
-    /* Styles applied to the root element if `color="primary"`. */
-    colorPrimary: {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.primary.contrastText
-    },
-
-    /* Styles applied to the root element if `color="secondary"`. */
-    colorSecondary: {
-      backgroundColor: theme.palette.secondary.main,
-      color: theme.palette.secondary.contrastText
-    },
-
-    /* Styles applied to the root element if `color="inherit"`. */
-    colorInherit: {
-      color: 'inherit'
-    },
-
-    /* Styles applied to the root element if `color="transparent"`. */
-    colorTransparent: {
-      backgroundColor: 'transparent',
-      color: 'inherit'
-    }
-  };
-};
-var AppBar = /*#__PURE__*/react.forwardRef(function AppBar(props, ref) {
-  var classes = props.classes,
-      className = props.className,
-      _props$color = props.color,
-      color = _props$color === void 0 ? 'primary' : _props$color,
-      _props$position = props.position,
-      position = _props$position === void 0 ? 'fixed' : _props$position,
-      other = (0,objectWithoutProperties/* default */.Z)(props, ["classes", "className", "color", "position"]);
-
-  return /*#__PURE__*/react.createElement(Paper/* default */.Z, (0,esm_extends/* default */.Z)({
-    square: true,
-    component: "header",
-    elevation: 4,
-    className: (0,clsx_m["default"])(classes.root, classes["position".concat((0,capitalize/* default */.Z)(position))], classes["color".concat((0,capitalize/* default */.Z)(color))], className, position === 'fixed' && 'mui-fixed'),
-    ref: ref
-  }, other));
-});
- false ? 0 : void 0;
-/* harmony default export */ var AppBar_AppBar = ((0,withStyles/* default */.Z)(AppBar_styles, {
-  name: 'MuiAppBar'
-})(AppBar));
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/Toolbar/Toolbar.js
-
-
-
-
-
-
-var Toolbar_styles = function styles(theme) {
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      position: 'relative',
-      display: 'flex',
-      alignItems: 'center'
-    },
-
-    /* Styles applied to the root element if `disableGutters={false}`. */
-    gutters: (0,defineProperty/* default */.Z)({
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2)
-    }, theme.breakpoints.up('sm'), {
-      paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3)
-    }),
-
-    /* Styles applied to the root element if `variant="regular"`. */
-    regular: theme.mixins.toolbar,
-
-    /* Styles applied to the root element if `variant="dense"`. */
-    dense: {
-      minHeight: 48
-    }
-  };
-};
-var Toolbar = /*#__PURE__*/react.forwardRef(function Toolbar(props, ref) {
-  var classes = props.classes,
-      className = props.className,
-      _props$component = props.component,
-      Component = _props$component === void 0 ? 'div' : _props$component,
-      _props$disableGutters = props.disableGutters,
-      disableGutters = _props$disableGutters === void 0 ? false : _props$disableGutters,
-      _props$variant = props.variant,
-      variant = _props$variant === void 0 ? 'regular' : _props$variant,
-      other = (0,objectWithoutProperties/* default */.Z)(props, ["classes", "className", "component", "disableGutters", "variant"]);
-
-  return /*#__PURE__*/react.createElement(Component, (0,esm_extends/* default */.Z)({
-    className: (0,clsx_m["default"])(classes.root, classes[variant], className, !disableGutters && classes.gutters),
-    ref: ref
-  }, other));
-});
- false ? 0 : void 0;
-/* harmony default export */ var Toolbar_Toolbar = ((0,withStyles/* default */.Z)(Toolbar_styles, {
-  name: 'MuiToolbar'
-})(Toolbar));
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Hidden/Hidden.js + 3 modules
+var Hidden = __webpack_require__(89704);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/AppBar/AppBar.js
+var AppBar = __webpack_require__(19255);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Toolbar/Toolbar.js
+var Toolbar = __webpack_require__(34129);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/MoreVert.js
 var MoreVert = __webpack_require__(70542);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/GitHub.js
@@ -71256,90 +71316,8 @@ function PacketStats() {
 var Forum = __webpack_require__(22203);
 // EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 24 modules
 var providerbus = __webpack_require__(47751);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/useScrollTrigger/useScrollTrigger.js
-
-
-
-
-function defaultTrigger(store, options) {
-  var _options$disableHyste = options.disableHysteresis,
-      disableHysteresis = _options$disableHyste === void 0 ? false : _options$disableHyste,
-      _options$threshold = options.threshold,
-      threshold = _options$threshold === void 0 ? 100 : _options$threshold,
-      target = options.target;
-  var previous = store.current;
-
-  if (target) {
-    // Get vertical scroll
-    store.current = target.pageYOffset !== undefined ? target.pageYOffset : target.scrollTop;
-  }
-
-  if (!disableHysteresis && previous !== undefined) {
-    if (store.current < previous) {
-      return false;
-    }
-  }
-
-  return store.current > threshold;
-}
-
-var defaultTarget = typeof window !== 'undefined' ? window : null;
-function useScrollTrigger() {
-  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  var _options$getTrigger = options.getTrigger,
-      getTrigger = _options$getTrigger === void 0 ? defaultTrigger : _options$getTrigger,
-      _options$target = options.target,
-      target = _options$target === void 0 ? defaultTarget : _options$target,
-      other = (0,objectWithoutProperties/* default */.Z)(options, ["getTrigger", "target"]);
-
-  var store = react.useRef();
-
-  var _React$useState = react.useState(function () {
-    return getTrigger(store, other);
-  }),
-      trigger = _React$useState[0],
-      setTrigger = _React$useState[1];
-
-  react.useEffect(function () {
-    var handleScroll = function handleScroll() {
-      setTrigger(getTrigger(store, (0,esm_extends/* default */.Z)({
-        target: target
-      }, other)));
-    };
-
-    handleScroll(); // Re-evaluate trigger when dependencies change
-
-    target.addEventListener('scroll', handleScroll);
-    return function () {
-      target.removeEventListener('scroll', handleScroll);
-    }; // See Option 3. https://github.com/facebook/react/issues/14476#issuecomment-471199055
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [target, getTrigger, JSON.stringify(other)]);
-  return trigger;
-}
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Slide/Slide.js
-var Slide = __webpack_require__(60577);
-;// CONCATENATED MODULE: ./src/components/ui/HideOnScroll.tsx
-
-
-function HideOnScroll(props) {
-  var {
-    children,
-    window
-  } = props; // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
-
-  var trigger = useScrollTrigger({
-    target: window ? window() : undefined
-  });
-  return /*#__PURE__*/react.createElement(Slide/* default */.Z, {
-    appear: false,
-    direction: "down",
-    in: !trigger
-  }, children);
-}
+// EXTERNAL MODULE: ./src/components/ui/HideOnScroll.tsx + 1 modules
+var HideOnScroll = __webpack_require__(5586);
 ;// CONCATENATED MODULE: ./src/components/buttons/OpenVMEditorButton.tsx
 
 
@@ -71484,11 +71462,11 @@ function MainToolbar() {
 
   var toggleToolsMenu = () => setToolsMenu(!toolsMenu);
 
-  return /*#__PURE__*/react.createElement(Toolbar_Toolbar, null, /*#__PURE__*/react.createElement(DrawerToolsButtonGroup/* default */.Z, {
+  return /*#__PURE__*/react.createElement(Toolbar/* default */.Z, null, /*#__PURE__*/react.createElement(DrawerToolsButtonGroup/* default */.Z, {
     className: (0,clsx_m["default"])(classes.menuButton, drawerOpen && classes.hideMobile),
     showToc: true,
     showCurrent: true
-  }), /*#__PURE__*/react.createElement(Hidden_Hidden, {
+  }), /*#__PURE__*/react.createElement(Hidden/* default */.Z, {
     implementation: "css",
     xsDown: true
   }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
@@ -71538,7 +71516,7 @@ function MainAppBar() {
   var appBarColor = darkMode === "dark" ? "inherit" : providerbus/* UIFlags.widget */.A.widget ? "default" : undefined;
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(Box/* default */.Z, {
     displayPrint: "none"
-  }, /*#__PURE__*/react.createElement(HideOnScroll, null, /*#__PURE__*/react.createElement(AppBar_AppBar, {
+  }, /*#__PURE__*/react.createElement(HideOnScroll/* HideOnScroll */.F, null, /*#__PURE__*/react.createElement(AppBar/* default */.Z, {
     position: "fixed",
     color: appBarColor,
     className: (0,clsx_m["default"])(classes.appBar, {
@@ -71548,69 +71526,8 @@ function MainAppBar() {
     })
   }, /*#__PURE__*/react.createElement(MainToolbar, null)))));
 }
-;// CONCATENATED MODULE: ./src/components/shell/DataEditorAppBar.tsx
-
-
-
-
- // tslint:disable-next-line: no-submodule-imports
-
-
-
-
-var DataEditorAppBar_useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default */.Z)({
-  grow: {
-    flexGrow: 1
-  },
-  appBar: {
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  menuButton: {
-    marginRight: theme.spacing(1)
-  }
-}));
-function DataEditorAppBar() {
-  var classes = DataEditorAppBar_useStyles();
-  var {
-    darkMode
-  } = (0,react.useContext)(DarkModeContext/* default */.Z);
-  var appBarColor = darkMode === "dark" ? "inherit" : undefined;
-  return /*#__PURE__*/react.createElement(Box/* default */.Z, {
-    displayPrint: "none"
-  }, /*#__PURE__*/react.createElement(HideOnScroll, null, /*#__PURE__*/react.createElement(AppBar_AppBar, {
-    position: "fixed",
-    color: appBarColor,
-    className: classes.appBar
-  }, /*#__PURE__*/react.createElement(Toolbar_Toolbar, null, /*#__PURE__*/react.createElement(Hidden_Hidden, {
-    implementation: "css",
-    xsDown: true
-  }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
-    component: "h1",
-    variant: "h6"
-  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
-    style: {
-      color: "white"
-    },
-    to: "/editors/data/"
-  }, "Data Science Editor (Experimental)"))), /*#__PURE__*/react.createElement("div", {
-    className: classes.grow
-  }), /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
-    className: classes.menuButton,
-    "aria-label": "Learn about the data editor",
-    title: "Learn about the data editor",
-    color: "inherit",
-    to: "/editors/data/about"
-  }, "About"), /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Link, {
-    className: classes.menuButton,
-    "aria-label": "Send feedback in our forums",
-    title: "Send feedback in our forums",
-    color: "inherit",
-    href: "https://github.com/microsoft/jacdac/discussions/categories/data-editor"
-  }, "Feedback")))));
-}
+// EXTERNAL MODULE: ./src/components/shell/DataEditorAppBar.tsx
+var DataEditorAppBar = __webpack_require__(3038);
 // EXTERNAL MODULE: ./node_modules/@material-ui/lab/esm/AlertTitle/AlertTitle.js
 var AlertTitle = __webpack_require__(99330);
 ;// CONCATENATED MODULE: ./src/components/layout.tsx
@@ -71789,7 +71706,7 @@ function LayoutWithContext(props) {
     hideUnderConstruction: isDataEditor || makeCodeTool || fullWidthTools,
     hideBreadcrumbs: isDataEditor || tools || fullWidthTools
   };
-  var appBar = hideMainMenu ? undefined : isDataEditor ? /*#__PURE__*/react.createElement(DataEditorAppBar, null) : /*#__PURE__*/react.createElement(MainAppBar, null);
+  var appBar = hideMainMenu ? undefined : isDataEditor ? /*#__PURE__*/react.createElement(DataEditorAppBar/* default */.Z, null) : /*#__PURE__*/react.createElement(MainAppBar, null);
   var title = isDataEditor ? "Data Science Editor (Experimental)" : (pageContext === null || pageContext === void 0 ? void 0 : pageContext.title) || (frontmatter === null || frontmatter === void 0 ? void 0 : frontmatter.title) || undefined;
   var classes = layout_useStyles();
   var {
@@ -72296,6 +72213,91 @@ function useRoleManagerClient() {
 
 /***/ }),
 
+/***/ 3038:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "m": function() { return /* binding */ FEEDBACK_URL; },
+/* harmony export */   "Z": function() { return /* binding */ DataEditorAppBar; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(10920);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(70274);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(91448);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(89704);
+/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(19255);
+/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(34129);
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(80453);
+/* harmony import */ var _ui_DarkModeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(91350);
+/* harmony import */ var _ui_HideOnScroll__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5586);
+/* harmony import */ var gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(36176);
+
+
+
+
+ // tslint:disable-next-line: no-submodule-imports
+
+
+
+
+var FEEDBACK_URL = "https://github.com/microsoft/jacdac/discussions/categories/data-editor";
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)(theme => (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z)({
+  grow: {
+    flexGrow: 1
+  },
+  appBar: {
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    })
+  },
+  menuButton: {
+    marginRight: theme.spacing(1)
+  }
+}));
+function DataEditorAppBar() {
+  var classes = useStyles();
+  var {
+    darkMode
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_ui_DarkModeContext__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z);
+  var appBarColor = darkMode === "dark" ? "inherit" : undefined;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+    displayPrint: "none"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_HideOnScroll__WEBPACK_IMPORTED_MODULE_2__/* .HideOnScroll */ .F, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+    position: "fixed",
+    color: appBarColor,
+    className: classes.appBar
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+    implementation: "css",
+    xsDown: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
+    component: "h1",
+    variant: "h6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    style: {
+      color: "white"
+    },
+    to: "/editors/data/"
+  }, "Data Science Editor (Experimental)"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: classes.grow
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    className: classes.menuButton,
+    "aria-label": "Learn about the data editor",
+    title: "Learn about the data editor",
+    color: "inherit",
+    to: "/editors/data/about"
+  }, "About"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_theme_material_ui__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    className: classes.menuButton,
+    "aria-label": "Send feedback in our forums",
+    title: "Send feedback in our forums",
+    color: "inherit",
+    href: FEEDBACK_URL
+  }, "Feedback")))));
+}
+
+/***/ }),
+
 /***/ 46977:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -72384,7 +72386,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "9af7e49584665d9611c1e3da1d59d6b5fd94aea5";
+    var sha = "a12e2d30acfae7ec0872a81feac453b28d8d0dd7";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -72627,6 +72629,109 @@ function DownloadFirmwareButton(props) {
     href: url,
     onClick: handleClick
   }), children || "Download");
+}
+
+/***/ }),
+
+/***/ 5586:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "F": function() { return /* binding */ HideOnScroll; }
+});
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
+var esm_extends = __webpack_require__(87462);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(45987);
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(67294);
+;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/useScrollTrigger/useScrollTrigger.js
+
+
+
+
+function defaultTrigger(store, options) {
+  var _options$disableHyste = options.disableHysteresis,
+      disableHysteresis = _options$disableHyste === void 0 ? false : _options$disableHyste,
+      _options$threshold = options.threshold,
+      threshold = _options$threshold === void 0 ? 100 : _options$threshold,
+      target = options.target;
+  var previous = store.current;
+
+  if (target) {
+    // Get vertical scroll
+    store.current = target.pageYOffset !== undefined ? target.pageYOffset : target.scrollTop;
+  }
+
+  if (!disableHysteresis && previous !== undefined) {
+    if (store.current < previous) {
+      return false;
+    }
+  }
+
+  return store.current > threshold;
+}
+
+var defaultTarget = typeof window !== 'undefined' ? window : null;
+function useScrollTrigger() {
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var _options$getTrigger = options.getTrigger,
+      getTrigger = _options$getTrigger === void 0 ? defaultTrigger : _options$getTrigger,
+      _options$target = options.target,
+      target = _options$target === void 0 ? defaultTarget : _options$target,
+      other = (0,objectWithoutProperties/* default */.Z)(options, ["getTrigger", "target"]);
+
+  var store = react.useRef();
+
+  var _React$useState = react.useState(function () {
+    return getTrigger(store, other);
+  }),
+      trigger = _React$useState[0],
+      setTrigger = _React$useState[1];
+
+  react.useEffect(function () {
+    var handleScroll = function handleScroll() {
+      setTrigger(getTrigger(store, (0,esm_extends/* default */.Z)({
+        target: target
+      }, other)));
+    };
+
+    handleScroll(); // Re-evaluate trigger when dependencies change
+
+    target.addEventListener('scroll', handleScroll);
+    return function () {
+      target.removeEventListener('scroll', handleScroll);
+    }; // See Option 3. https://github.com/facebook/react/issues/14476#issuecomment-471199055
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [target, getTrigger, JSON.stringify(other)]);
+  return trigger;
+}
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Slide/Slide.js
+var Slide = __webpack_require__(60577);
+;// CONCATENATED MODULE: ./src/components/ui/HideOnScroll.tsx
+
+
+function HideOnScroll(props) {
+  var {
+    children,
+    window
+  } = props; // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+
+  var trigger = useScrollTrigger({
+    target: window ? window() : undefined
+  });
+  return /*#__PURE__*/react.createElement(Slide/* default */.Z, {
+    appear: false,
+    direction: "down",
+    in: !trigger
+  }, children);
 }
 
 /***/ }),
@@ -85747,7 +85852,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "wrapPageElement": function() { return /* binding */ wrapPageElement; }
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(15861);
-/* harmony import */ var _src_components_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(48534);
+/* harmony import */ var _src_components_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(93907);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(73935);
 
@@ -88527,4 +88632,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-da7fcc94ff08a45d03a7.js.map
+//# sourceMappingURL=app-4e5d29590d00cc1f7c58.js.map
