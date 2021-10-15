@@ -42,6 +42,7 @@ function Home() {
     description: "Drag, Drop, Analyze."
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     right: true,
+    imageColumns: 8,
     subtitle: "Tell a data story",
     description: "Follow the blocks to see how the data is analyzed.",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__.S, {
@@ -51,6 +52,16 @@ function Home() {
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     right: false,
+    imageColumns: 8,
+    subtitle: "Visualize",
+    description: "Drag a chart block to visualize your data.",
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_4__.S, {
+      src: "./chart.png",
+      alt: "A scatter plot of pinguins",
+      __imageData: __webpack_require__(62732)
+    })
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+    right: true,
     subtitle: "\uD83D\uDC40 every step",
     description: "Inspect before and after data on every computation block.",
     imageColumns: 8,
@@ -60,7 +71,7 @@ function Home() {
       __imageData: __webpack_require__(74708)
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-    right: true,
+    right: false,
     subtitle: "Discover",
     description: "Discover how to compute with data using an intuitive block-based editor.",
     imageColumns: 8,
@@ -78,6 +89,13 @@ function Home() {
 /***/ (function(module) {
 
 module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8","images":{"fallback":{"src":"/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/cbf66/hero.png","srcSet":"/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/a4586/hero.png 316w,\\n/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/acf60/hero.png 632w,\\n/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/cbf66/hero.png 1264w","sizes":"(min-width: 1264px) 1264px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/ab758/hero.webp 316w,\\n/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/5db1e/hero.webp 632w,\\n/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/d374c/hero.webp 1264w","type":"image/webp","sizes":"(min-width: 1264px) 1264px, 100vw"}]},"width":1264,"height":603.0000000000001}');
+
+/***/ }),
+
+/***/ 62732:
+/***/ (function(module) {
+
+module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8","images":{"fallback":{"src":"/jacdac-docs/static/db0e953473c5aaee7659e2e92787605a/edb0a/chart.png","srcSet":"/jacdac-docs/static/db0e953473c5aaee7659e2e92787605a/88a39/chart.png 251w,\\n/jacdac-docs/static/db0e953473c5aaee7659e2e92787605a/fde80/chart.png 502w,\\n/jacdac-docs/static/db0e953473c5aaee7659e2e92787605a/edb0a/chart.png 1003w","sizes":"(min-width: 1003px) 1003px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/db0e953473c5aaee7659e2e92787605a/32b9f/chart.webp 251w,\\n/jacdac-docs/static/db0e953473c5aaee7659e2e92787605a/d94a4/chart.webp 502w,\\n/jacdac-docs/static/db0e953473c5aaee7659e2e92787605a/978ca/chart.webp 1003w","type":"image/webp","sizes":"(min-width: 1003px) 1003px, 100vw"}]},"width":1003,"height":469}');
 
 /***/ }),
 
@@ -103,4 +121,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-7f9de7eb2cace3eb7bd4.js.map
+//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-cf85456846c54d87f249.js.map
