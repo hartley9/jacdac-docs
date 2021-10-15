@@ -21,24 +21,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Home() {
+  var DATASET_URL = "https://green-rock-09efbc210.azurestaticapps.net/hosted_files/dataset.xlsx";
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     container: true,
     spacing: 10,
     direction: "column",
     alignContent: "center",
     alignItems: "center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
     hideJacdacIcon: true,
     title: "Data Science Editor",
     subtitle: "for Excel",
-    imageColumns: 6,
-    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(gatsby_plugin_image__WEBPACK_IMPORTED_MODULE_5__.S, {
-      src: "./hero.png",
-      alt: "Many Modules Together",
-      __imageData: __webpack_require__(71515)
+    image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: "/images/hero.gif",
+      alt: "Building a chart from various modules",
+      loading: "lazy"
     }),
     buttonText: "Download Worksheet",
-    buttonUrl: "https://green-rock-09efbc210.azurestaticapps.net/hosted_files/dataset.xlsx"
+    buttonUrl: DATASET_URL
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
     subtitle3: "Drag blocks to build a data analysis pipeline within Excel.",
     description: "Drag, Drop, Analyze."
@@ -87,7 +87,7 @@ function Home() {
     description: "Yes! Download the worksheet and follow the instructions to get started.",
     buttonVariant: "link",
     buttonText: "Download Worksheet",
-    buttonUrl: "https://green-rock-09efbc210.azurestaticapps.net/hosted_files/dataset.xlsx"
+    buttonUrl: DATASET_URL
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z, {
     subtitle: "Community",
     description: "Please tell us what you think of the editor on our forum.",
@@ -96,13 +96,6 @@ function Home() {
     buttonUrl: _components_shell_DataEditorAppBar__WEBPACK_IMPORTED_MODULE_3__/* .FEEDBACK_URL */ .m
   }));
 }
-
-/***/ }),
-
-/***/ 71515:
-/***/ (function(module) {
-
-module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8","images":{"fallback":{"src":"/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/cbf66/hero.png","srcSet":"/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/a4586/hero.png 316w,\\n/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/acf60/hero.png 632w,\\n/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/cbf66/hero.png 1264w","sizes":"(min-width: 1264px) 1264px, 100vw"},"sources":[{"srcSet":"/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/ab758/hero.webp 316w,\\n/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/5db1e/hero.webp 632w,\\n/jacdac-docs/static/d2f838a97b1dec217fc702e4b36978be/d374c/hero.webp 1264w","type":"image/webp","sizes":"(min-width: 1264px) 1264px, 100vw"}]},"width":1264,"height":603.0000000000001}');
 
 /***/ }),
 
@@ -135,4 +128,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-dc765736d7db39ef905f.js.map
+//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-f80d24220021e2b32ef8.js.map
