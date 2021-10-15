@@ -352,7 +352,7 @@ var dataDsl = {
   }, {
     kind: "block",
     type: DATA_SLICE_BLOCK,
-    message0: "slice %1 rows from %2",
+    message0: "take %1 rows from %2",
     colour: operatorsColour,
     args0: [{
       type: "field_number",
@@ -570,10 +570,12 @@ var dataDsl = {
     kind: "category",
     name: "Organize",
     colour: operatorsColour,
-    contents: [{
-      kind: "block",
-      type: DATA_COMMENT_BLOCK
-    }, {
+    contents: [
+    /*<BlockReference>{
+        kind: "block",
+        type: DATA_COMMENT_BLOCK,
+    },*/
+    {
       kind: "block",
       type: DATA_ARRANGE_BLOCK
     }, {
@@ -835,4 +837,4 @@ function createIFrameDSL(id, targetOrigin) {
 /***/ })
 
 }]);
-//# sourceMappingURL=86bd1a670c99d16a75c30550d9a7c34f0739ff9c-c0b7a9d1f2139ada0327.js.map
+//# sourceMappingURL=86bd1a670c99d16a75c30550d9a7c34f0739ff9c-650bf5aff5a6226e900d.js.map
