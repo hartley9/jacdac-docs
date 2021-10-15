@@ -69331,7 +69331,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "bc427dbcb39879e10a6b6c35a178ecec29e508ca";
+var sha = "76f428aea3d010a6026b1330fee8f3e56504db7d";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -69586,7 +69586,11 @@ function useInterval(enabled, handler, delay, deps) {
 /* harmony export */   "Z": function() { return /* binding */ useLocalStorage; }
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(47751);
 
+ // enabled when storage=0
+
+var memStorage = {};
 var PREFIX = "jacdac:";
 function useLocalStorage(key, initialValue) {
   var pkey = PREFIX + key; // State to store our value
@@ -69596,30 +69600,39 @@ function useLocalStorage(key, initialValue) {
     0: storedValue,
     1: setStoredValue
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(() => {
-    try {
-      // Get from local storage by key
-      var item = typeof window !== "undefined" && key && window.localStorage.getItem(pkey); // Parse stored json or if none return initialValue
+    if (_jacdac_providerbus__WEBPACK_IMPORTED_MODULE_1__/* .UIFlags.storage */ .A.storage) {
+      try {
+        // Get from local storage by key
+        var item = typeof window !== "undefined" && key && window.localStorage.getItem(pkey); // Parse stored json or if none return initialValue
 
-      return item && JSON.parse(item) || initialValue;
-    } catch (error) {
-      // If error also return initialValue
-      console.log(error);
-      return initialValue;
+        return item && JSON.parse(item) || initialValue;
+      } catch (error) {
+        // If error also return initialValue
+        console.log(error);
+        return initialValue;
+      }
+    } else {
+      var v = memStorage[key];
+      return v !== undefined ? v : initialValue;
     }
   }); // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
 
   var setValue = value => {
-    try {
-      // Allow value to be a function so we have same API as useState
-      var valueToStore = value; // Save state
+    if (_jacdac_providerbus__WEBPACK_IMPORTED_MODULE_1__/* .UIFlags.storage */ .A.storage) {
+      try {
+        // Allow value to be a function so we have same API as useState
+        var valueToStore = value; // Save state
 
-      setStoredValue(valueToStore); // Save to local storage
+        setStoredValue(valueToStore); // Save to local storage
 
-      if (typeof window !== "undefined" && key) window.localStorage.setItem(pkey, JSON.stringify(valueToStore));
-    } catch (error) {
-      // A more advanced implementation would handle the error case
-      console.log(error);
+        if (typeof window !== "undefined" && key) window.localStorage.setItem(pkey, JSON.stringify(valueToStore));
+      } catch (error) {
+        // A more advanced implementation would handle the error case
+        console.log(error);
+      }
+    } else {
+      memStorage[key] = value;
     }
   };
 
@@ -70184,7 +70197,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "bc427dbcb39879e10a6b6c35a178ecec29e508ca";
+  var sha = "76f428aea3d010a6026b1330fee8f3e56504db7d";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72370,7 +72383,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "bc427dbcb39879e10a6b6c35a178ecec29e508ca";
+    var sha = "76f428aea3d010a6026b1330fee8f3e56504db7d";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -80821,7 +80834,9 @@ function sniffQueryArguments() {
     localhost: params.get("localhost") === "1",
     passive: params.get("passive") === "1" || toolsMakeEditorExtension,
     gamepad: params.get("gamepad") === "1",
-    hosted: params.get("hosted") === "1" || params.get("embed") === "1"
+    hosted: params.get("hosted") === "1" || params.get("embed") === "1",
+    storage: params.get("storage") === "0" ? false : true,
+    bus: params.get("bus") === "0" ? false : true
   };
 }
 
@@ -80837,7 +80852,7 @@ UIFlags.widget = args.widget;
 UIFlags.peers = args.peers;
 UIFlags.localhost = args.localhost;
 UIFlags.passive = args.passive;
-UIFlags.storage = true;
+UIFlags.storage = args.storage;
 UIFlags.hosted = args.hosted;
 UIFlags.gamepad = args.gamepad;
 
@@ -80955,6 +80970,7 @@ function createBus() {
         return _ref.apply(this, arguments);
       };
     }());
+    if (!args.bus) b.stop();
   }
 
   return b;
@@ -88509,4 +88525,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-f4fff28cd8ad7d2defe2.js.map
+//# sourceMappingURL=app-44c2ce30edcd24ee5e25.js.map
