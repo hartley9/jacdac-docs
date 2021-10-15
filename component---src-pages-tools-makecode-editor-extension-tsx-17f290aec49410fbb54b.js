@@ -227,7 +227,7 @@ function PaperBox(props) {
 
 /***/ }),
 
-/***/ 25900:
+/***/ 81013:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -280,11 +280,19 @@ var client = __webpack_require__(47235);
 var constants = __webpack_require__(71815);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/iframeclient.ts
 var iframeclient = __webpack_require__(9809);
-// EXTERNAL MODULE: ./jacdac-ts/src/jdom/packet.ts
-var packet = __webpack_require__(57683);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
 var Context = __webpack_require__(20392);
+;// CONCATENATED MODULE: ./src/components/hooks/useClient.ts
+
+function useClient(factory, deps) {
+  var client = (0,react.useMemo)(factory, deps || []);
+  (0,react.useEffect)(() => () => client === null || client === void 0 ? void 0 : client.unmount(), [client]);
+  return client;
+}
+// EXTERNAL MODULE: ./src/components/useEffectAsync.ts
+var useEffectAsync = __webpack_require__(7751);
 ;// CONCATENATED MODULE: ./src/components/makecode/MakeCodeEditorExtensionClient.ts
+
 
 
 
@@ -299,7 +307,6 @@ var READ = "read";
 var MESSAGE_PACKET = "messagepacket";
 var HIDDEN = "hidden";
 var SHOWN = "shown";
-var SENDER = "jacdac-editor-extension";
 var MakeCodeEditorExtensionClient = /*#__PURE__*/function (_JDClient) {
   (0,inheritsLoose/* default */.Z)(MakeCodeEditorExtensionClient, _JDClient);
 
@@ -421,6 +428,7 @@ var MakeCodeEditorExtensionClient = /*#__PURE__*/function (_JDClient) {
 
       switch (action) {
         case "extinit":
+          this._target = msg.target;
           this._connected = true;
           this.emit(constants/* CONNECT */.JD8);
           this.emit(constants/* CHANGE */.Ver);
@@ -463,7 +471,7 @@ var MakeCodeEditorExtensionClient = /*#__PURE__*/function (_JDClient) {
   _proto.refresh = /*#__PURE__*/function () {
     var _refresh = (0,asyncToGenerator/* default */.Z)(function* () {
       this.log("refresh");
-      var r = yield this.read();
+      yield this.read();
     });
 
     function refresh() {
@@ -604,31 +612,8 @@ function useMakeCodeEditorExtensionClient() {
   var {
     bus
   } = (0,react.useContext)(Context/* default */.Z);
-  var {
-    0: client,
-    1: setClient
-  } = (0,react.useState)(undefined);
-  (0,react.useEffect)(() => {
-    console.log("mkcd: new editor client");
-    var c = new MakeCodeEditorExtensionClient();
-    c.on(constants/* CONNECT */.JD8, () => {
-      console.log("mkcd: stream messages");
-      c.dataStreamMessages(true);
-    });
-    c.on([HIDDEN, SHOWN], () => bus.clear());
-    c.on(MESSAGE_PACKET, msg => {
-      if (msg.channel === "jacdac" && msg.source !== SENDER) {
-        var pkts = packet/* default.fromFrame */.Z.fromFrame(msg.data, bus.timestamp);
-
-        for (var pkt of pkts) {
-          pkt.sender = msg.source || "makecode";
-          bus.processPacket(pkt);
-        }
-      }
-    });
-    setClient(c);
-    return () => c === null || c === void 0 ? void 0 : c.unmount();
-  }, []);
+  (0,useEffectAsync/* default */.Z)(() => bus.stop(), []);
+  var client = useClient(() => new MakeCodeEditorExtensionClient(), []);
   return client;
 }
 // EXTERNAL MODULE: ./src/components/CmdButton.tsx
@@ -767,6 +752,7 @@ function MakeCodeEditorExtension() {
   var _configuration$roles;
 
   var client = useMakeCodeEditorExtensionClient();
+  var target = (0,useChange/* default */.Z)(client, _ => _ === null || _ === void 0 ? void 0 : _.target);
   var connected = (0,useChange/* default */.Z)(client, c => c === null || c === void 0 ? void 0 : c.connected);
   var {
     0: configuration,
@@ -784,7 +770,10 @@ function MakeCodeEditorExtension() {
     if (cfg) setConfiguration(cfg);
   }), [client]);
 
-  var hasMakeCodeService = srv => !!(0,services/* resolveMakecodeService */.K9)(srv);
+  var hasMakeCodeService = srv => {
+    var mkc = (0,services/* resolveMakecodeService */.K9)(srv);
+    return mkc && target && (!mkc.client.targets || mkc.client.targets.indexOf(target.id) > -1);
+  };
 
   var update = () => {
     setConfiguration((0,utils/* clone */.d9)(configuration));
@@ -903,4 +892,4 @@ function MakeCodeEditorExtensionPage() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-makecode-editor-extension-tsx-96e3e6ba15fe50f23607.js.map
+//# sourceMappingURL=component---src-pages-tools-makecode-editor-extension-tsx-17f290aec49410fbb54b.js.map
