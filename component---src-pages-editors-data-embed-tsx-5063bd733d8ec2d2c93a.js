@@ -48,7 +48,7 @@ function resolveFieldColumn(data, b, fieldName, options) {
   var warning;
 
   if (!column) {
-    if (required && !name) warning = "missing column";else if (name) warning = name + " not found in dataset";
+    if (required && !name) warning = "missing column";else if (name) warning = name + " column not found";
   }
 
   return {
@@ -287,4 +287,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-embed-tsx-b7bcfdfed708068bd015.js.map
+//# sourceMappingURL=component---src-pages-editors-data-embed-tsx-5063bd733d8ec2d2c93a.js.map

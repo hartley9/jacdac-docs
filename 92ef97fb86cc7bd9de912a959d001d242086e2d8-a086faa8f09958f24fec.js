@@ -6707,7 +6707,7 @@ function tidyResolveFieldColumn(data, b, fieldName, options) {
   var column = tidyResolveHeader(data, name, type);
 
   if (!column) {
-    if (required && !name) (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_2__/* .setBlockDataWarning */ .Vm)(b, "missing columns");else if (name) (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_2__/* .setBlockDataWarning */ .Vm)(b, name + " not found in dataset");
+    if (required && !name) (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_2__/* .setBlockDataWarning */ .Vm)(b, "missing columns");else if (name) (0,_WorkspaceContext__WEBPACK_IMPORTED_MODULE_2__/* .setBlockDataWarning */ .Vm)(b, name + " not found");
   }
 
   return column;
@@ -6887,4 +6887,4 @@ function useWorkspaceEvent(workspace, handler) {
 /***/ })
 
 }]);
-//# sourceMappingURL=92ef97fb86cc7bd9de912a959d001d242086e2d8-6746190872fb4766ffd7.js.map
+//# sourceMappingURL=92ef97fb86cc7bd9de912a959d001d242086e2d8-a086faa8f09958f24fec.js.map

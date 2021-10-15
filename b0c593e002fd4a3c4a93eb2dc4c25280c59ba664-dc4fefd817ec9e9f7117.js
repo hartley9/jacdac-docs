@@ -4097,7 +4097,7 @@ function BlockProvider(props) {
       editor,
       xml
     } = file || {};
-    if (editor !== editorId) throw new Error("Wrong block editor"); // try loading xml into a dummy blockly workspace
+    if (editor !== editorId) throw new Error("wrong block editor (" + editor + " != " + editorId); // try loading xml into a dummy blockly workspace
 
     var dom = blockly.Xml.textToDom(xml || DEFAULT_XML); // all good, load in workspace
 
@@ -12938,4 +12938,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-213a30262e18b0be9f86.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-dc4fefd817ec9e9f7117.js.map
