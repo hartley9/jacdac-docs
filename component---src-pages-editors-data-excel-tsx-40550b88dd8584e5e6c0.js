@@ -42,8 +42,7 @@ function Home() {
     buttonText: "Download Worksheet",
     buttonUrl: DATASET_URL
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-    subtitle3: "Drag blocks to build a data analysis pipeline within Excel.",
-    description: "Drag, Drop, Analyze."
+    subtitle3: "Drag blocks to build a data analysis pipeline within Excel."
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     right: true,
     imageColumns: 8,
@@ -130,4 +129,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-57c3dae23a591b44afcf.js.map
+//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-40550b88dd8584e5e6c0.js.map
