@@ -33,7 +33,7 @@ function Home() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
     hideJacdacIcon: true,
     title: "Data Science Editor",
-    subtitle: "for Excel",
+    subtitle: "for Excel Web",
     image: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
       src: (0,gatsby_link__WEBPACK_IMPORTED_MODULE_0__/* .withPrefix */ .dq)("/images/hero.gif"),
       alt: "Building a chart from various modules",
@@ -42,7 +42,7 @@ function Home() {
     buttonText: "Download Worksheet",
     buttonUrl: DATASET_URL
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-    subtitle3: "Block programming meets data analysis within Excel."
+    subtitle3: "Block programming meets data analysis within Excel Web."
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     right: true,
     imageColumns: 8,
@@ -129,4 +129,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-44cea5305a3ab2bc1618.js.map
+//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-871e0aa4a3c2efec1f4e.js.map
