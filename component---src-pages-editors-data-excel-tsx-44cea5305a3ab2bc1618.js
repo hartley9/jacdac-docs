@@ -42,7 +42,7 @@ function Home() {
     buttonText: "Download Worksheet",
     buttonUrl: DATASET_URL
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_CenterGrid__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
-    subtitle3: "Drag blocks to build a data analysis pipeline within Excel."
+    subtitle3: "Block programming meets data analysis within Excel."
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_home_SplitGrid__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
     right: true,
     imageColumns: 8,
@@ -129,4 +129,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-40550b88dd8584e5e6c0.js.map
+//# sourceMappingURL=component---src-pages-editors-data-excel-tsx-44cea5305a3ab2bc1618.js.map
