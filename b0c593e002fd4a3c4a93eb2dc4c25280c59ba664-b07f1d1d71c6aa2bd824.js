@@ -146,34 +146,6 @@ exports.Z = _default;
 
 /***/ }),
 
-/***/ 82714:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-var __webpack_unused_export__;
-
-
-var _interopRequireDefault = __webpack_require__(95318);
-
-var _interopRequireWildcard = __webpack_require__(20862);
-
-__webpack_unused_export__ = ({
-  value: true
-});
-exports.Z = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(67294));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
-}), 'Fullscreen');
-
-exports.Z = _default;
-
-/***/ }),
-
 /***/ 95552:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -253,6 +225,34 @@ var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
 }), 'ReportProblem');
+
+exports.Z = _default;
+
+/***/ }),
+
+/***/ 79312:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"
+}), 'SaveAlt');
 
 exports.Z = _default;
 
@@ -9276,9 +9276,9 @@ VegaChartField.KEY = "jacdac_field_vega_chart";
 /* harmony import */ var _jacdac_ts_src_jdom_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(81794);
 /* harmony import */ var _jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(13996);
 /* harmony import */ var _ui_CopyButton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(18568);
-/* harmony import */ var _material_ui_icons_Fullscreen__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(82714);
 /* harmony import */ var _ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(79885);
 /* harmony import */ var _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(47751);
+/* harmony import */ var _material_ui_icons_SaveAlt__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(79312);
 
 
 
@@ -9396,45 +9396,28 @@ function VegaLiteWidget(props) {
   }(), [data]);
   if (!(vegaData !== null && vegaData !== void 0 && (_vegaData$values = vegaData.values) !== null && _vegaData$values !== void 0 && _vegaData$values.length) || !spec) return null;
   var renderer = vegaData.values.length < _toolbox__WEBPACK_IMPORTED_MODULE_5__/* .CHART_SVG_MAX_ITEMS */ .TP ? "svg" : "canvas";
+  var handleCopy = _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_12__/* .UIFlags.hosted */ .A.hosted ? undefined : /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z)(function* () {
+    var view = viewRef.current;
+    var canvas = yield view === null || view === void 0 ? void 0 : view.toCanvas(2);
+    return canvas;
+  });
+  var handleExport = _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_12__/* .UIFlags.hosted */ .A.hosted ? /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z)(function* () {
+    var _window$parent;
 
-  var handleCopy = /*#__PURE__*/function () {
-    var _ref2 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z)(function* () {
-      var view = viewRef.current;
-      var canvas = yield view === null || view === void 0 ? void 0 : view.toCanvas(2);
-      return canvas;
+    (_window$parent = window.parent) === null || _window$parent === void 0 ? void 0 : _window$parent.postMessage({
+      type: "dsl",
+      action: "chartexport",
+      vega: fullSpec,
+      slice,
+      dataset: data,
+      vegaDataset: vegaData
     });
-
-    return function handleCopy() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-
-  var handleFullScreen = /*#__PURE__*/function () {
-    var _ref3 = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z)(function* () {
-      var view = viewRef.current;
-      var container = view === null || view === void 0 ? void 0 : view.container();
-      if (!container) return;
-      var svg = container.firstElementChild;
-
-      if (svg.getAttribute("width")) {
-        container.style.width = svg.getAttribute("width") + "px";
-        container.style.height = svg.getAttribute("height") + "px";
-        svg.style.width = "100%";
-        svg.style.height = "100%";
-        svg.removeAttribute("width");
-        svg.removeAttribute("height");
-      }
-
-      yield container === null || container === void 0 ? void 0 : container.requestFullscreen({
-        navigationUI: "hide"
-      });
-    });
-
-    return function handleFullScreen() {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-
+  }) : /*#__PURE__*/(0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z)(function* () {
+    var view = viewRef.current;
+    var canvas = yield view === null || view === void 0 ? void 0 : view.toCanvas(2);
+    return canvas;
+  });
+  var showToolbar = !!handleCopy || !!handleExport;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PointerBoundary__WEBPACK_IMPORTED_MODULE_3__/* .PointerBoundary */ .A, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     style: {
       background: "#fff",
@@ -9444,7 +9427,7 @@ function VegaLiteWidget(props) {
     container: true,
     direction: "column",
     spacing: 1
-  }, !_jacdac_providerbus__WEBPACK_IMPORTED_MODULE_12__/* .UIFlags.hosted */ .A.hosted && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, {
+  }, showToolbar && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, {
@@ -9453,19 +9436,20 @@ function VegaLiteWidget(props) {
     justifyContent: "flex-start",
     alignItems: "center",
     spacing: 1
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, {
+  }, !!handleCopy && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, {
     item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_CopyButton__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
     size: "small",
     className: classes.button,
     onCopy: handleCopy
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, {
+  })), !!handleExport && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, {
     item: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
-    title: "show full screen",
+    title: "save",
+    size: "small",
     className: classes.button,
-    onClick: handleFullScreen
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_Fullscreen__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z, null))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, {
+    onClick: handleExport
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_icons_SaveAlt__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z, null))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__/* ["default"] */ .Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ui_Suspense__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(VegaLite, {
@@ -9479,15 +9463,6 @@ function VegaLiteWidget(props) {
     onNewView: handleNewView
   })))))));
 }
-/**
- * https://github.com/vega/vega-embed/issues/733
-actions {
-                                export: { png: true, svg: true },
-                                source: false,
-                                compiled: false,
-                                editor: false,
-                            }
- */
 
 /***/ }),
 
@@ -12951,4 +12926,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-8bd6f3688f68ce50511e.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-b07f1d1d71c6aa2bd824.js.map

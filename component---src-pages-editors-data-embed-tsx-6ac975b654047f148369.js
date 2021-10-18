@@ -226,6 +226,16 @@ function Page() {
     };
   }();
 
+  var handleChartExport = /*#__PURE__*/function () {
+    var _ref3 = (0,asyncToGenerator/* default */.Z)(function* (data) {
+      console.log("hostdsl: chart export", data);
+    });
+
+    return function handleChartExport(_x5) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
   (0,useWindowEvent/* default */.Z)("message", msg => {
     var {
       data
@@ -248,6 +258,12 @@ function Page() {
       case "blocks":
         {
           handleBlocks(data);
+          break;
+        }
+
+      case "chartexport":
+        {
+          handleChartExport(data);
           break;
         }
 
@@ -287,4 +303,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-data-embed-tsx-5063bd733d8ec2d2c93a.js.map
+//# sourceMappingURL=component---src-pages-editors-data-embed-tsx-6ac975b654047f148369.js.map
