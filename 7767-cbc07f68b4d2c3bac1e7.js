@@ -753,6 +753,17 @@ function Network(props) {
     return function handleForgetNetwork() {
       return _ref2.apply(this, arguments);
     };
+  }();
+
+  var handlePriorityChange = /*#__PURE__*/function () {
+    var _ref3 = (0,asyncToGenerator/* default */.Z)(function* (ev) {
+      var newPriority = parseInt(ev.target.value);
+      if (!isNaN(newPriority)) yield service.sendCmdPackedAsync(specconstants/* WifiCmd.SetNetworkPriority */.kBD.SetNetworkPriority, [newPriority, ssid], true);
+    });
+
+    return function handlePriorityChange(_x) {
+      return _ref3.apply(this, arguments);
+    };
   }(); // hasPassword == requires password
 
 
@@ -783,7 +794,12 @@ function Network(props) {
     variant: "outlined",
     disabled: !!connectError,
     onClick: handleForgetNetwork
-  }, "Forget")));
+  }, "Forget"), known && /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+    type: "number",
+    value: priority,
+    label: "priority",
+    onChange: handlePriorityChange
+  })));
 }
 
 function ConnectDialog(props) {
@@ -808,19 +824,19 @@ function ConnectDialog(props) {
   var handleClose = () => setOpen(false);
 
   var handleForgetAll = /*#__PURE__*/function () {
-    var _ref3 = (0,asyncToGenerator/* default */.Z)(function* () {
+    var _ref4 = (0,asyncToGenerator/* default */.Z)(function* () {
       return yield service.sendCmdAsync(specconstants/* WifiCmd.ForgetAllNetworks */.kBD.ForgetAllNetworks);
     });
 
     return function handleForgetAll() {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
 
   var priority = s => {
     var _knownNetworks$find;
 
-    return ((_knownNetworks$find = knownNetworks.find(n => n[2] === s)) === null || _knownNetworks$find === void 0 ? void 0 : _knownNetworks$find[0]) || Infinity;
+    return ((_knownNetworks$find = knownNetworks.find(n => n[2] === s)) === null || _knownNetworks$find === void 0 ? void 0 : _knownNetworks$find[0]) || -Infinity;
   };
 
   var ssids = (0,utils/* unique */.Tw)([].concat((0,toConsumableArray/* default */.Z)((knownNetworks || []).map(kn => kn[2])), (0,toConsumableArray/* default */.Z)((aps || []).map(ap => ap[4])))).sort((l, r) => -priority(l) + priority(r));
@@ -876,7 +892,7 @@ function DashboardWifi(props) {
   var gotIpEvent = (0,useEvent/* default */.Z)(service, specconstants/* WifiEvent.GotIp */.Xoc.GotIp);
 
   var handleConnect = /*#__PURE__*/function () {
-    var _ref4 = (0,asyncToGenerator/* default */.Z)(function* () {
+    var _ref5 = (0,asyncToGenerator/* default */.Z)(function* () {
       if (connected) yield enabledRegister.sendSetBoolAsync(false);else {
         yield enabledRegister.sendSetBoolAsync(true);
         yield service.sendCmdAsync(specconstants/* WifiCmd.Reconnect */.kBD.Reconnect, undefined, true);
@@ -884,7 +900,7 @@ function DashboardWifi(props) {
     });
 
     return function handleConnect() {
-      return _ref4.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
 
@@ -1044,4 +1060,4 @@ function useGridBreakpoints(itemCount) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7767-e7c890bcca677e3de217.js.map
+//# sourceMappingURL=7767-cbc07f68b4d2c3bac1e7.js.map
