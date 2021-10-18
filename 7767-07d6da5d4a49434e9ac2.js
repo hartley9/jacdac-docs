@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[3856],{
+(self["webpackChunkjacdac_docs"] = self["webpackChunkjacdac_docs"] || []).push([[7767,7746],{
 
 /***/ 31186:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
@@ -538,7 +538,34 @@ exports.Z = _default;
 
 /***/ }),
 
-/***/ 63856:
+/***/ 79796:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M22.99 9C19.15 5.16 13.8 3.76 8.84 4.78l2.52 2.52c3.47-.17 6.99 1.05 9.63 3.7l2-2zm-4 4c-1.29-1.29-2.84-2.13-4.49-2.56l3.53 3.53.96-.97zM2 3.05L5.07 6.1C3.6 6.82 2.22 7.78 1 9l1.99 2c1.24-1.24 2.67-2.16 4.2-2.77l2.24 2.24C7.81 10.89 6.27 11.73 5 13v.01L6.99 15c1.36-1.36 3.14-2.04 4.92-2.06L18.98 20l1.27-1.26L3.29 1.79 2 3.05zM9 17l3 3 3-3c-1.65-1.66-4.34-1.66-6 0z"
+}), 'WifiOff');
+
+exports.Z = _default;
+
+/***/ }),
+
+/***/ 67767:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -549,52 +576,12 @@ __webpack_require__.d(__webpack_exports__, {
   "default": function() { return /* binding */ DashboardWifi; }
 });
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
+var toConsumableArray = __webpack_require__(93433);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
 var asyncToGenerator = __webpack_require__(15861);
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(67294);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(87462);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(45987);
-// EXTERNAL MODULE: ./node_modules/clsx/dist/clsx.m.js
-var clsx_m = __webpack_require__(85505);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/styles/withStyles.js
-var withStyles = __webpack_require__(34621);
-;// CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/ListItemSecondaryAction/ListItemSecondaryAction.js
-
-
-
-
-
-var styles = {
-  /* Styles applied to the root element. */
-  root: {
-    position: 'absolute',
-    right: 16,
-    top: '50%',
-    transform: 'translateY(-50%)'
-  }
-};
-/**
- * Must be used as the last child of ListItem to function properly.
- */
-
-var ListItemSecondaryAction = /*#__PURE__*/react.forwardRef(function ListItemSecondaryAction(props, ref) {
-  var classes = props.classes,
-      className = props.className,
-      other = (0,objectWithoutProperties/* default */.Z)(props, ["classes", "className"]);
-
-  return /*#__PURE__*/react.createElement("div", (0,esm_extends/* default */.Z)({
-    className: (0,clsx_m["default"])(classes.root, className),
-    ref: ref
-  }, other));
-});
- false ? 0 : void 0;
-ListItemSecondaryAction.muiName = 'ListItemSecondaryAction';
-/* harmony default export */ var ListItemSecondaryAction_ListItemSecondaryAction = ((0,withStyles/* default */.Z)(styles, {
-  name: 'MuiListItemSecondaryAction'
-})(ListItemSecondaryAction));
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Card/Card.js
 var Card = __webpack_require__(85420);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CardHeader/CardHeader.js
@@ -615,16 +602,10 @@ var DialogTitle = __webpack_require__(96422);
 var Grid = __webpack_require__(80838);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js
 var DialogActions = __webpack_require__(89952);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ListItem/ListItem.js
-var ListItem = __webpack_require__(4381);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ListItemText/ListItemText.js
-var ListItemText = __webpack_require__(38030);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(80453);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Chip/Chip.js + 1 modules
 var Chip = __webpack_require__(4998);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/List/List.js
-var List = __webpack_require__(80791);
 // EXTERNAL MODULE: ./src/components/widgets/useWidgetTheme.ts
 var useWidgetTheme = __webpack_require__(60650);
 // EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
@@ -639,14 +620,10 @@ var useRegisterValue = __webpack_require__(89196);
 var specconstants = __webpack_require__(73512);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
 var utils = __webpack_require__(81794);
-// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Refresh.js
-var Refresh = __webpack_require__(89713);
 // EXTERNAL MODULE: ./src/components/hooks/useInterval.ts
 var useInterval = __webpack_require__(63944);
 // EXTERNAL MODULE: ./src/components/hooks/useEvent.ts
 var useEvent = __webpack_require__(59626);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
-var toConsumableArray = __webpack_require__(93433);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/constants.ts
 var constants = __webpack_require__(71815);
 // EXTERNAL MODULE: ./src/jacdac/useChange.ts
@@ -685,8 +662,6 @@ function useCommandPipeResults(service, cmd, packFormat, changeEvent, deps) {
 }
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Delete.js
 var Delete = __webpack_require__(94500);
-// EXTERNAL MODULE: ./node_modules/gatsby-theme-material-ui/index.js
-var gatsby_theme_material_ui = __webpack_require__(36176);
 // EXTERNAL MODULE: ./src/components/ui/ChipList.tsx
 var ChipList = __webpack_require__(88460);
 // EXTERNAL MODULE: ./src/components/hooks/useServiceServer.ts
@@ -695,7 +670,18 @@ var useServiceServer = __webpack_require__(49013);
 var Alert = __webpack_require__(6809);
 // EXTERNAL MODULE: ./node_modules/@material-ui/lab/esm/AlertTitle/AlertTitle.js
 var AlertTitle = __webpack_require__(99330);
+// EXTERNAL MODULE: ./src/components/ui/IconButtonWithTooltip.tsx + 1 modules
+var IconButtonWithTooltip = __webpack_require__(79885);
+// EXTERNAL MODULE: ./src/components/useGridBreakpoints.ts
+var useGridBreakpoints = __webpack_require__(7746);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Wifi.js
+var Wifi = __webpack_require__(14695);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/WifiOff.js
+var WifiOff = __webpack_require__(79796);
 ;// CONCATENATED MODULE: ./src/components/dashboard/DashboardWifi.tsx
+
+
+
 
 
 
@@ -717,38 +703,67 @@ var AlertTitle = __webpack_require__(99330);
 
  // flags, rssi, channel, bssid, ssid
 
-function ConnectAp(props) {
+function toMAC(buffer) {
+  var hex = (0,utils/* toHex */.NC)(buffer, ":");
+  return hex;
+}
+
+function toIP(buffer) {
+  if (!buffer) return undefined;
+  if (buffer.length === 4) return buffer[0] + "." + buffer[1] + "." + buffer[2] + "." + buffer[3];else return (0,utils/* toHex */.NC)(buffer, ".");
+}
+
+function Network(props) {
   var {
     service,
-    info
+    info,
+    network,
+    ssid,
+    connected
   } = props;
-  var [flags, rssi, channel, bssid, ssid] = info;
+  var [priority, networkFlags] = network || [];
+  var [scanFlags, rssi, channel] = info || [];
   var {
     0: password,
     1: setPassword
   } = (0,react.useState)("");
+  var known = !!network;
+  var scanned = !!info;
   var passwordId = (0,react_use_id_hook_esm/* useId */.Me)();
 
   var handlePasswordChange = event => {
     setPassword(event.target.value);
   };
 
-  var handleAddNetwork = /*#__PURE__*/function () {
+  var handleConnect = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
-      yield service.sendCmdPackedAsync(specconstants/* WifiCmd.AddNetwork */.kBD.AddNetwork, [ssid, password || ""], true);
+      return yield service.sendCmdPackedAsync(specconstants/* WifiCmd.AddNetwork */.kBD.AddNetwork, [ssid, password || ""], true);
     });
 
-    return function handleAddNetwork() {
+    return function handleConnect() {
       return _ref.apply(this, arguments);
+    };
+  }();
+
+  var handleForgetNetwork = /*#__PURE__*/function () {
+    var _ref2 = (0,asyncToGenerator/* default */.Z)(function* () {
+      return yield service.sendCmdPackedAsync(specconstants/* WifiCmd.ForgetNetwork */.kBD.ForgetNetwork, [ssid]);
+    });
+
+    return function handleForgetNetwork() {
+      return _ref2.apply(this, arguments);
     };
   }(); // hasPassword == requires password
 
 
-  var hasPassword = !!(flags & specconstants/* WifiAPFlags.HasPassword */.GHo.HasPassword);
+  var hasPassword = !!(networkFlags & specconstants/* WifiAPFlags.HasPassword */.GHo.HasPassword);
   var connectError = hasPassword && !password ? "password required" : undefined;
   return /*#__PURE__*/react.createElement(Card/* default */.Z, null, /*#__PURE__*/react.createElement(CardHeader/* default */.Z, {
-    title: ssid
-  }), /*#__PURE__*/react.createElement(CardContent/* default */.Z, null, hasPassword && /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+    title: ssid,
+    subheader: [known && "priority " + priority, scanned && "RSSI " + rssi + ", channel " + channel].filter(s => !!s).join(", ")
+  }), /*#__PURE__*/react.createElement(CardContent/* default */.Z, null, connected && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
+    severity: "info"
+  }, "Connected"), !hasPassword && /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: passwordId,
     value: password,
     label: "Password",
@@ -757,30 +772,50 @@ function ConnectAp(props) {
     required: hasPassword,
     helperText: connectError,
     onChange: handlePasswordChange
-  })), /*#__PURE__*/react.createElement(CardActions/* default */.Z, null, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
+  })), /*#__PURE__*/react.createElement(CardActions/* default */.Z, null, !known ? /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
     variant: "contained",
     color: "primary",
     disabled: !!connectError,
-    onClick: handleAddNetwork
-  }, "Connect")));
+    onClick: handleConnect
+  }, "Connect") : /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
+    variant: "outlined",
+    disabled: !!connectError,
+    onClick: handleForgetNetwork
+  }, "Forget")));
 }
 
 function ConnectDialog(props) {
   var {
     open,
     setOpen,
-    service
+    service,
+    connectedSsid
   } = props;
+  var breakpoints = (0,useGridBreakpoints/* default */.Z)();
 
-  var handleClose = () => setOpen(false);
+  var scan = () => service.sendCmdAsync(specconstants/* WifiCmd.Scan */.kBD.Scan);
 
-  var scan = () => service.sendCmdAsync(specconstants/* WifiCmd.Scan */.kBD.Scan); // grad scan results
-
+  var knownNetworksChangedEvent = (0,useEvent/* default */.Z)(service, specconstants/* WifiEvent.NetworksChanged */.Xoc.NetworksChanged);
+  var knownNetworks = useCommandPipeResults(service, specconstants/* WifiCmd.ListKnownNetworks */.kBD.ListKnownNetworks, "i16 i16 s", knownNetworksChangedEvent); // grad scan results
 
   var scanCompleteEvent = (0,useEvent/* default */.Z)(service, specconstants/* WifiEvent.ScanComplete */.Xoc.ScanComplete);
   var aps = useCommandPipeResults(service, specconstants/* WifiCmd.LastScanResults */.kBD.LastScanResults, "u32 x[4] i8 u8 b[6] s[33]", scanCompleteEvent); // keep scanning
 
   (0,useInterval/* default */.Z)(open, scan, 30000, [service]);
+
+  var handleClose = () => setOpen(false);
+
+  var handleForgetAll = /*#__PURE__*/function () {
+    var _ref3 = (0,asyncToGenerator/* default */.Z)(function* () {
+      return yield service.sendCmdAsync(specconstants/* WifiCmd.ForgetAllNetworks */.kBD.ForgetAllNetworks);
+    });
+
+    return function handleForgetAll() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var ssids = (0,utils/* unique */.Tw)([].concat((0,toConsumableArray/* default */.Z)((knownNetworks || []).map(kn => kn[2])), (0,toConsumableArray/* default */.Z)((aps || []).map(ap => ap[4]))));
   return /*#__PURE__*/react.createElement(Dialog/* default */.Z, {
     open: open,
     fullWidth: true,
@@ -789,51 +824,22 @@ function ConnectDialog(props) {
   }, /*#__PURE__*/react.createElement(DialogContent/* default */.Z, null, /*#__PURE__*/react.createElement(DialogTitle/* default */.Z, null, "Connect to Wifi"), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
     spacing: 1
-  }, aps.map(ap => /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: 12,
-    key: ap[4]
-  }, /*#__PURE__*/react.createElement(ConnectAp, {
+  }, ssids.map(ssid => /*#__PURE__*/react.createElement(Grid/* default */.Z, Object.assign({
+    item: true
+  }, breakpoints, {
+    key: ssid
+  }), /*#__PURE__*/react.createElement(Network, {
     service: service,
-    info: ap
+    connected: connectedSsid === ssid,
+    ssid: ssid,
+    network: knownNetworks === null || knownNetworks === void 0 ? void 0 : knownNetworks.find(kn => kn[2] === ssid),
+    info: aps === null || aps === void 0 ? void 0 : aps.find(ap => ap[4] === ssid)
   }))))), /*#__PURE__*/react.createElement(DialogActions/* default */.Z, null, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
-    trackName: "dashboard.wifi.scan",
-    onClick: scan,
-    title: "scan",
-    autoRun: true,
-    icon: /*#__PURE__*/react.createElement(Refresh/* default */.Z, null)
-  }, "Scan")));
-}
-
-function NetworkItem(props) {
-  var {
-    currentSsid,
-    service,
-    priority,
-    flags,
-    ssid
-  } = props;
-
-  var handleDelete = /*#__PURE__*/function () {
-    var _ref2 = (0,asyncToGenerator/* default */.Z)(function* () {
-      return yield service.sendCmdPackedAsync(specconstants/* WifiCmd.ForgetNetwork */.kBD.ForgetNetwork, [ssid]);
-    });
-
-    return function handleDelete() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-
-  return /*#__PURE__*/react.createElement(ListItem/* default */.Z, {
-    selected: currentSsid === ssid
-  }, /*#__PURE__*/react.createElement(ListItemText/* default */.Z, {
-    primary: ssid,
-    secondary: priority
-  }), /*#__PURE__*/react.createElement(ListItemSecondaryAction_ListItemSecondaryAction, null, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
-    onClick: handleDelete,
-    icon: /*#__PURE__*/react.createElement(Delete/* default */.Z, null),
-    title: "delete"
-  })));
+    trackName: "dashboard.wifi.forgetall",
+    onClick: handleForgetAll,
+    title: "forget all",
+    icon: /*#__PURE__*/react.createElement(Delete/* default */.Z, null)
+  }, "Forget all")));
 }
 
 function DashboardWifi(props) {
@@ -860,30 +866,18 @@ function DashboardWifi(props) {
   var [mac] = (0,useRegisterValue/* useRegisterUnpackedValue */.Pf)(macRegister);
   var lostIpEvent = (0,useEvent/* default */.Z)(service, specconstants/* WifiEvent.LostIp */.Xoc.LostIp);
   var gotIpEvent = (0,useEvent/* default */.Z)(service, specconstants/* WifiEvent.GotIp */.Xoc.GotIp);
-  var knownNetworksChangedEvent = (0,useEvent/* default */.Z)(service, specconstants/* WifiEvent.NetworksChanged */.Xoc.NetworksChanged);
-  var knownNetworks = useCommandPipeResults(service, specconstants/* WifiCmd.ListKnownNetworks */.kBD.ListKnownNetworks, "i16 i16 s", knownNetworksChangedEvent);
 
   var handleConnect = /*#__PURE__*/function () {
-    var _ref3 = (0,asyncToGenerator/* default */.Z)(function* () {
+    var _ref4 = (0,asyncToGenerator/* default */.Z)(function* () {
       if (connected) yield enabledRegister.sendSetBoolAsync(false);else yield service.sendCmdAsync(specconstants/* WifiCmd.Reconnect */.kBD.Reconnect, undefined, true);
     });
 
     return function handleConnect() {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
 
-  var handleConfigure = () => setOpen(true);
-
-  var handleForgetAll = /*#__PURE__*/function () {
-    var _ref4 = (0,asyncToGenerator/* default */.Z)(function* () {
-      return yield service.sendCmdAsync(specconstants/* WifiCmd.ForgetAllNetworks */.kBD.ForgetAllNetworks, undefined, true);
-    });
-
-    return function handleForgetAll() {
-      return _ref4.apply(this, arguments);
-    };
-  }(); // force register refreshs on various events
+  var handleConfigure = () => setOpen(true); // force register refreshs on various events
 
 
   var refreshRegisters = () => {
@@ -915,29 +909,9 @@ function DashboardWifi(props) {
   }, "WiFi"), (ssid || ip || mac) && /*#__PURE__*/react.createElement(ChipList/* default */.Z, null, !!ssid && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
     label: ssid
   }), !!ip && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
-    label: "IP: " + (0,utils/* toHex */.NC)(ip)
+    label: "IP: " + toIP(ip)
   }), !!mac && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
-    label: "MAC: " + (0,utils/* toHex */.NC)(mac)
-  }))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: 12
-  }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
-    variant: "caption"
-  }, "Known networks (", (knownNetworks === null || knownNetworks === void 0 ? void 0 : knownNetworks.length) || 0, ")")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: 12
-  }, /*#__PURE__*/react.createElement(List/* default */.Z, {
-    dense: true
-  }, knownNetworks === null || knownNetworks === void 0 ? void 0 : knownNetworks.map(_ref5 => {
-    var [priority, flags, nssid] = _ref5;
-    return /*#__PURE__*/react.createElement(NetworkItem, {
-      currentSsid: ssid,
-      service: service,
-      key: nssid,
-      priority: priority,
-      flags: flags,
-      ssid: nssid
-    });
+    label: "MAC: " + toMAC(mac)
   }))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
@@ -949,28 +923,20 @@ function DashboardWifi(props) {
     item: true
   }, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
     trackName: "dashboard.wifi.connect",
-    variant: "contained",
-    color: "primary",
-    onClick: handleConnect
-  }, connected ? "Disconnect" : "Connect")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true
-  }, /*#__PURE__*/react.createElement(gatsby_theme_material_ui.Button, {
     variant: "outlined",
-    startIcon: /*#__PURE__*/react.createElement(Settings/* default */.Z, null),
+    color: "primary",
+    onClick: handleConnect,
+    icon: connected ? /*#__PURE__*/react.createElement(WifiOff/* default */.Z, null) : /*#__PURE__*/react.createElement(Wifi/* default */.Z, null)
+  })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     onClick: handleConfigure,
     title: "configure"
-  }, "Configure")), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true
-  }, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
-    variant: "outlined",
-    trackName: "dashboard.wifi.forgetall",
-    title: "forget all networks",
-    icon: /*#__PURE__*/react.createElement(Delete/* default */.Z, null),
-    onClick: handleForgetAll
-  }, "Forget all"))))), /*#__PURE__*/react.createElement(ConnectDialog, {
+  }, /*#__PURE__*/react.createElement(Settings/* default */.Z, null)))))), open && /*#__PURE__*/react.createElement(ConnectDialog, {
     open: open,
     setOpen: setOpen,
-    service: service
+    service: service,
+    connectedSsid: ssid
   }));
 }
 
@@ -1008,7 +974,62 @@ function ChipList(props) {
   }, children);
 }
 
+/***/ }),
+
+/***/ 7746:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": function() { return /* binding */ useGridBreakpoints; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(67294);
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(84377);
+
+
+function useGridBreakpoints(itemCount) {
+  var {
+    drawerType
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_AppContext__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .ZP);
+
+  if (itemCount !== undefined) {
+    switch (itemCount) {
+      case 1:
+      case 2:
+        return {
+          xs: 12,
+          sm: 6,
+          md: 6,
+          lg: 6,
+          xl: 6
+        };
+
+      case 3:
+        return {
+          xs: 12,
+          sm: 6,
+          md: 6,
+          lg: 4,
+          xl: 4
+        };
+    }
+  }
+
+  if (drawerType != _AppContext__WEBPACK_IMPORTED_MODULE_1__/* .DrawerType.None */ .jw.None) return {
+    xs: 12,
+    md: 6,
+    sm: 6,
+    lg: 6,
+    xl: 4
+  };else return {
+    xs: 12,
+    sm: 6,
+    md: 4,
+    lg: 4,
+    xl: 3
+  };
+}
+
 /***/ })
 
 }]);
-//# sourceMappingURL=3856-370292fe50cfeb46de1f.js.map
+//# sourceMappingURL=7767-07d6da5d4a49434e9ac2.js.map

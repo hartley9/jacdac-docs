@@ -42726,11 +42726,12 @@ function rgbToHtmlColor(rgb) {
 function toFullHex(n) {
   return "0x" + n.map(id => ("000000000" + id.toString(16)).slice(-8)).join("");
 }
-function toHex(bytes) {
+function toHex(bytes, sep) {
   if (!bytes) return undefined;
   var r = "";
 
   for (var i = 0; i < bytes.length; ++i) {
+    if (sep && i > 0) r += sep;
     r += ("0" + bytes[i].toString(16)).slice(-2);
   }
 
@@ -52542,7 +52543,7 @@ var DashboardHIDKeyboard = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* impo
 var DashboardHIDMouse = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 5233).then(__webpack_require__.bind(__webpack_require__, 45233))); //const DashboardAzureIoTHub = lazy(() => import("./DashboardAzureIoTHub"))
 
 var DashboardAzureIoTHubHealth = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 1931).then(__webpack_require__.bind(__webpack_require__, 31931)));
-var DashboardWifi = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 3856).then(__webpack_require__.bind(__webpack_require__, 63856)));
+var DashboardWifi = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 7767).then(__webpack_require__.bind(__webpack_require__, 67767)));
 var DashboardVibrationMotor = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 2439).then(__webpack_require__.bind(__webpack_require__, 62439)));
 var DashboardCODALMessageBus = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 171).then(__webpack_require__.bind(__webpack_require__, 30171)));
 var serviceViews = {
@@ -69952,7 +69953,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "35d370b2f048cdee263a669f58fef9c849f8a15d";
+var sha = "7d054c830ef5283725343191c346eea719c13d26";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70818,7 +70819,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "35d370b2f048cdee263a669f58fef9c849f8a15d";
+  var sha = "7d054c830ef5283725343191c346eea719c13d26";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72386,7 +72387,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "35d370b2f048cdee263a669f58fef9c849f8a15d";
+    var sha = "7d054c830ef5283725343191c346eea719c13d26";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88649,4 +88650,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-5b51d76976d87db9c61e.js.map
+//# sourceMappingURL=app-dce0137a76223285ab58.js.map
