@@ -735,12 +735,12 @@ function Network(props) {
     setPassword(event.target.value);
   };
 
-  var handleConnect = /*#__PURE__*/function () {
+  var handleAddNetwork = /*#__PURE__*/function () {
     var _ref = (0,asyncToGenerator/* default */.Z)(function* () {
-      return yield service.sendCmdPackedAsync(specconstants/* WifiCmd.AddNetwork */.kBD.AddNetwork, [ssid, password || ""], true);
+      yield service.sendCmdPackedAsync(specconstants/* WifiCmd.AddNetwork */.kBD.AddNetwork, [ssid, password || ""], true);
     });
 
-    return function handleConnect() {
+    return function handleAddNetwork() {
       return _ref.apply(this, arguments);
     };
   }();
@@ -763,7 +763,9 @@ function Network(props) {
     subheader: [known && "priority " + priority, scanned && "RSSI " + rssi + ", channel " + channel].filter(s => !!s).join(", ")
   }), /*#__PURE__*/react.createElement(CardContent/* default */.Z, null, connected && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
     severity: "info"
-  }, "Connected"), !hasPassword && /*#__PURE__*/react.createElement(TextField/* default */.Z, {
+  }, "Connected"), known && !scanned && /*#__PURE__*/react.createElement(Alert/* default */.Z, {
+    severity: "info"
+  }, "Not found"), !known && !hasPassword && /*#__PURE__*/react.createElement(TextField/* default */.Z, {
     id: passwordId,
     value: password,
     label: "Password",
@@ -776,7 +778,7 @@ function Network(props) {
     variant: "contained",
     color: "primary",
     disabled: !!connectError,
-    onClick: handleConnect
+    onClick: handleAddNetwork
   }, "Connect") : /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
     variant: "outlined",
     disabled: !!connectError,
@@ -815,7 +817,13 @@ function ConnectDialog(props) {
     };
   }();
 
-  var ssids = (0,utils/* unique */.Tw)([].concat((0,toConsumableArray/* default */.Z)((knownNetworks || []).map(kn => kn[2])), (0,toConsumableArray/* default */.Z)((aps || []).map(ap => ap[4]))));
+  var priority = s => {
+    var _knownNetworks$find;
+
+    return ((_knownNetworks$find = knownNetworks.find(n => n[2] === s)) === null || _knownNetworks$find === void 0 ? void 0 : _knownNetworks$find[0]) || Infinity;
+  };
+
+  var ssids = (0,utils/* unique */.Tw)([].concat((0,toConsumableArray/* default */.Z)((knownNetworks || []).map(kn => kn[2])), (0,toConsumableArray/* default */.Z)((aps || []).map(ap => ap[4])))).sort((l, r) => -priority(l) + priority(r));
   return /*#__PURE__*/react.createElement(Dialog/* default */.Z, {
     open: open,
     fullWidth: true,
@@ -929,6 +937,7 @@ function DashboardWifi(props) {
     variant: "outlined",
     color: "primary",
     onClick: handleConnect,
+    title: connected ? "disconnect" : "connect",
     icon: connected ? /*#__PURE__*/react.createElement(WifiOff/* default */.Z, null) : /*#__PURE__*/react.createElement(Wifi/* default */.Z, null)
   })), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
@@ -939,7 +948,7 @@ function DashboardWifi(props) {
     open: open,
     setOpen: setOpen,
     service: service,
-    connectedSsid: ssid
+    connectedSsid: connected ? ssid : undefined
   }));
 }
 
@@ -1035,4 +1044,4 @@ function useGridBreakpoints(itemCount) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7767-025c69db217bce33f229.js.map
+//# sourceMappingURL=7767-e7c890bcca677e3de217.js.map
