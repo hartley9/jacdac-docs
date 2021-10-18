@@ -869,7 +869,10 @@ function DashboardWifi(props) {
 
   var handleConnect = /*#__PURE__*/function () {
     var _ref4 = (0,asyncToGenerator/* default */.Z)(function* () {
-      if (connected) yield enabledRegister.sendSetBoolAsync(false);else yield service.sendCmdAsync(specconstants/* WifiCmd.Reconnect */.kBD.Reconnect, undefined, true);
+      if (connected) yield enabledRegister.sendSetBoolAsync(false);else {
+        yield enabledRegister.sendSetBoolAsync(true);
+        yield service.sendCmdAsync(specconstants/* WifiCmd.Reconnect */.kBD.Reconnect, undefined, true);
+      }
     });
 
     return function handleConnect() {
@@ -1032,4 +1035,4 @@ function useGridBreakpoints(itemCount) {
 /***/ })
 
 }]);
-//# sourceMappingURL=7767-07d6da5d4a49434e9ac2.js.map
+//# sourceMappingURL=7767-025c69db217bce33f229.js.map
