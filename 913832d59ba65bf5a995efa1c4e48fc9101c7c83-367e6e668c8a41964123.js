@@ -796,9 +796,11 @@ function useFirmwareBlobs() {
     );
 
     for (var slug of slugs) {
+      var fw = yield firmwares.get(slug);
+      if (!fw) continue;
       var {
         time
-      } = yield firmwares.get(slug);
+      } = fw;
       var age = Date.now() - time;
       console.debug("firmware " + slug + " age " + (0,pretty/* prettyDuration */.Xh)(age));
 
@@ -1443,4 +1445,4 @@ function useGridBreakpoints(itemCount) {
 /***/ })
 
 }]);
-//# sourceMappingURL=913832d59ba65bf5a995efa1c4e48fc9101c7c83-65c0dee25adb45838c80.js.map
+//# sourceMappingURL=913832d59ba65bf5a995efa1c4e48fc9101c7c83-367e6e668c8a41964123.js.map

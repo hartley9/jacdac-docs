@@ -117,9 +117,11 @@ function useFirmwareBlobs() {
     );
 
     for (var slug of slugs) {
+      var fw = yield firmwares.get(slug);
+      if (!fw) continue;
       var {
         time
-      } = yield firmwares.get(slug);
+      } = fw;
       var age = Date.now() - time;
       console.debug("firmware " + slug + " age " + (0,pretty/* prettyDuration */.Xh)(age));
 
@@ -644,4 +646,4 @@ function semverCmp(a, b) {
 /***/ })
 
 }]);
-//# sourceMappingURL=3432-bd2ac8c8350e05311a43.js.map
+//# sourceMappingURL=3432-b3741b3e1f7fad04d072.js.map

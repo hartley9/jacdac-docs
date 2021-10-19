@@ -394,9 +394,11 @@ function useFirmwareBlobs() {
     );
 
     for (var slug of slugs) {
+      var fw = yield firmwares.get(slug);
+      if (!fw) continue;
       var {
         time
-      } = yield firmwares.get(slug);
+      } = fw;
       var age = Date.now() - time;
       console.debug("firmware " + slug + " age " + (0,pretty/* prettyDuration */.Xh)(age));
 
@@ -1766,4 +1768,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-ad4a01c5cfa94f0cb77e.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-fb0227a8ac55f25875d1.js.map
