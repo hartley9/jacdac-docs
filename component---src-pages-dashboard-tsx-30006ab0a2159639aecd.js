@@ -556,8 +556,8 @@ function DelayedOnDevices(props) {
   }, [timeout, hasDevices]);
   return show ? /*#__PURE__*/react.createElement(react.Fragment, null, children) : null;
 }
-// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 24 modules
-var providerbus = __webpack_require__(47751);
+// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 9 modules
+var providerbus = __webpack_require__(68529);
 ;// CONCATENATED MODULE: ./src/pages/dashboard.tsx
 
 
@@ -586,4 +586,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-dashboard-tsx-e7970a4d277554c3e8ff.js.map
+//# sourceMappingURL=component---src-pages-dashboard-tsx-30006ab0a2159639aecd.js.map

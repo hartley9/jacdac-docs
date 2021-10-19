@@ -2477,8 +2477,8 @@ var react = __webpack_require__(67294);
 var constants = __webpack_require__(71815);
 // EXTERNAL MODULE: ./jacdac-ts/src/jdom/utils.ts
 var utils = __webpack_require__(81794);
-// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 24 modules
-var providerbus = __webpack_require__(47751);
+// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 9 modules
+var providerbus = __webpack_require__(68529);
 // EXTERNAL MODULE: ./src/jacdac/Context.tsx
 var Context = __webpack_require__(20392);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
@@ -5002,8 +5002,8 @@ function BrowserCompatibilityAlert(props) {
     severity: "warning"
   }, /*#__PURE__*/react.createElement(AlertTitle/* default */.Z, null, "Browser not compatible."), label);
 }
-// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 24 modules
-var providerbus = __webpack_require__(47751);
+// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 9 modules
+var providerbus = __webpack_require__(68529);
 ;// CONCATENATED MODULE: ./src/components/blockly/BlockEditor.tsx
 
 
@@ -9277,7 +9277,7 @@ VegaChartField.KEY = "jacdac_field_vega_chart";
 /* harmony import */ var _jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(13996);
 /* harmony import */ var _ui_CopyButton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(18568);
 /* harmony import */ var _ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(79885);
-/* harmony import */ var _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(47751);
+/* harmony import */ var _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(68529);
 /* harmony import */ var _material_ui_icons_SaveAlt__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(79312);
 
 
@@ -12926,4 +12926,4 @@ function child(parent, name, props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-b07f1d1d71c6aa2bd824.js.map
+//# sourceMappingURL=b0c593e002fd4a3c4a93eb2dc4c25280c59ba664-3405f9ae01adf15dee41.js.map

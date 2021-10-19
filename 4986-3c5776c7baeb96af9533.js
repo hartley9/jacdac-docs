@@ -159,7 +159,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ui_DarkModeContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(91350);
 /* harmony import */ var _KindIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(50048);
 /* harmony import */ var _jacdac_ts_src_jdom_constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(71815);
-/* harmony import */ var _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(47751);
+/* harmony import */ var _jacdac_providerbus__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(68529);
 /* harmony import */ var _jacdac_ts_jacdac_spec_spectool_jdspec__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(13996);
 /* harmony import */ var _icons_JacdacIcon__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(36656);
 
@@ -386,4 +386,4 @@ function ToolsDrawer() {
 /***/ })
 
 }]);
-//# sourceMappingURL=4986-7e9bc4f2af0f5eb77b23.js.map
+//# sourceMappingURL=4986-3c5776c7baeb96af9533.js.map

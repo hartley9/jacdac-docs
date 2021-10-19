@@ -790,8 +790,8 @@ var PeerJSBridge = /*#__PURE__*/function (_JDBridge) {
 var GridHeader = __webpack_require__(95393);
 // EXTERNAL MODULE: ./src/components/ui/Alert.tsx
 var Alert = __webpack_require__(95453);
-// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 24 modules
-var providerbus = __webpack_require__(47751);
+// EXTERNAL MODULE: ./src/jacdac/providerbus.ts + 9 modules
+var providerbus = __webpack_require__(68529);
 // EXTERNAL MODULE: ./src/components/ui/LoadingProgress.tsx
 var LoadingProgress = __webpack_require__(2285);
 ;// CONCATENATED MODULE: ./src/components/peer/PeerConfiguration.tsx
@@ -1029,4 +1029,4 @@ module.exports = webpackEmptyContext;
 /***/ })
 
 }]);
-//# sourceMappingURL=147-084000c69d7628fcdded.js.map
+//# sourceMappingURL=147-ce0aa1d21dac8d5fb39b.js.map
