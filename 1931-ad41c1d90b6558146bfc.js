@@ -357,7 +357,7 @@ function DashboardAzureIoTHubHealth(props) {
     variant: "subtitle2"
   }, "Azure IoT Hub"), /*#__PURE__*/react.createElement(ChipList/* default */.Z, null, hubName && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
     color: connected ? "primary" : "default",
-    label: "hub: " + hubName
+    label: hubName
   }), hubDeviceId && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
     label: "device: " + hubDeviceId
   }))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
@@ -384,4 +384,4 @@ function DashboardAzureIoTHubHealth(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1931-55988505cfce891abcac.js.map
+//# sourceMappingURL=1931-ad41c1d90b6558146bfc.js.map
