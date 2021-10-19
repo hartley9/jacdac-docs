@@ -47999,7 +47999,7 @@ function CmdButton(props) {
 
         if (!disableReset) {
           yield bus.delay(ackResetDelay || ACK_RESET_DELAY);
-          if (!mounted) return;
+          if (!mounted()) return;
           setAck(false);
         }
       } catch (e) {
@@ -48039,7 +48039,7 @@ function CmdButton(props) {
   var elClassName = (0,clsx__WEBPACK_IMPORTED_MODULE_13__["default"])(className, modeClassName); // run once
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    if (autoRun) run();
+    if (autoRun && mounted()) run();
   }, [autoRun]);
   if (!children && icon) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ui_IconButtonWithTooltip__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, Object.assign({
     className: elClassName,
@@ -69953,7 +69953,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "56b8795bf3a205060e5f46a30bb33bfd040dbc5d";
+var sha = "6002308b726a5d98cc4828a65593c8ff4f97b0eb";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70819,7 +70819,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "56b8795bf3a205060e5f46a30bb33bfd040dbc5d";
+  var sha = "6002308b726a5d98cc4828a65593c8ff4f97b0eb";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72387,7 +72387,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "56b8795bf3a205060e5f46a30bb33bfd040dbc5d";
+    var sha = "6002308b726a5d98cc4828a65593c8ff4f97b0eb";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88650,4 +88650,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-9176b61c4ab2be2bbc48.js.map
+//# sourceMappingURL=app-0f33e9747cfdf662e5aa.js.map
