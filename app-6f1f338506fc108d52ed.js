@@ -52542,8 +52542,8 @@ var DashboardBitRadio = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(
 var DashboardHIDKeyboard = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(532), __webpack_require__.e(7919), __webpack_require__.e(5969)]).then(__webpack_require__.bind(__webpack_require__, 25969)));
 var DashboardHIDMouse = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 5233).then(__webpack_require__.bind(__webpack_require__, 45233))); //const DashboardAzureIoTHub = lazy(() => import("./DashboardAzureIoTHub"))
 
-var DashboardAzureIoTHubHealth = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 1931).then(__webpack_require__.bind(__webpack_require__, 31931)));
-var DashboardWifi = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 7767).then(__webpack_require__.bind(__webpack_require__, 67767)));
+var DashboardAzureIoTHubHealth = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(1931)]).then(__webpack_require__.bind(__webpack_require__, 31931)));
+var DashboardWifi = /*#__PURE__*/(0,react.lazy)(() => Promise.all(/* import() */[__webpack_require__.e(317), __webpack_require__.e(7767)]).then(__webpack_require__.bind(__webpack_require__, 67767)));
 var DashboardVibrationMotor = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 2439).then(__webpack_require__.bind(__webpack_require__, 62439)));
 var DashboardCODALMessageBus = /*#__PURE__*/(0,react.lazy)(() => __webpack_require__.e(/* import() */ 171).then(__webpack_require__.bind(__webpack_require__, 30171)));
 var serviceViews = {
@@ -69953,7 +69953,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "f1e07014a4d35dc24ec2c41d74c1f454c6531dae";
+var sha = "cff85261ebf1af32cedfdae81a33c1c9274ce5ab";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -70819,7 +70819,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "f1e07014a4d35dc24ec2c41d74c1f454c6531dae";
+  var sha = "cff85261ebf1af32cedfdae81a33c1c9274ce5ab";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72387,7 +72387,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "f1e07014a4d35dc24ec2c41d74c1f454c6531dae";
+    var sha = "cff85261ebf1af32cedfdae81a33c1c9274ce5ab";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88650,4 +88650,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-5d6a82d5d379728fcd27.js.map
+//# sourceMappingURL=app-6f1f338506fc108d52ed.js.map

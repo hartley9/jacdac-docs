@@ -63,8 +63,8 @@ var TextField = __webpack_require__(1059);
 var DialogActions = __webpack_require__(89952);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
 var Grid = __webpack_require__(80838);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Switch/Switch.js
-var Switch = __webpack_require__(6210);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Chip/Chip.js + 1 modules
+var Chip = __webpack_require__(4998);
 ;// CONCATENATED MODULE: ./src/jacdac/useServiceClient.ts
 
 function useServiceClient(service, factory) {
@@ -223,7 +223,16 @@ var lib = __webpack_require__(71481);
 var CmdButton = __webpack_require__(50092);
 // EXTERNAL MODULE: ./src/jacdac/useRegisterValue.ts
 var useRegisterValue = __webpack_require__(89196);
+// EXTERNAL MODULE: ./src/components/ui/ChipList.tsx
+var ChipList = __webpack_require__(88460);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/Wifi.js
+var Wifi = __webpack_require__(14695);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/WifiOff.js
+var WifiOff = __webpack_require__(79796);
 ;// CONCATENATED MODULE: ./src/components/dashboard/DashboardAzureIoTHubHealth.tsx
+
+
+
 
 
 
@@ -306,7 +315,6 @@ function DashboardAzureIoTHubHealth(props) {
     0: open,
     1: setOpen
   } = (0,react.useState)(false);
-  var connectId = (0,react_use_id_hook_esm/* useId */.Me)();
   var hubNameRegister = service.register(specconstants/* AzureIotHubHealthReg.HubName */.q7s.HubName);
   var [hubName] = (0,useRegisterValue/* useRegisterUnpackedValue */.Pf)(hubNameRegister, props);
   var hubDeviceIdRegister = service.register(specconstants/* AzureIotHubHealthReg.HubDeviceId */.q7s.HubDeviceId);
@@ -321,7 +329,18 @@ function DashboardAzureIoTHubHealth(props) {
   } = (0,useWidgetTheme/* default */.Z)(color);
   var connected = connectionStatus === specconstants/* AzureIotHubHealthConnectionStatus.Connected */.gaB.Connected;
 
-  var handleSetConnectionString = () => setOpen(true);
+  var handleConnect = /*#__PURE__*/function () {
+    var _ref2 = (0,asyncToGenerator/* default */.Z)(function* () {
+      var cmd = connected ? specconstants/* AzureIotHubHealthCmd.Disconnect */.FhJ.Disconnect : specconstants/* AzureIotHubHealthCmd.Connect */.FhJ.Connect;
+      yield service.sendCmdAsync(cmd);
+    });
+
+    return function handleConnect() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var handleConfigure = () => setOpen(true);
 
   return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
@@ -336,30 +355,25 @@ function DashboardAzureIoTHubHealth(props) {
   }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     component: "span",
     variant: "subtitle2"
-  }, "Azure IoT Hub:\xA0"), /*#__PURE__*/react.createElement(Typography/* default */.Z, {
-    component: "span",
-    variant: "subtitle1"
-  }, hubName)), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, "Azure IoT Hub"), /*#__PURE__*/react.createElement(ChipList/* default */.Z, null, hubName && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+    color: "primary",
+    label: "hub: " + hubName
+  }), hubDeviceId && /*#__PURE__*/react.createElement(Chip/* default */.Z, {
+    label: "device: " + hubDeviceId
+  }))), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
-  }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
-    component: "span",
-    variant: "subtitle2"
-  }, "Device id:\xA0"), /*#__PURE__*/react.createElement(Typography/* default */.Z, {
-    component: "span",
-    variant: "subtitle1"
-  }, hubDeviceId)), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
-    item: true,
-    xs: 12
-  }, /*#__PURE__*/react.createElement(Switch/* default */.Z, {
-    checked: connected,
-    "aria-labelledby": connectId
-  }), /*#__PURE__*/react.createElement("label", {
-    className: ".no-pointer-events",
-    id: connectId
-  }, specconstants/* AzureIotHubHealthConnectionStatus */.gaB[connectionStatus] || "Waiting..."), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
-    title: "Set connection string",
-    onClick: handleSetConnectionString
+  }, /*#__PURE__*/react.createElement(CmdButton/* default */.Z, {
+    trackName: "dashboard.azureiothealth.connect",
+    variant: "outlined",
+    color: "primary",
+    onClick: handleConnect,
+    disabled: connectionStatus === undefined,
+    title: specconstants/* AzureIotHubHealthConnectionStatus */.gaB[connectionStatus] || "Waiting...",
+    icon: connected ? /*#__PURE__*/react.createElement(Wifi/* default */.Z, null) : /*#__PURE__*/react.createElement(WifiOff/* default */.Z, null)
+  }), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    title: "Configure",
+    onClick: handleConfigure
   }, /*#__PURE__*/react.createElement(Settings/* default */.Z, null)))), /*#__PURE__*/react.createElement(ConnectionStringDialog, {
     client: client,
     open: open,
@@ -370,4 +384,4 @@ function DashboardAzureIoTHubHealth(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=1931-6539ac25e675824c9004.js.map
+//# sourceMappingURL=1931-b31abce34af29226ffdd.js.map
