@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-988f577852577f69a83d.js"
+    "url": "webpack-runtime-1eb5cf5a9e7a73428546.js"
   },
   {
     "url": "styles.74eb5aed1bb14cdb4c8b.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "f223efeeaee484f76d1f30b1238727e8"
+    "revision": "03071b49b0fe15f7bb73f851da3324dc"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "43c934211ba85d229f427ca0b81ff0c7"
+    "revision": "7f10198fbebdc38a4c9d7da33b2be4f2"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "c883a2a6ce327a384d7f6ae498eea433"
+    "revision": "8606d714a3489bcfe0a483c215ea4a2b"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "bce141d64af99a6f70c737a0efd6f9c4"
+    "revision": "c775c04a45ed2fc7efbddeff22046691"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "3207f65c542dfd5ae14ea2ffa685601f"
+    "revision": "02f12cffe9a3393c90fb9dda819d8829"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "2c755368d95497aab34034a06d42417a"
+    "revision": "6ced918f080aa790547c945a1f130615"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "4dcb41af7decebfd100a7c9843c66c1e"
+    "revision": "c8ed5f382d60c11c89ada7a2becf7058"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -112,7 +112,7 @@ self.__precacheManifest = [
     "url": "830485e4a01eef9412f4754ecfe08bd6e6417633-12c9fbea7564c0a0bebd.js"
   },
   {
-    "url": "component---src-pages-dashboard-tsx-30006ab0a2159639aecd.js"
+    "url": "component---src-pages-dashboard-tsx-da9a439de80eaddd7008.js"
   },
   {
     "url": "page-data/dashboard/page-data.json",
@@ -1365,7 +1365,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-d8be73371415e20ebaf5.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-93480147888210638ddf.js`))) {
     return await fetch(event.request)
   }
 
