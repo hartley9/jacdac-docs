@@ -4861,7 +4861,8 @@ class HF2Proto {
         }
     }
     onSerial(data, iserr) {
-        const msg = `hf2 serial: ${bufferToString(data)}`;
+        const line = bufferToString(data).replace(/[\r\n]*$/, "");
+        const msg = `hf2: ${line}`;
         if (iserr)
             console.warn(msg);
         else
@@ -4870,13 +4871,13 @@ class HF2Proto {
     async postConnectAsync() {
         await this.checkMode();
         const buf = await this.talkAsync(HF2_CMD_INFO);
-        this.io.log("Connected to: " + bufferToString(buf));
+        this.io.log("connected to " + bufferToString(buf));
     }
     async checkMode() {
         // first check that we are not talking to a bootloader
         const info = await this.talkAsync(HF2_CMD_BININFO);
         const mode = read32(info, 0);
-        this.io.log(`hf2 mode ${mode}`);
+        this.io.log(`mode ${mode}`);
         if (mode == HF2_MODE_USERSPACE) {
             // all good
             this.io.log(`device in user-space mode`);
