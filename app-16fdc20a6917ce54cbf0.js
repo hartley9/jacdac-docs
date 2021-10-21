@@ -39027,21 +39027,21 @@ function frameToPackets(frame, timestamp) {
   var size = frame[2] || 0;
 
   if (frame.length < size + 12) {
-    warn(timestamp + "ms: got only " + frame.length + " bytes; expecting " + (size + 12));
+    warn((timestamp | 0) + "ms: got only " + frame.length + " bytes; expecting " + (size + 12));
   } else if (size < 4) {
-    warn(timestamp + "ms: empty packet");
+    warn((timestamp | 0) + "ms: empty packet");
   } else {
     var computed = (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .crc */ .Br)(frame.slice(2, size + 12));
     var actual = (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .read16 */ .gI)(frame, 0);
     if (actual != computed) console.error("crc mismatch; sz=" + size + " got:" + actual + ", exp:" + computed);
     var res = [];
-    if (frame.length != 12 + frame[2]) warn(timestamp + "ms: unexpected packet len: " + frame.length);
+    if (frame.length != 12 + frame[2]) warn((timestamp | 0) + "ms: unexpected packet len: " + frame.length);
 
     for (var ptr = 12; ptr < 12 + frame[2];) {
       var psz = frame[ptr] + 4;
       var sz = (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .ALIGN */ .Hp)(psz);
       var pkt = (0,_utils__WEBPACK_IMPORTED_MODULE_0__/* .bufferConcat */ .gX)(frame.slice(0, 12), frame.slice(ptr, ptr + psz));
-      if (ptr + psz > 12 + frame[2]) warn(timestamp + "ms: invalid frame compression, res len=" + res.length);
+      if (ptr + psz > 12 + frame[2]) warn((timestamp | 0) + "ms: invalid frame compression, res len=" + res.length);
       var p = Packet.fromBinary(pkt);
       p.timestamp = timestamp;
       res.push(p); // only set req_ack flag on first packet - otherwise we would sent multiple acks
@@ -48197,7 +48197,7 @@ var _providerDefinitions = [{
   serviceClasses: [constants/* SRV_SOIL_MOISTURE */.Bj3],
   services: () => [new AnalogSensorServer(constants/* SRV_SOIL_MOISTURE */.Bj3, {
     readingValues: [0.5],
-    readingError: [0.03],
+    readingError: [0.05],
     streamingInterval: 1000
   })]
 }, {
@@ -70859,7 +70859,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "878f9259073ebd4ae626b47b57dc4555dfceda9f";
+var sha = "dd36eadb31034372d531dad58c7a34373da72ba4";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -71725,7 +71725,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "878f9259073ebd4ae626b47b57dc4555dfceda9f";
+  var sha = "dd36eadb31034372d531dad58c7a34373da72ba4";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -73331,7 +73331,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "878f9259073ebd4ae626b47b57dc4555dfceda9f";
+    var sha = "dd36eadb31034372d531dad58c7a34373da72ba4";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88853,4 +88853,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-cdcac591817013b2693a.js.map
+//# sourceMappingURL=app-16fdc20a6917ce54cbf0.js.map

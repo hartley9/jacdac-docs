@@ -556,7 +556,7 @@ function SimulateDeviceHint() {
   }, "\uD83C\uDF21\uFE0F")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     trackName: "simulator.hint.soilmoisture",
     onClick: handleStartSimulator(constants/* SRV_SOIL_MOISTURE */.Bj3),
-    title: "slider",
+    title: "soil moisture",
     "aria-label": "start soil moisture simulator"
   }, /*#__PURE__*/react.createElement("span", {
     "aria-label": "sprout emoji",
@@ -588,7 +588,7 @@ function SimulateDeviceHint() {
   }, "\uD83D\uDD79\uFE0F")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     trackName: "simulator.hint.characterscreen",
     onClick: handleStartSimulator(constants/* SRV_CHARACTER_SCREEN */.IB4),
-    title: "Character screen",
+    title: "character screen",
     "aria-label": "start character screen simulator"
   }, /*#__PURE__*/react.createElement("span", {
     "aria-label": "pager emoji",
@@ -1103,4 +1103,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-1da2b157be478e242ce5.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-6221e61f3eeada77c3d2.js.map
