@@ -37541,7 +37541,7 @@ function timestamp() {
 }
 
 function log(msg) {
-  console.log("BL [" + timestamp() + "ms]: " + msg);
+  console.debug("BL [" + timestamp() + "ms]: " + msg);
 }
 
 var FlashClient = /*#__PURE__*/function () {
@@ -38487,10 +38487,6 @@ function jdpackCore(trg, fmt, data, off) {
           // assume buffer
           if (c0 == ch_b) buf = v;else throw new Error("unexpected buffer");
         } else {
-          console.log({
-            parser,
-            v
-          });
           throw new Error("expecting string or buffer");
         }
 
@@ -41035,7 +41031,7 @@ var JDServiceServer = /*#__PURE__*/function (_JDEventSource) {
         (_reg = reg) === null || _reg === void 0 ? void 0 : _reg.handlePacket(pkt);
       } else if (pkt.isCommand) {
         var cmd = this.commands[pkt.serviceCommand];
-        if (cmd) cmd(pkt);else if (cmd === undefined) console.log("ignored command", {
+        if (cmd) cmd(pkt);else if (cmd === undefined) console.debug("ignored command", {
           pkt
         });
       } // ignored?
@@ -43825,7 +43821,7 @@ function readBlobToUint8Array(blob) {
     };
 
     fileReader.onerror = e => {
-      console.log(e);
+      //console.log(e)
       reject(e);
     };
 
@@ -43847,7 +43843,7 @@ function readBlobToText(blob) {
     fileReader.onload = () => resolve(fileReader.result);
 
     fileReader.onerror = e => {
-      console.log(e);
+      //console.log(e)
       reject(e);
     };
 
@@ -45343,7 +45339,7 @@ var RealTimeClockServer = /*#__PURE__*/function (_SensorServer) {
   var _proto = RealTimeClockServer.prototype;
 
   _proto.handleSetTime = function handleSetTime(pkt) {
-    console.log("set time", {
+    console.debug("set time", {
       pkt
     });
   };
@@ -46227,11 +46223,6 @@ var SettingsServer = /*#__PURE__*/function (_JDServiceServer) {
   _proto.handleSet = /*#__PURE__*/function () {
     var _handleSet = (0,asyncToGenerator/* default */.Z)(function* (pkt) {
       var [key, value] = pkt.jdunpack("z b");
-      console.log({
-        cmd: "set",
-        key,
-        value
-      });
       this.settings[key] = (0,utils/* toHex */.NC)(value);
       yield this.save();
     });
@@ -46298,7 +46289,7 @@ var SettingsServer = /*#__PURE__*/function (_JDServiceServer) {
       var payload = typeof window !== "undefined" && window.localStorage.getItem(this.storageKey);
       return JSON.parse(payload || "{}");
     } catch (e) {
-      console.log(e);
+      console.debug(e);
       return {};
     }
   };
@@ -46309,7 +46300,7 @@ var SettingsServer = /*#__PURE__*/function (_JDServiceServer) {
         try {
           if (typeof window !== "undefined") window.localStorage.setItem(this.storageKey, JSON.stringify(this.settings));
         } catch (e) {
-          console.log(e);
+          console.debug(e);
         }
       }
 
@@ -46710,7 +46701,7 @@ var CompassServer = /*#__PURE__*/function (_AnalogSensorServer) {
       var [status] = _this.statusCode.values();
 
       if (status === constants/* SystemStatusCodes.CalibrationNeeded */._kj.CalibrationNeeded) {
-        console.log("start calibration");
+        console.debug("start calibration");
 
         _this.calibrate();
       }
@@ -46749,7 +46740,7 @@ var DMXServer = /*#__PURE__*/function (_JDServiceServer) {
 
   _proto.handleSend = function handleSend(pkt) {
     // ignore
-    console.log("dmx send", (0,utils/* toHex */.NC)(pkt.data));
+    console.debug("dmx send", (0,utils/* toHex */.NC)(pkt.data));
   };
 
   return DMXServer;
@@ -47033,8 +47024,6 @@ var BitRadioServer = /*#__PURE__*/function (_JDServiceServer) {
         bufferData: rpkt.data
       }
     }; // send message to parent
-
-    console.log("bitradio: send", msg);
 
     if ((0,iframeclient/* inIFrame */.H)()) {
       window.parent.postMessage(msg, "*");
@@ -48398,7 +48387,7 @@ var _providerDefinitions = [{
     var pwr = dev.service(1);
     pwr.enabled.on(constants/* CHANGE */.Ver, () => {
       var enabled = !!pwr.enabled.values()[0];
-      console.log("power: " + (enabled ? "on" : "off"));
+      console.debug("power: " + (enabled ? "on" : "off"));
       if (enabled) // power + rest
         dev.updateServices(services); // power only
       else dev.updateServices([services[0]]);
@@ -70863,7 +70852,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "9287e44c688a1c927cea660a1fd0c9689f051a15";
+var sha = "8984adbbdaa1b4a3d2dc120425b26fdc29c59fa9";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -71729,7 +71718,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "9287e44c688a1c927cea660a1fd0c9689f051a15";
+  var sha = "8984adbbdaa1b4a3d2dc120425b26fdc29c59fa9";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -73335,7 +73324,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "9287e44c688a1c927cea660a1fd0c9689f051a15";
+    var sha = "8984adbbdaa1b4a3d2dc120425b26fdc29c59fa9";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -76187,11 +76176,8 @@ var JDService = /*#__PURE__*/function (_JDNode) {
       } else if (pkt.isEvent) {
         var ev = this.event(pkt.eventCode);
         if (ev) ev.processEvent(pkt);
-      } else if (pkt.isCommand) {
-        // this is a report...
-        console.log("cmd report", {
-          pkt
-        });
+      } else if (pkt.isCommand) {// this is a report...
+        //console.log("cmd report", { pkt })
       }
     } else if (pkt.isRegisterSet) {
       var _id = pkt.registerIdentifier;
@@ -79681,7 +79667,7 @@ var CMSISProto = /*#__PURE__*/function () {
         if (d > 500) {
           var s = (0,utils/* fromUTF8 */.W_)((0,utils/* uint8ArrayToString */.DA)(this.pendingSerial));
           this.pendingSerial = null;
-          console.log("SERIAL[TO]: " + s);
+          console.debug("SERIAL[TO]: " + s);
         }
       }
 
@@ -80891,7 +80877,7 @@ var BluetoothTransport = /*#__PURE__*/function (_Transport) {
 
         sent += n;
         remainingChunks = remainingChunks == 0 ? 0 : remainingChunks - 1;
-        console.log("chunk: " + chunk.toString() + " [" + remainingChunks + " chunks remaining]");
+        console.debug("chunk: " + chunk.toString() + " [" + remainingChunks + " chunks remaining]");
       }
     });
 
@@ -80939,22 +80925,22 @@ var BluetoothTransport = /*#__PURE__*/function (_Transport) {
   _proto.handleCharacteristicChanged = function handleCharacteristicChanged() {
     var data = new Uint8Array(this._rxCharacteristic.value.buffer);
     var packetData = data.slice(2);
-    console.log("received length " + data.length);
+    console.debug("received length " + data.length);
 
     if (data[0] & JD_BLE_FIRST_CHUNK_FLAG) {
       if (this._rxBuffer) console.error("Dropped buffer. Chunks remaining: " + this._rxChunkCounter);
       this._rxBuffer = new Uint8Array();
       this._rxChunkCounter = data[0] & 0x7f;
-      console.log("Initial chunk counter: " + this._rxChunkCounter);
+      console.debug("Initial chunk counter: " + this._rxChunkCounter);
     }
 
     this._rxChunkCounter = this._rxChunkCounter == 0 ? 0 : this._rxChunkCounter - 1;
-    console.log("after modification chunk counter: " + this._rxChunkCounter);
+    console.debug("after modification chunk counter: " + this._rxChunkCounter);
     if (data[1] !== this._rxChunkCounter) console.error("Data out of order. Expected chunk: " + this._rxChunkCounter + " Got chunk: " + data[1]);else this._rxBuffer = (0,utils/* bufferConcat */.gX)(this._rxBuffer, packetData);
 
     if (this._rxChunkCounter == 0) {
       var pkt = packet/* default.fromBinary */.Z.fromBinary(this._rxBuffer, this.bus.timestamp);
-      console.log("processed packet " + pkt);
+      console.debug("processed packet " + pkt);
       pkt.sender = constants/* BLUETOOTH_TRANSPORT */.HZx;
       this.bus.processPacket(pkt);
       this._rxBuffer = undefined;
@@ -81035,12 +81021,12 @@ var GamepadHostManager = /*#__PURE__*/function (_JDClient) {
   ;
 
   _proto.handleGamepadConnected = function handleGamepadConnected(event) {
-    console.log("gamepad connected");
+    console.debug("gamepad connected");
     if (!this.ticking) this.tick();
   };
 
   _proto.handleGamepadDisconnected = function handleGamepadDisconnected(event) {
-    console.log("gamepad disconnected");
+    console.debug("gamepad disconnected");
     var {
       gamepad
     } = event;
@@ -88849,4 +88835,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-e3f7b3b67792cf6d8b10.js.map
+//# sourceMappingURL=app-055a2446b476202b9079.js.map

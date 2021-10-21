@@ -857,9 +857,7 @@ function useFirmwareBlobs() {
 
   (0,useChange/* useChangeAsync */.R)(firmwares, /*#__PURE__*/function () {
     var _ref2 = (0,asyncToGenerator/* default */.Z)(function* (fw) {
-      console.log("firmwares: change");
       var names = yield fw === null || fw === void 0 ? void 0 : fw.list();
-      console.log("import stored uf2", names);
       var uf2s = [];
 
       if (names !== null && names !== void 0 && names.length) {
@@ -1445,4 +1443,4 @@ function useGridBreakpoints(itemCount) {
 /***/ })
 
 }]);
-//# sourceMappingURL=913832d59ba65bf5a995efa1c4e48fc9101c7c83-367e6e668c8a41964123.js.map
+//# sourceMappingURL=913832d59ba65bf5a995efa1c4e48fc9101c7c83-e792e72d043127666b95.js.map

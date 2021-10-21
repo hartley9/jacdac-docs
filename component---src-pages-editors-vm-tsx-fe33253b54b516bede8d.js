@@ -3486,8 +3486,7 @@ var VMProgramRunner = /*#__PURE__*/function (_JDClient) {
   }();
 
   _proto4.unmount = function unmount() {
-    console.log("VMProgram (unmount)");
-
+    //console.log("VMProgram (unmount)")
     _JDClient.prototype.unmount.call(this);
 
     if (this._provider) {
@@ -6934,4 +6933,4 @@ function Page() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-editors-vm-tsx-8a17dfd471224fa369d2.js.map
+//# sourceMappingURL=component---src-pages-editors-vm-tsx-fe33253b54b516bede8d.js.map

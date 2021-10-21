@@ -455,9 +455,7 @@ function useFirmwareBlobs() {
 
   (0,useChange/* useChangeAsync */.R)(firmwares, /*#__PURE__*/function () {
     var _ref2 = (0,asyncToGenerator/* default */.Z)(function* (fw) {
-      console.log("firmwares: change");
       var names = yield fw === null || fw === void 0 ? void 0 : fw.list();
-      console.log("import stored uf2", names);
       var uf2s = [];
 
       if (names !== null && names !== void 0 && names.length) {
@@ -1768,4 +1766,4 @@ function DeviceRegistration() {
 /***/ })
 
 }]);
-//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-97d6468c54f7f07afa49.js.map
+//# sourceMappingURL=component---src-pages-tools-device-registration-tsx-b09a91c6d20fa9322268.js.map
