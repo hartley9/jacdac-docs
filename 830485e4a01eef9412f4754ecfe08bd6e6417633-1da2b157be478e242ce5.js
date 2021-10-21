@@ -554,6 +554,14 @@ function SimulateDeviceHint() {
     "aria-label": "thermometer emoji",
     role: "img"
   }, "\uD83C\uDF21\uFE0F")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    trackName: "simulator.hint.soilmoisture",
+    onClick: handleStartSimulator(constants/* SRV_SOIL_MOISTURE */.Bj3),
+    title: "slider",
+    "aria-label": "start soil moisture simulator"
+  }, /*#__PURE__*/react.createElement("span", {
+    "aria-label": "sprout emoji",
+    role: "img"
+  }, "\uD83C\uDF31")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     trackName: "simulator.hint.buzzer",
     onClick: handleStartSimulator(constants/* SRV_BUZZER */.J1$),
     title: "buzzer",
@@ -1095,4 +1103,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-17a50ca9b207dae11e68.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-1da2b157be478e242ce5.js.map

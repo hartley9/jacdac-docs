@@ -3476,6 +3476,14 @@ var SoilMoistureReg;
      */
     SoilMoistureReg[SoilMoistureReg["Moisture"] = 257] = "Moisture";
     /**
+     * Read-only ratio u0.16 (uint16_t). The error on the moisture reading.
+     *
+     * ```
+     * const [moistureError] = jdunpack<[number]>(buf, "u0.16")
+     * ```
+     */
+    SoilMoistureReg[SoilMoistureReg["MoistureError"] = 262] = "MoistureError";
+    /**
      * Constant Variant (uint8_t). Describe the type of physical sensor.
      *
      * ```
@@ -4889,6 +4897,8 @@ class HF2Proto {
     async checkMode() {
         // first check that we are not talking to a bootloader
         const info = await this.talkAsync(HF2_CMD_BININFO);
+        if (!info)
+            throwError("device disconnected");
         const mode = read32(info, 0);
         this.io.log(`mode ${mode}`);
         if (mode == HF2_MODE_USERSPACE) {
