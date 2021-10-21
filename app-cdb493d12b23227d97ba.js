@@ -54457,7 +54457,8 @@ function ValueWithUnitWidget(props) {
   } = props;
   var {
     name: unitName,
-    converter: unitConverter
+    converter: unitConverter,
+    inverter: unitInverter
   } = (0,useUnitConverter/* default */.Z)(unit); // map all values with unit converters
 
   var {
@@ -54469,7 +54470,6 @@ function ValueWithUnitWidget(props) {
     min: unitConverter(props.min),
     max: unitConverter(props.max)
   };
-  var labelVariant = "subtitle1";
   var precision = step === undefined ? 1 : step < 1 ? Math.ceil(-Math.log10(step)) : 0;
   var hasValue = !isNaN(value);
   var valueText = hasValue ? (0,utils/* roundWithPrecision */.JI)(value, precision).toLocaleString() : "--";
@@ -54489,6 +54489,13 @@ function ValueWithUnitWidget(props) {
   var captionStyle = {
     color: textPrimary
   };
+
+  var handleChange = (event, newValue) => {
+    var v = newValue;
+    var iv = unitInverter(v);
+    onChange === null || onChange === void 0 ? void 0 : onChange(iv);
+  };
+
   return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
     direction: "column",
@@ -54524,7 +54531,7 @@ function ValueWithUnitWidget(props) {
   }, /*#__PURE__*/react.createElement(Typography/* default */.Z, {
     style: captionStyle,
     variant: "caption"
-  }, secondaryLabel)))))), onChange && value !== undefined && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+  }, secondaryLabel)))))), handleChange && value !== undefined && /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true,
     xs: 12
   }, /*#__PURE__*/react.createElement(Slider/* default */.Z, {
@@ -54534,7 +54541,7 @@ function ValueWithUnitWidget(props) {
     max: max,
     step: step,
     value: value,
-    onChange: onChange,
+    onChange: handleChange,
     "aria-label": unitName || secondaryLabel
   })));
 }
@@ -54664,10 +54671,7 @@ function MemberInput(props) {
     setValue(v);
   };
 
-  var handleSliderChange = (event, newValue) => {
-    var v = newValue;
-    setValue(v);
-  };
+  var handleSliderChange = newValue => setValue(newValue);
 
   var percentValueFormat = value => {
     // avoid super long floats
@@ -70852,7 +70856,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "33e36b67745b3a371ade561feda4aaeab380535c";
+var sha = "f224de9a9807988c85019180753147150cbf740a";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -71718,7 +71722,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "33e36b67745b3a371ade561feda4aaeab380535c";
+  var sha = "f224de9a9807988c85019180753147150cbf740a";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -73324,7 +73328,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "33e36b67745b3a371ade561feda4aaeab380535c";
+    var sha = "f224de9a9807988c85019180753147150cbf740a";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -74337,6 +74341,11 @@ var adapters = {
     "°F": v => 9 / 5 * v + 32
   }
 };
+var inverters = {
+  "°F": {
+    "°C": v => (v - 32) * 5 / 9
+  }
+};
 function useUnitConverters() {
   var [settings, setSettings] = (0,_hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)("jacdac:unitconverters", {});
   return {
@@ -74357,21 +74366,27 @@ function useUnitConverters() {
 var identity = v => v;
 
 function useUnitConverter(unit) {
+  var _inverters$name;
+
   if (!unit) return {
-    converter: v => v
+    converter: v => v,
+    inverter: v => v
   };
   var [settings] = (0,_hooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z)("jacdac:unitconverters", {});
   var adapter = adapters[unit];
   if (!adapter) return {
     name: (0,_jacdac_ts_src_jdom_pretty__WEBPACK_IMPORTED_MODULE_1__/* .prettyUnit */ .QP)(unit),
-    converter: v => v
+    converter: v => v,
+    inverter: v => v
   };
   var names = Object.keys(adapter);
   var name = settings[unit] || names[0];
   var converter = adapter[name] || identity;
+  var inverter = ((_inverters$name = inverters[name]) === null || _inverters$name === void 0 ? void 0 : _inverters$name[unit]) || identity;
   return {
     name,
     converter,
+    inverter,
     names
   };
 }
@@ -88835,4 +88850,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-a166721fb1f5ae67fd6e.js.map
+//# sourceMappingURL=app-cdb493d12b23227d97ba.js.map
