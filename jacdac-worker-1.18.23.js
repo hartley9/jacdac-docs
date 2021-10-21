@@ -4875,12 +4875,11 @@ class HF2Proto {
         }
     }
     onSerial(data, iserr) {
-        const line = bufferToString(data).replace(/[\r\n]*$/, "");
-        const msg = `hf2: ${line}`;
-        if (iserr)
-            console.log(msg);
-        else
-            console.debug(msg);
+        // TODO: reenable?
+        //const line = bufferToString(data).replace(/[\r\n]*$/, "")
+        //const msg = `hf2: ${line}`
+        //if (iserr) console.log(msg)
+        //else console.debug(msg)
     }
     async postConnectAsync() {
         await this.checkMode();
