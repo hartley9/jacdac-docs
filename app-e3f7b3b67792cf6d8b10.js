@@ -70863,7 +70863,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "5c7e34b5128971cd8f49852114932b7ba86f7c9b";
+var sha = "9287e44c688a1c927cea660a1fd0c9689f051a15";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -71182,7 +71182,7 @@ function useLocalStorage(key, initialValue) {
 /* harmony export */ });
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59355);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8129);
-/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(72458);
+/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17728);
 
 
 function useMediaQueries() {
@@ -71493,7 +71493,7 @@ function useWindowEvent(type, listener, passive, deps) {
 
 /***/ }),
 
-/***/ 72458:
+/***/ 17728:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71729,7 +71729,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "5c7e34b5128971cd8f49852114932b7ba86f7c9b";
+  var sha = "9287e44c688a1c927cea660a1fd0c9689f051a15";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -72288,14 +72288,14 @@ function BridgeButtons(props) {
 var Build = __webpack_require__(77314);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Menu.js
 var Menu = __webpack_require__(92516);
-;// CONCATENATED MODULE: ./src/components/shell/ToolsButton.tsx
+;// CONCATENATED MODULE: ./src/components/shell/DrawerToolsButton.tsx
  // tslint:disable-next-line: no-submodule-imports
 
 
 
 
 
-function ToolsButton(props) {
+function DrawerToolsButton(props) {
   var {
     className
   } = props;
@@ -72408,7 +72408,7 @@ function MainToolbar() {
 
   var toggleToolsMenu = () => setToolsMenu(!toolsMenu);
 
-  return /*#__PURE__*/react.createElement(Toolbar/* default */.Z, null, drawerType === AppContext/* DrawerType.None */.jw.None && /*#__PURE__*/react.createElement(ToolsButton, {
+  return /*#__PURE__*/react.createElement(Toolbar/* default */.Z, null, drawerType === AppContext/* DrawerType.None */.jw.None && /*#__PURE__*/react.createElement(DrawerToolsButton, {
     className: (0,clsx_m["default"])(classes.menuButton, drawerOpen && classes.hideMobile)
   }), /*#__PURE__*/react.createElement(Hidden/* default */.Z, {
     implementation: "css",
@@ -73335,7 +73335,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "5c7e34b5128971cd8f49852114932b7ba86f7c9b";
+    var sha = "9287e44c688a1c927cea660a1fd0c9689f051a15";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -86069,7 +86069,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "wrapPageElement": function() { return /* binding */ wrapPageElement; }
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(15861);
-/* harmony import */ var _src_components_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(72458);
+/* harmony import */ var _src_components_layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17728);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67294);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(73935);
 
@@ -88849,4 +88849,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-0f9ca16d0f8041109b10.js.map
+//# sourceMappingURL=app-e3f7b3b67792cf6d8b10.js.map
