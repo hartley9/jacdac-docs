@@ -47512,7 +47512,7 @@ var indoorThermometerOptions = {
 var outdoorThermometerOptions = {
   instanceName: "temperature",
   readingValues: [21.5],
-  streamingInterval: 60000,
+  streamingInterval: 1000,
   minReading: -40,
   maxReading: 120,
   readingError: [0.25],
@@ -47520,7 +47520,7 @@ var outdoorThermometerOptions = {
 };
 var outdoorHumidityOptions = {
   instanceName: "humidity",
-  streamingInterval: 60000,
+  streamingInterval: 1000,
   readingValues: [40],
   readingError: [0.1]
 };
@@ -70859,7 +70859,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "d660b896e8bc4beabb741e8c4549a47c46548d84";
+var sha = "878f9259073ebd4ae626b47b57dc4555dfceda9f";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -71725,7 +71725,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "d660b896e8bc4beabb741e8c4549a47c46548d84";
+  var sha = "878f9259073ebd4ae626b47b57dc4555dfceda9f";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -73331,7 +73331,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "d660b896e8bc4beabb741e8c4549a47c46548d84";
+    var sha = "878f9259073ebd4ae626b47b57dc4555dfceda9f";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88853,4 +88853,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-e84931932f504adbe780.js.map
+//# sourceMappingURL=app-cdcac591817013b2693a.js.map
