@@ -839,11 +839,14 @@ var IconButtonWithTooltip = __webpack_require__(79885);
 var ConnectButtons = __webpack_require__(45608);
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/FormatAlignLeft.js
 var FormatAlignLeft = __webpack_require__(65042);
+// EXTERNAL MODULE: ./src/components/hooks/useMediaQueries.tsx
+var useMediaQueries = __webpack_require__(20509);
 ;// CONCATENATED MODULE: ./src/components/shell/DrawerToolsButtonGroup.tsx
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
 
  // tslint:disable-next-line: no-submodule-imports match-default-export-name
+
 
 
 
@@ -857,6 +860,9 @@ function DrawerToolsButtonGroup(props) {
     drawerType,
     setDrawerType
   } = (0,react.useContext)(AppContext/* default */.ZP);
+  var {
+    mobile
+  } = (0,useMediaQueries/* default */.Z)();
 
   var handleDrawer = drawer => () => setDrawerType(drawer);
 
@@ -885,7 +891,8 @@ function DrawerToolsButtonGroup(props) {
     onClick: handleDrawer(drawer.drawer),
     edge: "start"
   }, drawer.icon)), /*#__PURE__*/react.createElement(ConnectButtons/* default */.Z, {
-    transparent: true
+    transparent: true,
+    full: !mobile ? "disconnected" : undefined
   }));
 }
 // EXTERNAL MODULE: ./src/components/alert/ConnectAlert.tsx
@@ -1038,4 +1045,4 @@ function Button(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=8436-396d7a2bb72912681246.js.map
+//# sourceMappingURL=8436-985d3cce3205710fdb43.js.map

@@ -529,7 +529,7 @@ function SimulateDeviceHint() {
   var {
     toggleShowDeviceHostsDialog
   } = (0,react.useContext)(AppContext/* default */.ZP);
-  return /*#__PURE__*/react.createElement(react.Fragment, null, "Simulate devices (", /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+  return /*#__PURE__*/react.createElement(react.Fragment, null, "Simulate", /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     trackName: "simulator.hint.button",
     onClick: handleStartSimulator(constants/* SRV_BUTTON */.XJR),
     title: "button",
@@ -537,15 +537,23 @@ function SimulateDeviceHint() {
   }, /*#__PURE__*/react.createElement("span", {
     "aria-label": "button emoji",
     role: "img"
-  }, "\uD83D\uDD18")), ",", /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+  }, "\uD83D\uDD18")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     trackName: "simulator.hint.humidity",
     onClick: handleStartSimulator(constants/* SRV_HUMIDITY */.JbI),
     title: "humidity",
-    "aria-label": "start traffic humidity sensor"
+    "aria-label": "start humidity sensor"
   }, /*#__PURE__*/react.createElement("span", {
-    "aria-label": "traffic light umbrella",
+    "aria-label": "umbrella emoji",
     role: "img"
-  }, "\u2602\uFE0F")), ",", /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+  }, "\u2602\uFE0F")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    trackName: "simulator.hint.thermometer",
+    onClick: handleStartSimulator(constants/* SRV_THERMOMETER */.O$i),
+    title: "thermometer",
+    "aria-label": "start thermometer"
+  }, /*#__PURE__*/react.createElement("span", {
+    "aria-label": "thermometer emoji",
+    role: "img"
+  }, "\uD83C\uDF21\uFE0F")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     trackName: "simulator.hint.buzzer",
     onClick: handleStartSimulator(constants/* SRV_BUZZER */.J1$),
     title: "buzzer",
@@ -554,6 +562,14 @@ function SimulateDeviceHint() {
     "aria-label": "piano emoji",
     role: "img"
   }, "\uD83C\uDFB9")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    trackName: "simulator.hint.potentiometer",
+    onClick: handleStartSimulator(constants/* SRV_POTENTIOMETER */.GQv),
+    title: "slider",
+    "aria-label": "start slider simulator"
+  }, /*#__PURE__*/react.createElement("span", {
+    "aria-label": "slider emoji",
+    role: "img"
+  }, "\uD83C\uDF9A\uFE0F")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     trackName: "simulator.hint.joystick",
     onClick: handleStartSimulator(constants/* SRV_JOYSTICK */.vRO),
     title: "joystick",
@@ -561,7 +577,15 @@ function SimulateDeviceHint() {
   }, /*#__PURE__*/react.createElement("span", {
     "aria-label": "joystick emoji",
     role: "img"
-  }, "\uD83D\uDD79\uFE0F")), ",", /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+  }, "\uD83D\uDD79\uFE0F")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    trackName: "simulator.hint.characterscreen",
+    onClick: handleStartSimulator(constants/* SRV_CHARACTER_SCREEN */.IB4),
+    title: "Character screen",
+    "aria-label": "start character screen simulator"
+  }, /*#__PURE__*/react.createElement("span", {
+    "aria-label": "pager emoji",
+    role: "img"
+  }, "\uD83D\uDCDF")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     trackName: "simulator.hint.led",
     onClick: handleStartSimulator(constants/* SRV_LED */.i04),
     title: "LED",
@@ -569,7 +593,7 @@ function SimulateDeviceHint() {
   }, /*#__PURE__*/react.createElement("span", {
     "aria-label": "lightbulb emoji",
     role: "img"
-  }, "\uD83D\uDCA1")), ",", /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+  }, "\uD83D\uDCA1")), /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     trackName: "simulator.hint.traffic",
     onClick: handleStartSimulator(constants/* SRV_TRAFFIC_LIGHT */.jHN),
     title: "traffic light",
@@ -577,7 +601,7 @@ function SimulateDeviceHint() {
   }, /*#__PURE__*/react.createElement("span", {
     "aria-label": "traffic light emoji",
     role: "img"
-  }, "\uD83D\uDEA6")), ", ...) by clicking \xA0", /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+  }, "\uD83D\uDEA6")), "or click \xA0", /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     trackName: "simulator.hint.start",
     title: "start simulator",
     onClick: toggleShowDeviceHostsDialog
@@ -1071,4 +1095,4 @@ function GridHeader(props) {
 /***/ })
 
 }]);
-//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-e3fdb16bde7c96deda6b.js.map
+//# sourceMappingURL=830485e4a01eef9412f4754ecfe08bd6e6417633-17a50ca9b207dae11e68.js.map
