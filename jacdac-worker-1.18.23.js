@@ -4878,9 +4878,9 @@ class HF2Proto {
         const line = bufferToString(data).replace(/[\r\n]*$/, "");
         const msg = `hf2: ${line}`;
         if (iserr)
-            console.warn(msg);
-        else
             console.log(msg);
+        else
+            console.debug(msg);
     }
     async postConnectAsync() {
         await this.checkMode();
