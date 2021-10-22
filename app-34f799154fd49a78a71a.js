@@ -52584,7 +52584,8 @@ function useJacdacLogger() {
         shortId
       } = device;
       var content = pkt.jdunpack("s")[0];
-      var message = shortId + "> " + content.trimEnd();
+      var prefix = content.startsWith(shortId + ".") ? "" : shortId + "> ";
+      var message = "" + prefix + content.trimEnd();
 
       switch (priority) {
         case specconstants/* LoggerPriority.Debug */.qit.Debug:
@@ -70869,7 +70870,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "0d49d2dc515b0644572c980b152f18fb661b42d4";
+var sha = "213b96c520198e4575590e5a13f0031ac76da3cc";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -71735,7 +71736,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "0d49d2dc515b0644572c980b152f18fb661b42d4";
+  var sha = "213b96c520198e4575590e5a13f0031ac76da3cc";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -73341,7 +73342,7 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "0d49d2dc515b0644572c980b152f18fb661b42d4";
+    var sha = "213b96c520198e4575590e5a13f0031ac76da3cc";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
@@ -88857,4 +88858,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-ebba992127be021f47e7.js.map
+//# sourceMappingURL=app-34f799154fd49a78a71a.js.map
