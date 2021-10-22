@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-device-tsx",
+    "path": "/devices/microsoft/research/jmkeyboardkey46v11/",
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmkeyboardkey46v11","name":"JM Keyboard Key","company":"Microsoft Research","description":"","repo":"https://github.com/microsoft/jacdac-msr-modules","link":"https://github.com/microsoft/jacdac-msr-modules","services":[343122531],"productIdentifiers":[911541523],"tags":["kit"],"version":"1.1","designIdentifier":"46","status":"deprecated"},"title":"JM Keyboard Key"}},
+    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

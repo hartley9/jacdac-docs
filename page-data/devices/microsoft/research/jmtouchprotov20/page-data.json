@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-device-tsx",
+    "path": "/devices/microsoft/research/jmtouchprotov20/",
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmtouchprotov20","name":"JM Touch-Proto","company":"Microsoft Research","description":"A multi-touch sensor based on proto board.","repo":"https://github.com/microsoft/jacdac-msr-modules","link":"https://github.com/microsoft/jacdac-msr-modules","services":[416636459],"productIdentifiers":[1067172458],"version":"2.0","status":"deprecated"},"title":"JM Touch-Proto"}},
+    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

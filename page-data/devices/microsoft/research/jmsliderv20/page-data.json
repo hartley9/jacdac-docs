@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-device-tsx",
+    "path": "/devices/microsoft/research/jmsliderv20/",
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmsliderv20","name":"JM Slider","company":"Microsoft Research","description":"A linear potentiometer (slider).","repo":"https://github.com/microsoft/jacdac-msr-modules","link":"https://github.com/microsoft/jacdac-msr-modules","services":[522667846],"productIdentifiers":[1043615261],"version":"2.0","status":"deprecated"},"title":"JM Slider"}},
+    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

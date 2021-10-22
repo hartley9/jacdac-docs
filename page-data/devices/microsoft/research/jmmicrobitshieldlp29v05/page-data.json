@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-device-tsx",
+    "path": "/devices/microsoft/research/jmmicrobitshieldlp29v05/",
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmmicrobitshieldlp29v05","name":"JM MicroBit Shield LP","company":"Microsoft Research","repo":"","services":[],"productIdentifiers":[974031363],"version":"0.5","designIdentifier":"29","status":"experimental"},"title":"JM MicroBit Shield LP"}},
+    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

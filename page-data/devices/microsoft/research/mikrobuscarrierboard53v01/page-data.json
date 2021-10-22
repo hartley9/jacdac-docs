@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-device-tsx",
+    "path": "/devices/microsoft/research/mikrobuscarrierboard53v01/",
+    "result": {"pageContext":{"node":{"id":"microsoft-research-mikrobuscarrierboard53v01","name":"MikrobusCarrierBoard","company":"Microsoft Research","repo":"","services":[],"productIdentifiers":[961789360],"version":"0.1","designIdentifier":"53","status":"experimental"},"title":"MikrobusCarrierBoard"}},
+    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
