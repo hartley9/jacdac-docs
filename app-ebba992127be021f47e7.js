@@ -52343,8 +52343,9 @@ function DeviceLostAlert(props) {
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "B": function() { return /* binding */ ConsoleProvider; },
-  "Z": function() { return /* binding */ console_ConsoleContext; }
+  "BV": function() { return /* binding */ ConsoleProvider; },
+  "ZP": function() { return /* binding */ console_ConsoleContext; },
+  "mJ": function() { return /* binding */ serializeLogs; }
 });
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
@@ -52639,13 +52640,22 @@ function useFilter() {
     if (minLoggerPriority > specconstants/* LoggerPriority.Error */.qit.Error) filter.push("clear");
     return filter;
   }, [minLoggerPriority]);
+}
+
+function serializeLogs(logs) {
+  return logs === null || logs === void 0 ? void 0 : logs.map(_ref => {
+    var {
+      method,
+      data
+    } = _ref;
+    return (method !== "log" ? method : "") + " " + data[0] + data.slice(1).map(d => "\n" + JSON.stringify(d)).join("");
+  }).join("\n");
 } // eslint-disable-next-line react/prop-types
 
-
-var ConsoleProvider = _ref => {
+var ConsoleProvider = _ref2 => {
   var {
     children
-  } = _ref;
+  } = _ref2;
   var {
     0: searchKeywords,
     1: setSearchKeywords
@@ -70859,7 +70869,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var sha = "562e7c75ef2873c95b374e5b157946be138f48de";
+var sha = "0d49d2dc515b0644572c980b152f18fb661b42d4";
 
 function splitProperties(props) {
   if (!props) return {};
@@ -71725,7 +71735,7 @@ var useStyles = (0,makeStyles/* default */.Z)(theme => (0,createStyles/* default
 function Footer() {
   var classes = useStyles();
   var repo = "microsoft/jacdac-docs";
-  var sha = "562e7c75ef2873c95b374e5b157946be138f48de";
+  var sha = "0d49d2dc515b0644572c980b152f18fb661b42d4";
   return /*#__PURE__*/react.createElement("footer", {
     role: "contentinfo",
     className: classes.footer
@@ -73320,7 +73330,7 @@ function TraceSaveButton(props) {
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_jacdac_Context__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z);
   var {
     logs
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_console_ConsoleContext__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z);
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_console_ConsoleContext__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .ZP);
   var {
     replayTrace,
     view
@@ -73331,17 +73341,11 @@ function TraceSaveButton(props) {
 
   var saveTrace = () => {
     var repo = "microsoft/jacdac-docs";
-    var sha = "562e7c75ef2873c95b374e5b157946be138f48de";
+    var sha = "0d49d2dc515b0644572c980b152f18fb661b42d4";
     var busText = bus.describe();
     var savedTrace = replayTrace || view.trace;
     var traceText = savedTrace.serializeToText();
-    var text = "# Jacdac Trace \n        \nTo import, go to https://aka.ms/jacdac, open device tree and click import icon.\n\n## bus\n\n```yaml\n" + busText + "\n```\n\n## packets\n\n```\n" + traceText + "\n```\n\n## console\n\n```\n" + (logs === null || logs === void 0 ? void 0 : logs.map(_ref => {
-      var {
-        method,
-        data
-      } = _ref;
-      return (method !== "log" ? method : "") + " " + data[0] + data.slice(1).map(d => "\n" + JSON.stringify(d)).join("");
-    }).join("\n")) + "\n```\n\n## environment\n\n```yaml\njacdac: https://github.com/" + repo + "/commit/" + sha + "\nuser-agent: " + (typeof window !== undefined && window.navigator.userAgent) + "\n```\n\n";
+    var text = "# Jacdac Trace \n        \nTo import, go to https://aka.ms/jacdac, open device tree and click import icon.\n\n## bus\n\n```yaml\n" + busText + "\n```\n\n## packets\n\n```\n" + traceText + "\n```\n\n## console\n\n```\n" + (0,_console_ConsoleContext__WEBPACK_IMPORTED_MODULE_5__/* .serializeLogs */ .mJ)(logs) + "\n```\n\n## environment\n\n```yaml\njacdac: https://github.com/" + repo + "/commit/" + sha + "\nuser-agent: " + (typeof window !== undefined && window.navigator.userAgent) + "\n```\n\n";
     fileStorage.saveText("trace.jd.txt", text);
   };
 
@@ -74152,7 +74156,7 @@ function ThemedLayout(props) {
     dense: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_use_id_hook__WEBPACK_IMPORTED_MODULE_2__/* .IdProvider */ .vc, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_aria_live__WEBPACK_IMPORTED_MODULE_3__/* .LiveAnnouncer */ .Kd, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_DbContext__WEBPACK_IMPORTED_MODULE_6__/* .DbProvider */ .WQ, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_FileSystemContext__WEBPACK_IMPORTED_MODULE_12__/* .FileSystemProvider */ .P, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_WebAudioContext__WEBPACK_IMPORTED_MODULE_11__/* .WebAudioProvider */ .IH, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_jacdac_Provider__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
     connectOnStart: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_HostedSimulatorsContext__WEBPACK_IMPORTED_MODULE_14__/* .HostedSimulatorsProvider */ .sr, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_8__/* .ServiceManagerProvider */ .Aq, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_PacketsContext__WEBPACK_IMPORTED_MODULE_7__/* .PacketsProvider */ .l, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_AppContext__WEBPACK_IMPORTED_MODULE_5__/* .AppProvider */ .wI, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_console_ConsoleContext__WEBPACK_IMPORTED_MODULE_15__/* .ConsoleProvider */ .B, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_makecode_MakeCodeSnippetContext__WEBPACK_IMPORTED_MODULE_10__/* .MakeCodeSnippetProvider */ .u, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .ZP, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("link", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_HostedSimulatorsContext__WEBPACK_IMPORTED_MODULE_14__/* .HostedSimulatorsProvider */ .sr, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ServiceManagerContext__WEBPACK_IMPORTED_MODULE_8__/* .ServiceManagerProvider */ .Aq, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_PacketsContext__WEBPACK_IMPORTED_MODULE_7__/* .PacketsProvider */ .l, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_AppContext__WEBPACK_IMPORTED_MODULE_5__/* .AppProvider */ .wI, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_console_ConsoleContext__WEBPACK_IMPORTED_MODULE_15__/* .ConsoleProvider */ .BV, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_makecode_MakeCodeSnippetContext__WEBPACK_IMPORTED_MODULE_10__/* .MakeCodeSnippetProvider */ .u, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .ZP, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("link", {
     rel: "preconnect",
     href: "https://fonts.googleapis.com",
     crossOrigin: "anonymous"
@@ -88853,4 +88857,4 @@ module.exports = JSON.parse('{"layout":"constrained","backgroundColor":"#f8f8f8"
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app-60b490fff6742c98bc82.js.map
+//# sourceMappingURL=app-ebba992127be021f47e7.js.map

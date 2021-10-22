@@ -1979,6 +1979,34 @@ var insertStyles = function insertStyles(cache, serialized, isStringTag) {
 
 /***/ }),
 
+/***/ 79312:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var _interopRequireDefault = __webpack_require__(95318);
+
+var _interopRequireWildcard = __webpack_require__(20862);
+
+__webpack_unused_export__ = ({
+  value: true
+});
+exports.Z = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(67294));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(58786));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"
+}), 'SaveAlt');
+
+exports.Z = _default;
+
+/***/ }),
+
 /***/ 75626:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -10863,7 +10891,7 @@ function ConsoleLog() {
     appendLog,
     autoScroll,
     setAutoScroll
-  } = (0,react.useContext)(ConsoleContext/* default */.Z);
+  } = (0,react.useContext)(ConsoleContext/* default */.ZP);
   var classes = useStyles();
   (0,react.useEffect)(() => {
     var hooked = typeof window !== "undefined" && (0,lib.Hook)(window.console, appendLog, false);
@@ -10902,7 +10930,7 @@ var ImportButton = __webpack_require__(20119);
 function ConsoleImportSourceMapButton() {
   var {
     setSourceMap
-  } = (0,react.useContext)(ConsoleContext/* default */.Z);
+  } = (0,react.useContext)(ConsoleContext/* default */.ZP);
   var {
     enqueueSnackbar
   } = (0,react.useContext)(AppContext/* default */.ZP);
@@ -10949,7 +10977,7 @@ function ConsoleSerialButton(props) {
     connected,
     connect,
     disconnect
-  } = (0,react.useContext)(ConsoleContext/* default */.Z);
+  } = (0,react.useContext)(ConsoleContext/* default */.ZP);
   if (!connect) return null;
   var handleClick = connected ? disconnect : connect;
   return /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, Object.assign({
@@ -10962,6 +10990,8 @@ function ConsoleSerialButton(props) {
 }
 // EXTERNAL MODULE: ./node_modules/@material-ui/icons/Clear.js
 var Clear = __webpack_require__(58590);
+// EXTERNAL MODULE: ./node_modules/@material-ui/icons/SaveAlt.js
+var SaveAlt = __webpack_require__(79312);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/FormControl/FormControl.js
 var FormControl = __webpack_require__(31690);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Select/Select.js + 4 modules
@@ -10980,7 +11010,11 @@ var useChange = __webpack_require__(54774);
 var specconstants = __webpack_require__(73512);
 // EXTERNAL MODULE: ./node_modules/react-use-id-hook/dist/react-use-id-hook.esm.js
 var react_use_id_hook_esm = __webpack_require__(19640);
+// EXTERNAL MODULE: ./src/components/ServiceManagerContext.tsx + 3 modules
+var ServiceManagerContext = __webpack_require__(99808);
 ;// CONCATENATED MODULE: ./src/components/console/ConsoleToolbar.tsx
+
+
 
 
 
@@ -10996,11 +11030,29 @@ var react_use_id_hook_esm = __webpack_require__(19640);
 function ClearButton() {
   var {
     clear
-  } = (0,react.useContext)(ConsoleContext/* default */.Z);
+  } = (0,react.useContext)(ConsoleContext/* default */.ZP);
   return /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
     title: "clear",
     onClick: clear
   }, /*#__PURE__*/react.createElement(Clear/* default */.Z, null));
+}
+
+function SaveButton() {
+  var {
+    logs
+  } = (0,react.useContext)(ConsoleContext/* default */.ZP);
+  var {
+    fileStorage
+  } = (0,react.useContext)(ServiceManagerContext/* default */.ZP);
+
+  var handleSave = () => {
+    fileStorage.saveText("jacdac-console.txt", (0,ConsoleContext/* serializeLogs */.mJ)(logs));
+  };
+
+  return /*#__PURE__*/react.createElement(IconButtonWithTooltip/* default */.Z, {
+    title: "save",
+    onClick: handleSave
+  }, /*#__PURE__*/react.createElement(SaveAlt/* default */.Z, null));
 }
 
 function MinLoggerPrioritySelect() {
@@ -11037,7 +11089,7 @@ function SearchKeywordField() {
   var {
     searchKeywords,
     setSearchKeywords
-  } = (0,react.useContext)(ConsoleContext/* default */.Z);
+  } = (0,react.useContext)(ConsoleContext/* default */.ZP);
 
   var handleChange = ev => {
     setSearchKeywords(ev.target.value);
@@ -11060,7 +11112,7 @@ function SearchKeywordField() {
 function ConsoleToolbar() {
   var {
     sourceMap
-  } = (0,react.useContext)(ConsoleContext/* default */.Z);
+  } = (0,react.useContext)(ConsoleContext/* default */.ZP);
   return /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     container: true,
     spacing: 1,
@@ -11070,6 +11122,8 @@ function ConsoleToolbar() {
   }, /*#__PURE__*/react.createElement(ConsoleSerialButton, null)), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
   }, /*#__PURE__*/react.createElement(ClearButton, null)), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
+    item: true
+  }, /*#__PURE__*/react.createElement(SaveButton, null)), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
   }, /*#__PURE__*/react.createElement(SearchKeywordField, null)), /*#__PURE__*/react.createElement(Grid/* default */.Z, {
     item: true
@@ -11096,4 +11150,4 @@ function Console() {
 /***/ })
 
 }]);
-//# sourceMappingURL=5463-68770196f9049f1fa4c9.js.map
+//# sourceMappingURL=5463-85e6aa8d1fd9b16412c0.js.map
