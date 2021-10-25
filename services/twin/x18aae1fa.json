@@ -9,12 +9,6 @@
       "packf": "u8"
     },
     {
-      "code": 384,
-      "name": "connected",
-      "flags": 0,
-      "packf": "u8"
-    },
-    {
       "code": 385,
       "name": "ip_address",
       "flags": 0,
