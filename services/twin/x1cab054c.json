@@ -1,0 +1,18 @@
+{
+  "serviceClass": 480970060,
+  "name": "lightBulb",
+  "registers": [
+    {
+      "code": 1,
+      "name": "brightness",
+      "flags": 0,
+      "packf": "u0.16"
+    },
+    {
+      "code": 384,
+      "name": "dimmeable",
+      "flags": 1,
+      "packf": "u8"
+    }
+  ]
+}
