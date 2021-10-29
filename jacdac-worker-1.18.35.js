@@ -112,6 +112,25 @@ var SystemReg;
      */
     SystemReg[SystemReg["Reading"] = 257] = "Reading";
     /**
+     * Read-write uint32_t. For sensors that support it, sets the range (sometimes also described `min`/`max_reading`).
+     * Typically only a small set of values is supported.
+     * Setting it to `X` will select the smallest possible range that is at least `X`,
+     * or if it doesn't exist, the largest supported range.
+     *
+     * ```
+     * const [readingRange] = jdunpack<[number]>(buf, "u32")
+     * ```
+     */
+    SystemReg[SystemReg["ReadingRange"] = 8] = "ReadingRange";
+    /**
+     * Constant. Lists the values supported as `reading_range`.
+     *
+     * ```
+     * const [range] = jdunpack<[number[]]>(buf, "u32[]")
+     * ```
+     */
+    SystemReg[SystemReg["SupportedRanges"] = 266] = "SupportedRanges";
+    /**
      * Constant int32_t. The lowest value that can be reported by the sensor.
      *
      * ```
@@ -302,22 +321,30 @@ var AccelerometerReg;
      */
     AccelerometerReg[AccelerometerReg["Forces"] = 257] = "Forces";
     /**
-     * Read-only g i12.20 (int32_t). Error on the reading value.
+     * Read-only g u12.20 (uint32_t). Error on the reading value.
      *
      * ```
-     * const [forcesError] = jdunpack<[number]>(buf, "i12.20")
+     * const [forcesError] = jdunpack<[number]>(buf, "u12.20")
      * ```
      */
     AccelerometerReg[AccelerometerReg["ForcesError"] = 262] = "ForcesError";
     /**
-     * Read-write g i12.20 (int32_t). Configures the range forces detected.
-     * Read-back after setting to get current value.
+     * Read-write g u12.20 (uint32_t). Configures the range forces detected.
+     * The value will be "rounded up" to one of `max_forces_supported`.
      *
      * ```
-     * const [maxForce] = jdunpack<[number]>(buf, "i12.20")
+     * const [maxForce] = jdunpack<[number]>(buf, "u12.20")
      * ```
      */
-    AccelerometerReg[AccelerometerReg["MaxForce"] = 128] = "MaxForce";
+    AccelerometerReg[AccelerometerReg["MaxForce"] = 8] = "MaxForce";
+    /**
+     * Constant. Lists values supported for writing `max_force`.
+     *
+     * ```
+     * const [maxForce] = jdunpack<[number[]]>(buf, "u12.20[]")
+     * ```
+     */
+    AccelerometerReg[AccelerometerReg["MaxForcesSupported"] = 266] = "MaxForcesSupported";
 })(AccelerometerReg || (AccelerometerReg = {}));
 var AccelerometerEvent;
 (function (AccelerometerEvent) {
@@ -1353,7 +1380,7 @@ var FlexReg;
 var GyroscopeReg;
 (function (GyroscopeReg) {
     /**
-     * Indicates the current forces acting on accelerometer.
+     * Indicates the current rates acting on gyroscope.
      *
      * ```
      * const [x, y, z] = jdunpack<[number, number, number]>(buf, "i12.20 i12.20 i12.20")
@@ -1361,21 +1388,30 @@ var GyroscopeReg;
      */
     GyroscopeReg[GyroscopeReg["RotationRates"] = 257] = "RotationRates";
     /**
-     * Read-only °/s i12.20 (int32_t). Error on the reading value.
+     * Read-only °/s u12.20 (uint32_t). Error on the reading value.
      *
      * ```
-     * const [rotationRatesError] = jdunpack<[number]>(buf, "i12.20")
+     * const [rotationRatesError] = jdunpack<[number]>(buf, "u12.20")
      * ```
      */
     GyroscopeReg[GyroscopeReg["RotationRatesError"] = 262] = "RotationRatesError";
     /**
-     * Read-write °/s i12.20 (int32_t). Configures the range of range of rotation rates.
+     * Read-write °/s u12.20 (uint32_t). Configures the range of rotation rates.
+     * The value will be "rounded up" to one of `max_rates_supported`.
      *
      * ```
-     * const [maxRate] = jdunpack<[number]>(buf, "i12.20")
+     * const [maxRate] = jdunpack<[number]>(buf, "u12.20")
      * ```
      */
-    GyroscopeReg[GyroscopeReg["MaxRate"] = 128] = "MaxRate";
+    GyroscopeReg[GyroscopeReg["MaxRate"] = 8] = "MaxRate";
+    /**
+     * Constant. Lists values supported for writing `max_rate`.
+     *
+     * ```
+     * const [maxRate] = jdunpack<[number[]]>(buf, "u12.20[]")
+     * ```
+     */
+    GyroscopeReg[GyroscopeReg["MaxRatesSupported"] = 266] = "MaxRatesSupported";
 })(GyroscopeReg || (GyroscopeReg = {}));
 var HeartRateVariant;
 (function (HeartRateVariant) {

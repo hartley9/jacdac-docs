@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-c849bd03f46599029cad.js"
+    "url": "webpack-runtime-b03671270df89dff3fab.js"
   },
   {
     "url": "styles.74eb5aed1bb14cdb4c8b.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "5c7d98c15d0b1a08ce9e31f9884fb1f3"
+    "revision": "724032fb7d272c6d7b755077578fe854"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "2b680c9b137a74731da9025925bd7351"
+    "revision": "f4a14c78bd672ffca62f36f598f20299"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "710da4479a1c718c7364e6861af3f2f5"
+    "revision": "f36e2ca2ba7e366b4681c4b2f6328915"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "7709f102a7f8fff397068c9283bc0a0e"
+    "revision": "4bcdc540e69db1dea840c9334ca5f4a5"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "1b50366a56e21df37cb395a71a5f9758"
+    "revision": "e07e10ac97b4ef379036625cf44955f7"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "6ced918f080aa790547c945a1f130615"
+    "revision": "d48b39c94996b6203ea74174630bcea0"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "b115e6a60527b1069268bc8d0a3f3ced"
+    "revision": "5d8882c97e4f2dd0e4e3cb104da2d91c"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -307,19 +307,19 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/_system/page-data.json",
-    "revision": "ac13a9ca973ba73a20c78012a9b2dc3d"
+    "revision": "1808360a36e2eec328e561457e997e93"
   },
   {
     "url": "page-data/services/_system/playground/page-data.json",
-    "revision": "aa309b51e7c936be27e6729300381f5d"
+    "revision": "7db27071e4212a9729931a9b10024f06"
   },
   {
     "url": "page-data/services/accelerometer/page-data.json",
-    "revision": "20cc15db137926b6c1ac203a6c0c0598"
+    "revision": "b14cc3fa6a0788b874e1680715708b9f"
   },
   {
     "url": "page-data/services/accelerometer/playground/page-data.json",
-    "revision": "3dba6078dd5d796f2d9379c996683cc1"
+    "revision": "ee7c71970715129cfe8f49669af88b0b"
   },
   {
     "url": "page-data/services/arcadegamepad/page-data.json",
@@ -491,11 +491,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/gyroscope/page-data.json",
-    "revision": "9b93fd31cb6869beac4ddc1cf0eebf0e"
+    "revision": "106c0200333a243e917011a7bcb07345"
   },
   {
     "url": "page-data/services/gyroscope/playground/page-data.json",
-    "revision": "3a833d4270c985caf1cddc1d94568d88"
+    "revision": "961124e3b7e70bc2c29086a5e231ec60"
   },
   {
     "url": "page-data/services/heartrate/page-data.json",
@@ -1088,11 +1088,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/devices/microsoft/research/jmbrainf441v02/page-data.json",
-    "revision": "4d2ddbf820a87a8d3ebeb076c30917c8"
+    "revision": "d191912be597135d8d4152cc2b1bd343"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbrainrp204059v01/page-data.json",
-    "revision": "02c069653489cdd6489fe63b99b6b12b"
+    "revision": "d730f3e4fcddf0564429cabbe778e7b1"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbutton10v13/page-data.json",
@@ -1216,7 +1216,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/devices/microsoft/research/jmrotarycontrolbuttonv10/page-data.json",
-    "revision": "37b5a83b739e4ce9f5e22dca289a2475"
+    "revision": "35909619d41895626145acb97b91e1ee"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jmrotarycontrolbuttonv11/page-data.json",
+    "revision": "34d7593804164fbe50be24ee13a9b7e7"
   },
   {
     "url": "page-data/devices/microsoft/research/jmsinglergbled42v01/page-data.json",
@@ -1520,7 +1524,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-a320c88f9fbbea3f6aa5.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-35db0aa428077daad910.js`))) {
     return await fetch(event.request)
   }
 

@@ -14,10 +14,16 @@
       ]
     },
     {
-      "code": 128,
+      "code": 8,
       "name": "max_force",
       "flags": 0,
-      "packf": "i12.20"
+      "packf": "u12.20"
+    },
+    {
+      "code": 266,
+      "name": "max_forces_supported",
+      "flags": 1,
+      "packf": "r: u12.20"
     }
   ]
 }
