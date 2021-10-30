@@ -16839,12 +16839,12 @@ const {
 } = src$1.booleans;
 const connectorSpecs = {
   jacdac: {
-    width: 10,
-    height: 5
+    width: 9.5,
+    height: 4.65
   },
   usbc: {
-    width: 8,
-    height: 3.5
+    width: 9.5,
+    height: 2.5
   }
 };
 const dirAngles = {
@@ -16983,7 +16983,7 @@ const convert = (m, options = {}) => {
     const d = 24;
     return translate([x, y, snapHeight + pcbWidth / 2], rotateZ(dirAngle, roundedCuboid({
       size: [conn.width, d, conn.height],
-      roundRadius: 1,
+      roundRadius: conn.height / 2 - 0.5,
       segments: 32,
       center: [0, d / 2, conn.height / 2]
     })));
