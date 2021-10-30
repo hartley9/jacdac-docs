@@ -16988,8 +16988,8 @@ const convert = (m, options = {}) => {
     segments
   }), cylinder({
     radius: ringRadius,
-    height: h + hc,
-    center: [0, 0, (h + pcbWidth) / 2],
+    height: hc,
+    center: [0, 0, h + hc / 2],
     segments
   })));
 
