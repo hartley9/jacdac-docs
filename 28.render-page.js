@@ -16881,7 +16881,8 @@ const convert = (m, options = {}) => {
   const {
     cover,
     legs
-  } = options; // box
+  } = options;
+  let coverModel; // box
 
   let model = union(roundedCuboid({
     size: [width + wall * 2, height + wall * 2, depth + wall * 2],
@@ -16930,7 +16931,35 @@ const convert = (m, options = {}) => {
   model = subtract(model, cuboid({
     size: [width + wall, height + wall, wall],
     center: [0, 0, depth + wall + wall / 2]
-  })); // remove jacdac connectors
+  }));
+  const coverSnaps = [{
+    x: -width / 2 + ringGap,
+    y: -height / 2 + ringGap
+  }, {
+    x: width / 2 - ringGap,
+    y: -height / 2 + ringGap
+  }, {
+    x: width / 2 - ringGap,
+    y: height / 2 - ringGap
+  }, {
+    x: -width / 2 + ringGap,
+    y: height / 2 - ringGap
+  }];
+
+  const coverSnap = (x, y) => translate([x, y, 0], cylinder({
+    radius: ringRadius + 0.1,
+    height: 2 * wall,
+    center: [0, 0, wall / 2],
+    segments
+  }));
+
+  if (cover) {
+    coverModel = cuboid({
+      size: [width + wall, height + wall, wall]
+    });
+    coverModel = coverSnaps.reduce((m, ring) => subtract(m, coverSnap(ring.x, ring.y)), coverModel);
+  } // remove jacdac connectors
+
 
   const connector = (x, y, dir, type) => {
     const conn = connectorSpecs[type];
@@ -16961,32 +16990,18 @@ const convert = (m, options = {}) => {
   const mounts = [...rings.map(p => _extends({}, p, {
     h: snapHeight,
     hc: pcbWidth
-  })), ...((cover == null ? void 0 : (_cover$mounts = cover.mounts) == null ? void 0 : _cover$mounts.type) === "ring" ? [{
-    x: -width / 2 + ringGap,
-    y: -height / 2 + ringGap
-  }, {
-    x: width / 2 - ringGap,
-    y: -height / 2 + ringGap
-  }, {
-    x: width / 2 - ringGap,
-    y: height / 2 - ringGap
-  }, {
-    x: -width / 2 + ringGap,
-    y: height / 2 - ringGap
-  }].map(p => _extends({}, p, {
+  })), ...((cover == null ? void 0 : (_cover$mounts = cover.mounts) == null ? void 0 : _cover$mounts.type) === "ring" ? coverSnaps.map(p => _extends({}, p, {
     h: depth,
     hc: wall
   })) : [])];
   model = mounts.reduce((m, ring) => union(m, snap(ring.x, ring.y, ring.h, ring.hc)), model);
-  return model;
+  return [model, coverModel].filter(m => !!m);
 };
 function convertToSTL(model, options) {
-  const geometry = convert(model, options);
-  const rawData = stlSerializer.serialize({
+  const geometries = convert(model, options);
+  return geometries.map(geometry => new Blob(stlSerializer.serialize({
     binary: false
-  }, geometry);
-  const blob = new Blob(rawData);
-  return blob;
+  }, geometry)));
 }
 
 const handlers = {
@@ -16995,12 +17010,15 @@ const handlers = {
       model,
       options
     } = msg;
-    const stl = convertToSTL(model, options);
+    const stls = convertToSTL(model, options);
     return {
       stls: [{
         name: "box",
-        blob: stl
-      }]
+        blob: stls[0]
+      }, stls[1] ? {
+        name: "cover",
+        blob: stls[1]
+      } : undefined].filter(f => !!f)
     };
   }
 };
