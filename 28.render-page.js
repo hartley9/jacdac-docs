@@ -16854,8 +16854,9 @@ const dirAngles = {
   right: 90
 };
 const ringGap = 2.5;
-const ringRadius = 1;
+const ringRadius = 2.15 / 2;
 const pcbWidth = 1.6;
+const snapHeight = 2.5;
 const wall = pcbWidth;
 const wallRadius = wall / 2;
 const segments = 64;
@@ -16864,7 +16865,6 @@ const mountRadius = 4;
 const mountRoundRadius = 0.5;
 const mountCenterRadius = 1;
 const mountHeight = 5;
-const snapHeight = 3;
 const convert = (m, options = {}) => {
   var _cover$mounts;
 
