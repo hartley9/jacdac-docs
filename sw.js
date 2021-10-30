@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-6a075ccbfdb0ecf4c6aa.js"
+    "url": "webpack-runtime-d6379dcdd7095412d542.js"
   },
   {
     "url": "styles.74eb5aed1bb14cdb4c8b.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "ea40a62066a29ad6931d8d1f22423d26"
+    "revision": "4f89258ae941869f80f7dd7592e40058"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "6959ca974baf32b83ff2411b5f01150e"
+    "revision": "0506929a3049983a8ebf91e9866e6f91"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "f57fb920347ded13aeb9f0c1ae223df1"
+    "revision": "0079183ddb52175cc0e69722778abbf0"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "c47e511c83aef8d18720dd92689e9e6b"
+    "revision": "1b3be439ff6d591de9e5ff38bddbf99a"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "e38fdcd81150b6cd646e2a5a2f090982"
+    "revision": "02fb7296649797d95cf4215e32db5450"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "2c755368d95497aab34034a06d42417a"
+    "revision": "6ced918f080aa790547c945a1f130615"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "94720c6e8cc8e0855eba75ec6fd8ba64"
+    "revision": "18d1f0343e00bd329d29bd28bbbf7f98"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1293,7 +1293,7 @@ self.__precacheManifest = [
     "revision": "d163adbbb3def19604fff6fa87072ebe"
   },
   {
-    "url": "component---src-pages-tools-enclosure-tsx-15142ebc368c78d249a4.js"
+    "url": "component---src-pages-tools-enclosure-tsx-f6b733a0978a6f636fdd.js"
   },
   {
     "url": "page-data/tools/enclosure/page-data.json",
@@ -1534,7 +1534,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-749f52f506e8b45b5987.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-5d3eeff451965334ce30.js`))) {
     return await fetch(event.request)
   }
 
