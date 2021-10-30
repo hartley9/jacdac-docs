@@ -16882,16 +16882,6 @@ const convert = (m, options = {}) => {
     cover,
     legs
   } = options;
-  console.log(`convert`, {
-    box,
-    rings,
-    connectors,
-    width,
-    height,
-    depth,
-    cover,
-    legs
-  });
   let coverModel; // box
 
   let model = union(roundedCuboid({
