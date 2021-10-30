@@ -16866,7 +16866,7 @@ const mountRoundRadius = 0.5;
 const mountCenterRadius = 1;
 const mountHeight = 5;
 const convert = (m, options = {}) => {
-  var _cover$mounts;
+  var _cover$mounts2;
 
   const {
     box,
@@ -16882,6 +16882,16 @@ const convert = (m, options = {}) => {
     cover,
     legs
   } = options;
+  console.log(`convert`, {
+    box,
+    rings,
+    connectors,
+    width,
+    height,
+    depth,
+    cover,
+    legs
+  });
   let coverModel; // box
 
   let model = union(roundedCuboid({
@@ -16954,10 +16964,15 @@ const convert = (m, options = {}) => {
   }));
 
   if (cover) {
+    var _cover$mounts;
+
     coverModel = cuboid({
       size: [width + wall, height + wall, wall]
     });
-    coverModel = coverSnaps.reduce((m, ring) => subtract(m, coverSnap(ring.x, ring.y)), coverModel);
+
+    if ((cover == null ? void 0 : (_cover$mounts = cover.mounts) == null ? void 0 : _cover$mounts.type) === "ring") {
+      coverModel = coverSnaps.reduce((m, ring) => subtract(m, coverSnap(ring.x, ring.y)), coverModel);
+    }
   } // remove jacdac connectors
 
 
@@ -16990,7 +17005,7 @@ const convert = (m, options = {}) => {
   const mounts = [...rings.map(p => _extends({}, p, {
     h: snapHeight,
     hc: pcbWidth
-  })), ...((cover == null ? void 0 : (_cover$mounts = cover.mounts) == null ? void 0 : _cover$mounts.type) === "ring" ? coverSnaps.map(p => _extends({}, p, {
+  })), ...((cover == null ? void 0 : (_cover$mounts2 = cover.mounts) == null ? void 0 : _cover$mounts2.type) === "ring" ? coverSnaps.map(p => _extends({}, p, {
     h: depth,
     hc: wall
   })) : [])];
