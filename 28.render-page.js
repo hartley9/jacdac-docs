@@ -16997,7 +16997,10 @@ const handlers = {
     } = msg;
     const stl = convertToSTL(model, options);
     return {
-      stl
+      stls: [{
+        name: "box",
+        blob: stl
+      }]
     };
   }
 };
