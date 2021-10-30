@@ -16966,8 +16966,9 @@ const convert = (m, options = {}) => {
   if (cover) {
     var _cover$mounts;
 
-    coverModel = cuboid({
-      size: [width + wall, height + wall, wall]
+    coverModel = roundedCuboid({
+      size: [width + wall, height + wall, wall],
+      roundRadius: 0.25
     });
 
     if ((cover == null ? void 0 : (_cover$mounts = cover.mounts) == null ? void 0 : _cover$mounts.type) === "ring") {
