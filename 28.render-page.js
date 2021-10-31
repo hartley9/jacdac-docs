@@ -16855,9 +16855,8 @@ const dirAngles = {
 };
 const ringGap = 2.5;
 const ringRadius = 2.15 / 2;
-const printPrecision = 0.5;
 const pcbWidth = 1.6;
-const snapHeight = 2.5;
+const snapHeight = 1.5;
 const wall = pcbWidth;
 const wallRadius = wall / 2;
 const segments = 32;
@@ -16868,12 +16867,13 @@ const mountRoundRadius = 0.5;
 const mountCenterRadius = 1;
 const mountHeight = 5;
 const convert = (m, options = {}) => {
-  var _cover$mounts2;
+  var _cover$mounts;
 
   const {
     box,
     rings,
-    connectors
+    connectors,
+    components
   } = m;
   const {
     width,
@@ -16882,7 +16882,8 @@ const convert = (m, options = {}) => {
   } = box;
   const {
     cover,
-    legs
+    legs,
+    printPrecision = 0.55
   } = options;
   let coverModel; // box
 
@@ -16917,20 +16918,21 @@ const convert = (m, options = {}) => {
     })));
 
     model = union(model, post(-width / 2 + mountRadius - wall, -height / 2 - mountRadius - wall / 2, -1), post(width / 2 - mountRadius + wall, height / 2 + mountRadius + wall / 2, 1), post(-width / 2 + mountRadius - wall, height / 2 + mountRadius + wall / 2, 1), post(width / 2 - mountRadius + wall, -height / 2 - mountRadius - wall / 2, -1));
-  } // empty box
+  } // substract empty box, top, notch
 
 
-  const innerbox = roundedCuboid({
+  model = subtract(model, union(roundedCuboid({
     size: [width, height, depth + 3 * wall],
     center: [0, 0, depth / 2 + 2 * wall],
     segments
-  });
-  model = subtract(model, innerbox); // substract top
-
-  model = subtract(model, cuboid({
+  }), cuboid({
     size: [width + wall, height + wall, wall],
     center: [0, 0, depth + wall + wall / 2]
-  }));
+  }), cuboid({
+    size: [5, 5, wall],
+    center: [-width / 2, 0, depth + wall + wall / 2]
+  }))); // subtract notch for screwdriver
+
   const coverSnaps = [{
     x: -width / 2 + ringGap,
     y: -height / 2 + ringGap
@@ -16946,7 +16948,9 @@ const convert = (m, options = {}) => {
   }];
 
   if (cover) {
-    var _cover$mounts;
+    const {
+      mounts: _mounts
+    } = cover;
 
     const coverSnap = (x, y) => translate([x, y, 0], cylinder({
       radius: ringRadius + printPrecision / 2,
@@ -16959,8 +16963,22 @@ const convert = (m, options = {}) => {
       size: [width + wall - printPrecision, height + wall - printPrecision, wall],
       roundRadius: printPrecision / 2
     });
+    if (components) coverModel = subtract(coverModel, union(components.map(({
+      x,
+      y,
+      radius,
+      type
+    }) => translate([x, y, 0], type === "square" ? cuboid({
+      size: [2 * (radius || ringRadius), 2 * (radius || ringRadius), 2 * wall],
+      center: [0, 0, wall / 2]
+    }) : cylinder({
+      radius: (radius || ringRadius) + printPrecision / 2,
+      height: 2 * wall,
+      center: [0, 0, wall / 2],
+      segments
+    })))));
 
-    if ((cover == null ? void 0 : (_cover$mounts = cover.mounts) == null ? void 0 : _cover$mounts.type) === "ring") {
+    if ((_mounts == null ? void 0 : _mounts.type) === "ring") {
       coverModel = subtract(coverModel, union(coverSnaps.map(ring => coverSnap(ring.x, ring.y))));
     }
   } // remove jacdac connectors
@@ -16970,7 +16988,7 @@ const convert = (m, options = {}) => {
     const conn = connectorSpecs[type];
     const dirAngle = dirAngles[dir] / 180 * Math.PI;
     const d = 24;
-    return translate([x, y, snapHeight + pcbWidth / 2], rotateZ(dirAngle, roundedCuboid({
+    return translate([x, y, snapHeight + pcbWidth / 2 + wall], rotateZ(dirAngle, roundedCuboid({
       size: [conn.width, d, conn.height],
       roundRadius: conn.height / 2 - 0.5,
       segments: 32,
@@ -16995,7 +17013,7 @@ const convert = (m, options = {}) => {
   const mounts = [...rings.map(p => _extends({}, p, {
     h: snapHeight,
     hc: pcbWidth
-  })), ...((cover == null ? void 0 : (_cover$mounts2 = cover.mounts) == null ? void 0 : _cover$mounts2.type) === "ring" ? coverSnaps.map(p => _extends({}, p, {
+  })), ...((cover == null ? void 0 : (_cover$mounts = cover.mounts) == null ? void 0 : _cover$mounts.type) === "ring" ? coverSnaps.map(p => _extends({}, p, {
     h: depth,
     hc: wall
   })) : [])];
