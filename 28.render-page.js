@@ -16855,12 +16855,14 @@ const dirAngles = {
 };
 const ringGap = 2.5;
 const ringRadius = 2.15 / 2;
+const printPrecision = 0.5;
 const pcbWidth = 1.6;
 const snapHeight = 2.5;
 const wall = pcbWidth;
 const wallRadius = wall / 2;
-const segments = 16;
-const snapRadius = wall;
+const segments = 32;
+const legSegments = 64;
+const snapRadius = 2.1;
 const mountRadius = 4;
 const mountRoundRadius = 0.5;
 const mountCenterRadius = 1;
@@ -16898,7 +16900,7 @@ const convert = (m, options = {}) => {
     const post = (x, y, sign) => translate([x, y, mountHeight / 2], subtract(subtract(union(cylinder({
       radius: mountRadius,
       height: mountHeight,
-      segments
+      segments: legSegments
     }), cuboid({
       size: [mountRadius * 2, mountRadius + wall, mountHeight - mountRoundRadius * 2],
       center: [0, -sign * (mountRadius + wall) / 2, -mountRoundRadius]
@@ -16906,7 +16908,7 @@ const convert = (m, options = {}) => {
       radius: mountRadius - wall,
       height: mountHeight + wall,
       center: [0, 0, wall],
-      segments
+      segments: legSegments
     })), cylinder({
       radius: mountCenterRadius,
       height: mountHeight,
@@ -16914,10 +16916,7 @@ const convert = (m, options = {}) => {
       segments
     })));
 
-    model = union(model, post(-width / 2 + mountRadius - wall, -height / 2 - mountRadius - wall / 2, -1));
-    model = union(model, post(width / 2 - mountRadius + wall, height / 2 + mountRadius + wall / 2, 1));
-    model = union(model, post(-width / 2 + mountRadius - wall, height / 2 + mountRadius + wall / 2, 1));
-    model = union(model, post(width / 2 - mountRadius + wall, -height / 2 - mountRadius - wall / 2, -1));
+    model = union(model, post(-width / 2 + mountRadius - wall, -height / 2 - mountRadius - wall / 2, -1), post(width / 2 - mountRadius + wall, height / 2 + mountRadius + wall / 2, 1), post(-width / 2 + mountRadius - wall, height / 2 + mountRadius + wall / 2, 1), post(width / 2 - mountRadius + wall, -height / 2 - mountRadius - wall / 2, -1));
   } // empty box
 
 
@@ -16946,15 +16945,15 @@ const convert = (m, options = {}) => {
     y: height / 2 - ringGap
   }];
 
-  const coverSnap = (x, y) => translate([x, y, 0], cylinder({
-    radius: ringRadius + 0.1,
-    height: 2 * wall,
-    center: [0, 0, wall / 2],
-    segments
-  }));
-
   if (cover) {
     var _cover$mounts;
+
+    const coverSnap = (x, y) => translate([x, y, 0], cylinder({
+      radius: ringRadius + printPrecision,
+      height: 2 * wall,
+      center: [0, 0, wall / 2],
+      segments
+    }));
 
     coverModel = roundedCuboid({
       size: [width + wall, height + wall, wall],
@@ -16962,7 +16961,7 @@ const convert = (m, options = {}) => {
     });
 
     if ((cover == null ? void 0 : (_cover$mounts = cover.mounts) == null ? void 0 : _cover$mounts.type) === "ring") {
-      coverModel = coverSnaps.reduce((m, ring) => subtract(m, coverSnap(ring.x, ring.y)), coverModel);
+      coverModel = subtract(model, union(coverSnaps.map(ring => coverSnap(ring.x, ring.y))));
     }
   } // remove jacdac connectors
 
@@ -16979,15 +16978,15 @@ const convert = (m, options = {}) => {
     })));
   };
 
-  model = connectors.reduce((m, c) => subtract(m, connector(c.x, c.y, c.dir, c.type)), model); // add snap fit ring mounts
+  model = subtract(model, union(connectors.map(c => connector(c.x, c.y, c.dir, c.type)))); // add snap fit ring mounts
 
-  const snap = (x, y, h, hc) => translate([x, y, wall], union(cylinder({
+  const snap = (x, y, h, hc) => union(translate([x, y, 0], cylinder({
     radius: snapRadius,
-    height: h,
-    center: [0, 0, h / 2],
+    height: h + wall,
+    center: [0, 0, (h + wall) / 2],
     segments
-  }), cylinder({
-    radius: ringRadius,
+  })), translate([x, y, wall], cylinder({
+    radius: ringRadius - printPrecision / 2,
     height: hc,
     center: [0, 0, h + hc / 2],
     segments
@@ -17000,7 +16999,7 @@ const convert = (m, options = {}) => {
     h: depth,
     hc: wall
   })) : [])];
-  model = mounts.reduce((m, ring) => union(m, snap(ring.x, ring.y, ring.h, ring.hc)), model);
+  model = union(model, ...mounts.map(ring => snap(ring.x, ring.y, ring.h, ring.hc)));
   return [model, coverModel].filter(m => !!m);
 };
 function convertToSTL(model, options) {
