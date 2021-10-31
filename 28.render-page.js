@@ -16949,19 +16949,19 @@ const convert = (m, options = {}) => {
     var _cover$mounts;
 
     const coverSnap = (x, y) => translate([x, y, 0], cylinder({
-      radius: ringRadius + printPrecision,
+      radius: ringRadius + printPrecision / 2,
       height: 2 * wall,
       center: [0, 0, wall / 2],
       segments
     }));
 
     coverModel = roundedCuboid({
-      size: [width + wall, height + wall, wall],
-      roundRadius: 0.25
+      size: [width + wall - printPrecision, height + wall - printPrecision, wall],
+      roundRadius: printPrecision / 2
     });
 
     if ((cover == null ? void 0 : (_cover$mounts = cover.mounts) == null ? void 0 : _cover$mounts.type) === "ring") {
-      coverModel = subtract(model, union(coverSnaps.map(ring => coverSnap(ring.x, ring.y))));
+      coverModel = subtract(coverModel, union(coverSnaps.map(ring => coverSnap(ring.x, ring.y))));
     }
   } // remove jacdac connectors
 
