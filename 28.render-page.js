@@ -16839,12 +16839,12 @@ const {
 } = src$1.booleans;
 const connectorSpecs = {
   jacdac: {
-    width: 9.5,
-    height: 4.65
+    width: 10,
+    height: 5
   },
   usbc: {
-    width: 9.5,
-    height: 2.5
+    width: 10,
+    height: 3
   }
 };
 const dirAngles = {
