@@ -16840,11 +16840,14 @@ const {
 const connectorSpecs = {
   jacdac: {
     width: 10.5,
-    height: 5.5
+    height: 5.5,
+    offset: [0, 0, 0]
   },
   usbc: {
     width: 10.5,
-    height: 3.5
+    height: 3.5,
+    z: 0,
+    offset: [0, 0, 2]
   }
 };
 const dirAngles = {
@@ -16862,10 +16865,6 @@ const wallRadius = wall / 2;
 const segments = 32;
 const legSegments = 64;
 const snapRadius = 2.1;
-const mountRadius = 4;
-const mountRoundRadius = 0.5;
-const mountCenterRadius = 1;
-const mountHeight = 5;
 const convert = (m, options = {}) => {
   var _cover$mounts;
 
@@ -16898,6 +16897,11 @@ const convert = (m, options = {}) => {
   })); // add screw mounts
 
   if ((legs == null ? void 0 : legs.type) === "well") {
+    const mountRadius = legs.radius || 4;
+    const mountRoundRadius = 0.5;
+    const mountCenterRadius = legs.hole || 2;
+    const mountHeight = legs.height || 4.5;
+
     const post = (x, y, sign) => translate([x, y, mountHeight / 2], subtract(subtract(union(cylinder({
       radius: mountRadius,
       height: mountHeight,
@@ -16987,8 +16991,11 @@ const convert = (m, options = {}) => {
   const connector = (x, y, dir, type) => {
     const conn = connectorSpecs[type];
     const dirAngle = dirAngles[dir] / 180 * Math.PI;
+    const {
+      offset
+    } = conn || [0, 0, 0];
     const d = 24;
-    return translate([x, y, pcbWidth / 2 + wall], rotateZ(dirAngle, roundedCuboid({
+    return translate([x + offset[0], y + offset[1], pcbWidth / 2 + wall + offset[2]], rotateZ(dirAngle, roundedCuboid({
       size: [conn.width, d, conn.height],
       roundRadius: conn.height / 2 - 0.5,
       segments: 32,
