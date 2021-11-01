@@ -16934,7 +16934,7 @@ const convert = (m, options = {}) => {
     center: [0, 0, depth + wall + wall / 2]
   }), cuboid({
     size: [10, 10, wall],
-    center: [-width / 2, 0, depth + wall + wall / 2]
+    center: [0, -height / 2, depth + wall + wall / 2]
   }))); // subtract notch for screwdriver
 
   const coverSnaps = [{
@@ -16999,7 +16999,7 @@ const convert = (m, options = {}) => {
       size: [conn.width, d, conn.height],
       roundRadius: conn.height / 2 - 0.5,
       segments: 32,
-      center: [0, d / 2, conn.height / 2 - snapHeight]
+      center: [0, d / 2, conn.height / 2 - snapHeight + printPrecision]
     })));
   };
 
