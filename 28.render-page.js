@@ -17029,7 +17029,8 @@ const convert = (m, options = {}) => {
 };
 function convertToSTL(model, options) {
   const geometries = convert(model, options);
-  return geometries.map(geometry => new Blob(stlSerializer.serialize({
+  return geometries.map(geometry => new Blob( // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  stlSerializer.serialize({
     binary: false
   }, geometry)));
 }
