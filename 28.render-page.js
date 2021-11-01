@@ -16886,15 +16886,12 @@ const convert = (m, options = {}) => {
   } = options;
   let coverModel; // box
 
-  let model = union(roundedCuboid({
+  let model = roundedCuboid({
     size: [width + wall * 2, height + wall * 2, depth + wall * 2],
     center: [0, 0, depth / 2 + wall],
     roundRadius: wallRadius * 2,
     segments
-  }), cuboid({
-    size: [width + wall * 2, height + wall * 2, wall],
-    center: [0, 0, wall / 2]
-  })); // add screw mounts
+  }); // add screw mounts
 
   if ((legs == null ? void 0 : legs.type) === "well") {
     const mountRadius = legs.radius || 5;
@@ -17014,7 +17011,7 @@ const convert = (m, options = {}) => {
     radius: ringRadius - printPrecision / 2,
     height: hc,
     center: [0, 0, h + hc / 2],
-    segments
+    segments: segments >> 1
   })));
 
   const mounts = [...rings.map(p => _extends({}, p, {
