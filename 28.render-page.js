@@ -16839,8 +16839,8 @@ const {
 } = src$1.booleans;
 const connectorSpecs = {
   jacdac: {
-    width: 10.5,
-    height: 5.5,
+    width: 10,
+    height: 5,
     offset: [0, 0, 0]
   },
   usbc: {
@@ -16922,16 +16922,15 @@ const convert = (m, options = {}) => {
   } // substract empty box, top, notch
 
 
-  model = subtract(model, union(roundedCuboid({
+  model = subtract(model, union(cuboid({
     size: [width, height, depth + 3 * wall],
-    center: [0, 0, depth / 2 + 2 * wall],
-    segments
+    center: [0, 0, depth / 2 + 2 * wall]
   }), cuboid({
     size: [width + wall, height + wall, wall],
     center: [0, 0, depth + wall + wall / 2]
   }), cuboid({
     size: [10, 10, wall],
-    center: [0, -height / 2, depth + wall + wall / 2]
+    center: [0, height / 2, depth + wall + wall / 2]
   }))); // subtract notch for screwdriver
 
   const coverSnaps = [{
