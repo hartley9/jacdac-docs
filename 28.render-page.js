@@ -16853,8 +16853,8 @@ const connectorSpecs = {
 const dirAngles = {
   top: 0,
   bottom: 180,
-  left: -90,
-  right: 90
+  left: 90,
+  right: -90
 };
 const ringGap = 2.5;
 const ringRadius = 2.15 / 2;
