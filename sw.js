@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-c6491e7933b49b7c4e80.js"
+    "url": "webpack-runtime-f30d0f7f70d6f9432a1e.js"
   },
   {
     "url": "styles.b5bdb1524215100f4d1f.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "b69c239e8c16cabdd651eae451bb14e3"
+    "revision": "17b189c696c23ec1e3ee8bbbf1ad2199"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "04f86607317a73b35382afa009e0192b"
+    "revision": "0a230493c3d432fb06f5ebce94369b66"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "df39c477a454602d582eeacef88f7644"
+    "revision": "01f72dcac15f4cbf1b607783fddc9e6c"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "883b45c2da94ca1814d149a1dce45438"
+    "revision": "540f8bf4deb29b97110353a6f0502129"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "3e58e01ee3de98231e3dc907876bc2ec"
+    "revision": "2d82dce8c8dd669670e433ed82eedc9f"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "6b37b7bd6b0a9b9dc5bee80fbfc8542d"
+    "revision": "fe046d2981e0e1d1563c8fe1248308cc"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1294,7 +1294,7 @@ self.__precacheManifest = [
     "url": "baf0fd2d778787cec7104fdce75a778b8b7a3d97-b3a6edbfb1c9c364214e.js"
   },
   {
-    "url": "component---src-pages-tools-device-registration-tsx-ba9416979a85f79e10fb.js"
+    "url": "component---src-pages-tools-device-registration-tsx-e5b30c16670e4dfac928.js"
   },
   {
     "url": "page-data/tools/device-registration/page-data.json",
@@ -1542,7 +1542,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-5dd8866e7fe2fcc88ae5.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-049b4b71c2280b0fd9cf.js`))) {
     return await fetch(event.request)
   }
 
