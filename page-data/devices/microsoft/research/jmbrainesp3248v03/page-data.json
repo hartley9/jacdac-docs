@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmbrainesp3248v03/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmbrainesp3248v03","name":"JM Brain ESP32","company":"Microsoft Research","repo":"https://github.com/microsoft/pxt-jacdac/","services":[342028028],"productIdentifiers":[917230668,983264687],"transport":{"type":"serial","vendorId":12346},"version":"0.3","designIdentifier":"48"},"title":"JM Brain ESP32"}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmbrainesp3248v03","name":"JM Brain ESP32","company":"Microsoft Research","services":[342028028],"productIdentifiers":[917230668,983264687],"transport":{"type":"serial","vendorId":12346},"firmwares":[{"name":"IoT Uploader","url":"https://github.com/microsoft/pxt-jacdac/releases/download/v0.7.21/uploader-esp32s2.uf2"}],"version":"0.3","designIdentifier":"48"},"title":"JM Brain ESP32"}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
