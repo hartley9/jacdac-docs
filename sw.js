@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-0cb35961b3d381942fe1.js"
+    "url": "webpack-runtime-d4bb6d55fb3835232b28.js"
   },
   {
     "url": "styles.b5bdb1524215100f4d1f.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "d449db3964de70d61b60a0f0879c5c09"
+    "revision": "65fc19abd6fbcf573fd86ddae29b9b4a"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "c66e5180f253367a15ec787f4408488e"
+    "revision": "2ab35938045f7c7308557e3f404e5ada"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "1e4737c384a28cdbdacc77646db57733"
+    "revision": "892bebba9f0149277b33ca4cf30b5706"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "59cd7d8c1d1eed68e0798f590ef02abb"
+    "revision": "c3159e7c53c927b91da5ec03b0c05f2b"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "ed59900f6591ae8e6fb0cf8c4f19e198"
+    "revision": "1c2a8930f4b99577cffacfd53efb7e37"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "afddffdb200b03e4b19f5ab02b1e8a11"
+    "revision": "7be8170b4e3abf3ac7c149c80eb32d55"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -275,7 +275,7 @@ self.__precacheManifest = [
     "revision": "41a647cea93e373581e82392c2e3a669"
   },
   {
-    "url": "b4041f57cede5b7e3b1bea304d75a219087809dc-b5c36386481694e75e48.js"
+    "url": "b4041f57cede5b7e3b1bea304d75a219087809dc-13c0fa4f7b6dbe5f7dba.js"
   },
   {
     "url": "8f8350e8e5a1ed189588272f29a5455a64d2ce8f-d420962b9664ffadc49d.js"
@@ -1294,7 +1294,7 @@ self.__precacheManifest = [
     "url": "baf0fd2d778787cec7104fdce75a778b8b7a3d97-b3a6edbfb1c9c364214e.js"
   },
   {
-    "url": "component---src-pages-tools-device-registration-tsx-dbc55fefc5277716848e.js"
+    "url": "component---src-pages-tools-device-registration-tsx-cac5fbf85bcc430f66e5.js"
   },
   {
     "url": "page-data/tools/device-registration/page-data.json",
@@ -1542,7 +1542,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-5d87d08e5a6cf8852ae7.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-2a3f278fad1c9cb47f67.js`))) {
     return await fetch(event.request)
   }
 
