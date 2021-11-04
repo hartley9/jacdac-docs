@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-235566c214763946957c.js"
+    "url": "webpack-runtime-f52308622e098a0c096c.js"
   },
   {
     "url": "styles.b5bdb1524215100f4d1f.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "5b4772a50618fd4ff99f891306923faf"
+    "revision": "c217c1d71e07e2db77645db56da997f3"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "39b2b79fb89f885d23b2b5572cf84c32"
+    "revision": "283e998ff26c2ffee57fa92895d5a9fd"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "3b4809fa21405e264fb151651f518429"
+    "revision": "d6eb17697fad82396f7cf8f9128f6b30"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "0d46d924ac1c186563cf98e137182db2"
+    "revision": "3beb426053ffdee7b3d12bc59cd842e0"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "f444f0c7b891a78d5841d076c1e012d7"
+    "revision": "14c3af6cf7a16d0fcc77977efcbdaf5d"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "6ced918f080aa790547c945a1f130615"
+    "revision": "2c755368d95497aab34034a06d42417a"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "3a7df7935fab695f55e780f248acccc8"
+    "revision": "1add8532b68ffeb1682e13dba4d173d6"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1015,7 +1015,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/devices/microbit/foundation/microbitv2/page-data.json",
-    "revision": "37778778f2ee00a02719bf84aac9011a"
+    "revision": "354f25af2ae1363c167edfb16e629d28"
   },
   {
     "url": "page-data/devices/microsoft/page-data.json",
@@ -1091,19 +1091,19 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/devices/microsoft/research/jmbrainesp3248v02/page-data.json",
-    "revision": "640024f6f71f9694a73db5bb68ab0a91"
+    "revision": "9ff1e09d9a39afef09158048598a0497"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbrainesp3248v03/page-data.json",
-    "revision": "930a52c266ea0fa9dd70dcfef6e8029a"
+    "revision": "80bc2e6b0d190b8e8be5d115971b0e90"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbrainf441v02/page-data.json",
-    "revision": "d191912be597135d8d4152cc2b1bd343"
+    "revision": "257e49bb14f7c7957b34b0dad9a548b5"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbrainrp204059v01/page-data.json",
-    "revision": "d730f3e4fcddf0564429cabbe778e7b1"
+    "revision": "beefd656b020043995af007b218bbbf6"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbutton10v13/page-data.json",
@@ -1442,7 +1442,7 @@ self.__precacheManifest = [
     "revision": "76e66523364c6d2563cd0eb039bea415"
   },
   {
-    "url": "component---src-pages-tools-updater-tsx-d4fa282ddf6011b974af.js"
+    "url": "component---src-pages-tools-updater-tsx-0e9d69ff42f50b832761.js"
   },
   {
     "url": "page-data/tools/updater/page-data.json",
@@ -1542,7 +1542,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-8879d5bf0dc8eae0e2bb.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-d7f380c055f12c460fdd.js`))) {
     return await fetch(event.request)
   }
 
