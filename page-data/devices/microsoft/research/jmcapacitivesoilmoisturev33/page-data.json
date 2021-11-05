@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-device-tsx",
+    "path": "/devices/microsoft/research/jmcapacitivesoilmoisturev33/",
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmcapacitivesoilmoisturev33","name":"JM Capacitive Soil Moisture","company":"Microsoft Research","description":"JM Capacitive Soil Moisture v3.3","repo":"https://github.com/microsoft/jacdac-msr-modules","services":[491430835],"productIdentifiers":[959462330],"version":"3.3"},"title":"JM Capacitive Soil Moisture"}},
+    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}

@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "3316892baddee02a74c63879eecd9129"
+    "revision": "9abc8f452472c529f4a9f2ccd1c77457"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "8bfdc137bf8f5e984a666caa70c5b352"
+    "revision": "707c0eba37b3ccf8ad12521cc44d0f11"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "1ae7e76c34075c95f3d0a99988f29743"
+    "revision": "6e7be188237b42dbe986ea36639d0244"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "05cff932d1fc4ad012792982374a71df"
+    "revision": "2758d04ecd39a0ec6a3477cd6c479bc9"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "15d86003ea60e95a0cd9513dd9954c6c"
+    "revision": "ed6777b8e5da5d07bcabf67102a5431f"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "6ced918f080aa790547c945a1f130615"
+    "revision": "fb76e425d3db6e194394ed90052d3511"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "4f5bf3492ed9a76f2dc36aa40a8fcf1a"
+    "revision": "3a7c3f2afa916f06ab9344a74bb216ce"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1122,6 +1122,10 @@ self.__precacheManifest = [
     "revision": "d45d88ca6ed821696ef36a60a01ce1b3"
   },
   {
+    "url": "page-data/devices/microsoft/research/jmcapacitivesoilmoisturev33/page-data.json",
+    "revision": "38cb733ecf4246b33bc45d58f43e0f96"
+  },
+  {
     "url": "page-data/devices/microsoft/research/jmclickairquality4v32/page-data.json",
     "revision": "2afcd544c9f464d5415237044e3a7f60"
   },
@@ -1248,6 +1252,10 @@ self.__precacheManifest = [
   {
     "url": "page-data/devices/microsoft/research/jmsliderv20/page-data.json",
     "revision": "ba9744f1c2893080d0bc6f519844d46e"
+  },
+  {
+    "url": "page-data/devices/microsoft/research/jmsoiltemperatureds18b20v33/page-data.json",
+    "revision": "e11276f4e00e2f5687a8d508d6f3c7dc"
   },
   {
     "url": "page-data/devices/microsoft/research/jmspeechsynthesis61v33/page-data.json",
@@ -1548,7 +1556,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-6a4e22837b4fff4a4c1c.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-0dccc6df82c9d7c75d11.js`))) {
     return await fetch(event.request)
   }
 
