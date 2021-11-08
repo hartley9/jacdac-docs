@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-74cb53ecd75d930f302c.js"
+    "url": "webpack-runtime-38d9fd916599dab30e81.js"
   },
   {
     "url": "styles.b5bdb1524215100f4d1f.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "e95461074091e1734ead0b6f41dbf6b7"
+    "revision": "9a03ab8e3123c49f087ff2ee77fe2ee1"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "b9e4727fb7dfd61df72bac408fff45c4"
+    "revision": "f790729697690359fa7d23c205df69c1"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "f32434c0880ac4cc7c6998708bdcd3b9"
+    "revision": "3db4e9b5a3321f90cf24591c4f015807"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "aaf4c107afb6c5ec3db39e07d0b57413"
+    "revision": "7fa151ce05ff5b151cff6019a4fe5c01"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "97b11b383b4bf0bb5171f471fa663391"
+    "revision": "f770992f4b3f6ae87f4b1f716d6538d0"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "6ced918f080aa790547c945a1f130615"
+    "revision": "d48b39c94996b6203ea74174630bcea0"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "75dee6f60deb5b16d0d4cce3900dfa6d"
+    "revision": "b6f1ab5b6aebb77924fec4e62813a0f2"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -265,7 +265,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/reference/protocol/page-data.json",
-    "revision": "7343aafb6b465f0a81098c5144ca6e4b"
+    "revision": "7698bdaaf63f0ebd4160921832519c52"
   },
   {
     "url": "page-data/reference/service-specification/page-data.json",
@@ -288,14 +288,14 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/_base/page-data.json",
-    "revision": "118f49a65e0a883795adf9664f79cdcb"
+    "revision": "98fceab4b4e710cbfaf8653f45a4e3db"
   },
   {
     "url": "component---src-templates-service-playground-tsx-45d89804d5f6b7e62cdc.js"
   },
   {
     "url": "page-data/services/_base/playground/page-data.json",
-    "revision": "97dba75414ee8e62a8707e486cce74f3"
+    "revision": "3488cae0e574320412d0c33e6c754a9c"
   },
   {
     "url": "page-data/services/_sensor/page-data.json",
@@ -303,15 +303,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/_sensor/playground/page-data.json",
-    "revision": "fb08f45a2435849ec4cf7202eabf7c9a"
+    "revision": "e0f4afc7ef1ca676a9ea45808be64cf7"
   },
   {
     "url": "page-data/services/_system/page-data.json",
-    "revision": "1808360a36e2eec328e561457e997e93"
+    "revision": "29e6855a44bb76eb0fc335228f13945f"
   },
   {
     "url": "page-data/services/_system/playground/page-data.json",
-    "revision": "7db27071e4212a9729931a9b10024f06"
+    "revision": "7521ff94514086dd192a1cfdb1340dbe"
   },
   {
     "url": "page-data/services/accelerometer/page-data.json",
@@ -319,7 +319,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/accelerometer/playground/page-data.json",
-    "revision": "ee7c71970715129cfe8f49669af88b0b"
+    "revision": "9e0333a6828669304c8f7a982675a64e"
   },
   {
     "url": "page-data/services/arcadegamepad/page-data.json",
@@ -327,7 +327,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/arcadegamepad/playground/page-data.json",
-    "revision": "b6a5ba3ef08d87dec8017646fddc3285"
+    "revision": "edae0970a64d5f075c61c5af02baf99c"
   },
   {
     "url": "page-data/services/arcadesound/page-data.json",
@@ -335,7 +335,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/arcadesound/playground/page-data.json",
-    "revision": "0ddf3d1ccdb637edb41b23fe46fb2e6c"
+    "revision": "bcf3d5cee991f0a67fba0a0a9cb977b9"
   },
   {
     "url": "page-data/services/azureiothubhealth/page-data.json",
@@ -343,7 +343,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/azureiothubhealth/playground/page-data.json",
-    "revision": "0452e068041aaf1a3a5aedd7d6369ed1"
+    "revision": "b3834371b4a518f15855e9a165b23cdb"
   },
   {
     "url": "page-data/services/barcodereader/page-data.json",
@@ -351,7 +351,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/barcodereader/playground/page-data.json",
-    "revision": "731a461606d9784be6604c58dae89fb0"
+    "revision": "88320c323cc3e6430544181432b46171"
   },
   {
     "url": "page-data/services/barometer/page-data.json",
@@ -359,23 +359,23 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/barometer/playground/page-data.json",
-    "revision": "be10d6d48d75f1ccdfae584e96eb4c7f"
+    "revision": "10b4fdc9bfff137f0f5f20b67262f67c"
   },
   {
     "url": "page-data/services/bitradio/page-data.json",
-    "revision": "88fca20a05d65684df51bfbb879bfb4d"
+    "revision": "de78ce204c49eda4885a3b0f85cb4179"
   },
   {
     "url": "page-data/services/bitradio/playground/page-data.json",
-    "revision": "d388c14362234bc282d59452ff64d72c"
+    "revision": "f98a68c54683401070cb2926b7792b23"
   },
   {
     "url": "page-data/services/bootloader/page-data.json",
-    "revision": "ce7bf1ea196042273dc06bbfaf5ac4f5"
+    "revision": "051500b72d59d76d884e4cdf1a09b11a"
   },
   {
     "url": "page-data/services/bootloader/playground/page-data.json",
-    "revision": "c58736846164291a62c55ba8d23b6be9"
+    "revision": "399a0aa8279d352660b3c21033a89bcf"
   },
   {
     "url": "page-data/services/brailledisplay/page-data.json",
@@ -383,7 +383,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/brailledisplay/playground/page-data.json",
-    "revision": "03edf4a81d9055e3958a120210c42236"
+    "revision": "4c8237f218dad7a9124ce462ff6cc596"
   },
   {
     "url": "page-data/services/button/page-data.json",
@@ -391,7 +391,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/button/playground/page-data.json",
-    "revision": "31aa949dc4ede25e9e2b4b72e95cf10a"
+    "revision": "dc5a1b59e0b9c52a544f6364de0ec2b6"
   },
   {
     "url": "page-data/services/buzzer/page-data.json",
@@ -399,7 +399,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/buzzer/playground/page-data.json",
-    "revision": "db44bd119be82ba8ed7804ca3b2fdd08"
+    "revision": "02e99062a48a7328481d71bd897edfaa"
   },
   {
     "url": "page-data/services/capacitivebutton/page-data.json",
@@ -407,7 +407,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/capacitivebutton/playground/page-data.json",
-    "revision": "9af4ec7e5d7626711677ced68a277991"
+    "revision": "c146a8f719d299679bc4c50efd84cd94"
   },
   {
     "url": "page-data/services/characterscreen/page-data.json",
@@ -415,15 +415,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/characterscreen/playground/page-data.json",
-    "revision": "2e705239c7c5953124ff711151e0293e"
+    "revision": "175d95fcdee68162ee0bdebb99f97cee"
   },
   {
     "url": "page-data/services/codalmessagebus/page-data.json",
-    "revision": "262ebe73ebb60421fdcb29393df1b73d"
+    "revision": "d78794a1df48f4ea751389282847b637"
   },
   {
     "url": "page-data/services/codalmessagebus/playground/page-data.json",
-    "revision": "75a7798df999da29f69b9161e62d41a8"
+    "revision": "f434d2c222058b1bc3f6ff95d60710cb"
   },
   {
     "url": "page-data/services/color/page-data.json",
@@ -431,7 +431,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/color/playground/page-data.json",
-    "revision": "8ebfb6a7db6fa43be56b802c523683e9"
+    "revision": "d4c96671807c77a9c71da0c2a74d40ce"
   },
   {
     "url": "page-data/services/compass/page-data.json",
@@ -439,15 +439,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/compass/playground/page-data.json",
-    "revision": "0b0fc29f359823aad092852aa4eceb30"
+    "revision": "364ae4d4aec46e54363ee288d152bfbc"
   },
   {
     "url": "page-data/services/control/page-data.json",
-    "revision": "63db677021a517ae3605f6abb5393053"
+    "revision": "c1b1d457f3ed8dc9cd5d92ec726f2f45"
   },
   {
     "url": "page-data/services/control/playground/page-data.json",
-    "revision": "6958a71f004bef404854e19cf6e39acc"
+    "revision": "8eff410a50871be1442466902845ffbf"
   },
   {
     "url": "page-data/services/dimmer/page-data.json",
@@ -455,7 +455,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/dimmer/playground/page-data.json",
-    "revision": "5f2333e90486b46216567ee76869a6b7"
+    "revision": "204c35181819a4f752a998476b370c0c"
   },
   {
     "url": "page-data/services/distance/page-data.json",
@@ -463,15 +463,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/distance/playground/page-data.json",
-    "revision": "0d0f8279b993f78e942e2606d791852f"
+    "revision": "bd1fd5344160918881ea1ce08058c1bf"
   },
   {
     "url": "page-data/services/dmx/page-data.json",
-    "revision": "2abfdc4067e7b4b075ff4b7d510bf4e7"
+    "revision": "7b5947896257cdecac0ea28d40ef3cc0"
   },
   {
     "url": "page-data/services/dmx/playground/page-data.json",
-    "revision": "bfa78f8fa989feaed12c41623d5ba462"
+    "revision": "4f31981c0db501025fb4814295f8ee33"
   },
   {
     "url": "page-data/services/dotmatrix/page-data.json",
@@ -479,7 +479,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/dotmatrix/playground/page-data.json",
-    "revision": "8ce9ffa8f98cc67e78069fd614c23605"
+    "revision": "bc29087ad4294442b0e87e9fd615542a"
   },
   {
     "url": "page-data/services/eco2/page-data.json",
@@ -487,7 +487,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/eco2/playground/page-data.json",
-    "revision": "d075e95a8df68a88a1cfebf78fe69c66"
+    "revision": "3a7863e8982246ee17d2f7c5a6cfac55"
   },
   {
     "url": "page-data/services/flex/page-data.json",
@@ -495,7 +495,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/flex/playground/page-data.json",
-    "revision": "4aad3455a9a1c51533cb882c2d815d7c"
+    "revision": "7bb5e2e8421e108c3408a77d2e8a6054"
   },
   {
     "url": "page-data/services/gyroscope/page-data.json",
@@ -503,7 +503,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/gyroscope/playground/page-data.json",
-    "revision": "961124e3b7e70bc2c29086a5e231ec60"
+    "revision": "90daad508272a3b8fd6c80bf9fed293e"
   },
   {
     "url": "page-data/services/heartrate/page-data.json",
@@ -511,7 +511,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/heartrate/playground/page-data.json",
-    "revision": "0257c0cc9d57b2f146991a02da6bb04e"
+    "revision": "f00e1b6e6b70327164a125d22aad2eb9"
   },
   {
     "url": "page-data/services/hidadapter/page-data.json",
@@ -519,23 +519,23 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/hidadapter/playground/page-data.json",
-    "revision": "f4ea249d3c364e1378cdfc7e8bd8d4fa"
+    "revision": "404d2897d203a40769585e77e227c08e"
   },
   {
     "url": "page-data/services/hidkeyboard/page-data.json",
-    "revision": "f03de36dcfe740e9f99868102ef83dc9"
+    "revision": "e5fcd75127f5fb156ca3ba00ac129e32"
   },
   {
     "url": "page-data/services/hidkeyboard/playground/page-data.json",
-    "revision": "191b4d2d09448046c82b2fa41b434fc6"
+    "revision": "eeddb1f7fb15d6d529fd52fbec277ea5"
   },
   {
     "url": "page-data/services/hidmouse/page-data.json",
-    "revision": "8c25bceb3ec2fb84603aa9682c8a1875"
+    "revision": "29175b0919b2f7db600f5aeca40373ca"
   },
   {
     "url": "page-data/services/hidmouse/playground/page-data.json",
-    "revision": "1723dc0f87d89edaa1ab1b8558fae738"
+    "revision": "3296aa42c2a495b779915491d9641cec"
   },
   {
     "url": "page-data/services/humidity/page-data.json",
@@ -543,7 +543,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/humidity/playground/page-data.json",
-    "revision": "52f894ada2a13516412bd0d37a37bdeb"
+    "revision": "d33b9464d47e91ab8b2b0dac1a1b062c"
   },
   {
     "url": "page-data/services/illuminance/page-data.json",
@@ -551,15 +551,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/illuminance/playground/page-data.json",
-    "revision": "2db06d8e7d08c9f1f0fe10bdb5d30bfa"
+    "revision": "1fc8181eae49b6f48ff6c5216741cee6"
   },
   {
     "url": "page-data/services/indexedscreen/page-data.json",
-    "revision": "f617228aabf71741d79ccb10b06b7f51"
+    "revision": "1ebc256f3a6e211f1ce826f42f093af6"
   },
   {
     "url": "page-data/services/indexedscreen/playground/page-data.json",
-    "revision": "6388eb476c26318247b9432f2698bfcc"
+    "revision": "8fa70088374ae223df58169c070b50a3"
   },
   {
     "url": "page-data/services/infrastructure/page-data.json",
@@ -567,7 +567,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/infrastructure/playground/page-data.json",
-    "revision": "adcc98ca5ce47fb75c432fde7c8b7d7d"
+    "revision": "3d208a0105d9f08e5217613cc700f8fa"
   },
   {
     "url": "page-data/services/joystick/page-data.json",
@@ -575,7 +575,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/joystick/playground/page-data.json",
-    "revision": "97d131dc2636779901b9fabd49f2be54"
+    "revision": "fd797f06483e19cbb04c5ab10840f243"
   },
   {
     "url": "page-data/services/led/page-data.json",
@@ -583,15 +583,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/led/playground/page-data.json",
-    "revision": "8cee3ad60aeca6070d2a63c3c7acdccc"
+    "revision": "9b9eecac47b279fb416af3da6d4dc269"
   },
   {
     "url": "page-data/services/ledpixel/page-data.json",
-    "revision": "de7725e303c503654d7b96141fe46b7e"
+    "revision": "7520e855295c6edeccec772df527044f"
   },
   {
     "url": "page-data/services/ledpixel/playground/page-data.json",
-    "revision": "41d0e60a59f3d748f08831a2ca98a347"
+    "revision": "c3430b78484371d03f731ec9401da563"
   },
   {
     "url": "page-data/services/lightbulb/page-data.json",
@@ -599,7 +599,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/lightbulb/playground/page-data.json",
-    "revision": "fa78010f8de6dfd348151030f5431ad5"
+    "revision": "c99993507fdcf8da07449d76e80f27a3"
   },
   {
     "url": "page-data/services/lightlevel/page-data.json",
@@ -607,7 +607,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/lightlevel/playground/page-data.json",
-    "revision": "3604abe59f9bb902342dfae2d1d3a844"
+    "revision": "ca81192132f0be6f84d95f34ff3a1537"
   },
   {
     "url": "page-data/services/logger/page-data.json",
@@ -615,7 +615,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/logger/playground/page-data.json",
-    "revision": "5856b65ff5f7a8e22d970eac7583a6cc"
+    "revision": "26783b17b2a48e82da28e200cb9ebf23"
   },
   {
     "url": "page-data/services/magnetomer/page-data.json",
@@ -623,7 +623,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/magnetomer/playground/page-data.json",
-    "revision": "121970d5a10717cb5d161dd990363b94"
+    "revision": "41f6568c6b818070114ba432419c2b67"
   },
   {
     "url": "page-data/services/matrixkeypad/page-data.json",
@@ -631,7 +631,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/matrixkeypad/playground/page-data.json",
-    "revision": "14a152cdf1dd12ffb98beda4e5afe605"
+    "revision": "467be0b04fe0d541d8eead0a0e9f415b"
   },
   {
     "url": "page-data/services/microphone/page-data.json",
@@ -639,23 +639,23 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/microphone/playground/page-data.json",
-    "revision": "62b65bddd05b4715748b2356b3b6dfcb"
+    "revision": "6d166df276dc3779f3d0ac8fe5e415f7"
   },
   {
     "url": "page-data/services/midioutput/page-data.json",
-    "revision": "253b1b5b002cf3a953aa44397bd2954f"
+    "revision": "68d1fa39e6d87346afbc991726e649c5"
   },
   {
     "url": "page-data/services/midioutput/playground/page-data.json",
-    "revision": "c2b0f777de80084b1b1d37c666883896"
+    "revision": "e7d69bb587cf6148389d31938c17555a"
   },
   {
     "url": "page-data/services/modelrunner/page-data.json",
-    "revision": "fbf73dd846bd01175012fc41748c43c0"
+    "revision": "9a906df7528f635af9fc84cacecfd5cc"
   },
   {
     "url": "page-data/services/modelrunner/playground/page-data.json",
-    "revision": "c04cc0e5d7fd7985f0ac04eb4057b72b"
+    "revision": "7e969907a240e52a04b45aaedce34a41"
   },
   {
     "url": "page-data/services/motion/page-data.json",
@@ -663,7 +663,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/motion/playground/page-data.json",
-    "revision": "52278d3545481fa782d3ec274dcc8f9f"
+    "revision": "20ce6ed356ce8338b41d974b9a7a61e1"
   },
   {
     "url": "page-data/services/motor/page-data.json",
@@ -671,7 +671,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/motor/playground/page-data.json",
-    "revision": "ac93715cd2eed69e7eb1e7c9aeaba8a2"
+    "revision": "9797ccc49131baaa6c28c031d0de0c41"
   },
   {
     "url": "page-data/services/multitouch/page-data.json",
@@ -679,7 +679,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/multitouch/playground/page-data.json",
-    "revision": "8b6803fb77faf56155832d671545addb"
+    "revision": "848a712e552e6900bc48b1e08dd88a07"
   },
   {
     "url": "page-data/services/potentiometer/page-data.json",
@@ -687,7 +687,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/potentiometer/playground/page-data.json",
-    "revision": "75a6529f0f782e7a8a8075256ec23764"
+    "revision": "5daaeba2beb3552ade69a056fe362a84"
   },
   {
     "url": "page-data/services/power/page-data.json",
@@ -695,7 +695,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/power/playground/page-data.json",
-    "revision": "cfb5fbedc3e344794e6b957e54021417"
+    "revision": "d50172f0e4e73ac7f291d6cfe4fc940b"
   },
   {
     "url": "page-data/services/pressurebutton/page-data.json",
@@ -703,7 +703,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/pressurebutton/playground/page-data.json",
-    "revision": "5c781cbaa9166831f6ad789de134d9e7"
+    "revision": "0e2f9ce3a5ddb9d98145f0cec99f5423"
   },
   {
     "url": "page-data/services/prototest/page-data.json",
@@ -711,7 +711,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/prototest/playground/page-data.json",
-    "revision": "775014264cd2b52f1d4a2b9a710c31a2"
+    "revision": "20d61ccd7dcf51f69a8108ffb4c8d92a"
   },
   {
     "url": "page-data/services/proxy/page-data.json",
@@ -719,7 +719,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/proxy/playground/page-data.json",
-    "revision": "25c1e8e4c4a14a3d13ffbed25c73b8af"
+    "revision": "bba73de03a78c1f9cefd4e85b2b3174f"
   },
   {
     "url": "page-data/services/pulseoximeter/page-data.json",
@@ -727,7 +727,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/pulseoximeter/playground/page-data.json",
-    "revision": "4690bad27159163a28d3250139004402"
+    "revision": "6a2cab472a2a3b45d31ca55ae812b56f"
   },
   {
     "url": "page-data/services/raingauge/page-data.json",
@@ -735,7 +735,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/raingauge/playground/page-data.json",
-    "revision": "34f430efee94f2e1732668cfd3ae80a3"
+    "revision": "b4c4e723cc194fd618095edb1caa9b2c"
   },
   {
     "url": "page-data/services/realtimeclock/page-data.json",
@@ -743,7 +743,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/realtimeclock/playground/page-data.json",
-    "revision": "f50bbbfffc2ece161111236e810c876a"
+    "revision": "e34d66abf221fe2fa5c4bc9bf7533229"
   },
   {
     "url": "page-data/services/reflectedlight/page-data.json",
@@ -751,7 +751,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/reflectedlight/playground/page-data.json",
-    "revision": "e592bfcfd7228f3ddbaf77f591af089d"
+    "revision": "414ec8e26683193ee6dda639213393da"
   },
   {
     "url": "page-data/services/relay/page-data.json",
@@ -759,7 +759,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/relay/playground/page-data.json",
-    "revision": "f36f57530479b08ec3ef9e6726383b6a"
+    "revision": "f983c86ecdcfc7e059a94798d72e0636"
   },
   {
     "url": "page-data/services/rng/page-data.json",
@@ -767,7 +767,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/rng/playground/page-data.json",
-    "revision": "7c5377dda0e127b9954d8e22ed8eeca9"
+    "revision": "2716aecc53ac38550dca9dc6dcc4e08d"
   },
   {
     "url": "page-data/services/rolemanager/page-data.json",
@@ -775,7 +775,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/rolemanager/playground/page-data.json",
-    "revision": "bd2256d1f9da749653eb65794b5a439e"
+    "revision": "97c62f57221b5b06a0851496c48b6b93"
   },
   {
     "url": "page-data/services/rotaryencoder/page-data.json",
@@ -783,7 +783,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/rotaryencoder/playground/page-data.json",
-    "revision": "a94f06e4eaf99b78f5fa183022760f57"
+    "revision": "116f7bf442d73be81953faad1aedeab3"
   },
   {
     "url": "page-data/services/rover/page-data.json",
@@ -791,7 +791,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/rover/playground/page-data.json",
-    "revision": "c6b85dc5e9baffe4adb26b4613b76677"
+    "revision": "fb424a934646b5d3cb367f167e63f176"
   },
   {
     "url": "page-data/services/sensoraggregator/page-data.json",
@@ -799,7 +799,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/sensoraggregator/playground/page-data.json",
-    "revision": "53d44c8c377bf08ef9c8617589f845db"
+    "revision": "67fdfb48c89ff4a215abe5a0f3b86977"
   },
   {
     "url": "page-data/services/servo/page-data.json",
@@ -807,7 +807,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/servo/playground/page-data.json",
-    "revision": "34bf9a8fb18abc6a9e608de7ea7b9d2f"
+    "revision": "001f31f52dafa66a27135bb18b864adf"
   },
   {
     "url": "page-data/services/settings/page-data.json",
@@ -815,7 +815,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/settings/playground/page-data.json",
-    "revision": "00d274876fdcde22a1f8ee8369352c3c"
+    "revision": "faed79c462e8d38188f81a4b3e560670"
   },
   {
     "url": "page-data/services/sevensegmentdisplay/page-data.json",
@@ -823,7 +823,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/sevensegmentdisplay/playground/page-data.json",
-    "revision": "903eedc4de3ee9749f92adcdcc5f74e0"
+    "revision": "e105b263b2bc307c7a586ac8826f2654"
   },
   {
     "url": "page-data/services/soilmoisture/page-data.json",
@@ -831,7 +831,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/soilmoisture/playground/page-data.json",
-    "revision": "ed41d05226c196c953909767bbd99d51"
+    "revision": "6848e6984181125624f2a22a908f5871"
   },
   {
     "url": "page-data/services/solenoid/page-data.json",
@@ -839,7 +839,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/solenoid/playground/page-data.json",
-    "revision": "7f0087dad734d07936e40763559bcb01"
+    "revision": "82f867b8ab91259d7457f54f1fc08628"
   },
   {
     "url": "page-data/services/soundlevel/page-data.json",
@@ -847,7 +847,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/soundlevel/playground/page-data.json",
-    "revision": "f00e7f51362afea478d0e9d9053438be"
+    "revision": "6e064e7e6e313971740da49743b47d4c"
   },
   {
     "url": "page-data/services/soundplayer/page-data.json",
@@ -855,7 +855,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/soundplayer/playground/page-data.json",
-    "revision": "009f87583ad970d5e9465f11e8c2c48a"
+    "revision": "a716e12e177db5065a55fe0fec8a9a51"
   },
   {
     "url": "page-data/services/soundspectrum/page-data.json",
@@ -863,15 +863,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/soundspectrum/playground/page-data.json",
-    "revision": "66a3761b454bd12ba3e207feeaa6e73a"
+    "revision": "4ee3e0c02b091479a355d48730cd1963"
   },
   {
     "url": "page-data/services/speechsynthesis/page-data.json",
-    "revision": "0768e4522a31b30ac77fc00af50ea006"
+    "revision": "9050299d0a9ddc5bd0bc7e34695e8503"
   },
   {
     "url": "page-data/services/speechsynthesis/playground/page-data.json",
-    "revision": "94e2f11e3b1572323fb2ee22a2ee63c5"
+    "revision": "251691c6b7906c7393c5fbd67e0b220d"
   },
   {
     "url": "page-data/services/switch/page-data.json",
@@ -879,7 +879,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/switch/playground/page-data.json",
-    "revision": "bd684ea6f478736e7bdffaa5f2943aca"
+    "revision": "275f07816b3510757c72371412e3f68d"
   },
   {
     "url": "page-data/services/tcp/page-data.json",
@@ -887,7 +887,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/tcp/playground/page-data.json",
-    "revision": "fc793461bd0924681c7440c1a7c99fc0"
+    "revision": "f52ca8dc3b9e2d6fe9a2162d0b4a79ca"
   },
   {
     "url": "page-data/services/thermocouple/page-data.json",
@@ -895,7 +895,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/thermocouple/playground/page-data.json",
-    "revision": "79c5c6c5aa7ee5eeace81a0808f222f0"
+    "revision": "44499578bce7a32f68529ebb2262ff1a"
   },
   {
     "url": "page-data/services/thermometer/page-data.json",
@@ -903,7 +903,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/thermometer/playground/page-data.json",
-    "revision": "29a59a2deaafaa4a34bb983211905d56"
+    "revision": "4e1975123e652b4bfda0c50d0d7d8d86"
   },
   {
     "url": "page-data/services/trafficlight/page-data.json",
@@ -911,7 +911,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/trafficlight/playground/page-data.json",
-    "revision": "da2966c394e08f03bf4bd9db0a68bd10"
+    "revision": "70ab0b29b2cacc0d249f4c8acb3a2073"
   },
   {
     "url": "page-data/services/tvoc/page-data.json",
@@ -919,7 +919,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/tvoc/playground/page-data.json",
-    "revision": "f13d06481f83b408871d6fca95a1237d"
+    "revision": "6a0d404e5de184cdc6cf6c5be07ac4cb"
   },
   {
     "url": "page-data/services/uniquebrain/page-data.json",
@@ -927,7 +927,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/uniquebrain/playground/page-data.json",
-    "revision": "29edb16d283be69f711fd93679d57723"
+    "revision": "4534b5be40add0bccb42add70259608c"
   },
   {
     "url": "page-data/services/uvindex/page-data.json",
@@ -935,15 +935,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/uvindex/playground/page-data.json",
-    "revision": "46dfee4e9d3da93674c1b6ad57a81e3c"
+    "revision": "9105b87076454efc062f4fc755d2490a"
   },
   {
     "url": "page-data/services/verifiedtelemetrysensor/page-data.json",
-    "revision": "d63d1e0ff67b3b5ee3b92abf080cc402"
+    "revision": "4af3b74a90965703854ba257ef90abda"
   },
   {
     "url": "page-data/services/verifiedtelemetrysensor/playground/page-data.json",
-    "revision": "ac004f30d071a6f6d0a5ecd8e4fe7859"
+    "revision": "7754d5a5c9d18c1440660c65ba3ff99f"
   },
   {
     "url": "page-data/services/vibration/page-data.json",
@@ -951,7 +951,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/vibration/playground/page-data.json",
-    "revision": "b9ebbbe25c133eeb05a078e5a2a25348"
+    "revision": "4403a42bddc63ef424f3c1d4dca9e432"
   },
   {
     "url": "page-data/services/waterlevel/page-data.json",
@@ -959,7 +959,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/waterlevel/playground/page-data.json",
-    "revision": "54b1e2a847d11ce52bf43ca144246efe"
+    "revision": "8edfada179ca8cc1bd1102f1a5cc9c1e"
   },
   {
     "url": "page-data/services/weightscale/page-data.json",
@@ -967,7 +967,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/weightscale/playground/page-data.json",
-    "revision": "cbf015af3414f81409822599dfcd48fc"
+    "revision": "6c7b71fd87e67e76bbb2bc97a9652f9e"
   },
   {
     "url": "page-data/services/wifi/page-data.json",
@@ -975,7 +975,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/wifi/playground/page-data.json",
-    "revision": "f7e4f8a7fda3e7d315f51cc4b51a7f14"
+    "revision": "4fce68c3b9335d6168074e964d014b49"
   },
   {
     "url": "page-data/services/winddirection/page-data.json",
@@ -983,7 +983,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/winddirection/playground/page-data.json",
-    "revision": "cc116777f25f20eaa70a9dcb49ede87f"
+    "revision": "77cd004b3431f2550a680c269feac1c1"
   },
   {
     "url": "page-data/services/windspeed/page-data.json",
@@ -991,7 +991,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/windspeed/playground/page-data.json",
-    "revision": "6661093af0098f2c6dfaa06001e9e2be"
+    "revision": "2ba424c7c411f3e670098288d7745f4d"
   },
   {
     "url": "component---src-templates-device-company-tsx-8f1a60a7dae11d1c6865.js"
@@ -1384,7 +1384,7 @@ self.__precacheManifest = [
     "revision": "dd47d8f9eb16d9a2275499b60df27565"
   },
   {
-    "url": "component---src-pages-tools-packet-inspector-tsx-8be8af453d33df2d86e8.js"
+    "url": "component---src-pages-tools-packet-inspector-tsx-3fbaf145a00a7fe10987.js"
   },
   {
     "url": "page-data/tools/packet-inspector/page-data.json",
@@ -1547,7 +1547,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-b78f1577d6f2f65d0585.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-91912d532a2b8f24c9a8.js`))) {
     return await fetch(event.request)
   }
 

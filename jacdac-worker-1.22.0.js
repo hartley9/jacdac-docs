@@ -43,6 +43,17 @@ var SystemCmd;
      * No args. Request to calibrate a sensor. The report indicates the calibration is done.
      */
     SystemCmd[SystemCmd["Calibrate"] = 2] = "Calibrate";
+    /**
+     * This report may be emitted by a server in response to a command (action or register operation)
+     * that it does not understand.
+     * The `service_command` and `packet_crc` fields are copied from the command packet that was unhandled.
+     * Note that it's possible to get an ACK, followed by such an error report.
+     *
+     * ```
+     * const [serviceCommand, packetCrc] = jdunpack<[number, number]>(buf, "u16 u16")
+     * ```
+     */
+    SystemCmd[SystemCmd["CommandNotImplemented"] = 3] = "CommandNotImplemented";
 })(SystemCmd || (SystemCmd = {}));
 var SystemReg;
 (function (SystemReg) {
@@ -244,6 +255,20 @@ var SystemEvent;
     SystemEvent[SystemEvent["Neutral"] = 7] = "Neutral";
 })(SystemEvent || (SystemEvent = {}));
 // Service: Base service
+var BaseCmd;
+(function (BaseCmd) {
+    /**
+     * This report may be emitted by a server in response to a command (action or register operation)
+     * that it does not understand.
+     * The `service_command` and `packet_crc` fields are copied from the command packet that was unhandled.
+     * Note that it's possible to get an ACK, followed by such an error report.
+     *
+     * ```
+     * const [serviceCommand, packetCrc] = jdunpack<[number, number]>(buf, "u16 u16")
+     * ```
+     */
+    BaseCmd[BaseCmd["CommandNotImplemented"] = 3] = "CommandNotImplemented";
+})(BaseCmd || (BaseCmd = {}));
 var BaseReg;
 (function (BaseReg) {
     /**
@@ -1056,6 +1081,7 @@ var ControlAnnounceFlags;
     ControlAnnounceFlags[ControlAnnounceFlags["SupportsBroadcast"] = 512] = "SupportsBroadcast";
     ControlAnnounceFlags[ControlAnnounceFlags["SupportsFrames"] = 1024] = "SupportsFrames";
     ControlAnnounceFlags[ControlAnnounceFlags["IsClient"] = 2048] = "IsClient";
+    ControlAnnounceFlags[ControlAnnounceFlags["SupportsReliableCommands"] = 4096] = "SupportsReliableCommands";
 })(ControlAnnounceFlags || (ControlAnnounceFlags = {}));
 var ControlCmd;
 (function (ControlCmd) {
@@ -1124,7 +1150,34 @@ var ControlCmd;
      * No args. Force client device into proxy mode.
      */
     ControlCmd[ControlCmd["Proxy"] = 133] = "Proxy";
+    /**
+     * Argument: seed uint32_t. This opens a pipe to the device to provide an alternative, reliable transport of actions
+     * (and possibly other commands).
+     * The commands are wrapped as pipe data packets.
+     * Multiple invocations of this command with the same `seed` are dropped
+     * (and thus the command is not `unique`); otherwise `seed` carries no meaning
+     * and should be set to a random value by the client.
+     * Note that while the commands sends this way are delivered exactly once, the
+     * responses might get lost.
+     *
+     * ```
+     * const [seed] = jdunpack<[number]>(buf, "u32")
+     * ```
+     */
+    ControlCmd[ControlCmd["ReliableCommands"] = 134] = "ReliableCommands";
+    /**
+     * report ReliableCommands
+     * ```
+     * const [commands] = jdunpack<[Uint8Array]>(buf, "b[12]")
+     * ```
+     */
 })(ControlCmd || (ControlCmd = {}));
+/**
+ * pipe_command WrappedCommand
+ * ```
+ * const [serviceSize, serviceIndex, serviceCommand, payload] = jdunpack<[number, number, number, Uint8Array]>(buf, "u8 u8 u16 b")
+ * ```
+ */
 var ControlReg;
 (function (ControlReg) {
     /**
