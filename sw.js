@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-d6366b42e7c37d7b9e1d.js"
+    "url": "webpack-runtime-f31ff95fb97e8ab8ae80.js"
   },
   {
     "url": "styles.b5bdb1524215100f4d1f.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "e118bccc459d3843322a4e7d4b647fa3"
+    "revision": "95331240e5bd40270bcf528797cce32a"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -60,15 +60,15 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/1530881449.json",
-    "revision": "d9de1fee289d898588f9bc068c7ecbb3"
+    "revision": "6f2135e870c1b9c8b64208e3633f392b"
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "dfc13970ebfe8a0b750cf5f1454bddb4"
+    "revision": "98713aa7f37fb70d250d75fc989a5012"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "7f453a7d08fbcf39c77bd1da87c6ae46"
+    "revision": "1e65c1705e760d5b5fc41bae463fa9b0"
   },
   {
     "url": "page-data/sq/d/3211070344.json",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "e4a7b9747a9911f3f744b7ff712c23e9"
+    "revision": "e3580ddcd31c36432449557f106492df"
   },
   {
     "url": "page-data/sq/d/4292774041.json",
-    "revision": "6ced918f080aa790547c945a1f130615"
+    "revision": "d48b39c94996b6203ea74174630bcea0"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "b7fbd831c859efbfd651e29a1fc0e18a"
+    "revision": "1236d46137058e70dc4adcfc0e94579a"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -272,7 +272,7 @@ self.__precacheManifest = [
     "revision": "41a647cea93e373581e82392c2e3a669"
   },
   {
-    "url": "b4041f57cede5b7e3b1bea304d75a219087809dc-2ee6043689379b1553ef.js"
+    "url": "b4041f57cede5b7e3b1bea304d75a219087809dc-632bec25366f7f8f6618.js"
   },
   {
     "url": "8f8350e8e5a1ed189588272f29a5455a64d2ce8f-d420962b9664ffadc49d.js"
@@ -1012,7 +1012,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/devices/microbit/foundation/microbitv2/page-data.json",
-    "revision": "f10a3b6d7e5ca4247264ceadd9f5ba0e"
+    "revision": "15fb82a1d8b971cbe3a4c85c1efacc81"
   },
   {
     "url": "page-data/devices/microsoft/page-data.json",
@@ -1088,19 +1088,19 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/devices/microsoft/research/jmbrainesp3248v02/page-data.json",
-    "revision": "640024f6f71f9694a73db5bb68ab0a91"
+    "revision": "f88dcb7250d6a57e4d8d223baafb20e3"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbrainesp3248v03/page-data.json",
-    "revision": "91f29513510ebdeb808dce46dc60cce9"
+    "revision": "2b11967406c7fffc04829a0ad89d16dd"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbrainf441v02/page-data.json",
-    "revision": "34726cbf7c9c9f8e566ebd8c28440fba"
+    "revision": "5eb289afbb148a7daea93d6b9dfd185e"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbrainrp204059v01/page-data.json",
-    "revision": "9f3455789f704a8f41cc3c68d5aa2af1"
+    "revision": "ab60cebcd58fdf9e649cd0bbca25000b"
   },
   {
     "url": "page-data/devices/microsoft/research/jmbutton10v13/page-data.json",
@@ -1447,7 +1447,7 @@ self.__precacheManifest = [
     "revision": "76e66523364c6d2563cd0eb039bea415"
   },
   {
-    "url": "component---src-pages-tools-updater-tsx-d30cbe3b14a8d289c7d0.js"
+    "url": "component---src-pages-tools-updater-tsx-93d101ea3c1180060576.js"
   },
   {
     "url": "page-data/tools/updater/page-data.json",
@@ -1547,7 +1547,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-8c81690ca149bbf02458.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-2f5856753fae8156c3fd.js`))) {
     return await fetch(event.request)
   }
 
