@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-tools-enclosure-mdx",
     "path": "/tools/enclosure/",
-    "result": {"pageContext":{"frontmatter":{"title":"Enclosure generator","f   ullWidth":true}}},
+    "result": {"pageContext":{"frontmatter":{"title":"Enclosure generator","fullWidth":true,"hideToc":true}}},
     "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
