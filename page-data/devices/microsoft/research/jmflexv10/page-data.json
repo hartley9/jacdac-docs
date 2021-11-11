@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmflexv10/",
     "result": {"pageContext":{"node":{"id":"microsoft-research-jmflexv10","name":"JM Flex","company":"Microsoft Research","description":"","repo":"https://github.com/microsoft/jacdac-msr-modules","link":"https://github.com/microsoft/jacdac-msr-modules","services":[524797638],"productIdentifiers":[840841542],"tags":["kit"],"version":"1.0"},"title":"JM Flex"}},
-    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
+    "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

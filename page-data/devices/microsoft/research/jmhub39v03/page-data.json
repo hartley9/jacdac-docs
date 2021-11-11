@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmhub39v03/",
     "result": {"pageContext":{"node":{"id":"microsoft-research-jmhub39v03","name":"JM Hub","company":"Microsoft Research","repo":"","services":[],"productIdentifiers":[917230668],"version":"0.3","designIdentifier":"39","status":"experimental"},"title":"JM Hub"}},
-    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
+    "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

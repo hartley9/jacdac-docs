@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-service-tsx",
     "path": "/services/rover/",
     "result": {"pageContext":{"classIdentifier":435474539,"source":"# Rover\n\nA roving robot.\n\n    identifier: 0x19f4d06b\n    extends: _sensor\n\n## Registers\n\n    ro kinematics @ reading {\n        x: i16.16 cm\n        y: i16.16 cm\n        vx: i16.16 cm/s\n        vy: i16.16 cm/s\n        heading: i16.16 °\t\t\n    }\n    \nThe current position and orientation of the robot.\n","title":"Rover"}},
-    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
+    "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

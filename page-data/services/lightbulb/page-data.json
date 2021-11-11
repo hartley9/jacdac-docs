@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-service-tsx",
     "path": "/services/lightbulb/",
     "result": {"pageContext":{"classIdentifier":480970060,"source":"# Light bulb\n\n    identifier: 0x1cab054c\n    group: light\n\nA light bulb controller.\n\n## Registers\n\n    rw brightness: u0.16 / @ intensity\n\nIndicates the brightness of the light bulb. Zero means completely off and 0xffff means completely on.\nFor non-dimmeable lights, the value should be clamp to 0xffff for any non-zero value.\n\n    const dimmeable?: bool @ 0x180\n\nIndicates if the light supports dimming.\n\n## Events\n\n    event on @ active\n\nEmitted when the light brightness is greater than 0.\n\n    event off @ inactive\n\nEmitted when the light is completely off with brightness to 0.\n","title":"Light bulb"}},
-    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
+    "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

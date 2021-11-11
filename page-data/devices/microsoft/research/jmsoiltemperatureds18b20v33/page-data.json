@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmsoiltemperatureds18b20v33/",
     "result": {"pageContext":{"node":{"id":"microsoft-research-jmsoiltemperatureds18b20v33","name":"JM Soil Temperature DS18B20","company":"Microsoft Research","description":"JM Soil Temperature DS18B20 v3.3","repo":"https://github.com/microsoft/jacdac-msr-modules","services":[337754823],"productIdentifiers":[1039295899],"version":"3.3"},"title":"JM Soil Temperature DS18B20"}},
-    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
+    "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmrelaymach01v10/",
     "result": {"pageContext":{"node":{"id":"microsoft-research-jmrelaymach01v10","name":"JM Relay MACH-0.1","company":"Microsoft Research","description":"JM Relay MACH-0.1","repo":"https://github.com/microsoft/jacdac-msr-modules","services":[406840918],"productIdentifiers":[900132124],"version":"1.0"},"title":"JM Relay MACH-0.1"}},
-    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
+    "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

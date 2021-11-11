@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmaccelerometerv20/",
     "result": {"pageContext":{"node":{"id":"microsoft-research-jmaccelerometerv20","name":"JM Accelerometer v2.0","company":"Microsoft Research","description":"A 3-axis accelerometer. 16G range.","repo":"https://github.com/microsoft/jacdac-msr-modules","link":"https://github.com/microsoft/jacdac-msr-modules","services":[521405449],"productIdentifiers":[1020174761],"status":"deprecated"},"title":"JM Accelerometer v2.0"}},
-    "staticQueryHashes": ["1530881449","249313281","2744294623","3211070344","413816803","4292774041","63159454"]}
+    "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}
