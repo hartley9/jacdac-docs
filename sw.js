@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-06d15ebd51f048cd635f.js"
+    "url": "webpack-runtime-2c114caea8ac2bd0f99a.js"
   },
   {
     "url": "styles.7301205bd36213179ceb.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "c7a247ee8894a0bc7063ce8308016373"
+    "revision": "adcae4a72f4c5ddd627337c048b4a124"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -64,23 +64,23 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "0513f77ff82052f088fc868d7f719e5d"
+    "revision": "09dbaa161923b3c0311dd117c419e70d"
   },
   {
     "url": "page-data/sq/d/2648275777.json",
-    "revision": "2a37c9d7ea6f99bf055a540547e335b1"
+    "revision": "c83953a647c36ba45823fc092cac6cf1"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "9a41fcc40f14d5a83f58d77e8841ea3f"
+    "revision": "9064ff7ab99439246e4ff05076dd161e"
   },
   {
     "url": "page-data/sq/d/3823652713.json",
-    "revision": "2615c76e61de31bf2d9fccd3ba42772a"
+    "revision": "d55175e54fb1c32caeac27b134913e08"
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "a1dbc832e7ed0985d06432bbdbd12aaa"
+    "revision": "c4c9964cf614f1276f9f8050dac27473"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "60746128035dfb9997ee0e2ee1482dee"
+    "revision": "532a2ae7d39875aaafd8c26c77b8880a"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1551,7 +1551,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-b67872cc90be7f43e1cb.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-bbc3dda3d7d0e7171896.js`))) {
     return await fetch(event.request)
   }
 
