@@ -19,7 +19,7 @@
     },
     {
       "code": 384,
-      "name": "error",
+      "name": "drift",
       "flags": 2,
       "packf": "u16.16"
     },

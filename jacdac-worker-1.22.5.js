@@ -527,7 +527,7 @@ var AzureIotHubHealthConnectionStatus;
 var AzureIotHubHealthReg;
 (function (AzureIotHubHealthReg) {
     /**
-     * Read-only string (bytes). Something like `my-iot-hub.azure-devices.net`; empty string when not properly configured
+     * Read-only string (bytes). Something like `my-iot-hub.azure-devices.net` if available.
      *
      * ```
      * const [hubName] = jdunpack<[string]>(buf, "s")
@@ -535,7 +535,7 @@ var AzureIotHubHealthReg;
      */
     AzureIotHubHealthReg[AzureIotHubHealthReg["HubName"] = 384] = "HubName";
     /**
-     * Read-only string (bytes). Device identifier in Azure Iot Hub
+     * Read-only string (bytes). Device identifier in Azure Iot Hub if available.
      *
      * ```
      * const [hubDeviceId] = jdunpack<[string]>(buf, "s")
@@ -3083,10 +3083,10 @@ var RealTimeClockReg;
      * Read-only s u16.16 (uint32_t). Time drift since the last call to the ``set_time`` command.
      *
      * ```
-     * const [error] = jdunpack<[number]>(buf, "u16.16")
+     * const [drift] = jdunpack<[number]>(buf, "u16.16")
      * ```
      */
-    RealTimeClockReg[RealTimeClockReg["Error"] = 384] = "Error";
+    RealTimeClockReg[RealTimeClockReg["Drift"] = 384] = "Drift";
     /**
      * Constant ppm u16.16 (uint32_t). Error on the clock, in parts per million of seconds.
      *
