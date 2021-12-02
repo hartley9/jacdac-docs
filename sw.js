@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "57c5bf8fb50bbde8f319f66771e22c63"
+    "revision": "9ee3fedc5fa58eb0e0abfe6861c95799"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -64,23 +64,23 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "8943ad02214ed861ddbec92edb8c27f9"
+    "revision": "2d2fc96708f3bb4c2c477c14276196a6"
   },
   {
     "url": "page-data/sq/d/2648275777.json",
-    "revision": "2a37c9d7ea6f99bf055a540547e335b1"
+    "revision": "c83953a647c36ba45823fc092cac6cf1"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "c4c3bee7f4b637eaa5ffe357bd16e382"
+    "revision": "5011a17e10e44972d75a9a3bbb73cbc0"
   },
   {
     "url": "page-data/sq/d/3823652713.json",
-    "revision": "809580d35cada12045ddf546aeee0329"
+    "revision": "52e3dc623b48d6f1f97ec761c1142b20"
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "7c6e3e513e08ae77d5c6786bb33be626"
+    "revision": "c8d6e196b7e57869b456c94113b12253"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "8a92e5144b0cb6f90e2b2175edb381d2"
+    "revision": "3efb1905fa068498e50bd949962cac53"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -571,11 +571,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/infrastructure/page-data.json",
-    "revision": "2dabea048079d62deb3e6cad473d5eb5"
+    "revision": "49ac67c044340addcdb94b04da72db37"
   },
   {
     "url": "page-data/services/infrastructure/playground/page-data.json",
-    "revision": "237ad037135646cd91b57bd5e80ca88c"
+    "revision": "4c15ae6bb7acf89ab6dbdb0bc5b647f7"
   },
   {
     "url": "page-data/services/joystick/page-data.json",
@@ -931,7 +931,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/services/uniquebrain/page-data.json",
-    "revision": "e35c42b33b14ad29566daae9fafbe8e2"
+    "revision": "8f9b1b623c256ced44ec83ff16d768cb"
   },
   {
     "url": "page-data/services/uniquebrain/playground/page-data.json",
@@ -1566,7 +1566,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-a54525c47c91b7bc6db0.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-52a23ccff633ddb57447.js`))) {
     return await fetch(event.request)
   }
 
