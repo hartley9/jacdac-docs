@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-031b0f83346e8e837294.js"
+    "url": "webpack-runtime-402cbc5abc3003ef580f.js"
   },
   {
     "url": "styles.cf776cbbb2b3996bedba.css"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "9ee3fedc5fa58eb0e0abfe6861c95799"
+    "revision": "e68f49138aaacba1fbb22d5d76662e51"
   },
   {
     "url": "static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"
@@ -64,23 +64,23 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/249313281.json",
-    "revision": "2d2fc96708f3bb4c2c477c14276196a6"
+    "revision": "1365b09b43efe4a5e74176add3806d32"
   },
   {
     "url": "page-data/sq/d/2648275777.json",
-    "revision": "c83953a647c36ba45823fc092cac6cf1"
+    "revision": "2a37c9d7ea6f99bf055a540547e335b1"
   },
   {
     "url": "page-data/sq/d/2744294623.json",
-    "revision": "5011a17e10e44972d75a9a3bbb73cbc0"
+    "revision": "d65b681010de796641da2ecc7a4d95a7"
   },
   {
     "url": "page-data/sq/d/3823652713.json",
-    "revision": "52e3dc623b48d6f1f97ec761c1142b20"
+    "revision": "d2cbfb497eba92255c0f80d3ba8bb414"
   },
   {
     "url": "page-data/sq/d/413816803.json",
-    "revision": "c8d6e196b7e57869b456c94113b12253"
+    "revision": "93067289fa4e257ba3b41f88da96f2f2"
   },
   {
     "url": "page-data/sq/d/63159454.json",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "3efb1905fa068498e50bd949962cac53"
+    "revision": "cb3d7305d2e74dffbd2d428b2848d4e0"
   },
   {
     "url": "component---src-pages-404-tsx-e129daa4016981e0d8aa.js"
@@ -1308,7 +1308,7 @@ self.__precacheManifest = [
     "revision": "9d54b6e930a9cf1b5ab38d1904080b93"
   },
   {
-    "url": "component---src-pages-tools-device-qr-code-tsx-ae4dc21314c8799cd438.js"
+    "url": "component---src-pages-tools-device-qr-code-tsx-65264f4106aac98dba0b.js"
   },
   {
     "url": "page-data/tools/device-qr-code/page-data.json",
@@ -1566,7 +1566,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/jacdac-docs/app-52a23ccff633ddb57447.js`))) {
+  if (!resources || !(await caches.match(`/jacdac-docs/app-e16bb0f43faf4ee711f6.js`))) {
     return await fetch(event.request)
   }
 
