@@ -8,7 +8,7 @@
     "_base"
   ],
   "notes": {
-    "short": "A service that tags a device as purely infrastructure device.\n\n\nA Jacdac user interface can ignore any device that hosts this service."
+    "short": "A service that tags a device as purely infrastructure device.\n\n\nA Jacdac user interface can hide any device that hosts this service."
   },
   "classIdentifier": 504728043,
   "enums": {},

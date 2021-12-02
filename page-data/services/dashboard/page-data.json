@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-service-tsx",
+    "path": "/services/dashboard/",
+    "result": {"pageContext":{"classIdentifier":468029703,"source":"# Dashboard\n\n    identifier: 0x1be59107\n    tags: infrastructure\n\nDevice that interacts, configure or inspects with the services on the bus. While a dashboard is on the bus, heuristics like device reset should be disabled.","title":"Dashboard"}},
+    "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}
