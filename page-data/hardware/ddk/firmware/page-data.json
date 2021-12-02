@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-hardware-ddk-firmware-mdx",
     "path": "/hardware/ddk/firmware/",
-    "result": {"pageContext":{"frontmatter":{}}},
+    "result": {"pageContext":{"frontmatter":{"title":"Firmware"}}},
     "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}
