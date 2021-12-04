@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-device-tsx",
+    "path": "/devices/microsoft/research/jmuviilluminance65v3665v36/",
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmuviilluminance65v3665v36","name":"JM UVI/Illuminance 65 v3.6","company":"Microsoft Research","description":"JM UVI/Illuminance 65 v3.6","repo":"https://github.com/microsoft/jacdac-msr-modules","services":[510577394,527306128],"productIdentifiers":[1021617002],"version":"3.6","designIdentifier":"65"},"title":"JM UVI/Illuminance 65 v3.6"}},
+    "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}
