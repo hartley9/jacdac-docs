@@ -1,5 +1,5 @@
 import { SMap } from "../../../jacdac-ts/src/jdom/utils"
-import Blockly, { Block, Workspace } from "blockly"
+import Blockly, { Block, FieldVariable, Workspace } from "blockly"
 import { BlockWithServices } from "./WorkspaceContext"
 import { paletteColorByIndex } from "./dsl/palette"
 
@@ -146,6 +146,20 @@ export function resolveBlockDefinition<T extends BlockDefinition>(
 ) {
     const b = Blockly.Blocks[type] as ServiceBlockDefinitionFactory<T>
     return b?.jacdacDefinition
+}
+
+export function resolveServiceId(newSourceBlock: Block) {
+    const roleInput = newSourceBlock?.inputList[0]
+    const roleField = roleInput?.fieldRow.find(
+        f => f.name === "service" && f instanceof FieldVariable
+    ) as FieldVariable
+    if (roleField) {
+        const xml = document.createElement("xml")
+        roleField?.toXml(xml)
+        const newSensor = roleField?.getVariable()?.getId()
+        return newSensor
+    }
+    return undefined
 }
 
 export interface EventBlockDefinition extends ServiceBlockDefinition {

@@ -22,6 +22,8 @@ import { FileSystemDirectory } from "../fs/fsdom"
 import ReactField from "./fields/ReactField"
 import useWorkspaceEvent from "./useWorkspaceEvent"
 import bus from "../../jacdac/providerbus"
+import JDBus from "../../../jacdac-ts/src/jdom/bus"
+import { resolveServiceId } from "./toolbox"
 
 export class WorkspaceServices extends JDEventSource {
     static readonly WORKSPACE_CHANGE = "workspaceChange"
@@ -33,8 +35,9 @@ export class WorkspaceServices extends JDEventSource {
     private _runner: VMProgramRunner
     private _roleManager: RoleManager
 
-    constructor() {
+    constructor(public readonly bus: JDBus) {
         super()
+
     }
 
     get workspaceJSON() {
@@ -241,19 +244,9 @@ export function WorkspaceProvider(props: {
         }
         return undefined
     }
-    const resolveServiceId = () => {
+    const resolveService = () => {
         const newSourceBlock = field.getSourceBlock()
-        const roleInput = newSourceBlock?.inputList[0]
-        const roleField = roleInput?.fieldRow.find(
-            f => f.name === "service" && f instanceof FieldVariable
-        ) as FieldVariable
-        if (roleField) {
-            const xml = document.createElement("xml")
-            roleField?.toXml(xml)
-            const newSensor = roleField?.getVariable()?.getId()
-            return newSensor
-        }
-        return undefined
+        return resolveServiceId(newSourceBlock)
     }
     const resolveTwinService = () => {
         const newRoleService = role && roleManager?.service(role)
@@ -263,7 +256,7 @@ export function WorkspaceProvider(props: {
     }
 
     const [role, setRole] = useState<string>(resolveRole())
-    const [serviceId, setServiceId] = useState<string>(resolveServiceId())
+    const [serviceId, setServiceId] = useState<string>(resolveService())
     const [twinService, setTwinService] = useState<JDService>(
         resolveTwinService()
     )
@@ -279,7 +272,7 @@ export function WorkspaceProvider(props: {
             const newSourceBlock = field.getSourceBlock()
             setSourceBlock(newSourceBlock)
             setRole(resolveRole())
-            setServiceId(resolveServiceId())
+            setServiceId(resolveService())
             setFlyout(!!newSourceBlock?.isInFlyout)
         })
     }, [field, workspace, runner])

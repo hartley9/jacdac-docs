@@ -13,7 +13,6 @@ import {
 } from "../../../jacdac-ts/src/jdom/constants"
 import { arrayConcatMany, toMap } from "../../../jacdac-ts/src/jdom/utils"
 import RoleManager from "../../../jacdac-ts/src/jdom/rolemanager"
-import bus from "../../jacdac/providerbus"
 import useRoleManager from "../hooks/useRoleManager"
 import useLocalStorage from "../hooks/useLocalStorage"
 import { BlockWarning, collectWarnings } from "./blockwarning"
@@ -50,12 +49,8 @@ import {
     DslWorkspaceFileMessage,
 } from "./dsl/iframedsl"
 import { AllOptions } from "./fields/IFrameDataChooserField"
-import {
-    dashify,
-    humanify,
-} from "../../../jacdac-ts/jacdac-spec/spectool/jdspec"
-import { isSensor } from "../../../jacdac-ts/src/jdom/spec"
 import { toServiceName, toServiceType } from "./dsl/servicesbase"
+import useBus from "../../jacdac/useBus"
 
 export interface BlockProps {
     editorId: string
@@ -100,6 +95,7 @@ export function BlockProvider(props: {
     onBeforeSaveWorkspaceFile?: (file: WorkspaceFile) => void
     children: ReactNode
 }) {
+    const bus = useBus()
     const { storageKey, dsls, children, onBeforeSaveWorkspaceFile } = props
     const { setError } = useContext(AppContext)
     const { fileSystem } = useContext(FileSystemContext)
@@ -233,7 +229,7 @@ export function BlockProvider(props: {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const wws = workspace as unknown as WorkspaceWithServices
         if (wws && !wws.jacdacServices) {
-            wws.jacdacServices = new WorkspaceServices()
+            wws.jacdacServices = new WorkspaceServices(bus)
             wws.jacdacServices.roleManager = roleManager
         }
     }, [workspace])

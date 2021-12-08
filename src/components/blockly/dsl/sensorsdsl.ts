@@ -8,12 +8,14 @@ import {
     VariableInputDefinition,
     sensorsColour,
     SENSOR_BLOCK,
-    SeparatorDefinition,
     NumberInputDefinition,
     TextInputDefinition,
     DataColumnInputDefinition,
     OptionsInputDefinition,
     calcOptions,
+    StatementInputDefinition,
+    LabelDefinition,
+    DummyInputDefinition,
 } from "../toolbox"
 import BlockDomainSpecificLanguage, {
     CreateBlocksOptions,
@@ -29,9 +31,13 @@ import { Block } from "blockly"
 import postTransformData from "./workers/data.proxy"
 import DataColumnChooserField from "../fields/DataColumnChooserField"
 import { tidyResolveFieldColumn } from "../fields/tidy"
+import { paletteColorByIndex } from "./palette"
 
 const RECORD_WINDOW_BLOCK = "jacdac_record_window"
 const ROLLING_SUMMARY_BLOCK = "jacdac_rolling_summary"
+const RECORD_SENSOR_BLOCK = "jacdac_record_sensors"
+const ADD_SENSOR_COLUMN_BLOCK = "jacdac_add_sensor_column"
+const SENSOR_STATEMENT_TYPE = "SensorStatement"
 
 export class SensorsBlockDomainSpecificLanguage
     extends ServicesBaseDSL
@@ -41,6 +47,7 @@ export class SensorsBlockDomainSpecificLanguage
 
     createBlocks(options: CreateBlocksOptions): BlockDefinition[] {
         const colour = sensorsColour
+        const dataColour = paletteColorByIndex(1)
         return [
             {
                 kind: "block",
@@ -54,7 +61,7 @@ export class SensorsBlockDomainSpecificLanguage
                         variableTypes: ["sensor"],
                         defaultType: "sensor",
                     },
-                    {
+                    <DummyInputDefinition>{
                         type: "input_dummy",
                     },
                     <InputDefinition>{
@@ -72,6 +79,53 @@ export class SensorsBlockDomainSpecificLanguage
             },
             <BlockDefinition>{
                 kind: "block",
+                type: RECORD_SENSOR_BLOCK,
+                message0: "collect sensor data every %1 s %2 %3",
+                args0: [
+                    <NumberInputDefinition>{
+                        type: "field_number",
+                        name: "interval",
+                        value: 1,
+                        min: 0.1,
+                    },
+                    <DummyInputDefinition>{
+                        type: "input_dummy",
+                    },
+                    <StatementInputDefinition>{
+                        type: "input_statement",
+                        name: "fields",
+                        check: SENSOR_STATEMENT_TYPE,
+                    },
+                ],
+                nextStatement: DATA_SCIENCE_STATEMENT_TYPE,
+                colour,
+                template: "meta",
+                inputsInline: false,
+                dataPreviewField: false,
+                transformData: identityTransformData,
+            },
+            <BlockDefinition>{
+                kind: "block",
+                type: ADD_SENSOR_COLUMN_BLOCK,
+                message0: "add sensor data from %1",
+                args0: [
+                    <VariableInputDefinition>{
+                        type: "field_variable",
+                        name: "service",
+                        variable: "none",
+                        variableTypes: ["sensor"],
+                        defaultType: "sensor",
+                    },
+                ],
+                previousStatement: SENSOR_STATEMENT_TYPE,
+                nextStatement: SENSOR_STATEMENT_TYPE,
+                colour: dataColour,
+                template: "meta",
+                inputsInline: false,
+                dataPreviewField: false,
+            },
+            <BlockDefinition>{
+                kind: "block",
                 type: RECORD_WINDOW_BLOCK,
                 message0: "record last %1 s",
                 args0: [
@@ -79,6 +133,7 @@ export class SensorsBlockDomainSpecificLanguage
                         type: "field_number",
                         name: "horizon",
                         value: 10,
+                        min: 1,
                     },
                 ],
                 inputsInline: false,
@@ -162,16 +217,29 @@ export class SensorsBlockDomainSpecificLanguage
                 name: "Sensors",
                 colour: sensorsColour,
                 contents: [
+                    <LabelDefinition>{
+                        kind: "label",
+                        text: "Data Collection",
+                    },
+                    <BlockReference>{
+                        kind: "block",
+                        type: RECORD_SENSOR_BLOCK,
+                    },
+                    <BlockReference>{
+                        kind: "block",
+                        type: ADD_SENSOR_COLUMN_BLOCK,
+                    },
                     <BlockReference>{
                         kind: "block",
                         type: SENSOR_BLOCK,
                     },
-                    <SeparatorDefinition>{
-                        kind: "sep",
-                    },
                     <BlockDefinition>{
                         kind: "block",
                         type: RECORD_WINDOW_BLOCK,
+                    },
+                    <LabelDefinition>{
+                        kind: "label",
+                        text: "Filters",
                     },
                     <BlockDefinition>{
                         kind: "block",
