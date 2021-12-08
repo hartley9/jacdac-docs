@@ -44,6 +44,7 @@ import TrainedModelBlockField from "./mb/TrainedModelBlockField"
 
 import JSONSettingsField from "./JSONSettingsField"
 import IFrameDataChooserField from "./IFrameDataChooserField"
+import DataCollectorField from "./DataCollectorField"
 
 let reactFieldShadows: BlockDefinition[]
 export function registerFields() {
@@ -71,6 +72,7 @@ export function registerFields() {
 
         TwinField,
         JDomTreeField,
+        DataCollectorField,
 
         GaugeWidgetField,
 
