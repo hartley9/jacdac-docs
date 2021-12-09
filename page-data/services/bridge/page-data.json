@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-service-tsx",
+    "path": "/services/bridge/",
+    "result": {"pageContext":{"classIdentifier":535147631,"source":"# Bridge\n\n    identifier: 0x1fe5b46f\n    tags: infrastructure\n    status: rc\n\nIndicates that the device acts as a bridge to the Jacdac bus.\n\n## Registers\n\n    rw enabled: bool @ intensity\n\nEnables or disables the bridge.\n","title":"Bridge"}},
+    "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

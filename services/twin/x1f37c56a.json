@@ -3,10 +3,16 @@
   "name": "characterScreen",
   "registers": [
     {
+      "code": 2,
+      "name": "message",
+      "flags": 0,
+      "packf": "s"
+    },
+    {
       "code": 1,
       "name": "brightness",
       "flags": 0,
-      "packf": "u0.8"
+      "packf": "u0.16"
     },
     {
       "code": 263,

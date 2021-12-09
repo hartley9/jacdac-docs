@@ -25,6 +25,12 @@
       "name": "load_speed",
       "flags": 1,
       "packf": "u16.16"
+    },
+    {
+      "code": 386,
+      "name": "reversible",
+      "flags": 1,
+      "packf": "u8"
     }
   ]
 }

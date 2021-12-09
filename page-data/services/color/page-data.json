@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-tsx",
     "path": "/services/color/",
-    "result": {"pageContext":{"classIdentifier":372299111,"source":"# Color\n\nSenses RGB colors\n\n    identifier: 0x1630d567\n    extends: _sensor\n    group: environment\n    tags: 8bit\n\n## Registers\n\n    ro color @ reading {\n        red: u0.16 /\n        green: u0.16 /\n        blue: u0.16 /\n    }\n\nDetected color in the RGB color space.\n","makecodeSlug":"/clients/makecode/extensions/color/","title":"Color"}},
+    "result": {"pageContext":{"classIdentifier":372299111,"source":"# Color\n\n    identifier: 0x1630d567\n    extends: _sensor\n    group: environment\n    tags: 8bit\n\nSenses RGB colors\n\n## Registers\n\n    ro color @ reading {\n        red: u0.16 /\n        green: u0.16 /\n        blue: u0.16 /\n    }\n\nDetected color in the RGB color space.\n","makecodeSlug":"/clients/makecode/extensions/color/","title":"Color"}},
     "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

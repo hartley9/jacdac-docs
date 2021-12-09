@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-tsx",
     "path": "/services/trafficlight/",
-    "result": {"pageContext":{"classIdentifier":365137307,"source":"# Traffic Light\n\n    identifier: 0x15c38d9b\n    tags: 8bit\n\nControls a mini traffic with a red, orange and green LED.\n\n## Registers\n\n    rw red: bool @ 0x80\n\nThe on/off state of the red light.\n\n    rw orange: bool @ 0x81\n\nThe on/off state of the red light.\n\n    rw green: bool @ 0x82\n\nThe on/off state of the red light.\n","title":"Traffic Light"}},
+    "result": {"pageContext":{"classIdentifier":365137307,"source":"# Traffic Light\n\n    identifier: 0x15c38d9b\n    tags: 8bit\n    status: rc\n\nControls a mini traffic with a red, orange and green LED.\n\n## Registers\n\n    rw red: bool @ 0x80\n\nThe on/off state of the red light.\n\n    rw orange: bool @ 0x81\n\nThe on/off state of the red light.\n\n    rw green: bool @ 0x82\n\nThe on/off state of the red light.\n","title":"Traffic Light"}},
     "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

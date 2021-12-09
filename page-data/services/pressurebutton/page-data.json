@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-tsx",
     "path": "/services/pressurebutton/",
-    "result": {"pageContext":{"classIdentifier":672612547,"source":"# Pressure Button\n\n    identifier: 0x281740c3\n    tags: 8bit\n    group: button\n\nA pressure sensitive push-button.\n\n## Registers\n\n    rw threshold: u0.16 / @ active_threshold\n    \nIndicates the threshold for ``up`` events.\n","title":"Pressure Button"}},
+    "result": {"pageContext":{"classIdentifier":672612547,"source":"# Pressure Button\n\n    identifier: 0x281740c3\n    tags: 8bit\n    group: button\n    status: rc\n\nA pressure sensitive push-button.\n\n## Registers\n\n    rw threshold: u0.16 / @ active_threshold\n    \nIndicates the threshold for ``up`` events.\n","title":"Pressure Button"}},
     "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

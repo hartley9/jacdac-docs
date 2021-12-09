@@ -15,18 +15,6 @@
       "packf": "u8"
     },
     {
-      "code": 129,
-      "name": "min_decibels",
-      "flags": 0,
-      "packf": "i16"
-    },
-    {
-      "code": 130,
-      "name": "max_decibels",
-      "flags": 0,
-      "packf": "i16"
-    },
-    {
       "code": 6,
       "name": "loud_threshold",
       "flags": 0,

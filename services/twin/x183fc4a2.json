@@ -1,12 +1,5 @@
 {
   "serviceClass": 406832290,
   "name": "vibrationMotor",
-  "registers": [
-    {
-      "code": 1,
-      "name": "enabled",
-      "flags": 0,
-      "packf": "u8"
-    }
-  ]
+  "registers": []
 }

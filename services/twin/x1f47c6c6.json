@@ -9,10 +9,10 @@
       "packf": "u0.16"
     },
     {
-      "code": 263,
-      "name": "variant",
+      "code": 384,
+      "name": "length",
       "flags": 1,
-      "packf": "u8"
+      "packf": "u16"
     }
   ]
 }

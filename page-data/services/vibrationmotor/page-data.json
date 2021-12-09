@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-service-tsx",
+    "path": "/services/vibrationmotor/",
+    "result": {"pageContext":{"classIdentifier":406832290,"source":"# Vibration motor\n\n    identifier: 0x183fc4a2\n    status: rc\n\nA vibration motor.\n\n## Commands\n\n    command vibrate @ 0x80 {\n    repeats:\n        duration: u8 8ms,\n        intensity: u0.8 /\n    }\n\nStarts a sequence of vibration and pauses. To stop any existing vibration, send an empty payload.\n","title":"Vibration motor"}},
+    "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

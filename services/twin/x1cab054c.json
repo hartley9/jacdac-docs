@@ -10,7 +10,7 @@
     },
     {
       "code": 384,
-      "name": "dimmeable",
+      "name": "dimmable",
       "flags": 1,
       "packf": "u8"
     }

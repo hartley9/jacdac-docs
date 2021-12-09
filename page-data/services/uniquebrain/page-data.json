@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-tsx",
     "path": "/services/uniquebrain/",
-    "result": {"pageContext":{"classIdentifier":272387813,"source":"# Unique Brain\n\n    identifier: 0x103c4ee5\n    tags: infrastructure\n\nThe presence of this service indicates that this device is a client that controls sensors and actuators.\nIf a unique brain detects another younger unique brain (determined by reset counter in announce packets),\nthen the older brain should switch into proxy mode.\n","title":"Unique Brain"}},
+    "result": {"pageContext":{"classIdentifier":272387813,"source":"# Unique Brain\n\n    identifier: 0x103c4ee5\n    tags: infrastructure\n    status: stable\n\nThe presence of this service indicates that this device is a client that controls sensors and actuators.\nIf a unique brain detects another younger unique brain (determined by reset counter in announce packets),\nthen the older brain should switch into proxy mode.\n","title":"Unique Brain"}},
     "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}
