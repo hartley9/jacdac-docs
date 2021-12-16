@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-service-tsx",
     "path": "/services/flex/",
-    "result": {"pageContext":{"classIdentifier":524797638,"source":"# Flex\n\n    identifier: 0x1f47c6c6\n    extends: _sensor\n    group: slider\n    tags: C, 8bit\n    status: stable\n\nA bending or deflection sensor.\n\n## Registers\n\n    ro bending: u0.16 / @ reading\n\nThe relative position of the slider.\n\n    ro bending_error?: u0.16 / @ reading_error\n\nAbsolute error on the reading value.\n\n    const length?: u16 mm @ 0x180\n\nLength of the flex sensor","makecodeSlug":"/clients/makecode/extensions/flex/","title":"Flex"}},
+    "result": {"pageContext":{"classIdentifier":524797638,"source":"# Flex\n\n    identifier: 0x1f47c6c6\n    extends: _sensor\n    group: sensor\n    tags: C, 8bit\n    status: rc\n\nA bending or deflection sensor.\n\n## Registers\n\n    ro bending: i1.15 / @ reading\n\nA measure of the bending.\n\n    const length?: u16 mm @ 0x180\n\nLength of the flex sensor","makecodeSlug":"/clients/makecode/extensions/flex/","title":"Flex"}},
     "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

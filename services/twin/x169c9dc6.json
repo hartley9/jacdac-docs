@@ -9,12 +9,6 @@
       "packf": "u22.10"
     },
     {
-      "code": 384,
-      "name": "conditioning_period",
-      "flags": 1,
-      "packf": "u32"
-    },
-    {
       "code": 263,
       "name": "variant",
       "flags": 1,

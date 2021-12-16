@@ -6,7 +6,7 @@
       "code": 257,
       "name": "bending",
       "flags": 2,
-      "packf": "u0.16"
+      "packf": "i1.15"
     },
     {
       "code": 384,

@@ -13,6 +13,12 @@
       "name": "clicks_per_turn",
       "flags": 1,
       "packf": "u16"
+    },
+    {
+      "code": 385,
+      "name": "clicker",
+      "flags": 1,
+      "packf": "u8"
     }
   ]
 }

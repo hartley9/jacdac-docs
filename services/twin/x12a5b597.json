@@ -7,12 +7,6 @@
       "name": "TVOC",
       "flags": 2,
       "packf": "u22.10"
-    },
-    {
-      "code": 384,
-      "name": "conditioning_period",
-      "flags": 1,
-      "packf": "u32"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "serviceClass": 277836886,
-  "name": "joystick",
+  "name": "gamepad",
   "registers": [
     {
       "code": 257,

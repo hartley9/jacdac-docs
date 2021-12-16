@@ -1,15 +1,15 @@
 {
-  "name": "Joystick",
-  "status": "stable",
-  "shortId": "joystick",
-  "camelName": "joystick",
-  "shortName": "joystick",
+  "name": "Gamepad",
+  "status": "rc",
+  "shortId": "gamepad",
+  "camelName": "gamepad",
+  "shortName": "gamepad",
   "extends": [
     "_base",
     "_sensor"
   ],
   "notes": {
-    "short": "A two axis directional joystick"
+    "short": "A two axis directional joystick with optional buttons."
   },
   "classIdentifier": 277836886,
   "enums": {

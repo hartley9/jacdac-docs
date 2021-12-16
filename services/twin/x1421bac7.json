@@ -1,6 +1,6 @@
 {
   "serviceClass": 337754823,
-  "name": "thermometer",
+  "name": "temperature",
   "registers": [
     {
       "code": 257,
