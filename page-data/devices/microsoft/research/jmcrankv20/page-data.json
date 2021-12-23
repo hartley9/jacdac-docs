@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmcrankv20/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmcrankv20","name":"JM Crank","company":"Microsoft Research","description":"A rotary encoder without a push button.","repo":"https://github.com/microsoft/jacdac-msr-modules","link":"https://github.com/microsoft/jacdac-msr-modules","services":[284830153],"productIdentifiers":[866678795],"version":"2.0","status":"deprecated"},"title":"JM Crank"}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmcrankv20","name":"JM Crank","company":"Microsoft Research","description":"A rotary encoder without a push button.","repo":"https://github.com/microsoft/jacdac-msr-modules","firmwareSource":"https://github.com/microsoft/jacdac-msr-modules/blob/main/targets/jm-v2.0/profile/crank.c","link":"https://github.com/microsoft/jacdac-msr-modules","services":[284830153],"productIdentifiers":[866678795],"version":"2.0","status":"deprecated"},"title":"JM Crank"}},
     "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

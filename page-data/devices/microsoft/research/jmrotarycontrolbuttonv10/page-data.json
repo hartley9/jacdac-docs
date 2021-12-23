@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmrotarycontrolbuttonv10/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrotarycontrolbuttonv10","name":"JM Rotary Control + Button","company":"Microsoft Research","description":"","repo":"https://github.com/microsoft/jacdac-msr-modules","link":"https://github.com/microsoft/jacdac-msr-modules","services":[284830153,343122531],"productIdentifiers":[1060754715],"tags":["kit"],"version":"1.0","status":"deprecated"},"title":"JM Rotary Control + Button"}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrotarycontrolbuttonv10","name":"JM Rotary Control + Button","company":"Microsoft Research","description":"","repo":"https://github.com/microsoft/jacdac-msr-modules","firmwareSource":"https://github.com/microsoft/jacdac-msr-modules/blob/main/targets/jm-rotary-control-26-1.0/profile/rotary_ctrl.c","link":"https://github.com/microsoft/jacdac-msr-modules","services":[284830153,343122531],"productIdentifiers":[1060754715],"tags":["kit"],"version":"1.0","status":"deprecated"},"title":"JM Rotary Control + Button"}},
     "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

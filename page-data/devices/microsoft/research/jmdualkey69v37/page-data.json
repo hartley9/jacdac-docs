@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmdualkey69v37/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmdualkey69v37","name":"JM Dual Key","company":"Microsoft Research","description":"JM 2Key 69 v3.7","repo":"https://github.com/microsoft/jacdac-msr-modules","services":[343122531,343122531],"productIdentifiers":[958599316],"version":"3.7","designIdentifier":"69"},"title":"JM Dual Key"}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmdualkey69v37","name":"JM Dual Key","company":"Microsoft Research","description":"JM 2Key 69 v3.7","repo":"https://github.com/microsoft/jacdac-msr-modules","firmwareSource":"https://github.com/microsoft/jacdac-msr-modules/blob/main/targets/jm-v3.6/profile/key2.c","services":[343122531,343122531],"productIdentifiers":[958599316],"version":"3.7","designIdentifier":"69"},"title":"JM Dual Key"}},
     "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

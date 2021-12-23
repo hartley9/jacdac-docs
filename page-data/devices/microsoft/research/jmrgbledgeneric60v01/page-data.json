@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmrgbledgeneric60v01/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrgbledgeneric60v01","name":"JM RGB LED Generic","company":"Microsoft Research","description":"","repo":"https://github.com/microsoft/jacdac-msr-modules","link":"https://github.com/microsoft/jacdac-msr-modules","services":[309264608],"productIdentifiers":[967723905],"tags":["kit"],"version":"0.1","designIdentifier":"60"},"title":"JM RGB LED Generic"}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmrgbledgeneric60v01","name":"JM RGB LED Generic","company":"Microsoft Research","description":"","repo":"https://github.com/microsoft/jacdac-msr-modules","firmwareSource":"https://github.com/microsoft/jacdac-msr-modules/blob/main/targets/jm-rgb-led-generic-60-0.1/profile/npx.c","link":"https://github.com/microsoft/jacdac-msr-modules","services":[309264608],"productIdentifiers":[967723905],"tags":["kit"],"version":"0.1","designIdentifier":"60"},"title":"JM RGB LED Generic"}},
     "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}

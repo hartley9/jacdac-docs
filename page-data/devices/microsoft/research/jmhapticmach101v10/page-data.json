@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-device-tsx",
     "path": "/devices/microsoft/research/jmhapticmach101v10/",
-    "result": {"pageContext":{"node":{"id":"microsoft-research-jmhapticmach101v10","name":"JM Haptic MACH-1.0","company":"Microsoft Research","description":"JM Haptic MACH-1.0","repo":"https://github.com/microsoft/jacdac-msr-modules","services":[406832290],"productIdentifiers":[1022649261],"version":"1.0","designIdentifier":"1"},"title":"JM Haptic MACH-1.0"}},
+    "result": {"pageContext":{"node":{"id":"microsoft-research-jmhapticmach101v10","name":"JM Haptic MACH-1.0","company":"Microsoft Research","description":"JM Haptic MACH-1.0","repo":"https://github.com/microsoft/jacdac-msr-modules","firmwareSource":"https://github.com/microsoft/jacdac-msr-modules/blob/main/targets/jm-haptic-1.0/profile/haptic.c","services":[406832290],"productIdentifiers":[1022649261],"version":"1.0","designIdentifier":"1"},"title":"JM Haptic MACH-1.0"}},
     "staticQueryHashes": ["1281896507","249313281","2648275777","2744294623","3823652713","413816803","63159454"]}
