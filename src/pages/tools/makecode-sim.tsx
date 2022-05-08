@@ -61,10 +61,15 @@ function Carousel() {
     return (
         <Dashboard
             showHeader={false}
+            showDeviceHeader={true}
+            showDeviceAvatar={true}
             deviceSort={deviceSort}
             deviceFilter={deviceFilter}
             serviceFilter={serviceFilter}
             showStartRoleSimulators={true}
+            alwaysVisible={true}
+            variant="icon"
+            controlled={true}
         />
     )
 }
@@ -74,7 +79,7 @@ export default function Page() {
     const rawTheme = createTheme({
         palette: {
             primary: {
-                main: "#63c",
+                main: "#85e",
             },
             secondary: {
                 main: "#ffc400",

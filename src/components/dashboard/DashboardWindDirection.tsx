@@ -5,12 +5,12 @@ import { useRegisterUnpackedValue } from "../../jacdac/useRegisterValue"
 import SvgWidget from "../widgets/SvgWidget"
 import useWidgetTheme from "../widgets/useWidgetTheme"
 import useServiceServer from "../hooks/useServiceServer"
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import useThrottledValue from "../hooks/useThrottledValue"
 import { Grid, Slider } from "@mui/material"
 import { SensorServer } from "../../../jacdac-ts/src/servers/sensorserver"
-import LoadingProgress from "../ui/LoadingProgress"
 import useRegister from "../hooks/useRegister"
+import DashboardRegisterValueFallback from "./DashboardRegisterValueFallback"
 
 export default function DashboardWindDirection(props: DashboardServiceProps) {
     const { service } = props
@@ -28,10 +28,12 @@ export default function DashboardWindDirection(props: DashboardServiceProps) {
     const color = server ? "secondary" : "primary"
     const { background, controlBackground, active } = useWidgetTheme(color)
     const arrowHeadId = useId()
+    const widgetSize = `clamp(3rem, 10vw, 10vh)`
 
     const a = useThrottledValue(direction, 360)
 
-    if (direction === undefined) return <LoadingProgress />
+    if (direction === undefined)
+        return <DashboardRegisterValueFallback register={directionRegister} />
 
     const w = 64
     const h = 64
@@ -51,7 +53,7 @@ export default function DashboardWindDirection(props: DashboardServiceProps) {
     return (
         <Grid container direction="column">
             <Grid item xs={12}>
-                <SvgWidget width={w} height={h}>
+                <SvgWidget width={w} height={h} size={widgetSize}>
                     <defs>
                         <marker
                             id={arrowHeadId}

@@ -7,13 +7,13 @@ import {
 import { DashboardServiceProps } from "./DashboardServiceWidget"
 import { useRegisterUnpackedValue } from "../../jacdac/useRegisterValue"
 import { Grid, TextField } from "@mui/material"
-import LoadingProgress from "../ui/LoadingProgress"
 import useRegister from "../hooks/useRegister"
 import CmdButton from "../CmdButton"
 import ClearIcon from "@mui/icons-material/Clear"
 import EditIcon from "@mui/icons-material/Edit"
 import IconButtonWithTooltip from "../ui/IconButtonWithTooltip"
 import CharacterScreenWidget from "../widgets/CharacterScreenWidget"
+import DashboardRegisterValueFallback from "./DashboardRegisterValueFallback"
 
 // https://en.wikipedia.org/wiki/Braille_ASCII
 const BRAILE_CHARACTERS = {
@@ -93,7 +93,7 @@ function brailify(s: string) {
 }
 
 export default function DashboardCharacterScreen(props: DashboardServiceProps) {
-    const { service } = props
+    const { service, expanded } = props
 
     const messageRegister = useRegister(service, CharacterScreenReg.Message)
     const rowsRegister = useRegister(service, CharacterScreenReg.Rows)
@@ -107,8 +107,6 @@ export default function DashboardCharacterScreen(props: DashboardServiceProps) {
         service,
         CharacterScreenReg.Brightness
     )
-
-    const [edit, setEdit] = useState(false)
     const [message] = useRegisterUnpackedValue<[string]>(messageRegister, props)
     const [rows] = useRegisterUnpackedValue<[number]>(rowsRegister, props)
     const [columns] = useRegisterUnpackedValue<[number]>(columnsRegister, props)
@@ -120,7 +118,10 @@ export default function DashboardCharacterScreen(props: DashboardServiceProps) {
         variantRegister,
         props
     )
-    const [brightness] = useRegisterUnpackedValue<[number]>(brightnessRegister)
+    const [brightness] = useRegisterUnpackedValue<[number]>(
+        brightnessRegister,
+        props
+    )
 
     const [fieldMessage, setFieldMessage] = useState(message)
 
@@ -134,23 +135,27 @@ export default function DashboardCharacterScreen(props: DashboardServiceProps) {
         setFieldMessage(ev.target.value)
         await messageRegister.sendSetStringAsync(ev.target.value, true)
     }
-    const handleEdit = () => setEdit(e => !e)
 
     // set first value of message
     useEffect(() => {
         if (!fieldMessage && message) setFieldMessage(message)
     }, [message])
 
-    if (rows === undefined || columns === undefined) return <LoadingProgress /> // size unknown
+    if (rows === undefined || columns === undefined)
+        return (
+            <DashboardRegisterValueFallback
+                register={rows === undefined ? rowsRegister : columnsRegister}
+            />
+        ) // size unknown
 
     const converter: (s: string) => string =
         variant === CharacterScreenVariant.Braille ? brailify : s => s
-    const cmessage = message.split("").map(converter).join("")
+    const cmessage = message?.split("").map(converter).join("")
     const rtl = textDirection === CharacterScreenTextDirection.RightToLeft
 
     return (
         <Grid container spacing={1}>
-            {edit && (
+            {expanded && (
                 <Grid item xs={12}>
                     <Grid container spacing={1}>
                         <Grid item xs>
@@ -181,14 +186,6 @@ export default function DashboardCharacterScreen(props: DashboardServiceProps) {
                     message={cmessage}
                     disabled={brightness === 0}
                 />
-            </Grid>
-            <Grid item>
-                <IconButtonWithTooltip
-                    title={!edit ? "show editor" : "hide editor"}
-                    onClick={handleEdit}
-                >
-                    <EditIcon />
-                </IconButtonWithTooltip>
             </Grid>
         </Grid>
     )

@@ -1,19 +1,23 @@
 import React, { ReactNode } from "react"
-import ReactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
 import ReactField from "./ReactField"
 import { child } from "../../widgets/svg"
 import DarkModeProvider from "../../ui/DarkModeProvider"
-import { IdProvider } from "react-use-id-hook"
 import JacdacProvider from "../../../jacdac/Provider"
 import AppTheme from "../../ui/AppTheme"
 import Blockly, { Events } from "blockly"
-import { WorkspaceProvider } from "../WorkspaceContext"
+import { FieldWithServices, WorkspaceProvider } from "../WorkspaceContext"
 import { WebAudioProvider } from "../../ui/WebAudioContext"
 import { SnackbarProvider } from "notistack"
 
-export default class ReactInlineField<T = unknown> extends ReactField<T> {
+export default class ReactInlineField<T = unknown>
+    extends ReactField<T>
+    implements FieldWithServices
+{
     protected container: HTMLDivElement
     protected resizeObserver: ResizeObserver
+    // React root
+    private inlineRoot_: any
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(options?: any) {
@@ -43,8 +47,8 @@ export default class ReactInlineField<T = unknown> extends ReactField<T> {
             (entries: ResizeObserverEntry[]) => {
                 const entry = entries[0]
                 const { contentRect } = entry
-                this.size_.width = contentRect.width
-                this.size_.height = contentRect.height
+                this.size_.width = Math.max(16, contentRect.width)
+                this.size_.height = Math.max(16, contentRect.height)
                 fo.setAttribute("width", this.size_.width + "")
                 fo.setAttribute("height", this.size_.height + "")
                 fo.setAttribute("color", "#fff")
@@ -59,14 +63,16 @@ export default class ReactInlineField<T = unknown> extends ReactField<T> {
         )
         this.resizeObserver.observe(this.container)
 
-        ReactDOM.render(this.renderBlock(), this.container)
+        this.inlineRoot_ = createRoot(this.container)
+        this.inlineRoot_.render(this.renderBlock())
         return fo
     }
 
     dispose() {
         if (this.container) {
-            ReactDOM.unmountComponentAtNode(this.container)
+            this.inlineRoot_?.unmount()
             this.container = undefined
+            this.inlineRoot_ = undefined
         }
         if (this.resizeObserver) {
             this.resizeObserver.disconnect()
@@ -83,20 +89,20 @@ export default class ReactInlineField<T = unknown> extends ReactField<T> {
         return null
     }
 
+    notifyServicesChanged() {
+        this.inlineRoot_?.render(this.renderBlock())
+    }
+
     renderBlock(): ReactNode {
         return (
             <WorkspaceProvider field={this}>
                 <SnackbarProvider maxSnack={1} dense={true}>
                     <DarkModeProvider fixedDarkMode="dark">
-                        <IdProvider>
-                            <WebAudioProvider>
-                                <JacdacProvider>
-                                    <AppTheme>
-                                        {this.renderInlineField()}
-                                    </AppTheme>
-                                </JacdacProvider>
-                            </WebAudioProvider>
-                        </IdProvider>
+                        <WebAudioProvider>
+                            <JacdacProvider>
+                                <AppTheme>{this.renderInlineField()}</AppTheme>
+                            </JacdacProvider>
+                        </WebAudioProvider>
                     </DarkModeProvider>
                 </SnackbarProvider>
             </WorkspaceProvider>

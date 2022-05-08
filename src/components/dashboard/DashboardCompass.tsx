@@ -14,9 +14,9 @@ import {
     SystemStatusCodes,
 } from "../../../jacdac-ts/src/jdom/constants"
 import PowerButton from "../widgets/PowerButton"
-import LoadingProgress from "../ui/LoadingProgress"
 import useRegister from "../hooks/useRegister"
 import useStatusCode from "../services/useStatusCode"
+import DashboardRegisterValueFallback from "./DashboardRegisterValueFallback"
 
 export default function DashboardCompass(props: DashboardServiceProps) {
     const { service } = props
@@ -33,7 +33,8 @@ export default function DashboardCompass(props: DashboardServiceProps) {
     const { background, controlBackground, active, textProps } =
         useWidgetTheme(color)
 
-    if (heading === undefined) return <LoadingProgress />
+    if (heading === undefined)
+        return <DashboardRegisterValueFallback register={headingRegister} />
 
     const calibrating = status === SystemStatusCodes.Calibrating
 
@@ -54,11 +55,12 @@ export default function DashboardCompass(props: DashboardServiceProps) {
     }
     const valueDisplay = (angle: number) => `${Math.round(angle)}°`
     const toggleOff = () => enabledRegister.sendSetBoolAsync(off, true)
+    const widgetSize = `clamp(3rem, 10vw, 10vh)`
 
     return (
         <Grid container direction="column">
             <Grid item xs={12}>
-                <SvgWidget width={w} height={h}>
+                <SvgWidget width={w} height={h} size={widgetSize}>
                     <circle
                         cx={cx}
                         cy={cy}

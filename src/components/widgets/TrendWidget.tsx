@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react"
-import { REPORT_UPDATE } from "../../../jacdac-ts/src/jdom/constants"
+import { REPORT_RECEIVE } from "../../../jacdac-ts/src/jdom/constants"
 import { JDRegister } from "../../../jacdac-ts/src/jdom/register"
 import useAnimationFrame from "../hooks/useAnimationFrame"
 import useServiceServer from "../hooks/useServiceServer"
@@ -12,8 +12,9 @@ export default function TrendWidget(props: {
     max: number
     horizon: number
     size?: string
+    thresholds?: number[]
 }) {
-    const { register, min, max, horizon, size } = props
+    const { register, min, max, horizon, size, thresholds } = props
     const server = useServiceServer(register.service)
     const color = server ? "secondary" : "primary"
     const { background, controlBackground, active } = useWidgetTheme(color)
@@ -28,7 +29,7 @@ export default function TrendWidget(props: {
 
     useEffect(() => {
         dataRef.current = register ? [] : undefined // reset data
-        return register?.subscribe(REPORT_UPDATE, () => {
+        return register?.subscribe(REPORT_RECEIVE, () => {
             // register new value
             const [v] = register.unpackedValue as [number]
             const data = dataRef.current
@@ -65,6 +66,17 @@ export default function TrendWidget(props: {
                 strokeWidth={m / 2}
                 ref={pathRef}
             />
+            {thresholds?.map((threshold, i) => (
+                <line
+                    key={i}
+                    stroke={background}
+                    strokeWidth={m * 2}
+                    x1={0}
+                    x2={w}
+                    y1={h - m - (threshold - min) * dy}
+                    y2={h - m - (threshold - min) * dy}
+                />
+            ))}
         </SvgWidget>
     )
 }

@@ -1,4 +1,10 @@
-import React, { createContext, useEffect, useMemo, useState } from "react"
+import React, {
+    createContext,
+    useCallback,
+    useEffect,
+    useMemo,
+    useState,
+} from "react"
 import {
     LoggerCmd,
     LoggerPriority,
@@ -74,7 +80,15 @@ export default ConsoleContext
 const MAX_MESSAGES = 5000
 const MAX_MESSAGES_SPILL = 500
 
-function useJacdacLogger() {
+const methods = {
+    [LoggerPriority.Debug]: "debug",
+    [LoggerPriority.Error]: "error",
+    [LoggerPriority.Log]: "log",
+    [LoggerPriority.Silent]: "",
+    [LoggerPriority.Warning]: "warn",
+}
+
+function useJacdacLogger(appendLog: (log: Message) => void) {
     const bus = useBus()
     useEffect(
         () =>
@@ -83,6 +97,9 @@ function useJacdacLogger() {
                     const priority =
                         LoggerPriority.Debug +
                         (pkt.serviceCommand - LoggerCmd.Debug)
+                    const method = methods[priority]
+                    if (!method) return
+
                     const { device } = pkt
                     const { shortId } = device
                     const content = pkt.jdunpack<[string]>("s")[0]
@@ -90,27 +107,17 @@ function useJacdacLogger() {
                         ? ""
                         : `${shortId}> `
                     const message = `${prefix}${content.trimEnd()}`
-                    switch (priority) {
-                        case LoggerPriority.Debug:
-                            console.debug(message)
-                            break
-                        case LoggerPriority.Log:
-                            console.log(message)
-                            break
-                        case LoggerPriority.Warning:
-                            console.warn(message)
-                            break
-                        case LoggerPriority.Error:
-                            console.error(message)
-                            break
-                    }
+                    appendLog({
+                        method,
+                        data: [message],
+                    })
                 }
             }),
-        []
+        [appendLog]
     )
 }
 
-function useJacscriptManagerLogger() {
+function useJacscriptManagerLogger(appendLog: (log: Message) => void) {
     const bus = useBus()
     useEffect(
         () =>
@@ -128,7 +135,10 @@ function useJacscriptManagerLogger() {
                         ? ""
                         : `${shortId}> `
                     const message = `${prefix}${content.trimEnd()}`
-                    console.log(message)
+                    appendLog({
+                        method: "log",
+                        data: [message],
+                    })
                 }
             }),
         []
@@ -182,21 +192,27 @@ export const ConsoleProvider = ({ children }) => {
     const [logs, setLogs] = useState([])
     const [autoScroll, setAutoScroll] = useState(true)
     const [sourceMap, setSourceMap] = useState<SourceMap>()
-    const { connected, connect, disconnect } = useConsoleSerial(sourceMap)
     const { trackTrace } = useAnalytics()
     const filter = useFilter()
-    useJacdacLogger()
-    useJacscriptManagerLogger()
 
-    const appendLog = log => {
-        if (UIFlags.consoleinsights) trackTrace(log.data[0], log.method)
+    const appendLog = useCallback((log: Message) => {
+        if (UIFlags.consoleinsights) trackTrace(log.data[0], log.method as any)
         setLogs(currLogs => [
             ...(currLogs.length > MAX_MESSAGES
                 ? currLogs.slice(-MAX_MESSAGES_SPILL)
                 : currLogs),
             log,
         ])
-    }
+    }, [])
+
+    const { connected, connect, disconnect } = useConsoleSerial(
+        sourceMap,
+        appendLog
+    )
+
+    useJacdacLogger(appendLog)
+    useJacscriptManagerLogger(appendLog)
+
     const clear = () => {
         setLogs([])
         setAutoScroll(true)

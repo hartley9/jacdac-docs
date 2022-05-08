@@ -15,7 +15,7 @@ import { Button } from "gatsby-theme-material-ui"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 // tslint:disable-next-line: match-default-export-name no-submodule-imports
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline"
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import useSnackbar from "./hooks/useSnackbar"
 
 export default function ApiKeyAccordion(props: {
@@ -85,31 +85,36 @@ export default function ApiKeyAccordion(props: {
                 )}
             </AccordionSummary>
             <AccordionDetails style={{ display: "block" }}>
-                {validated && (
+                {validated ? (
                     <Alert severity={"success"}>API key ready!</Alert>
+                ) : (
+                    <>
+                        <Typography component="span" variant="caption">
+                            {children}
+                        </Typography>
+                        <TextField
+                            id={apiKeyId}
+                            label="API key"
+                            fullWidth
+                            value={key}
+                            type="password"
+                            onChange={handleApiChange}
+                        />
+                    </>
                 )}
-                <Typography component="span" variant="caption">
-                    {children}
-                </Typography>
-                <TextField
-                    id={apiKeyId}
-                    label="API key"
-                    fullWidth
-                    value={key}
-                    type="password"
-                    onChange={handleApiChange}
-                />
             </AccordionDetails>
             <AccordionActions>
-                <Button
-                    aria-label="save api key"
-                    disabled={!key}
-                    variant="contained"
-                    color="primary"
-                    onClick={handleSave}
-                >
-                    Save
-                </Button>
+                {!validated && (
+                    <Button
+                        aria-label="save api key"
+                        disabled={!key}
+                        variant="contained"
+                        color="primary"
+                        onClick={handleSave}
+                    >
+                        Save
+                    </Button>
+                )}
                 <Button
                     aria-label="clear api key"
                     disabled={!apiKey}

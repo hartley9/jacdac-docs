@@ -109,11 +109,22 @@ async function createServicePages(graphql, actions, reporter) {
     })
 }
 
+async function createRedirects(actions) {
+    const { createRedirect } = actions
+    const rs = [
+        {
+            fromPath: `/tools/module-tester`,
+            toPath: `/tools/device-tester`,
+        },
+    ]
+    rs.forEach(r => createRedirect(r))
+}
+
 async function createDeviceQRPages(actions) {
     console.log(`generating device QR pages`)
     const { createRedirect } = actions
     const csv = fs.readFileSync(
-        "./jacdac-ts/jacdac-spec/devices/microsoft/research/qr-url-device-map.csv",
+        "./jacdac-ts/jacdac-spec/devices/microsoft-research/qr-url-device-map.csv",
         "utf-8"
     )
     const designidcol = "designid"
@@ -128,7 +139,7 @@ async function createDeviceQRPages(actions) {
         const p = `/devices/codes/${vanity}/`
         const toPath = spec
             ? `/devices/0x${productid.toString(16)}/`
-            : `/devices/microsoft/research/`
+            : `/devices/microsoft-research/`
         const r = { fromPath: p, toPath }
         await createRedirect(r)
     }
@@ -223,23 +234,20 @@ async function createDevicePages(graphql, actions, reporter) {
     }
 
     // create device company routes
-    const companies = new Set(devices.map(node => node.company))
+    const companies = {}
+    devices.forEach(node => companies[escapeDeviceIdentifier(node.company)] = node.company)
     //console.log(companies)
-    for (const company of companies.keys()) {
-        const cp = escapeDeviceIdentifier(company).split(/-/g)
-        cp.forEach((part, i) => {
-            const cps = cp.slice(0, i + 1)
-            const c = cps.join("-")
-            const p = `/devices/${cps.join("/")}`
-            console.log(`device company page`, { p })
-            createPage({
-                path: p,
-                component: slash(companyTemplate),
-                context: {
-                    company: c,
-                    title: `${c} devices`,
-                },
-            })
+    for (const cp of Object.keys(companies)) {
+        const company = companies[cp]
+        const p = `/devices/${cp}`
+        console.log(`device company page`, { p })
+        createPage({
+            path: p,
+            component: slash(companyTemplate),
+            context: {
+                company: company,
+                title: `${company} devices`,
+            },
         })
     }
 }
@@ -309,21 +317,19 @@ async function generateServicesJSON() {
             `x${srv.classIdentifier.toString(16)}.json`
         )
         const clone = JSON.parse(JSON.stringify(srv))
-        delete clone.notes;
-        delete clone.enums;
-        delete clone.constants;
-        delete clone.extends;
-        delete clone.shortName;
-        delete clone.name;
-        delete clone.tags;
-        for(var pkt of clone.packets) {
+        delete clone.notes
+        delete clone.enums
+        delete clone.constants
+        delete clone.extends
+        delete clone.shortName
+        delete clone.name
+        delete clone.tags
+        for (var pkt of clone.packets) {
             delete pkt.description
             delete pkt.derived
             delete pkt.identifierName
-            if (pkt.fields.length <= 1)
-                delete pkt.fields
-            else
-                pkt.fields = pkt.fields.map(f => f.name);
+            if (pkt.fields.length <= 1) delete pkt.fields
+            else pkt.fields = pkt.fields.map(f => f.name)
         }
         await fs.outputFile(f, JSON.stringify(clone, null, 2))
     }
@@ -365,7 +371,6 @@ async function createVersions() {
 // access to any information necessary to programmatically
 // create pages.
 exports.createPages = async ({ graphql, actions, reporter }) => {
-    const { createRedirect } = actions
     await generateServicesJSON()
     await createServicePages(graphql, actions, reporter)
     await createSpecPages(graphql, actions, reporter)
@@ -373,7 +378,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     await createDeviceQRPages(actions, reporter)
     await createWorkers()
     await createVersions()
-    // createRedirect({ fromPath: '', toPath: '/overview/', isPermanent: true });
+    await createRedirects(actions)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -407,14 +412,11 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
         assert: require.resolve("assert/"),
         fs: false,
         net: false,
-        webusb: false
+        webusb: false,
     }
     if (stage.startsWith("develop")) {
         setWebpackConfig({
             resolve: {
-                alias: {
-                    "react-dom": "@hot-loader/react-dom",
-                },
                 fallback,
             },
             plugins,

@@ -5,6 +5,7 @@ const siteUrl = "https://microsoft.github.io"
 const pathPrefix = "/jacdac-docs"
 
 const wsl = !!process.env.WSL_DISTRO_NAME || !!process.env.CODESPACE_NAME
+const offline = !!process.env.JACDAC_OFFLINE
 
 const SITE_TITLE = `Jacdac - plug-n-play for microcontrollers`
 const SITE_DESCRIPTION = `Jacdac is a plug-and-play hardware and software stack for microcontrollers and their peripherals such as sensors and actuators. Jacdac is primarily designed for “modular electronics” scenarios that support rapid prototyping, creative exploration, making and learning through physical computing. Jacdac is designed to be cheap, flexible and extensible.`
@@ -73,7 +74,7 @@ module.exports = {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `akalinks`,
-                path: `${__dirname}/jacdac-ts/jacdac-spec/devices/microsoft/research/qr-url-device-map.csv`,
+                path: `${__dirname}/jacdac-ts/jacdac-spec/devices/microsoft-research/qr-url-device-map.csv`,
             },
         },
         {
@@ -102,7 +103,7 @@ module.exports = {
                     default: require.resolve("./src/components/Page.tsx"),
                 },
                 gatsbyRemarkPlugins: [
-                    wsl ? undefined : "gatsby-remark-makecode",
+                    wsl || offline ? undefined : "gatsby-remark-makecode",
                     "gatsby-remark-autolink-headers",
                     "gatsby-remark-external-links",
                     {

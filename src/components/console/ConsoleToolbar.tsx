@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext } from "react"
+import React, { ChangeEvent, startTransition, useContext } from "react"
 import IconButtonWithTooltip from "../ui/IconButtonWithTooltip"
 import ConsoleContext, { serializeLogs } from "./ConsoleContext"
 import ConsoleImportSourceMapButton from "./ConsoleImportSourceMapButton"
@@ -16,9 +16,11 @@ import {
 import JacdacContext, { JacdacContextProps } from "../../jacdac/Context"
 import useChange from "../../jacdac/useChange"
 import { LoggerPriority } from "../../../jacdac-ts/jacdac-spec/dist/specconstants"
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import ServiceManagerContext from "../ServiceManagerContext"
 import OpenInNewIcon from "@mui/icons-material/OpenInNew"
+import AppContext, { DrawerType } from "../AppContext"
+import { navigate } from "gatsby"
 
 function ClearButton() {
     const { clear } = useContext(ConsoleContext)
@@ -43,8 +45,13 @@ function SaveButton() {
 }
 
 function PopOutButton() {
+    const { setDrawerType } = useContext(AppContext)
+    const handlePopOut = () => {
+        setDrawerType(DrawerType.None)
+        navigate("/tools/console/")
+    }
     return (
-        <IconButtonWithTooltip title="pop out" to="/tools/console/">
+        <IconButtonWithTooltip title="pop out" onClick={handlePopOut}>
             <OpenInNewIcon />
         </IconButtonWithTooltip>
     )
@@ -93,9 +100,8 @@ function MinLoggerPrioritySelect() {
 
 function SearchKeywordField() {
     const { searchKeywords, setSearchKeywords } = useContext(ConsoleContext)
-    const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
-        setSearchKeywords(ev.target.value)
-    }
+    const handleChange = (ev: ChangeEvent<HTMLInputElement>) =>
+        startTransition(() => setSearchKeywords(ev.target.value))
     return (
         <TextField
             style={{ marginTop: "0.25rem" }}
@@ -114,7 +120,13 @@ export default function ConsoleToolbar(props: { hidePopout?: boolean }) {
     const { sourceMap } = useContext(ConsoleContext)
     const { hidePopout } = props
     return (
-        <Grid sx={{ mb: 0.5 }} container spacing={1} direction="row" alignItems="center">
+        <Grid
+            sx={{ mb: 0.5 }}
+            container
+            spacing={1}
+            direction="row"
+            alignItems="center"
+        >
             <Grid item>
                 <ConsoleSerialButton />
             </Grid>

@@ -13,6 +13,7 @@ import useReadingAuxilliaryValue from "./hooks/useReadingAuxilliaryValue"
 import useChange from "../jacdac/useChange"
 import { isReadOnlyRegister } from "../../jacdac-ts/src/jdom/spec"
 import useSnackbar from "./hooks/useSnackbar"
+import { humanify } from "../../jacdac-ts/jacdac-spec/spectool/jdspec"
 
 export type RegisterInputVariant = "widget" | ""
 
@@ -28,6 +29,7 @@ export default function RegisterInput(props: {
     off?: boolean
     toggleOff?: () => void
     visible?: boolean
+    controlled?: boolean
 }) {
     const {
         register,
@@ -41,6 +43,7 @@ export default function RegisterInput(props: {
         off,
         toggleOff,
         visible,
+        controlled,
     } = props
     const { service, specification } = register
     const { device } = service
@@ -90,13 +93,12 @@ export default function RegisterInput(props: {
     useEffect(() => {
         const vs = register.unpackedValue
         if (vs !== undefined) setArgs(vs)
-        return (
-            visible &&
-            register.subscribe(REPORT_UPDATE, () => {
-                const vs = register.unpackedValue
-                if (vs !== undefined) setArgs(vs)
-            })
-        )
+        return visible
+            ? register.subscribe(REPORT_UPDATE, () => {
+                  const vs = register.unpackedValue
+                  if (vs !== undefined) setArgs(vs)
+              })
+            : undefined
     }, [register, visible])
     const handleRefresh = () => {
         register.refresh(true)
@@ -131,7 +133,7 @@ export default function RegisterInput(props: {
     const serviceName = register.service.name
         .toLocaleLowerCase()
         .replace(/_/g, " ")
-    const registerName = specification.name.replace(/_/g, " ")
+    const registerName = humanify(specification.name)
     return (
         <>
             {showDeviceName && (
@@ -160,7 +162,7 @@ export default function RegisterInput(props: {
             {!hasData && (
                 <Box>
                     <IconButtonWithProgress
-                        title="refresh"
+                        title={`refresh ${registerName}`}
                         indeterminate={true}
                         onClick={handleRefresh}
                     />
@@ -185,6 +187,7 @@ export default function RegisterInput(props: {
                     error={readingError}
                     off={off}
                     toggleOff={toggleOff}
+                    controlled={controlled}
                 />
             )}
         </>

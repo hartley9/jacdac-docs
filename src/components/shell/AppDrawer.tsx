@@ -1,4 +1,4 @@
-import React, { lazy, useContext } from "react"
+import React, { lazy, useContext, useState } from "react"
 import { styled } from "@mui/material/styles"
 import { Drawer, Divider } from "@mui/material"
 import Suspense from "../ui/Suspense"
@@ -11,18 +11,24 @@ import AppContext, { DrawerType } from "../AppContext"
 import PacketRecorder from "../PacketRecorder"
 import DrawerToolsButtonGroup from "./DrawerToolsButtonGroup"
 import ConnectAlert from "../alert/ConnectAlert"
+import Toc from "./Toc"
+const PacketView = lazy(() => import("../tools/PacketView"))
+const JDomTreeView = lazy(() => import("../tools/JDomTreeView"))
+const DrawerSearchResults = lazy(() => import("./DrawerSearchResults"))
+const DrawerSearchInput = lazy(() => import("./DrawerSearchInput"))
+const Console = lazy(() => import("../console/Console"))
 
 const PREFIX = "AppDrawer"
 
 const classes = {
-    drawer: `${PREFIX}-drawer`,
-    drawerPaper: `${PREFIX}-drawerPaper`,
-    tocDrawer: `${PREFIX}-tocDrawer`,
-    tocDrawerPaper: `${PREFIX}-tocDrawerPaper`,
-    drawerHeader: `${PREFIX}-drawerHeader`,
-    alertButton: `${PREFIX}-alertButton`,
-    mdx: `${PREFIX}-mdx`,
-    fluid: `${PREFIX}-fluid`,
+    drawer: `${PREFIX}drawer`,
+    drawerPaper: `${PREFIX}drawerPaper`,
+    tocDrawer: `${PREFIX}tocDrawer`,
+    tocDrawerPaper: `${PREFIX}tocDrawerPaper`,
+    drawerHeader: `${PREFIX}drawerHeader`,
+    alertButton: `${PREFIX}alertButton`,
+    mdx: `${PREFIX}mdx`,
+    fluid: `${PREFIX}fluid`,
 }
 
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
@@ -72,17 +78,11 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
     },
 }))
 
-const Toc = lazy(() => import("../Toc"))
-const PacketView = lazy(() => import("../tools/PacketView"))
-const JDomTreeView = lazy(() => import("../tools/JDomTreeView"))
-const DrawerSearchResults = lazy(() => import("../DrawerSearchResults"))
-const DrawerSearchInput = lazy(() => import("../DrawerSearchInput"))
-const Console = lazy(() => import("../console/Console"))
-
 export default function AppDrawer(props: { pagePath: string }) {
     const { pagePath } = props
 
-    const { drawerType, setDrawerType, searchQuery } = useContext(AppContext)
+    const [searchQuery, setSearchQuery] = useState("")
+    const { drawerType, setDrawerType } = useContext(AppContext)
     const open = drawerType !== DrawerType.None
     const showSearchResults = drawerType === DrawerType.Toc && !!searchQuery
 
@@ -107,7 +107,10 @@ export default function AppDrawer(props: { pagePath: string }) {
                 {toc && (
                     <div className={classes.fluid}>
                         <Suspense>
-                            <DrawerSearchInput />
+                            <DrawerSearchInput
+                                searchQuery={searchQuery}
+                                setSearchQuery={setSearchQuery}
+                            />
                         </Suspense>
                     </div>
                 )}
@@ -129,13 +132,11 @@ export default function AppDrawer(props: { pagePath: string }) {
             <Divider />
             {showSearchResults && (
                 <Suspense>
-                    <DrawerSearchResults />
+                    <DrawerSearchResults searchQuery={searchQuery} />
                 </Suspense>
             )}
             {!showSearchResults && drawerType === DrawerType.Toc && (
-                <Suspense>
-                    <Toc pagePath={pagePath} />
-                </Suspense>
+                <Toc pagePath={pagePath} />
             )}
             {!showSearchResults && drawerType === DrawerType.Packets && (
                 <Suspense>
@@ -152,7 +153,7 @@ export default function AppDrawer(props: { pagePath: string }) {
             )}
             {!showSearchResults && drawerType === DrawerType.Console && (
                 <Suspense>
-                    <Console />
+                    <Console showToolbar={true} height="calc(100vh - 7rem)" />
                 </Suspense>
             )}
         </StyledDrawer>

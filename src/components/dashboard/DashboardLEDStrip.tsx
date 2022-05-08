@@ -313,8 +313,8 @@ function EffectButtons(props: {
                     selected={rot < 0}
                     title={
                         rot < 0
-                            ? `rotate counter clockwize, ${rot} per frame`
-                            : `rotate counter clockwize`
+                            ? `rotate counter clockwise, ${rot} per frame`
+                            : `rotate counter clockwise`
                     }
                     onClick={handleCounterRotChanged}
                 >
@@ -326,8 +326,8 @@ function EffectButtons(props: {
                     selected={rot > 0}
                     title={
                         rot > 0
-                            ? `rotate clockwize, ${rot} per frame`
-                            : `rotate clockwize`
+                            ? `rotate clockwise, ${rot} per frame`
+                            : `rotate clockwise`
                     }
                     onClick={handleRotChanged}
                 >
@@ -422,23 +422,24 @@ show 20`,
     const animationSkip = 1
     useEffect(
         () =>
-            effect &&
-            bus.subscribe(REFRESH, () => {
-                const a = (animationCounter.current =
-                    animationCounter.current + 1)
-                if (a % animationSkip === 0) {
-                    const command: string[] = []
-                    const args: number[] = []
-                    if (!isNaN(penColor) && !gradientColors.length) {
-                        command.push(`setone 0 #`)
-                        args.push(penColor)
-                    }
-                    command.push(effect)
-                    command.push(`show 0`)
-                    const encoded = lightEncode(command.join("\n"), args)
-                    service?.sendCmdAsync(LedStripCmd.Run, encoded)
-                }
-            }),
+            effect
+                ? bus.subscribe(REFRESH, () => {
+                      const a = (animationCounter.current =
+                          animationCounter.current + 1)
+                      if (a % animationSkip === 0) {
+                          const command: string[] = []
+                          const args: number[] = []
+                          if (!isNaN(penColor) && !gradientColors.length) {
+                              command.push(`setone 0 #`)
+                              args.push(penColor)
+                          }
+                          command.push(effect)
+                          command.push(`show 0`)
+                          const encoded = lightEncode(command.join("\n"), args)
+                          service?.sendCmdAsync(LedStripCmd.Run, encoded)
+                      }
+                  })
+                : undefined,
         [service, effect, penColor]
     )
 
@@ -484,45 +485,50 @@ show 20`,
                     {...props}
                 />
             )}
-            <Grid container direction="column" spacing={1}>
-                <Grid item>
-                    <EffectButtons
-                        setEffect={setEffect}
-                        configure={configure}
-                        toggleConfigure={toggleConfigure}
-                        addGradientColor={handleAddGradientColor}
-                    />
-                </Grid>
-                <Grid item>
-                    <ColorButtons
-                        color={penColor}
-                        onColorChange={handleColorChange}
-                    />
-                </Grid>
-                {gradientColors.map((gradientColor, index) => (
-                    <Grid item key={`gradient${index}`}>
-                        <ColorButtons
-                            color={gradientColor}
-                            onColorChange={handleGradientColorChange(index)}
+            {expanded && (
+                <Grid container direction="column" spacing={1}>
+                    <Grid item>
+                        <EffectButtons
+                            setEffect={setEffect}
+                            configure={configure}
+                            toggleConfigure={toggleConfigure}
+                            addGradientColor={handleAddGradientColor}
                         />
                     </Grid>
-                ))}
-                {expanded && (
                     <Grid item>
-                        <LightCommand service={service} expanded={expanded} />
+                        <ColorButtons
+                            color={penColor}
+                            onColorChange={handleColorChange}
+                        />
                     </Grid>
-                )}
-                {configure &&
-                    configureRegisters.map(code => (
-                        <Grid item key={code}>
-                            <RegisterInputItem
-                                service={service}
-                                registerCode={code}
-                                visible={visible}
+                    {gradientColors.map((gradientColor, index) => (
+                        <Grid item key={`gradient${index}`}>
+                            <ColorButtons
+                                color={gradientColor}
+                                onColorChange={handleGradientColorChange(index)}
                             />
                         </Grid>
                     ))}
-            </Grid>
+                    {configure && (
+                        <Grid item>
+                            <LightCommand
+                                service={service}
+                                expanded={expanded}
+                            />
+                        </Grid>
+                    )}
+                    {configure &&
+                        configureRegisters.map(code => (
+                            <Grid item key={code}>
+                                <RegisterInputItem
+                                    service={service}
+                                    registerCode={code}
+                                    visible={visible}
+                                />
+                            </Grid>
+                        ))}
+                </Grid>
+            )}
         </>
     )
 }

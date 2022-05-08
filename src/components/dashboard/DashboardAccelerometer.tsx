@@ -9,12 +9,12 @@ import { JDRegister } from "../../../jacdac-ts/src/jdom/register"
 import { Grid, NoSsr } from "@mui/material"
 import { roundWithPrecision } from "../../../jacdac-ts/src/jdom/utils"
 import { Vector } from "../widgets/threeutils"
-import LoadingProgress from "../ui/LoadingProgress"
 import Suspense from "../ui/Suspense"
 import SliderWithLabel from "../ui/SliderWithLabel"
 import useRegister from "../hooks/useRegister"
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import MaxReadingField from "./MaxReadingField"
+import DashboardRegisterValueFallback from "./DashboardRegisterValueFallback"
 
 const CanvasWidget = lazy(() => import("../widgets/CanvasWidget"))
 
@@ -26,8 +26,8 @@ function Sliders(props: {
 }) {
     const { server, register } = props
     const xId = useId()
-    const yId = useId()
-    const zId = useId()
+    const yId = xId + "-y"
+    const zId = xId + "-z"
     const forces = useRegisterUnpackedValue<[number, number, number]>(
         register,
         props
@@ -57,7 +57,8 @@ function Sliders(props: {
         await register.sendGetAsync()
     }
 
-    if (!forces?.length) return <LoadingProgress />
+    if (!forces?.length)
+        return <DashboardRegisterValueFallback register={register} />
 
     const [x, y, z] = forces
     const min = -2
@@ -129,7 +130,7 @@ function lerp(v0: number, v1: number, t: number) {
 }
 
 export default function DashboardAccelerometer(props: DashboardServiceProps) {
-    const { service, visible } = props
+    const { service, visible, expanded } = props
     const register = useRegister(service, AccelerometerReg.Forces)
     useRegisterUnpackedValue<[number, number, number]>(register, props)
     const server =
@@ -166,11 +167,19 @@ export default function DashboardAccelerometer(props: DashboardServiceProps) {
                     </Suspense>
                 </NoSsr>
             </Grid>
-            <Sliders server={server} register={register} visible={visible} />
-            <MaxReadingField
-                registerCode={AccelerometerReg.MaxForce}
-                {...props}
-            />
+            {expanded && (
+                <Sliders
+                    server={server}
+                    register={register}
+                    visible={visible}
+                />
+            )}
+            {expanded && (
+                <MaxReadingField
+                    registerCode={AccelerometerReg.MaxForce}
+                    {...props}
+                />
+            )}
         </Grid>
     )
 }

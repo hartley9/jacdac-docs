@@ -8,9 +8,9 @@ import useServiceServer from "../hooks/useServiceServer"
 import useFireKey from "../hooks/useFireKey"
 import useKeyboardNavigationProps from "../hooks/useKeyboardNavigationProps"
 import { MatrixKeypadServer } from "../../../jacdac-ts/src/servers/matrixkeypadserver"
-import LoadingProgress from "../ui/LoadingProgress"
 import useWidgetSize from "../widgets/useWidgetSize"
 import useRegister from "../hooks/useRegister"
+import DashboardRegisterValueFallback from "./DashboardRegisterValueFallback"
 
 export default function DashboardMatrixKeypad(props: DashboardServiceProps) {
     const { service, services, variant } = props
@@ -38,7 +38,12 @@ export default function DashboardMatrixKeypad(props: DashboardServiceProps) {
     const widgetSize = useWidgetSize(variant, services?.length)
 
     // no data about layout
-    if (rows === undefined || columns === undefined) return <LoadingProgress />
+    if (rows === undefined || columns === undefined)
+        return (
+            <DashboardRegisterValueFallback
+                register={rows === undefined ? rowsRegister : columnsRegister}
+            />
+        )
 
     const clickeable = !!server
     // compute size

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ChangeEvent } from "react"
 import { Alert, Grid } from "@mui/material"
 // tslint:disable-next-line: no-submodule-imports match-default-export-name
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
@@ -38,43 +38,50 @@ function JacscriptManagerToolbar(
     const logging = useRegisterBoolValue(loggingRegister, rest)
     const [statusCode] = useRegisterUnpackedValue(statusCodeRegister, rest)
 
-    const noProgram = statusCode === SystemStatusCodes.WaitingForInput
     const disabled =
         statusCode === undefined ||
         statusCode === SystemStatusCodes.WaitingForInput
 
     const handleRun = () => runningRegister?.sendSetBoolAsync(true, true)
     const handleStop = () => runningRegister?.sendSetBoolAsync(false, true)
+    const handleAutoStartChange = (
+        event: ChangeEvent<HTMLInputElement>,
+        checked: boolean
+    ) => autoStartRegister?.sendSetBoolAsync(checked, true)
+    const handleLoggingChange = (
+        event: ChangeEvent<HTMLInputElement>,
+        checked: boolean
+    ) => loggingRegister?.sendSetBoolAsync(checked, true)
 
     return (
         <Grid container spacing={1}>
             <Grid item>
                 <CmdButton
                     disabled={disabled}
+                    variant="outlined"
                     title={running ? "running" : "stopped"}
                     onClick={running ? handleStop : handleRun}
                     icon={running ? <StopIcon /> : <PlayArrowIcon />}
-                />
+                >
+                    {running ? "stop" : "start"}
+                </CmdButton>
             </Grid>
             <Grid item>
                 <SwitchWithLabel
                     label="auto start"
-                    checked={autoStart}
+                    checked={autoStart || false}
                     disabled={autoStart === undefined}
+                    onChange={handleAutoStartChange}
                 />
             </Grid>
             <Grid item>
                 <SwitchWithLabel
                     label="logging"
-                    checked={logging}
+                    checked={logging || false}
                     disabled={logging === undefined}
+                    onChange={handleLoggingChange}
                 />
             </Grid>
-            {noProgram && (
-                <Grid item xs={12}>
-                    <Alert severity="warning">Waiting for valid program.</Alert>
-                </Grid>
-            )}
         </Grid>
     )
 }

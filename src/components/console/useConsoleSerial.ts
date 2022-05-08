@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react"
-import AppContext from "../AppContext"
+import { useEffect, useRef, useState } from "react"
 import { isWebSerialSupported } from "../../../jacdac-ts/src/jdom/transport/webserial"
 import { SourceMap } from "./ConsoleContext"
 import useSnackbar from "../hooks/useSnackbar"
@@ -43,10 +42,17 @@ function expandStackTrace(
     })
 }
 
-export default function useConsoleSerial(sourceMap: SourceMap) {
+export default function useConsoleSerial(
+    sourceMap: SourceMap,
+    appendLog: (log: {
+        method: "log" | "warn" | "info" | "debug" | "error"
+        data: any[]
+    }) => void
+) {
     const supported = isWebSerialSupported()
     const { setError } = useSnackbar()
     const [port, setPort] = useState<SerialPort>()
+    const closeRef = useRef<() => Promise<void>>()
     const connected = !!port
 
     // register disconnect
@@ -63,7 +69,7 @@ export default function useConsoleSerial(sourceMap: SourceMap) {
         navigator.serial.addEventListener("disconnect", handleDisconnect, false)
         return () =>
             navigator.serial.removeEventListener("disconnect", handleDisconnect)
-    })
+    }, [])
 
     // request device
     const connect = async () => {
@@ -86,31 +92,36 @@ export default function useConsoleSerial(sourceMap: SourceMap) {
                         )
                         .forEach(line => {
                             const m = /^\s*(W|I|E)\s+\(\d+\)\s*/.exec(line)
-                            const level = m?.[1]
-                            switch (level) {
-                                case "W":
-                                    console.warn(line.slice(m[0].length))
-                                    break
-                                case "I":
-                                    console.info(line.slice(m[0].length))
-                                    break
-                                case "E":
-                                    console.error(line.slice(m[0].length))
-                                    break
-                                default:
-                                    console.log(line)
-                                    break
-                            }
+                            if (m) {
+                                const level = m[1]
+                                const method =
+                                    level == "W"
+                                        ? "warn"
+                                        : level == "I"
+                                        ? "info"
+                                        : level == "E"
+                                        ? "error"
+                                        : level == "D"
+                                        ? "debug"
+                                        : "log"
+                                const data = [line.slice(m[0].length)]
+                                appendLog({ method, data })
+                            } else appendLog({ method: "log", data: [line] })
                         })
                 },
             })
-            port.readable
+            const writeStreamClosed = port.readable
                 .pipeThrough(new TextDecoderStream())
                 .pipeTo(appendStream)
+            closeRef.current = async () => {
+                await appendStream.close()
+                await writeStreamClosed
+            }
             setPort(port)
             console.debug(`serial console: connected`)
         } catch (e) {
             setError(e)
+            closeRef.current = undefined
             setPort(undefined)
         }
     }
@@ -120,11 +131,13 @@ export default function useConsoleSerial(sourceMap: SourceMap) {
         if (p) {
             console.log(`serial console: disconnect`)
             try {
+                if (closeRef.current) await closeRef.current()
                 await p.close()
             } catch (e) {
                 setError(e)
             }
         }
+        closeRef.current = undefined
         setPort(undefined)
     }
 

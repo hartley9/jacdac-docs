@@ -7,17 +7,20 @@ import AutoScroll from "../ui/AutoScroll"
 const PREFIX = "ConsoleLog"
 
 const classes = {
-    root: `${PREFIX}-root`,
+    root: `${PREFIX}root`,
 }
 
 const StyledAutoScroll = styled(AutoScroll)(() => ({
     [`&.${classes.root}`]: {
-        backgroundColor: "#242424",
+        backgroundColor: "#1d1d1d",
         height: "calc(100vh - 11.05rem)",
+        fontWeight: "600",
+        minWidth: "22rem",
     },
 }))
 
-export default function ConsoleLog() {
+export default function ConsoleLog(props: { hook?: boolean; height?: string }) {
+    const { hook, height } = props
     const {
         logs,
         filter,
@@ -29,18 +32,20 @@ export default function ConsoleLog() {
 
     useEffect(() => {
         const hooked =
-            typeof window !== "undefined" &&
+            hook &&
+            typeof self !== "undefined" &&
+            self.console &&
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            Hook(window.console, appendLog as any, false)
+            Hook(self.console, appendLog as any, false)
         return () => {
             hooked && Unhook(hooked)
         }
-    }, [])
+    }, [hook])
 
     return (
         <StyledAutoScroll
             className={classes.root}
-            height="calc(100vh - 11.05rem)"
+            height={height || "calc(100vh - 11.05rem)"}
             autoScroll={autoScroll}
             setAutoScroll={setAutoScroll}
         >
@@ -50,6 +55,17 @@ export default function ConsoleLog() {
                 variant="dark"
                 logGrouping={true}
                 filter={filter}
+                styles={{
+                    BASE_FONT_SIZE: "13px",
+                    LOG_INFO_COLOR: "rgb(89,136,243)",
+                }}
+                linkifyOptions={{
+                    defaultProtocol: "https",
+                    nl2br: false,
+                    rel: "noopened",
+                    tagName: "span",
+                    validate: true,
+                }}
                 searchKeywords={searchKeywords}
             />
         </StyledAutoScroll>

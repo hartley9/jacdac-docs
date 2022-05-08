@@ -1,17 +1,17 @@
 import React, { useContext, useMemo } from "react"
 import { styled } from "@mui/material/styles"
-import { List, ListItem, Typography, useTheme, Box } from "@mui/material"
+import { List, ListItem, Typography, useTheme } from "@mui/material"
 import { Link } from "gatsby-theme-material-ui"
 // tslint:disable-next-line: no-submodule-imports
 import ListItemText from "@mui/material/ListItemText"
-import AppContext, { DrawerType } from "./AppContext"
+import AppContext, { DrawerType } from "../AppContext"
 import { graphql, useStaticQuery } from "gatsby"
-import useMediaQueries from "./hooks/useMediaQueries"
+import useMediaQueries from "../hooks/useMediaQueries"
 
 const PREFIX = "Toc"
 
 const classes = {
-    root: `${PREFIX}-root`,
+    root: `${PREFIX}root`,
 }
 
 const StyledList = styled(List)(({ theme }) => ({
@@ -174,9 +174,7 @@ export default function Toc(props: { pagePath: string }) {
         data.allMdx.edges
             .map(node => node.node)
             .filter(
-                node =>
-                    !!node.frontmatter?.title && 
-                    node.fields.slug !== "/"
+                node => !!node.frontmatter?.title && node.fields.slug !== "/"
             )
             .filter(node => !node.frontmatter || !node.frontmatter?.hideToc)
             .map(node => {
@@ -198,7 +196,8 @@ export default function Toc(props: { pagePath: string }) {
     const TocListItem = (props: { entry: TocNode; level: number }) => {
         const { entry, level } = props
         const { path, children, name } = entry
-        const selected = pagePath === path || (pagePath === "/" && path === "/overview/")
+        const selected =
+            pagePath === path || (pagePath === "/" && path === "/overview/")
         const sub = level === 1 || !!children?.length
         const showSub = sub && !!children?.length && pagePath.startsWith(path)
 

@@ -1,6 +1,9 @@
 import React, { useEffect } from "react"
 import { DashboardServiceProps } from "./DashboardServiceWidget"
-import { useRegisterBoolValue } from "../../jacdac/useRegisterValue"
+import {
+    useRegisterBoolValue,
+    useRegisterUnpackedValue,
+} from "../../jacdac/useRegisterValue"
 import useServiceServer from "../hooks/useServiceServer"
 import { Grid } from "@mui/material"
 import MicIcon from "@mui/icons-material/Mic"
@@ -36,13 +39,14 @@ function HostMicrophoneButton(props: {
     // update volume on demand
     useEffect(
         () =>
-            visible &&
-            server?.subscribe(REFRESH, () => {
-                const v = volume?.()
-                if (v !== undefined) {
-                    server.reading.setValues([v])
-                }
-            }),
+            visible
+                ? server?.subscribe(REFRESH, () => {
+                      const v = volume?.()
+                      if (v !== undefined) {
+                          server.reading.setValues([v])
+                      }
+                  })
+                : undefined,
         [server, volume, visible]
     )
 
@@ -61,6 +65,7 @@ export default function DashboardSoundLevel(props: DashboardServiceProps) {
     const { visible, service } = props
     const soundLevelRegister = useRegister(service, SoundLevelReg.SoundLevel)
     const server = useServiceServer<AnalogSensorServer>(service)
+
     return (
         <Grid container direction="column">
             <Grid item>
@@ -68,7 +73,7 @@ export default function DashboardSoundLevel(props: DashboardServiceProps) {
                     register={soundLevelRegister}
                     min={0}
                     max={1}
-                    horizon={64}
+                    horizon={32}
                 />
             </Grid>
             <Grid item>

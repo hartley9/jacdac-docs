@@ -7,7 +7,7 @@ import {
     TextField,
 } from "@mui/material"
 import React, { ChangeEvent, lazy, useState } from "react"
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import Suspense from "../../components/ui/Suspense"
 import { toMap } from "../../../jacdac-ts/src/jdom/utils"
 const SilkQRCode = lazy(() => import("../../components/widgets/SilkQrCode"))
@@ -67,7 +67,7 @@ export default function DeviceQRCodeGenerator(props: {
         setMirror(!!ev.target.checked)
     }
     const mirrorid = useId()
-    const switchid = useId()
+    const switchid = mirrorid + "-switch"
     const url = vanity ? `HTTP://AKA.MS/${vanity}` : undefined
     const known = knowns[vanity]
     const { modulename, designid, revision } = known || {}
@@ -89,7 +89,7 @@ export default function DeviceQRCodeGenerator(props: {
                 Enter a short URL HTTP://AKA.MS/<strong>vanity name</strong> to
                 be encoded as a silk compatible QR code. If you use a link, make
                 sure to update{" "}
-                <a href="https://github.com/microsoft/jacdac/blob/main/devices/microsoft/research/qr-url-device-map.csv">
+                <a href="https://github.com/microsoft/jacdac/blob/main/devices/microsoft-research/qr-url-device-map.csv">
                     GitHub
                 </a>
                 .

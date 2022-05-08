@@ -1,5 +1,5 @@
 import { Chip, Divider, Grid, InputAdornment, TextField } from "@mui/material"
-import React, { useMemo, useState } from "react"
+import React, { startTransition, useMemo, useState } from "react"
 import ServiceSpecificationList from "../components/specification/ServiceSpecificationList"
 import { useDebounce } from "use-debounce"
 import SearchIcon from "@mui/icons-material/Search"
@@ -15,7 +15,7 @@ import {
     SERVICE_MIXIN_NODE_NAME,
     VIRTUAL_DEVICE_NODE_NAME,
 } from "../../jacdac-ts/src/jdom/constants"
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import { Link } from "gatsby-theme-material-ui"
 import { resolveMakecodeServiceFromClassIdentifier } from "../components/makecode/services"
 import CheckCircleIcon from "@mui/icons-material/CheckCircle"
@@ -93,12 +93,13 @@ export default function ServiceCatalog() {
         if (sensors) r = r.filter(srv => isSensor(srv))
         return r
     }, [deboundedFilter])
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFilter({
-            ...filter,
-            query: event.target.value,
-        })
-    }
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+        startTransition(() =>
+            setFilter({
+                ...filter,
+                query: event.target.value,
+            })
+        )
     const handleTagClick = (t: string) => () => {
         setFilter({ ...filter, tag: tag === t ? "" : t })
     }
@@ -231,7 +232,7 @@ export default function ServiceCatalog() {
             </Grid>
             <h2>Need a new service?</h2>
             <p>
-                Add a new service using the {" "}
+                Add a new service using the{" "}
                 <Link to="/tools/service-editor/">
                     Service Specification Editor
                 </Link>

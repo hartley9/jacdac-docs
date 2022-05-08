@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography"
 import KindIcon from "../KindIcon"
 import WarningIcon from "@mui/icons-material/Warning"
 
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import { Link } from "gatsby-material-ui-components"
 import { Tooltip } from "@mui/material"
 import { ellipse } from "../../../jacdac-ts/src/jdom/utils"
@@ -13,15 +13,15 @@ import { ellipse } from "../../../jacdac-ts/src/jdom/utils"
 const PREFIX = "StyledTreeView"
 
 const classes = {
-    root: `${PREFIX}-root`,
-    content: `${PREFIX}-content`,
-    group: `${PREFIX}-group`,
-    expanded: `${PREFIX}-expanded`,
-    selected: `${PREFIX}-selected`,
-    label: `${PREFIX}-label`,
-    labelRoot: `${PREFIX}-labelRoot`,
-    labelIcon: `${PREFIX}-labelIcon`,
-    labelText: `${PREFIX}-labelText`,
+    root: `${PREFIX}root`,
+    content: `${PREFIX}content`,
+    group: `${PREFIX}group`,
+    expanded: `${PREFIX}expanded`,
+    selected: `${PREFIX}selected`,
+    label: `${PREFIX}label`,
+    labelRoot: `${PREFIX}labelRoot`,
+    labelIcon: `${PREFIX}labelIcon`,
+    labelText: `${PREFIX}labelText`,
 }
 
 const Root = styled("div")(({ theme }) => ({
@@ -113,15 +113,19 @@ export default function StyledTreeItem(
         warning?: boolean
         alert?: string
         labelInfo?: string
-        labelText: string
+        labelText?: string
+        labelTextVariant?: "caption" | "subtitle1" | "subtitle2"
+        labelCaption?: string
         labelTo?: string
-        actions?: JSX.Element | JSX.Element[],
+        actions?: JSX.Element | JSX.Element[]
         children?: ReactNode
     }
 ) {
     const {
         labelText,
+        labelCaption,
         labelTo,
+        labelTextVariant,
         kind,
         icon,
         labelInfo,
@@ -145,30 +149,37 @@ export default function StyledTreeItem(
                     {kind && !icon && (
                         <KindIcon kind={kind} className={classes.labelIcon} />
                     )}
-                    {icon}
+                    {icon && <span className={classes.labelIcon}>{icon}</span>}
                     {warning && (
                         <WarningIcon
                             color="error"
                             className={classes.labelIcon}
                         />
                     )}
-                    <Typography
-                        component="span"
-                        variant="body2"
-                        className={classes.labelText}
-                    >
-                        {labelTo ? (
-                            <Link
-                                color="textPrimary"
-                                to={labelTo}
-                                underline="hover"
-                            >
-                                {labelText}
-                            </Link>
-                        ) : (
-                            labelText
-                        )}
-                    </Typography>
+                    {labelText && (
+                        <Typography
+                            component="span"
+                            variant={labelTextVariant || "body2"}
+                            className={classes.labelText}
+                        >
+                            {labelTo ? (
+                                <Link
+                                    color="textPrimary"
+                                    to={labelTo}
+                                    underline="hover"
+                                >
+                                    {labelText}
+                                </Link>
+                            ) : (
+                                labelText
+                            )}
+                            {labelCaption && (
+                                <Typography component="span" variant="caption">
+                                    , {labelCaption}
+                                </Typography>
+                            )}
+                        </Typography>
+                    )}
                     {alert && "!"}
                     <Typography
                         component="span"
@@ -176,10 +187,7 @@ export default function StyledTreeItem(
                         color="inherit"
                     >
                         {alert && (
-                            <Typography
-                                variant="caption"
-                                component="span"
-                            >
+                            <Typography variant="caption" component="span">
                                 {alert},
                             </Typography>
                         )}

@@ -7,13 +7,13 @@ import { DashboardServiceProps } from "./DashboardServiceWidget"
 import { useRegisterUnpackedValue } from "../../jacdac/useRegisterValue"
 import { RealTimeClockReadingType } from "../../../jacdac-ts/src/servers/realtimeclockserver"
 import { Grid, Typography } from "@mui/material"
-import LoadingProgress from "../ui/LoadingProgress"
 import useRegister from "../hooks/useRegister"
 import SyncIcon from "@mui/icons-material/Sync"
 import CmdButton from "../CmdButton"
+import DashboardRegisterValueFallback from "./DashboardRegisterValueFallback"
 
 export default function DashboardRealTimeClock(props: DashboardServiceProps) {
-    const { service } = props
+    const { service, expanded } = props
 
     const localTimeRegister = useRegister(service, RealTimeClockReg.LocalTime)
     const [year, month, dayOfMonth, dayOfWeek, hour, min, seconds] =
@@ -41,7 +41,9 @@ export default function DashboardRealTimeClock(props: DashboardServiceProps) {
         ])
     }
 
-    if (year === undefined) return <LoadingProgress />
+    if (year === undefined)
+        return <DashboardRegisterValueFallback register={localTimeRegister} />
+
     const t = new Date(year, month - 1, dayOfMonth, hour, min, seconds)
     const date = t.toLocaleDateString()
     const time = t.toLocaleTimeString()
@@ -55,7 +57,7 @@ export default function DashboardRealTimeClock(props: DashboardServiceProps) {
                             tabIndex={0}
                             role="timer"
                             aria-label={date}
-                            variant="h6"
+                            variant="subtitle2"
                         >
                             {date}
                         </Typography>
@@ -66,16 +68,24 @@ export default function DashboardRealTimeClock(props: DashboardServiceProps) {
                             tabIndex={0}
                             role="timer"
                             aria-label={time}
-                            variant="h4"
+                            variant="subtitle1"
                         >
                             {time}
                         </Typography>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item>
-                <CmdButton title="Sync time" onClick={handleSync} icon={<SyncIcon />} />
-            </Grid>
+            {expanded && (
+                <Grid item>
+                    <CmdButton
+                        title="Sync time"
+                        onClick={handleSync}
+                        icon={<SyncIcon />}
+                    >
+                        Sync
+                    </CmdButton>
+                </Grid>
+            )}
         </Grid>
     )
 }

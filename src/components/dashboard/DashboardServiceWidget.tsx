@@ -1,10 +1,4 @@
-import React, {
-    createElement,
-    FunctionComponent,
-    lazy,
-    useMemo,
-    Suspense,
-} from "react"
+import React, { createElement, FunctionComponent, lazy } from "react"
 import {
     SRV_ACCELEROMETER,
     SRV_BUTTON,
@@ -17,7 +11,7 @@ import {
     SRV_LED,
     SRV_DOT_MATRIX,
     SRV_LED_STRIP,
-    SRV_LED_DISPLAY,
+    SRV_LED_SINGLE,
     SRV_MATRIX_KEYPAD,
     SRV_MOTION,
     SRV_POWER,
@@ -40,10 +34,8 @@ import {
     SRV_WATER_LEVEL,
     SRV_WIND_DIRECTION,
     SRV_BIT_RADIO,
-    SystemReg,
     SRV_HID_KEYBOARD,
     SRV_HID_MOUSE,
-    //SRV_AZURE_IOT_HUB,
     SRV_AZURE_IOT_HUB_HEALTH,
     SRV_WIFI,
     SRV_VIBRATION_MOTOR,
@@ -52,30 +44,27 @@ import {
     SRV_LIGHT_BULB,
     SRV_BRAILLE_DISPLAY,
     SRV_JACSCRIPT_MANAGER,
+    SRV_HID_JOYSTICK,
 } from "../../../jacdac-ts/src/jdom/constants"
 import { JDService } from "../../../jacdac-ts/src/jdom/service"
-import { isRegister } from "../../../jacdac-ts/src/jdom/spec"
-import RegisterInput from "../RegisterInput"
-import { JDRegister } from "../../../jacdac-ts/src/jdom/register"
-import {
-    useRegisterBoolValue,
-    useRegisterUnpackedValue,
-} from "../../jacdac/useRegisterValue"
-import { CircularProgress, NoSsr } from "@mui/material"
+import { CircularProgress } from "@mui/material"
 
 // bundled
 import DashboardButton from "./DashboardButton"
 import DashboardRotaryEncoder from "./DashboardRotaryEncoder"
 import DashboardSwitch from "./DashboardSwitch"
+import DashboardGamepad from "./DashboardGamepad"
 import useServiceServer from "../hooks/useServiceServer"
-import useRegister from "../hooks/useRegister"
+import Suspense from "../ui/Suspense"
+import DashboardServiceDefaultWidget from "./DashboardServiceDefaultWidget"
 
 // lazy devices
 const DashboardServo = lazy(() => import("./DashboardServo"))
 const DashboardAccelerometer = lazy(() => import("./DashboardAccelerometer"))
 const DashboardBuzzer = lazy(() => import("./DashboardBuzzer"))
+const DashboardLED = lazy(() => import("./DashboardLED"))
 const DashboardLEDStrip = lazy(() => import("./DashboardLEDStrip"))
-const DashboardLEDDisplay = lazy(() => import("./DashboardLEDDisplay"))
+const DashboardLEDSingle = lazy(() => import("./DashboardLEDSingle"))
 const DashboardRoleManager = lazy(() => import("./DashboardRoleManager"))
 const DashboardTrafficLight = lazy(() => import("./DashboardTrafficLight"))
 const DashboardCharacterScreen = lazy(
@@ -93,8 +82,6 @@ const DashboardSpeechSynthesis = lazy(
 )
 const DashboardSoilMoisture = lazy(() => import("./DashboardSoilMoisture"))
 const DashboardRealTimeClock = lazy(() => import("./DashboardRealTimeClock"))
-const DashboardLED = lazy(() => import("./DashboardLED"))
-const DashboardGamepad = lazy(() => import("./DashboardGamepad"))
 const DashboardSevenSegmentDisplay = lazy(
     () => import("./DashboardSevenSegmentDisplay")
 )
@@ -113,6 +100,7 @@ const DashboardSolenoid = lazy(() => import("./DashboardSolenoid"))
 const DashboardBitRadio = lazy(() => import("./DashboardBitRadio"))
 const DashboardHIDKeyboard = lazy(() => import("./DashboardHIDKeyboard"))
 const DashboardHIDMouse = lazy(() => import("./DashboardHIDMouse"))
+const DashboardHIDJoystick = lazy(() => import("./DashboardHIDJoystick"))
 //const DashboardAzureIoTHub = lazy(() => import("./DashboardAzureIoTHub"))
 const DashboardAzureIoTHubHealth = lazy(
     () => import("./DashboardAzureIoTHubHealth")
@@ -136,6 +124,10 @@ export interface DashboardServiceProps {
     variant?: "icon" | ""
     // the dashboard html element is in the view
     visible?: boolean
+    // a programming experience is controlling the device
+    controlled?: boolean
+    // show a button to toggle an advanced interaction mode
+    expandable?: boolean
 }
 export type DashboardServiceComponent = FunctionComponent<DashboardServiceProps>
 
@@ -144,6 +136,8 @@ const serviceViews: {
         component: DashboardServiceComponent
         bundled?: boolean
         weight?: (service: JDService) => number
+        // show a button to toggle an advanced interaction mode
+        expandable?: boolean
     }
 } = {
     [SRV_ROLE_MANAGER]: {
@@ -152,19 +146,22 @@ const serviceViews: {
     },
     [SRV_BUZZER]: {
         component: DashboardBuzzer,
-        weight: () => 6,
+        weight: () => 4,
     },
     [SRV_LED_STRIP]: {
         component: DashboardLEDStrip,
         weight: () => 3,
+        expandable: true,
     },
-    [SRV_LED_DISPLAY]: {
-        component: DashboardLEDDisplay,
+    [SRV_LED]: {
+        component: DashboardLED,
         weight: () => 3,
+        expandable: true,
     },
     [SRV_ACCELEROMETER]: {
         component: DashboardAccelerometer,
         weight: () => 3,
+        expandable: true,
     },
     [SRV_ROTARY_ENCODER]: {
         component: DashboardRotaryEncoder,
@@ -188,10 +185,12 @@ const serviceViews: {
     [SRV_CHARACTER_SCREEN]: {
         component: DashboardCharacterScreen,
         weight: () => 3,
+        expandable: true,
     },
     [SRV_BRAILLE_DISPLAY]: {
         component: DashboardBrailleDisplay,
-        weight: () => 3,
+        weight: () => 2,
+        expandable: true,
     },
     [SRV_RAIN_GAUGE]: {
         component: DashboardRainGauge,
@@ -199,6 +198,7 @@ const serviceViews: {
     [SRV_DOT_MATRIX]: {
         component: DashboardDotMatrix,
         weight: () => 3,
+        expandable: true,
     },
     [SRV_WIND_DIRECTION]: {
         component: DashboardWindDirection,
@@ -220,16 +220,19 @@ const serviceViews: {
     },
     [SRV_REAL_TIME_CLOCK]: {
         component: DashboardRealTimeClock,
+        expandable: true,
     },
-    [SRV_LED]: {
-        component: DashboardLED,
+    [SRV_LED_SINGLE]: {
+        component: DashboardLEDSingle,
     },
     [SRV_GAMEPAD]: {
         component: DashboardGamepad,
+        bundled: true,
         weight: () => 3,
     },
     [SRV_SEVEN_SEGMENT_DISPLAY]: {
         component: DashboardSevenSegmentDisplay,
+        expandable: true,
     },
     [SRV_MOTION]: {
         component: DashboardMotion,
@@ -239,7 +242,7 @@ const serviceViews: {
     },
     [SRV_COLOR]: {
         component: DashboardColor,
-        weight: () => 2,
+        weight: () => 1,
     },
     [SRV_SOUND_PLAYER]: {
         component: DashboardSoundPlayer,
@@ -258,6 +261,7 @@ const serviceViews: {
     [SRV_GYROSCOPE]: {
         component: DashboardGyroscope,
         weight: () => 3,
+        expandable: true,
     },
     [SRV_SOUND_SPECTRUM]: {
         component: DashboardSoundSpectrum,
@@ -276,6 +280,10 @@ const serviceViews: {
     },
     [SRV_HID_MOUSE]: {
         component: DashboardHIDMouse,
+        weight: () => 2,
+    },
+    [SRV_HID_JOYSTICK]: {
+        component: DashboardHIDJoystick,
         weight: () => 2,
     },
     /*
@@ -302,6 +310,7 @@ const serviceViews: {
     },
     [SRV_RELAY]: {
         component: DashboardRelay,
+        weight: () => 2,
     },
     [SRV_LIGHT_BULB]: {
         component: DashboardLightBulb,
@@ -311,130 +320,8 @@ const serviceViews: {
     },
 }
 
-const collapsedRegisters = [
-    SystemReg.Reading,
-    SystemReg.Value,
-    SystemReg.Intensity,
-]
-
-function ValueWidget(
-    props: {
-        valueRegister: JDRegister
-        intensityRegister: JDRegister
-    } & DashboardServiceProps
-) {
-    const { valueRegister, intensityRegister, ...others } = props
-    const { visible } = others
-    const hasIntensityBool =
-        intensityRegister?.specification?.fields[0]?.type === "bool"
-    const intensity = useRegisterBoolValue(
-        hasIntensityBool && intensityRegister,
-        others
-    )
-    const off = hasIntensityBool ? !intensity : undefined
-    const toggleOff = async () => {
-        await intensityRegister.sendSetBoolAsync(off, true)
-    }
-
-    return (
-        <RegisterInput
-            register={valueRegister}
-            variant={"widget"}
-            showServiceName={false}
-            showRegisterName={false}
-            hideMissingValues={true}
-            off={off}
-            toggleOff={hasIntensityBool ? toggleOff : undefined}
-            visible={visible}
-        />
-    )
-}
-
-function IntensityWidget(
-    props: { intensityRegister: JDRegister } & DashboardServiceProps
-) {
-    const { intensityRegister, ...others } = props
-    const { visible } = others
-
-    const hasIntensityBool =
-        intensityRegister?.specification?.fields[0]?.type === "bool"
-    const [intensity] = useRegisterUnpackedValue<[number | boolean]>(
-        intensityRegister,
-        others
-    )
-    const off = hasIntensityBool ? !intensity : undefined
-
-    return (
-        <RegisterInput
-            register={intensityRegister}
-            variant={"widget"}
-            showServiceName={false}
-            showRegisterName={false}
-            hideMissingValues={true}
-            off={off}
-            visible={visible}
-        />
-    )
-}
-
-function DefaultRegisterWidget(
-    props: { register: JDRegister } & DashboardServiceProps
-) {
-    const { register, ...rest } = props
-    if (register.specification.identifier == SystemReg.Value) {
-        const intensityRegister = props.service.register(SystemReg.Intensity)
-        return (
-            <ValueWidget
-                valueRegister={register}
-                intensityRegister={intensityRegister}
-                {...rest}
-            />
-        )
-    } else if (register.specification.identifier === SystemReg.Intensity)
-        return <IntensityWidget intensityRegister={register} {...rest} />
-    else
-        return (
-            <RegisterInput
-                register={register}
-                variant={"widget"}
-                showServiceName={false}
-                showRegisterName={false}
-                hideMissingValues={true}
-                visible={props.visible}
-            />
-        )
-}
-
-function DefaultWidget(props: DashboardServiceProps) {
-    const { service } = props
-    const { specification } = service
-    const registers = useMemo(
-        () =>
-            specification?.packets
-                .filter(
-                    pkt =>
-                        isRegister(pkt) &&
-                        collapsedRegisters.indexOf(pkt.identifier) > -1
-                )
-                .map(rspec => service.register(rspec.identifier)),
-        [service]
-    )
-
-    if (!registers?.length)
-        // nothing to see here
-        return null
-
-    return (
-        <>
-            {registers.map(register => (
-                <DefaultRegisterWidget
-                    key={register.id}
-                    register={register}
-                    {...props}
-                />
-            ))}
-        </>
-    )
+export function isExpandableView(serviceClass: number) {
+    return !!serviceViews[serviceClass]?.expandable
 }
 
 export function hasServiceView(serviceClass: number) {
@@ -450,29 +337,28 @@ export default function DashboardServiceWidget(
         serviceViews[specification.classIdentifier] || {}
     const server = useServiceServer(service)
     const color = server ? "secondary" : "primary"
+
     // no special support
-    if (!component) return createElement(DefaultWidget, props)
+    if (!component) return createElement(DashboardServiceDefaultWidget, props)
 
     // precompiled
     if (bundled) return createElement(component, props)
 
     // lazy loading
     return (
-        <NoSsr>
-            <Suspense
-                fallback={
-                    <CircularProgress
-                        aria-label={`loading widget for ${service}`}
-                        color={color}
-                        disableShrink={true}
-                        variant={"indeterminate"}
-                        size={"3em"}
-                    />
-                }
-            >
-                {createElement(component, props)}
-            </Suspense>
-        </NoSsr>
+        <Suspense
+            fallback={
+                <CircularProgress
+                    aria-label={`loading widget...`}
+                    color={color}
+                    disableShrink={true}
+                    variant={"indeterminate"}
+                    size={"1rem"}
+                />
+            }
+        >
+            {createElement(component, props)}
+        </Suspense>
     )
 }
 

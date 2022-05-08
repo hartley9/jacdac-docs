@@ -2,57 +2,39 @@ import React from "react"
 // tslint:disable-next-line: no-submodule-imports
 import { Box, CardHeader, Typography } from "@mui/material"
 import {
-    GithubRepository,
     normalizeSlug,
-    useFetchJSON,
     useLatestFirmwareRelease,
     useRepository,
-} from "./github"
+} from "../github"
 import GitHubIcon from "@mui/icons-material/GitHub"
 import { Link } from "gatsby-theme-material-ui"
-import LoadingProgress from "./ui/LoadingProgress"
-
-function MakeCodeFolderLink(props: {
-    slug: string
-    folder: string
-    repo: GithubRepository
-}) {
-    const { slug, folder, repo } = props
-    const { response: pxtJson } = useFetchJSON<{
-        name: string
-        description: string
-    }>(slug, repo.default_branch, "pxt.json", "application/json")
-    return (
-        <Link
-            href={`${repo.html_url}/tree/${repo.default_branch}/${folder}`}
-            target="blank"
-        >
-            <Typography component="span" variant="h5">
-                {`${repo.name}/ ${pxtJson?.name || folder}`}
-            </Typography>
-        </Link>
-    )
-}
+import LoadingProgress from "../ui/LoadingProgress"
+import MakeCodeOpenSnippetButton from "../makecode/MakeCodeOpenSnippetButton"
+import MakeCodeGithubImportLink from "../makecode/MakeCodeGithubImportLink"
 
 export default function GithubRepositoryCardHeader(props: {
     slug: string
     showRelease?: boolean
+    showMakeCodeButton?: boolean
 }) {
-    const { slug, showRelease } = props
-    const { response: repo, loading: repoLoading, status } = useRepository(slug)
+    const { slug, showRelease, showMakeCodeButton } = props
+    const { repoPath, folder, name: repoName } = normalizeSlug(slug)
+    const {
+        response: repo,
+        loading: repoLoading,
+        status,
+    } = useRepository(repoPath)
     const { response: release } = useLatestFirmwareRelease(showRelease && slug)
-    const { folder } = normalizeSlug(slug)
-
     const title = repo ? (
         <>
             <Typography component="span" variant="h6">
-                {repo.organization?.login}
+                {repo.organization?.login || repo.owner?.login}
             </Typography>
             <Box component="span" ml={0.5} mr={0.5}>
                 /
             </Box>
             {folder ? (
-                <MakeCodeFolderLink slug={slug} folder={folder} repo={repo} />
+                <MakeCodeGithubImportLink slug={slug} />
             ) : (
                 <Link href={repo.html_url} target="_blank" underline="hover">
                     <Typography component="span" variant="h5">
@@ -64,7 +46,7 @@ export default function GithubRepositoryCardHeader(props: {
     ) : (
         <>
             <Link
-                href={`https://github.com/${slug}`}
+                href={`https://github.com/${repoPath}`}
                 target="_blank"
                 underline="hover"
             >
@@ -73,9 +55,14 @@ export default function GithubRepositoryCardHeader(props: {
                 </Typography>
             </Link>
             {repoLoading && <LoadingProgress />}
+            {status === 403 && (
+                <Typography component="p" variant="caption">
+                    Github query throttled, please wait.
+                </Typography>
+            )}
             {status !== 403 && !repoLoading && !repo && (
                 <Typography component="p" variant="caption">
-                    Unable to find repository.
+                    Unable to find repository (status {status}).
                 </Typography>
             )}
         </>
@@ -85,6 +72,7 @@ export default function GithubRepositoryCardHeader(props: {
         <CardHeader
             title={title}
             subheader={
+                showRelease &&
                 release && (
                     <Link
                         color="textSecondary"
@@ -96,6 +84,14 @@ export default function GithubRepositoryCardHeader(props: {
                 )
             }
             avatar={<GitHubIcon />}
+            action={
+                showMakeCodeButton && (
+                    <MakeCodeOpenSnippetButton
+                        name={`${repoName} with jacdac`}
+                        slug={slug}
+                    />
+                )
+            }
         />
     )
 }

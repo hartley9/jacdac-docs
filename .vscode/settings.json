@@ -23,7 +23,7 @@
         "*.mdx": "markdown"
     },
     "git.detectSubmodulesLimit": 20,
-    "[xml]": {
-        "editor.defaultFormatter": "redhat.vscode-xml"
+    "[svg]": {
+        "editor.defaultFormatter": "jock.svg"
     }
 }

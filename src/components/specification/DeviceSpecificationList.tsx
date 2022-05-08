@@ -15,14 +15,23 @@ import {
 import useDeviceSpecifications from "../devices/useDeviceSpecifications"
 import useGridBreakpoints from "../useGridBreakpoints"
 import ChipList from "../ui/ChipList"
+import { serviceName } from "../../../jacdac-ts/src/jdom/pretty"
 
 function DeviceSpecificationCard(props: {
     specification: jdspec.DeviceSpec
     size: "list" | "preview" | "catalog"
 }) {
     const { specification, size } = props
-    const { id, name, company, services, hardwareDesign, firmwareSource } =
-        specification
+    const {
+        id,
+        name,
+        version,
+        company,
+        services,
+        hardwareDesign,
+        firmwareSource,
+        storeLink,
+    } = specification
     const imageUrl = useDeviceImage(specification, size)
     const serviceNames = uniqueMap(
         services,
@@ -52,6 +61,15 @@ function DeviceSpecificationCard(props: {
                         component="div"
                     >
                         {name}
+                        {version && (
+                            <Typography
+                                sx={{ ml: 1 }}
+                                variant="caption"
+                                component="span"
+                            >
+                                v{version}
+                            </Typography>
+                        )}
                     </Typography>
                     <Typography component="div" variant="subtitle2">
                         {serviceNames || "no services"}
@@ -60,6 +78,7 @@ function DeviceSpecificationCard(props: {
                         {company}
                     </Typography>
                     <ChipList>
+                        {!storeLink && <Chip size="small" label="prototype" />}
                         {firmwareSource && (
                             <Chip size="small" label="firmware code" />
                         )}
@@ -74,24 +93,28 @@ function DeviceSpecificationCard(props: {
 }
 
 export default function DeviceSpecificationList(props: {
+    query?: string
     count?: number
     shuffle?: boolean
     company?: string
     requiredServiceClasses?: number[]
     devices?: jdspec.DeviceSpec[]
     updates?: boolean
+    buyNow?: boolean
     firmwareSources?: boolean
     hardwareDesign?: boolean
     transports?: jdspec.TransportType[]
     tags?: string[]
 }) {
     const {
+        query,
         count,
         shuffle,
         requiredServiceClasses,
         company,
         devices,
         updates,
+        buyNow,
         hardwareDesign,
         firmwareSources,
         transports,
@@ -115,16 +138,35 @@ export default function DeviceSpecificationList(props: {
                     )
             )
         if (updates) r = r.filter(spec => spec.repo)
+        if (buyNow) r = r.filter(spec => !!spec.storeLink)
         if (hardwareDesign) r = r.filter(spec => spec.hardwareDesign)
         if (firmwareSources) r = r.filter(spec => spec.firmwareSource)
         if (transports?.length)
             r = r.filter(spec => transports.indexOf(spec.transport?.type) > -1)
         if (tags?.length)
             r = r.filter(spec => spec.tags?.find(tag => tags.includes(tag)))
+        if (query)
+            r = r.filter(spec =>
+                [
+                    spec.name,
+                    spec.description,
+                    spec.company,
+                    ...(spec.productIdentifiers || []).map(p => p.toString(16)),
+                    ...spec.services.map(p => p.toString(16)),
+                    ...spec.services.map(srv => serviceName(srv)),
+                ].some(s => s?.toLowerCase()?.indexOf(query.toLowerCase()) > -1)
+            )
         if (shuffle) arrayShuffle(r)
+        else
+            r.sort(
+                (a, b) =>
+                    (a.connector === "none" ? 1 : 0) -
+                    (b.connector === "none" ? 1 : 0)
+            )
         if (count !== undefined) r = r.slice(0, count)
         return r
     }, [
+        query,
         requiredServiceClasses,
         shuffle,
         count,
@@ -132,6 +174,7 @@ export default function DeviceSpecificationList(props: {
         JSON.stringify(devices?.map(d => d.id)),
         specifications,
         updates,
+        buyNow,
         hardwareDesign,
         firmwareSources,
         transports?.join(","),
@@ -142,7 +185,11 @@ export default function DeviceSpecificationList(props: {
 
     if (!specs.length)
         return (
-            <Typography variant="body1">No device registered yet.</Typography>
+            <Typography variant="body1">
+                {query
+                    ? `No device matching the search criterias.`
+                    : `No device registered yet.`}
+            </Typography>
         )
 
     return (

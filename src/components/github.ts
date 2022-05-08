@@ -73,10 +73,14 @@ function contentsToFirmwareReleases(contents: GithubContent[]) {
 
 export function normalizeSlug(slug: string) {
     if (!slug) return {}
-    const cleaned = slug.replace(/^https:\/\/github.com\//, "")
+    const cleaned = slug
+        .replace(/^https:\/\/github.com\//, "")
+        .replace(/\/tree\/master/, "")
     const parts = cleaned.split("/")
     return {
         repoPath: `${parts[0]}/${parts[1]}`,
+        owner: parts[0],
+        name: parts[1],
         folder: parts.slice(2).join("/"),
     }
 }
@@ -86,9 +90,8 @@ export interface GitHubApiOptions {
 }
 
 export function parseRepoUrl(url: string): { owner: string; name: string } {
-    const m = /^https:\/\/github\.com\/([^/ \t]+)\/([^/ \t]+)\/?$/.exec(
-        url || ""
-    )
+    const u = (url || "").replace(/\/tree\/master/, "")
+    const m = /^https:\/\/github\.com\/([^/ \t]+)\/([^/ \t]+)\/?$/.exec(u)
     if (m) return { owner: m[1], name: m[2] }
     return undefined
 }
@@ -122,6 +125,19 @@ export async function fetchLatestFirmwareRelease(
             throw new Error("Too many calls to GitHub, try again later")
     }
     throw new Error(`unknown status code ${resp.status}`)
+}
+
+export function rawUrl(slug: string, branch: string, path: string) {
+    const { repoPath, folder } = normalizeSlug(slug)
+    const url = `https://raw.githubusercontent.com/${[
+        repoPath,
+        branch,
+        folder,
+        path,
+    ]
+        .filter(p => !!p)
+        .join("/")}`
+    return url
 }
 
 export async function fetchFirmwareReleaseBinary(

@@ -6,15 +6,15 @@ import {
     useRegisterUnpackedValue,
 } from "../../jacdac/useRegisterValue"
 import { Grid, TextField } from "@mui/material"
-import LoadingProgress from "../ui/LoadingProgress"
 import useRegister from "../hooks/useRegister"
 import CmdButton from "../CmdButton"
 import ClearIcon from "@mui/icons-material/Clear"
 import EditIcon from "@mui/icons-material/Edit"
 import IconButtonWithTooltip from "../ui/IconButtonWithTooltip"
 import CharacterScreenWidget from "../widgets/CharacterScreenWidget"
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew"
+import DashboardRegisterValueFallback from "./DashboardRegisterValueFallback"
 
 // https://en.wikipedia.org/wiki/Braille_ASCII
 const BRAILE_CHARACTERS = {
@@ -96,7 +96,7 @@ function brailify(s: string) {
 }
 
 export default function DashboardBrailleDisplay(props: DashboardServiceProps) {
-    const { service } = props
+    const { service, expanded } = props
     const textId = useId()
 
     const patternsRegister = useRegister(service, BrailleDisplayReg.Patterns)
@@ -109,18 +109,15 @@ export default function DashboardBrailleDisplay(props: DashboardServiceProps) {
     const enabled = useRegisterBoolValue(enabledRegister, props)
     const [length] = useRegisterUnpackedValue<[number]>(lengthRegister, props)
 
-    const [edit, setEdit] = useState(false)
     const [fieldMessage, setFieldMessage] = useState(patterns)
     const handleFieldMessageChange = async (
         ev: ChangeEvent<HTMLTextAreaElement>
     ) => {
         const text = ev.target.value
         const brailled = brailify(text)
-        console.log({ text, brailled })
         setFieldMessage(brailled)
         await patternsRegister.sendSetStringAsync(brailled, true)
     }
-    const handleEdit = () => setEdit(e => !e)
     const handleClear = async () => {
         setFieldMessage("")
         await patternsRegister.sendSetStringAsync("", true)
@@ -132,11 +129,12 @@ export default function DashboardBrailleDisplay(props: DashboardServiceProps) {
         if (!fieldMessage && patterns) setFieldMessage(patterns)
     }, [patterns])
 
-    if (length === undefined) return <LoadingProgress /> // size unknown
+    if (length === undefined)
+        return <DashboardRegisterValueFallback register={lengthRegister} />
 
     return (
-        <Grid container spacing={1}>
-            {edit && (
+        <Grid container spacing={1} alignItems="center">
+            {expanded && (
                 <Grid item xs={12}>
                     <Grid container spacing={1}>
                         <Grid item xs>
@@ -177,14 +175,6 @@ export default function DashboardBrailleDisplay(props: DashboardServiceProps) {
                     color={enabled ? "primary" : undefined}
                     icon={<PowerSettingsNewIcon />}
                 />
-            </Grid>
-            <Grid item>
-                <IconButtonWithTooltip
-                    title={!edit ? "show editor" : "hide editor"}
-                    onClick={handleEdit}
-                >
-                    <EditIcon />
-                </IconButtonWithTooltip>
             </Grid>
         </Grid>
     )

@@ -19,6 +19,7 @@ import {
     EventBlockDefinition,
     identityTransformData,
     InputDefinition,
+    LabelDefinition,
     OptionsInputDefinition,
     toolsColour,
     TWIN_BLOCK,
@@ -42,10 +43,13 @@ import {
     ServicesBaseDSL,
     toRoleType,
     LOG_BLOCK,
-    ROLE_BOUND_EVENT_BLOCK
+    LOG_VALUE_BLOCK,
+    ROLE_BOUND_EVENT_BLOCK,
+    CONSOLE_BLOCK,
 } from "./servicesbase"
 import { humanify } from "../../../../jacdac-ts/jacdac-spec/spectool/jdspec"
 import VariablesField from "../fields/VariablesFields"
+import ConsoleField from "../fields/ConsoleField"
 
 const SET_STATUS_LIGHT_BLOCK = "jacdac_set_status_light"
 const ROLE_BOUND_BLOCK = "jacdac_role_bound"
@@ -127,13 +131,13 @@ export class ServicesBlockDomainSpecificLanguage
                                 type: "input_value",
                                 name: "color",
                                 check: "Number",
-                            }
+                            },
                         ],
                         values: {
                             color: {
                                 kind: "block",
                                 type: LEDColorField.SHADOW.type,
-                            }
+                            },
                         },
                         colour: this.serviceColor(service),
                         inputsInline: true,
@@ -144,7 +148,7 @@ export class ServicesBlockDomainSpecificLanguage
                         service,
                         expression: `$role.animate(($color >> 16) & 0xff, ($color >> 8) & 0xff, ($color >> 0) & 0xff, 0)`,
                         template: "custom",
-                        group: ''
+                        group: "",
                     }
             ),
             ...resolveService(SRV_SEVEN_SEGMENT_DISPLAY).map(
@@ -350,7 +354,7 @@ export class ServicesBlockDomainSpecificLanguage
                     <VariableInputDefinition>{
                         type: "field_variable",
                         name: "role",
-                        variable: "all",
+                        variable: "none",
                         variableTypes: [
                             "client",
                             ...supportedServices.map(srv => toRoleType(srv)),
@@ -460,7 +464,9 @@ export class ServicesBlockDomainSpecificLanguage
                 tooltip: `Watch variables values`,
                 helpUrl: "",
                 template: "meta",
-            },   
+            },
+        ]
+        const loggerBlocks: BlockDefinition[] = [
             {
                 kind: "block",
                 type: LOG_BLOCK,
@@ -478,12 +484,53 @@ export class ServicesBlockDomainSpecificLanguage
                 tooltip: `Log an entry to the console`,
                 helpUrl: "",
             },
+            {
+                kind: "block",
+                type: LOG_VALUE_BLOCK,
+                message0: `log value %1 = %2`,
+                args0: [
+                    <InputDefinition>{
+                        type: "input_value",
+                        name: "value",
+                    },
+                    <InputDefinition>{
+                        type: "input_value",
+                        name: "arg",
+                    },
+                ],
+                colour: toolsColour,
+                inputsInline: true,
+                previousStatement: CODE_STATEMENT_TYPE,
+                nextStatement: CODE_STATEMENT_TYPE,
+                tooltip: `Log a name value pair to the console`,
+                helpUrl: "",
+            },
+            {
+                kind: "block",
+                type: CONSOLE_BLOCK,
+                message0: `console %1 %2`,
+                args0: [
+                    {
+                        type: "input_dummy",
+                    },
+                    <InputDefinition>{
+                        type: ConsoleField.KEY,
+                        name: "console",
+                    },
+                ],
+                colour: toolsColour,
+                inputsInline: false,
+                tooltip: `Display console messages`,
+                helpUrl: "",
+                template: "meta",
+            },
         ]
 
         return <BlockDefinition[]>[
             ...this._serviceBlocks,
             ...this._eventFieldBlocks,
             ...this._roleBlocks,
+            ...loggerBlocks,
             ...toolsBlocks,
         ]
     }
@@ -522,11 +569,38 @@ export class ServicesBlockDomainSpecificLanguage
             ],
         }
 
-        const toolsCategory: CategoryDefinition = {
+        const debugCategory: CategoryDefinition = {
             kind: "category",
-            name: "Tools",
+            name: "Debug",
             colour: toolsColour,
             contents: [
+                <LabelDefinition>{
+                    kind: "label",
+                    text: "Console",
+                },
+                <BlockReference>{
+                    kind: "block",
+                    type: LOG_BLOCK,
+                    values: {
+                        value: { kind: "block", type: "text" },
+                    },
+                },
+                <BlockReference>{
+                    kind: "block",
+                    type: LOG_VALUE_BLOCK,
+                    values: {
+                        value: { kind: "block", type: "text" },
+                        arg: { kind: "block", type: "math_number" },
+                    },
+                },
+                <BlockReference>{
+                    kind: "block",
+                    type: CONSOLE_BLOCK,
+                },
+                <LabelDefinition>{
+                    kind: "label",
+                    text: "Device Twins",
+                },
                 <BlockReference>{
                     kind: "block",
                     type: TWIN_BLOCK,
@@ -539,17 +613,10 @@ export class ServicesBlockDomainSpecificLanguage
                     kind: "block",
                     type: VARIABLES_BLOCK,
                 },
-                <BlockReference>{
-                    kind: "block",
-                    type: LOG_BLOCK,
-                    values: {
-                        value: { kind: "block", type: "text" },
-                    },
-                },                
             ],
         }
 
-        return [...clientServicesCategories, commonCategory, toolsCategory]
+        return [...clientServicesCategories, commonCategory, debugCategory]
     }
 }
 const servicesDSL = new ServicesBlockDomainSpecificLanguage()

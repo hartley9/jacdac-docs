@@ -11,11 +11,12 @@ import LEDMatrixWidget from "../widgets/LEDMatrixWidget"
 import useRegister from "../hooks/useRegister"
 import { Grid } from "@mui/material"
 import RegisterInput from "../RegisterInput"
+import DashboardRegisterValueFallback from "./DashboardRegisterValueFallback"
 
 export default function DashboardDotMatrixDisplay(
     props: DashboardServiceProps
 ) {
-    const { service } = props
+    const { service, expanded } = props
 
     const dotsRegister = useRegister(service, DotMatrixReg.Dots)
     const brightnessRegister = useRegister(service, DotMatrixReg.Brightness)
@@ -40,8 +41,21 @@ export default function DashboardDotMatrixDisplay(
     const handleChange = (newLeds: Uint8Array) => {
         dotsRegister.sendSetAsync(newLeds, true)
     }
+
+    if (rows === undefined || columns === undefined)
+        return (
+            <DashboardRegisterValueFallback
+                register={rows === undefined ? rowsRegister : columnsRegister}
+            />
+        )
+
     return (
-        <Grid container spacing={1} justifyContent="center" flexDirection="column">
+        <Grid
+            container
+            spacing={1}
+            justifyContent="center"
+            flexDirection="column"
+        >
             <Grid item xs={12}>
                 <LEDMatrixWidget
                     leds={dots}
@@ -53,13 +67,15 @@ export default function DashboardDotMatrixDisplay(
                     dots={variant === DotMatrixVariant.Braille}
                 />
             </Grid>
-            <Grid item xs={12}>
-                <RegisterInput
-                    register={brightnessRegister}
-                    showRegisterName={true}
-                    visible={props.visible}
-                />
-            </Grid>
+            {expanded && (
+                <Grid item xs={12}>
+                    <RegisterInput
+                        register={brightnessRegister}
+                        showRegisterName={true}
+                        visible={props.visible}
+                    />
+                </Grid>
+            )}
         </Grid>
     )
 }

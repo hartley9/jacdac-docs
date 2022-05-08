@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useContext } from "react"
+import React, { lazy, useContext } from "react"
 import { styled } from "@mui/material/styles"
 import clsx from "clsx"
 import { Hidden, Box } from "@mui/material"
@@ -28,19 +28,20 @@ import BridgeButtons from "../ui/BridgeButtons"
 import { Flags } from "../../../jacdac-ts/src/jdom/flags"
 import DrawerToolsButton from "./DrawerToolsButton"
 import ConnectButtons from "../buttons/ConnectButtons"
+import Suspense from "../ui/Suspense"
 
 const InstallPWAButton = lazy(() => import("../ui/InstallPWAButton"))
 
 const PREFIX = "MainAppBar"
 
 const classes = {
-    grow: `${PREFIX}-grow`,
-    appBar: `${PREFIX}-appBar`,
-    appBarShift: `${PREFIX}-appBarShift`,
-    tocBarShift: `${PREFIX}-tocBarShift`,
-    toolBarShift: `${PREFIX}-toolBarShift`,
-    menuButton: `${PREFIX}-menuButton`,
-    hideMobile: `${PREFIX}-hideMobile`,
+    grow: `${PREFIX}grow`,
+    appBar: `${PREFIX}appBar`,
+    appBarShift: `${PREFIX}appBarShift`,
+    tocBarShift: `${PREFIX}tocBarShift`,
+    toolBarShift: `${PREFIX}toolBarShift`,
+    menuButton: `${PREFIX}menuButton`,
+    hideMobile: `${PREFIX}hideMobile`,
 }
 
 const Root = styled("div")(({ theme }) => ({
@@ -131,7 +132,7 @@ function MainToolbar() {
             </Hidden>
             <div className={classes.grow} />
             {Flags.diagnostics && <PacketStats />}
-            <Suspense fallback={null}>
+            <Suspense>
                 <InstallPWAButton
                     color="inherit"
                     className={clsx(classes.menuButton)}

@@ -38,6 +38,7 @@ import { humanify } from "../../../jacdac-ts/jacdac-spec/spectool/jdspec"
 import DeviceAvatar from "../devices/DeviceAvatar"
 import DeviceProductInformationTreeItem from "../devices/DeviceInformationTreeItem"
 import AnnounceFlagsTreeItem from "../devices/AnnounceFlagsTreeItem"
+import useDeviceDescription from "../../jacdac/useDeviceDescription"
 
 export interface JDomTreeViewProps extends StyledTreeViewProps {
     deviceFilter?: (devices: JDDevice) => boolean
@@ -52,6 +53,7 @@ export function DeviceTreeItem(
     const { device, serviceFilter, ...other } = props
     const { id, isPhysical } = useMemo(() => device, [device])
     const name = useDeviceName(device, true)
+    const description = useDeviceDescription(device)
     const kind = isPhysical ? "device" : "virtualdevice"
     const lost = useEventRaised([LOST, FOUND], device, dev => !!dev?.lost)
     const services = useEventRaised(ANNOUNCE, device, _ =>
@@ -59,7 +61,8 @@ export function DeviceTreeItem(
             srv => !serviceFilter || serviceFilter(srv)
         )
     )
-    const { dropped, restarts } = useChange(device.stats, _ => _.current)
+    const stats = useChange(device, _ => _.stats)
+    const { dropped, restarts } = useChange(stats, _ => _.current)
     const serviceNames = ellipseJoin(
         services
             .filter(srv => !isInfrastructure(srv.specification))
@@ -81,6 +84,7 @@ export function DeviceTreeItem(
         <StyledTreeItem
             nodeId={id}
             labelText={name}
+            labelCaption={description}
             labelInfo={labelInfo}
             warning={warning}
             alert={alert}

@@ -4,7 +4,7 @@ import { HidKeyboardModifiers } from "../../../jacdac-ts/jacdac-spec/dist/specco
 import Keyboard from "react-simple-keyboard"
 import "react-simple-keyboard/build/css/index.css"
 import DarkModeContext from "./DarkModeContext"
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import {
     modifierCodes,
     renderKeyboardKey,
@@ -15,9 +15,9 @@ import useMediaQueries from "../hooks/useMediaQueries"
 const PREFIX = "KeyboardKeyInput"
 
 const classes = {
-    capture: `${PREFIX}-capture`,
-    darkKeyboard: `${PREFIX}-darkKeyboard`,
-    keyboard: `${PREFIX}-keyboard`,
+    capture: `${PREFIX}capture`,
+    darkKeyboard: `${PREFIX}darkKeyboard`,
+    keyboard: `${PREFIX}keyboard`,
 }
 
 const Root = styled("div")(({ theme }) => ({

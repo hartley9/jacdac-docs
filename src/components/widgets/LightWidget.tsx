@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useRef } from "react"
 import {
     LedStripVariant,
-    LedDisplayVariant,
+    LedVariant,
 } from "../../../jacdac-ts/src/jdom/constants"
 import SvgWidget from "../widgets/SvgWidget"
 import useWidgetTheme from "../widgets/useWidgetTheme"
 import { JDService } from "../../../jacdac-ts/src/jdom/service"
 import { useRegisterUnpackedValue } from "../../jacdac/useRegisterValue"
-import LoadingProgress from "../ui/LoadingProgress"
 import useRegister from "../hooks/useRegister"
 import useFireKey from "../hooks/useFireKey"
+import DashboardRegisterValueFallback from "../dashboard/DashboardRegisterValueFallback"
 
 function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
     const [r$, g$, b$] = [r / 255, g / 255, b / 255]
@@ -78,7 +78,7 @@ function setRgbLeds(
 function LightStripWidget(props: {
     colors: () => Uint8Array
     subscribeColors?: (handler: () => void) => () => void
-    lightVariant: LedStripVariant | LedDisplayVariant
+    lightVariant: LedStripVariant | LedVariant
     numPixels: number
     actualBrightness: number
     widgetSize?: string
@@ -139,11 +139,11 @@ function LightStripWidget(props: {
     let height: number
 
     let d = ""
-    if (lightVariant === LedStripVariant.Stick) {
+    if (lightVariant === LedStripVariant.Stick || numPixels == 1) {
         const dx = neoradius * 3
         d = `M 0 ${dx}`
         for (let i = 0; i < numPixels; ++i) {
-            d += ` h ${dx} 0`
+            d += ` h ${dx}`
         }
         width = numPixels * dx
         height = 2 * dx
@@ -229,7 +229,7 @@ function LightStripWidget(props: {
 function LightMatrixWidget(props: {
     colors: () => Uint8Array
     subscribeColors: (handler: () => void) => () => void
-    lightVariant: LedStripVariant | LedDisplayVariant
+    lightVariant: LedStripVariant | LedVariant
     actualBrightness: number
     widgetSize?: string
     columns: number
@@ -254,7 +254,6 @@ function LightMatrixWidget(props: {
 
     // paint svg via dom
     const paint = () => {
-        console.log("paint")
         setRgbLeds(widgetRef.current, colors())
     }
 
@@ -353,9 +352,9 @@ export default function LightWidget(props: {
         props
     )
     const [lightVariant] = useRegisterUnpackedValue<
-        [LedStripVariant | LedDisplayVariant]
+        [LedStripVariant | LedVariant]
     >(variantRegister, props)
-    const [actualBrightness] = useRegisterUnpackedValue<[number]>(
+    const [actualBrightness = 0.5] = useRegisterUnpackedValue<[number]>(
         actualBrightnessRegister,
         props
     )
@@ -363,9 +362,10 @@ export default function LightWidget(props: {
         numColumnsRegister,
         props
     )
+    const widgetSize = `clamp(1rem, 100vw, 20vh)`
 
-    if (numPixels === undefined || actualBrightness === undefined)
-        return <LoadingProgress /> // nothing to render
+    if (numPixels === undefined)
+        return <DashboardRegisterValueFallback register={numPixelsRegister} /> // nothing to render
 
     if (!numPixels) return null
 
@@ -383,9 +383,10 @@ export default function LightWidget(props: {
                 onLedClick={onLedClick}
             />
         )
-    } else
+    } else {
         return (
             <LightStripWidget
+                widgetSize={widgetSize}
                 colors={colors}
                 subscribeColors={subscribeColors}
                 numPixels={numPixels}
@@ -394,4 +395,5 @@ export default function LightWidget(props: {
                 onLedClick={onLedClick}
             />
         )
+    }
 }

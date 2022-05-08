@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { lazy, useMemo, useState } from "react"
-import { Grid, Link } from "@mui/material"
+import { Grid } from "@mui/material"
 import useLocalStorage from "../../components/hooks/useLocalStorage"
 import { clone, unique } from "../../../jacdac-ts/src/jdom/utils"
 import {
@@ -16,6 +16,7 @@ import {
 } from "@mui/material"
 import { ChangeEvent } from "react"
 import {
+    identifierToUrlPath,
     isInfrastructure,
     serviceSpecificationFromClassIdentifier,
 } from "../../../jacdac-ts/src/jdom/spec"
@@ -37,7 +38,7 @@ import ImportImageCanvas from "../../components/ui/ImageImportCanvas"
 import { Autocomplete } from "@mui/material"
 import { useFirmwareBlob } from "../../components/firmware/useFirmwareBlobs"
 import { FirmwareBlob } from "../../../jacdac-ts/src/jdom/flashing"
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import AddServiceIconButton from "../../components/AddServiceIconButton"
 import useDevices from "../../components/hooks/useDevices"
 import DeviceCardHeader from "../../components/devices/DeviceCardHeader"
@@ -52,36 +53,33 @@ import useDeviceCatalog from "../../components/devices/useDeviceCatalog"
 import GridHeader from "../../components/ui/GridHeader"
 import { JD_SERVICE_INDEX_CTRL } from "../../../jacdac-ts/src/jdom/constants"
 import ClearIcon from "@mui/icons-material/Clear"
+import { Link } from "gatsby-theme-material-ui"
 const GithubPullRequestButton = lazy(
     () => import("../../components/buttons/GithubPullRequestButton")
 )
 
 function CompanySelect(props: {
     error?: string
-    value?: string
     onValueChange?: (name: string) => void
+    company: string
+    setCompany: (c: string) => void
 }) {
-    const { onValueChange, value, error } = props
-    const [company, setCompany] = useState(value)
+    const { company, setCompany, error } = props
     const specifications = useDeviceSpecifications()
     const companies = useMemo(
         () => unique(specifications.map(dev => dev.company)),
         [specifications]
     )
-    const companyId = useId()
-    const helperText =
-        "Name of the company manufacturing this device. The company name will be used to generate the module identifier."
+    const id = useId()
+    const companyId = id + "-company"
 
-    const handleChange = (ev: unknown, newValue: string) => {
-        setCompany(newValue)
-        onValueChange?.(newValue)
-    }
+    const handleChange = (ev: unknown, newValue: string) => setCompany(newValue)
     const renderInputs = params => (
         <TextField
             {...params}
             error={!!error}
             label="Company*"
-            helperText={error || helperText}
+            helperText={error}
             variant="outlined"
         />
     )
@@ -96,7 +94,6 @@ function CompanySelect(props: {
             options={companies}
             renderInput={renderInputs}
             inputValue={company}
-            aria-label={helperText}
             onInputChange={handleChange}
         />
     )
@@ -111,6 +108,7 @@ export default function DeviceRegistration() {
             services: [],
             productIdentifiers: [],
             repo: "",
+            version: "",
         } as jdspec.DeviceSpec
     )
     const gridBreakpoints = useGridBreakpoints()
@@ -129,28 +127,34 @@ export default function DeviceRegistration() {
         React.useState<null | HTMLElement>(null)
     const [imageDataURI, setImageDataURI] = useState<string>(undefined)
     const deviceCatalog = useDeviceCatalog()
-    const nameId = useId()
-    const firmwareMenuId = useId()
-    const repoId = useId()
-    const identifierId = useId()
-    const descriptionId = useId()
-    const homepageId = useId()
-    const hardwareVersionId = useId()
-    const designIdentifierId = useId()
-    const hardwareDesignId = useId()
-    const firmwareSourceId = useId()
+    const id = useId()
+    const nameId = id + "-name"
+    const firmwareMenuId = id + "-firmwaremenu"
+    const repoId = id + "-repo"
+    const makeCodeRepoId = id + "-makecoderepo"
+    const identifierId = id + "-identifier"
+    const urlId = id + "-url"
+    const descriptionId = id + "-description"
+    const homepageId = id + "-homepage"
+    const hardwareVersionId = id + "-hwversion"
+    const designIdentifierId = id + "-designid"
+    const hardwareDesignId = id + "-hwdesign"
+    const firmwareSourceId = id + "-hwsource"
+    const storeLinkId = id + "-store"
     const specifications = useDeviceSpecifications({
         includeDeprecated: true,
         includeExperimental: true,
     })
-    const handleClear = () =>
+    const handleClear = () => {
         setDevice({
             id: "my-device",
-            name: "My device",
+            name: "",
             services: [],
             productIdentifiers: [],
             repo: "",
         } as jdspec.DeviceSpec)
+        setImageDataURI(undefined)
+    }
     const handleServiceAdd = (srv: jdspec.ServiceSpec) => {
         console.log(`add`, srv.classIdentifier)
         device.services.push(srv.classIdentifier)
@@ -168,20 +172,31 @@ export default function DeviceRegistration() {
     )
     const { firmwareBlobs } = useFirmwareBlob(device.repo)
     const variant = "outlined"
-    const companyError = !device.company ? "select a company" : ""
-    const nameError = device.name?.length > 32 ? "name too long" : undefined
+    const companyError =
+        device.company?.length > 64
+            ? "Company is too long (max 64 characters)"
+            : undefined
+    const nameError =
+        device.name?.length > 64
+            ? "Name is too long (max 64 characters)"
+            : undefined
     const parsedRepo = parseRepoUrl(device.repo)
     const githubError =
         device.repo && !parsedRepo ? "invalid GitHub repository" : ""
     const linkError =
-        !device.link || /^https:\/\//.test(device.link)
+        !device.link || /^https:\/\//i.test(device.link)
             ? ""
             : "Must be https://..."
-    const idError = !device.id
-        ? "missing identifier"
-        : specifications.find(dev => dev.id == device.id)
-        ? "identifer already used"
-        : ""
+    const storeLinkError =
+        !device.storeLink || /^https:\/\//i.test(device.storeLink)
+            ? ""
+            : "Must be https://..."
+    const idError =
+        !device.id || !device.name
+            ? "missing identifier"
+            : specifications.find(dev => dev.id == device.id)
+            ? "identifer already used"
+            : ""
     const imageError = !imageDataURI ? "missing image" : ""
     const versionError =
         device?.version &&
@@ -205,8 +220,11 @@ export default function DeviceRegistration() {
         updateDevice()
     }
     const handleRepoChange = (ev: unknown, newValue: string) => {
-        console.log(`new repo`, { newValue })
         device.repo = newValue
+        updateDevice()
+    }
+    const handleMakeCodeRepoChange = (ev: ChangeEvent<HTMLInputElement>) => {
+        device.makeCodeRepo = ev.target.value?.trim()
         updateDevice()
     }
     const handleLinkChange = (ev: ChangeEvent<HTMLInputElement>) => {
@@ -231,6 +249,10 @@ export default function DeviceRegistration() {
     }
     const handleVersion = (ev: ChangeEvent<HTMLInputElement>) => {
         device.version = ev.target.value?.trim()
+        updateDevice()
+    }
+    const handleStoreLinkChange = (ev: ChangeEvent<HTMLInputElement>) => {
+        device.storeLink = ev.target.value?.trim()
         updateDevice()
     }
     const handleFirmwareAddClick = (
@@ -339,9 +361,12 @@ export default function DeviceRegistration() {
                 </IconButtonWithTooltip>
             </h1>
             <p>
-                Compose a device from various services, prepare the metadata and
-                register it to the{" "}
-                <Link href="/devices/" underline="hover">
+                Compose a device from various services, prepare the{" "}
+                <Link to="/ddk/device-definition/" underline="hover">
+                    metadata
+                </Link>{" "}
+                and register it to the{" "}
+                <Link to="/devices/" underline="hover">
                     Devices catalog
                 </Link>
                 .
@@ -374,27 +399,37 @@ export default function DeviceRegistration() {
                         helperText={nameError}
                         fullWidth={true}
                         label="Name"
-                        placeholder="My module"
+                        placeholder="My device"
                         value={device.name || ""}
                         onChange={handleNameChange}
                         variant={variant}
                     />
+                    <Typography variant="caption">
+                        Name of the device, without company or version. The name
+                        will be used to generate the device identifier.
+                    </Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <CompanySelect
-                        value={device?.company}
+                        company={device?.company || ""}
                         error={companyError}
-                        onValueChange={handleCompanyChanged}
+                        setCompany={handleCompanyChanged}
                     />
+                    <Typography variant="caption">
+                        Name of the company manufacturing this device. The
+                        company name will be used to generate the device
+                        identifier.
+                    </Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         id={hardwareVersionId}
+                        required
                         fullWidth={true}
                         error={!!versionError}
                         helperText={versionError}
                         label="Version"
-                        value={device?.version}
+                        value={device?.version || ""}
                         onChange={handleVersion}
                         variant={variant}
                     />
@@ -495,21 +530,6 @@ export default function DeviceRegistration() {
                         <AddServiceIconButton onAdd={handleServiceAdd} />
                     </PaperBox>
                 </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        id={identifierId}
-                        disabled
-                        error={!!idError}
-                        fullWidth={true}
-                        label="Identifier"
-                        variant={variant}
-                        value={device.id || ""}
-                    />
-                    <Typography variant="caption">
-                        This generated identifer is a URL friendly string
-                        created from your company and product name.
-                    </Typography>
-                </Grid>
                 <GridHeader title="Catalog" />
                 <Grid item xs={12}>
                     <TextField
@@ -527,13 +547,30 @@ export default function DeviceRegistration() {
                 <Grid item xs={12}>
                     <TextField
                         id={homepageId}
-                        label="Home page url"
+                        label="Home page URL"
                         error={!!linkError}
                         helperText={linkError}
                         fullWidth={true}
                         placeholder="https://..."
                         value={device.link || ""}
                         onChange={handleLinkChange}
+                        variant={variant}
+                        type="url"
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        id={storeLinkId}
+                        label="Store URL"
+                        error={!!storeLinkError}
+                        helperText={
+                            "URL where the device can be purchased" ||
+                            storeLinkError
+                        }
+                        fullWidth={true}
+                        placeholder="https://..."
+                        value={device.storeLink || ""}
+                        onChange={handleStoreLinkChange}
                         variant={variant}
                         type="url"
                     />
@@ -569,6 +606,17 @@ export default function DeviceRegistration() {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
+                        id={makeCodeRepoId}
+                        fullWidth={true}
+                        helperText="URL to MakeCode extension"
+                        label="MakeCode extension"
+                        value={device?.makeCodeRepo}
+                        onChange={handleMakeCodeRepoChange}
+                        variant={variant}
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
                         id={firmwareSourceId}
                         fullWidth={true}
                         helperText="public URL to the firmware sources."
@@ -600,6 +648,38 @@ export default function DeviceRegistration() {
                         onChange={handleHardwareDesignChanged}
                         variant={variant}
                     />
+                </Grid>
+                <GridHeader title="Links" />
+                <Grid item xs={12}>
+                    <TextField
+                        id={identifierId}
+                        disabled
+                        error={!!idError}
+                        fullWidth={true}
+                        label="Identifier"
+                        variant={variant}
+                        value={device.id || ""}
+                    />
+                    <Typography variant="caption">
+                        This generated identifer is a URL friendly string
+                        created from your company and product name.
+                    </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        id={urlId}
+                        disabled
+                        error={!!idError}
+                        fullWidth={true}
+                        label="URL"
+                        variant={variant}
+                        value={`https://microsoft.github.io/jacdac-docs/${identifierToUrlPath(
+                            device.id
+                        )}/`}
+                    />
+                    <Typography variant="caption">
+                        The final auto-generated URL for this device.
+                    </Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <Suspense>

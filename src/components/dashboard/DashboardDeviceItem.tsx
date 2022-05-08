@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material"
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import { JDDevice } from "../../../jacdac-ts/src/jdom/device"
 import DashboardDevice from "./DashboardDevice"
 import { GridBreakpoints } from "../useGridBreakpoints"
@@ -11,10 +11,10 @@ import AppContext, { DrawerType } from "../AppContext"
 export default function DashboardDeviceItem(
     props: {
         device: JDDevice
-        variant?: "icon" | ""
+        alwaysVisbile?: boolean
     } & DashboardDeviceProps
 ) {
-    const { device, variant, ...other } = props
+    const { device, ...other } = props
     const { drawerType } = useContext(AppContext)
     const breakpoints: GridBreakpoints = useChange(
         device,
@@ -54,7 +54,7 @@ export default function DashboardDeviceItem(
     // based on size, expanded or reduce widget size
     return (
         <Grid item {...breakpoints}>
-            <DashboardDevice device={device} variant={variant} {...other} />
+            <DashboardDevice device={device} {...other} />
         </Grid>
     )
 }

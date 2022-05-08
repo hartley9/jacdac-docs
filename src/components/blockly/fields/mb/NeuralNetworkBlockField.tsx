@@ -8,14 +8,14 @@ import { PointerBoundary } from "../PointerBoundary"
 
 import WorkspaceContext from "../../WorkspaceContext"
 
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import ExpandModelBlockField from "./ExpandModelBlockField"
 
 const PREFIX = "NeuralNetworkBlockField"
 
 const classes = {
-    fieldContainer: `${PREFIX}-fieldContainer`,
-    field: `${PREFIX}-field`,
+    fieldContainer: `${PREFIX}fieldContainer`,
+    field: `${PREFIX}field`,
 }
 
 // TODO jss-to-styled codemod: The Fragment root was replaced by div. Change the tag if needed.

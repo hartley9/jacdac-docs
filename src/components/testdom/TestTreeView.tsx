@@ -4,8 +4,6 @@ import {
     DeviceTest,
     DEVICE_TEST_KIND,
     RegisterTest,
-    EVENT_TEST_KIND,
-    EventTest,
     ServiceTest,
     REGISTER_ORACLE_KIND,
     SERVICE_TEST_KIND,
@@ -18,14 +16,16 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight"
 import StyledTreeItem, { StyledTreeViewItemProps } from "../ui/StyledTreeItem"
 import useChange from "../../jacdac/useChange"
 import AnnounceFlagsTreeItem from "../devices/AnnounceFlagsTreeItem"
-import { EventTreeItem, RegisterTreeItem } from "../tools/JDomTreeViewItems"
+import { RegisterTreeItem } from "../tools/JDomTreeViewItems"
 import DashboardServiceWidget from "../dashboard/DashboardServiceWidget"
 import TestIcon from "../icons/TestIcon"
-import InfoIcon from "@mui/icons-material/Info"
+import PanToolIcon from "@mui/icons-material/PanTool"
+import { Button } from "gatsby-theme-material-ui"
+import { TestState } from "../../../jacdac-ts/src/testdom/spec"
 const PREFIX = "TestTreeView"
 const classes = {
-    root: `${PREFIX}-root`,
-    margins: `${PREFIX}-margins`,
+    root: `${PREFIX}root`,
+    margins: `${PREFIX}margins`,
 }
 const StyledTreeView = styled(TreeView)(({ theme }) => ({
     [`&.${classes.root}`]: {
@@ -40,10 +40,8 @@ const StyledTreeView = styled(TreeView)(({ theme }) => ({
 
 const testComponents = {
     [DEVICE_TEST_KIND]: DeviceTestTreeItemExtra,
-    //[REGISTER_TEST_KIND]: RegisterTestTreeItemExtra,
-    [EVENT_TEST_KIND]: EventTestTreeItemExtra,
     [SERVICE_TEST_KIND]: ServiceTestTreeItemExtra,
-    [REGISTER_ORACLE_KIND]: RegisterTestTreeItemExtra,
+    [REGISTER_ORACLE_KIND]: RegisterOracleTestTreeItemExtra,
 }
 
 interface TestNodeProps {
@@ -57,10 +55,18 @@ function TestTreeItem(props: TestNodeProps) {
     const label = useChange(node, _ => _?.label)
     const info = useChange(node, _ => _?.info)
     const output = useChange(node, _ => _?.output)
+    const factory = useChange(node, _ => _?.factory)
     const description = useChange(node, _ => _?.description)
+    const manualSteps = useChange(node, _ => _?.manualSteps)
+    const state = useChange(node, _ => _?.state)
+    const { prepare: prepareStep, validate: validateStep } = manualSteps || {}
 
     const testComponent = testComponents[nodeKind]
     const testNode = testComponent ? createElement(testComponent, props) : null
+
+    const handlePrepared = () => node.prepared()
+    const handlePass = () => (node.state = TestState.Pass)
+    const handleFail = () => (node.state = TestState.Fail)
 
     return (
         <StyledTreeItem
@@ -71,26 +77,72 @@ function TestTreeItem(props: TestNodeProps) {
             {...rest}
         >
             {testNode}
+            {description && (
+                <StyledTreeItem
+                    nodeId={id + ":descr"}
+                    labelText={description}
+                    labelTextVariant="caption"
+                />
+            )}
+            {prepareStep &&
+                (state === TestState.Indeterminate ||
+                    state === TestState.Fail) && (
+                    <StyledTreeItem
+                        nodeId={id + ":manual:prepare"}
+                        labelText={prepareStep}
+                        icon={<PanToolIcon fontSize="small" color="warning" />}
+                        actions={
+                            !factory ? (
+                                <Button
+                                    variant="contained"
+                                    color="warning"
+                                    onClick={handlePrepared}
+                                >
+                                    Test
+                                </Button>
+                            ) : undefined
+                        }
+                    />
+                )}
+            {validateStep && state === TestState.Running && (
+                <StyledTreeItem
+                    nodeId={id + ":manual:validate"}
+                    labelText={validateStep}
+                    icon={<PanToolIcon fontSize="small" color="warning" />}
+                    actions={
+                        !factory ? (
+                            <>
+                                <Button
+                                    sx={{ marginRight: 0.5 }}
+                                    variant="contained"
+                                    color="success"
+                                    onClick={handlePass}
+                                >
+                                    Pass
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    color="error"
+                                    onClick={handleFail}
+                                >
+                                    Fail
+                                </Button>{" "}
+                            </>
+                        ) : undefined
+                    }
+                />
+            )}
             {output && (
                 <StyledTreeItem nodeId={id + ":output"} labelText={output} />
             )}
-            <>
-                {description && (
-                    <StyledTreeItem
-                        nodeId={id + ":descr"}
-                        icon={<InfoIcon color="info" />}                        
-                        labelText={description}
-                    />
-                )}
-                {nodeChildren?.map(child => (
-                    <TestTreeItem
-                        key={child.id}
-                        node={child}
-                        showTwins={showTwins}
-                        {...rest}
-                    />
-                ))}
-            </>
+            {nodeChildren?.map(child => (
+                <TestTreeItem
+                    key={child.id}
+                    node={child}
+                    showTwins={showTwins}
+                    {...rest}
+                />
+            ))}
         </StyledTreeItem>
     )
 }
@@ -121,22 +173,13 @@ function ServiceTestTreeItemExtra(
     )
 }
 
-function RegisterTestTreeItemExtra(
+function RegisterOracleTestTreeItemExtra(
     props: TestNodeProps & StyledTreeViewItemProps
 ) {
     const { node, ...rest } = props
     const { register } = node as RegisterTest
     if (!register) return null
     return <RegisterTreeItem register={register} {...rest} />
-}
-
-function EventTestTreeItemExtra(
-    props: TestNodeProps & StyledTreeViewItemProps
-) {
-    const { node, ...rest } = props
-    const { event } = node as EventTest
-    if (!event) return null
-    return <EventTreeItem event={event} {...rest} />
 }
 
 export default function TestTreeView(props: {

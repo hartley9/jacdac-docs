@@ -26,7 +26,7 @@ import useWidgetSize from "../widgets/useWidgetSize"
 import ValueWithUnitWidget from "../widgets/ValueWithUnitWidget"
 import useUnitIcon from "../hooks/useUnitIcon"
 import { PackedSimpleValue } from "../../../jacdac-ts/src/jdom/pack"
-import { useId } from "react-use-id-hook"
+import { useId } from "react"
 import LoadingProgress from "../ui/LoadingProgress"
 import useWidgetTheme from "../widgets/useWidgetTheme"
 
@@ -46,6 +46,7 @@ export default function MemberInput(props: {
     showLoading?: boolean
     off?: boolean
     toggleOff?: () => void
+    controlled?: boolean
 }) {
     const {
         specification,
@@ -63,11 +64,14 @@ export default function MemberInput(props: {
         showLoading,
         off,
         toggleOff,
+        controlled,
     } = props
     const { typicalMin, typicalMax, absoluteMin, absoluteMax, type } =
         specification
+    const { kind } = serviceMemberSpecification
     const enumInfo = serviceSpecification.enums?.[specification.type]
     const disabled = !setValue
+    const readOnly = disabled || (controlled && kind !== "ro")
     const [errorText, setErrorText] = useState("")
     const [textValue, setTextValue] = useState("")
     const valueString = memberValueToString(value, specification)
@@ -180,7 +184,7 @@ export default function MemberInput(props: {
                 control={
                     <Switch
                         checked={!!value}
-                        onChange={disabled ? undefined : handleChecked}
+                        onChange={readOnly ? undefined : handleChecked}
                         color={color}
                     />
                 }
@@ -198,7 +202,7 @@ export default function MemberInput(props: {
                         ? valueToFlags(enumInfo, value as number)
                         : (value as number)
                 }
-                onChange={handleEnumChange}
+                onChange={!controlled ? handleEnumChange : undefined}
             >
                 {Object.keys(enumInfo.members).map(n => (
                     <MenuItem key={n} value={enumInfo.members[n]}>
@@ -212,23 +216,25 @@ export default function MemberInput(props: {
         const min = signed ? -1 : 0
         const max = 1
         const step = resolution !== undefined ? resolution : 0.01
+        const digits = Math.ceil(-Math.log10(step))
+        const nvalue = roundWithPrecision(value as number, digits)
         if (isWidget) {
-            const size = `clamp(5rem, 16vw, 16vh)`
+            const size = `clamp(6rem, 12vw, 12vh)`
             return (
                 <GaugeWidget
                     tabIndex={0}
                     label={label}
                     size={size}
-                    value={value as number}
+                    value={nvalue}
                     color={color}
                     variant={signed ? "fountain" : undefined}
                     min={min}
                     max={max}
                     step={step}
                     valueLabel={percentValueLabelFormat}
-                    onChange={disabled ? undefined : handleSliderWidgetChange}
+                    onChange={readOnly ? undefined : handleSliderWidgetChange}
                     off={off}
-                    toggleOff={toggleOff}
+                    toggleOff={readOnly ? undefined : toggleOff}
                 />
             )
         }
@@ -237,9 +243,9 @@ export default function MemberInput(props: {
             <Slider
                 aria-label={label}
                 color={color}
-                value={value as number}
+                value={nvalue}
                 valueLabelFormat={percentValueFormat}
-                onChange={disabled ? undefined : handleSliderChange}
+                onChange={readOnly ? undefined : handleSliderChange}
                 min={min}
                 max={max}
                 step={step}
@@ -281,7 +287,7 @@ export default function MemberInput(props: {
                     step={step}
                     secondaryLabel={errorValue}
                     color={color}
-                    onChange={disabled ? undefined : handleSliderWidgetChange}
+                    onChange={readOnly ? undefined : handleSliderWidgetChange}
                 />
             )
 
@@ -290,7 +296,7 @@ export default function MemberInput(props: {
                 value={value as number}
                 color={color}
                 valueLabelFormat={off ? offFormat : valueLabelFormat}
-                onChange={disabled ? undefined : handleSliderChange}
+                onChange={readOnly ? undefined : handleSliderChange}
                 min={minValue}
                 max={maxValue}
                 step={step}
@@ -311,7 +317,7 @@ export default function MemberInput(props: {
                     readOnly: disabled,
                 }}
                 helperText={helperText}
-                onChange={disabled ? undefined : handleChange}
+                onChange={readOnly ? undefined : handleChange}
                 required={value === undefined}
                 error={!!errorText}
                 type={"text"}
@@ -343,7 +349,7 @@ export default function MemberInput(props: {
                     readOnly: disabled,
                 }}
                 helperText={helperText}
-                onChange={disabled ? undefined : handleChange}
+                onChange={readOnly ? undefined : handleChange}
                 required={value === undefined}
                 error={!!errorText}
                 type={inputType}

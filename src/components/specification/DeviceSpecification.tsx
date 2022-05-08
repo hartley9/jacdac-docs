@@ -18,6 +18,7 @@ import useDeviceSpecifications from "../devices/useDeviceSpecifications"
 import { Button, Link } from "gatsby-theme-material-ui"
 import { uniqueMap } from "../../../jacdac-ts/src/jdom/utils"
 import Alert from "../ui/Alert"
+import GithubRepositoryCard from "../github/GithubRepositoryCard"
 
 function DeviceStructuredData(props: { device: jdspec.DeviceSpec }) {
     const { device } = props
@@ -61,28 +62,31 @@ export default function DeviceSpecification(props: {
         company,
         productIdentifiers,
         repo,
+        makeCodeRepo,
         firmwares,
         version,
         designIdentifier,
         hardwareDesign,
         firmwareSource,
         storeLink,
+        connector = "edge",
     } = device
     const { services } = device
     const specifications = useDeviceSpecifications()
     const gridBreakpoints = useGridBreakpoints()
     const imageUrl = useDeviceImage(device, "catalog")
 
-    const others =
-        designIdentifier &&
-        specifications
-            .filter(
-                spec =>
-                    spec.id !== device.id &&
-                    spec.designIdentifier === designIdentifier &&
-                    spec.version !== undefined
-            )
-            ?.sort((l, r) => semverCmp(l.version, r.version))
+    const others = specifications
+        .filter(
+            spec =>
+                spec.id !== device.id &&
+                ((designIdentifier &&
+                    spec.designIdentifier === designIdentifier) ||
+                    (spec.company === device.company &&
+                        spec.name === device.name)) &&
+                spec.version !== undefined
+        )
+        ?.sort((l, r) => semverCmp(l.version, r.version))
 
     return (
         <>
@@ -99,14 +103,23 @@ export default function DeviceSpecification(props: {
                 {!!version && ` v${version}`}
                 {storeLink && (
                     <Button
+                        sx={{ marginLeft: 1 }}
                         href={storeLink}
-                        variant="contained"
+                        variant="outlined"
                         color="primary"
                     >
-                        Buy
+                        Buy Now
                     </Button>
                 )}
             </h2>
+            {connector === "none" && (
+                <Alert severity="warning">
+                    <AlertTitle>No edge connector available.</AlertTitle>
+                    This device does <b>not</b> have a Jacdac PCB edge
+                    connector. It is programmable as a Jacdac device but it
+                    cannot be connected to other devices with a cable.
+                </Alert>
+            )}
             <ChipList>
                 <Chip size="small" label={company} />
                 {designIdentifier && (
@@ -163,6 +176,17 @@ export default function DeviceSpecification(props: {
                 <>
                     <h3>Firmware</h3>
                     <FirmwareCard slug={repo} />
+                </>
+            )}
+            {makeCodeRepo && (
+                <>
+                    <h3>MakeCode Extension</h3>
+                    <GithubRepositoryCard
+                        slug={makeCodeRepo}
+                        showDescription={true}
+                        showDependencies={true}
+                        showMakeCodeButton={true}
+                    />
                 </>
             )}
             {!!firmwares && (

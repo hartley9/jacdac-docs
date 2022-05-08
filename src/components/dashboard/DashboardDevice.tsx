@@ -1,14 +1,8 @@
-import {
-    Card,
-    CardContent,
-    CardHeader,
-    Grid,
-    Paper,
-    Typography,
-} from "@mui/material"
-import React, { useCallback, useRef } from "react"
+import { Card, CardContent, Grid, Paper } from "@mui/material"
+import React, { useCallback, useRef, lazy } from "react"
 import {
     SRV_CONTROL,
+    SRV_INFRASTRUCTURE,
     SRV_LOGGER,
     SRV_PROTO_TEST,
     SRV_PROXY,
@@ -17,21 +11,18 @@ import {
 } from "../../../jacdac-ts/src/jdom/constants"
 import { JDDevice } from "../../../jacdac-ts/src/jdom/device"
 import useChange from "../../jacdac/useChange"
-import DeviceName from "../devices/DeviceName"
-// tslint:disable-next-line: no-submodule-imports match-default-export-name
-// tslint:disable-next-line: no-submodule-imports match-default-export-name
-import useDeviceSpecification from "../../jacdac/useDeviceSpecification"
-import DeviceAvatar from "../devices/DeviceAvatar"
 import DashboardServiceWidgetItem from "./DashboardServiceWidgetItem"
-import DeviceActions from "../devices/DeviceActions"
 import useDeviceName from "../devices/useDeviceName"
 import { DashboardDeviceProps } from "./Dashboard"
 import useIntersectionObserver from "../hooks/useIntersectionObserver"
 import { dependencyId } from "../../../jacdac-ts/src/jdom/eventsource"
-import useMediaQueries from "../hooks/useMediaQueries"
 import { DeviceLostAlert } from "../alert/DeviceLostAlert"
-import { DeviceProxyAlert } from "../alert/DeviceProxyAlert"
-import { DeviceBootloaderAlert } from "../alert/DeviceBootloaderAlert"
+import Suspense from "../ui/Suspense"
+import DashboardDeviceCardHeader from "./DashboardDeviceCardHeader"
+const DeviceProxyAlert = lazy(() => import("../alert/DeviceProxyAlert"))
+const DeviceBootloaderAlert = lazy(
+    () => import("../alert/DeviceBootloaderAlert")
+)
 
 const ignoredServices = [
     SRV_CONTROL,
@@ -39,13 +30,13 @@ const ignoredServices = [
     SRV_SETTINGS,
     SRV_PROTO_TEST,
     SRV_PROXY,
+    SRV_INFRASTRUCTURE,
     SRV_UNIQUE_BRAIN,
 ]
 
 export default function DashboardDevice(
     props: {
         device: JDDevice
-        variant?: "icon" | ""
     } & DashboardDeviceProps
 ) {
     const {
@@ -55,11 +46,12 @@ export default function DashboardDevice(
         showAvatar,
         showHeader,
         showReset,
+        showDeviceProxyAlert,
+        alwaysVisible,
+        controlled,
     } = props
-    const { xs: mobile } = useMediaQueries()
 
     const name = useDeviceName(device)
-    const specification = useDeviceSpecification(device)
     const services = useChange(device, _ =>
         _?.services({ specification: true }).filter(
             service =>
@@ -72,7 +64,8 @@ export default function DashboardDevice(
     // refresh when visible
     const serviceGridRef = useRef<HTMLDivElement>()
     const intersection = useIntersectionObserver(serviceGridRef)
-    const visible = !!intersection?.isIntersecting
+    const visible =
+        alwaysVisible || !intersection || !!intersection.isIntersecting
 
     const ServiceWidgets = useCallback(
         () => (
@@ -92,11 +85,12 @@ export default function DashboardDevice(
                         services={services}
                         variant={variant}
                         visible={visible}
+                        controlled={controlled}
                     />
                 ))}
             </Grid>
         ),
-        [dependencyId(services), variant, visible]
+        [dependencyId(services), variant, visible, controlled]
     )
 
     if (!showHeader)
@@ -108,33 +102,21 @@ export default function DashboardDevice(
 
     return (
         <Card aria-live="polite" aria-label={`device ${name} started`}>
-            <CardHeader
-                style={{ paddingBottom: 0 }}
-                avatar={showAvatar && <DeviceAvatar device={device} />}
-                action={
-                    <DeviceActions
-                        device={device}
-                        showStop={true}
-                        hideIdentity={true}
-                        showReset={showReset}
-                        showSettings={false}
-                    />
-                }
-                title={<DeviceName showShortId={false} device={device} />}
-                subheader={
-                    <>
-                        {!mobile && specification && (
-                            <Typography variant="caption" gutterBottom>
-                                {specification.name}
-                            </Typography>
-                        )}
-                    </>
-                }
+            <DashboardDeviceCardHeader
+                device={device}
+                showAvatar={showAvatar}
+                showReset={showReset}
             />
             <CardContent style={{ paddingTop: 0 }}>
                 <DeviceLostAlert device={device} />
-                <DeviceBootloaderAlert device={device} />
-                <DeviceProxyAlert device={device} />
+                <Suspense fallback={null}>
+                    <DeviceBootloaderAlert device={device} />
+                </Suspense>
+                {showDeviceProxyAlert && (
+                    <Suspense>
+                        <DeviceProxyAlert device={device} />
+                    </Suspense>
+                )}
                 <ServiceWidgets />
             </CardContent>
         </Card>

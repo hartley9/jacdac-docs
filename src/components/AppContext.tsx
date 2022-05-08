@@ -2,6 +2,7 @@ import React, {
     createContext,
     useContext,
     useEffect,
+    useLayoutEffect,
     useState,
 } from "react"
 import { ERROR } from "../../jacdac-ts/src/jdom/constants"
@@ -22,8 +23,6 @@ export enum DrawerType {
 export interface AppProps {
     drawerType: DrawerType
     setDrawerType: (type: DrawerType) => void
-    searchQuery: string
-    setSearchQuery: (s: string) => void
     toolsMenu: boolean
     setToolsMenu: (visible: boolean) => void
     selectedPacket: Packet
@@ -35,8 +34,6 @@ export interface AppProps {
 const AppContext = createContext<AppProps>({
     drawerType: DrawerType.None,
     setDrawerType: () => {},
-    searchQuery: undefined,
-    setSearchQuery: () => {},
     toolsMenu: false,
     setToolsMenu: () => {},
     selectedPacket: undefined,
@@ -53,7 +50,6 @@ export const AppProvider = ({ children }) => {
     const bus = useBus()
     const { setSilent } = useContext(PacketsContext)
     const [type, setType] = useState(DrawerType.None)
-    const [searchQuery, setSearchQuery] = useState("")
     const [toolsMenu, _setToolsMenu] = useState(false)
     const [selectedPacket, setSelectedPacket] = useState<Packet>(undefined)
     const [showWebCam, setShowWebCam] = useState(false)
@@ -80,13 +76,16 @@ export const AppProvider = ({ children }) => {
         []
     )
 
+    useLayoutEffect(() => {
+        if (typeof window !== "undefined")
+            setTimeout(() => window.dispatchEvent(new Event("resize")), 1000)
+    }, [type, toolsMenu])
+
     return (
         <AppContext.Provider
             value={{
                 drawerType: type,
                 setDrawerType,
-                searchQuery,
-                setSearchQuery,
                 toolsMenu,
                 setToolsMenu,
                 selectedPacket,

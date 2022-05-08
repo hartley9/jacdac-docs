@@ -19,18 +19,18 @@ import { Flags } from "../../jacdac-ts/src/jdom/flags"
 import { WindowLocation } from "@reach/router"
 import Suspense from "./ui/Suspense"
 import ThemedMdxLayout from "./ui/ThemedMdxLayout"
-import Breadcrumbs from "./ui/Breadcrumbs"
 import useMediaQueries from "./hooks/useMediaQueries"
 import MainAppBar from "./shell/MainAppBar"
 import { AlertTitle } from "@mui/material"
 import { UIFlags } from "../jacdac/providerbus"
-import DevToolsAlert from "./alert/DevToolsAlert"
 
+const Breadcrumbs = lazy(() => import("./ui/Breadcrumbs"))
+const DevToolsAlert = lazy(() => import("./alert/DevToolsAlert"))
+const AppDrawer = lazy(() => import("./shell/AppDrawer"))
+const ToolsDrawer = lazy(() => import("./shell/ToolsDrawer"))
 const SimulatorCommands = lazy(() => import("./commands/SimulatorCommands"))
 const TraceAlert = lazy(() => import("./shell/TraceAlert"))
 const WebDiagnostics = lazy(() => import("./shell/WebDiagnostics"))
-const AppDrawer = lazy(() => import("./shell/AppDrawer"))
-const ToolsDrawer = lazy(() => import("./shell/ToolsDrawer"))
 const WebCam = lazy(() => import("./ui/WebCam"))
 const PassiveAlert = lazy(() => import("./shell/PassiveAlert"))
 const DataEditorAppBar = lazy(() => import("./shell/DataEditorAppBar"))
@@ -38,16 +38,16 @@ const DataEditorAppBar = lazy(() => import("./shell/DataEditorAppBar"))
 const PREFIX = "Layout"
 
 const classes = {
-    root: `${PREFIX}-root`,
-    hideMobile: `${PREFIX}-hideMobile`,
-    drawerHeader: `${PREFIX}-drawerHeader`,
-    content: `${PREFIX}-content`,
-    contentPadding: `${PREFIX}-contentPadding`,
-    container: `${PREFIX}-container`,
-    mainContent: `${PREFIX}-mainContent`,
-    appBarShift: `${PREFIX}-appBarShift`,
-    tocBarShift: `${PREFIX}-tocBarShift`,
-    toolBarShift: `${PREFIX}-toolBarShift`,
+    root: `${PREFIX}Root`,
+    hideMobile: `${PREFIX}HideMobile`,
+    drawerHeader: `${PREFIX}DrawerHeader`,
+    content: `${PREFIX}Content`,
+    contentPadding: `${PREFIX}ContentPadding`,
+    container: `${PREFIX}Container`,
+    mainContent: `${PREFIX}MainContent`,
+    appBarShift: `${PREFIX}AppBarShift`,
+    tocBarShift: `${PREFIX}TocBarShift`,
+    toolBarShift: `${PREFIX}ToolBarShift`,
 }
 
 const Root = styled("div")(({ theme }) => ({
@@ -277,7 +277,9 @@ function LayoutWithContext(props: LayoutProps) {
                 </Suspense>
             )}
             {!hideBreadcrumbs && location && (
-                <Breadcrumbs location={location} />
+                <Suspense>
+                    <Breadcrumbs location={location} />
+                </Suspense>
             )}
             {fullWidthTools ? (
                 element

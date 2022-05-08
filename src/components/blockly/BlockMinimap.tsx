@@ -11,7 +11,7 @@ import {
     ComponentManager,
 } from "blockly"
 import React, { useCallback, useEffect, useRef, useState } from "react"
-import ReactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
 import { arrayConcatMany } from "../../../jacdac-ts/src/jdom/utils"
 import { svgPointerPoint } from "../widgets/svgutils"
 import useWorkspaceEvent from "./useWorkspaceEvent"
@@ -130,6 +130,9 @@ function BlockMiniMap(props: {
         [workspace]
     )
     useWorkspaceEvent(workspace, handleChange)
+    useEffect(() => {
+        if (workspace) handleMetrics()
+    }, [workspace])
     const handleCenterView = (event: React.PointerEvent<Element>) => {
         event.preventDefault()
         event.stopPropagation()
@@ -221,7 +224,8 @@ class MinimapPlugin implements IPositionable {
             class: "minimap",
         })
         utils.dom.insertAfter(this.svgGroup_, this.workspace_.getBubbleCanvas())
-        ReactDOM.render(this.render(), this.svgGroup_)
+        const root = createRoot(this.svgGroup_)
+        root.render(this.render())
     }
 
     private render() {

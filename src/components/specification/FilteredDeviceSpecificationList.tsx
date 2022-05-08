@@ -1,5 +1,5 @@
-import { Grid } from "@mui/material"
-import React, { useMemo, useState } from "react"
+import { Grid, TextField } from "@mui/material"
+import React, { ChangeEvent, startTransition, useMemo, useState } from "react"
 import { arrayConcatMany, unique } from "../../../jacdac-ts/src/jdom/utils"
 import useBus from "../../jacdac/useBus"
 import useChange from "../../jacdac/useChange"
@@ -20,10 +20,13 @@ export default function FilteredDeviceSpecificationList(props: {
     const [serviceClass, setServiceClass] = useState<number>(NaN)
     const handleServiceChanged = value => setServiceClass(value)
 
+    const [query, setQuery] = useState("")
     const [firmwareSources, setFirmwareSources] = useState(false)
     const [hardwareDesign, setHardwareDesign] = useState(false)
     const [usb, setUsb] = useState(false)
     const [serial, setSerial] = useState(false)
+    const [buyNow, setBuyNow] = useState(false)
+
     const requiredServiceClasses = !isNaN(serviceClass) && [serviceClass]
 
     const tags = useChange(deviceCatalog, _ =>
@@ -37,10 +40,13 @@ export default function FilteredDeviceSpecificationList(props: {
     )
     const [selectedTags, setSelectedTags] = useState<string[]>([])
 
+    const handleSearchQueryChange = (e: ChangeEvent<HTMLInputElement>) =>
+        startTransition(() => setQuery(e.target.value))
     const handleSetFirmwareSources = () => setFirmwareSources(c => !c)
     const handleSetHardwareDesign = () => setHardwareDesign(c => !c)
     const handleSetUSB = () => setUsb(c => !c)
     const handleSetSerial = () => setSerial(c => !c)
+    const handleBuyNow = () => setBuyNow(c => !c)
     const handleSetSelectedTag = (tag: string) => () =>
         setSelectedTags(ts => {
             const i = ts.indexOf(tag)
@@ -58,12 +64,31 @@ export default function FilteredDeviceSpecificationList(props: {
     return (
         <>
             <Grid sx={{ mb: 1 }} container spacing={1}>
+                <Grid item xs={12}>
+                    <TextField
+                        tabIndex={0}
+                        type="search"
+                        value={query}
+                        fullWidth={true}
+                        size="small"
+                        label="Search devices"
+                        aria-label="Search devices"
+                        onChange={handleSearchQueryChange}
+                    />
+                </Grid>
                 <Grid item xs>
                     <ServiceSpecificationSelect
                         label="Filter by Service"
                         serviceClass={serviceClass}
                         setServiceClass={handleServiceChanged}
                         hasRegisteredDevice={true}
+                    />
+                </Grid>
+                <Grid item>
+                    <FilterChip
+                        label="buy now"
+                        value={buyNow}
+                        onClick={handleBuyNow}
                     />
                 </Grid>
                 <Grid item>
@@ -108,6 +133,8 @@ export default function FilteredDeviceSpecificationList(props: {
             </Grid>
             <DeviceSpecificationList
                 {...others}
+                query={query}
+                buyNow={buyNow}
                 firmwareSources={firmwareSources}
                 hardwareDesign={hardwareDesign}
                 requiredServiceClasses={requiredServiceClasses}

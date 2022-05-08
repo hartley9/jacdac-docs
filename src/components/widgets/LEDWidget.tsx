@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import SvgWidget from "../widgets/SvgWidget"
 import { Grid, Typography } from "@mui/material"
 import useWidgetTheme from "../widgets/useWidgetTheme"
 import SliderWithLabel from "../ui/SliderWithLabel"
 import ColorButtons from "./ColorButtons"
 import { rgbToHtmlColor } from "../../../jacdac-ts/src/jdom/utils"
+import IconButtonWithTooltip from "../ui/IconButtonWithTooltip"
+import EditIcon from "@mui/icons-material/Edit"
 
 function LEDWidgetController(props: {
     color: "primary" | "secondary"
@@ -82,8 +84,10 @@ function LEDWidgetBulb(props: {
     waveLength?: number
     ledCount?: number
     ledColor: number
+    edit?: boolean
+    onEdit?: () => void
 }) {
-    const { color, ledCount, ledColor } = props
+    const { color, ledCount, ledColor, edit, onEdit } = props
     const r = (ledColor >> 16) & 0xff
     const g = (ledColor >> 8) & 0xff
     const b = (ledColor >> 0) & 0xff
@@ -179,6 +183,14 @@ function LEDWidgetBulb(props: {
                     {rgbToHtmlColor(ledColor)}
                 </Typography>
             </Grid>
+            <Grid item>
+                <IconButtonWithTooltip
+                    title={!edit ? "show editor" : "hide editor"}
+                    onClick={onEdit}
+                >
+                    <EditIcon />
+                </IconButtonWithTooltip>
+            </Grid>
         </Grid>
     )
 }
@@ -205,6 +217,8 @@ export default function LEDWidget(props: {
         brightness = 16,
         onBrightnessChange,
     } = props
+    const [edit, setEdit] = useState(false)
+    const handleEdit = () => setEdit(e => !e)
 
     return (
         <Grid container spacing={1} alignItems="center" alignContent="center">
@@ -213,20 +227,24 @@ export default function LEDWidget(props: {
                     color={color}
                     ledColor={ledColor}
                     ledCount={ledCount}
+                    edit={edit}
+                    onEdit={handleEdit}
                 />
             </Grid>
-            <Grid item xs={12}>
-                <LEDWidgetController
-                    color={color}
-                    waveLength={waveLength}
-                    ledColor={ledColor}
-                    onLedColorChange={onLedColorChange}
-                    speed={speed}
-                    onSpeedChange={onSpeedChange}
-                    brightness={brightness}
-                    onBrightnessChange={onBrightnessChange}
-                />
-            </Grid>
+            {edit && (
+                <Grid item xs={12}>
+                    <LEDWidgetController
+                        color={color}
+                        waveLength={waveLength}
+                        ledColor={ledColor}
+                        onLedColorChange={onLedColorChange}
+                        speed={speed}
+                        onSpeedChange={onSpeedChange}
+                        brightness={brightness}
+                        onBrightnessChange={onBrightnessChange}
+                    />
+                </Grid>
+            )}
         </Grid>
     )
 }
