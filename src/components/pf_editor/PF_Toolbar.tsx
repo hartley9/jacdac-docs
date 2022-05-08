@@ -72,7 +72,6 @@ export default function PF_Toolbar(props: {lastClicked: any, objectRefs: any[]})
                         keepMounted
                         open={anchorEl && Boolean(anchorEl[index])}
                         onClose={handleClose}
-                        getContentAnchorEl={null}
                         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                         transformOrigin={{ vertical: "top", horizontal: "center" }}
                     >
@@ -96,47 +95,3 @@ export default function PF_Toolbar(props: {lastClicked: any, objectRefs: any[]})
         </>                
     )
 }
-
-
-/* 
-
-
-<>
-        <Grid container>
-            
-            <Grid item>
-                <div>
-                    <Button
-                        id="file-button"
-                        aria-controls={open ? "file-menu" : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
-                        onClick={handleClick}
-                    >
-                        File
-                    </Button>
-                    <Menu
-                        id="file-menu"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                        MenuListProps={{
-                        "aria-labelledby": "file-button"
-                        }}
-                    >
-                        <MenuItem selected={() => {
-                            document.getElementById('file-menu')
-                            
-                        }
-                            } onClick={handleClose}>New</MenuItem>
-                        <MenuItem onClick={handleClose}>Open</MenuItem>
-                        <MenuItem onClick={handleClose}>New carrier PCB</MenuItem>
-                        <MenuItem onClick={handleClose}>Close</MenuItem>
-                        <MenuItem onClick={() => {rotateX(lastClicked.current)}}>Rotate</MenuItem>
-                        <MenuItem onClick={() => {flip(lastClicked.current)}}>Flip</MenuItem>
-                    </Menu>
-                </div>
-            </Grid>
-
-        </Grid>
-        </> */
