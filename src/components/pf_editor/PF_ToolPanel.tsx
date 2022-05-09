@@ -1,11 +1,6 @@
-import { Button } from "gatsby-theme-material-ui";
 import React from "react";
 import IconButtonWithTooltip from "../ui/IconButtonWithTooltip";
-import { IconButton, Menu, MenuItem, TextField } from "@mui/material";
 import { Grid } from "@mui/material";
-
-
-
 
 //import icons
 import RouteIcon from '@mui/icons-material/Route';
@@ -14,13 +9,12 @@ import RotateLeft from "@mui/icons-material/RotateRight";
 
 import {rotateX, deleteObject} from "./editFunctions"
 import SliderWithLabel from "../ui/SliderWithLabel";
-import AddIcon from "@mui/icons-material/Add";
+
+import * as THREE from "three"
 
 
-
-
-export default function PF_ToolPanel(props: {lastClicked: any, objectRefs: any[], carrierPCBDimensions: {height: number, width: number}, setCarrierPCBDimensions: any}){
-    const {lastClicked, objectRefs, carrierPCBDimensions, setCarrierPCBDimensions} = props;
+export default function PF_ToolPanel(props: {lastClicked: THREE.Object3D, objectRefs: [], carrierPCBDimensions: {height: number, width: number}, setCarrierPCBDimensions, route}){
+    const {lastClicked, objectRefs, carrierPCBDimensions, setCarrierPCBDimensions, route} = props;
 
     //TODO: Use object store for this
     function carrierPCBDimensionChange(e, type){
@@ -41,9 +35,11 @@ export default function PF_ToolPanel(props: {lastClicked: any, objectRefs: any[]
 
     return (
         <>
-        <Grid container>
+            <Grid container>
                 <Grid item>
                     <SliderWithLabel onChange={(e) => {carrierPCBDimensionChange(e, 'height')}} id='carrierPCBHeightSlider' label="Carrier PCB height" defaultValue={100} min={10} max={500}></SliderWithLabel>
+                </Grid>
+                <Grid item>
                     <SliderWithLabel onChange={(e) => {carrierPCBDimensionChange(e, 'width')}}id='carrierPCBWidthSlider' label="Carrier PCB width" defaultValue={100} min={10} max={500}></SliderWithLabel>
                 </Grid>
                 <Grid item>
@@ -57,13 +53,13 @@ export default function PF_ToolPanel(props: {lastClicked: any, objectRefs: any[]
                     </IconButtonWithTooltip>
                 </Grid>
                 <Grid item>
-                    <IconButtonWithTooltip title={"Auto-route"} color="primary" aria-label="Auto-route">
+                    <IconButtonWithTooltip title={"Auto-route"} onClick={route} color="primary" aria-label="Auto-route">
                         <RouteIcon />
                     </IconButtonWithTooltip>
                 </Grid>
-                
+            </Grid>    
             
-        </Grid>
+        
         </>
     )
 }

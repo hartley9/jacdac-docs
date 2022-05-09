@@ -1,4 +1,4 @@
-import { Grid, MenuList } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import Button from "../ui/Button";
 import Menu from "@mui/material/Menu";
@@ -7,7 +7,7 @@ import { MenuItem } from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";
 
-export default function AddModule(props: {addModule: any}){
+export default function AddModule(props: {addModule}){
     const { addModule } = props;
     
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -38,7 +38,7 @@ export default function AddModule(props: {addModule: any}){
 
     return (
         <>
-        <Grid container>
+            
             <Grid item>
             <Button
                         id="add-module-button"
@@ -69,7 +69,7 @@ export default function AddModule(props: {addModule: any}){
                         </MenuItem>
                     </Menu>
             </Grid>
-        </Grid>
+        
         </>
     )
 }

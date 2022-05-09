@@ -8,7 +8,9 @@ import {rotateX, flip, deleteObject} from "./editFunctions"
 
 import {MenuItems} from "./PFToolbarMenuItems";
 
-export default function PF_Toolbar(props: {lastClicked: any, objectRefs: any[]}){
+import Object3D from "three"
+
+export default function PF_Toolbar(props: {lastClicked: Object3D, objectRefs}){
     const {lastClicked, objectRefs} = props
 
 
@@ -29,7 +31,7 @@ export default function PF_Toolbar(props: {lastClicked: any, objectRefs: any[]})
     };
 
     //TODO: use object store for this
-    const handleSelect = (index: string, event) => {
+    const handleSelect = (index: string) => {
         console.log('menu click');
         console.log(index.toLowerCase().replace(/\s/g, ''))
             if (lastClicked.current){

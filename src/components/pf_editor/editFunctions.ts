@@ -21,7 +21,7 @@ export function editZIndex(obj: THREE.Object3D){
     console.log(obj.userData);
 }
 
-export function deleteObject(obj: THREE.Object3D, objectRefs: any[]){
+export function deleteObject(obj: THREE.Object3D, objectRefs: []){
 
 
     console.log('objrefs');

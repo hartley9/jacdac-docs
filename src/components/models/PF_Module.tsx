@@ -1,6 +1,6 @@
-import React, { useState, useRef, Suspense, useEffect, useContext } from "react"
-import { withPrefix } from "gatsby"
-import { meshBounds, useHelper } from "@react-three/drei";
+import React, { useState, useRef} from "react"
+
+import { useHelper } from "@react-three/drei";
 
 import { useDrag } from "@use-gesture/react";
 import { animated, useSpring } from "@react-spring/three";
@@ -11,8 +11,8 @@ import Jacdac_RGBLED from './Jacdac_RGBLED'
 import Jacdac_RotaryModule from './Jacdac_RotaryModule'
 
 
-export default function PF_Module(props: {id: string, name: string, moduleName: string, setIsDragging: any, setLastClicked: any, lastClicked: any, floorPlane: THREE.Vector3, position?: number[], selected?: boolean  }) {
-    const { id, name, moduleName, setIsDragging, setLastClicked, lastClicked, floorPlane, position, selected } = props
+export default function PF_Module(props: {id: string, name: string, moduleName: string, setIsDragging, setLastClicked, lastClicked: THREE.Object3D, floorPlane: THREE.Vector3, position?: number[], selected?: boolean  }) {
+    const { name, moduleName, setIsDragging, setLastClicked, floorPlane, position, selected } = props
 
     const dragMesh = useRef()
 
@@ -32,7 +32,7 @@ export default function PF_Module(props: {id: string, name: string, moduleName: 
       }));
     
       const bind = useDrag(
-        ({ active, movement: [x, y], timeStamp, event }) => {
+        ({ active, movement: /* [x, y] ,*/ timeStamp, event }) => {
           if (active) {
             event.ray.intersectPlane(floorPlane, planeIntersectPoint);
             setPos([planeIntersectPoint.x, 8, planeIntersectPoint.z]);
@@ -52,7 +52,7 @@ export default function PF_Module(props: {id: string, name: string, moduleName: 
         { delay: false }
       );
 
-      useHelper( sel && objGroup, THREE.BoxHelper, "yellow")
+      useHelper( sel && objGroup, THREE.BoxHelper, "purple")
 
       const whichModule = (moduleName) => {
         switch(moduleName){
@@ -67,7 +67,7 @@ export default function PF_Module(props: {id: string, name: string, moduleName: 
     
     return (
         
-          <animated.mesh name={name} ref={dragMesh} {...spring} {...bind()} castShadow>
+          <animated.mesh name={name} ref={dragMesh} userData={{routeMe: true}} {...spring} {...bind()} castShadow>
                 <group name={name} ref={objGroup} >
                       {whichModule(moduleName)}
                 </group>
