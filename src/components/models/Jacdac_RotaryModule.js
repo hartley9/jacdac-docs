@@ -12,7 +12,7 @@ export default function Model({ ...props }) {
   
 
   return (
-    <group ref={group} {...props} dispose={null} userData={{test: "userdatabigtest"}}>
+    <group ref={group} {...props} dispose={null}>
       <group
         name="PCB"
         scale={1000}
@@ -28,10 +28,14 @@ export default function Model({ ...props }) {
           },
         }}>
         
-        <group name="JD_PWR"  position={[5, -10, 0]}></group>
-        <group name="JD_DATA"  position={[-5, -10, 0]}></group>
-        <group name="JD_GND1" position={[-5, 10, 0]}></group>
-        <group name="JD_GND2" position={[5, 10, 0]}></group>
+        <group name="JD_PWR"  position={[0.005, 0, -0.010]}>
+
+        </group>
+        <group name="JD_DATA"  position={[-0.005, 0, -0.010]}>
+
+        </group>
+        <group name="JD_GND1" position={[-0.005, 0, 0.010]}></group>
+        <group name="JD_GND2" position={[0.005, 0, 0.010]}></group>
         <group name="15" userData={{ name: '15' }}>
           <group name="11" position={[0.0024526545, 0, -0.0046248403]} userData={{ name: '11' }}>
             <mesh name="2001" geometry={nodes['2001'].geometry} material={nodes['2001'].material} userData={{ name: '2.001' }} />
