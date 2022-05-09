@@ -12,14 +12,11 @@ import AddModule from "../../components/pf_editor/AddModule";
 import PF_ToolPanel from "../../components/pf_editor/PF_ToolPanel";
 import PF_Module from "../../components/models/PF_Module";
 
-
-
-
 export default function Page() {
 
-  const canvasRef = useRef();
-  
-  // array to hold all jacdac module objects
+const canvasRef = useRef();
+
+// array to hold all jacdac module objects
   const [objects, setObjects] = useState([]);
 
   // stores current state of threejs scene 
@@ -38,6 +35,7 @@ export default function Page() {
     console.log(selectedObject)
   }, [selectedObject])
 
+
   // Object dragging state used to toggle orbit
   const [isDragging, setIsDragging] = useState(false);
   const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
@@ -53,15 +51,90 @@ export default function Page() {
 
 
   const route = () => {
-      editorScene.traverse((obj) => {
-        if (obj.name.includes('JD_PWR')){
-          console.log('found power');
-          const worldPos = new THREE.Vector3();
-          obj.getWorldPosition(worldPos)
-          console.log(worldPos)
+    
+    let originPosition = [];
 
-        }
-      })
+    let visualStartPointsToAdd = [];
+      
+        editorScene.traverse((obj) => {
+
+         /*  if (obj.name === 'PCB'){
+            setObjects([...objects])
+          } */
+
+          if (obj.updateMatrixWorld()){
+            obj.updateMatrixWorld();
+          }
+
+
+          const worldPosTest = new THREE.Vector3();
+            
+          obj.updateMatrixWorld();
+          obj.getWorldPosition(worldPosTest)
+          
+            
+          const newPos = [(worldPosTest.x), (worldPosTest.y), (worldPosTest.z)]
+    
+        
+          if (obj.name.includes('JD_PWR')){
+            console.log('found power');
+
+
+
+            objects.push( 
+            
+              <group name ={'jd_pwr'} key={`${Math.random()}_pwr`} position={newPos}>
+                <mesh /* position={newPos} */>
+                  <sphereBufferGeometry attach="geometry" args={[1, 1]} />
+                  <meshStandardMaterial attach="material" color="orange" />
+                </mesh>
+              </group>
+              
+            )
+
+          } else if (obj.name.includes('JD_GND1')){
+            console.log('found ground1')
+            objects.push(
+              <group name ={'jd_gnd1'} key={`${Math.random()}_gnd1`} position={newPos}>
+                <mesh /* position={newPos} */>
+                  <sphereBufferGeometry attach="geometry" args={[1, 1]} />
+                  <meshStandardMaterial attach="material" color="black" />
+                </mesh>
+              </group>
+            );
+                          
+          } else if (obj.name.includes('JD_GND2')){
+            console.log('found ground2')
+           objects.push( 
+              <group name ={'jd_gnd2'} key={`${Math.random()}_gnd2`} position={newPos}>
+              <mesh /* position={newPos} */>
+                <sphereBufferGeometry attach="geometry" args={[1, 1]} />
+                <meshStandardMaterial attach="material" color="black" />
+              </mesh>
+            </group>
+            )
+            
+          }
+           else if (obj.name.includes('JD_DATA')){
+            console.log('found data')
+            objects.push(
+              <group name ={'jd_data'} key={`${Math.random()}_data`} position={newPos}>
+                <mesh /* position={newPos} */>
+                  <sphereBufferGeometry attach="geometry" args={[1, 1]} />
+                  <meshStandardMaterial attach="material" color="pink" />
+                </mesh>
+              </group>
+            )
+          }
+
+        })
+
+        console.log(objects);
+
+        console.log('scene at the end');
+        console.log(editorScene)
+
+      
   }
 
   
@@ -69,27 +142,31 @@ export default function Page() {
       
     <>
           <h1>Power Fabricate - Editor</h1>
-         
-      
+
           <Grid container spacing={1} columns={16} direction="row" alignItems="stretch" height={"100%"}>
-          <Grid item xs={3}>
-            <AddModule addModule={addModule}></AddModule>
-          </Grid>
-            <Grid item xs={13}>
-              
+       
+            <Grid item xs={16}>
+              <Grid item>
+              <AddModule addModule={addModule}></AddModule>
+              </Grid>
+
+              <Grid item>
               <PF_Toolbar 
                 lastClicked={lastClicked? lastClicked : undefined}
                 objectRefs={objects}
               ></PF_Toolbar>
+              </Grid>
                
-              
+              <Grid item>
               <PF_ToolPanel
                 lastClicked={lastClicked? lastClicked : undefined}
                 objectRefs={objects}
                 addModule={addModule}
                 carrierPCBDimensions={carrierPCBDimensions}
                 setCarrierPCBDimensions={setCarrierPCBDimensions}
+                route={route}
               ></PF_ToolPanel>
+              </Grid>
             
             </Grid>
            
@@ -97,7 +174,7 @@ export default function Page() {
             <Grid item xs={16} direction="column" alignItems="stretch" style={{position: "relative", overflow: "hidden", height: "100vh" }}>
               <Box textAlign="center" height={"100%"}/* item xs={14} direction="column" alignItems="stretch" style={{overflow: "visible", height: "75%" }} */>
                 
-                <Canvas  onCreated={({ scene }) => {setEditorScene(scene)}} onClick={({ object }) => {console.log('object clicked'); console.log(object)}}
+                <Canvas  onCreated={({ scene }) => {setEditorScene(scene)}}
                 
                   ref={canvasRef}
                   style={{position: "relative", height: "75%", overflow: "visible"}} shadows onPointerMissed = {function(){setSelectedObject(null);}} >
@@ -119,8 +196,6 @@ export default function Page() {
                     <Objects objects={objects}></Objects>
                   </Suspense>
                   
-                  
-                  {/* Ignore missing attributes error in OrthographicCamera component */}
                   <OrthographicCamera makeDefault zoom={5} position={[0, 40, 0]} near={-1000} far={10000} />
 
                 <OrbitControls minZoom={-10} maxZoom={50} enabled={!isDragging} /> 
