@@ -24,6 +24,15 @@ export default function Model({ ...props }) {
             { x: 9.95, y: -10.05 },
           ],
         }}>
+
+      <group name="JD_PWR"  position={[-0.00995, 0, 0.01005]}>
+
+      </group>
+      <group name="JD_DATA"  position={[0.00995, 0, 0.01005]}>
+
+      </group>
+      <group name="JD_GND1" position={[-0.00995, 0, -0.01005]}></group>
+      <group name="JD_GND2" position={[0.00995, 0, -0.01005]}></group>
         <group name="100" userData={{ name: '100' }}>
           <group name="99" position={[-0.0022998785, 0, 0.0065499209]} rotation={[-Math.PI, -8.74e-8, -Math.PI]} userData={{ name: '99' }}>
             <mesh name="MSRC-RCLAMP0521P-N_v2" geometry={nodes['MSRC-RCLAMP0521P-N_v2'].geometry} material={nodes['MSRC-RCLAMP0521P-N_v2'].material} />
