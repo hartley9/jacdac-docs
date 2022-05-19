@@ -2379,10 +2379,28 @@
   resolved "https://registry.yarnpkg.com/@jscad/array-utils/-/array-utils-2.1.3.tgz#0de2eaaf122c43efc534a948c8d80a65483160e8"
   integrity sha512-ItHPDcd+WIVNrFnqdPm0mFvU3T3zhaOUjnAyDSdcQiHyFp8lAiEh3X7I/8VGGSCUhBErbKT5RXhHKqUcYL3bJA==
 
-"@jscad/modeling@2.9.2", "@jscad/modeling@^2.9.2":
+"@jscad/io-utils@2.0.19":
+  version "2.0.19"
+  resolved "https://registry.yarnpkg.com/@jscad/io-utils/-/io-utils-2.0.19.tgz#f8b856c527bc70f7f67f6876cc827f6b7c2f3768"
+  integrity sha512-AuwT0TV/Bvw3NEdvxstWEmmWvQq0t1PbTJ33nQUKH1QStmr5x7w8WnDKDGhTgdyDHTrkS8OiHYC/SOgxma1Tqg==
+
+"@jscad/modeling@2.9.2":
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/@jscad/modeling/-/modeling-2.9.2.tgz#97445ec06d46be7333d017a7faac66c09ea68fc5"
   integrity sha512-bU4WKfJcg3ijcRt4WEq4rh5kcnYA7XdOOlOev7/azV/07aiOffSJwqMDEoLeJQyiwBtk5Q/Iw6Ph+5C4iXeXJQ==
+
+"@jscad/modeling@2.9.4", "@jscad/modeling@^2.9.4":
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/@jscad/modeling/-/modeling-2.9.4.tgz#2ebb05676eb307d29775a06c20908c78bcf3239e"
+  integrity sha512-SJgwHPa/AjoCzeinfMPuoJk3GsWP9ofVL9fuzF9Ow61vWX807BelzPzHTMkqkepKbyrtBWVlhlOcqtOzgoXHBg==
+
+"@jscad/stl-deserializer@^2.1.16":
+  version "2.1.16"
+  resolved "https://registry.yarnpkg.com/@jscad/stl-deserializer/-/stl-deserializer-2.1.16.tgz#ba52492c0a4316b7699d39af107c88f314108e74"
+  integrity sha512-JZdMKgU5SE+HF8xtPnxmckd/YZmpBcJxIk7vBcteHmw6DYOxfyM7GfzvcnryA1tjzKCmug4KvOPBYZ2WUziaTA==
+  dependencies:
+    "@jscad/io-utils" "2.0.19"
+    "@jscad/modeling" "2.9.4"
 
 "@jscad/stl-serializer@^2.1.7":
   version "2.1.7"
@@ -11512,6 +11530,11 @@ heap-js@^2.1.6:
   resolved "https://registry.yarnpkg.com/heap-js/-/heap-js-2.1.6.tgz#817021e6d252ad6ba9a11ea65988cc4e6207782d"
   integrity sha512-xQxyJg7VcgveAZtY0eAu7iCn+2VCqLBkQoz7G4RnOIEsmP82J/LnRdr0I2Mi/pThkP5tviL8yFq5utE3yOPYpQ==
 
+heap@0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/heap/-/heap-0.2.5.tgz#713b65590ebcc40fcbeeaf55e851694092b39af1"
+  integrity sha1-cTtlWQ68xA/L7q9V6FFpQJKzmvE=
+
 himalaya@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/himalaya/-/himalaya-1.1.0.tgz#31724ae9d35714cd7c6f4be94888953f3604606a"
@@ -16429,6 +16452,13 @@ path-type@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
+
+pathfinding@^0.4.18:
+  version "0.4.18"
+  resolved "https://registry.yarnpkg.com/pathfinding/-/pathfinding-0.4.18.tgz#a9990f6fa22b7ef196e5651b049165403a045fe8"
+  integrity sha1-qZkPb6IrfvGW5WUbBJFlQDoEX+g=
+  dependencies:
+    heap "0.2.5"
 
 peek-readable@^4.0.1:
   version "4.0.1"
