@@ -25,6 +25,7 @@ export const MenuItems = {
         {
             title: "Delete"
         }
+        
     ],
 
     View: [
@@ -43,6 +44,9 @@ export const MenuItems = {
         {
             title: "Right view",
 
+        },
+        {
+            title: "Enclosure"
         }
     ], 
 
@@ -53,6 +57,9 @@ export const MenuItems = {
         {
             title: "Enclosure STL"
         }, 
+        {
+            title: "Enclosure SVG"
+        },
         {
             title: "threejs Scene"
         }

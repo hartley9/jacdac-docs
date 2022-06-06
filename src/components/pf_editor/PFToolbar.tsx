@@ -1,17 +1,19 @@
 import { Grid } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "../ui/Button";
 import Menu from "@mui/material/Menu";
 import { MenuItem } from "@mui/material";
+import { downloadSVGEnclosure } from "./stencilFunctions";
 
 import {rotateX, flip, deleteObject} from "./editFunctions"
 
 import {MenuItems} from "./PFToolbarMenuItems";
 
 import Object3D from "three"
+import { downloadSTLEnclosure } from "./enclosureFunctions";
 
-export default function PF_Toolbar(props: {lastClicked: Object3D, objectRefs}){
-    const {lastClicked, objectRefs} = props
+export default function PF_Toolbar(props: {scene: any, enclosureDimensions: any, lastClicked: Object3D, objectRefs}){
+    const {scene, enclosureDimensions, lastClicked, objectRefs} = props
 
 
     // interaction
@@ -34,27 +36,42 @@ export default function PF_Toolbar(props: {lastClicked: Object3D, objectRefs}){
     const handleSelect = (index: string) => {
         console.log('menu click');
         console.log(index.toLowerCase().replace(/\s/g, ''))
-            if (lastClicked.current){
+           
+            switch(index.toLowerCase().replace(/\s/g, '')){
+                case('new'):
+                    return;
+                case('open'):
+                    return;
+                case('newcarrierpcb'):
+                    return 
+               
+                // etc TODO: complete menu item to function binding
+                
+                case('rotate'):
+                    lastClicked.current && rotateX(lastClicked.current);
+                    handleClose();
+                    return;
+                case('flip'):
+                    lastClicked.current && flip(lastClicked.current);
+                    handleClose();
+                    return
+                case('delete'):
+                    lastClicked.current && deleteObject(lastClicked.current, objectRefs);
+                    handleClose();
+                    return
 
-                switch(index.toLowerCase().replace(/\s/g, '')){
-                    case('new'):
-                        return;
-                    case('open'):
-                        return;
-                    case('newcarrierpcb'):
-                        return 
-                    // etc TODO: complete menu item to function binding
+                case ('enclosurestl'):
+                    downloadSTLEnclosure(enclosureDimensions, scene);
+                    handleClose();
+                    return;
+
+                case ('enclosuresvg'):
+                    downloadSVGEnclosure(enclosureDimensions, scene);
+                    handleClose();
+                    return;
                     
-                    case('rotate'):
-                        rotateX(lastClicked.current);
-                        return;
-                    case('flip'):
-                        flip(lastClicked.current);
-                        return
-                    case('delete'):
-                        deleteObject(lastClicked.current, objectRefs)
-                } 
-            }
+            } 
+            
 
     }
 

@@ -6,35 +6,66 @@ import * as THREE from "three";
 import { Box, Grid } from "@mui/material";
 import CarrierPCB from "../../components/pf_editor/CarrierPCB";
 
-import PF_Toolbar from "../../components/pf_editor/PF_Toolbar";
+import PFToolbar from "../../components/pf_editor/PFToolbar";
 import AddModule from "../../components/pf_editor/AddModule";
 
-import PF_ToolPanel from "../../components/pf_editor/PF_ToolPanel";
+import PFToolPanel from "../../components/pf_editor/PFToolPanel";
 import PF_Module from "../../components/models/PF_Module";
+
+import Enclosure from "../../components/pf_editor/Enclosure";
+
+
+import useDevices from "../../components/hooks/useDevices";
+import useBus from "../../jacdac/useBus";
+import AddConnectedModule from "../../components/pf_editor/AddConnectedModule";
+
 
 export default function Page() {
 
-const canvasRef = useRef();
+  // connected jacdac devices
+   const devices = useDevices({
+    physical: true,
+    announced: true,
+    ignoreInfrastructure: true,
+    productIdentifier: true,
+  }); 
 
-// array to hold all jacdac module objects
+
+  const bus = useBus();
+
+  // Canvas
+  const canvasRef = useRef();
+
+  // carrier pcb
+  const [carrierPCBDimensions, setCarrierPCBDimensions] = useState({height: 100, width: 100})
+
+  // enclosure
+  const [enclosureDimensions, setEnclosureDimensions] = useState({height: 110, width: 44, depth: 110})
+
+  // enclosure visible
+  const [enclosureVisible, setEnclosureVisible] = useState(false);
+
+
+  
+  //array to hold all jacdac module objects
   const [objects, setObjects] = useState([]);
 
   // stores current state of threejs scene 
   const [editorScene, setEditorScene] = useState(null)
 
-  // object selected in 3js canvas
-  const [selectedObject, setSelectedObject] = useState(null);
-
   // module or object selected or 'lastClicked' by the user
   const [lastClicked, setLastClicked] = useState(null);
 
-  const [carrierPCBDimensions, setCarrierPCBDimensions] = useState({height: 100, width: 100})
+  // aabb box to get size and location of module
+  const box3 = useRef();
+  useEffect(() => {
+    console.log('heres my box');
+    console.log(box3)
 
-  useEffect(() =>{
-    console.log('sel obj');
-    console.log(selectedObject)
-  }, [selectedObject])
-
+    if (objects.length > 0){
+      box3.current.setFromObject(objects[0].current)
+    }
+  }, [box3])
 
   // Object dragging state used to toggle orbit
   const [isDragging, setIsDragging] = useState(false);
@@ -42,99 +73,12 @@ const canvasRef = useRef();
   
   const addModule = (moduleName) => {
 
+    console.log(editorScene)
+
     const topLevelUUID = crypto.randomUUID() 
-    
     setObjects([...objects,
       <PF_Module name={topLevelUUID} moduleName={moduleName} key={Math.random()} id={crypto.randomUUID()}  setIsDragging={setIsDragging} setLastClicked={setLastClicked} lastClicked={lastClicked} floorPlane={floorPlane} position={[0,8,0]} />
     ]);
-  }
-
-
-  const route = () => {
-    
-    let originPosition = [];
-
-    let visualStartPointsToAdd = [];
-      
-        editorScene.traverse((obj) => {
-
-         /*  if (obj.name === 'PCB'){
-            setObjects([...objects])
-          } */
-
-          if (obj.updateMatrixWorld()){
-            obj.updateMatrixWorld();
-          }
-
-
-          const worldPosTest = new THREE.Vector3();
-            
-          obj.updateMatrixWorld();
-          obj.getWorldPosition(worldPosTest)
-          
-            
-          const newPos = [(worldPosTest.x), (worldPosTest.y), (worldPosTest.z)]
-    
-        
-          if (obj.name.includes('JD_PWR')){
-            console.log('found power');
-
-
-
-            objects.push( 
-            
-              <group name ={'jd_pwr'} key={`${Math.random()}_pwr`} position={newPos}>
-                <mesh /* position={newPos} */>
-                  <sphereBufferGeometry attach="geometry" args={[1, 1]} />
-                  <meshStandardMaterial attach="material" color="orange" />
-                </mesh>
-              </group>
-              
-            )
-
-          } else if (obj.name.includes('JD_GND1')){
-            console.log('found ground1')
-            objects.push(
-              <group name ={'jd_gnd1'} key={`${Math.random()}_gnd1`} position={newPos}>
-                <mesh /* position={newPos} */>
-                  <sphereBufferGeometry attach="geometry" args={[1, 1]} />
-                  <meshStandardMaterial attach="material" color="black" />
-                </mesh>
-              </group>
-            );
-                          
-          } else if (obj.name.includes('JD_GND2')){
-            console.log('found ground2')
-           objects.push( 
-              <group name ={'jd_gnd2'} key={`${Math.random()}_gnd2`} position={newPos}>
-              <mesh /* position={newPos} */>
-                <sphereBufferGeometry attach="geometry" args={[1, 1]} />
-                <meshStandardMaterial attach="material" color="black" />
-              </mesh>
-            </group>
-            )
-            
-          }
-           else if (obj.name.includes('JD_DATA')){
-            console.log('found data')
-            objects.push(
-              <group name ={'jd_data'} key={`${Math.random()}_data`} position={newPos}>
-                <mesh /* position={newPos} */>
-                  <sphereBufferGeometry attach="geometry" args={[1, 1]} />
-                  <meshStandardMaterial attach="material" color="pink" />
-                </mesh>
-              </group>
-            )
-          }
-
-        })
-
-        console.log(objects);
-
-        console.log('scene at the end');
-        console.log(editorScene)
-
-      
   }
 
   
@@ -151,21 +95,42 @@ const canvasRef = useRef();
               </Grid>
 
               <Grid item>
-              <PF_Toolbar 
+                { bus.connected && 
+                    <AddConnectedModule addModule={addModule} devices={devices}></AddConnectedModule>
+                }
+              
+              </Grid>
+
+              <Grid item>
+              <PFToolbar 
                 lastClicked={lastClicked? lastClicked : undefined}
                 objectRefs={objects}
-              ></PF_Toolbar>
+                enclosureDimensions={enclosureDimensions}
+                scene={editorScene}
+              ></PFToolbar>
               </Grid>
                
               <Grid item>
-              <PF_ToolPanel
+              <PFToolPanel
                 lastClicked={lastClicked? lastClicked : undefined}
                 objectRefs={objects}
                 addModule={addModule}
                 carrierPCBDimensions={carrierPCBDimensions}
-                setCarrierPCBDimensions={setCarrierPCBDimensions}
-                route={route}
-              ></PF_ToolPanel>
+                setCarrierPCBDimensions={setCarrierPCBDimensions} 
+                enclosureDimensions={enclosureDimensions}
+                setEnclosureDimensions={setEnclosureDimensions}
+                enclosureVisible={enclosureVisible}
+                setEnclosureVisible={setEnclosureVisible}
+                scene={editorScene}
+              ></PFToolPanel>
+
+              {/* <button onClick={() => {
+                devices.forEach(device => {
+                  console.log('device productIdentifier: ');
+                  console.log(device.productIdentifier);
+                })
+              }}>View devices</button> */}
+
               </Grid>
             
             </Grid>
@@ -177,7 +142,7 @@ const canvasRef = useRef();
                 <Canvas  onCreated={({ scene }) => {setEditorScene(scene)}}
                 
                   ref={canvasRef}
-                  style={{position: "relative", height: "75%", overflow: "visible"}} shadows onPointerMissed = {function(){setSelectedObject(null);}} >
+                  style={{position: "relative", height: "75%", overflow: "visible"}} shadows onPointerMissed = {function(){setLastClicked(null);}} >
                   <ambientLight intensity={1} />
                   <directionalLight
                     intensity={1}
@@ -189,8 +154,13 @@ const canvasRef = useRef();
 
                   <gridHelper args={[100, 10,  new THREE.Color(0xFFFFFF), new THREE.Color(0xFFFFFF)]} position={[0, 2, 0]} rotation={[0, 0, 0]} />
                   
+                   
+                    <CarrierPCB width={carrierPCBDimensions.width} height={carrierPCBDimensions.height} rotation={[(Math.PI / 2) * 3, 0, 0]} position={[0,0,0]} color={"grey"}/> 
+                   
                   
-                  <CarrierPCB width={carrierPCBDimensions.width} height={carrierPCBDimensions.height} rotation={[(Math.PI / 2) * 3, 0, 0]} position={[0,0,0]} color={"lightgray"}/>
+                  {enclosureVisible && 
+                    <Enclosure height={enclosureDimensions.height} width={enclosureDimensions.width} depth={enclosureDimensions.depth}/>
+                  }
 
                   <Suspense fallback={null}>
                     <Objects objects={objects}></Objects>
@@ -203,6 +173,10 @@ const canvasRef = useRef();
                 
               </Box>
             </Grid>
+
+            <h3>
+              
+            </h3>
           </Grid>
     </>
     
