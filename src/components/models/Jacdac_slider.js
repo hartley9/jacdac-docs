@@ -11,6 +11,10 @@ export default function Model({ ...props }) {
   return (
     <group ref={group} scale={1000} {...props} dispose={null}>
       <mesh name="28" geometry={nodes['28'].geometry} material={materials.mat_14} position={[0.0000535911, 0.0008, 0.0000100956]} userData={{ name: '28' }}>
+        <group name="JD_PWR"  position={[-0.025, 0, -0.010]}></group>
+        <group name="JD_DATA"  position={[-0.025, 0, 0.010]}></group>
+        <group name="JD_GND1" position={[0.025, 0, 0.010]}></group>
+        <group name="JD_GND2" position={[0.025, 0, -0.010]}></group>
         <group name="11" position={[0.0173144862, 0.00085, -0.0069229393]} rotation={[0, 1.5705346837, 0]} userData={{ name: '11' }}>
           <group name="=>0119" userData={{ name: '=>[0:1:1:9]' }}>
             <mesh name="SOLID006" geometry={nodes.SOLID006.geometry} material={materials.mat_0} />
