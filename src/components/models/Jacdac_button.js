@@ -6,7 +6,10 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export default function Model({ ...props }) {
-  const group = useRef()
+  const group = useRef();
+
+  const stlPath = '/models/jacdac_button.stl'
+  
   const { nodes, materials } = useGLTF('/models/jacdac_button.gltf')
   return (
     <group ref={group} {...props} dispose={null} scale={1000}>
