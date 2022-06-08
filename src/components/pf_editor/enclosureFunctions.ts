@@ -13,14 +13,13 @@ import {buttonSTL} from '../models/modelExtrusions/button.js'
 import {sliderSTL} from '../models/modelExtrusions/slider.js'
 import { collectMountingHoleLocations } from './editFunctions';
 
-
 let xSize = 0;
 let ySize = 0;
 let zSize = 0;
 
 let myScene;
 
-const standOffHeight = 4;
+const standOffHeight = 3;
 
 function whichModuleSTL(moduleName){
     moduleName = moduleName.toLowerCase();
@@ -58,10 +57,10 @@ export function moduleStandOffs(scene){
     const mountingHoleData = collectMountingHoleLocations(scene);
 
     const moduleStandOffGeo = union(
-            subtract(
-                cylinder({radius: 4, height: zSize/2}),
-                translate([0,0,3], cylinder({radius: 3, height: zSize/2}))
-            )
+           // subtract(
+                cylinder({radius: 2, height: zSize/2}),
+                translate([0,0,3], cylinder({radius: 1.5, height: zSize/2}))
+            //)
         )
 
 
@@ -70,19 +69,17 @@ export function moduleStandOffs(scene){
     mountingHoleData.forEach(mountingHole => {
         
 
-        const position = mountingHole.mountingHolePosition;
+        const position = mountingHole.mountingHolePosition ;
 
         if (standOffGeoToReturn !== undefined){
             standOffGeoToReturn = union(
-                translate([position.x, position.z, -zSize/4], moduleStandOffGeo),
+                translate([-position.x /* + sizeBuffer */, position.z /* + sizeBuffer */, -zSize/4], moduleStandOffGeo),
                 standOffGeoToReturn
             ) 
         } else {
-            standOffGeoToReturn = translate([position.x, position.z, -zSize/4], moduleStandOffGeo)
+            standOffGeoToReturn = translate([-position.x /* + sizeBuffer */, position.z /* + sizeBuffer */, -zSize/4], moduleStandOffGeo)
         }  
     })
-
-
 
     return standOffGeoToReturn;
 }
@@ -144,13 +141,15 @@ export function downloadBlob(blob, name = 'file.txt') {
 }
 
 
+const sizeBuffer = 30
+
 
 export const generate = (enclosureDimensions?, scene?) =>
 {
     
-    xSize = enclosureDimensions.depth + 10;
-    ySize = enclosureDimensions.height + 10;
-    zSize = enclosureDimensions.width + 10;
+    xSize = enclosureDimensions.width + sizeBuffer;
+    ySize = enclosureDimensions.height + sizeBuffer;
+    zSize = enclosureDimensions.depth; //+ sizeBuffer;
     
    // return mounts(xSize, ySize)
     return rotateX(degToRad(0), union(
@@ -171,7 +170,7 @@ const mounts = (x, y) => {
 const standOff = (x,y, d?) => 
 {
 
-    const standOffRadius = d ? d : 3;
+    const standOffRadius = d ? d : 2;
 
     return translate([x,y,-(zSize/4)], subtract(
          cylinder({radius: standOffRadius, height: standOffHeight}),
@@ -210,10 +209,8 @@ const enclosureBottom = (scene): Geom3 => {
         outer,
         inner,
         standOffs
-        
         );
 }
-
 
 
 const enclosure = (wallThickness?): Geom3 => {
@@ -257,10 +254,7 @@ const addComponentApertures = (scene, enclosureTop): Geom3 => {
                     moduleName: moduleName
                 }   
            )
-
-        
        }
-
     })
 
     let geomToReturn = enclosureTop;
