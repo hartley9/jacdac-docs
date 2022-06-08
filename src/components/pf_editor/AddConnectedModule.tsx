@@ -1,8 +1,6 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import Button from "../ui/Button";
-import Menu from "@mui/material/Menu";
-import { MenuItem } from "@mui/material";
 import { deviceToModelMap } from "./deviceToModelMap";
 
 import AddIcon from "@mui/icons-material/Add";
@@ -10,8 +8,9 @@ import AddIcon from "@mui/icons-material/Add";
 export default function AddModule(props: {addModule, devices}){
     const { addModule, devices } = props;
     
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
+   // const open = Boolean(anchorEl);
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -24,10 +23,6 @@ export default function AddModule(props: {addModule, devices}){
             }
         })
       };
-    
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
     return (
         <>
