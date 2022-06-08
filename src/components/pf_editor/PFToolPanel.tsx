@@ -22,6 +22,8 @@ export default function PFToolPanel(props: {lastClicked: THREE.Object3D, objectR
 
     //TODO: Use object store for this
     function carrierPCBDimensionChange(e, type){
+
+        console.log('encldim: ', enclosureDimensions)
         switch(type){
             case 'width':
                 setEnclosureDimensions({
@@ -59,6 +61,7 @@ export default function PFToolPanel(props: {lastClicked: THREE.Object3D, objectR
                     height: enclosureDimensions.height, 
                     depth: e.target.value,
                 });
+                console.log('change in depth: ', enclosureDimensions)
                 break;
 
         }
@@ -68,10 +71,10 @@ export default function PFToolPanel(props: {lastClicked: THREE.Object3D, objectR
         <>
             <Grid container>
                 <Grid item>
-                    <SliderWithLabel onChange={(e) => {carrierPCBDimensionChange(e, 'height')}} id='carrierPCBHeightSlider' label="Carrier PCB height" defaultValue={100} min={10} max={500}></SliderWithLabel>
+                    <SliderWithLabel onChange={(e) => {carrierPCBDimensionChange(e, 'height')}} id='carrierPCBHeightSlider' label="Carrier PCB height" defaultValue={100} min={10} max={150}></SliderWithLabel>
                 </Grid>
                 <Grid item>
-                    <SliderWithLabel onChange={(e) => {carrierPCBDimensionChange(e, 'width')}} id='carrierPCBWidthSlider' label="Carrier PCB width" defaultValue={100} min={10} max={500}></SliderWithLabel>
+                    <SliderWithLabel onChange={(e) => {carrierPCBDimensionChange(e, 'width')}} id='carrierPCBWidthSlider' label="Carrier PCB width" defaultValue={100} min={10} max={150}></SliderWithLabel>
                     {/* <TextField onChange={(e) => {carrierPCBDimensionChange(e, 'width')}} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} /> */}
                 </Grid>
                 <Grid item>
@@ -101,17 +104,17 @@ export default function PFToolPanel(props: {lastClicked: THREE.Object3D, objectR
                     </FormGroup>
                 </Grid>
 
-
+{/* 
                 <Grid item>
                     <SliderWithLabel onChange={(e) => {enclosureDimensionChange(e, 'height')}} id='enclsoureHeightSlider' label="Enclosure height"  min={10} max={500}></SliderWithLabel>
                 </Grid>
 
                 <Grid item>
                     <SliderWithLabel onChange={(e) => {enclosureDimensionChange(e, 'width')}} id='enclsoureWidthSlider' label="Enclosure width"  min={10} max={500}></SliderWithLabel>
-                </Grid>
+                </Grid> */}
 
                 <Grid item>
-                    <SliderWithLabel onChange={(e) => {enclosureDimensionChange(e, 'depth')}} id='enclsoureDepthSlider' label="Enclosure depth" min={10} max={500}></SliderWithLabel>
+                    <SliderWithLabel onChange={(e) => {enclosureDimensionChange(e, 'depth')}} id='enclsoureDepthSlider' label="Enclosure depth" min={10} max={100}></SliderWithLabel>
                 </Grid>
 
               {/*   <Grid item>

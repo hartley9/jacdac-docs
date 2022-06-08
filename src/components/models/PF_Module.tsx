@@ -1,6 +1,4 @@
 import React, { useState, useRef} from "react"
-
-import STLExporter from "three"
 import { useHelper } from "@react-three/drei";
 
 import { useDrag } from "@use-gesture/react";
@@ -26,9 +24,10 @@ export default function PF_Module(props: {id: string, name: string, moduleName: 
     const objGroup = useRef();
 
     // BOUNDING BOX FOR MODULE
-    const helper = useHelper( sel && objGroup, THREE.BoxHelper, "purple");
+    const helper= useHelper( sel && objGroup, THREE.BoxHelper, 'purple');
 
-    const  [setBoundingBox] = useState(null);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const  [boundingBox, setBoundingBox] = useState(null);
       
     const [pos, setPos] = useState(position? position : [0, 1, 0]);
     
@@ -43,7 +42,7 @@ export default function PF_Module(props: {id: string, name: string, moduleName: 
       }));
     
       const bind = useDrag(
-        ({ active, movement: /* [x, y] ,*/ timeStamp, event }) => {
+        ({ active, movement: timeStamp, event }) => {
           if (active) {
             event.ray.intersectPlane(floorPlane, planeIntersectPoint);
             setPos([planeIntersectPoint.x, 8, planeIntersectPoint.z]);
@@ -90,11 +89,6 @@ export default function PF_Module(props: {id: string, name: string, moduleName: 
             return <Jacdac_slider />
         }
       }
-
-
-      //const exporter = new STLExporter();
-
-      
     
     return (
           <>
