@@ -16,8 +16,6 @@ export default function AddModule(props: {addModule}){
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
 
-        console.log(event.currentTarget.innerHTML)
-
         switch(event.currentTarget.innerHTML.toLowerCase()){
             case('rotary'):
                 addModule(event.currentTarget.innerHTML);
@@ -27,6 +25,23 @@ export default function AddModule(props: {addModule}){
                 addModule(event.currentTarget.innerHTML);
                 handleClose();
                 break;
+            case ('button'):
+                addModule(event.currentTarget.innerHTML);
+                handleClose()
+                break;
+            case ('rgb led ring'):
+                addModule(event.currentTarget.innerHTML);
+                handleClose();
+                break;
+            case ('key switch'):
+                addModule(event.currentTarget.innerHTML);
+                handleClose();
+                break;
+            case ('slider'):
+                addModule(event.currentTarget.innerHTML);
+                handleClose();
+                break;
+            
         }
 
         
@@ -66,6 +81,18 @@ export default function AddModule(props: {addModule}){
                         </MenuItem>
                         <MenuItem onClick={handleClick} disableRipple>
                         RGB LED
+                        </MenuItem>
+                        <MenuItem onClick={handleClick} disableRipple>
+                        Button
+                        </MenuItem>
+                        <MenuItem onClick={handleClick} disableRipple>
+                        RGB LED Ring
+                        </MenuItem>
+                        <MenuItem onClick={handleClick} disableRipple>
+                        Key Switch
+                        </MenuItem>
+                        <MenuItem onClick={handleClick} disableRipple>
+                        Slider
                         </MenuItem>
                     </Menu>
             </Grid>
