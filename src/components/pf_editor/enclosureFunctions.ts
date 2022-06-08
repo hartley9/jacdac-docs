@@ -3,20 +3,6 @@ import { Geom3 } from '@jscad/modeling/src/geometries/types';
 import stlDeserializer from "@jscad/stl-deserializer"
 import stlSerializer from "@jscad/stl-serializer"
 
-const BinPacking2D = require('binpackingjs').BP2D;
-const { Bin, Box, Packer } = BinPacking2D;
-
-const bin_1 = new Bin(100, 50);
-const bin_2 = new Bin(50, 50);
-const boxes = [
-  new Box(15, 10), // Should be added last (smaller)
-  new Box(50, 45), // Fits in bin_2 better than in bin_1
-  new Box(40, 40),
-  new Box(200, 200), // Too large to fit
-];
-const packer = new Packer([bin_1, bin_2]);
-const packed_boxes = packer.pack(boxes);
-
 //const { booleans, primitives, transforms, utils } = jscad;
 const { union, subtract } = booleans;
 const { cylinder, roundedCuboid } = primitives;
@@ -28,13 +14,12 @@ import {sliderSTL} from '../models/modelExtrusions/slider.js'
 import { collectMountingHoleLocations } from './editFunctions';
 
 
-let xSize = 60;
-let ySize = 40;
-let zSize = 20;
+let xSize = 0;
+let ySize = 0;
+let zSize = 0;
 
 let myScene;
 
-const path = '/models/test.txt'
 const standOffHeight = 4;
 
 function whichModuleSTL(moduleName){
@@ -81,14 +66,11 @@ export function moduleStandOffs(scene){
 
 
     let standOffGeoToReturn = undefined; 
-    const models: Geom3[] = [];
 
     mountingHoleData.forEach(mountingHole => {
         
 
         const position = mountingHole.mountingHolePosition;
-
-       // models.push( translate([position.x, position.z, 0], cylinder({radius: 3, height: 10})) );
 
         if (standOffGeoToReturn !== undefined){
             standOffGeoToReturn = union(
@@ -134,11 +116,8 @@ export function getSTLBlob(enclosureDimensions, scene?)
 }
 
 
-function downloadBlob(blob, name = 'file.txt') {
-/*     if (
-      window.navigator && 
-      window.navigator.msSaveOrOpenBlob
-    ) return window.navigator.msSaveOrOpenBlob(blob); */
+export function downloadBlob(blob, name = 'file.txt') {
+
 
     // For other browsers:
     // Create a link pointing to the ObjectURL containing the blob.
@@ -168,14 +147,10 @@ function downloadBlob(blob, name = 'file.txt') {
 
 export const generate = (enclosureDimensions?, scene?) =>
 {
-
     
-    xSize = enclosureDimensions.depth + 15;
-    ySize = enclosureDimensions.height + 15;
-    zSize = enclosureDimensions.width + 15;
-
-    
-
+    xSize = enclosureDimensions.depth + 10;
+    ySize = enclosureDimensions.height + 10;
+    zSize = enclosureDimensions.width + 10;
     
    // return mounts(xSize, ySize)
     return rotateX(degToRad(0), union(
@@ -212,7 +187,7 @@ const enclosureShape = () =>
 }
 
 
-const enclosureBottom = (scene) => {
+const enclosureBottom = (scene): Geom3 => {
    // let e = enclosure();
     const cutFraction = 0.25
     const chopper = 
@@ -224,41 +199,28 @@ const enclosureBottom = (scene) => {
         chopper
         );
 
-    //const module = scale([1000,1000,1000], deserialiseSTL());
-        
-   // outer = union(outer, translate([0,30,0], scale([1000,1000,1000], deserialiseSTL())))
-
-   //outer = subtract(outer, module)
-
    const standOffs = moduleStandOffs(scene)
 
     const inner = subtract(
         enclosure(0.95), 
         translate([0,0,3], chopper)
         );
+
     return union(
         outer,
         inner,
-     //   translate([0,0,-standOffHeight], mounts(xSize-12, ySize-12)),
         standOffs
         
-        )
-        
-    
-
+        );
 }
 
 
 
-const enclosure = (wallThickness?) => {
+const enclosure = (wallThickness?): Geom3 => {
  wallThickness = wallThickness || 0.9;
   const e = enclosureShape(); 
   
   const cavity = scale([wallThickness, wallThickness, wallThickness], e);
-
-   
-        
-        //translate([0,30,0], scale([1000,1000,1000], deserialiseSTL())))
   
   return subtract(
       e, 
@@ -267,26 +229,16 @@ const enclosure = (wallThickness?) => {
 }
 
 // top is 
-const enclosureTop = (scene) => {
+const enclosureTop = (scene): Geom3 => {
     const enclosureTop = subtract(
         enclosure(), 
         enclosureBottom(scene));
-
-        
         return addComponentApertures(myScene, enclosureTop);
-    
-    /* return subtract(
-        enclosureTop,
-        translate([0,0,15], scale([1000,1000,1000], deserialiseSTL()))
-    ); */
 }
 
 
-const addComponentApertures = (scene, enclosureTop) => {
+const addComponentApertures = (scene, enclosureTop): Geom3 => {
     const componentLocations = [];
-
-    
-
     
     scene.traverse(obj => {
        
