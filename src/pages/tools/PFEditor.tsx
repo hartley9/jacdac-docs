@@ -40,13 +40,11 @@ export default function Page() {
   const [carrierPCBDimensions, setCarrierPCBDimensions] = useState({height: 100, width: 100})
 
   // enclosure
-  const [enclosureDimensions, setEnclosureDimensions] = useState({height: 110, width: 44, depth: 110})
+  const [enclosureDimensions, setEnclosureDimensions] = useState({height: 20, width: 20, depth: 20})
 
   // enclosure visible
   const [enclosureVisible, setEnclosureVisible] = useState(false);
 
-
-  
   //array to hold all jacdac module objects
   const [objects, setObjects] = useState([]);
 
@@ -63,7 +61,7 @@ export default function Page() {
     console.log(box3)
 
     if (objects.length > 0){
-      box3.current.setFromObject(objects[0].current)
+      if (box3.current) box3.current.setFromObject(objects[0].current) 
     }
   }, [box3])
 

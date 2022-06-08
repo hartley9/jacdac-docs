@@ -7,9 +7,7 @@ export const generateEnclosure = (scene) => {
     // generate bounding boxes for all objects in scene with a geometry
     scene.traverse(obj => {
         if (obj.geometry){
-            obj.geometry.computeBoundingBox();
-            console.log('computing bounding box for:')
-            console.log(obj)
+            obj.geometry.computeBoundingBox();   
         }
     })
 }
@@ -18,17 +16,10 @@ export const collectMountingHoleLocations = (scene) => {
 
     const mountingHoleData = [];
 
-    console.log('scene ');
-    console.log(scene)
     scene.traverse(sceneChild => {
         
-        
-
         if (sceneChild.userData.routeMe){
-            console.log('found draggable mesh');
-            console.log(sceneChild)
-
-
+            
             sceneChild.traverse(obj => {
 
                 const worldPosTest = new THREE.Vector3();
@@ -36,10 +27,7 @@ export const collectMountingHoleLocations = (scene) => {
                 obj.updateMatrixWorld();
                 obj.getWorldPosition(worldPosTest);
 
-                
-                    
-                    
-                const newPos = [(worldPosTest.x), (worldPosTest.y), (worldPosTest.z)]
+               // const newPos = [(worldPosTest.x), (worldPosTest.y), (worldPosTest.z)]
 
                 
                 if (obj.name.includes('JD')){
@@ -67,8 +55,6 @@ export const collectCarrierPCBData = (scene) => {
     let carrierPCBDimensions;
     scene.traverse(sceneChild => {
         if (sceneChild.name.includes('carrierPCB')){
-            console.log('carrierPCB');
-            console.log(sceneChild.children[0].geometry.parameters);
             carrierPCBDimensions = {width: sceneChild.children[0].geometry.parameters.width, height: sceneChild.children[0].geometry.parameters.height}
         }
     })
@@ -115,11 +101,6 @@ export function editZIndex(obj: THREE.Object3D){
 
 export function deleteObject(obj: THREE.Object3D, objectRefs: []){
 
-    console.log('objrefs');
-    console.log(objectRefs);
-
-    console.log('obj');
-    console.log(obj);
 
     for (let i=0; i<objectRefs.length; i++){
         const currObjRef = objectRefs[i].props;
@@ -128,18 +109,11 @@ export function deleteObject(obj: THREE.Object3D, objectRefs: []){
 
 
         if (selectedObjTopLevelUUID === currentObjTopLevelUUID){
-        
             objectRefs.splice(i, 1);
-
-            console.log('new object refs');
-            console.log(objectRefs);
-
             obj.parent.parent.remove(obj.parent);
-
         }
     }
 }
-
 
 export function route(scene){
 
@@ -161,32 +135,19 @@ export function route(scene){
 
 
     const carrierPCBDimensions = collectCarrierPCBData(scene)
-    console.log('carrierPCBDimensions')
-    console.log(carrierPCBDimensions) 
     
     const mountingHoleData = collectMountingHoleLocations(scene);
-    console.log('mounting hole data');
-    console.log(mountingHoleData)
     
     let routingMatrix = generatePCBMatrix(carrierPCBDimensions);
-    console.log('empty routing matrix');
-    console.log(routingMatrix);
     
-
     mountingHoleData.forEach(mountingHole => {
         routingMatrix = fillMatrixSection(routingMatrix, {h: 6, w: 6}, mountingHole.mountingHolePosition, carrierPCBDimensions.height, carrierPCBDimensions.height, 'mountingHole', mountingHole.mountingHoleNet)
     })
-
-    console.log('ORIG ROUTING')
-    console.log(JSON.parse(JSON.stringify(routingMatrix)))
 
 
     let points = []; 
     
     mountingHoleData.forEach(mountingHole => {
-
-        console.log('powerGoals');
-        console.log(powerGoals)
 
         let path = [];
         let matrixForPathfinder;
@@ -218,7 +179,6 @@ export function route(scene){
           //   dataGoal = getClosestGoal(convertedPosition, dataPaths);
         //}
         
-
         switch(mountingHole.mountingHoleNet){
             
            
@@ -228,42 +188,27 @@ export function route(scene){
                 
                 powerPaths.push(path)
                 powerGoals = powerGoals.concat(JSON.parse(JSON.stringify(path)).splice(5, path.length-1))
-                console.log('splice test');
-                console.log(path);
-                console.log(JSON.parse(JSON.stringify(path)).splice(5, path.length-1))
                 points = path;
+                
                 for (let p=0; p<path.length; p++){
                     const point = path[p];
                     
                     routingMatrix[point[1]][point[0]] = 'PWRline'
                     
                 }
-
-                
-
                 break;
             case('DATA'):
                 matrixForPathfinder = maskMatrix(routingMatrix, 'data');
                 path = pathfinder(matrixForPathfinder, {x: convertedPosition.x, y: convertedPosition.z}, {x: dataGoal[1], y:  dataGoal[0]});
-                
                 dataPaths.push(path)
                 points = path;
                 for (let p=0; p<path.length; p++){
                     const point = path[p];
-                    
                     routingMatrix[point[1]][point[0]] = 'DATAline'
-                    
                 }
-
-                console.log('routing matrix after path');
-                console.log(routingMatrix)
                 break;
         }
-
     })
-    
-
-
     
     for (let p = 0; p<powerPaths.length; p++){
         const powerPoints = []
@@ -317,7 +262,6 @@ export function route(scene){
 }
 
 export const getClosestGoal = (startPosition, paths) => {
-
 
     //paths = paths[0]
     console.log('start pos');
