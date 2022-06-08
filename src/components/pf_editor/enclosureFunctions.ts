@@ -1,3 +1,5 @@
+import JSZip from "jszip"
+
 import {primitives, transforms, booleans, utils} from '@jscad/modeling';
 import { Geom3 } from '@jscad/modeling/src/geometries/types';
 import stlDeserializer from "@jscad/stl-deserializer"
@@ -90,13 +92,32 @@ export function getIntersectingObjects(enclosureLid, scene){
 
 export function downloadSTLEnclosure(enclosureDimensions, scene?){
 
+
+    const jszip = new JSZip();
+    const enclosureSTLs = jszip.folder("enclosure stls");
+
+
+   
     myScene = scene;
 
     const plasticStandOffs = true;
 
-    const enclosureBlob = getSTLBlob(enclosureDimensions, scene);
+    const enclosureBlobs = getSTLBlob(enclosureDimensions, scene);
 
-    downloadBlob(enclosureBlob, 'enclosure.stl')
+    for (const lidOrBase in enclosureBlobs)
+    {
+        if (lidOrBase === 'lid'){
+            enclosureSTLs.file('lid.stl', enclosureBlobs[lidOrBase]);
+        } else {
+            enclosureSTLs.file('base.stl', enclosureBlobs[lidOrBase]);
+        }
+    }
+
+    jszip.generateAsync({type: "blob"}).then(function(content){
+        downloadBlob(content, 'enclosureStls.zip')    
+    })
+
+    
 }
 
 export function getSTLBlob(enclosureDimensions, scene?)
@@ -104,12 +125,18 @@ export function getSTLBlob(enclosureDimensions, scene?)
 
     const myEnclosure = generate(enclosureDimensions, scene);
  
-    const rawData = stlSerializer.serialize({binary: true}, myEnclosure)
+
+    const rawLidData = stlSerializer.serialize({binary: true}, myEnclosure.lid)
+    const rawBaseData = stlSerializer.serialize({binary: true}, myEnclosure.base)
 
     //in browser (with browserify etc)
-    const blob = new Blob(rawData);
+    const lidBlob = new Blob(rawLidData);
+    const baseBlob = new Blob(rawBaseData);
     
-    return blob;
+    return {
+        lid: lidBlob, 
+        base: baseBlob
+    };
 }
 
 
@@ -152,10 +179,17 @@ export const generate = (enclosureDimensions?, scene?) =>
     zSize = enclosureDimensions.depth; //+ sizeBuffer;
     
    // return mounts(xSize, ySize)
-    return rotateX(degToRad(0), union(
-        translate([0, -ySize*1.1, 0], rotateX(degToRad(180), enclosureTop(scene))),
-        enclosureBottom(scene), 
-        ));
+    return {
+        lid: rotateX(degToRad(0), union(
+            translate([0, -ySize*1.1, 0], rotateX(degToRad(180), enclosureTop(scene))),
+           // enclosureBottom(scene), 
+            )), 
+        base: rotateX(degToRad(0), union(
+           // translate([0, -ySize*1.1, 0], rotateX(degToRad(180), enclosureTop(scene))),
+            enclosureBottom(scene), 
+            ))
+    }
+    
 }
 
 const mounts = (x, y) => {
