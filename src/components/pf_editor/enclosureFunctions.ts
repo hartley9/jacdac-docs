@@ -1,15 +1,18 @@
 import JSZip from "jszip"
 
-import {primitives, transforms, booleans, utils} from '@jscad/modeling';
+import {primitives, transforms, booleans, utils, extrusions, modifiers} from '@jscad/modeling';
 import { Geom3 } from '@jscad/modeling/src/geometries/types';
 import stlDeserializer from "@jscad/stl-deserializer"
 import stlSerializer from "@jscad/stl-serializer"
+import svgSerializer from "@jscad/svg-serializer"
 
 //const { booleans, primitives, transforms, utils } = jscad;
 const { union, subtract } = booleans;
 const { cylinder, roundedCuboid } = primitives;
 const { rotate, rotateX, translate, scale } = transforms;
 const { degToRad } = utils;
+const { project } = extrusions
+const {generalize} = modifiers
 
 import {buttonSTL} from '../models/modelExtrusions/button.js'
 import {sliderSTL} from '../models/modelExtrusions/slider.js'
@@ -35,9 +38,7 @@ function whichModuleSTL(moduleName){
 
 function deserialiseSTL(moduleName)
 {
-
     if (whichModuleSTL(moduleName)){
-
         const geometry = stlDeserializer.deserialize(
             {
                 filename: 'stl',
@@ -46,23 +47,20 @@ function deserialiseSTL(moduleName)
               },
             whichModuleSTL(moduleName)
         )
-        
         return geometry
     }
     else {
         return undefined;
     }
-    
 }
 
 export function moduleStandOffs(scene){
     const mountingHoleData = collectMountingHoleLocations(scene);
-
     const moduleStandOffGeo = union(
-           // subtract(
-                cylinder({radius: 2, height: zSize/2}),
-                translate([0,0,3], cylinder({radius: 1.5, height: zSize/2}))
-            //)
+           
+                cylinder({radius: 2, height: zSize/4}),
+                translate([0,0,3], cylinder({radius: 1.5, height: zSize/4}))
+            
         )
 
 
@@ -107,7 +105,7 @@ export function downloadSTLEnclosure(enclosureDimensions, scene?){
     for (const lidOrBase in enclosureBlobs)
     {
         if (lidOrBase === 'lid'){
-            enclosureSTLs.file('lid.stl', enclosureBlobs[lidOrBase]);
+            enclosureSTLs.file('lid.svg', enclosureBlobs[lidOrBase]);
         } else {
             enclosureSTLs.file('base.stl', enclosureBlobs[lidOrBase]);
         }
@@ -124,9 +122,7 @@ export function getSTLBlob(enclosureDimensions, scene?)
 {
 
     const myEnclosure = generate(enclosureDimensions, scene);
- 
-
-    const rawLidData = stlSerializer.serialize({binary: true}, myEnclosure.lid)
+    const rawLidData = svgSerializer.serialize({binary: true}, myEnclosure.lid)
     const rawBaseData = stlSerializer.serialize({binary: true}, myEnclosure.base)
 
     //in browser (with browserify etc)
@@ -168,7 +164,7 @@ export function downloadBlob(blob, name = 'file.txt') {
 }
 
 
-const sizeBuffer = 30
+const sizeBuffer = 20
 
 
 export const generate = (enclosureDimensions?, scene?) =>
@@ -178,18 +174,16 @@ export const generate = (enclosureDimensions?, scene?) =>
     ySize = enclosureDimensions.height + sizeBuffer;
     zSize = enclosureDimensions.depth; //+ sizeBuffer;
     
-   // return mounts(xSize, ySize)
     return {
-        lid: rotateX(degToRad(0), union(
+        lid: generalize({snap: true, simplify: true, triangulate: true}, project({axis: [0,0,1]}, rotateX(degToRad(0), union(
             translate([0, -ySize*1.1, 0], rotateX(degToRad(180), enclosureTop(scene))),
            // enclosureBottom(scene), 
-            )), 
+            )))), 
         base: rotateX(degToRad(0), union(
            // translate([0, -ySize*1.1, 0], rotateX(degToRad(180), enclosureTop(scene))),
             enclosureBottom(scene), 
             ))
     }
-    
 }
 
 const mounts = (x, y) => {
@@ -207,7 +201,7 @@ const standOff = (x,y, d?) =>
     const standOffRadius = d ? d : 2;
 
     return translate([x,y,-(zSize/4)], subtract(
-         cylinder({radius: standOffRadius, height: standOffHeight}),
+        cylinder({radius: standOffRadius, height: standOffHeight}),
         
         cylinder({radius: 1.3, height: standOffHeight+(zSize/10)})
         ));
