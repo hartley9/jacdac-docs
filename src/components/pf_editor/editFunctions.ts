@@ -3,7 +3,11 @@ import PF from "pathfinding"
 
 const resolution = 10 // resolution for routing
 
+// this files reference for the threejs scene
 let myScene
+
+// used to remove any displayed scene objects in case of reroute
+const allDebugSceneObjects = []
 
 const addDebugCube = (vec: { x: number; y: number; z: number }) => {
     const geometry = new THREE.BoxGeometry(1, 1, 1)
@@ -14,6 +18,7 @@ const addDebugCube = (vec: { x: number; y: number; z: number }) => {
     //cube.position.set(vec.x, vec.y, vec.z)
     cube.position.set(vec.x, vec.y, vec.z)
     myScene.add(cube)
+    allDebugSceneObjects.push(cube)
 }
 
 export const roundBy = (x, amt = 5) => {
@@ -78,6 +83,7 @@ export const collectMountingHoleLocations = scene => {
                         worldPosTest.z
                     )
                     scene.add(cube)
+                    allDebugSceneObjects.push(cube)
 
                     console.log("heres my cube: ", cube)
                 }
@@ -152,6 +158,13 @@ export function deleteObject(obj: THREE.Object3D, objectRefs: []) {
 }
 
 export function route(scene) {
+    // update myScene ref
+    myScene = scene
+    // first remove any debug scene objects from last routing
+    allDebugSceneObjects.forEach(obj => {
+        myScene.remove(obj)
+    })
+
     generateEnclosure(scene) //test for now
 
     console.log("auto-routing...")
@@ -301,7 +314,7 @@ export function route(scene) {
 
     for (let p = 0; p < dataPaths.length; p++) {
         const dataPoints = []
-        const path = dataPaths[p]
+        let path = dataPaths[p]
 
         for (let point = 0; point < path.length; point++) {
             dataPoints.push(
@@ -313,6 +326,7 @@ export function route(scene) {
             )
         }
 
+        path = padLine(path)
         const geometry = new THREE.BufferGeometry().setFromPoints(dataPoints)
 
         const material = new THREE.LineBasicMaterial({ color: 0x013220 })
@@ -320,6 +334,95 @@ export function route(scene) {
         const line = new THREE.Line(geometry, material)
 
         scene.add(line)
+        allDebugSceneObjects.push(line)
+    }
+}
+
+// TODO: implement pad line amount
+export const padLine = (line, amt = 2) => {
+    let lastPoint
+    for (let p = 0; p < line.length; p++) {
+        const currentPoint = line[p]
+        if (p === 0) {
+            lastPoint = line[p + 1]
+        } else {
+            lastPoint = line[p - 1]
+
+            const direction = getDirection(
+                { x: lastPoint[1], y: lastPoint[0] },
+                { x: currentPoint[1], y: currentPoint[0] }
+            )
+
+            switch (direction) {
+                case "up" || "down":
+                    line.push(
+                        // pad left
+                        [currentPoint[0], currentPoint[1] - 1]
+                    )
+                    line.push(
+                        // pad right
+                        [currentPoint[0], currentPoint[1] + 1]
+                    )
+                    break
+                case "left" || "right":
+                    line.push(
+                        // pad up
+                        [currentPoint[0] - 1, currentPoint[1]]
+                    )
+
+                    line.push(
+                        // pad down
+                        [currentPoint[0] + 1, currentPoint[1]]
+                    )
+                    break
+
+                // TODO: diagonal padding
+                case "upleft" || "downright":
+                    line.push(
+                        // pad upright
+                        [currentPoint[0] - 1, currentPoint[1] + 1]
+                    )
+
+                    line.push(
+                        // pad downleft
+                        [currentPoint[0] + 1, currentPoint[1] - 1]
+                    )
+                    break
+                case "upright" || "downleft":
+                    line.push(
+                        // pad upleft
+                        [currentPoint[0] - 1, currentPoint[1] - 1]
+                    )
+
+                    line.push(
+                        // pad downright
+                        [currentPoint[0] + 1, currentPoint[1] + 1]
+                    )
+            }
+        }
+    }
+    return line
+}
+
+export const getDirection = (p1, p2) => {
+    const direction = { x: p2.x - p1.x, y: p2.y - p1.y }
+
+    if (direction.x === 1 && direction.y === 0) {
+        return "right"
+    } else if (direction.x === -1 && direction.y === 0) {
+        return "left"
+    } else if (direction.x === 0 && direction.y === 1) {
+        return "up"
+    } else if (direction.x === 0 && direction.y === -1) {
+        return "down"
+    } else if (direction.x === -1 && direction.y === -1) {
+        return "upleft"
+    } else if (direction.x === 1 && direction.y === -1) {
+        return "upright"
+    } else if (direction.x === 1 && direction.y === 1) {
+        return "downright"
+    } else if (direction.x === -1 && direction.y === 1) {
+        return "downleft"
     }
 }
 
@@ -418,7 +521,7 @@ export function pathfinder(matrix, startPoint, endPoint): number[] {
     grid.setWalkableAt(0, 1, false)
 
     const finder = new PF.JumpPointFinder({
-        allowDiagonal: false,
+        allowDiagonal: true,
         dontCrossCorners: true,
         heuristic: PF.Heuristic.chebyshev,
     })
