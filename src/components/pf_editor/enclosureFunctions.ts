@@ -22,14 +22,21 @@ const { project } = extrusions
 const { generalize } = modifiers
 
 import { buttonSTL } from "../models/modelExtrusions/button.js"
+import {keyswitchSTL} from "../models/modelExtrusions/keyswitch.js"
 import { sliderSTL } from "../models/modelExtrusions/slider.js"
+import {rgbledringSTL} from "../models/modelExtrusions/rgbledring.js"
+import {rotarySTL} from "../models/modelExtrusions/rotary.js"
+import {adapterSTL} from "../models/modelExtrusions/adapter.js"
 import { collectMountingHoleLocations } from "./editFunctions"
+import { rotateZ } from "@jscad/modeling/src/operations/transforms"
+import { getModulesFromScene } from "./utilFuncs"
+import cuboid from "@jscad/modeling/src/primitives/cuboid.js"
 
 let xSize = 0
 let ySize = 0
 let zSize = 0
 
-let myScene
+let myScene;
 
 const standOffHeight = 3
 
@@ -39,6 +46,15 @@ function whichModuleSTL(moduleName) {
         return buttonSTL
     } else if (moduleName.includes("slider")) {
         return sliderSTL
+    } else if (moduleName.includes("rgb led ring")){
+        return rgbledringSTL
+    } else if (moduleName.includes("adapter")){
+        return adapterSTL
+    } else if (moduleName.includes("key switch")){
+        console.log('found keyswitch')
+        return keyswitchSTL
+    } else if (moduleName.includes("rotary")){
+        return rotarySTL
     }
 }
 
@@ -61,7 +77,7 @@ function deserialiseSTL(moduleName) {
 export function moduleStandOffs(scene) {
     const mountingHoleData = collectMountingHoleLocations(scene)
     const moduleStandOffGeo = union(
-        cylinder({ radius: 2, height: zSize / 4 }),
+        cylinder({ radius: 4, height: zSize / 4 }),
         translate([0, 0, 3], cylinder({ radius: 1.5, height: zSize / 4 }))
     )
 
@@ -74,10 +90,10 @@ export function moduleStandOffs(scene) {
             standOffGeoToReturn = union(
                 translate(
                     [
-                        -position.x /* + sizeBuffer */,
-                        position.z /* + sizeBuffer */,
+                        -position.x,
+                        position.z,
                         -zSize / 4,
-                    ],
+                    ], 
                     moduleStandOffGeo
                 ),
                 standOffGeoToReturn
@@ -99,7 +115,7 @@ export function moduleStandOffs(scene) {
 
 export function getIntersectingObjects(enclosureLid, scene) {}
 
-export function downloadSTLEnclosure(enclosureDimensions, scene?) {
+export async function downloadSTLEnclosure(enclosureDimensions, scene?, genCarrierPCB?) {
     const jszip = new JSZip()
     const enclosureSTLs = jszip.folder("enclosure stls")
 
@@ -107,7 +123,10 @@ export function downloadSTLEnclosure(enclosureDimensions, scene?) {
 
     const plasticStandOffs = true
 
-    const enclosureBlobs = getSTLBlob(enclosureDimensions, scene)
+    const enclosureBlobs = await getSTLBlob(enclosureDimensions, scene);
+
+    console.log('ENCLOSURE BLOBS');
+    console.log(enclosureBlobs)
 
     for (const lidOrBase in enclosureBlobs) {
         if (lidOrBase === "lid") {
@@ -122,20 +141,79 @@ export function downloadSTLEnclosure(enclosureDimensions, scene?) {
     })
 }
 
-export function getSTLBlob(enclosureDimensions, scene?) {
+export async function getSTLBlob(enclosureDimensions, scene?, enclosureOptions?) {
+    
     const myEnclosure = generate(enclosureDimensions, scene)
-    const rawLidData = svgSerializer.serialize(
-        { binary: true },
-        myEnclosure.lid
-    )
-    const rawBaseData = stlSerializer.serialize(
-        { binary: true },
-        myEnclosure.base
-    )
+    let rawLidData, rawBaseData;
+    if (!enclosureOptions){
+        
+        rawLidData = svgSerializer.serialize(
+            { unit: 'mm' },
+            generalize(
+                { snap: true, simplify: true, triangulate: true },
+                project({axis: [0,0,1]}, myEnclosure.lid))
+        )
+         rawBaseData = stlSerializer.serialize(
+            { binary: true },
+            myEnclosure.base
+        )
+
+        console.log('raw base data: ', rawBaseData)
+        console.log('raw lid data: ', rawLidData)
+    } else {
+
+        console.log('my enclosure');
+        console.log(myEnclosure)
+        const exportOptions = enclosureOptions.exportOptions;
+        
+        const format = exportOptions.format;
+
+        console.log('heres my format in here');
+        console.log(format);
+        console.log('lid, ', format.lid.toLowerCase());
+
+        console.log('does format lid include stl: ', format.lid.includes('stl'))
+        
+        if (format.lid.toLowerCase().includes('stl')){
+           // console.log('im in here in the lid serializer ');
+            
+            rawLidData = stlSerializer.serialize(
+               {binary: false},
+                myEnclosure.lid
+            )
+        } else if (format.lid.toLowerCase().includes('svg')){
+            rawLidData = svgSerializer.serialize(
+                { unit: 'mm' },
+                generalize(
+                    { snap: true, simplify: true, triangulate: true },
+                    project({axis: [0,0,1]}, myEnclosure.base))
+            )
+        }
+        
+
+        if (format.base.toLowerCase().includes('stl')){
+            rawBaseData = await stlSerializer.serialize(
+                { binary: false },
+                myEnclosure.base
+            )
+            console.log('got to stl, heres raw base data')
+            console.log(rawBaseData);
+        } else if (format.base.toLowerCase().includes('svg')){
+            rawBaseData = await svgSerializer.serialize(
+                { unit: 'mm' },
+                generalize(
+                    { snap: true, simplify: true, triangulate: true },
+                    project({axis: [0,0,1]}, myEnclosure.base)))
+            
+        }
+
+        
+
+    } 
 
     //in browser (with browserify etc)
-    const lidBlob = new Blob(rawLidData)
-    const baseBlob = new Blob(rawBaseData)
+    const lidBlob = new Blob(rawLidData);
+    const baseBlob = new Blob(rawBaseData);
 
     return {
         lid: lidBlob,
@@ -171,32 +249,36 @@ export function downloadBlob(blob, name = "file.txt") {
 const sizeBuffer = 20
 
 export const generate = (enclosureDimensions?, scene?) => {
-    xSize = enclosureDimensions.width + sizeBuffer
-    ySize = enclosureDimensions.height + sizeBuffer
+    xSize = enclosureDimensions.height + sizeBuffer
+    ySize = enclosureDimensions.width + sizeBuffer
     zSize = enclosureDimensions.depth //+ sizeBuffer;
 
     return {
-        lid: generalize(
-            { snap: true, simplify: true, triangulate: true },
-            project(
-                { axis: [0, 0, 1] },
-                rotateX(
-                    degToRad(0),
+        //generalize(
+          //  { snap: true, simplify: true, triangulate: true },
+         //   project(
+              //  { axis: [0, 0, 1] },
+               lid: rotateZ(
+                    degToRad(90),
                     union(
                         translate(
                             [0, -ySize * 1.1, 0],
-                            rotateX(degToRad(180), enclosureTop(scene))
+                            rotateX(degToRad(180), 
+                           // addComponentApertures(scene, enclosureTop(scene) ))
+                           enclosureTop(scene))
                         )
                         // enclosureBottom(scene),
                     )
-                )
-            )
-        ),
-        base: rotateX(
-            degToRad(0),
+                ),
+         //   )
+       // ),
+        base: rotateZ(
+            degToRad(90),
             union(
                 // translate([0, -ySize*1.1, 0], rotateX(degToRad(180), enclosureTop(scene))),
-                enclosureBottom(scene)
+                //addComponentApertures(scene, enclosureBottom(scene))
+              //  addComponentApertures(scene, enclosureBottom(scene))
+              enclosureBottom(scene)
             )
         ),
     }
@@ -225,7 +307,7 @@ const standOff = (x, y, d?) => {
 }
 
 const enclosureShape = () => {
-    return roundedCuboid({ size: [xSize, ySize, zSize], roundRadius: 5 })
+    return roundedCuboid({ size: [xSize, ySize, zSize], roundRadius: 3 })
 }
 
 const enclosureBottom = (scene): Geom3 => {
@@ -233,10 +315,10 @@ const enclosureBottom = (scene): Geom3 => {
     const cutFraction = 0.25
     const chopper = translate(
         [-xSize, -ySize, zSize * cutFraction],
-        roundedCuboid({
+        cuboid({
             size: [xSize * 2, ySize * 2, zSize * 2],
             center: [(xSize * 2) / 2, (ySize * 2) / 2, (zSize * 2) / 2],
-            roundRadius: 5,
+            //roundRadius: 5,
         })
     )
     const outer = subtract(enclosure(), chopper)
@@ -245,7 +327,9 @@ const enclosureBottom = (scene): Geom3 => {
 
     const inner = subtract(enclosure(0.95), translate([0, 0, 3], chopper))
 
-    return union(outer, inner, standOffs)
+    const enclosureBottom = union(outer, inner, mounts(xSize, ySize))
+    //return enclosureBottom; 
+    return addComponentApertures(scene, enclosureBottom);
 }
 
 const enclosure = (wallThickness?): Geom3 => {
@@ -260,11 +344,12 @@ const enclosure = (wallThickness?): Geom3 => {
 // top is
 const enclosureTop = (scene): Geom3 => {
     const enclosureTop = subtract(enclosure(), enclosureBottom(scene))
-    return addComponentApertures(myScene, enclosureTop)
+    return addComponentApertures(scene, enclosureTop)
+   //return enclosureTop
 }
 
 const addComponentApertures = (scene, enclosureTop): Geom3 => {
-    const componentLocations = []
+    const componentLocations = getModulesFromScene(scene)//[]
 
     scene.traverse(obj => {
         if (obj.userData.isModule) {
@@ -279,29 +364,31 @@ const addComponentApertures = (scene, enclosureTop): Geom3 => {
                 moduleName: moduleName,
             })
         }
-    })
+    }) 
 
     let geomToReturn = enclosureTop
 
+    //if (componentLocations.length> 0){
+
     componentLocations.forEach(component => {
-        if (deserialiseSTL(component.moduleName))
-            geomToReturn = subtract(
+        if (deserialiseSTL(component.moduleName)){
+            geomToReturn = subtract( //subtract
                 geomToReturn,
                 translate(
-                    [-component.position.x, component.position.z, 15],
+                    [-component.position.x, component.position.z,standOffHeight-component.position.y],
                     rotate(
-                        [
-                            component.rotation._x,
+                         [
                             component.rotation._z,
-                            component.rotation._y,
-                        ],
-                        scale(
-                            [1000, 1000, 1000],
+                            component.rotation._x,
+                            component.rotation._y-1.5708*2,
+                        ], 
+                       // scale(
+                         //   [1000, 1000, 1000],
                             deserialiseSTL(component.moduleName)
-                        )
+                     //   )
                     )
                 )
-            )
+            )}
     })
 
     return geomToReturn

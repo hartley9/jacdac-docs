@@ -4,21 +4,25 @@ import Button from "../ui/Button"
 import Menu from "@mui/material/Menu"
 import { MenuItem } from "@mui/material"
 import { downloadSVGEnclosure } from "./stencilFunctions"
-
 import { rotateX, flip, deleteObject } from "./editFunctions"
 
 import { MenuItems } from "./PFToolbarMenuItems"
 
 import Object3D from "three"
 import { downloadSTLEnclosure } from "./enclosureFunctions"
+import { generateGerber } from "./generateGerber"
+import CarrierPCB from "./CarrierPCB"
 
 export default function PF_Toolbar(props: {
     scene: any
-    enclosureDimensions: any
+    carrierPCBDimensions: {height: number, width: number}
+    traces: {power: [], data: []}
+    enclosureDimensions: {height: number, width: number, depth: number}
     lastClicked: Object3D
-    objectRefs
+    objectRefs, 
+    setEnclosureOptionsOpen
 }) {
-    const { scene, enclosureDimensions, lastClicked, objectRefs } = props
+    const { scene, carrierPCBDimensions, traces, enclosureDimensions, lastClicked, objectRefs, setEnclosureOptionsOpen } = props
 
     // interaction
     const [anchorEl, setAnchorEl] = React.useState(null)
@@ -59,15 +63,15 @@ export default function PF_Toolbar(props: {
                 handleClose()
                 return
 
-            case "enclosurestl":
-                downloadSTLEnclosure({height: 100, width: 20, depth: 100}, scene)
+            case "enclosure":
+                setEnclosureOptionsOpen(true)    
+            //downloadSTLEnclosure({height: enclosureDimensions.height, width: enclosureDimensions.width, depth: enclosureDimensions.depth}, scene)
                 handleClose()
                 return
 
-            case "enclosuresvg":
-                downloadSVGEnclosure(enclosureDimensions, scene)
-                handleClose()
-                return
+
+            case "gerber":
+                generateGerber(scene, traces, carrierPCBDimensions)
         }
     }
 

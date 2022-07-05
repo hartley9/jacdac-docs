@@ -2410,6 +2410,14 @@
     "@jscad/array-utils" "2.1.3"
     "@jscad/modeling" "2.9.2"
 
+"@jscad/svg-serializer@^2.3.7":
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/@jscad/svg-serializer/-/svg-serializer-2.3.7.tgz#c861683f739ebfc6935bbac87e73049fe35ba925"
+  integrity sha512-jRR9j1alh4GAEWHgXeyo7EgRyyVgNr6J/JexslF+0/5CH/HU2ptnXrzvWiz4R9JNr1KapCE9JszTUKj34WQsBA==
+  dependencies:
+    "@jscad/modeling" "2.9.4"
+    onml "1.3.0"
+
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.3.tgz#0300943770e04231041a51bd39f0439b5c7ab4f0"
@@ -5867,6 +5875,11 @@ binary-extensions@^2.0.0, binary-extensions@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
+
+binpackingjs@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/binpackingjs/-/binpackingjs-3.0.2.tgz#89f280265f1b917dd9fcf9ec0df7e23964c0dfc2"
+  integrity sha512-Rq5CrfYr4K/MNdqlPZDJ7jpd+/Em7beypGOTSlHck8E2Bth0x+mxmFoSKFsasOjDmBOG/TMb4FI9gtsLjxqOIg==
 
 bl@^4.0.0, bl@^4.0.3:
   version "4.1.0"
@@ -11827,6 +11840,11 @@ image-q@^1.1.1:
   resolved "https://registry.yarnpkg.com/image-q/-/image-q-1.1.1.tgz#fc84099664460b90ca862d9300b6bfbbbfbf8056"
   integrity sha1-/IQJlmRGC5DKhi2TALa/u7+/gFY=
 
+immediate@~3.0.5:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
+  integrity sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==
+
 immer@8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/immer/-/immer-8.0.1.tgz#9c73db683e2b3975c424fb0572af5889877ae656"
@@ -13052,6 +13070,16 @@ jsprim@^1.2.2:
     array-includes "^3.1.3"
     object.assign "^4.1.2"
 
+jszip@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.10.0.tgz#faf3db2b4b8515425e34effcdbb086750a346061"
+  integrity sha512-LDfVtOLtOxb9RXkYOwPyNBTQDL4eUbqahtoY6x07GiDJHwSYvn8sHHIw8wINImV3MqbMNve2gSuM1DDqEKk09Q==
+  dependencies:
+    lie "~3.3.0"
+    pako "~1.0.2"
+    readable-stream "~2.3.6"
+    setimmediate "^1.0.5"
+
 just-diff-apply@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/just-diff-apply/-/just-diff-apply-4.0.1.tgz#da89c5a4ccb14aa8873c70e2c3b6695cef45dab5"
@@ -13269,6 +13297,13 @@ libnpmversion@^2.0.2:
     json-parse-even-better-errors "^2.3.1"
     semver "^7.3.5"
     stringify-package "^1.0.1"
+
+lie@~3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/lie/-/lie-3.3.0.tgz#dcf82dee545f46074daf200c7c1c5a08e0f40f6a"
+  integrity sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ==
+  dependencies:
+    immediate "~3.0.5"
 
 lilconfig@^2.0.3:
   version "2.0.4"
@@ -15909,6 +15944,13 @@ onetime@^5.1.0, onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
+onml@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/onml/-/onml-1.3.0.tgz#db0ad8fa7468ebf33326fe9cc5d287bf797125b5"
+  integrity sha512-RhGUsC6Im2A5vAdIvxE3auRKTqrqUZQl/AYLn8+9lM3SO4da5bwhcI5TcM+hfQxNCSLLOVErsl9p0ZPjKKmz+g==
+  dependencies:
+    sax "^1.2.1"
+
 open@^7.0.2, open@^7.0.3:
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/open/-/open-7.4.2.tgz#b8147e26dcf3e426316c730089fd71edd29c2321"
@@ -16163,7 +16205,7 @@ pacote@^12.0.0, pacote@^12.0.2, pacote@^12.0.3:
     ssri "^8.0.1"
     tar "^6.1.0"
 
-pako@^1.0.5:
+pako@^1.0.5, pako@~1.0.2:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
   integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
@@ -18535,7 +18577,7 @@ save-pixels@^2.3.6:
     pngjs-nozlib "^1.0.0"
     through "^2.3.4"
 
-sax@>=0.6.0, sax@^1.2.4, sax@~1.2.4:
+sax@>=0.6.0, sax@^1.2.1, sax@^1.2.4, sax@~1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
@@ -18758,6 +18800,11 @@ set-value@^2.0.0, set-value@^2.0.1:
     is-extendable "^0.1.1"
     is-plain-object "^2.0.3"
     split-string "^3.0.1"
+
+setimmediate@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/setimmediate/-/setimmediate-1.0.5.tgz#290cbb232e306942d7d7ea9b83732ab7856f8285"
+  integrity sha1-KQy7Iy4waULX1+qbg3Mqt4VvgoU=
 
 setprototypeof@1.1.1:
   version "1.1.1"
@@ -19891,6 +19938,11 @@ text-table@0.2.0, text-table@^0.2.0, text-table@~0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
+three-csg-ts@^3.1.10:
+  version "3.1.10"
+  resolved "https://registry.yarnpkg.com/three-csg-ts/-/three-csg-ts-3.1.10.tgz#53cb88b41ef473c17bfb397420f4d90f810f96cb"
+  integrity sha512-Li3tEokjlC91DoZ8tLNcikz0rq+O723Ot9s1q8FioyRDZvGZBP+paypBzfTYocoxBaDiXHcV0H81nWSQs8McZQ==
+
 three-mesh-bvh@^0.5.7:
   version "0.5.8"
   resolved "https://registry.yarnpkg.com/three-mesh-bvh/-/three-mesh-bvh-0.5.8.tgz#d8882625c0d5b07e86e0c2ad3cff2091e3650af8"
@@ -19911,6 +19963,11 @@ three-stdlib@^2.8.12:
     opentype.js "^1.3.3"
     potpack "^1.0.1"
     zstddec "^0.0.2"
+
+three.meshline@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/three.meshline/-/three.meshline-1.4.0.tgz#2a483cbd99cd5f74cf6ee5c253a9a4b4a8169178"
+  integrity sha512-A8IsiMrWP8zmHisGDAJ76ZD7t/dOF/oCe/FUKNE6Bu01ZYEx8N6IlU/1Plb2aOZtAuWM2A8s8qS3hvY0OFuvOw==
 
 three@0.122.0:
   version "0.122.0"

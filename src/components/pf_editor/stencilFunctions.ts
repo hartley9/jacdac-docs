@@ -7,13 +7,12 @@ import { downloadBlob } from "./enclosureFunctions";
 const { project } = extrusions
 const { union, subtract } = booleans;
 const { cuboid} = primitives;
-const { rotate, rotateX, translate, scale } = transforms;
+const { rotate, translate } = transforms;
 const {generalize} = modifiers
 
 export function downloadSVGEnclosure(enclosureDimensions, scene){
     getSVGBlob();
 }
-
 
 export function getSVGBlob()
 {

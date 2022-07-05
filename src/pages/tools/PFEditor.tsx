@@ -1,6 +1,5 @@
-import React, { useState, Suspense, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { Canvas } from "@react-three/fiber"
-import PaperBox from "../../components/ui/PaperBox"
 // import GLBModel from "../../components/models/GLBModel"
 import { OrthographicCamera, OrbitControls } from "@react-three/drei"
 import * as THREE from "three"
@@ -18,6 +17,7 @@ import Enclosure from "../../components/pf_editor/Enclosure"
 import useDevices from "../../components/hooks/useDevices"
 import useBus from "../../jacdac/useBus"
 import AddConnectedModule from "../../components/pf_editor/AddConnectedModule"
+import EnclosureOptions from "../../components/pf_editor/EnclosureOptions"
 
 export default function Page() {
     // connected jacdac devices
@@ -41,13 +41,16 @@ export default function Page() {
 
     // enclosure
     const [enclosureDimensions, setEnclosureDimensions] = useState({
-        height: 20,
-        width: 20,
+        height: 100,
+        width: 100,
         depth: 20,
     })
 
+    const [traces, setTraces] = useState({power: [], data: []})
+
     // enclosure visible
     const [enclosureVisible, setEnclosureVisible] = useState(false)
+    const [enclosureOptionsOpen, setEnclosureOptionsOpen] = useState(false);
 
     //array to hold all jacdac module objects
     const [objects, setObjects] = useState([])
@@ -73,7 +76,7 @@ export default function Page() {
     const [isDragging, setIsDragging] = useState(false)
     const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0)
 
-    const addModule = moduleName => {
+    const addModule = async moduleName => {
         console.log(editorScene)
 
         const topLevelUUID = crypto.randomUUID()
@@ -89,6 +92,7 @@ export default function Page() {
                 lastClicked={lastClicked}
                 floorPlane={floorPlane}
                 position={[0, 8, 0]}
+
             />,
         ])
     }
@@ -97,30 +101,38 @@ export default function Page() {
         <>
             <h1>Power Fabricate - Editor</h1>
 
-            {/* <Grid container spacing={2} columns={12} direction="row" alignItems="stretch" height={"100%"}> */}
-
-            <Grid container spacing={2} columns={12} direction="row">
+            <Grid container spacing={4} columns={12} direction="row">
                 <Grid item>
-                    <AddModule addModule={addModule}></AddModule>
+                    <AddModule addModule={addModule} />
                 </Grid>
 
                 <Grid item>
+                       {bus.connected && ( 
+                    <AddConnectedModule
+                        addModule={addModule}
+                        devices={devices}
+                        objects={objects}
+                        setObjects={setObjects}
+                        setIsDragging={setIsDragging}
+                        lastClicked={lastClicked}
+                        floorPlane={floorPlane}
+                        setLastClicked={setLastClicked}
+                        scene={editorScene}
+                    ></AddConnectedModule>
+                  )} 
+                </Grid>
+
+                {/* <Grid item>
                     <PFToolbar
+                        traces={traces}
+                        carrierPCBDimensions={carrierPCBDimensions}
                         lastClicked={lastClicked ? lastClicked : undefined}
                         objectRefs={objects}
                         enclosureDimensions={enclosureDimensions}
                         scene={editorScene}
+                        setEnclosureOptionsOpen={setEnclosureOptionsOpen}
                     ></PFToolbar>
-                </Grid>
-
-                <Grid item>
-                    {bus.connected && (
-                        <AddConnectedModule
-                            addModule={addModule}
-                            devices={devices}
-                        ></AddConnectedModule>
-                    )}
-                </Grid>
+                </Grid> */}
 
                 <Grid item>
                     <PFToolPanel
@@ -133,7 +145,10 @@ export default function Page() {
                         setEnclosureDimensions={setEnclosureDimensions}
                         enclosureVisible={enclosureVisible}
                         setEnclosureVisible={setEnclosureVisible}
+                        setEnclosureOptionsOpen={setEnclosureOptionsOpen}
                         scene={editorScene}
+                        traces={traces}
+                        setTraces={setTraces}
                     ></PFToolPanel>
                 </Grid>
             </Grid>
@@ -156,6 +171,16 @@ export default function Page() {
                             "100%"
                         } /* item xs={14} direction="column" alignItems="stretch" style={{overflow: "visible", height: "75%" }} */
                     >
+
+                        {enclosureOptionsOpen &&
+                        
+                            <EnclosureOptions
+                            enclosureDimensions={enclosureDimensions}
+                            enclosureOptionsOpen={enclosureOptionsOpen}
+                            setEnclosureOptionsOpen={setEnclosureOptionsOpen}
+                            scene={editorScene}
+                            ></EnclosureOptions>
+                        }
                         <Canvas
                             onCreated={({ scene }) => {
                                 setEditorScene(scene)
@@ -183,7 +208,7 @@ export default function Page() {
                                 args={["lightblue"]}
                             ></color>
 
-                            <gridHelper
+                          {/*   <gridHelper
                                 args={[
                                     100,
                                     10,
@@ -192,14 +217,14 @@ export default function Page() {
                                 ]}
                                 position={[0, 2, 0]}
                                 rotation={[0, 0, 0]}
-                            />
+                            /> */}
 
                             <CarrierPCB
                                 width={carrierPCBDimensions.width}
                                 height={carrierPCBDimensions.height}
                                 rotation={[(Math.PI / 2) * 3, 0, 0]}
                                 position={[0, 0, 0]}
-                                color={"grey"}
+                                color={"green"}
                             />
 
                             {enclosureVisible && (
@@ -210,9 +235,7 @@ export default function Page() {
                                 />
                             )}
 
-                            <Suspense fallback={null}>
-                                <Objects objects={objects}></Objects>
-                            </Suspense>
+                            <Objects objects={objects}></Objects>
 
                             <OrthographicCamera
                                 makeDefault
@@ -220,13 +243,18 @@ export default function Page() {
                                 position={[0, 40, 0]}
                                 near={-1000}
                                 far={10000}
+                                up={[1,0,0]}
+                                /* rotateZ={THREE.MathUtils.degToRad(-90)} */
                             />
 
                             <OrbitControls
+                                
                                 minZoom={-10}
                                 maxZoom={50}
                                 enabled={!isDragging}
-                            />
+                                
+                                
+                            /> 
                         </Canvas>
                     </Box>
                 </Grid>

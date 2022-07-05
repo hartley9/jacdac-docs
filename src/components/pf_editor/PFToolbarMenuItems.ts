@@ -1,20 +1,6 @@
 export const MenuItems = {
-    File: [
-        {
-            title: "New", 
-            
-        },
-        {
-            title: "Open", 
-            
-        },
-        {
-            title: "New carrier PCB", 
-            
-        }
-    ], 
 
-    Edit: [
+/*     Edit: [
         {
             title: "Rotate",
             
@@ -25,9 +11,9 @@ export const MenuItems = {
         {
             title: "Delete"
         }
-    ],
+    ], */
 
-    View: [
+  /*   View: [
         {
             title: "Top view",
             
@@ -47,23 +33,17 @@ export const MenuItems = {
         {
             title: "Enclosure"
         }
-    ], 
+    ],  */
 
-    Export: [
+/*     Export: [
         {
             title: "Gerber",
         },
         {
-            title: "Enclosure STL"
+            title: "Enclosure"
         }, 
-        {
-            title: "Enclosure SVG"
-        },
-        {
-            title: "threejs Scene"
-        }
 
-    ]
+    ] */
 
 
 }

@@ -16,7 +16,12 @@ export default function AddModule(props: {addModule}){
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
 
+        console.log('addding...', event.currentTarget.innerHTML)
         switch(event.currentTarget.innerHTML.toLowerCase()){
+            case('microbit adapter'): 
+                addModule(event.currentTarget.innerHTML);
+                handleClose();
+                break;
             case('rotary'):
                 addModule(event.currentTarget.innerHTML);
                 handleClose();
@@ -41,7 +46,14 @@ export default function AddModule(props: {addModule}){
                 addModule(event.currentTarget.innerHTML);
                 handleClose();
                 break;
-            
+            case ('light sensor'):
+                addModule(event.currentTarget.innerHTML);
+                handleClose();
+                break;
+            case ('magnet sensor'):
+                addModule(event.currentTarget.innerHTML);
+                handleClose();
+                break;
         }
 
         
@@ -77,14 +89,18 @@ export default function AddModule(props: {addModule}){
                         onClose={handleClose}
                     >
                         <MenuItem onClick={handleClick} disableRipple>
+                        Microbit Adapter
+                        </MenuItem>
+
+                        <MenuItem onClick={handleClick} disableRipple>
                         Rotary
                         </MenuItem>
-                        <MenuItem onClick={handleClick} disableRipple>
+                       {/*  <MenuItem onClick={handleClick} disableRipple>
                         RGB LED
-                        </MenuItem>
-                        <MenuItem onClick={handleClick} disableRipple>
+                        </MenuItem> */}
+                       {/*  <MenuItem onClick={handleClick} disableRipple>
                         Button
-                        </MenuItem>
+                        </MenuItem> */}
                         <MenuItem onClick={handleClick} disableRipple>
                         RGB LED Ring
                         </MenuItem>
@@ -94,6 +110,13 @@ export default function AddModule(props: {addModule}){
                         <MenuItem onClick={handleClick} disableRipple>
                         Slider
                         </MenuItem>
+                        <MenuItem onClick={handleClick} disableRipple>
+                        Light Sensor
+                        </MenuItem>
+                        <MenuItem onClick={handleClick} disableRipple>
+                        Magnet Sensor
+                        </MenuItem>
+
                     </Menu>
             </Grid>
         

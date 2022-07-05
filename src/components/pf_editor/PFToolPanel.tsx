@@ -1,11 +1,13 @@
 import React, { useRef } from "react"
 import IconButtonWithTooltip from "../ui/IconButtonWithTooltip"
-import { Checkbox, FormControlLabel, FormGroup, Grid } from "@mui/material"
+import { Checkbox, FormControlLabel, FormGroup, Grid, TextField } from "@mui/material"
 
 //import icons
 import RouteIcon from "@mui/icons-material/Route"
 import Delete from "@mui/icons-material/Delete"
 import RotateLeft from "@mui/icons-material/RotateRight"
+import Cameraswitch from "@mui/icons-material/Cameraswitch"
+import FileDownloadIcon from "@mui/icons-material/FileDownload"
 
 import { rotateX, deleteObject, route } from "./editFunctions"
 import SliderWithLabel from "../ui/SliderWithLabel"
@@ -21,7 +23,10 @@ export default function PFToolPanel(props: {
     setEnclosureDimensions
     enclosureVisible: boolean
     setEnclosureVisible
+    setEnclosureOptionsOpen
     scene
+    traces, 
+    setTraces
 }) {
     const {
         lastClicked,
@@ -32,7 +37,10 @@ export default function PFToolPanel(props: {
         setEnclosureDimensions,
         enclosureVisible,
         setEnclosureVisible,
+        setEnclosureOptionsOpen,
         scene,
+        traces, 
+        setTraces
     } = props
 
     const enclosureVisibleCheckbox = useRef()
@@ -95,8 +103,18 @@ export default function PFToolPanel(props: {
     return (
         <>
             <Grid container>
-                <Grid item>
-                    <SliderWithLabel
+                <Grid item xs={3}>
+                <TextField
+                        onChange={e => {
+                            carrierPCBDimensionChange(e, "height")
+                        }}
+                        id="carrierPCBHeightSlider"
+                        label="PCB height"
+                        defaultValue={100}
+                        style={{width: 100}}
+                        
+                    ></TextField>
+                   {/*  <SliderWithLabel
                         onChange={e => {
                             carrierPCBDimensionChange(e, "height")
                         }}
@@ -105,10 +123,19 @@ export default function PFToolPanel(props: {
                         defaultValue={100}
                         min={10}
                         max={150}
-                    ></SliderWithLabel>
+                    ></SliderWithLabel> */}
                 </Grid>
-                <Grid item>
-                    <SliderWithLabel
+                <Grid item xs={3}>
+                <TextField
+                        onChange={e => {
+                            carrierPCBDimensionChange(e, "width")
+                        }}
+                        id="carrierPCBWidthSlider"
+                        label="PCB width"
+                        defaultValue={100}
+                        style={{width: 100}}    
+                    ></TextField>
+                    {/* <SliderWithLabel
                         onChange={e => {
                             carrierPCBDimensionChange(e, "width")
                         }}
@@ -117,8 +144,20 @@ export default function PFToolPanel(props: {
                         defaultValue={100}
                         min={10}
                         max={150}
-                    ></SliderWithLabel>
+                    ></SliderWithLabel> */}
                     {/* <TextField onChange={(e) => {carrierPCBDimensionChange(e, 'width')}} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} /> */}
+                </Grid>
+                <Grid item>
+                    <IconButtonWithTooltip
+                        title={"Change View"}
+                        onClick={() => {
+                            //rotateX(lastClicked.current)
+                        }}
+                        color="primary"
+                        aria-label="Change View"
+                    >
+                        <Cameraswitch />
+                    </IconButtonWithTooltip>
                 </Grid>
                 <Grid item>
                     <IconButtonWithTooltip
@@ -148,12 +187,24 @@ export default function PFToolPanel(props: {
                     <IconButtonWithTooltip
                         title={"Auto-route"}
                         onClick={() => {
-                            route(scene)
+                            setTraces(route(scene));
                         }}
                         color="primary"
                         aria-label="Auto-route"
                     >
                         <RouteIcon />
+                    </IconButtonWithTooltip>
+                </Grid>
+                <Grid item>
+                    <IconButtonWithTooltip
+                        title={"Export"}
+                        onClick={() => {
+                            setEnclosureOptionsOpen(true)
+                        }}
+                        color="primary"
+                        aria-label="Export"
+                    >
+                        <FileDownloadIcon />
                     </IconButtonWithTooltip>
                 </Grid>
 
@@ -165,18 +216,17 @@ export default function PFToolPanel(props: {
                     </FormGroup>
                 </Grid> */}
 
-                <Grid item>
-                    <SliderWithLabel
+      {/*           <Grid item>
+                <TextField
                         onChange={e => {
                             enclosureDimensionChange(e, "depth")
                         }}
                         id="enclsoureDepthSlider"
                         label="Enclosure depth"
-                        min={10}
-                        max={100}
-                    ></SliderWithLabel>
-                </Grid>
+                    ></TextField>
+                </Grid> */}
             </Grid>
         </>
     )
 }
+

@@ -1,5 +1,6 @@
 import * as THREE from "three"
 import PF from "pathfinding"
+import { MeshLine, MeshLineMaterial } from 'three.meshline';
 
 const resolution = 10 // resolution for routing
 
@@ -25,15 +26,8 @@ export const roundBy = (x, amt = 5) => {
     return Math.ceil(x / amt) * amt
 }
 
-export const generateEnclosure = scene => {
-    myScene = scene
+export const padStandOffHoles = () => {
 
-    // generate bounding boxes for all objects in scene with a geometry
-    scene.traverse(obj => {
-        if (obj.geometry) {
-            obj.geometry.computeBoundingBox()
-        }
-    })
 }
 
 export const getModuleInfo = scene => {
@@ -53,6 +47,8 @@ export const getModuleInfo = scene => {
 export const collectMountingHoleLocations = scene => {
     const mountingHoleData = []
 
+    let mhCounter = 0;
+
     scene.traverse(sceneChild => {
         if (sceneChild.userData.routeMe) {
             sceneChild.traverse(obj => {
@@ -66,9 +62,12 @@ export const collectMountingHoleLocations = scene => {
                 if (obj.name.includes("JD")) {
                     mountingHoleData.push({
                         moduleID: sceneChild.name,
+                        mountingHoleID: mhCounter,
                         mountingHoleNet: obj.name.substring(3),
                         mountingHolePosition: worldPosTest,
                     })
+
+                    mhCounter ++;
 
                     const geometry = new THREE.BoxGeometry(1, 1, 1)
                     const material = new THREE.MeshBasicMaterial({
@@ -76,7 +75,7 @@ export const collectMountingHoleLocations = scene => {
                     })
                     const cube = new THREE.Mesh(geometry, material)
 
-                    console.log("adding cube... at: ", worldPosTest)
+                    
                     cube.position.set(
                         worldPosTest.x,
                         worldPosTest.y,
@@ -85,7 +84,7 @@ export const collectMountingHoleLocations = scene => {
                     scene.add(cube)
                     allDebugSceneObjects.push(cube)
 
-                    console.log("heres my cube: ", cube)
+                    
                 }
             })
         }
@@ -99,8 +98,8 @@ export const collectCarrierPCBData = scene => {
     scene.traverse(sceneChild => {
         if (sceneChild.name.includes("carrierPCB")) {
             carrierPCBDimensions = {
-                width: sceneChild.children[0].geometry.parameters.width,
-                height: sceneChild.children[0].geometry.parameters.height,
+               height: sceneChild.userData.width,    // width: sceneChild.children[0].geometry.parameters.width,
+               width: sceneChild.userData.height   //height: sceneChild.children[0].geometry.parameters.height,
             }
         }
     })
@@ -165,8 +164,6 @@ export function route(scene) {
         myScene.remove(obj)
     })
 
-    generateEnclosure(scene) //test for now
-
     console.log("auto-routing...")
 
     console.log("scene")
@@ -182,6 +179,7 @@ export function route(scene) {
     const carrierPCBDimensions = collectCarrierPCBData(scene)
 
     const mountingHoleData = collectMountingHoleLocations(scene)
+    
 
     let routingMatrix = generatePCBMatrix(carrierPCBDimensions)
 
@@ -190,8 +188,9 @@ export function route(scene) {
             routingMatrix,
             { h: 3, w: 3 },
             mountingHole.mountingHolePosition,
+            mountingHole.mountingHoleID,
             carrierPCBDimensions.height,
-            carrierPCBDimensions.height,
+            carrierPCBDimensions.width,
             "mountingHole",
             mountingHole.mountingHoleNet
         )
@@ -229,10 +228,13 @@ export function route(scene) {
 
         // get closest goal
         //let powerGoal;
-
+        let offsetAmt = 3
         //if (powerGoals.length < 1){
-        const powerGoal = [0, carrierPCBDimensions.width / 2]
+        const powerGoal = [carrierPCBDimensions.height - offsetAmt, carrierPCBDimensions.width - offsetAmt]
         powerGoals.push(powerGoal)
+
+        console.log('powerrGoal: ', powerGoal)
+        
         //}
         //else {
 
@@ -242,16 +244,18 @@ export function route(scene) {
 
         //if (dataPaths.length < 1){
         const dataGoal = [
-            carrierPCBDimensions.height - 1,
-            carrierPCBDimensions.width / 2,
+            3,
+            carrierPCBDimensions.width - offsetAmt,
         ]
+
+        console.log('dataGoal: ', dataGoal)
         //} else {
         //   dataGoal = getClosestGoal(convertedPosition, dataPaths);
         //}
 
         switch (mountingHole.mountingHoleNet) {
             case "PWR":
-                matrixForPathfinder = maskMatrix(routingMatrix, "power")
+                matrixForPathfinder = maskMatrix(routingMatrix, "power",  mountingHole.mountingHoleID)
                 console.log("matrix for path finder (power): ")
                 console.log(JSON.parse(JSON.stringify(matrixForPathfinder)))
                 path = pathfinder(
@@ -273,7 +277,7 @@ export function route(scene) {
                 }
                 break
             case "DATA":
-                matrixForPathfinder = maskMatrix(routingMatrix, "data")
+                matrixForPathfinder = maskMatrix(routingMatrix, "data", mountingHole.mountingHoleID)
                 path = pathfinder(
                     matrixForPathfinder,
                     { x: convertedPosition.x, y: convertedPosition.z },
@@ -297,19 +301,30 @@ export function route(scene) {
             powerPoints.push(
                 new THREE.Vector3(
                     path[point][0] - carrierPCBDimensions.width / 2,
-                    3,
+                    2.1,
                     path[point][1] - carrierPCBDimensions.height / 2
                 )
             )
         }
 
-        const geometry = new THREE.BufferGeometry().setFromPoints(powerPoints)
 
+        const geometry = new THREE.BufferGeometry().setFromPoints(powerPoints)
+        const line = new MeshLine();
+        line.setGeometry(geometry);
+        const lineMaterial = new MeshLineMaterial({
+            lineWidth: 0.2, 
+            color: 0xa26b31,
+        });
+        const mesh = new THREE.Mesh(line, lineMaterial);
+        scene.add(mesh);
+        allDebugSceneObjects.push(mesh)
+
+      /*  
         const material = new THREE.LineBasicMaterial({ color: 0x0000ff })
 
         const line = new THREE.Line(geometry, material)
 
-        scene.add(line)
+        scene.add(line) */
     }
 
     for (let p = 0; p < dataPaths.length; p++) {
@@ -320,22 +335,36 @@ export function route(scene) {
             dataPoints.push(
                 new THREE.Vector3(
                     path[point][0] - carrierPCBDimensions.width / 2,
-                    3,
+                    2.1,
                     path[point][1] - carrierPCBDimensions.height / 2
                 )
             )
         }
 
-        path = padLine(path)
         const geometry = new THREE.BufferGeometry().setFromPoints(dataPoints)
+        const line = new MeshLine();
+        line.setGeometry(geometry);
+        const lineMaterial = new MeshLineMaterial({
+            lineWidth: 0.2, 
+            color: 0xa26b31,
+        });
+        const mesh = new THREE.Mesh(line, lineMaterial);
+        scene.add(mesh);
+        //path = padLine(path)
+       /*  const geometry = new THREE.BufferGeometry().setFromPoints(dataPoints)
 
         const material = new THREE.LineBasicMaterial({ color: 0x013220 })
 
         const line = new THREE.Line(geometry, material)
 
-        scene.add(line)
+        scene.add(line) */
         allDebugSceneObjects.push(line)
     }
+
+    console.log('routing and returning: ')
+    console.log({data: dataPaths, power: powerPaths})
+
+    return {data: dataPaths, power: powerPaths}
 }
 
 // TODO: implement pad line amount
@@ -473,7 +502,7 @@ export const getClosestGoal = (startPosition, paths) => {
     return whereShortest
 }
 
-export const maskMatrix = (matrix, type) => {
+export const maskMatrix = (matrix, type, mountingHoleID) => {
     const maskMatrix = []
     for (let i = 0; i < matrix.length; i++) {
         maskMatrix.push(new Array(matrix[0].length).fill(0))
@@ -483,12 +512,12 @@ export const maskMatrix = (matrix, type) => {
 
     if (type === "data") {
         // this is data
-        symbolsToPath.push("DATApad")
+        symbolsToPath.push("DATApad" + `_${mountingHoleID}`)
 
         symbolsToPath.push("DATAline")
     } else if (type === "power") {
         // this is power
-        symbolsToPath.push("PWRpad")
+        symbolsToPath.push("PWRpad" + `_${mountingHoleID}`)
 
         symbolsToPath.push("PWRline")
     } else {
@@ -501,7 +530,7 @@ export const maskMatrix = (matrix, type) => {
 
             if (value !== 0 && !symbolsToPath.includes(value)) {
                 maskMatrix[i][j] = 1
-            } else if (symbolsToPath.includes(value)) {
+            } else if ( value === 0 || symbolsToPath.includes(value)) {
                 maskMatrix[i][j] = 0
             }
         }
@@ -521,7 +550,7 @@ export function pathfinder(matrix, startPoint, endPoint): number[] {
     grid.setWalkableAt(0, 1, false)
 
     const finder = new PF.JumpPointFinder({
-        allowDiagonal: true,
+        allowDiagonal: false,
         dontCrossCorners: true,
         heuristic: PF.Heuristic.chebyshev,
     })
@@ -551,6 +580,7 @@ export function fillMatrixSection(
     matrix,
     dimensions,
     position,
+    mhID,
     pcbHeight,
     pcbWidth,
     type,
@@ -584,8 +614,8 @@ export function fillMatrixSection(
     console.log("type")
     console.log(type)
 
-    const m_end = Math.abs(m_start + dimensions.h) + 1
-    const n_end = Math.abs(n_start + dimensions.w) + 1
+    const m_end = Math.abs(m_start) + 3
+    const n_end = Math.abs(n_start) + 3
 
     // console.log(dimensions)
     console.log("m_start: ", m_start)
@@ -609,26 +639,68 @@ export function fillMatrixSection(
                     if (m === m_start + 1 && n === n_start + 1) {
                         matrix[m][n] = "center"
 
-                        const padSet = [
-                            [m - 2, n - 1],
-                            [m - 2, n],
-                            [m - 2, n + 1],
-                            [m - 1, n - 2],
-                            [m, n - 2],
-                            [m + 1, n - 2],
-                            [m - 1, n + 2],
-                            [m, n + 2],
-                            [m + 1, n + 2],
-                            [m + 2, n - 1],
-                            [m + 2, n],
-                            [m + 2, n + 1],
+                         const padSet = [
+                            [m - 3, n - 3],
+                            [m-1 , n - 3],
+                            [m , n - 3],
+                            [m+1 , n - 3],
+                            [m+2 , n - 3],
+                            [m+2 , n - 3],
+                            [m+3, n-3],
+
+                            [m+3, n-2], 
+                            [m+3, n-1],
+                            [m+3, n],
+                            [m+3, n+1],
+                            [m+3, n+2],
+                            [m+3, n+3],
+
+                            [m+2, n+3],
+                            [m+1, n+3],
+                            [m, n+3],
+                            [m-1, n+3],
+                            [m-2, n+3],
+                           
+                            [m-3, n+3],
+
+                            [m-3, n+2],
+                            [m-3, n+1],
+                            [m-3, n],
+                            [m-3, n-1],
+                            [m-3, n-2],
+                            [m-3, n-3],
+
+                        ] 
+
+                       // TODO: fix this implementation of holes
+                        const holeSet = [
+                            
+                            [m-1, n-1],
+                            [m, n-1],
+                            [m+1, n-1],
+
+                            [m+1, n-1],
+                            [m+1, n],
+                            [m+1, n+1],
+
+                            [m, n+1],
+                            [m-1, n+1],
+                            
+                            [m-1, n-1],
+                            [m-1, n],
+
+                        
+                            [m, n], 
+
                         ]
+
+
 
                         padSet.forEach(set => {
                             console.log(set)
 
                             if (ref === "PWR") {
-                                matrix[set[0]][set[1]] = "PWRpad"
+                                matrix[set[0]][set[1]] = "PWRpad" + `_${mhID}`
 
                                 addDebugCube({
                                     z: set[0] - pcbHeight / 2,
@@ -636,7 +708,7 @@ export function fillMatrixSection(
                                     x: set[1] - pcbWidth / 2,
                                 })
                             } else if (ref === "DATA") {
-                                matrix[set[0]][set[1]] = "DATApad"
+                                matrix[set[0]][set[1]] = "DATApad" + `_${mhID}`
 
                                 addDebugCube({
                                     z: set[0] - pcbHeight / 2,
@@ -644,7 +716,7 @@ export function fillMatrixSection(
                                     x: set[1] - pcbWidth / 2,
                                 })
                             } else if (ref === "GND1" || ref === "GND2") {
-                                matrix[set[0]][set[1]] = "GNDpad"
+                                matrix[set[0]][set[1]] = "GNDpad" + `_${mhID}`
                                 addDebugCube({
                                     z: set[0] - pcbHeight / 2,
                                     y: 8,
@@ -652,7 +724,14 @@ export function fillMatrixSection(
                                 })
                             }
                         })
+
+
+                       /*  holeSet.forEach(hole => {
+                            matrix[hole[0]][hole[1]] = 'hole'
+                        }) */
                     }
+
+                  
                 }
             } catch (e) {
                 console.log("error: ", e)
@@ -683,7 +762,7 @@ export function fillStartPositions(mat, objects, pcbHeight, pcbWidth, type) {
 
     //Sort objects based on position on carrier pcb
     objects.sort((a, b) => {
-        if (a.position.x - a.position.z > b.position.x - b.position.z) {
+        if (a.position.z - a.position.x < b.position.z - b.position.x) {
             return 1
         } else {
             return -1
