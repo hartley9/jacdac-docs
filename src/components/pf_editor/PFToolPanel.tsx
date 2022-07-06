@@ -47,28 +47,29 @@ export default function PFToolPanel(props: {
 
     //TODO: Use object store for this
     function carrierPCBDimensionChange(e, type) {
+        const value = parseInt(e.target.value)
         switch (type) {
             case "width":
                 setEnclosureDimensions({
                     height: carrierPCBDimensions.height,
-                    width: e.target.value,
+                    width: value,
                     depth: enclosureDimensions.depth,
                 })
 
                 setCarrierPCBDimensions({
                     height: carrierPCBDimensions.height,
-                    width: e.target.value,
+                    width: value,
                 })
                 break
             case "height":
                 setEnclosureDimensions({
-                    height: e.target.value,
+                    height: value,
                     width: carrierPCBDimensions.width,
                     depth: enclosureDimensions.depth,
                 })
 
                 setCarrierPCBDimensions({
-                    height: e.target.value,
+                    height: value,
                     width: carrierPCBDimensions.width,
                 })
         }
@@ -106,6 +107,7 @@ export default function PFToolPanel(props: {
                 <Grid item xs={3}>
                 <TextField
                         onChange={e => {
+                            console.log('height change and e, : ', e)
                             carrierPCBDimensionChange(e, "height")
                         }}
                         id="carrierPCBHeightSlider"
@@ -128,6 +130,7 @@ export default function PFToolPanel(props: {
                 <Grid item xs={3}>
                 <TextField
                         onChange={e => {
+                            console.log('width change and e, : ', e.target.value)
                             carrierPCBDimensionChange(e, "width")
                         }}
                         id="carrierPCBWidthSlider"

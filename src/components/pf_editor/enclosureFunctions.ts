@@ -38,7 +38,7 @@ let zSize = 0
 
 let myScene;
 
-const standOffHeight = 3
+const standOffHeight = 4
 
 function whichModuleSTL(moduleName) {
     moduleName = moduleName.toLowerCase()
@@ -246,7 +246,7 @@ export function downloadBlob(blob, name = "file.txt") {
     }, 100)
 }
 
-const sizeBuffer = 20
+const sizeBuffer = 16
 
 export const generate = (enclosureDimensions?, scene?) => {
     xSize = enclosureDimensions.height + sizeBuffer
@@ -285,28 +285,35 @@ export const generate = (enclosureDimensions?, scene?) => {
 }
 
 const mounts = (x, y) => {
+
+    // divide to get 0 in center
+    x /= 2;
+    y /= 2;
+    const tempSizeBuffer = (sizeBuffer / 2) + 3
     return union(
-        standOff(x / 2, y / 2),
-        standOff(x / 2, -y / 2),
-        standOff(-x / 2, y / 2),
-        standOff(-x / 2, -y / 2)
+        standOff(x - tempSizeBuffer, y - tempSizeBuffer),
+        standOff(x - tempSizeBuffer, -y + tempSizeBuffer),
+        standOff(-x + tempSizeBuffer, y - tempSizeBuffer),
+        standOff(-x + tempSizeBuffer, -y + tempSizeBuffer)
     )
 }
 
 const standOff = (x, y, d?) => {
-    const standOffRadius = d ? d : 2
+    const standOffRadius = d ? d : 4;
 
+    console.log('putting stand off at: ', [x, y, -(4+(standOffHeight))])
     return translate(
-        [x, y, -(zSize / 4)],
+        [x, y, -(4+(standOffHeight))],
         subtract(
             cylinder({ radius: standOffRadius, height: standOffHeight }),
 
-            cylinder({ radius: 1.3, height: standOffHeight + zSize / 10 })
+            cylinder({ radius: 1.5, height: standOffHeight + zSize / 10 })
         )
     )
 }
 
 const enclosureShape = () => {
+    console.log([xSize,ySize,zSize])
     return roundedCuboid({ size: [xSize, ySize, zSize], roundRadius: 3 })
 }
 
@@ -325,7 +332,7 @@ const enclosureBottom = (scene): Geom3 => {
 
     const standOffs = moduleStandOffs(scene)
 
-    const inner = subtract(enclosure(0.95), translate([0, 0, 3], chopper))
+    const inner = subtract(enclosure(0.98), translate([0, 0, 3], chopper))
 
     const enclosureBottom = union(outer, inner, mounts(xSize, ySize))
     //return enclosureBottom; 
@@ -333,10 +340,13 @@ const enclosureBottom = (scene): Geom3 => {
 }
 
 const enclosure = (wallThickness?): Geom3 => {
-    wallThickness = wallThickness || 0.9
+    wallThickness = wallThickness || 0.93
     const e = enclosureShape()
 
+    
     const cavity = scale([wallThickness, wallThickness, wallThickness], e)
+     //const cavity = cuboid({size: [xSize-wallThickness/2, ySize-wallThickness/2, zSize-wallThickness/2]})
+   // const cavity = roundedCuboid({size: [xSize-wallThickness, ySize-wallThickness, zSize-(wallThickness)], center: [0,0,0], roundRadius: 2, segments: 32 })
 
     return subtract(e, cavity)
 }
