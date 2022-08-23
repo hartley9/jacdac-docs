@@ -11,6 +11,7 @@ import {
 } from "../../../jacdac-ts/src/jdom/spec"
 import PaperBox from "../ui/PaperBox"
 
+
 export default function PacketSpecificationSource(props: {
     serviceClass: number
     packetInfo: jdspec.PacketInfo
@@ -28,6 +29,10 @@ export default function PacketSpecificationSource(props: {
         setTab(newValue)
     }
 
+    if (!(isRegister(packetInfo) || isCommand(packetInfo) || isEvent(packetInfo))){
+        console.log('found an irrelevent packet? ');
+        console.log(packetInfo)
+    }
     // TODO: render commands
     if (
         !info ||
@@ -35,6 +40,17 @@ export default function PacketSpecificationSource(props: {
         !(isRegister(packetInfo) || isCommand(packetInfo) || isEvent(packetInfo))
     )
         return null
+
+
+
+    console.log('in source INFO: ', info)
+    console.log('in source PACKETINFO: ', packetInfo);
+    console.log('packInfoReturn');
+    console.log(packInfo(info, packetInfo, {
+        isStatic: false,
+        useBooleans: false,
+        useJDOM: true,
+    }))
 
     let index = 0
     return (

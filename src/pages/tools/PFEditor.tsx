@@ -18,6 +18,7 @@ import useDevices from "../../components/hooks/useDevices"
 import useBus from "../../jacdac/useBus"
 import AddConnectedModule from "../../components/pf_editor/AddConnectedModule"
 import EnclosureOptions from "../../components/pf_editor/EnclosureOptions"
+import {route} from "../../components/pf_editor/editFunctions"
 
 export default function Page() {
     // connected jacdac devices
@@ -43,7 +44,7 @@ export default function Page() {
     const [enclosureDimensions, setEnclosureDimensions] = useState({
         height: 100,
         width: 100,
-        depth: 20,
+        depth: 35,
     })
 
     const [traces, setTraces] = useState({power: [], data: []})
@@ -76,6 +77,8 @@ export default function Page() {
     const [isDragging, setIsDragging] = useState(false)
     const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0)
 
+    const [cheatChange, setCheatChange] = useState(100);
+
     const addModule = async moduleName => {
         console.log(editorScene)
 
@@ -99,28 +102,32 @@ export default function Page() {
 
     return (
         <>
-            <h1>Power Fabricate - Editor</h1>
+            <h1 top="50px">Productizer</h1>
 
             <Grid container spacing={4} columns={12} direction="row">
                 <Grid item>
                     <AddModule addModule={addModule} />
                 </Grid>
-
-                <Grid item>
-                       {bus.connected && ( 
-                    <AddConnectedModule
-                        addModule={addModule}
-                        devices={devices}
-                        objects={objects}
-                        setObjects={setObjects}
-                        setIsDragging={setIsDragging}
-                        lastClicked={lastClicked}
-                        floorPlane={floorPlane}
-                        setLastClicked={setLastClicked}
-                        scene={editorScene}
-                    ></AddConnectedModule>
-                  )} 
-                </Grid>
+                {bus.connected && (  
+                    <Grid item>
+        
+                            <AddConnectedModule
+                                addModule={addModule}
+                                devices={devices}
+                                objects={objects}
+                                setObjects={setObjects}
+                                setIsDragging={setIsDragging}
+                                lastClicked={lastClicked}
+                                floorPlane={floorPlane}
+                                setLastClicked={setLastClicked}
+                                scene={editorScene}
+                                setCarrierPCBDimensions={setCarrierPCBDimensions} 
+                                route={route}
+                                setCheatChange={setCheatChange}
+                            ></AddConnectedModule>
+                        
+                    </Grid>
+                )}
 
                 {/* <Grid item>
                     <PFToolbar
@@ -149,11 +156,12 @@ export default function Page() {
                         scene={editorScene}
                         traces={traces}
                         setTraces={setTraces}
+                        cheatChange={cheatChange}
                     ></PFToolPanel>
                 </Grid>
             </Grid>
 
-            <Grid container spacing={2} columns={12} direction="row">
+            <Grid container spacing={2} columns={12} direction="row" padding="20px">
                 <Grid
                     item
                     xs={16}
@@ -223,7 +231,7 @@ export default function Page() {
                                 width={carrierPCBDimensions.width}
                                 height={carrierPCBDimensions.height}
                                 rotation={[(Math.PI / 2) * 3, 0, 0]}
-                                position={[0, 0, 0]}
+                                position={[0, 6, 0]}
                                 color={"green"}
                             />
 

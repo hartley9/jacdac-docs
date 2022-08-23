@@ -104,6 +104,9 @@ export default function PacketSpecification(props: {
         showDevices,
     } = props
 
+    console.log('JDSPEC: ', packetInfo)
+    //console.log('JDSPEC: ', packetInfo)
+
     if (!packetInfo)
         return (
             <Alert severity="error">{`Unknown member ${serviceClass.toString(
@@ -116,7 +119,7 @@ export default function PacketSpecification(props: {
     return (
         <Root className={classes.root}>
             <h3 id={`${packetInfo.kind}:${packetInfo.identifier}`}>
-                {packetInfo.name}
+                {`${packetInfo.name} SERVICE NAME`}
                 <PacketMembersChip
                     spec={packetInfo}
                     className={classes.chip}

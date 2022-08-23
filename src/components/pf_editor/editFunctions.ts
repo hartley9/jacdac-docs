@@ -18,7 +18,7 @@ const addDebugCube = (vec: { x: number; y: number; z: number }) => {
     console.log("adding cube... at: ", vec)
     //cube.position.set(vec.x, vec.y, vec.z)
     cube.position.set(vec.x, vec.y, vec.z)
-    myScene.add(cube)
+   // myScene.add(cube)
     allDebugSceneObjects.push(cube)
 }
 
@@ -81,7 +81,7 @@ export const collectMountingHoleLocations = scene => {
                         worldPosTest.y,
                         worldPosTest.z
                     )
-                    scene.add(cube)
+                   // scene.add(cube)
                     allDebugSceneObjects.push(cube)
 
                     
@@ -175,6 +175,14 @@ export function route(scene) {
 
     let powerGoals = []
     //const dataGoals = [];
+
+    //testing - remove
+    scene.traverse(obj => {
+        if (obj.userData.isModule){
+            console.log('found a module');
+            console.log(obj)
+        }
+    })
 
     const carrierPCBDimensions = collectCarrierPCBData(scene)
 
@@ -301,7 +309,7 @@ export function route(scene) {
             powerPoints.push(
                 new THREE.Vector3(
                     path[point][0] - carrierPCBDimensions.width / 2,
-                    2.1,
+                    8.1,
                     path[point][1] - carrierPCBDimensions.height / 2
                 )
             )
@@ -335,7 +343,7 @@ export function route(scene) {
             dataPoints.push(
                 new THREE.Vector3(
                     path[point][0] - carrierPCBDimensions.width / 2,
-                    2.1,
+                    8.1,
                     path[point][1] - carrierPCBDimensions.height / 2
                 )
             )
@@ -350,6 +358,7 @@ export function route(scene) {
         });
         const mesh = new THREE.Mesh(line, lineMaterial);
         scene.add(mesh);
+        allDebugSceneObjects.push(mesh)
         //path = padLine(path)
        /*  const geometry = new THREE.BufferGeometry().setFromPoints(dataPoints)
 

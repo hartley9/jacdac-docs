@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import IconButtonWithTooltip from "../ui/IconButtonWithTooltip"
 import { Checkbox, FormControlLabel, FormGroup, Grid, TextField } from "@mui/material"
 
@@ -13,6 +13,8 @@ import { rotateX, deleteObject, route } from "./editFunctions"
 import SliderWithLabel from "../ui/SliderWithLabel"
 
 import * as THREE from "three"
+import { downloadSTLEnclosure } from "./enclosureFunctions"
+import { generateGerber } from "./generateGerber"
 
 export default function PFToolPanel(props: {
     lastClicked: THREE.Object3D
@@ -26,7 +28,8 @@ export default function PFToolPanel(props: {
     setEnclosureOptionsOpen
     scene
     traces, 
-    setTraces
+    setTraces, 
+    cheatChange
 }) {
     const {
         lastClicked,
@@ -40,10 +43,35 @@ export default function PFToolPanel(props: {
         setEnclosureOptionsOpen,
         scene,
         traces, 
-        setTraces
+        setTraces, 
+        cheatChange
     } = props
 
     const enclosureVisibleCheckbox = useRef()
+
+    const heightCheat = useRef();
+
+    const [heightState, setHeightState] = useState(enclosureDimensions.height)
+
+    useEffect(() => {
+        setHeightState(cheatChange)
+        console.log(cheatChange)
+    }, [cheatChange])
+
+
+    function handleExport(){
+        downloadSTLEnclosure(
+            {
+                height: enclosureDimensions.height,
+                width: enclosureDimensions.width,
+                depth: enclosureDimensions.depth,
+            },
+            scene, 
+        )
+
+        generateGerber(scene, traces, carrierPCBDimensions)
+    }
+
 
     //TODO: Use object store for this
     function carrierPCBDimensionChange(e, type) {
@@ -67,6 +95,9 @@ export default function PFToolPanel(props: {
                     width: carrierPCBDimensions.width,
                     depth: enclosureDimensions.depth,
                 })
+
+
+                setHeightState(value)
 
                 setCarrierPCBDimensions({
                     height: value,
@@ -104,12 +135,16 @@ export default function PFToolPanel(props: {
     return (
         <>
             <Grid container>
-                <Grid item xs={3}>
+                <Grid item /* xs={3} */>
                 <TextField
+                        ref={heightCheat}
                         onChange={e => {
                             console.log('height change and e, : ', e)
                             carrierPCBDimensionChange(e, "height")
+                            setHeightState(parseFloat(e.target.value))
+                            //setCheatChange(e.target.value)
                         }}
+                        value={`${heightState}`}
                         id="carrierPCBHeightSlider"
                         label="PCB height"
                         defaultValue={100}
@@ -127,7 +162,7 @@ export default function PFToolPanel(props: {
                         max={150}
                     ></SliderWithLabel> */}
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item /* xs={3} */>
                 <TextField
                         onChange={e => {
                             console.log('width change and e, : ', e.target.value)
@@ -202,7 +237,8 @@ export default function PFToolPanel(props: {
                     <IconButtonWithTooltip
                         title={"Export"}
                         onClick={() => {
-                            setEnclosureOptionsOpen(true)
+                          //  setEnclosureOptionsOpen(true)
+                          handleExport();
                         }}
                         color="primary"
                         aria-label="Export"

@@ -31,6 +31,7 @@ import { collectMountingHoleLocations } from "./editFunctions"
 import { rotateZ } from "@jscad/modeling/src/operations/transforms"
 import { getModulesFromScene } from "./utilFuncs"
 import cuboid from "@jscad/modeling/src/primitives/cuboid.js"
+import { unitDescription } from "../../../jacdac-ts/jacdac-spec/spectool/jdspec.js"
 
 let xSize = 0
 let ySize = 0
@@ -38,13 +39,14 @@ let zSize = 0
 
 let myScene;
 
-const standOffHeight = 4
+const standOffHeight = 12
 
 function whichModuleSTL(moduleName) {
     moduleName = moduleName.toLowerCase()
     if (moduleName.includes("button")) {
         return buttonSTL
     } else if (moduleName.includes("slider")) {
+        console.log('returning slider')
         return sliderSTL
     } else if (moduleName.includes("rgb led ring")){
         return rgbledringSTL
@@ -117,7 +119,7 @@ export function getIntersectingObjects(enclosureLid, scene) {}
 
 export async function downloadSTLEnclosure(enclosureDimensions, scene?, genCarrierPCB?) {
     const jszip = new JSZip()
-    const enclosureSTLs = jszip.folder("enclosure stls")
+    const enclosureSTLs = jszip.folder("enclosure")
 
     myScene = scene
 
@@ -130,14 +132,14 @@ export async function downloadSTLEnclosure(enclosureDimensions, scene?, genCarri
 
     for (const lidOrBase in enclosureBlobs) {
         if (lidOrBase === "lid") {
-            enclosureSTLs.file("lid.svg", enclosureBlobs[lidOrBase])
+            enclosureSTLs.file("lid.stl", enclosureBlobs[lidOrBase])
         } else {
             enclosureSTLs.file("base.stl", enclosureBlobs[lidOrBase])
         }
     }
 
     jszip.generateAsync({ type: "blob" }).then(function (content) {
-        downloadBlob(content, "enclosureStls.zip")
+        downloadBlob(content, "Device fabrication data.zip")
     })
 }
 
@@ -147,12 +149,16 @@ export async function getSTLBlob(enclosureDimensions, scene?, enclosureOptions?)
     let rawLidData, rawBaseData;
     if (!enclosureOptions){
         
-        rawLidData = svgSerializer.serialize(
+         rawLidData = stlSerializer.serialize(
+                { binary: true },
+                myEnclosure.lid
+        ) 
+      /*   rawLidData = svgSerializer.serialize(
             { unit: 'mm' },
             generalize(
                 { snap: true, simplify: true, triangulate: true },
                 project({axis: [0,0,1]}, myEnclosure.lid))
-        )
+        )  */
          rawBaseData = stlSerializer.serialize(
             { binary: true },
             myEnclosure.base
@@ -264,8 +270,8 @@ export const generate = (enclosureDimensions?, scene?) => {
                         translate(
                             [0, -ySize * 1.1, 0],
                             rotateX(degToRad(180), 
-                           // addComponentApertures(scene, enclosureTop(scene) ))
-                           enclosureTop(scene))
+                            addComponentApertures(scene, enclosureTop(scene) ))
+                           //enclosureTop(scene))
                         )
                         // enclosureBottom(scene),
                     )
@@ -277,8 +283,8 @@ export const generate = (enclosureDimensions?, scene?) => {
             union(
                 // translate([0, -ySize*1.1, 0], rotateX(degToRad(180), enclosureTop(scene))),
                 //addComponentApertures(scene, enclosureBottom(scene))
-              //  addComponentApertures(scene, enclosureBottom(scene))
-              enclosureBottom(scene)
+                addComponentApertures(scene, enclosureBottom(scene))
+              //enclosureBottom(scene)
             )
         ),
     }
@@ -298,16 +304,16 @@ const mounts = (x, y) => {
     )
 }
 
-const standOff = (x, y, d?) => {
+const standOff = (x, y, d?) =>  {
     const standOffRadius = d ? d : 4;
 
-    console.log('putting stand off at: ', [x, y, -(4+(standOffHeight))])
+    console.log('putting stand off at: ', [x, y, ((standOffHeight))])
     return translate(
-        [x, y, -(4+(standOffHeight))],
+        [x, y, (-(standOffHeight))],
         subtract(
             cylinder({ radius: standOffRadius, height: standOffHeight }),
 
-            cylinder({ radius: 1.5, height: standOffHeight + zSize / 10 })
+            cylinder({ radius: 1.7, height: standOffHeight + zSize / 10 })
         )
     )
 }
@@ -335,16 +341,17 @@ const enclosureBottom = (scene): Geom3 => {
     const inner = subtract(enclosure(0.98), translate([0, 0, 3], chopper))
 
     const enclosureBottom = union(outer, inner, mounts(xSize, ySize))
-    //return enclosureBottom; 
-    return addComponentApertures(scene, enclosureBottom);
+    return enclosureBottom; 
+   // return addComponentApertures(scene, enclosureBottom);
 }
 
 const enclosure = (wallThickness?): Geom3 => {
     wallThickness = wallThickness || 0.93
     const e = enclosureShape()
+    const c = cuboid({ size: [xSize, ySize, zSize]})
 
     
-    const cavity = scale([wallThickness, wallThickness, wallThickness], e)
+    const cavity = scale([wallThickness, wallThickness, wallThickness], c)
      //const cavity = cuboid({size: [xSize-wallThickness/2, ySize-wallThickness/2, zSize-wallThickness/2]})
    // const cavity = roundedCuboid({size: [xSize-wallThickness, ySize-wallThickness, zSize-(wallThickness)], center: [0,0,0], roundRadius: 2, segments: 32 })
 
@@ -354,8 +361,8 @@ const enclosure = (wallThickness?): Geom3 => {
 // top is
 const enclosureTop = (scene): Geom3 => {
     const enclosureTop = subtract(enclosure(), enclosureBottom(scene))
-    return addComponentApertures(scene, enclosureTop)
-   //return enclosureTop
+    //return addComponentApertures(scene, enclosureTop)
+   return enclosureTop
 }
 
 const addComponentApertures = (scene, enclosureTop): Geom3 => {
@@ -381,11 +388,12 @@ const addComponentApertures = (scene, enclosureTop): Geom3 => {
     //if (componentLocations.length> 0){
 
     componentLocations.forEach(component => {
+        console.log('rdding component: ', component)
         if (deserialiseSTL(component.moduleName)){
             geomToReturn = subtract( //subtract
                 geomToReturn,
                 translate(
-                    [-component.position.x, component.position.z,standOffHeight-component.position.y],
+                    [-component.position.x, component.position.z,-(standOffHeight-component.position.y)],
                     rotate(
                          [
                             component.rotation._z,

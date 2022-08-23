@@ -64,7 +64,9 @@ export default function PF_Toolbar(props: {
                 return
 
             case "enclosure":
-                setEnclosureOptionsOpen(true)    
+                console.log('enclosure clicked!....')
+                setEnclosureOptionsOpen(true)  
+                generateGerber(scene, traces, carrierPCBDimensions)  
             //downloadSTLEnclosure({height: enclosureDimensions.height, width: enclosureDimensions.width, depth: enclosureDimensions.depth}, scene)
                 handleClose()
                 return

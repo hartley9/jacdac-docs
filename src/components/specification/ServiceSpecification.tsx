@@ -42,6 +42,7 @@ export default function ServiceSpecification(props: {
 }) {
     const { service: node, showDerived } = props
     const { shortId, name, classIdentifier } = node
+    console.log('NODE: ', node)
     const packets = node.packets.filter(pkt => showDerived || !pkt.derived)
     const registers = packets.filter(isRegister)
     const events = packets.filter(isEvent)
@@ -67,7 +68,7 @@ export default function ServiceSpecification(props: {
     return (
         <>
             <h1 key="title">
-                {name}
+                {`${name} service name`}
                 <Box ml={1} component="span">
                     <IDChip
                         id={node.classIdentifier}

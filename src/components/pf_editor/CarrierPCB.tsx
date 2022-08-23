@@ -16,7 +16,10 @@ export default function CarrierPCB(props: {
 }) {
 
     
-    const { height, width } = props
+    const { height, width, rotation, position, color } = props
+
+
+    position ? position :  [0,0,0]
 
     const carrierPCB = useRef();
     
@@ -52,9 +55,9 @@ export default function CarrierPCB(props: {
       
         const viaRingMesh = CSG.subtract(outer, inner);
           
-        ringMeshes.push( <primitive position={[coord.x, 0, coord.z]} key={Math.random()} object={viaRingMesh}></primitive>)
+        ringMeshes.push( <primitive position={[coord.x, position[1], coord.z]} key={Math.random()} object={viaRingMesh}></primitive>)
         
-        drillHole.position.set(coord.x, 0, coord.z);
+        drillHole.position.set(coord.x, position[1], coord.z);
 
         standOffGeos.push(drillHole)
         drillHole.updateMatrix();
@@ -84,7 +87,7 @@ export default function CarrierPCB(props: {
     return (
         <Suspense>
         <group name={"carrierPCB"} userData={{height: height, width: width}}>
-            <primitive ref={carrierPCB} object={meshToReturn}></primitive>
+            <primitive ref={carrierPCB} object={meshToReturn} position={position}></primitive>
             
             {ringMeshes}
     

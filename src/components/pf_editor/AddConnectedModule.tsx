@@ -36,6 +36,9 @@ export default function AddConnectedModule(props: {
     floorPlane
     setLastClicked
     scene
+    setCarrierPCBDimensions 
+    route
+    setCheatChange
 }) {
     const {
         addModule,
@@ -46,7 +49,10 @@ export default function AddConnectedModule(props: {
         lastClicked,
         floorPlane,
         setLastClicked,
-        scene
+        scene, 
+        setCarrierPCBDimensions,
+        route,
+        setCheatChange
     } = props
 
     useEffect(() => {
@@ -63,6 +69,13 @@ export default function AddConnectedModule(props: {
     }, [objects]) */
 
     const moduleNames = ["slider", "slider", "button", "button", ]
+
+    const myCheatObject = [
+        {name: "key switch", position: [-15,8,-30], rotation: [0,-1.5708*4,0]},
+        {name: "key switch", position: [-15,8,0], rotation: [0,-1.5708*4,0]},
+        {name: "key switch", position: [-15,8,30], rotation: [0,-1.5708*4,0]},
+        {name: "microbit adapter", position: [20,8,0], rotation: [0,-1.5708,0]},
+    ]
     
     const binpack = () => {
 
@@ -83,23 +96,29 @@ export default function AddConnectedModule(props: {
         const moduleComponents = []
 
         //devices.forEach(device => {
-        moduleNames.forEach(item => {
+        myCheatObject.forEach(item => {
             const topLevelUUID = crypto.randomUUID()
             moduleComponents.push(
                 <PF_Module
                     name={topLevelUUID}
-                    moduleName={item}
+                    moduleName={item.name}
                     key={Math.random()}
                     id={crypto.randomUUID()}
                     setIsDragging={setIsDragging}
                     setLastClicked={setLastClicked}
                     lastClicked={lastClicked}
                     floorPlane={floorPlane}
-                    position={[randomUInt(50), 8, randomUInt(50)]}
+                    position={item.position}
+                    rotation={item.rotation}
                 
                 />
             )
         })
+
+        setCheatChange(78);
+
+        setCarrierPCBDimensions({height: 78, width: 100, depth: 80})
+        route(scene)
 
         flushSync(() => {
              setObjects([...objects, ...moduleComponents]);

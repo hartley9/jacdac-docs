@@ -43,7 +43,7 @@ export default function EnclosureOptions(props: {
         scene,
     } = props
 
-    const [lidExportFormat, setLidExportFormat] = useState("SVG")
+    const [lidExportFormat, setLidExportFormat] = useState("STL")
     const [baseExportFormat, setBaseExportFormat] = useState("STL")
 
     const [baseURL, setBaseURL] = useState(null);

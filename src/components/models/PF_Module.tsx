@@ -15,6 +15,8 @@ import Jacdac_button from "./Jacdac_button"
 import Jacdac_mech_keyswitch from "./Jacdac_mech_keyswitch"
 import Jacdac_slider from "./Jacdac_slider"
 
+//import Jacdac_adapter_microbit from "./Jacdac_adapter_microbit"
+
 import Jacdac_rgbledring from "./Jacdac_rgbledring"
 import Jacdac_slider_new from "./Jacdac_slider_new"
 
@@ -30,6 +32,7 @@ export default function PF_Module(props: {
     lastClicked: THREE.Object3D
     floorPlane: THREE.Vector3
     position?: number[]
+    rotation?: number[]
     selected?: boolean
 }) {
     const {
@@ -39,10 +42,13 @@ export default function PF_Module(props: {
         setLastClicked,
         floorPlane,
         position,
+        rotation,
         selected,
     } = props
 
     const [sel, setSel] = useState(selected ? selected : false)
+
+    const moduleRotation = rotation ? rotation : [0, -1.5708, 0];
 
     const dragMesh = useRef()
 
@@ -100,6 +106,7 @@ export default function PF_Module(props: {
         switch (moduleName.toLowerCase()) {
             case "microbit adapter":
                 return <Jacdac_adapter />
+               //return <Jacdac_adapter_microbit />
             case "rotary":
                 return <Jacdac_rotary_new />
             case "rgb led":
@@ -134,7 +141,8 @@ export default function PF_Module(props: {
                         name={name}
                         ref={objGroup}
                         userData={{ name: moduleName, isModule: true }}
-                        rotation={[0, -1.5708, 0]}
+                       // rotation={[0, -1.5708, 0]}
+                       rotation={moduleRotation}
                     >
                         {whichModule(moduleName)}
                     </group>
