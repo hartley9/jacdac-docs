@@ -29,6 +29,8 @@ export default function PFToolPanel(props: {
     scene
     traces, 
     setTraces, 
+    lockOrbit,
+    setLockOrbit,
     cheatChange
 }) {
     const {
@@ -44,10 +46,15 @@ export default function PFToolPanel(props: {
         scene,
         traces, 
         setTraces, 
+        lockOrbit,
+        setLockOrbit,
         cheatChange
     } = props
 
     const enclosureVisibleCheckbox = useRef()
+
+
+    const lockOrbitCheckbox = useRef()
 
     const heightCheat = useRef();
 
@@ -186,6 +193,9 @@ export default function PFToolPanel(props: {
                     {/* <TextField onChange={(e) => {carrierPCBDimensionChange(e, 'width')}} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} /> */}
                 </Grid>
                 <Grid item>
+                    <Checkbox ref={lockOrbitCheckbox} value={lockOrbitCheckbox} onChange={() => {
+                        setLockOrbit(!lockOrbit);
+                    }}  />
                     <IconButtonWithTooltip
                         title={"Change View"}
                         onClick={() => {

@@ -49,6 +49,9 @@ export default function Page() {
 
     const [traces, setTraces] = useState({power: [], data: []})
 
+    // lock/unlock orbit
+    const [lockOrbit, setLockOrbit] = useState(false);
+
     // enclosure visible
     const [enclosureVisible, setEnclosureVisible] = useState(false)
     const [enclosureOptionsOpen, setEnclosureOptionsOpen] = useState(false);
@@ -156,6 +159,8 @@ export default function Page() {
                         scene={editorScene}
                         traces={traces}
                         setTraces={setTraces}
+                        lockOrbit={lockOrbit}
+                        setLockOrbit={setLockOrbit}
                         cheatChange={cheatChange}
                     ></PFToolPanel>
                 </Grid>
@@ -259,7 +264,7 @@ export default function Page() {
                                 
                                 minZoom={-10}
                                 maxZoom={50}
-                                enabled={!isDragging}
+                                enabled={!isDragging && !lockOrbit}
                                 
                                 
                             /> 
