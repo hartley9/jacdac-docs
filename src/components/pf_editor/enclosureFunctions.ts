@@ -31,7 +31,6 @@ import { collectMountingHoleLocations } from "./editFunctions"
 import { rotateZ } from "@jscad/modeling/src/operations/transforms"
 import { getModulesFromScene } from "./utilFuncs"
 import cuboid from "@jscad/modeling/src/primitives/cuboid.js"
-import { unitDescription } from "../../../jacdac-ts/jacdac-spec/spectool/jdspec.js"
 
 let xSize = 0
 let ySize = 0
