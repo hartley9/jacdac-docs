@@ -98,6 +98,9 @@ export default function Page() {
                 lastClicked={lastClicked}
                 floorPlane={floorPlane}
                 position={[0, 8, 0]}
+                scene={editorScene}
+                traces={traces}
+                setTraces={setTraces}
 
             />,
         ])

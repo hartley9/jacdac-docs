@@ -212,6 +212,7 @@ export default function PFToolPanel(props: {
                         title={"Rotate module"}
                         onClick={() => {
                             rotateX(lastClicked.current)
+                            setTraces(route(scene))
                         }}
                         color="primary"
                         aria-label="Rotate"
@@ -247,8 +248,8 @@ export default function PFToolPanel(props: {
                     <IconButtonWithTooltip
                         title={"Export"}
                         onClick={() => {
-                          //  setEnclosureOptionsOpen(true)
-                          handleExport();
+                            setEnclosureOptionsOpen(true)
+                          //handleExport();
                         }}
                         color="primary"
                         aria-label="Export"

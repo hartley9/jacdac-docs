@@ -6,7 +6,7 @@ import { animated, useSpring } from "@react-spring/three"
 
 import * as THREE from "three"
 
-import { roundBy } from "../pf_editor/editFunctions"
+import { roundBy, route } from "../pf_editor/editFunctions"
 import Jacdac_adapter from "./Jacdac_adapter"
 import Jacdac_RGBLED from "./Jacdac_RGBLED"
 import Jacdac_rotary_new from "./Jacdac_rotary_new"
@@ -34,6 +34,9 @@ export default function PF_Module(props: {
     position?: number[]
     rotation?: number[]
     selected?: boolean
+    scene: THREE.Scene
+    traces
+    setTraces
 }) {
     const {
         name,
@@ -44,6 +47,9 @@ export default function PF_Module(props: {
         position,
         rotation,
         selected,
+        scene, 
+        traces, 
+        setTraces
     } = props
 
     const [sel, setSel] = useState(selected ? selected : false)
@@ -60,6 +66,8 @@ export default function PF_Module(props: {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [boundingBox, setBoundingBox] = useState(null)
 
+    const [updateTraces, setUpdateTraces] = useState(false)
+
     const [pos, setPos] = useState(position ? position : [0, 1, 0])
 
     const planeIntersectPoint = new THREE.Vector3()
@@ -69,7 +77,7 @@ export default function PF_Module(props: {
         position: [Math.round(pos[0]), Math.round(pos[1]), Math.round(pos[2])],
         scale: 1,
         rotation: [0, 0, 0],
-        config: { friction: 10 },
+        config: { friction: 10, tension: 200, restVelocity: 0, bounce: 0 },
     }))
 
     const bind = useDrag(
@@ -77,7 +85,10 @@ export default function PF_Module(props: {
             if (active) {
                 event.ray.intersectPlane(floorPlane, planeIntersectPoint)
                 setPos([roundBy(planeIntersectPoint.x), 8, roundBy(planeIntersectPoint.z)])
+                //setPos([planeIntersectPoint.x, 10, planeIntersectPoint.z])
             }
+
+            
 
             setIsDragging(active);
             setSel(active);
@@ -94,12 +105,17 @@ export default function PF_Module(props: {
                 }
             }
 
+
+            if (!active){
+                setTraces(route(scene))
+            }
+
             api.start({
                 position: pos,
             })
             return timeStamp;
         },
-        { delay: false }
+        { delay: true }
     )
 
     const whichModule = moduleName => {
