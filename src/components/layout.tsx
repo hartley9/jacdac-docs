@@ -214,11 +214,13 @@ function LayoutWithContext(props: LayoutProps) {
         /^\/editors\/\w+\/$/.test(path) ||
         /^\/tools\/console\/$/.test(path) ||
         /^\/(tools\/(makecode-|player)|dashboard)/.test(path) ||
+        /^\/tools\/PFEditor\/$/.test(path) ||
         !!frontmatter?.fullWidth
+
     const isDataEditor = /^\/editors\/data/.test(path)
     const {
         hideMainMenu = false,
-        hideUnderConstruction = false,
+        hideUnderConstruction = true,
         hideBreadcrumbs = false,
     } = frontmatter || {
         hideMainMenu: isHosted || makeCodeTool,

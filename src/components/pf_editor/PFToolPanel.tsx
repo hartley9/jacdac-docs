@@ -258,7 +258,7 @@ export default function PFToolPanel(props: {
                     </IconButtonWithTooltip>
                 </Grid>
 
-                {/* checkbox for enclosure visible/notvisible*/}
+                {/* checkbox for enclosure visible/notvisible*/}    
                 {/*  <Grid item>
                     <FormGroup>
                         <FormControlLabel control={<Checkbox ref={enclosureVisibleCheckbox} onChange={() => {setEnclosureVisible(!enclosureVisible)}}/>} label="Enclosure" />

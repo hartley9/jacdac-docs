@@ -110,7 +110,11 @@ export default function Page() {
         <>
             <h1 top="50px">Productizer</h1>
 
-            <Grid container spacing={4} columns={12} direction="row">
+            <Grid container spacing={4} columns={3} direction="row">
+                
+            <Grid container spacing={4} columns={3} direction="column">
+
+            </Grid>
                 <Grid item>
                     <AddModule addModule={addModule} />
                 </Grid>
@@ -135,7 +139,7 @@ export default function Page() {
                     </Grid>
                 )}
 
-                {/* <Grid item>
+             <Grid item>
                     <PFToolbar
                         traces={traces}
                         carrierPCBDimensions={carrierPCBDimensions}
@@ -145,7 +149,7 @@ export default function Page() {
                         scene={editorScene}
                         setEnclosureOptionsOpen={setEnclosureOptionsOpen}
                     ></PFToolbar>
-                </Grid> */}
+                </Grid> 
 
                 <Grid item>
                     <PFToolPanel
